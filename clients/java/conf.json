@@ -1,0 +1,22 @@
+{
+    "artifactId": "pinterestsdk",
+    "artifactVersion": "1.0.0-pre.0",
+    "artifactUrl": "https://github.com/cliffano/pinterest-sdk",
+    "artifactDescription": "Pinterest SDK generated from OpenAPI specification",
+    "groupId": "com.cliffano",
+    "invokerPackage": "com.cliffano.pinterestsdk",
+    "apiPackage": "com.cliffano.pinterestsdk.api",
+    "modelPackage": "com.cliffano.pinterestsdk.model",
+    "licenseName": "MIT",
+    "licenseUrl": "https://github.com/cliffano/pinterest-sdk/blob/master/LICENSE",
+    "developerName": "Cliffano Subagio",
+    "developerEmail": "blah@cliffano.com",
+    "developerOrganization": "Studio Cliffano",
+    "developerOrganizationUrl": "http://cliffano.com",
+    "scmConnection": "scm:git:git@github.com:cliffano/pinterest-sdk.git",
+    "scmDeveloperConnection": "scm:git:git@github.com:cliffano/pinterest-sdk.git",
+    "scmUrl": "https://github.com/cliffano/pinterest-sdk",
+    "distributionManagementRepositoryId": "sonatype-release",
+    "distributionManagementRepositoryName": "Sonatype Release",
+    "distributionManagementRepositoryUrl": "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+  }
