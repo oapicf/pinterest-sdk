@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupPricingCriteria",
+  "fields": [
+    {
+      "name": "inclusion",
+      "type": "boolean",
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "negated",
+      "type": "boolean",
+      "doc": ""
+    }
+  ]
+
+}

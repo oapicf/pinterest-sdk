@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Filter operator for sync reporting",
+  "name": "AdsAnalyticsFilterOperator",
+  "symbols": [
+    "LESS_THAN",
+    "GREATER_THAN"
+  ]
+}

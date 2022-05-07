@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingTypeFilter",
+  "fields": [
+    {
+      "name": "targeting_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "AdsAnalyticsTargetingType"
+      }],
+      "doc": "List of targeting types",
+      "default": null
+    }
+  ]
+
+}

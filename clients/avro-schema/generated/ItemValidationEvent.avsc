@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing an item validation event",
+  "name": "ItemValidationEvent",
+  "fields": [
+    {
+      "name": "attribute",
+      "type": ["null", "string"],
+      "doc": "The attribute that the item validation event references",
+      "default": null
+    },
+    {
+      "name": "code",
+      "type": ["null", "int"],
+      "doc": "The event code that the item validation event references",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Title message describing the item validation event",
+      "default": null
+    }
+  ]
+
+}

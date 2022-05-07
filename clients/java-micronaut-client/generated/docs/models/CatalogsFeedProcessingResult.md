@@ -1,0 +1,26 @@
+
+
+# CatalogsFeedProcessingResult
+
+The class is defined in **[CatalogsFeedProcessingResult.java](../../src/main/java/org/openapitools/model/CatalogsFeedProcessingResult.java)**
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**createdAt** | `LocalDateTime` |  |  [optional property]
+**id** | `String` |  |  [optional property]
+**updatedAt** | `LocalDateTime` |  |  [optional property]
+**ingestionDetails** | [`CatalogsFeedIngestionDetails`](CatalogsFeedIngestionDetails.md) |  | 
+**status** | `CatalogsFeedProcessingStatus` |  | 
+**productCounts** | [`CatalogsFeedProductCounts`](CatalogsFeedProductCounts.md) |  | 
+**validationDetails** | [`CatalogsFeedValidationDetails`](CatalogsFeedValidationDetails.md) |  | 
+
+
+
+
+
+
+
+
+

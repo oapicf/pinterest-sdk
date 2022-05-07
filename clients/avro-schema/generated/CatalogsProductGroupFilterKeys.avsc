@@ -1,0 +1,139 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupFilterKeys",
+  "fields": [
+    {
+      "name": "MIN_PRICE",
+      "type": "model.CatalogsProductGroupPricingCriteria",
+      "doc": ""
+    },
+    {
+      "name": "MAX_PRICE",
+      "type": "model.CatalogsProductGroupPricingCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CURRENCY",
+      "type": "model.CatalogsProductGroupCurrencyCriteria",
+      "doc": ""
+    },
+    {
+      "name": "ITEM_ID",
+      "type": "model.CatalogsProductGroupCurrencyCriteria",
+      "doc": ""
+    },
+    {
+      "name": "AVAILABILITY",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "BRAND",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CONDITION",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_0",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_1",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_2",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_3",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_4",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "ITEM_GROUP_ID",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GENDER",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PRODUCT_TYPE_4",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PRODUCT_TYPE_3",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PRODUCT_TYPE_2",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PRODUCT_TYPE_1",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PRODUCT_TYPE_0",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_6",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_5",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_4",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_3",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_2",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_1",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_0",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    }
+  ]
+
+}

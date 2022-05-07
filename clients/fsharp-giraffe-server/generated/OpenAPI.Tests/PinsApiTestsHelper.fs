@@ -1,0 +1,47 @@
+namespace OpenAPI.Tests
+
+open System
+open System.Net
+open System.Net.Http
+open System.IO
+open Microsoft.AspNetCore.Builder
+open Microsoft.AspNetCore.Hosting
+open Microsoft.AspNetCore.TestHost
+open Microsoft.Extensions.DependencyInjection
+open FSharp.Control.Tasks.V2.ContextInsensitive
+open Xunit
+open System.Text
+open TestHelper
+open OpenAPI.PinsApiHandler
+open OpenAPI.PinsApiHandlerParams
+
+module PinsApiHandlerTestsHelper =
+
+  ()
+
+
+  let mutable PinsCreateExamples = Map.empty
+  let mutable PinsCreateBody = ""
+
+  PinsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;board_owner&quot; : &quot;{}&quot;,
+  &quot;media_source&quot; : &quot;{}&quot;,
+  &quot;alt_text&quot; : &quot;alt_text&quot;,
+  &quot;board_id&quot; : &quot;board_id&quot;,
+  &quot;link&quot; : &quot;https://www.pinterest.com/&quot;,
+  &quot;created_at&quot; : &quot;2020-01-01T20:10:40Z&quot;,
+  &quot;description&quot; : &quot;description&quot;,
+  &quot;id&quot; : &quot;813744226420795884&quot;,
+  &quot;media&quot; : &quot;{}&quot;,
+  &quot;title&quot; : &quot;title&quot;,
+  &quot;board_section_id&quot; : &quot;board_section_id&quot;
+}"
+  PinsCreateExamples <- PinsCreateExamples.Add("application/json", PinsCreateBody)
+
+  let getPinsCreateExample mediaType =
+    PinsCreateExamples.[mediaType]
+      |> getConverter mediaType
+  ()
+
+  ()
+

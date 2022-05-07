@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Media upload status",
+  "name": "MediaUploadStatus",
+  "symbols": [
+    "registered",
+    "processing",
+    "succeeded",
+    "failed"
+  ]
+}

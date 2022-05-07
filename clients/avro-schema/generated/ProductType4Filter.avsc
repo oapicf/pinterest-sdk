@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ProductType4Filter",
+  "fields": [
+    {
+      "name": "PRODUCT_TYPE_4",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    }
+  ]
+
+}

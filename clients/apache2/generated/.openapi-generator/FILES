@@ -1,0 +1,8 @@
+.openapi-generator-ignore
+AdAccountsApi.conf
+BoardsApi.conf
+CatalogsApi.conf
+MediaApi.conf
+OauthApi.conf
+PinsApi.conf
+UserAccountApi.conf

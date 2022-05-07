@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "GoogleProductCategory2Filter",
+  "fields": [
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_2",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    }
+  ]
+
+}

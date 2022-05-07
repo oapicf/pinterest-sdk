@@ -1,0 +1,14 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+elm.json
+src/Api.elm
+src/Api/Data.elm
+src/Api/Request/AdAccounts.elm
+src/Api/Request/Boards.elm
+src/Api/Request/Catalogs.elm
+src/Api/Request/Media.elm
+src/Api/Request/Oauth.elm
+src/Api/Request/Pins.elm
+src/Api/Request/UserAccount.elm
+src/Api/Time.elm

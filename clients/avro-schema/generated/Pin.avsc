@@ -1,0 +1,75 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin",
+  "name": "Pin",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "created_at",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "alt_text",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "board_id",
+      "type": ["null", "string"],
+      "doc": "The board to which this Pin belongs.",
+      "default": null
+    },
+    {
+      "name": "board_section_id",
+      "type": ["null", "string"],
+      "doc": "The board section to which this Pin belongs.",
+      "default": null
+    },
+    {
+      "name": "board_owner",
+      "type": ["null", "model.BoardOwner"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "media",
+      "type": ["null", "model.PinMedia"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "media_source",
+      "type": ["null", "model.PinMediaSource"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

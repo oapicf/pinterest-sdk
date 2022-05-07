@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PinMediaWithImageAllOf",
+  "fields": [
+    {
+      "name": "images",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.ImageDetails"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

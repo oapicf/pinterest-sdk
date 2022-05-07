@@ -1,0 +1,37 @@
+-- By default this file is used by `parseRoutesFile` in Foundation.hs
+-- Syntax for this file here: https://www.yesodweb.com/book/routing-and-handlers
+
+-- /static StaticR Static appStatic
+
+/oauth/token OauthTokenR POST
+/user_account UserAccountR GET
+/user_account/analytics UserAccountAnalyticsR GET
+/pins PinsR POST
+/pins/#Text PinsByTextR GET DELETE
+/pins/#Text/analytics PinsByTextAnalyticsR GET
+/boards BoardsR GET POST
+/boards/#Text BoardsByTextR GET DELETE PATCH
+/boards/#Text/sections BoardsByTextSectionsR GET POST
+/boards/#Text/sections/#Text BoardsByTextSectionsByTextR DELETE PATCH
+/boards/#Text/sections/#Text/pins BoardsByTextSectionsByTextPinsR GET
+/boards/#Text/pins BoardsByTextPinsR GET
+/media MediaR GET POST
+/media/#Text MediaByTextR GET
+/ad_accounts AdAccountsR GET
+/ad_accounts/#Text/analytics AdAccountsByTextAnalyticsR GET
+/ad_accounts/#Text/campaigns AdAccountsByTextCampaignsR GET
+/ad_accounts/#Text/campaigns/analytics AdAccountsByTextCampaignsAnalyticsR GET
+/ad_accounts/#Text/ad_groups AdAccountsByTextAdGroupsR GET
+/ad_accounts/#Text/ad_groups/analytics AdAccountsByTextAdGroupsAnalyticsR GET
+/ad_accounts/#Text/ads AdAccountsByTextAdsR GET
+/ad_accounts/#Text/ads/analytics AdAccountsByTextAdsAnalyticsR GET
+/ad_accounts/#Text/product_groups/analytics AdAccountsByTextProductGroupsAnalyticsR GET
+/ad_accounts/#Text/reports AdAccountsByTextReportsR GET POST
+/catalogs/feeds CatalogsFeedsR GET POST
+/catalogs/feeds/#Text CatalogsFeedsByTextR GET DELETE PATCH
+/catalogs/feeds/#Text/processing_results CatalogsFeedsByTextProcessingResultsR GET
+/catalogs/items CatalogsItemsR GET
+/catalogs/items/batch/#Text CatalogsItemsBatchByTextR GET
+/catalogs/items/batch CatalogsItemsBatchR POST
+/catalogs/product_groups/#Text CatalogsProductGroupsByTextR DELETE PATCH
+/catalogs/product_groups CatalogsProductGroupsR GET POST

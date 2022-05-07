@@ -1,0 +1,47 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsFeedProcessingResult",
+  "fields": [
+    {
+      "name": "created_at",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "updated_at",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ingestion_details",
+      "type": "model.CatalogsFeedIngestionDetails",
+      "doc": ""
+    },
+    {
+      "name": "status",
+      "type": "model.CatalogsFeedProcessingStatus",
+      "doc": ""
+    },
+    {
+      "name": "product_counts",
+      "type": "model.CatalogsFeedProductCounts",
+      "doc": ""
+    },
+    {
+      "name": "validation_details",
+      "type": "model.CatalogsFeedValidationDetails",
+      "doc": ""
+    }
+  ]
+
+}

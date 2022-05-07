@@ -1,0 +1,16 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Campaign objective type.",
+  "name": "ObjectiveType",
+  "symbols": [
+    "AWARENESS",
+    "CONSIDERATION",
+    "VIDEO_VIEW",
+    "WEB_CONVERSION",
+    "CATALOG_SALES",
+    "WEB_SESSIONS",
+    "AWARENESS_RESERVED",
+    "ENGAGEMENT"
+  ]
+}

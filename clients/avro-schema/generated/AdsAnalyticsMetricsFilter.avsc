@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdsAnalyticsMetricsFilter",
+  "fields": [
+    {
+      "name": "field",
+      "type": ["null", "model.AdsAnalyticsFilterColumn"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "operator",
+      "type": ["null", "model.AdsAnalyticsFilterOperator"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "values",
+      "type": ["null", {
+        "type": "array",
+        "items": "double"
+      }],
+      "doc": "List of values for filtering",
+      "default": null
+    }
+  ]
+
+}

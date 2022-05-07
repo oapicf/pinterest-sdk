@@ -1,0 +1,69 @@
+
+<h2>AdResponseAllOf1</h2>
+<ul class="parameter">
+  <li class="param-required-false">adUnderscoreaccountUnderscoreid : String
+    <br/>The ID of the advertiser that this ad belongs to.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">campaignUnderscoreid : String
+    <br/>ID of the ad campaign that contains this ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">collectionUnderscoreitemsUnderscoredestinationUnderscoreurlUnderscoretemplate : String
+    <br/>Destination URL template for all items within a collections drawer.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscoretime : Integer
+    <br/>Pin creation time. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">id : String
+    <br/>The ID of this ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">rejectedUnderscorereasons : List
+    <br/>Enum reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;.
+      <dl class="param-enum">
+        <dt>Enum:
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">rejectionUnderscorelabels : List
+    <br/>Text reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">reviewUnderscorestatus : String
+    <br/>Ad review status
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>OTHER</dd>
+            <dd>PENDING</dd>
+            <dd>REJECTED</dd>
+            <dd>APPROVED</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">type : String
+    <br/>Always \&quot;ad\&quot;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">updatedUnderscoretime : Integer
+    <br/>Last update time. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">summaryUnderscorestatus : PinPromotionSummaryStatus
+    <br/>Ad summary status
+  </li>
+</ul>

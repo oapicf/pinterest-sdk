@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+AdAccountsApi.csv
+AdAccountsApi.jmx
+BoardsApi.csv
+BoardsApi.jmx
+CatalogsApi.csv
+CatalogsApi.jmx
+MediaApi.csv
+MediaApi.jmx
+OauthApi.csv
+OauthApi.jmx
+PinsApi.csv
+PinsApi.jmx
+UserAccountApi.csv
+UserAccountApi.jmx

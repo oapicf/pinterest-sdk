@@ -1,0 +1,200 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <Description>OpenAPI</Description>
+    <Copyright>OpenAPI</Copyright>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.24" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="src/model/TrackingUrls.fs" />
+    <Compile Include="src/model/AdsAnalyticsTargetingType.fs" />
+    <Compile Include="src/model/ReportingColumnAsync.fs" />
+    <Compile Include="src/model/CatalogsProductGroupMultipleStringListCriteria.fs" />
+    <Compile Include="src/model/ProductType4Filter.fs" />
+    <Compile Include="src/model/ProductType3Filter.fs" />
+    <Compile Include="src/model/ProductType2Filter.fs" />
+    <Compile Include="src/model/ProductType1Filter.fs" />
+    <Compile Include="src/model/ProductGroupSummaryStatus.fs" />
+    <Compile Include="src/model/ProductAvailabilityType.fs" />
+    <Compile Include="src/model/PlacementGroupType.fs" />
+    <Compile Include="src/model/PinPromotionSummaryStatus.fs" />
+    <Compile Include="src/model/ImageDetails.fs" />
+    <Compile Include="src/model/PinMediaWithImageAllOf.fs" />
+    <Compile Include="src/model/PinMediaSourceVideoID.fs" />
+    <Compile Include="src/model/PinMediaSourceImageURL.fs" />
+    <Compile Include="src/model/PinMediaSourceImageBase64.fs" />
+    <Compile Include="src/model/PinMediaSource.fs" />
+    <Compile Include="src/model/PinMedia.fs" />
+    <Compile Include="src/model/BoardOwner.fs" />
+    <Compile Include="src/model/Paginated.fs" />
+    <Compile Include="src/model/PacingDeliveryType.fs" />
+    <Compile Include="src/model/ObjectiveType.fs" />
+    <Compile Include="src/model/OauthAccessTokenResponse.fs" />
+    <Compile Include="src/model/OauthAccessTokenResponseCodeAllOf.fs" />
+    <Compile Include="src/model/OauthAccessTokenResponseRefresh.fs" />
+    <Compile Include="src/model/OauthAccessTokenResponseCode.fs" />
+    <Compile Include="src/model/OauthAccessTokenRequestRefreshAllOf.fs" />
+    <Compile Include="src/model/OauthAccessTokenRequestRefresh.fs" />
+    <Compile Include="src/model/OauthAccessTokenRequestCodeAllOf.fs" />
+    <Compile Include="src/model/OauthAccessTokenRequestCode.fs" />
+    <Compile Include="src/model/NullableCurrency.fs" />
+    <Compile Include="src/model/NonNullableCatalogsCurrency.fs" />
+    <Compile Include="src/model/CatalogsProductGroupPricingCriteria.fs" />
+    <Compile Include="src/model/MetricsReportingLevel.fs" />
+    <Compile Include="src/model/MediaUploadType.fs" />
+    <Compile Include="src/model/MediaUploadStatus.fs" />
+    <Compile Include="src/model/MediaUploadRequest.fs" />
+    <Compile Include="src/model/MediaUploadDetails.fs" />
+    <Compile Include="src/model/MediaUploadAllOfUploadParameters.fs" />
+    <Compile Include="src/model/MediaUploadAllOf.fs" />
+    <Compile Include="src/model/MediaUpload.fs" />
+    <Compile Include="src/model/MinPriceFilter.fs" />
+    <Compile Include="src/model/Language.fs" />
+    <Compile Include="src/model/ItemValidationEvent.fs" />
+    <Compile Include="src/model/ItemProcessingStatus.fs" />
+    <Compile Include="src/model/ItemProcessingRecord.fs" />
+    <Compile Include="src/model/CatalogsProductGroupCurrencyCriteria.fs" />
+    <Compile Include="src/model/CatalogsProductGroupMultipleStringCriteria.fs" />
+    <Compile Include="src/model/ItemAttributes.fs" />
+    <Compile Include="src/model/ItemBatchRecord.fs" />
+    <Compile Include="src/model/PinMediaWithImage.fs" />
+    <Compile Include="src/model/Granularity.fs" />
+    <Compile Include="src/model/ProductType0Filter.fs" />
+    <Compile Include="src/model/GoogleProductCategory6Filter.fs" />
+    <Compile Include="src/model/GoogleProductCategory5Filter.fs" />
+    <Compile Include="src/model/GoogleProductCategory4Filter.fs" />
+    <Compile Include="src/model/GoogleProductCategory3Filter.fs" />
+    <Compile Include="src/model/GoogleProductCategory2Filter.fs" />
+    <Compile Include="src/model/GoogleProductCategory1Filter.fs" />
+    <Compile Include="src/model/ItemGroupIdFilter.fs" />
+    <Compile Include="src/model/CatalogsFeedCredentials.fs" />
+    <Compile Include="src/model/Error.fs" />
+    <Compile Include="src/model/EntityStatus.fs" />
+    <Compile Include="src/model/DataOutputFormat.fs" />
+    <Compile Include="src/model/GenderFilter.fs" />
+    <Compile Include="src/model/CustomLabel4Filter.fs" />
+    <Compile Include="src/model/CustomLabel3Filter.fs" />
+    <Compile Include="src/model/CustomLabel2Filter.fs" />
+    <Compile Include="src/model/CustomLabel1Filter.fs" />
+    <Compile Include="src/model/ItemIdFilter.fs" />
+    <Compile Include="src/model/Currency.fs" />
+    <Compile Include="src/model/Country.fs" />
+    <Compile Include="src/model/ConversionReportTimeType.fs" />
+    <Compile Include="src/model/ConversionReportAttributionType.fs" />
+    <Compile Include="src/model/ConversionAttributionWindowDays.fs" />
+    <Compile Include="src/model/CustomLabel0Filter.fs" />
+    <Compile Include="src/model/CatalogsStatus.fs" />
+    <Compile Include="src/model/ConditionFilter.fs" />
+    <Compile Include="src/model/CatalogsProductGroupType.fs" />
+    <Compile Include="src/model/CatalogsProductGroupStatus.fs" />
+    <Compile Include="src/model/MaxPriceFilter.fs" />
+    <Compile Include="src/model/GoogleProductCategory0Filter.fs" />
+    <Compile Include="src/model/BrandFilter.fs" />
+    <Compile Include="src/model/AvailabilityFilter.fs" />
+    <Compile Include="src/model/CurrencyFilter.fs" />
+    <Compile Include="src/model/CatalogsProductGroupFilterKeys.fs" />
+    <Compile Include="src/model/CatalogsProductGroupFiltersAllOf.fs" />
+    <Compile Include="src/model/CatalogsProductGroupFiltersAnyOf.fs" />
+    <Compile Include="src/model/CatalogsProductGroupFilters.fs" />
+    <Compile Include="src/model/CatalogsProductGroupUpdateRequest.fs" />
+    <Compile Include="src/model/BatchOperation.fs" />
+    <Compile Include="src/model/BatchOperationStatus.fs" />
+    <Compile Include="src/model/CatalogsItems.fs" />
+    <Compile Include="src/model/CatalogsFormat.fs" />
+    <Compile Include="src/model/CatalogsFeedProcessingSchedule.fs" />
+    <Compile Include="src/model/FeedFields.fs" />
+    <Compile Include="src/model/CatalogsFeedValidationWarnings.fs" />
+    <Compile Include="src/model/CatalogsFeedValidationErrors.fs" />
+    <Compile Include="src/model/CatalogsFeedValidationDetails.fs" />
+    <Compile Include="src/model/CatalogsFeedProductCounts.fs" />
+    <Compile Include="src/model/CatalogsFeedProcessingStatus.fs" />
+    <Compile Include="src/model/CatalogsFeedsUpdateRequest.fs" />
+    <Compile Include="src/model/CatalogsFeedIngestionErrors.fs" />
+    <Compile Include="src/model/CatalogsDbItem.fs" />
+    <Compile Include="src/model/CatalogsFeedIngestionInfo.fs" />
+    <Compile Include="src/model/CatalogsFeedIngestionDetails.fs" />
+    <Compile Include="src/model/CatalogsFeedProcessingResultFields.fs" />
+    <Compile Include="src/model/CatalogsFeedsCreateRequest.fs" />
+    <Compile Include="src/model/CatalogsFeedProcessingResult.fs" />
+    <Compile Include="src/model/CatalogsFeed.fs" />
+    <Compile Include="src/model/CampaignSummaryStatus.fs" />
+    <Compile Include="src/model/CampaignResponseAllOf1.fs" />
+    <Compile Include="src/model/CampaignResponseAllOf.fs" />
+    <Compile Include="src/model/CampaignCommon.fs" />
+    <Compile Include="src/model/CampaignResponse.fs" />
+    <Compile Include="src/model/CatalogsProductGroupCreateRequest.fs" />
+    <Compile Include="src/model/BoardUpdate.fs" />
+    <Compile Include="src/model/BoardSection.fs" />
+    <Compile Include="src/model/Pin.fs" />
+    <Compile Include="src/model/Board.fs" />
+    <Compile Include="src/model/CatalogsItemsBatch.fs" />
+    <Compile Include="src/model/CatalogsItemsBatchRequest.fs" />
+    <Compile Include="src/model/CatalogsProductGroup.fs" />
+    <Compile Include="src/model/AnalyticsMetricsResponseDailyMetrics.fs" />
+    <Compile Include="src/model/AnalyticsMetricsResponse.fs" />
+    <Compile Include="src/model/TargetingTypeFilter.fs" />
+    <Compile Include="src/model/AdsAnalyticsFilterColumn.fs" />
+    <Compile Include="src/model/AdsAnalyticsGetAsyncResponse.fs" />
+    <Compile Include="src/model/AdsAnalyticsFilterOperator.fs" />
+    <Compile Include="src/model/AdsAnalyticsMetricsFilter.fs" />
+    <Compile Include="src/model/AdsAnalyticsCreateAsyncResponse.fs" />
+    <Compile Include="src/model/AdsAnalyticsCreateAsyncRequestAllOf1.fs" />
+    <Compile Include="src/model/AdsAnalyticsCreateAsyncRequestAllOf.fs" />
+    <Compile Include="src/model/AdGroupSummaryStatus.fs" />
+    <Compile Include="src/model/AdResponseAllOf1.fs" />
+    <Compile Include="src/model/AdResponseAllOf.fs" />
+    <Compile Include="src/model/AdResponse.fs" />
+    <Compile Include="src/model/AdsAnalyticsCreateAsyncRequest.fs" />
+    <Compile Include="src/model/ActionType.fs" />
+    <Compile Include="src/model/AdGroupResponseAllOf.fs" />
+    <Compile Include="src/model/AdGroupResponseAllOf1.fs" />
+    <Compile Include="src/model/AdAccountOwner.fs" />
+    <Compile Include="src/model/AdAccount.fs" />
+    <Compile Include="src/model/AdGroupResponse.fs" />
+    <Compile Include="src/model/Account.fs" />
+    <Compile Include="src/api/AdAccountsApiHandlerParams.fs" />
+    <Compile Include="src/api/AdAccountsApiServiceInterface.fs" />
+    <Compile Include="src/impl/AdAccountsApiService.fs" />
+    <Compile Include="src/api/AdAccountsApiHandler.fs" />
+    <Compile Include="src/api/BoardsApiHandlerParams.fs" />
+    <Compile Include="src/api/BoardsApiServiceInterface.fs" />
+    <Compile Include="src/impl/BoardsApiService.fs" />
+    <Compile Include="src/api/BoardsApiHandler.fs" />
+    <Compile Include="src/api/CatalogsApiHandlerParams.fs" />
+    <Compile Include="src/api/CatalogsApiServiceInterface.fs" />
+    <Compile Include="src/impl/CatalogsApiService.fs" />
+    <Compile Include="src/api/CatalogsApiHandler.fs" />
+    <Compile Include="src/api/MediaApiHandlerParams.fs" />
+    <Compile Include="src/api/MediaApiServiceInterface.fs" />
+    <Compile Include="src/impl/MediaApiService.fs" />
+    <Compile Include="src/api/MediaApiHandler.fs" />
+    <Compile Include="src/api/OauthApiHandlerParams.fs" />
+    <Compile Include="src/api/OauthApiServiceInterface.fs" />
+    <Compile Include="src/impl/OauthApiService.fs" />
+    <Compile Include="src/api/OauthApiHandler.fs" />
+    <Compile Include="src/api/PinsApiHandlerParams.fs" />
+    <Compile Include="src/api/PinsApiServiceInterface.fs" />
+    <Compile Include="src/impl/PinsApiService.fs" />
+    <Compile Include="src/api/PinsApiHandler.fs" />
+    <Compile Include="src/api/UserAccountApiHandlerParams.fs" />
+    <Compile Include="src/api/UserAccountApiServiceInterface.fs" />
+    <Compile Include="src/impl/UserAccountApiService.fs" />
+    <Compile Include="src/api/UserAccountApiHandler.fs" />
+  </ItemGroup>
+
+</Project>

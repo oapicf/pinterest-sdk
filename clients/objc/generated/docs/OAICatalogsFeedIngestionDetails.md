@@ -1,0 +1,11 @@
+# OAICatalogsFeedIngestionDetails
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**errors** | [**OAICatalogsFeedIngestionErrors***](OAICatalogsFeedIngestionErrors.md) |  | 
+**info** | [**OAICatalogsFeedIngestionInfo***](OAICatalogsFeedIngestionInfo.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

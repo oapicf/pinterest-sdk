@@ -1,0 +1,126 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Creation fields",
+  "name": "AdResponseAllOf",
+  "fields": [
+    {
+      "name": "ad_group_id",
+      "type": ["null", "string"],
+      "doc": "ID of the ad group that contains the ad.",
+      "default": null
+    },
+    {
+      "name": "android_deep_link",
+      "type": ["null", "string"],
+      "doc": "Deep link URL for Android devices. Not currently available. Using this field will generate an error.",
+      "default": null
+    },
+    {
+      "name": "carousel_android_deep_links",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Comma-separated deep links for the carousel pin on Android.",
+      "default": null
+    },
+    {
+      "name": "carousel_destination_urls",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Comma-separated destination URLs for the carousel pin to promote.",
+      "default": null
+    },
+    {
+      "name": "carousel_ios_deep_links",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Comma-separated deep links for the carousel pin on iOS.",
+      "default": null
+    },
+    {
+      "name": "click_tracking_url",
+      "type": ["null", "string"],
+      "doc": "Tracking url for the ad clicks.",
+      "default": null
+    },
+    {
+      "name": "creative_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AdResponseAllOf_creativeUnderscoretype",
+        "symbols": [
+          "REGULAR",
+          "VIDEO",
+          "SHOPPING",
+          "CAROUSEL",
+          "MAX_VIDEO",
+          "SHOP_THE_PIN",
+          "STORY"
+        ]
+      }],
+      "doc": "Ad creative type enum",
+      "default": null
+    },
+    {
+      "name": "destination_url",
+      "type": ["null", "string"],
+      "doc": "Destination URL.",
+      "default": null
+    },
+    {
+      "name": "ios_deep_link",
+      "type": ["null", "string"],
+      "doc": "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.",
+      "default": null
+    },
+    {
+      "name": "is_pin_deleted",
+      "type": ["null", "boolean"],
+      "doc": "Is original pin deleted?",
+      "default": null
+    },
+    {
+      "name": "is_removable",
+      "type": ["null", "boolean"],
+      "doc": "Is pin repinnable?",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of the ad - 255 chars max.",
+      "default": null
+    },
+    {
+      "name": "pin_id",
+      "type": ["null", "string"],
+      "doc": "Pin ID.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.EntityStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "tracking_urls",
+      "type": ["null", "model.TrackingUrls"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "view_tracking_url",
+      "type": ["null", "string"],
+      "doc": "Tracking URL for ad impressions.",
+      "default": null
+    }
+  ]
+
+}

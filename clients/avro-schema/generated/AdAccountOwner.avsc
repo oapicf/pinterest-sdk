@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountOwner",
+  "fields": [
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "Public username for the user account",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The file format of a feed.",
+  "name": "CatalogsFormat",
+  "symbols": [
+    "TSV",
+    "CSV",
+    "XML"
+  ]
+}

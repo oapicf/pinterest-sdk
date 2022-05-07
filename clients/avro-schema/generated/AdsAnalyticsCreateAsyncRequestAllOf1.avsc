@@ -1,0 +1,28 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdsAnalyticsCreateAsyncRequestAllOf1",
+  "fields": [
+    {
+      "name": "columns",
+      "type": {
+        "type": "array",
+        "items": "ReportingColumnAsync"
+      },
+      "doc": "Metric and entity columns"
+    },
+    {
+      "name": "level",
+      "type": "model.MetricsReportingLevel",
+      "doc": "Level of the report"
+    },
+    {
+      "name": "report_format",
+      "type": ["null", "model.DataOutputFormat"],
+      "doc": "Specification for formatting report data",
+      "default": null
+    }
+  ]
+
+}

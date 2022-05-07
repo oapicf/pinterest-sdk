@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsFeedIngestionErrors",
+  "fields": [
+    {
+      "name": "image_download_error",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "image_download_connection_timeout",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "image_format_unrecognize",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "line_level_internal_error",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "large_product_count_decrease",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsFeedIngestionErrors_largeUnderscoreproductUnderscorecountUnderscoredecrease",
+        "symbols": [
+          "1"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

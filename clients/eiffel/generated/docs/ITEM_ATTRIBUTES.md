@@ -1,0 +1,53 @@
+# ITEM_ATTRIBUTES
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ad_link** | [**STRING_32**](STRING_32.md) | Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. | [optional] [default to null]
+**additional_image_link** | [**LIST [STRING_32]**](STRING_32.md) | The links to additional images for your product. Up to five additional images can be used to show a product from different angles or to show different stages. Separate each additional image with a comma. We recommend enclosing the whole string with quotes. Must begin with http:// or https:// | [optional] [default to null]
+**adult** | **BOOLEAN** | Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest. | [optional] [default to null]
+**age_group** | [**STRING_32**](STRING_32.md) | The age group to apply a demographic range to the product. Must be one of the following values: ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, ‘adult’. | [optional] [default to null]
+**availability** | [**STRING_32**](STRING_32.md) | The availability of the product. Must be one of the following values: ‘in stock’, ‘out of stock’, ‘preorder’. | [optional] [default to null]
+**average_review_rating** | **REAL_32** | Average reviews for the item. Can be a number from 1-5. | [optional] [default to null]
+**brand** | [**STRING_32**](STRING_32.md) | The brand of the product. | [optional] [default to null]
+**color** | [**STRING_32**](STRING_32.md) | The primary color of the product. | [optional] [default to null]
+**condition** | [**STRING_32**](STRING_32.md) | The condition of the product. Must be one of the following values: ‘new’, ‘used’, ‘refurbished’. | [optional] [default to null]
+**custom_label_0** | [**STRING_32**](STRING_32.md) | Custom grouping of products. | [optional] [default to null]
+**custom_label_1** | [**STRING_32**](STRING_32.md) | Custom grouping of products. | [optional] [default to null]
+**custom_label_2** | [**STRING_32**](STRING_32.md) | Custom grouping of products. | [optional] [default to null]
+**custom_label_3** | [**STRING_32**](STRING_32.md) | Custom grouping of products. | [optional] [default to null]
+**custom_label_4** | [**STRING_32**](STRING_32.md) | Custom grouping of products. | [optional] [default to null]
+**description** | [**STRING_32**](STRING_32.md) | The description of the product. | [optional] [default to null]
+**free_shipping_label** | **BOOLEAN** | The item is free to ship. | [optional] [default to null]
+**free_shipping_limit** | [**STRING_32**](STRING_32.md) | The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. | [optional] [default to null]
+**gender** | [**STRING_32**](STRING_32.md) | The gender associated with the product. Must be one of the following values: ‘male’, ‘female’, ‘unisex’. | [optional] [default to null]
+**google_product_category** | [**STRING_32**](STRING_32.md) | The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. | [optional] [default to null]
+**gtin** | **INTEGER_32** | The unique universal product identifier. | [optional] [default to null]
+**id** | [**STRING_32**](STRING_32.md) | The user-created unique ID that represents the product. Only Unicode characters are accepted. | [optional] [default to null]
+**image_link** | [**LIST [STRING_32]**](STRING_32.md) | The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https:// | [optional] [default to null]
+**item_group_id** | [**STRING_32**](STRING_32.md) | The parent ID of the product. | [optional] [default to null]
+**last_updated_time** | **INTEGER_64** | The millisecond timestamp when the item was lastly modified by the merchant. | [optional] [default to null]
+**link** | [**STRING_32**](STRING_32.md) | The landing page for the product. | [optional] [default to null]
+**material** | [**STRING_32**](STRING_32.md) | The material used to make the product. | [optional] [default to null]
+**min_ad_price** | [**STRING_32**](STRING_32.md) | The minimum advertised price of the product. It supports the following formats, \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null]
+**mobile_link** | [**STRING_32**](STRING_32.md) | The mobile-optimized version of your landing page. Must begin with http:// or https://. | [optional] [default to null]
+**mpn** | [**STRING_32**](STRING_32.md) | Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer. | [optional] [default to null]
+**number_of_ratings** | **INTEGER_32** | The number of ratings for the item. | [optional] [default to null]
+**number_of_reviews** | **INTEGER_32** | The number of reviews available for the item. | [optional] [default to null]
+**pattern** | [**STRING_32**](STRING_32.md) | The description of the pattern used for the product. | [optional] [default to null]
+**price** | [**STRING_32**](STRING_32.md) | The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null]
+**product_type** | [**STRING_32**](STRING_32.md) | The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe. | [optional] [default to null]
+**sale_price** | [**STRING_32**](STRING_32.md) | The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null]
+**shipping** | [**STRING_32**](STRING_32.md) | Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required. | [optional] [default to null]
+**shipping_height** | [**STRING_32**](STRING_32.md) | The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null]
+**shipping_weight** | [**STRING_32**](STRING_32.md) | The weight of the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null]
+**shipping_width** | [**STRING_32**](STRING_32.md) | The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null]
+**size** | [**STRING_32**](STRING_32.md) | The size of the product. | [optional] [default to null]
+**size_system** | [**STRING_32**](STRING_32.md) | Indicates the country’s sizing system in which you are submitting your product. | [optional] [default to null]
+**size_type** | [**STRING_32**](STRING_32.md) | Additional description for the size. Must be one of the following values: ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, ‘maternity’. | [optional] [default to null]
+**tax** | [**STRING_32**](STRING_32.md) | Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. | [optional] [default to null]
+**title** | [**STRING_32**](STRING_32.md) | The name of the product. | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -1,0 +1,77 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+# Routes for AdAccounts API
+
+GET /v5/ad_accounts                                          api.AdAccountsApiController.adAccountsList()
+GET /v5/ad_accounts/:adAccountId/analytics                   api.AdAccountsApiController.adAccountAnalytics(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/ad_groups/analytics         api.AdAccountsApiController.adGroupsAnalytics(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/ad_groups                   api.AdAccountsApiController.adGroupsList(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/ads/analytics               api.AdAccountsApiController.adsAnalytics(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/ads                         api.AdAccountsApiController.adsList(adAccountId: String)
+POST /v5/ad_accounts/:adAccountId/reports                    api.AdAccountsApiController.analyticsCreateReport(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/reports                     api.AdAccountsApiController.analyticsGetReport(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/campaigns/analytics         api.AdAccountsApiController.campaignsAnalytics(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/campaigns                   api.AdAccountsApiController.campaignsList(adAccountId: String)
+GET /v5/ad_accounts/:adAccountId/product_groups/analytics    api.AdAccountsApiController.productGroupsAnalytics(adAccountId: String)
+
+# Routes for Boards API
+
+POST /v5/boards                                              api.BoardsApiController.boardsCreate()
+GET /v5/boards                                               api.BoardsApiController.boardsList()
+POST /v5/boards/:boardId/sections                            api.BoardsApiController.boardSectionsCreate(boardId: String)
+DELETE /v5/boards/:boardId/sections/:sectionId               api.BoardsApiController.boardSectionsDelete(boardId: String, sectionId: String)
+GET /v5/boards/:boardId/sections                             api.BoardsApiController.boardSectionsList(boardId: String)
+GET /v5/boards/:boardId/sections/:sectionId/pins             api.BoardsApiController.boardSectionsListPins(boardId: String, sectionId: String)
+PATCH /v5/boards/:boardId/sections/:sectionId                api.BoardsApiController.boardSectionsUpdate(boardId: String, sectionId: String)
+DELETE /v5/boards/:boardId                                   api.BoardsApiController.boardsDelete(boardId: String)
+GET /v5/boards/:boardId                                      api.BoardsApiController.boardsGet(boardId: String)
+GET /v5/boards/:boardId/pins                                 api.BoardsApiController.boardsListPins(boardId: String)
+PATCH /v5/boards/:boardId                                    api.BoardsApiController.boardsUpdate(boardId: String)
+
+# Routes for Catalogs API
+
+POST /v5/catalogs/product_groups                             api.CatalogsApiController.catalogsProductGroupsCreate()
+GET /v5/catalogs/product_groups                              api.CatalogsApiController.catalogsProductGroupsList()
+POST /v5/catalogs/feeds                                      api.CatalogsApiController.feedsCreate()
+GET /v5/catalogs/feeds                                       api.CatalogsApiController.feedsList()
+POST /v5/catalogs/items/batch                                api.CatalogsApiController.itemsBatchPost()
+GET /v5/catalogs/items                                       api.CatalogsApiController.itemsGet()
+DELETE /v5/catalogs/product_groups/:productGroupId           api.CatalogsApiController.catalogsProductGroupsDelete(productGroupId: String)
+PATCH /v5/catalogs/product_groups/:productGroupId            api.CatalogsApiController.catalogsProductGroupsUpdate(productGroupId: String)
+GET /v5/catalogs/feeds/:feedId/processing_results            api.CatalogsApiController.feedProcessingResultsList(feedId: String)
+DELETE /v5/catalogs/feeds/:feedId                            api.CatalogsApiController.feedsDelete(feedId: String)
+GET /v5/catalogs/feeds/:feedId                               api.CatalogsApiController.feedsGet(feedId: String)
+PATCH /v5/catalogs/feeds/:feedId                             api.CatalogsApiController.feedsUpdate(feedId: String)
+GET /v5/catalogs/items/batch/:batchId                        api.CatalogsApiController.itemsBatchGet(batchId: String)
+
+# Routes for Media API
+
+POST /v5/media                                               api.MediaApiController.mediaCreate()
+GET /v5/media                                                api.MediaApiController.mediaList()
+GET /v5/media/:mediaId                                       api.MediaApiController.mediaGet(mediaId: String)
+
+# Routes for Oauth API
+
+POST /v5/oauth/token                                         api.OauthApiController.oauthToken()
+
+# Routes for Pins API
+
+POST /v5/pins                                                api.PinsApiController.pinsCreate()
+GET /v5/pins/:pinId/analytics                                api.PinsApiController.pinsAnalytics(pinId: String)
+DELETE /v5/pins/:pinId                                       api.PinsApiController.pinsDelete(pinId: String)
+GET /v5/pins/:pinId                                          api.PinsApiController.pinsGet(pinId: String)
+
+# Routes for UserAccount API
+
+GET /v5/user_account/analytics                               api.UserAccountApiController.userAccountAnalytics()
+GET /v5/user_account                                         api.UserAccountApiController.userAccountGet()
+
+# Map static resources from the /public folder to the /assets URL path
+GET /assets/*file           controllers.Assets.at(file)
+GET /versionedAssets/*file  controllers.Assets.versioned(file)
+
+# Swagger UI
+GET /api                    api.ApiDocController.api

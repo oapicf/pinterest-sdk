@@ -1,0 +1,2020 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxws:bindings
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+  xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  wsdlLocation="service.wsdl">
+
+    <enableWrapperStyle>true</enableWrapperStyle>
+    <enableAsyncMapping>false</enableAsyncMapping>
+
+    <jaxws:bindings node="xsd:simpleType[@name='AccountUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="PINNER" name="PINNER" />
+	        <jaxb:typesafeEnumMember value="BUSINESS" name="BUSINESS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='BudgetUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="DAILY" name="DAILY" />
+	        <jaxb:typesafeEnumMember value="LIFETIME" name="LIFETIME" />
+	        <jaxb:typesafeEnumMember value="CBO_ADGROUP" name="CBO_ADGROUP" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ConversionUnderscorelearningUnderscoremodeUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="NOT_ACTIVE" name="NOT_ACTIVE" />
+	        <jaxb:typesafeEnumMember value="ACTIVE" name="ACTIVE" />
+	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CreativeUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="REGULAR" name="REGULAR" />
+	        <jaxb:typesafeEnumMember value="VIDEO" name="VIDEO" />
+	        <jaxb:typesafeEnumMember value="SHOPPING" name="SHOPPING" />
+	        <jaxb:typesafeEnumMember value="CAROUSEL" name="CAROUSEL" />
+	        <jaxb:typesafeEnumMember value="MAX_VIDEO" name="MAX_VIDEO" />
+	        <jaxb:typesafeEnumMember value="SHOP_THE_PIN" name="SHOP_THE_PIN" />
+	        <jaxb:typesafeEnumMember value="STORY" name="STORY" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='RejectedUnderscorereasons']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="HASHTAGS" name="HASHTAGS" />
+	        <jaxb:typesafeEnumMember value="PROMOTIONS_AND_PRICES" name="PROMOTIONS_AND_PRICES" />
+	        <jaxb:typesafeEnumMember value="TARGETING" name="TARGETING" />
+	        <jaxb:typesafeEnumMember value="LANDING_PAGE" name="LANDING_PAGE" />
+	        <jaxb:typesafeEnumMember value="CAPS_AND_SYMBOLS" name="CAPS_AND_SYMBOLS" />
+	        <jaxb:typesafeEnumMember value="SHOCKING" name="SHOCKING" />
+	        <jaxb:typesafeEnumMember value="WEIGHT_LOSS" name="WEIGHT_LOSS" />
+	        <jaxb:typesafeEnumMember value="PROHIBITED_PRODUCT" name="PROHIBITED_PRODUCT" />
+	        <jaxb:typesafeEnumMember value="AUTHENTICITY" name="AUTHENTICITY" />
+	        <jaxb:typesafeEnumMember value="NUDITY" name="NUDITY" />
+	        <jaxb:typesafeEnumMember value="CONFUSING_DESIGN" name="CONFUSING_DESIGN" />
+	        <jaxb:typesafeEnumMember value="URGENCY" name="URGENCY" />
+	        <jaxb:typesafeEnumMember value="RATINGS" name="RATINGS" />
+	        <jaxb:typesafeEnumMember value="APP" name="APP" />
+	        <jaxb:typesafeEnumMember value="ALCOHOL" name="ALCOHOL" />
+	        <jaxb:typesafeEnumMember value="CONTESTS" name="CONTESTS" />
+	        <jaxb:typesafeEnumMember value="POLITICAL" name="POLITICAL" />
+	        <jaxb:typesafeEnumMember value="OTHER" name="OTHER" />
+	        <jaxb:typesafeEnumMember value="IMAGE" name="IMAGE" />
+	        <jaxb:typesafeEnumMember value="NAR" name="NAR" />
+	        <jaxb:typesafeEnumMember value="INCONSISTENT" name="INCONSISTENT" />
+	        <jaxb:typesafeEnumMember value="CLICKBAIT" name="CLICKBAIT" />
+	        <jaxb:typesafeEnumMember value="NO_DESCRIPTION" name="NO_DESCRIPTION" />
+	        <jaxb:typesafeEnumMember value="LOW_QUALITY" name="LOW_QUALITY" />
+	        <jaxb:typesafeEnumMember value="EXAGGERATED_CLAIMS" name="EXAGGERATED_CLAIMS" />
+	        <jaxb:typesafeEnumMember value="PINTEREST_BRAND" name="PINTEREST_BRAND" />
+	        <jaxb:typesafeEnumMember value="ALCOHOL_NO_SALE" name="ALCOHOL_NO_SALE" />
+	        <jaxb:typesafeEnumMember value="LANDING_PAGE_SPEED" name="LANDING_PAGE_SPEED" />
+	        <jaxb:typesafeEnumMember value="LANDING_PAGE_HARDWALL" name="LANDING_PAGE_HARDWALL" />
+	        <jaxb:typesafeEnumMember value="LANDING_PAGE_BROKEN" name="LANDING_PAGE_BROKEN" />
+	        <jaxb:typesafeEnumMember value="LANDING_PAGE_QUALITY" name="LANDING_PAGE_QUALITY" />
+	        <jaxb:typesafeEnumMember value="OUT_OF_STOCK" name="OUT_OF_STOCK" />
+	        <jaxb:typesafeEnumMember value="IMAGE_LOW_QUALITY" name="IMAGE_LOW_QUALITY" />
+	        <jaxb:typesafeEnumMember value="IMAGE_BUSY" name="IMAGE_BUSY" />
+	        <jaxb:typesafeEnumMember value="IMAGE_POORLY_EDITED" name="IMAGE_POORLY_EDITED" />
+	        <jaxb:typesafeEnumMember value="IMAGE_BEFORE_AFTER" name="IMAGE_BEFORE_AFTER" />
+	        <jaxb:typesafeEnumMember value="UGC" name="UGC" />
+	        <jaxb:typesafeEnumMember value="FAKE_BUTTONS" name="FAKE_BUTTONS" />
+	        <jaxb:typesafeEnumMember value="WEAPONS" name="WEAPONS" />
+	        <jaxb:typesafeEnumMember value="SENSITIVE" name="SENSITIVE" />
+	        <jaxb:typesafeEnumMember value="UNACCEPTABLE_BUSINESS" name="UNACCEPTABLE_BUSINESS" />
+	        <jaxb:typesafeEnumMember value="SUSPICIOUS_CLAIMS" name="SUSPICIOUS_CLAIMS" />
+	        <jaxb:typesafeEnumMember value="PHARMA" name="PHARMA" />
+	        <jaxb:typesafeEnumMember value="SUSPICIOUS_SUPPLEMENTS" name="SUSPICIOUS_SUPPLEMENTS" />
+	        <jaxb:typesafeEnumMember value="ILLEGAL_RECREATIONAL_DRUG" name="ILLEGAL_RECREATIONAL_DRUG" />
+	        <jaxb:typesafeEnumMember value="LOW_QUALITY_LANDING_PAGE" name="LOW_QUALITY_LANDING_PAGE" />
+	        <jaxb:typesafeEnumMember value="RESTRICTED_HEALTHCARE" name="RESTRICTED_HEALTHCARE" />
+	        <jaxb:typesafeEnumMember value="INCONSISTENT_LANG_FR" name="INCONSISTENT_LANG_FR" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReviewUnderscorestatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="OTHER" name="OTHER" />
+	        <jaxb:typesafeEnumMember value="PENDING" name="PENDING" />
+	        <jaxb:typesafeEnumMember value="REJECTED" name="REJECTED" />
+	        <jaxb:typesafeEnumMember value="APPROVED" name="APPROVED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='DataUnderscorestatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="PROCESSING" name="PROCESSING" />
+	        <jaxb:typesafeEnumMember value="READY" name="READY" />
+	        <jaxb:typesafeEnumMember value="ESTIMATE" name="ESTIMATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_BUSINESS_CREATED" name="BEFORE_BUSINESS_CREATED" />
+	        <jaxb:typesafeEnumMember value="BEFORE_DATA_RETENTION_PERIOD" name="BEFORE_DATA_RETENTION_PERIOD" />
+	        <jaxb:typesafeEnumMember value="BEFORE_PIN_DATA_RETENTION_PERIOD" name="BEFORE_PIN_DATA_RETENTION_PERIOD" />
+	        <jaxb:typesafeEnumMember value="BEFORE_METRIC_START_DATE" name="BEFORE_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_CORE_METRIC_START_DATE" name="BEFORE_CORE_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_PIN_FORMAT_METRIC_START_DATE" name="BEFORE_PIN_FORMAT_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_AUDIENCE_METRIC_START_DATE" name="BEFORE_AUDIENCE_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE" name="BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_VIDEO_METRIC_START_DATE" name="BEFORE_VIDEO_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_CONVERSION_METRIC_START_DATE" name="BEFORE_CONVERSION_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD" name="PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD" />
+	        <jaxb:typesafeEnumMember value="IN_BAD_TAG_DATE" name="IN_BAD_TAG_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_PUBLISHED_METRIC_START_DATE" name="BEFORE_PUBLISHED_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_ASSIST_METRIC_START_DATE" name="BEFORE_ASSIST_METRIC_START_DATE" />
+	        <jaxb:typesafeEnumMember value="BEFORE_PIN_CREATED" name="BEFORE_PIN_CREATED" />
+	        <jaxb:typesafeEnumMember value="BEFORE_ACCOUNT_CLAIMED" name="BEFORE_ACCOUNT_CLAIMED" />
+	        <jaxb:typesafeEnumMember value="BEFORE_DEMOGRAPHIC_FILTERS_START_DATE" name="BEFORE_DEMOGRAPHIC_FILTERS_START_DATE" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD" name="AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD" name="AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD" />
+	        <jaxb:typesafeEnumMember value="BEFORE_PRODUCT_GROUP_FILTER_START_DATE" name="BEFORE_PRODUCT_GROUP_FILTER_START_DATE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Privacy']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="PUBLIC" name="PUBLIC" />
+	        <jaxb:typesafeEnumMember value="PROTECTED" name="PROTECTED" />
+	        <jaxb:typesafeEnumMember value="SECRET" name="SECRET" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Privacy']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="PUBLIC" name="PUBLIC" />
+	        <jaxb:typesafeEnumMember value="SECRET" name="SECRET" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='LargeUnderscoreproductUnderscorecountUnderscoredecrease']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="1" name="_1" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Timezone']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="Africa/Abidjan" name="AFRICA_ABIDJAN" />
+	        <jaxb:typesafeEnumMember value="Africa/Accra" name="AFRICA_ACCRA" />
+	        <jaxb:typesafeEnumMember value="Africa/Algiers" name="AFRICA_ALGIERS" />
+	        <jaxb:typesafeEnumMember value="Africa/Bissau" name="AFRICA_BISSAU" />
+	        <jaxb:typesafeEnumMember value="Africa/Cairo" name="AFRICA_CAIRO" />
+	        <jaxb:typesafeEnumMember value="Africa/Casablanca" name="AFRICA_CASABLANCA" />
+	        <jaxb:typesafeEnumMember value="Africa/Ceuta" name="AFRICA_CEUTA" />
+	        <jaxb:typesafeEnumMember value="Africa/El_Aaiun" name="AFRICA_EL_AAIUN" />
+	        <jaxb:typesafeEnumMember value="Africa/Johannesburg" name="AFRICA_JOHANNESBURG" />
+	        <jaxb:typesafeEnumMember value="Africa/Juba" name="AFRICA_JUBA" />
+	        <jaxb:typesafeEnumMember value="Africa/Khartoum" name="AFRICA_KHARTOUM" />
+	        <jaxb:typesafeEnumMember value="Africa/Lagos" name="AFRICA_LAGOS" />
+	        <jaxb:typesafeEnumMember value="Africa/Maputo" name="AFRICA_MAPUTO" />
+	        <jaxb:typesafeEnumMember value="Africa/Monrovia" name="AFRICA_MONROVIA" />
+	        <jaxb:typesafeEnumMember value="Africa/Nairobi" name="AFRICA_NAIROBI" />
+	        <jaxb:typesafeEnumMember value="Africa/Ndjamena" name="AFRICA_NDJAMENA" />
+	        <jaxb:typesafeEnumMember value="Africa/Sao_Tome" name="AFRICA_SAO_TOME" />
+	        <jaxb:typesafeEnumMember value="Africa/Tripoli" name="AFRICA_TRIPOLI" />
+	        <jaxb:typesafeEnumMember value="Africa/Tunis" name="AFRICA_TUNIS" />
+	        <jaxb:typesafeEnumMember value="Africa/Windhoek" name="AFRICA_WINDHOEK" />
+	        <jaxb:typesafeEnumMember value="America/Adak" name="AMERICA_ADAK" />
+	        <jaxb:typesafeEnumMember value="America/Anchorage" name="AMERICA_ANCHORAGE" />
+	        <jaxb:typesafeEnumMember value="America/Araguaina" name="AMERICA_ARAGUAINA" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Buenos_Aires" name="AMERICA_ARGENTINA_BUENOS_AIRES" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Catamarca" name="AMERICA_ARGENTINA_CATAMARCA" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Cordoba" name="AMERICA_ARGENTINA_CORDOBA" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Jujuy" name="AMERICA_ARGENTINA_JUJUY" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/La_Rioja" name="AMERICA_ARGENTINA_LA_RIOJA" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Mendoza" name="AMERICA_ARGENTINA_MENDOZA" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Rio_Gallegos" name="AMERICA_ARGENTINA_RIO_GALLEGOS" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Salta" name="AMERICA_ARGENTINA_SALTA" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/San_Juan" name="AMERICA_ARGENTINA_SAN_JUAN" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/San_Luis" name="AMERICA_ARGENTINA_SAN_LUIS" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Tucuman" name="AMERICA_ARGENTINA_TUCUMAN" />
+	        <jaxb:typesafeEnumMember value="America/Argentina/Ushuaia" name="AMERICA_ARGENTINA_USHUAIA" />
+	        <jaxb:typesafeEnumMember value="America/Asuncion" name="AMERICA_ASUNCION" />
+	        <jaxb:typesafeEnumMember value="America/Atikokan" name="AMERICA_ATIKOKAN" />
+	        <jaxb:typesafeEnumMember value="America/Bahia" name="AMERICA_BAHIA" />
+	        <jaxb:typesafeEnumMember value="America/Bahia_Banderas" name="AMERICA_BAHIA_BANDERAS" />
+	        <jaxb:typesafeEnumMember value="America/Barbados" name="AMERICA_BARBADOS" />
+	        <jaxb:typesafeEnumMember value="America/Belem" name="AMERICA_BELEM" />
+	        <jaxb:typesafeEnumMember value="America/Belize" name="AMERICA_BELIZE" />
+	        <jaxb:typesafeEnumMember value="America/Blanc-Sablon" name="AMERICA_BLANC_SABLON" />
+	        <jaxb:typesafeEnumMember value="America/Boa_Vista" name="AMERICA_BOA_VISTA" />
+	        <jaxb:typesafeEnumMember value="America/Bogota" name="AMERICA_BOGOTA" />
+	        <jaxb:typesafeEnumMember value="America/Boise" name="AMERICA_BOISE" />
+	        <jaxb:typesafeEnumMember value="America/Cambridge_Bay" name="AMERICA_CAMBRIDGE_BAY" />
+	        <jaxb:typesafeEnumMember value="America/Campo_Grande" name="AMERICA_CAMPO_GRANDE" />
+	        <jaxb:typesafeEnumMember value="America/Cancun" name="AMERICA_CANCUN" />
+	        <jaxb:typesafeEnumMember value="America/Caracas" name="AMERICA_CARACAS" />
+	        <jaxb:typesafeEnumMember value="America/Cayenne" name="AMERICA_CAYENNE" />
+	        <jaxb:typesafeEnumMember value="America/Chicago" name="AMERICA_CHICAGO" />
+	        <jaxb:typesafeEnumMember value="America/Chihuahua" name="AMERICA_CHIHUAHUA" />
+	        <jaxb:typesafeEnumMember value="America/Costa_Rica" name="AMERICA_COSTA_RICA" />
+	        <jaxb:typesafeEnumMember value="America/Creston" name="AMERICA_CRESTON" />
+	        <jaxb:typesafeEnumMember value="America/Cuiaba" name="AMERICA_CUIABA" />
+	        <jaxb:typesafeEnumMember value="America/Curacao" name="AMERICA_CURACAO" />
+	        <jaxb:typesafeEnumMember value="America/Danmarkshavn" name="AMERICA_DANMARKSHAVN" />
+	        <jaxb:typesafeEnumMember value="America/Dawson" name="AMERICA_DAWSON" />
+	        <jaxb:typesafeEnumMember value="America/Dawson_Creek" name="AMERICA_DAWSON_CREEK" />
+	        <jaxb:typesafeEnumMember value="America/Denver" name="AMERICA_DENVER" />
+	        <jaxb:typesafeEnumMember value="America/Detroit" name="AMERICA_DETROIT" />
+	        <jaxb:typesafeEnumMember value="America/Edmonton" name="AMERICA_EDMONTON" />
+	        <jaxb:typesafeEnumMember value="America/Eirunepe" name="AMERICA_EIRUNEPE" />
+	        <jaxb:typesafeEnumMember value="America/El_Salvador" name="AMERICA_EL_SALVADOR" />
+	        <jaxb:typesafeEnumMember value="America/Fort_Nelson" name="AMERICA_FORT_NELSON" />
+	        <jaxb:typesafeEnumMember value="America/Fortaleza" name="AMERICA_FORTALEZA" />
+	        <jaxb:typesafeEnumMember value="America/Glace_Bay" name="AMERICA_GLACE_BAY" />
+	        <jaxb:typesafeEnumMember value="America/Goose_Bay" name="AMERICA_GOOSE_BAY" />
+	        <jaxb:typesafeEnumMember value="America/Grand_Turk" name="AMERICA_GRAND_TURK" />
+	        <jaxb:typesafeEnumMember value="America/Guatemala" name="AMERICA_GUATEMALA" />
+	        <jaxb:typesafeEnumMember value="America/Guayaquil" name="AMERICA_GUAYAQUIL" />
+	        <jaxb:typesafeEnumMember value="America/Guyana" name="AMERICA_GUYANA" />
+	        <jaxb:typesafeEnumMember value="America/Halifax" name="AMERICA_HALIFAX" />
+	        <jaxb:typesafeEnumMember value="America/Havana" name="AMERICA_HAVANA" />
+	        <jaxb:typesafeEnumMember value="America/Hermosillo" name="AMERICA_HERMOSILLO" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Indianapolis" name="AMERICA_INDIANA_INDIANAPOLIS" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Knox" name="AMERICA_INDIANA_KNOX" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Marengo" name="AMERICA_INDIANA_MARENGO" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Petersburg" name="AMERICA_INDIANA_PETERSBURG" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Tell_City" name="AMERICA_INDIANA_TELL_CITY" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Vevay" name="AMERICA_INDIANA_VEVAY" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Vincennes" name="AMERICA_INDIANA_VINCENNES" />
+	        <jaxb:typesafeEnumMember value="America/Indiana/Winamac" name="AMERICA_INDIANA_WINAMAC" />
+	        <jaxb:typesafeEnumMember value="America/Inuvik" name="AMERICA_INUVIK" />
+	        <jaxb:typesafeEnumMember value="America/Iqaluit" name="AMERICA_IQALUIT" />
+	        <jaxb:typesafeEnumMember value="America/Jamaica" name="AMERICA_JAMAICA" />
+	        <jaxb:typesafeEnumMember value="America/Juneau" name="AMERICA_JUNEAU" />
+	        <jaxb:typesafeEnumMember value="America/Kentucky/Louisville" name="AMERICA_KENTUCKY_LOUISVILLE" />
+	        <jaxb:typesafeEnumMember value="America/Kentucky/Monticello" name="AMERICA_KENTUCKY_MONTICELLO" />
+	        <jaxb:typesafeEnumMember value="America/La_Paz" name="AMERICA_LA_PAZ" />
+	        <jaxb:typesafeEnumMember value="America/Lima" name="AMERICA_LIMA" />
+	        <jaxb:typesafeEnumMember value="America/Los_Angeles" name="AMERICA_LOS_ANGELES" />
+	        <jaxb:typesafeEnumMember value="America/Maceio" name="AMERICA_MACEIO" />
+	        <jaxb:typesafeEnumMember value="America/Managua" name="AMERICA_MANAGUA" />
+	        <jaxb:typesafeEnumMember value="America/Manaus" name="AMERICA_MANAUS" />
+	        <jaxb:typesafeEnumMember value="America/Martinique" name="AMERICA_MARTINIQUE" />
+	        <jaxb:typesafeEnumMember value="America/Matamoros" name="AMERICA_MATAMOROS" />
+	        <jaxb:typesafeEnumMember value="America/Mazatlan" name="AMERICA_MAZATLAN" />
+	        <jaxb:typesafeEnumMember value="America/Menominee" name="AMERICA_MENOMINEE" />
+	        <jaxb:typesafeEnumMember value="America/Merida" name="AMERICA_MERIDA" />
+	        <jaxb:typesafeEnumMember value="America/Metlakatla" name="AMERICA_METLAKATLA" />
+	        <jaxb:typesafeEnumMember value="America/Mexico_City" name="AMERICA_MEXICO_CITY" />
+	        <jaxb:typesafeEnumMember value="America/Miquelon" name="AMERICA_MIQUELON" />
+	        <jaxb:typesafeEnumMember value="America/Moncton" name="AMERICA_MONCTON" />
+	        <jaxb:typesafeEnumMember value="America/Monterrey" name="AMERICA_MONTERREY" />
+	        <jaxb:typesafeEnumMember value="America/Montevideo" name="AMERICA_MONTEVIDEO" />
+	        <jaxb:typesafeEnumMember value="America/Nassau" name="AMERICA_NASSAU" />
+	        <jaxb:typesafeEnumMember value="America/New_York" name="AMERICA_NEW_YORK" />
+	        <jaxb:typesafeEnumMember value="America/Nipigon" name="AMERICA_NIPIGON" />
+	        <jaxb:typesafeEnumMember value="America/Nome" name="AMERICA_NOME" />
+	        <jaxb:typesafeEnumMember value="America/Noronha" name="AMERICA_NORONHA" />
+	        <jaxb:typesafeEnumMember value="America/North_Dakota/Beulah" name="AMERICA_NORTH_DAKOTA_BEULAH" />
+	        <jaxb:typesafeEnumMember value="America/North_Dakota/Center" name="AMERICA_NORTH_DAKOTA_CENTER" />
+	        <jaxb:typesafeEnumMember value="America/North_Dakota/New_Salem" name="AMERICA_NORTH_DAKOTA_NEW_SALEM" />
+	        <jaxb:typesafeEnumMember value="America/Nuuk" name="AMERICA_NUUK" />
+	        <jaxb:typesafeEnumMember value="America/Ojinaga" name="AMERICA_OJINAGA" />
+	        <jaxb:typesafeEnumMember value="America/Panama" name="AMERICA_PANAMA" />
+	        <jaxb:typesafeEnumMember value="America/Pangnirtung" name="AMERICA_PANGNIRTUNG" />
+	        <jaxb:typesafeEnumMember value="America/Paramaribo" name="AMERICA_PARAMARIBO" />
+	        <jaxb:typesafeEnumMember value="America/Phoenix" name="AMERICA_PHOENIX" />
+	        <jaxb:typesafeEnumMember value="America/Port-au-Prince" name="AMERICA_PORT_AU_PRINCE" />
+	        <jaxb:typesafeEnumMember value="America/Port_of_Spain" name="AMERICA_PORT_OF_SPAIN" />
+	        <jaxb:typesafeEnumMember value="America/Porto_Velho" name="AMERICA_PORTO_VELHO" />
+	        <jaxb:typesafeEnumMember value="America/Puerto_Rico" name="AMERICA_PUERTO_RICO" />
+	        <jaxb:typesafeEnumMember value="America/Punta_Arenas" name="AMERICA_PUNTA_ARENAS" />
+	        <jaxb:typesafeEnumMember value="America/Rainy_River" name="AMERICA_RAINY_RIVER" />
+	        <jaxb:typesafeEnumMember value="America/Rankin_Inlet" name="AMERICA_RANKIN_INLET" />
+	        <jaxb:typesafeEnumMember value="America/Recife" name="AMERICA_RECIFE" />
+	        <jaxb:typesafeEnumMember value="America/Regina" name="AMERICA_REGINA" />
+	        <jaxb:typesafeEnumMember value="America/Resolute" name="AMERICA_RESOLUTE" />
+	        <jaxb:typesafeEnumMember value="America/Rio_Branco" name="AMERICA_RIO_BRANCO" />
+	        <jaxb:typesafeEnumMember value="America/Santarem" name="AMERICA_SANTAREM" />
+	        <jaxb:typesafeEnumMember value="America/Santiago" name="AMERICA_SANTIAGO" />
+	        <jaxb:typesafeEnumMember value="America/Santo_Domingo" name="AMERICA_SANTO_DOMINGO" />
+	        <jaxb:typesafeEnumMember value="America/Sao_Paulo" name="AMERICA_SAO_PAULO" />
+	        <jaxb:typesafeEnumMember value="America/Scoresbysund" name="AMERICA_SCORESBYSUND" />
+	        <jaxb:typesafeEnumMember value="America/Sitka" name="AMERICA_SITKA" />
+	        <jaxb:typesafeEnumMember value="America/St_Johns" name="AMERICA_ST_JOHNS" />
+	        <jaxb:typesafeEnumMember value="America/Swift_Current" name="AMERICA_SWIFT_CURRENT" />
+	        <jaxb:typesafeEnumMember value="America/Tegucigalpa" name="AMERICA_TEGUCIGALPA" />
+	        <jaxb:typesafeEnumMember value="America/Thule" name="AMERICA_THULE" />
+	        <jaxb:typesafeEnumMember value="America/Thunder_Bay" name="AMERICA_THUNDER_BAY" />
+	        <jaxb:typesafeEnumMember value="America/Tijuana" name="AMERICA_TIJUANA" />
+	        <jaxb:typesafeEnumMember value="America/Toronto" name="AMERICA_TORONTO" />
+	        <jaxb:typesafeEnumMember value="America/Vancouver" name="AMERICA_VANCOUVER" />
+	        <jaxb:typesafeEnumMember value="America/Whitehorse" name="AMERICA_WHITEHORSE" />
+	        <jaxb:typesafeEnumMember value="America/Winnipeg" name="AMERICA_WINNIPEG" />
+	        <jaxb:typesafeEnumMember value="America/Yakutat" name="AMERICA_YAKUTAT" />
+	        <jaxb:typesafeEnumMember value="America/Yellowknife" name="AMERICA_YELLOWKNIFE" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Casey" name="ANTARCTICA_CASEY" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Davis" name="ANTARCTICA_DAVIS" />
+	        <jaxb:typesafeEnumMember value="Antarctica/DumontDUrville" name="ANTARCTICA_DUMONTDURVILLE" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Macquarie" name="ANTARCTICA_MACQUARIE" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Mawson" name="ANTARCTICA_MAWSON" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Palmer" name="ANTARCTICA_PALMER" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Rothera" name="ANTARCTICA_ROTHERA" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Syowa" name="ANTARCTICA_SYOWA" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Troll" name="ANTARCTICA_TROLL" />
+	        <jaxb:typesafeEnumMember value="Antarctica/Vostok" name="ANTARCTICA_VOSTOK" />
+	        <jaxb:typesafeEnumMember value="Asia/Almaty" name="ASIA_ALMATY" />
+	        <jaxb:typesafeEnumMember value="Asia/Amman" name="ASIA_AMMAN" />
+	        <jaxb:typesafeEnumMember value="Asia/Anadyr" name="ASIA_ANADYR" />
+	        <jaxb:typesafeEnumMember value="Asia/Aqtau" name="ASIA_AQTAU" />
+	        <jaxb:typesafeEnumMember value="Asia/Aqtobe" name="ASIA_AQTOBE" />
+	        <jaxb:typesafeEnumMember value="Asia/Ashgabat" name="ASIA_ASHGABAT" />
+	        <jaxb:typesafeEnumMember value="Asia/Atyrau" name="ASIA_ATYRAU" />
+	        <jaxb:typesafeEnumMember value="Asia/Baghdad" name="ASIA_BAGHDAD" />
+	        <jaxb:typesafeEnumMember value="Asia/Baku" name="ASIA_BAKU" />
+	        <jaxb:typesafeEnumMember value="Asia/Bangkok" name="ASIA_BANGKOK" />
+	        <jaxb:typesafeEnumMember value="Asia/Barnaul" name="ASIA_BARNAUL" />
+	        <jaxb:typesafeEnumMember value="Asia/Beirut" name="ASIA_BEIRUT" />
+	        <jaxb:typesafeEnumMember value="Asia/Bishkek" name="ASIA_BISHKEK" />
+	        <jaxb:typesafeEnumMember value="Asia/Brunei" name="ASIA_BRUNEI" />
+	        <jaxb:typesafeEnumMember value="Asia/Chita" name="ASIA_CHITA" />
+	        <jaxb:typesafeEnumMember value="Asia/Choibalsan" name="ASIA_CHOIBALSAN" />
+	        <jaxb:typesafeEnumMember value="Asia/Colombo" name="ASIA_COLOMBO" />
+	        <jaxb:typesafeEnumMember value="Asia/Damascus" name="ASIA_DAMASCUS" />
+	        <jaxb:typesafeEnumMember value="Asia/Dhaka" name="ASIA_DHAKA" />
+	        <jaxb:typesafeEnumMember value="Asia/Dili" name="ASIA_DILI" />
+	        <jaxb:typesafeEnumMember value="Asia/Dubai" name="ASIA_DUBAI" />
+	        <jaxb:typesafeEnumMember value="Asia/Dushanbe" name="ASIA_DUSHANBE" />
+	        <jaxb:typesafeEnumMember value="Asia/Famagusta" name="ASIA_FAMAGUSTA" />
+	        <jaxb:typesafeEnumMember value="Asia/Gaza" name="ASIA_GAZA" />
+	        <jaxb:typesafeEnumMember value="Asia/Hebron" name="ASIA_HEBRON" />
+	        <jaxb:typesafeEnumMember value="Asia/Ho_Chi_Minh" name="ASIA_HO_CHI_MINH" />
+	        <jaxb:typesafeEnumMember value="Asia/Hong_Kong" name="ASIA_HONG_KONG" />
+	        <jaxb:typesafeEnumMember value="Asia/Hovd" name="ASIA_HOVD" />
+	        <jaxb:typesafeEnumMember value="Asia/Irkutsk" name="ASIA_IRKUTSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Jakarta" name="ASIA_JAKARTA" />
+	        <jaxb:typesafeEnumMember value="Asia/Jayapura" name="ASIA_JAYAPURA" />
+	        <jaxb:typesafeEnumMember value="Asia/Jerusalem" name="ASIA_JERUSALEM" />
+	        <jaxb:typesafeEnumMember value="Asia/Kabul" name="ASIA_KABUL" />
+	        <jaxb:typesafeEnumMember value="Asia/Kamchatka" name="ASIA_KAMCHATKA" />
+	        <jaxb:typesafeEnumMember value="Asia/Karachi" name="ASIA_KARACHI" />
+	        <jaxb:typesafeEnumMember value="Asia/Kathmandu" name="ASIA_KATHMANDU" />
+	        <jaxb:typesafeEnumMember value="Asia/Khandyga" name="ASIA_KHANDYGA" />
+	        <jaxb:typesafeEnumMember value="Asia/Kolkata" name="ASIA_KOLKATA" />
+	        <jaxb:typesafeEnumMember value="Asia/Krasnoyarsk" name="ASIA_KRASNOYARSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Kuala_Lumpur" name="ASIA_KUALA_LUMPUR" />
+	        <jaxb:typesafeEnumMember value="Asia/Kuching" name="ASIA_KUCHING" />
+	        <jaxb:typesafeEnumMember value="Asia/Macau" name="ASIA_MACAU" />
+	        <jaxb:typesafeEnumMember value="Asia/Magadan" name="ASIA_MAGADAN" />
+	        <jaxb:typesafeEnumMember value="Asia/Makassar" name="ASIA_MAKASSAR" />
+	        <jaxb:typesafeEnumMember value="Asia/Manila" name="ASIA_MANILA" />
+	        <jaxb:typesafeEnumMember value="Asia/Nicosia" name="ASIA_NICOSIA" />
+	        <jaxb:typesafeEnumMember value="Asia/Novokuznetsk" name="ASIA_NOVOKUZNETSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Novosibirsk" name="ASIA_NOVOSIBIRSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Omsk" name="ASIA_OMSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Oral" name="ASIA_ORAL" />
+	        <jaxb:typesafeEnumMember value="Asia/Pontianak" name="ASIA_PONTIANAK" />
+	        <jaxb:typesafeEnumMember value="Asia/Pyongyang" name="ASIA_PYONGYANG" />
+	        <jaxb:typesafeEnumMember value="Asia/Qatar" name="ASIA_QATAR" />
+	        <jaxb:typesafeEnumMember value="Asia/Qostanay" name="ASIA_QOSTANAY" />
+	        <jaxb:typesafeEnumMember value="Asia/Qyzylorda" name="ASIA_QYZYLORDA" />
+	        <jaxb:typesafeEnumMember value="Asia/Riyadh" name="ASIA_RIYADH" />
+	        <jaxb:typesafeEnumMember value="Asia/Sakhalin" name="ASIA_SAKHALIN" />
+	        <jaxb:typesafeEnumMember value="Asia/Samarkand" name="ASIA_SAMARKAND" />
+	        <jaxb:typesafeEnumMember value="Asia/Seoul" name="ASIA_SEOUL" />
+	        <jaxb:typesafeEnumMember value="Asia/Shanghai" name="ASIA_SHANGHAI" />
+	        <jaxb:typesafeEnumMember value="Asia/Singapore" name="ASIA_SINGAPORE" />
+	        <jaxb:typesafeEnumMember value="Asia/Srednekolymsk" name="ASIA_SREDNEKOLYMSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Taipei" name="ASIA_TAIPEI" />
+	        <jaxb:typesafeEnumMember value="Asia/Tashkent" name="ASIA_TASHKENT" />
+	        <jaxb:typesafeEnumMember value="Asia/Tbilisi" name="ASIA_TBILISI" />
+	        <jaxb:typesafeEnumMember value="Asia/Tehran" name="ASIA_TEHRAN" />
+	        <jaxb:typesafeEnumMember value="Asia/Thimphu" name="ASIA_THIMPHU" />
+	        <jaxb:typesafeEnumMember value="Asia/Tokyo" name="ASIA_TOKYO" />
+	        <jaxb:typesafeEnumMember value="Asia/Tomsk" name="ASIA_TOMSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Ulaanbaatar" name="ASIA_ULAANBAATAR" />
+	        <jaxb:typesafeEnumMember value="Asia/Urumqi" name="ASIA_URUMQI" />
+	        <jaxb:typesafeEnumMember value="Asia/Ust-Nera" name="ASIA_UST_NERA" />
+	        <jaxb:typesafeEnumMember value="Asia/Vladivostok" name="ASIA_VLADIVOSTOK" />
+	        <jaxb:typesafeEnumMember value="Asia/Yakutsk" name="ASIA_YAKUTSK" />
+	        <jaxb:typesafeEnumMember value="Asia/Yangon" name="ASIA_YANGON" />
+	        <jaxb:typesafeEnumMember value="Asia/Yekaterinburg" name="ASIA_YEKATERINBURG" />
+	        <jaxb:typesafeEnumMember value="Asia/Yerevan" name="ASIA_YEREVAN" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Azores" name="ATLANTIC_AZORES" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Bermuda" name="ATLANTIC_BERMUDA" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Canary" name="ATLANTIC_CANARY" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Cape_Verde" name="ATLANTIC_CAPE_VERDE" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Faroe" name="ATLANTIC_FAROE" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Madeira" name="ATLANTIC_MADEIRA" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Reykjavik" name="ATLANTIC_REYKJAVIK" />
+	        <jaxb:typesafeEnumMember value="Atlantic/South_Georgia" name="ATLANTIC_SOUTH_GEORGIA" />
+	        <jaxb:typesafeEnumMember value="Atlantic/Stanley" name="ATLANTIC_STANLEY" />
+	        <jaxb:typesafeEnumMember value="Australia/Adelaide" name="AUSTRALIA_ADELAIDE" />
+	        <jaxb:typesafeEnumMember value="Australia/Brisbane" name="AUSTRALIA_BRISBANE" />
+	        <jaxb:typesafeEnumMember value="Australia/Broken_Hill" name="AUSTRALIA_BROKEN_HILL" />
+	        <jaxb:typesafeEnumMember value="Australia/Currie" name="AUSTRALIA_CURRIE" />
+	        <jaxb:typesafeEnumMember value="Australia/Darwin" name="AUSTRALIA_DARWIN" />
+	        <jaxb:typesafeEnumMember value="Australia/Eucla" name="AUSTRALIA_EUCLA" />
+	        <jaxb:typesafeEnumMember value="Australia/Hobart" name="AUSTRALIA_HOBART" />
+	        <jaxb:typesafeEnumMember value="Australia/Lindeman" name="AUSTRALIA_LINDEMAN" />
+	        <jaxb:typesafeEnumMember value="Australia/Lord_Howe" name="AUSTRALIA_LORD_HOWE" />
+	        <jaxb:typesafeEnumMember value="Australia/Melbourne" name="AUSTRALIA_MELBOURNE" />
+	        <jaxb:typesafeEnumMember value="Australia/Perth" name="AUSTRALIA_PERTH" />
+	        <jaxb:typesafeEnumMember value="Australia/Sydney" name="AUSTRALIA_SYDNEY" />
+	        <jaxb:typesafeEnumMember value="CET" name="CET" />
+	        <jaxb:typesafeEnumMember value="CST6CDT" name="CST6CDT" />
+	        <jaxb:typesafeEnumMember value="EET" name="EET" />
+	        <jaxb:typesafeEnumMember value="EST" name="EST" />
+	        <jaxb:typesafeEnumMember value="EST5EDT" name="EST5EDT" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT" name="ETC_GMT" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+1" name="ETC_GMT_1" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+10" name="ETC_GMT_10" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+11" name="ETC_GMT_11" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+12" name="ETC_GMT_12" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+2" name="ETC_GMT_2" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+3" name="ETC_GMT_3" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+4" name="ETC_GMT_4" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+5" name="ETC_GMT_5" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+6" name="ETC_GMT_6" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+7" name="ETC_GMT_7" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+8" name="ETC_GMT_8" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT+9" name="ETC_GMT_9" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-1" name="ETC_GMT_1" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-10" name="ETC_GMT_10" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-11" name="ETC_GMT_11" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-12" name="ETC_GMT_12" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-13" name="ETC_GMT_13" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-14" name="ETC_GMT_14" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-2" name="ETC_GMT_2" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-3" name="ETC_GMT_3" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-4" name="ETC_GMT_4" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-5" name="ETC_GMT_5" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-6" name="ETC_GMT_6" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-7" name="ETC_GMT_7" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-8" name="ETC_GMT_8" />
+	        <jaxb:typesafeEnumMember value="Etc/GMT-9" name="ETC_GMT_9" />
+	        <jaxb:typesafeEnumMember value="Etc/UTC" name="ETC_UTC" />
+	        <jaxb:typesafeEnumMember value="Europe/Amsterdam" name="EUROPE_AMSTERDAM" />
+	        <jaxb:typesafeEnumMember value="Europe/Andorra" name="EUROPE_ANDORRA" />
+	        <jaxb:typesafeEnumMember value="Europe/Astrakhan" name="EUROPE_ASTRAKHAN" />
+	        <jaxb:typesafeEnumMember value="Europe/Athens" name="EUROPE_ATHENS" />
+	        <jaxb:typesafeEnumMember value="Europe/Belgrade" name="EUROPE_BELGRADE" />
+	        <jaxb:typesafeEnumMember value="Europe/Berlin" name="EUROPE_BERLIN" />
+	        <jaxb:typesafeEnumMember value="Europe/Brussels" name="EUROPE_BRUSSELS" />
+	        <jaxb:typesafeEnumMember value="Europe/Bucharest" name="EUROPE_BUCHAREST" />
+	        <jaxb:typesafeEnumMember value="Europe/Budapest" name="EUROPE_BUDAPEST" />
+	        <jaxb:typesafeEnumMember value="Europe/Chisinau" name="EUROPE_CHISINAU" />
+	        <jaxb:typesafeEnumMember value="Europe/Copenhagen" name="EUROPE_COPENHAGEN" />
+	        <jaxb:typesafeEnumMember value="Europe/Dublin" name="EUROPE_DUBLIN" />
+	        <jaxb:typesafeEnumMember value="Europe/Gibraltar" name="EUROPE_GIBRALTAR" />
+	        <jaxb:typesafeEnumMember value="Europe/Helsinki" name="EUROPE_HELSINKI" />
+	        <jaxb:typesafeEnumMember value="Europe/Istanbul" name="EUROPE_ISTANBUL" />
+	        <jaxb:typesafeEnumMember value="Europe/Kaliningrad" name="EUROPE_KALININGRAD" />
+	        <jaxb:typesafeEnumMember value="Europe/Kiev" name="EUROPE_KIEV" />
+	        <jaxb:typesafeEnumMember value="Europe/Kirov" name="EUROPE_KIROV" />
+	        <jaxb:typesafeEnumMember value="Europe/Lisbon" name="EUROPE_LISBON" />
+	        <jaxb:typesafeEnumMember value="Europe/London" name="EUROPE_LONDON" />
+	        <jaxb:typesafeEnumMember value="Europe/Luxembourg" name="EUROPE_LUXEMBOURG" />
+	        <jaxb:typesafeEnumMember value="Europe/Madrid" name="EUROPE_MADRID" />
+	        <jaxb:typesafeEnumMember value="Europe/Malta" name="EUROPE_MALTA" />
+	        <jaxb:typesafeEnumMember value="Europe/Minsk" name="EUROPE_MINSK" />
+	        <jaxb:typesafeEnumMember value="Europe/Monaco" name="EUROPE_MONACO" />
+	        <jaxb:typesafeEnumMember value="Europe/Moscow" name="EUROPE_MOSCOW" />
+	        <jaxb:typesafeEnumMember value="Europe/Oslo" name="EUROPE_OSLO" />
+	        <jaxb:typesafeEnumMember value="Europe/Paris" name="EUROPE_PARIS" />
+	        <jaxb:typesafeEnumMember value="Europe/Prague" name="EUROPE_PRAGUE" />
+	        <jaxb:typesafeEnumMember value="Europe/Riga" name="EUROPE_RIGA" />
+	        <jaxb:typesafeEnumMember value="Europe/Rome" name="EUROPE_ROME" />
+	        <jaxb:typesafeEnumMember value="Europe/Samara" name="EUROPE_SAMARA" />
+	        <jaxb:typesafeEnumMember value="Europe/Saratov" name="EUROPE_SARATOV" />
+	        <jaxb:typesafeEnumMember value="Europe/Simferopol" name="EUROPE_SIMFEROPOL" />
+	        <jaxb:typesafeEnumMember value="Europe/Sofia" name="EUROPE_SOFIA" />
+	        <jaxb:typesafeEnumMember value="Europe/Stockholm" name="EUROPE_STOCKHOLM" />
+	        <jaxb:typesafeEnumMember value="Europe/Tallinn" name="EUROPE_TALLINN" />
+	        <jaxb:typesafeEnumMember value="Europe/Tirane" name="EUROPE_TIRANE" />
+	        <jaxb:typesafeEnumMember value="Europe/Ulyanovsk" name="EUROPE_ULYANOVSK" />
+	        <jaxb:typesafeEnumMember value="Europe/Uzhgorod" name="EUROPE_UZHGOROD" />
+	        <jaxb:typesafeEnumMember value="Europe/Vienna" name="EUROPE_VIENNA" />
+	        <jaxb:typesafeEnumMember value="Europe/Vilnius" name="EUROPE_VILNIUS" />
+	        <jaxb:typesafeEnumMember value="Europe/Volgograd" name="EUROPE_VOLGOGRAD" />
+	        <jaxb:typesafeEnumMember value="Europe/Warsaw" name="EUROPE_WARSAW" />
+	        <jaxb:typesafeEnumMember value="Europe/Zaporozhye" name="EUROPE_ZAPOROZHYE" />
+	        <jaxb:typesafeEnumMember value="Europe/Zurich" name="EUROPE_ZURICH" />
+	        <jaxb:typesafeEnumMember value="HST" name="HST" />
+	        <jaxb:typesafeEnumMember value="Indian/Chagos" name="INDIAN_CHAGOS" />
+	        <jaxb:typesafeEnumMember value="Indian/Christmas" name="INDIAN_CHRISTMAS" />
+	        <jaxb:typesafeEnumMember value="Indian/Cocos" name="INDIAN_COCOS" />
+	        <jaxb:typesafeEnumMember value="Indian/Kerguelen" name="INDIAN_KERGUELEN" />
+	        <jaxb:typesafeEnumMember value="Indian/Mahe" name="INDIAN_MAHE" />
+	        <jaxb:typesafeEnumMember value="Indian/Maldives" name="INDIAN_MALDIVES" />
+	        <jaxb:typesafeEnumMember value="Indian/Mauritius" name="INDIAN_MAURITIUS" />
+	        <jaxb:typesafeEnumMember value="Indian/Reunion" name="INDIAN_REUNION" />
+	        <jaxb:typesafeEnumMember value="MET" name="MET" />
+	        <jaxb:typesafeEnumMember value="MST" name="MST" />
+	        <jaxb:typesafeEnumMember value="MST7MDT" name="MST7MDT" />
+	        <jaxb:typesafeEnumMember value="PST8PDT" name="PST8PDT" />
+	        <jaxb:typesafeEnumMember value="Pacific/Apia" name="PACIFIC_APIA" />
+	        <jaxb:typesafeEnumMember value="Pacific/Auckland" name="PACIFIC_AUCKLAND" />
+	        <jaxb:typesafeEnumMember value="Pacific/Bougainville" name="PACIFIC_BOUGAINVILLE" />
+	        <jaxb:typesafeEnumMember value="Pacific/Chatham" name="PACIFIC_CHATHAM" />
+	        <jaxb:typesafeEnumMember value="Pacific/Chuuk" name="PACIFIC_CHUUK" />
+	        <jaxb:typesafeEnumMember value="Pacific/Easter" name="PACIFIC_EASTER" />
+	        <jaxb:typesafeEnumMember value="Pacific/Efate" name="PACIFIC_EFATE" />
+	        <jaxb:typesafeEnumMember value="Pacific/Enderbury" name="PACIFIC_ENDERBURY" />
+	        <jaxb:typesafeEnumMember value="Pacific/Fakaofo" name="PACIFIC_FAKAOFO" />
+	        <jaxb:typesafeEnumMember value="Pacific/Fiji" name="PACIFIC_FIJI" />
+	        <jaxb:typesafeEnumMember value="Pacific/Funafuti" name="PACIFIC_FUNAFUTI" />
+	        <jaxb:typesafeEnumMember value="Pacific/Galapagos" name="PACIFIC_GALAPAGOS" />
+	        <jaxb:typesafeEnumMember value="Pacific/Gambier" name="PACIFIC_GAMBIER" />
+	        <jaxb:typesafeEnumMember value="Pacific/Guadalcanal" name="PACIFIC_GUADALCANAL" />
+	        <jaxb:typesafeEnumMember value="Pacific/Guam" name="PACIFIC_GUAM" />
+	        <jaxb:typesafeEnumMember value="Pacific/Honolulu" name="PACIFIC_HONOLULU" />
+	        <jaxb:typesafeEnumMember value="Pacific/Kiritimati" name="PACIFIC_KIRITIMATI" />
+	        <jaxb:typesafeEnumMember value="Pacific/Kosrae" name="PACIFIC_KOSRAE" />
+	        <jaxb:typesafeEnumMember value="Pacific/Kwajalein" name="PACIFIC_KWAJALEIN" />
+	        <jaxb:typesafeEnumMember value="Pacific/Majuro" name="PACIFIC_MAJURO" />
+	        <jaxb:typesafeEnumMember value="Pacific/Marquesas" name="PACIFIC_MARQUESAS" />
+	        <jaxb:typesafeEnumMember value="Pacific/Nauru" name="PACIFIC_NAURU" />
+	        <jaxb:typesafeEnumMember value="Pacific/Niue" name="PACIFIC_NIUE" />
+	        <jaxb:typesafeEnumMember value="Pacific/Norfolk" name="PACIFIC_NORFOLK" />
+	        <jaxb:typesafeEnumMember value="Pacific/Noumea" name="PACIFIC_NOUMEA" />
+	        <jaxb:typesafeEnumMember value="Pacific/Pago_Pago" name="PACIFIC_PAGO_PAGO" />
+	        <jaxb:typesafeEnumMember value="Pacific/Palau" name="PACIFIC_PALAU" />
+	        <jaxb:typesafeEnumMember value="Pacific/Pitcairn" name="PACIFIC_PITCAIRN" />
+	        <jaxb:typesafeEnumMember value="Pacific/Pohnpei" name="PACIFIC_POHNPEI" />
+	        <jaxb:typesafeEnumMember value="Pacific/Port_Moresby" name="PACIFIC_PORT_MORESBY" />
+	        <jaxb:typesafeEnumMember value="Pacific/Rarotonga" name="PACIFIC_RAROTONGA" />
+	        <jaxb:typesafeEnumMember value="Pacific/Tahiti" name="PACIFIC_TAHITI" />
+	        <jaxb:typesafeEnumMember value="Pacific/Tarawa" name="PACIFIC_TARAWA" />
+	        <jaxb:typesafeEnumMember value="Pacific/Tongatapu" name="PACIFIC_TONGATAPU" />
+	        <jaxb:typesafeEnumMember value="Pacific/Wake" name="PACIFIC_WAKE" />
+	        <jaxb:typesafeEnumMember value="Pacific/Wallis" name="PACIFIC_WALLIS" />
+	        <jaxb:typesafeEnumMember value="WET" name="WET" />
+	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='SourceUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="video_id" name="VIDEO_ID" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ContentUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="image/jpeg" name="JPEG" />
+	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='SourceUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="image_base64" name="IMAGE_BASE64" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ContentUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="image/jpeg" name="JPEG" />
+	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='SourceUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="image_url" name="IMAGE_URL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='SourceUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="video_id" name="VIDEO_ID" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+
+    <jaxws:bindings node="xsd:simpleType[@name='ActionType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CLICKTHROUGH" name="CLICKTHROUGH" />
+	        <jaxb:typesafeEnumMember value="IMPRESSION" name="IMPRESSION" />
+	        <jaxb:typesafeEnumMember value="VIDEO_V_50_MRC" name="VIDEO_V_50_MRC" />
+	        <jaxb:typesafeEnumMember value="BILLABLE_ENGAGEMENT" name="BILLABLE_ENGAGEMENT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AdGroupSummaryStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="RUNNING" name="RUNNING" />
+	        <jaxb:typesafeEnumMember value="PAUSED" name="PAUSED" />
+	        <jaxb:typesafeEnumMember value="NOT_STARTED" name="NOT_STARTED" />
+	        <jaxb:typesafeEnumMember value="COMPLETED" name="COMPLETED" />
+	        <jaxb:typesafeEnumMember value="ADVERTISER_DISABLED" name="ADVERTISER_DISABLED" />
+	        <jaxb:typesafeEnumMember value="ARCHIVED" name="ARCHIVED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AdsAnalyticsFilterColumn']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="SPEND_IN_DOLLAR" name="SPEND_IN_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_IMPRESSION" name="TOTAL_IMPRESSION" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AdsAnalyticsFilterOperator']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="LESS_THAN" name="LESS_THAN" />
+	        <jaxb:typesafeEnumMember value="GREATER_THAN" name="GREATER_THAN" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AdsAnalyticsTargetingType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="KEYWORD" name="KEYWORD" />
+	        <jaxb:typesafeEnumMember value="APPTYPE" name="APPTYPE" />
+	        <jaxb:typesafeEnumMember value="GENDER" name="GENDER" />
+	        <jaxb:typesafeEnumMember value="LOCATION" name="LOCATION" />
+	        <jaxb:typesafeEnumMember value="PLACEMENT" name="PLACEMENT" />
+	        <jaxb:typesafeEnumMember value="COUNTRY" name="COUNTRY" />
+	        <jaxb:typesafeEnumMember value="TARGETED_INTEREST" name="TARGETED_INTEREST" />
+	        <jaxb:typesafeEnumMember value="PINNER_INTEREST" name="PINNER_INTEREST" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_INCLUDE" name="AUDIENCE_INCLUDE" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_EXCLUDE" name="AUDIENCE_EXCLUDE" />
+	        <jaxb:typesafeEnumMember value="GEO" name="GEO" />
+	        <jaxb:typesafeEnumMember value="AGE_BUCKET" name="AGE_BUCKET" />
+	        <jaxb:typesafeEnumMember value="REGION" name="REGION" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='BatchOperation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
+	        <jaxb:typesafeEnumMember value="CREATE" name="CREATE" />
+	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='BatchOperationStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="PROCESSING" name="PROCESSING" />
+	        <jaxb:typesafeEnumMember value="COMPLETED" name="COMPLETED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CampaignSummaryStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="RUNNING" name="RUNNING" />
+	        <jaxb:typesafeEnumMember value="PAUSED" name="PAUSED" />
+	        <jaxb:typesafeEnumMember value="NOT_STARTED" name="NOT_STARTED" />
+	        <jaxb:typesafeEnumMember value="COMPLETED" name="COMPLETED" />
+	        <jaxb:typesafeEnumMember value="ADVERTISER_DISABLED" name="ADVERTISER_DISABLED" />
+	        <jaxb:typesafeEnumMember value="ARCHIVED" name="ARCHIVED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogsFeedProcessingStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="COMPLETED" name="COMPLETED" />
+	        <jaxb:typesafeEnumMember value="COMPLETED_EARLY" name="COMPLETED_EARLY" />
+	        <jaxb:typesafeEnumMember value="DISAPPROVED" name="DISAPPROVED" />
+	        <jaxb:typesafeEnumMember value="FAILED" name="FAILED" />
+	        <jaxb:typesafeEnumMember value="PROCESSING" name="PROCESSING" />
+	        <jaxb:typesafeEnumMember value="QUEUED_FOR_PROCESSING" name="QUEUED_FOR_PROCESSING" />
+	        <jaxb:typesafeEnumMember value="UNDER_APPEAL" name="UNDER_APPEAL" />
+	        <jaxb:typesafeEnumMember value="UNDER_REVIEW" name="UNDER_REVIEW" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogsFormat']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="TSV" name="TSV" />
+	        <jaxb:typesafeEnumMember value="CSV" name="CSV" />
+	        <jaxb:typesafeEnumMember value="XML" name="XML" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogsProductGroupStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="ACTIVE" name="ACTIVE" />
+	        <jaxb:typesafeEnumMember value="INACTIVE" name="INACTIVE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogsProductGroupType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="MERCHANT_CREATED" name="MERCHANT_CREATED" />
+	        <jaxb:typesafeEnumMember value="ALL_PRODUCTS" name="ALL_PRODUCTS" />
+	        <jaxb:typesafeEnumMember value="BEST_DEALS" name="BEST_DEALS" />
+	        <jaxb:typesafeEnumMember value="PINNER_FAVORITES" name="PINNER_FAVORITES" />
+	        <jaxb:typesafeEnumMember value="TOP_SELLERS" name="TOP_SELLERS" />
+	        <jaxb:typesafeEnumMember value="BACK_IN_STOCK" name="BACK_IN_STOCK" />
+	        <jaxb:typesafeEnumMember value="NEW_ARRIVALS" name="NEW_ARRIVALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogsStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="ACTIVE" name="ACTIVE" />
+	        <jaxb:typesafeEnumMember value="INACTIVE" name="INACTIVE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ConversionAttributionWindowDays']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="1" name="_1" />
+	        <jaxb:typesafeEnumMember value="7" name="_7" />
+	        <jaxb:typesafeEnumMember value="30" name="_30" />
+	        <jaxb:typesafeEnumMember value="60" name="_60" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ConversionReportAttributionType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="INDIVIDUAL" name="INDIVIDUAL" />
+	        <jaxb:typesafeEnumMember value="HOUSEHOLD" name="HOUSEHOLD" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ConversionReportTimeType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="TIME_OF_AD_ACTION" name="AD_ACTION" />
+	        <jaxb:typesafeEnumMember value="TIME_OF_CONVERSION" name="CONVERSION" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Country']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AD" name="AD" />
+	        <jaxb:typesafeEnumMember value="AE" name="AE" />
+	        <jaxb:typesafeEnumMember value="AF" name="AF" />
+	        <jaxb:typesafeEnumMember value="AG" name="AG" />
+	        <jaxb:typesafeEnumMember value="AI" name="AI" />
+	        <jaxb:typesafeEnumMember value="AL" name="AL" />
+	        <jaxb:typesafeEnumMember value="AM" name="AM" />
+	        <jaxb:typesafeEnumMember value="AO" name="AO" />
+	        <jaxb:typesafeEnumMember value="AQ" name="AQ" />
+	        <jaxb:typesafeEnumMember value="AR" name="AR" />
+	        <jaxb:typesafeEnumMember value="AS" name="AS" />
+	        <jaxb:typesafeEnumMember value="AT" name="AT" />
+	        <jaxb:typesafeEnumMember value="AU" name="AU" />
+	        <jaxb:typesafeEnumMember value="AW" name="AW" />
+	        <jaxb:typesafeEnumMember value="AX" name="AX" />
+	        <jaxb:typesafeEnumMember value="AZ" name="AZ" />
+	        <jaxb:typesafeEnumMember value="BA" name="BA" />
+	        <jaxb:typesafeEnumMember value="BB" name="BB" />
+	        <jaxb:typesafeEnumMember value="BD" name="BD" />
+	        <jaxb:typesafeEnumMember value="BE" name="BE" />
+	        <jaxb:typesafeEnumMember value="BF" name="BF" />
+	        <jaxb:typesafeEnumMember value="BG" name="BG" />
+	        <jaxb:typesafeEnumMember value="BH" name="BH" />
+	        <jaxb:typesafeEnumMember value="BI" name="BI" />
+	        <jaxb:typesafeEnumMember value="BJ" name="BJ" />
+	        <jaxb:typesafeEnumMember value="BL" name="BL" />
+	        <jaxb:typesafeEnumMember value="BM" name="BM" />
+	        <jaxb:typesafeEnumMember value="BN" name="BN" />
+	        <jaxb:typesafeEnumMember value="BO" name="BO" />
+	        <jaxb:typesafeEnumMember value="BQ" name="BQ" />
+	        <jaxb:typesafeEnumMember value="BR" name="BR" />
+	        <jaxb:typesafeEnumMember value="BS" name="BS" />
+	        <jaxb:typesafeEnumMember value="BT" name="BT" />
+	        <jaxb:typesafeEnumMember value="BV" name="BV" />
+	        <jaxb:typesafeEnumMember value="BW" name="BW" />
+	        <jaxb:typesafeEnumMember value="BY" name="BY" />
+	        <jaxb:typesafeEnumMember value="BZ" name="BZ" />
+	        <jaxb:typesafeEnumMember value="CA" name="CA" />
+	        <jaxb:typesafeEnumMember value="CC" name="CC" />
+	        <jaxb:typesafeEnumMember value="CD" name="CD" />
+	        <jaxb:typesafeEnumMember value="CF" name="CF" />
+	        <jaxb:typesafeEnumMember value="CG" name="CG" />
+	        <jaxb:typesafeEnumMember value="CH" name="CH" />
+	        <jaxb:typesafeEnumMember value="CI" name="CI" />
+	        <jaxb:typesafeEnumMember value="CK" name="CK" />
+	        <jaxb:typesafeEnumMember value="CL" name="CL" />
+	        <jaxb:typesafeEnumMember value="CM" name="CM" />
+	        <jaxb:typesafeEnumMember value="CO" name="CO" />
+	        <jaxb:typesafeEnumMember value="CR" name="CR" />
+	        <jaxb:typesafeEnumMember value="CU" name="CU" />
+	        <jaxb:typesafeEnumMember value="CV" name="CV" />
+	        <jaxb:typesafeEnumMember value="CW" name="CW" />
+	        <jaxb:typesafeEnumMember value="CX" name="CX" />
+	        <jaxb:typesafeEnumMember value="CY" name="CY" />
+	        <jaxb:typesafeEnumMember value="CZ" name="CZ" />
+	        <jaxb:typesafeEnumMember value="DE" name="DE" />
+	        <jaxb:typesafeEnumMember value="DJ" name="DJ" />
+	        <jaxb:typesafeEnumMember value="DK" name="DK" />
+	        <jaxb:typesafeEnumMember value="DM" name="DM" />
+	        <jaxb:typesafeEnumMember value="DO" name="DO" />
+	        <jaxb:typesafeEnumMember value="DZ" name="DZ" />
+	        <jaxb:typesafeEnumMember value="EC" name="EC" />
+	        <jaxb:typesafeEnumMember value="EE" name="EE" />
+	        <jaxb:typesafeEnumMember value="EG" name="EG" />
+	        <jaxb:typesafeEnumMember value="EH" name="EH" />
+	        <jaxb:typesafeEnumMember value="ER" name="ER" />
+	        <jaxb:typesafeEnumMember value="ES" name="ES" />
+	        <jaxb:typesafeEnumMember value="ET" name="ET" />
+	        <jaxb:typesafeEnumMember value="FI" name="FI" />
+	        <jaxb:typesafeEnumMember value="FJ" name="FJ" />
+	        <jaxb:typesafeEnumMember value="FK" name="FK" />
+	        <jaxb:typesafeEnumMember value="FM" name="FM" />
+	        <jaxb:typesafeEnumMember value="FO" name="FO" />
+	        <jaxb:typesafeEnumMember value="FR" name="FR" />
+	        <jaxb:typesafeEnumMember value="GA" name="GA" />
+	        <jaxb:typesafeEnumMember value="GB" name="GB" />
+	        <jaxb:typesafeEnumMember value="GD" name="GD" />
+	        <jaxb:typesafeEnumMember value="GE" name="GE" />
+	        <jaxb:typesafeEnumMember value="GF" name="GF" />
+	        <jaxb:typesafeEnumMember value="GG" name="GG" />
+	        <jaxb:typesafeEnumMember value="GH" name="GH" />
+	        <jaxb:typesafeEnumMember value="GI" name="GI" />
+	        <jaxb:typesafeEnumMember value="GL" name="GL" />
+	        <jaxb:typesafeEnumMember value="GM" name="GM" />
+	        <jaxb:typesafeEnumMember value="GN" name="GN" />
+	        <jaxb:typesafeEnumMember value="GP" name="GP" />
+	        <jaxb:typesafeEnumMember value="GQ" name="GQ" />
+	        <jaxb:typesafeEnumMember value="GR" name="GR" />
+	        <jaxb:typesafeEnumMember value="GS" name="GS" />
+	        <jaxb:typesafeEnumMember value="GT" name="GT" />
+	        <jaxb:typesafeEnumMember value="GU" name="GU" />
+	        <jaxb:typesafeEnumMember value="GW" name="GW" />
+	        <jaxb:typesafeEnumMember value="GY" name="GY" />
+	        <jaxb:typesafeEnumMember value="HK" name="HK" />
+	        <jaxb:typesafeEnumMember value="HM" name="HM" />
+	        <jaxb:typesafeEnumMember value="HN" name="HN" />
+	        <jaxb:typesafeEnumMember value="HR" name="HR" />
+	        <jaxb:typesafeEnumMember value="HT" name="HT" />
+	        <jaxb:typesafeEnumMember value="HU" name="HU" />
+	        <jaxb:typesafeEnumMember value="ID" name="ID" />
+	        <jaxb:typesafeEnumMember value="IE" name="IE" />
+	        <jaxb:typesafeEnumMember value="IL" name="IL" />
+	        <jaxb:typesafeEnumMember value="IM" name="IM" />
+	        <jaxb:typesafeEnumMember value="IN" name="IN" />
+	        <jaxb:typesafeEnumMember value="IO" name="IO" />
+	        <jaxb:typesafeEnumMember value="IQ" name="IQ" />
+	        <jaxb:typesafeEnumMember value="IR" name="IR" />
+	        <jaxb:typesafeEnumMember value="IS" name="IS" />
+	        <jaxb:typesafeEnumMember value="IT" name="IT" />
+	        <jaxb:typesafeEnumMember value="JE" name="JE" />
+	        <jaxb:typesafeEnumMember value="JM" name="JM" />
+	        <jaxb:typesafeEnumMember value="JO" name="JO" />
+	        <jaxb:typesafeEnumMember value="JP" name="JP" />
+	        <jaxb:typesafeEnumMember value="KE" name="KE" />
+	        <jaxb:typesafeEnumMember value="KG" name="KG" />
+	        <jaxb:typesafeEnumMember value="KH" name="KH" />
+	        <jaxb:typesafeEnumMember value="KI" name="KI" />
+	        <jaxb:typesafeEnumMember value="KM" name="KM" />
+	        <jaxb:typesafeEnumMember value="KN" name="KN" />
+	        <jaxb:typesafeEnumMember value="KR" name="KR" />
+	        <jaxb:typesafeEnumMember value="KW" name="KW" />
+	        <jaxb:typesafeEnumMember value="KY" name="KY" />
+	        <jaxb:typesafeEnumMember value="KZ" name="KZ" />
+	        <jaxb:typesafeEnumMember value="LA" name="LA" />
+	        <jaxb:typesafeEnumMember value="LB" name="LB" />
+	        <jaxb:typesafeEnumMember value="LC" name="LC" />
+	        <jaxb:typesafeEnumMember value="LI" name="LI" />
+	        <jaxb:typesafeEnumMember value="LK" name="LK" />
+	        <jaxb:typesafeEnumMember value="LR" name="LR" />
+	        <jaxb:typesafeEnumMember value="LS" name="LS" />
+	        <jaxb:typesafeEnumMember value="LT" name="LT" />
+	        <jaxb:typesafeEnumMember value="LU" name="LU" />
+	        <jaxb:typesafeEnumMember value="LV" name="LV" />
+	        <jaxb:typesafeEnumMember value="LY" name="LY" />
+	        <jaxb:typesafeEnumMember value="MA" name="MA" />
+	        <jaxb:typesafeEnumMember value="MC" name="MC" />
+	        <jaxb:typesafeEnumMember value="MD" name="MD" />
+	        <jaxb:typesafeEnumMember value="ME" name="ME" />
+	        <jaxb:typesafeEnumMember value="MF" name="MF" />
+	        <jaxb:typesafeEnumMember value="MG" name="MG" />
+	        <jaxb:typesafeEnumMember value="MH" name="MH" />
+	        <jaxb:typesafeEnumMember value="MK" name="MK" />
+	        <jaxb:typesafeEnumMember value="ML" name="ML" />
+	        <jaxb:typesafeEnumMember value="MM" name="MM" />
+	        <jaxb:typesafeEnumMember value="MN" name="MN" />
+	        <jaxb:typesafeEnumMember value="MO" name="MO" />
+	        <jaxb:typesafeEnumMember value="MP" name="MP" />
+	        <jaxb:typesafeEnumMember value="MQ" name="MQ" />
+	        <jaxb:typesafeEnumMember value="MR" name="MR" />
+	        <jaxb:typesafeEnumMember value="MS" name="MS" />
+	        <jaxb:typesafeEnumMember value="MT" name="MT" />
+	        <jaxb:typesafeEnumMember value="MU" name="MU" />
+	        <jaxb:typesafeEnumMember value="MV" name="MV" />
+	        <jaxb:typesafeEnumMember value="MW" name="MW" />
+	        <jaxb:typesafeEnumMember value="MX" name="MX" />
+	        <jaxb:typesafeEnumMember value="MY" name="MY" />
+	        <jaxb:typesafeEnumMember value="MZ" name="MZ" />
+	        <jaxb:typesafeEnumMember value="NA" name="NA" />
+	        <jaxb:typesafeEnumMember value="NC" name="NC" />
+	        <jaxb:typesafeEnumMember value="NE" name="NE" />
+	        <jaxb:typesafeEnumMember value="NF" name="NF" />
+	        <jaxb:typesafeEnumMember value="NG" name="NG" />
+	        <jaxb:typesafeEnumMember value="NI" name="NI" />
+	        <jaxb:typesafeEnumMember value="NL" name="NL" />
+	        <jaxb:typesafeEnumMember value="NO" name="NO" />
+	        <jaxb:typesafeEnumMember value="NP" name="NP" />
+	        <jaxb:typesafeEnumMember value="NR" name="NR" />
+	        <jaxb:typesafeEnumMember value="NU" name="NU" />
+	        <jaxb:typesafeEnumMember value="NZ" name="NZ" />
+	        <jaxb:typesafeEnumMember value="OM" name="OM" />
+	        <jaxb:typesafeEnumMember value="PA" name="PA" />
+	        <jaxb:typesafeEnumMember value="PE" name="PE" />
+	        <jaxb:typesafeEnumMember value="PF" name="PF" />
+	        <jaxb:typesafeEnumMember value="PG" name="PG" />
+	        <jaxb:typesafeEnumMember value="PH" name="PH" />
+	        <jaxb:typesafeEnumMember value="PK" name="PK" />
+	        <jaxb:typesafeEnumMember value="PL" name="PL" />
+	        <jaxb:typesafeEnumMember value="PM" name="PM" />
+	        <jaxb:typesafeEnumMember value="PN" name="PN" />
+	        <jaxb:typesafeEnumMember value="PR" name="PR" />
+	        <jaxb:typesafeEnumMember value="PS" name="PS" />
+	        <jaxb:typesafeEnumMember value="PT" name="PT" />
+	        <jaxb:typesafeEnumMember value="PW" name="PW" />
+	        <jaxb:typesafeEnumMember value="PY" name="PY" />
+	        <jaxb:typesafeEnumMember value="QA" name="QA" />
+	        <jaxb:typesafeEnumMember value="RE" name="RE" />
+	        <jaxb:typesafeEnumMember value="RO" name="RO" />
+	        <jaxb:typesafeEnumMember value="RS" name="RS" />
+	        <jaxb:typesafeEnumMember value="RU" name="RU" />
+	        <jaxb:typesafeEnumMember value="RW" name="RW" />
+	        <jaxb:typesafeEnumMember value="SA" name="SA" />
+	        <jaxb:typesafeEnumMember value="SB" name="SB" />
+	        <jaxb:typesafeEnumMember value="SC" name="SC" />
+	        <jaxb:typesafeEnumMember value="SD" name="SD" />
+	        <jaxb:typesafeEnumMember value="SE" name="SE" />
+	        <jaxb:typesafeEnumMember value="SG" name="SG" />
+	        <jaxb:typesafeEnumMember value="SH" name="SH" />
+	        <jaxb:typesafeEnumMember value="SI" name="SI" />
+	        <jaxb:typesafeEnumMember value="SJ" name="SJ" />
+	        <jaxb:typesafeEnumMember value="SK" name="SK" />
+	        <jaxb:typesafeEnumMember value="SL" name="SL" />
+	        <jaxb:typesafeEnumMember value="SM" name="SM" />
+	        <jaxb:typesafeEnumMember value="SN" name="SN" />
+	        <jaxb:typesafeEnumMember value="SO" name="SO" />
+	        <jaxb:typesafeEnumMember value="SR" name="SR" />
+	        <jaxb:typesafeEnumMember value="SS" name="SS" />
+	        <jaxb:typesafeEnumMember value="ST" name="ST" />
+	        <jaxb:typesafeEnumMember value="SV" name="SV" />
+	        <jaxb:typesafeEnumMember value="SX" name="SX" />
+	        <jaxb:typesafeEnumMember value="SY" name="SY" />
+	        <jaxb:typesafeEnumMember value="SZ" name="SZ" />
+	        <jaxb:typesafeEnumMember value="TC" name="TC" />
+	        <jaxb:typesafeEnumMember value="TD" name="TD" />
+	        <jaxb:typesafeEnumMember value="TF" name="TF" />
+	        <jaxb:typesafeEnumMember value="TG" name="TG" />
+	        <jaxb:typesafeEnumMember value="TH" name="TH" />
+	        <jaxb:typesafeEnumMember value="TJ" name="TJ" />
+	        <jaxb:typesafeEnumMember value="TK" name="TK" />
+	        <jaxb:typesafeEnumMember value="TL" name="TL" />
+	        <jaxb:typesafeEnumMember value="TM" name="TM" />
+	        <jaxb:typesafeEnumMember value="TN" name="TN" />
+	        <jaxb:typesafeEnumMember value="TO" name="TO" />
+	        <jaxb:typesafeEnumMember value="TR" name="TR" />
+	        <jaxb:typesafeEnumMember value="TT" name="TT" />
+	        <jaxb:typesafeEnumMember value="TV" name="TV" />
+	        <jaxb:typesafeEnumMember value="TW" name="TW" />
+	        <jaxb:typesafeEnumMember value="TZ" name="TZ" />
+	        <jaxb:typesafeEnumMember value="UA" name="UA" />
+	        <jaxb:typesafeEnumMember value="UG" name="UG" />
+	        <jaxb:typesafeEnumMember value="UM" name="UM" />
+	        <jaxb:typesafeEnumMember value="US" name="US" />
+	        <jaxb:typesafeEnumMember value="UY" name="UY" />
+	        <jaxb:typesafeEnumMember value="UZ" name="UZ" />
+	        <jaxb:typesafeEnumMember value="VA" name="VA" />
+	        <jaxb:typesafeEnumMember value="VC" name="VC" />
+	        <jaxb:typesafeEnumMember value="VE" name="VE" />
+	        <jaxb:typesafeEnumMember value="VG" name="VG" />
+	        <jaxb:typesafeEnumMember value="VI" name="VI" />
+	        <jaxb:typesafeEnumMember value="VN" name="VN" />
+	        <jaxb:typesafeEnumMember value="VU" name="VU" />
+	        <jaxb:typesafeEnumMember value="WF" name="WF" />
+	        <jaxb:typesafeEnumMember value="WS" name="WS" />
+	        <jaxb:typesafeEnumMember value="YE" name="YE" />
+	        <jaxb:typesafeEnumMember value="YT" name="YT" />
+	        <jaxb:typesafeEnumMember value="ZA" name="ZA" />
+	        <jaxb:typesafeEnumMember value="ZM" name="ZM" />
+	        <jaxb:typesafeEnumMember value="ZW" name="ZW" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Currency']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UNK" name="UNK" />
+	        <jaxb:typesafeEnumMember value="USD" name="USD" />
+	        <jaxb:typesafeEnumMember value="GBP" name="GBP" />
+	        <jaxb:typesafeEnumMember value="CAD" name="CAD" />
+	        <jaxb:typesafeEnumMember value="EUR" name="EUR" />
+	        <jaxb:typesafeEnumMember value="AUD" name="AUD" />
+	        <jaxb:typesafeEnumMember value="NZD" name="NZD" />
+	        <jaxb:typesafeEnumMember value="SEK" name="SEK" />
+	        <jaxb:typesafeEnumMember value="ILS" name="ILS" />
+	        <jaxb:typesafeEnumMember value="CHF" name="CHF" />
+	        <jaxb:typesafeEnumMember value="HKD" name="HKD" />
+	        <jaxb:typesafeEnumMember value="JPY" name="JPY" />
+	        <jaxb:typesafeEnumMember value="SGD" name="SGD" />
+	        <jaxb:typesafeEnumMember value="KRW" name="KRW" />
+	        <jaxb:typesafeEnumMember value="NOK" name="NOK" />
+	        <jaxb:typesafeEnumMember value="DKK" name="DKK" />
+	        <jaxb:typesafeEnumMember value="PLN" name="PLN" />
+	        <jaxb:typesafeEnumMember value="RON" name="RON" />
+	        <jaxb:typesafeEnumMember value="HUF" name="HUF" />
+	        <jaxb:typesafeEnumMember value="CZK" name="CZK" />
+	        <jaxb:typesafeEnumMember value="BRL" name="BRL" />
+	        <jaxb:typesafeEnumMember value="MXN" name="MXN" />
+	        <jaxb:typesafeEnumMember value="ARS" name="ARS" />
+	        <jaxb:typesafeEnumMember value="CLP" name="CLP" />
+	        <jaxb:typesafeEnumMember value="COP" name="COP" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='DataOutputFormat']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="JSON" name="JSON" />
+	        <jaxb:typesafeEnumMember value="CSV" name="CSV" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='EntityStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="ACTIVE" name="ACTIVE" />
+	        <jaxb:typesafeEnumMember value="PAUSED" name="PAUSED" />
+	        <jaxb:typesafeEnumMember value="ARCHIVED" name="ARCHIVED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Granularity']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="TOTAL" name="TOTAL" />
+	        <jaxb:typesafeEnumMember value="DAY" name="DAY" />
+	        <jaxb:typesafeEnumMember value="HOUR" name="HOUR" />
+	        <jaxb:typesafeEnumMember value="WEEK" name="WEEK" />
+	        <jaxb:typesafeEnumMember value="MONTH" name="MONTH" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ItemProcessingStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="SUCCESS" name="SUCCESS" />
+	        <jaxb:typesafeEnumMember value="FAILURE" name="FAILURE" />
+	        <jaxb:typesafeEnumMember value="PROCESSING" name="PROCESSING" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Language']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AM" name="AM" />
+	        <jaxb:typesafeEnumMember value="AR" name="AR" />
+	        <jaxb:typesafeEnumMember value="AZ" name="AZ" />
+	        <jaxb:typesafeEnumMember value="BG" name="BG" />
+	        <jaxb:typesafeEnumMember value="BN" name="BN" />
+	        <jaxb:typesafeEnumMember value="BS" name="BS" />
+	        <jaxb:typesafeEnumMember value="CA" name="CA" />
+	        <jaxb:typesafeEnumMember value="CS" name="CS" />
+	        <jaxb:typesafeEnumMember value="DA" name="DA" />
+	        <jaxb:typesafeEnumMember value="DV" name="DV" />
+	        <jaxb:typesafeEnumMember value="DZ" name="DZ" />
+	        <jaxb:typesafeEnumMember value="DE" name="DE" />
+	        <jaxb:typesafeEnumMember value="EL" name="EL" />
+	        <jaxb:typesafeEnumMember value="EN" name="EN" />
+	        <jaxb:typesafeEnumMember value="ES" name="ES" />
+	        <jaxb:typesafeEnumMember value="ET" name="ET" />
+	        <jaxb:typesafeEnumMember value="FA" name="FA" />
+	        <jaxb:typesafeEnumMember value="FI" name="FI" />
+	        <jaxb:typesafeEnumMember value="FR" name="FR" />
+	        <jaxb:typesafeEnumMember value="HE" name="HE" />
+	        <jaxb:typesafeEnumMember value="HI" name="HI" />
+	        <jaxb:typesafeEnumMember value="HR" name="HR" />
+	        <jaxb:typesafeEnumMember value="HU" name="HU" />
+	        <jaxb:typesafeEnumMember value="HY" name="HY" />
+	        <jaxb:typesafeEnumMember value="ID" name="ID" />
+	        <jaxb:typesafeEnumMember value="IN" name="IN" />
+	        <jaxb:typesafeEnumMember value="IS" name="IS" />
+	        <jaxb:typesafeEnumMember value="IT" name="IT" />
+	        <jaxb:typesafeEnumMember value="IW" name="IW" />
+	        <jaxb:typesafeEnumMember value="JA" name="JA" />
+	        <jaxb:typesafeEnumMember value="KA" name="KA" />
+	        <jaxb:typesafeEnumMember value="KM" name="KM" />
+	        <jaxb:typesafeEnumMember value="KO" name="KO" />
+	        <jaxb:typesafeEnumMember value="LO" name="LO" />
+	        <jaxb:typesafeEnumMember value="LT" name="LT" />
+	        <jaxb:typesafeEnumMember value="LV" name="LV" />
+	        <jaxb:typesafeEnumMember value="MK" name="MK" />
+	        <jaxb:typesafeEnumMember value="MN" name="MN" />
+	        <jaxb:typesafeEnumMember value="MS" name="MS" />
+	        <jaxb:typesafeEnumMember value="MY" name="MY" />
+	        <jaxb:typesafeEnumMember value="NB" name="NB" />
+	        <jaxb:typesafeEnumMember value="NE" name="NE" />
+	        <jaxb:typesafeEnumMember value="NL" name="NL" />
+	        <jaxb:typesafeEnumMember value="NO" name="NO" />
+	        <jaxb:typesafeEnumMember value="PL" name="PL" />
+	        <jaxb:typesafeEnumMember value="PT" name="PT" />
+	        <jaxb:typesafeEnumMember value="RO" name="RO" />
+	        <jaxb:typesafeEnumMember value="RU" name="RU" />
+	        <jaxb:typesafeEnumMember value="SK" name="SK" />
+	        <jaxb:typesafeEnumMember value="SL" name="SL" />
+	        <jaxb:typesafeEnumMember value="SQ" name="SQ" />
+	        <jaxb:typesafeEnumMember value="SR" name="SR" />
+	        <jaxb:typesafeEnumMember value="SV" name="SV" />
+	        <jaxb:typesafeEnumMember value="TL" name="TL" />
+	        <jaxb:typesafeEnumMember value="UK" name="UK" />
+	        <jaxb:typesafeEnumMember value="VI" name="VI" />
+	        <jaxb:typesafeEnumMember value="TE" name="TE" />
+	        <jaxb:typesafeEnumMember value="TH" name="TH" />
+	        <jaxb:typesafeEnumMember value="TR" name="TR" />
+	        <jaxb:typesafeEnumMember value="XX" name="XX" />
+	        <jaxb:typesafeEnumMember value="ZH" name="ZH" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='MediaUploadStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="registered" name="REGISTERED" />
+	        <jaxb:typesafeEnumMember value="processing" name="PROCESSING" />
+	        <jaxb:typesafeEnumMember value="succeeded" name="SUCCEEDED" />
+	        <jaxb:typesafeEnumMember value="failed" name="FAILED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='MediaUploadType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="video" name="VIDEO" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='MetricsReportingLevel']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="ADVERTISER" name="ADVERTISER" />
+	        <jaxb:typesafeEnumMember value="ADVERTISER_TARGETING" name="ADVERTISER_TARGETING" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN" name="CAMPAIGN" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_TARGETING" name="CAMPAIGN_TARGETING" />
+	        <jaxb:typesafeEnumMember value="AD_GROUP" name="AD_GROUP" />
+	        <jaxb:typesafeEnumMember value="AD_GROUP_TARGETING" name="AD_GROUP_TARGETING" />
+	        <jaxb:typesafeEnumMember value="PIN_PROMOTION" name="PIN_PROMOTION" />
+	        <jaxb:typesafeEnumMember value="PIN_PROMOTION_TARGETING" name="PIN_PROMOTION_TARGETING" />
+	        <jaxb:typesafeEnumMember value="KEYWORD" name="KEYWORD" />
+	        <jaxb:typesafeEnumMember value="PRODUCT_GROUP" name="PRODUCT_GROUP" />
+	        <jaxb:typesafeEnumMember value="PRODUCT_GROUP_TARGETING" name="PRODUCT_GROUP_TARGETING" />
+	        <jaxb:typesafeEnumMember value="PRODUCT_ITEM" name="PRODUCT_ITEM" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='NonNullableCatalogsCurrency']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AED" name="AED" />
+	        <jaxb:typesafeEnumMember value="AFN" name="AFN" />
+	        <jaxb:typesafeEnumMember value="ALL" name="ALL" />
+	        <jaxb:typesafeEnumMember value="AMD" name="AMD" />
+	        <jaxb:typesafeEnumMember value="ANG" name="ANG" />
+	        <jaxb:typesafeEnumMember value="AOA" name="AOA" />
+	        <jaxb:typesafeEnumMember value="ARS" name="ARS" />
+	        <jaxb:typesafeEnumMember value="AUD" name="AUD" />
+	        <jaxb:typesafeEnumMember value="AWG" name="AWG" />
+	        <jaxb:typesafeEnumMember value="AZN" name="AZN" />
+	        <jaxb:typesafeEnumMember value="BAM" name="BAM" />
+	        <jaxb:typesafeEnumMember value="BBD" name="BBD" />
+	        <jaxb:typesafeEnumMember value="BDT" name="BDT" />
+	        <jaxb:typesafeEnumMember value="BGN" name="BGN" />
+	        <jaxb:typesafeEnumMember value="BHD" name="BHD" />
+	        <jaxb:typesafeEnumMember value="BIF" name="BIF" />
+	        <jaxb:typesafeEnumMember value="BMD" name="BMD" />
+	        <jaxb:typesafeEnumMember value="BND" name="BND" />
+	        <jaxb:typesafeEnumMember value="BOB" name="BOB" />
+	        <jaxb:typesafeEnumMember value="BRL" name="BRL" />
+	        <jaxb:typesafeEnumMember value="BSD" name="BSD" />
+	        <jaxb:typesafeEnumMember value="BTN" name="BTN" />
+	        <jaxb:typesafeEnumMember value="BWP" name="BWP" />
+	        <jaxb:typesafeEnumMember value="BYN" name="BYN" />
+	        <jaxb:typesafeEnumMember value="BYR" name="BYR" />
+	        <jaxb:typesafeEnumMember value="BZD" name="BZD" />
+	        <jaxb:typesafeEnumMember value="CAD" name="CAD" />
+	        <jaxb:typesafeEnumMember value="CDF" name="CDF" />
+	        <jaxb:typesafeEnumMember value="CHF" name="CHF" />
+	        <jaxb:typesafeEnumMember value="CLP" name="CLP" />
+	        <jaxb:typesafeEnumMember value="CNY" name="CNY" />
+	        <jaxb:typesafeEnumMember value="COP" name="COP" />
+	        <jaxb:typesafeEnumMember value="CRC" name="CRC" />
+	        <jaxb:typesafeEnumMember value="CUC" name="CUC" />
+	        <jaxb:typesafeEnumMember value="CUP" name="CUP" />
+	        <jaxb:typesafeEnumMember value="CVE" name="CVE" />
+	        <jaxb:typesafeEnumMember value="CZK" name="CZK" />
+	        <jaxb:typesafeEnumMember value="DJF" name="DJF" />
+	        <jaxb:typesafeEnumMember value="DKK" name="DKK" />
+	        <jaxb:typesafeEnumMember value="DOP" name="DOP" />
+	        <jaxb:typesafeEnumMember value="DZD" name="DZD" />
+	        <jaxb:typesafeEnumMember value="EGP" name="EGP" />
+	        <jaxb:typesafeEnumMember value="ERN" name="ERN" />
+	        <jaxb:typesafeEnumMember value="ETB" name="ETB" />
+	        <jaxb:typesafeEnumMember value="EUR" name="EUR" />
+	        <jaxb:typesafeEnumMember value="FJD" name="FJD" />
+	        <jaxb:typesafeEnumMember value="FKP" name="FKP" />
+	        <jaxb:typesafeEnumMember value="GBP" name="GBP" />
+	        <jaxb:typesafeEnumMember value="GEL" name="GEL" />
+	        <jaxb:typesafeEnumMember value="GGP" name="GGP" />
+	        <jaxb:typesafeEnumMember value="GHS" name="GHS" />
+	        <jaxb:typesafeEnumMember value="GIP" name="GIP" />
+	        <jaxb:typesafeEnumMember value="GMD" name="GMD" />
+	        <jaxb:typesafeEnumMember value="GNF" name="GNF" />
+	        <jaxb:typesafeEnumMember value="GTQ" name="GTQ" />
+	        <jaxb:typesafeEnumMember value="GYD" name="GYD" />
+	        <jaxb:typesafeEnumMember value="HKD" name="HKD" />
+	        <jaxb:typesafeEnumMember value="HNL" name="HNL" />
+	        <jaxb:typesafeEnumMember value="HRK" name="HRK" />
+	        <jaxb:typesafeEnumMember value="HTG" name="HTG" />
+	        <jaxb:typesafeEnumMember value="HUF" name="HUF" />
+	        <jaxb:typesafeEnumMember value="IDR" name="IDR" />
+	        <jaxb:typesafeEnumMember value="ILS" name="ILS" />
+	        <jaxb:typesafeEnumMember value="IMP" name="IMP" />
+	        <jaxb:typesafeEnumMember value="INR" name="INR" />
+	        <jaxb:typesafeEnumMember value="IQD" name="IQD" />
+	        <jaxb:typesafeEnumMember value="IRR" name="IRR" />
+	        <jaxb:typesafeEnumMember value="ISK" name="ISK" />
+	        <jaxb:typesafeEnumMember value="JEP" name="JEP" />
+	        <jaxb:typesafeEnumMember value="JMD" name="JMD" />
+	        <jaxb:typesafeEnumMember value="JOD" name="JOD" />
+	        <jaxb:typesafeEnumMember value="JPY" name="JPY" />
+	        <jaxb:typesafeEnumMember value="KES" name="KES" />
+	        <jaxb:typesafeEnumMember value="KGS" name="KGS" />
+	        <jaxb:typesafeEnumMember value="KHR" name="KHR" />
+	        <jaxb:typesafeEnumMember value="KMF" name="KMF" />
+	        <jaxb:typesafeEnumMember value="KPW" name="KPW" />
+	        <jaxb:typesafeEnumMember value="KRW" name="KRW" />
+	        <jaxb:typesafeEnumMember value="KWD" name="KWD" />
+	        <jaxb:typesafeEnumMember value="KYD" name="KYD" />
+	        <jaxb:typesafeEnumMember value="KZT" name="KZT" />
+	        <jaxb:typesafeEnumMember value="LAK" name="LAK" />
+	        <jaxb:typesafeEnumMember value="LBP" name="LBP" />
+	        <jaxb:typesafeEnumMember value="LKR" name="LKR" />
+	        <jaxb:typesafeEnumMember value="LRD" name="LRD" />
+	        <jaxb:typesafeEnumMember value="LSL" name="LSL" />
+	        <jaxb:typesafeEnumMember value="LYD" name="LYD" />
+	        <jaxb:typesafeEnumMember value="MAD" name="MAD" />
+	        <jaxb:typesafeEnumMember value="MDL" name="MDL" />
+	        <jaxb:typesafeEnumMember value="MGA" name="MGA" />
+	        <jaxb:typesafeEnumMember value="MKD" name="MKD" />
+	        <jaxb:typesafeEnumMember value="MMK" name="MMK" />
+	        <jaxb:typesafeEnumMember value="MNT" name="MNT" />
+	        <jaxb:typesafeEnumMember value="MOP" name="MOP" />
+	        <jaxb:typesafeEnumMember value="MRO" name="MRO" />
+	        <jaxb:typesafeEnumMember value="MUR" name="MUR" />
+	        <jaxb:typesafeEnumMember value="MVR" name="MVR" />
+	        <jaxb:typesafeEnumMember value="MWK" name="MWK" />
+	        <jaxb:typesafeEnumMember value="MXN" name="MXN" />
+	        <jaxb:typesafeEnumMember value="MYR" name="MYR" />
+	        <jaxb:typesafeEnumMember value="MZN" name="MZN" />
+	        <jaxb:typesafeEnumMember value="NAD" name="NAD" />
+	        <jaxb:typesafeEnumMember value="NGN" name="NGN" />
+	        <jaxb:typesafeEnumMember value="NIO" name="NIO" />
+	        <jaxb:typesafeEnumMember value="NOK" name="NOK" />
+	        <jaxb:typesafeEnumMember value="NPR" name="NPR" />
+	        <jaxb:typesafeEnumMember value="NZD" name="NZD" />
+	        <jaxb:typesafeEnumMember value="OMR" name="OMR" />
+	        <jaxb:typesafeEnumMember value="PAB" name="PAB" />
+	        <jaxb:typesafeEnumMember value="PEN" name="PEN" />
+	        <jaxb:typesafeEnumMember value="PGK" name="PGK" />
+	        <jaxb:typesafeEnumMember value="PHP" name="PHP" />
+	        <jaxb:typesafeEnumMember value="PKR" name="PKR" />
+	        <jaxb:typesafeEnumMember value="PLN" name="PLN" />
+	        <jaxb:typesafeEnumMember value="PYG" name="PYG" />
+	        <jaxb:typesafeEnumMember value="QAR" name="QAR" />
+	        <jaxb:typesafeEnumMember value="RON" name="RON" />
+	        <jaxb:typesafeEnumMember value="RSD" name="RSD" />
+	        <jaxb:typesafeEnumMember value="RUB" name="RUB" />
+	        <jaxb:typesafeEnumMember value="RWF" name="RWF" />
+	        <jaxb:typesafeEnumMember value="SAR" name="SAR" />
+	        <jaxb:typesafeEnumMember value="SBD" name="SBD" />
+	        <jaxb:typesafeEnumMember value="SCR" name="SCR" />
+	        <jaxb:typesafeEnumMember value="SDG" name="SDG" />
+	        <jaxb:typesafeEnumMember value="SEK" name="SEK" />
+	        <jaxb:typesafeEnumMember value="SGD" name="SGD" />
+	        <jaxb:typesafeEnumMember value="SHP" name="SHP" />
+	        <jaxb:typesafeEnumMember value="SLL" name="SLL" />
+	        <jaxb:typesafeEnumMember value="SOS" name="SOS" />
+	        <jaxb:typesafeEnumMember value="SPL" name="SPL" />
+	        <jaxb:typesafeEnumMember value="SRD" name="SRD" />
+	        <jaxb:typesafeEnumMember value="STD" name="STD" />
+	        <jaxb:typesafeEnumMember value="SVC" name="SVC" />
+	        <jaxb:typesafeEnumMember value="SYP" name="SYP" />
+	        <jaxb:typesafeEnumMember value="SZL" name="SZL" />
+	        <jaxb:typesafeEnumMember value="THB" name="THB" />
+	        <jaxb:typesafeEnumMember value="TJS" name="TJS" />
+	        <jaxb:typesafeEnumMember value="TMT" name="TMT" />
+	        <jaxb:typesafeEnumMember value="TND" name="TND" />
+	        <jaxb:typesafeEnumMember value="TOP" name="TOP" />
+	        <jaxb:typesafeEnumMember value="TRY" name="TRY" />
+	        <jaxb:typesafeEnumMember value="TTD" name="TTD" />
+	        <jaxb:typesafeEnumMember value="TVD" name="TVD" />
+	        <jaxb:typesafeEnumMember value="TWD" name="TWD" />
+	        <jaxb:typesafeEnumMember value="TZS" name="TZS" />
+	        <jaxb:typesafeEnumMember value="UAH" name="UAH" />
+	        <jaxb:typesafeEnumMember value="UGX" name="UGX" />
+	        <jaxb:typesafeEnumMember value="USD" name="USD" />
+	        <jaxb:typesafeEnumMember value="UYU" name="UYU" />
+	        <jaxb:typesafeEnumMember value="UZS" name="UZS" />
+	        <jaxb:typesafeEnumMember value="VEF" name="VEF" />
+	        <jaxb:typesafeEnumMember value="VND" name="VND" />
+	        <jaxb:typesafeEnumMember value="VUV" name="VUV" />
+	        <jaxb:typesafeEnumMember value="WST" name="WST" />
+	        <jaxb:typesafeEnumMember value="XAF" name="XAF" />
+	        <jaxb:typesafeEnumMember value="XCD" name="XCD" />
+	        <jaxb:typesafeEnumMember value="XDR" name="XDR" />
+	        <jaxb:typesafeEnumMember value="XOF" name="XOF" />
+	        <jaxb:typesafeEnumMember value="XPF" name="XPF" />
+	        <jaxb:typesafeEnumMember value="YER" name="YER" />
+	        <jaxb:typesafeEnumMember value="ZAR" name="ZAR" />
+	        <jaxb:typesafeEnumMember value="ZMW" name="ZMW" />
+	        <jaxb:typesafeEnumMember value="ZWD" name="ZWD" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='NullableCurrency']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AED" name="AED" />
+	        <jaxb:typesafeEnumMember value="AFN" name="AFN" />
+	        <jaxb:typesafeEnumMember value="ALL" name="ALL" />
+	        <jaxb:typesafeEnumMember value="AMD" name="AMD" />
+	        <jaxb:typesafeEnumMember value="ANG" name="ANG" />
+	        <jaxb:typesafeEnumMember value="AOA" name="AOA" />
+	        <jaxb:typesafeEnumMember value="ARS" name="ARS" />
+	        <jaxb:typesafeEnumMember value="AUD" name="AUD" />
+	        <jaxb:typesafeEnumMember value="AWG" name="AWG" />
+	        <jaxb:typesafeEnumMember value="AZN" name="AZN" />
+	        <jaxb:typesafeEnumMember value="BAM" name="BAM" />
+	        <jaxb:typesafeEnumMember value="BBD" name="BBD" />
+	        <jaxb:typesafeEnumMember value="BDT" name="BDT" />
+	        <jaxb:typesafeEnumMember value="BGN" name="BGN" />
+	        <jaxb:typesafeEnumMember value="BHD" name="BHD" />
+	        <jaxb:typesafeEnumMember value="BIF" name="BIF" />
+	        <jaxb:typesafeEnumMember value="BMD" name="BMD" />
+	        <jaxb:typesafeEnumMember value="BND" name="BND" />
+	        <jaxb:typesafeEnumMember value="BOB" name="BOB" />
+	        <jaxb:typesafeEnumMember value="BRL" name="BRL" />
+	        <jaxb:typesafeEnumMember value="BSD" name="BSD" />
+	        <jaxb:typesafeEnumMember value="BTN" name="BTN" />
+	        <jaxb:typesafeEnumMember value="BWP" name="BWP" />
+	        <jaxb:typesafeEnumMember value="BYN" name="BYN" />
+	        <jaxb:typesafeEnumMember value="BYR" name="BYR" />
+	        <jaxb:typesafeEnumMember value="BZD" name="BZD" />
+	        <jaxb:typesafeEnumMember value="CAD" name="CAD" />
+	        <jaxb:typesafeEnumMember value="CDF" name="CDF" />
+	        <jaxb:typesafeEnumMember value="CHF" name="CHF" />
+	        <jaxb:typesafeEnumMember value="CLP" name="CLP" />
+	        <jaxb:typesafeEnumMember value="CNY" name="CNY" />
+	        <jaxb:typesafeEnumMember value="COP" name="COP" />
+	        <jaxb:typesafeEnumMember value="CRC" name="CRC" />
+	        <jaxb:typesafeEnumMember value="CUC" name="CUC" />
+	        <jaxb:typesafeEnumMember value="CUP" name="CUP" />
+	        <jaxb:typesafeEnumMember value="CVE" name="CVE" />
+	        <jaxb:typesafeEnumMember value="CZK" name="CZK" />
+	        <jaxb:typesafeEnumMember value="DJF" name="DJF" />
+	        <jaxb:typesafeEnumMember value="DKK" name="DKK" />
+	        <jaxb:typesafeEnumMember value="DOP" name="DOP" />
+	        <jaxb:typesafeEnumMember value="DZD" name="DZD" />
+	        <jaxb:typesafeEnumMember value="EGP" name="EGP" />
+	        <jaxb:typesafeEnumMember value="ERN" name="ERN" />
+	        <jaxb:typesafeEnumMember value="ETB" name="ETB" />
+	        <jaxb:typesafeEnumMember value="EUR" name="EUR" />
+	        <jaxb:typesafeEnumMember value="FJD" name="FJD" />
+	        <jaxb:typesafeEnumMember value="FKP" name="FKP" />
+	        <jaxb:typesafeEnumMember value="GBP" name="GBP" />
+	        <jaxb:typesafeEnumMember value="GEL" name="GEL" />
+	        <jaxb:typesafeEnumMember value="GGP" name="GGP" />
+	        <jaxb:typesafeEnumMember value="GHS" name="GHS" />
+	        <jaxb:typesafeEnumMember value="GIP" name="GIP" />
+	        <jaxb:typesafeEnumMember value="GMD" name="GMD" />
+	        <jaxb:typesafeEnumMember value="GNF" name="GNF" />
+	        <jaxb:typesafeEnumMember value="GTQ" name="GTQ" />
+	        <jaxb:typesafeEnumMember value="GYD" name="GYD" />
+	        <jaxb:typesafeEnumMember value="HKD" name="HKD" />
+	        <jaxb:typesafeEnumMember value="HNL" name="HNL" />
+	        <jaxb:typesafeEnumMember value="HRK" name="HRK" />
+	        <jaxb:typesafeEnumMember value="HTG" name="HTG" />
+	        <jaxb:typesafeEnumMember value="HUF" name="HUF" />
+	        <jaxb:typesafeEnumMember value="IDR" name="IDR" />
+	        <jaxb:typesafeEnumMember value="ILS" name="ILS" />
+	        <jaxb:typesafeEnumMember value="IMP" name="IMP" />
+	        <jaxb:typesafeEnumMember value="INR" name="INR" />
+	        <jaxb:typesafeEnumMember value="IQD" name="IQD" />
+	        <jaxb:typesafeEnumMember value="IRR" name="IRR" />
+	        <jaxb:typesafeEnumMember value="ISK" name="ISK" />
+	        <jaxb:typesafeEnumMember value="JEP" name="JEP" />
+	        <jaxb:typesafeEnumMember value="JMD" name="JMD" />
+	        <jaxb:typesafeEnumMember value="JOD" name="JOD" />
+	        <jaxb:typesafeEnumMember value="JPY" name="JPY" />
+	        <jaxb:typesafeEnumMember value="KES" name="KES" />
+	        <jaxb:typesafeEnumMember value="KGS" name="KGS" />
+	        <jaxb:typesafeEnumMember value="KHR" name="KHR" />
+	        <jaxb:typesafeEnumMember value="KMF" name="KMF" />
+	        <jaxb:typesafeEnumMember value="KPW" name="KPW" />
+	        <jaxb:typesafeEnumMember value="KRW" name="KRW" />
+	        <jaxb:typesafeEnumMember value="KWD" name="KWD" />
+	        <jaxb:typesafeEnumMember value="KYD" name="KYD" />
+	        <jaxb:typesafeEnumMember value="KZT" name="KZT" />
+	        <jaxb:typesafeEnumMember value="LAK" name="LAK" />
+	        <jaxb:typesafeEnumMember value="LBP" name="LBP" />
+	        <jaxb:typesafeEnumMember value="LKR" name="LKR" />
+	        <jaxb:typesafeEnumMember value="LRD" name="LRD" />
+	        <jaxb:typesafeEnumMember value="LSL" name="LSL" />
+	        <jaxb:typesafeEnumMember value="LYD" name="LYD" />
+	        <jaxb:typesafeEnumMember value="MAD" name="MAD" />
+	        <jaxb:typesafeEnumMember value="MDL" name="MDL" />
+	        <jaxb:typesafeEnumMember value="MGA" name="MGA" />
+	        <jaxb:typesafeEnumMember value="MKD" name="MKD" />
+	        <jaxb:typesafeEnumMember value="MMK" name="MMK" />
+	        <jaxb:typesafeEnumMember value="MNT" name="MNT" />
+	        <jaxb:typesafeEnumMember value="MOP" name="MOP" />
+	        <jaxb:typesafeEnumMember value="MRO" name="MRO" />
+	        <jaxb:typesafeEnumMember value="MUR" name="MUR" />
+	        <jaxb:typesafeEnumMember value="MVR" name="MVR" />
+	        <jaxb:typesafeEnumMember value="MWK" name="MWK" />
+	        <jaxb:typesafeEnumMember value="MXN" name="MXN" />
+	        <jaxb:typesafeEnumMember value="MYR" name="MYR" />
+	        <jaxb:typesafeEnumMember value="MZN" name="MZN" />
+	        <jaxb:typesafeEnumMember value="NAD" name="NAD" />
+	        <jaxb:typesafeEnumMember value="NGN" name="NGN" />
+	        <jaxb:typesafeEnumMember value="NIO" name="NIO" />
+	        <jaxb:typesafeEnumMember value="NOK" name="NOK" />
+	        <jaxb:typesafeEnumMember value="NPR" name="NPR" />
+	        <jaxb:typesafeEnumMember value="NZD" name="NZD" />
+	        <jaxb:typesafeEnumMember value="OMR" name="OMR" />
+	        <jaxb:typesafeEnumMember value="PAB" name="PAB" />
+	        <jaxb:typesafeEnumMember value="PEN" name="PEN" />
+	        <jaxb:typesafeEnumMember value="PGK" name="PGK" />
+	        <jaxb:typesafeEnumMember value="PHP" name="PHP" />
+	        <jaxb:typesafeEnumMember value="PKR" name="PKR" />
+	        <jaxb:typesafeEnumMember value="PLN" name="PLN" />
+	        <jaxb:typesafeEnumMember value="PYG" name="PYG" />
+	        <jaxb:typesafeEnumMember value="QAR" name="QAR" />
+	        <jaxb:typesafeEnumMember value="RON" name="RON" />
+	        <jaxb:typesafeEnumMember value="RSD" name="RSD" />
+	        <jaxb:typesafeEnumMember value="RUB" name="RUB" />
+	        <jaxb:typesafeEnumMember value="RWF" name="RWF" />
+	        <jaxb:typesafeEnumMember value="SAR" name="SAR" />
+	        <jaxb:typesafeEnumMember value="SBD" name="SBD" />
+	        <jaxb:typesafeEnumMember value="SCR" name="SCR" />
+	        <jaxb:typesafeEnumMember value="SDG" name="SDG" />
+	        <jaxb:typesafeEnumMember value="SEK" name="SEK" />
+	        <jaxb:typesafeEnumMember value="SGD" name="SGD" />
+	        <jaxb:typesafeEnumMember value="SHP" name="SHP" />
+	        <jaxb:typesafeEnumMember value="SLL" name="SLL" />
+	        <jaxb:typesafeEnumMember value="SOS" name="SOS" />
+	        <jaxb:typesafeEnumMember value="SPL" name="SPL" />
+	        <jaxb:typesafeEnumMember value="SRD" name="SRD" />
+	        <jaxb:typesafeEnumMember value="STD" name="STD" />
+	        <jaxb:typesafeEnumMember value="SVC" name="SVC" />
+	        <jaxb:typesafeEnumMember value="SYP" name="SYP" />
+	        <jaxb:typesafeEnumMember value="SZL" name="SZL" />
+	        <jaxb:typesafeEnumMember value="THB" name="THB" />
+	        <jaxb:typesafeEnumMember value="TJS" name="TJS" />
+	        <jaxb:typesafeEnumMember value="TMT" name="TMT" />
+	        <jaxb:typesafeEnumMember value="TND" name="TND" />
+	        <jaxb:typesafeEnumMember value="TOP" name="TOP" />
+	        <jaxb:typesafeEnumMember value="TRY" name="TRY" />
+	        <jaxb:typesafeEnumMember value="TTD" name="TTD" />
+	        <jaxb:typesafeEnumMember value="TVD" name="TVD" />
+	        <jaxb:typesafeEnumMember value="TWD" name="TWD" />
+	        <jaxb:typesafeEnumMember value="TZS" name="TZS" />
+	        <jaxb:typesafeEnumMember value="UAH" name="UAH" />
+	        <jaxb:typesafeEnumMember value="UGX" name="UGX" />
+	        <jaxb:typesafeEnumMember value="USD" name="USD" />
+	        <jaxb:typesafeEnumMember value="UYU" name="UYU" />
+	        <jaxb:typesafeEnumMember value="UZS" name="UZS" />
+	        <jaxb:typesafeEnumMember value="VEF" name="VEF" />
+	        <jaxb:typesafeEnumMember value="VND" name="VND" />
+	        <jaxb:typesafeEnumMember value="VUV" name="VUV" />
+	        <jaxb:typesafeEnumMember value="WST" name="WST" />
+	        <jaxb:typesafeEnumMember value="XAF" name="XAF" />
+	        <jaxb:typesafeEnumMember value="XCD" name="XCD" />
+	        <jaxb:typesafeEnumMember value="XDR" name="XDR" />
+	        <jaxb:typesafeEnumMember value="XOF" name="XOF" />
+	        <jaxb:typesafeEnumMember value="XPF" name="XPF" />
+	        <jaxb:typesafeEnumMember value="YER" name="YER" />
+	        <jaxb:typesafeEnumMember value="ZAR" name="ZAR" />
+	        <jaxb:typesafeEnumMember value="ZMW" name="ZMW" />
+	        <jaxb:typesafeEnumMember value="ZWD" name="ZWD" />
+	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ObjectiveType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AWARENESS" name="AWARENESS" />
+	        <jaxb:typesafeEnumMember value="CONSIDERATION" name="CONSIDERATION" />
+	        <jaxb:typesafeEnumMember value="VIDEO_VIEW" name="VIDEO_VIEW" />
+	        <jaxb:typesafeEnumMember value="WEB_CONVERSION" name="WEB_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="CATALOG_SALES" name="CATALOG_SALES" />
+	        <jaxb:typesafeEnumMember value="WEB_SESSIONS" name="WEB_SESSIONS" />
+	        <jaxb:typesafeEnumMember value="AWARENESS_RESERVED" name="AWARENESS_RESERVED" />
+	        <jaxb:typesafeEnumMember value="ENGAGEMENT" name="ENGAGEMENT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='PacingDeliveryType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="STANDARD" name="STANDARD" />
+	        <jaxb:typesafeEnumMember value="ACCELERATED" name="ACCELERATED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='PinPromotionSummaryStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="APPROVED" name="APPROVED" />
+	        <jaxb:typesafeEnumMember value="PAUSED" name="PAUSED" />
+	        <jaxb:typesafeEnumMember value="PENDING" name="PENDING" />
+	        <jaxb:typesafeEnumMember value="REJECTED" name="REJECTED" />
+	        <jaxb:typesafeEnumMember value="ADVERTISER_DISABLED" name="ADVERTISER_DISABLED" />
+	        <jaxb:typesafeEnumMember value="ARCHIVED" name="ARCHIVED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='PlacementGroupType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="ALL" name="ALL" />
+	        <jaxb:typesafeEnumMember value="SEARCH" name="SEARCH" />
+	        <jaxb:typesafeEnumMember value="BROWSE" name="BROWSE" />
+	        <jaxb:typesafeEnumMember value="OTHER" name="OTHER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ProductAvailabilityType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="IN_STOCK" name="IN_STOCK" />
+	        <jaxb:typesafeEnumMember value="OUT_OF_STOCK" name="OUT_OF_STOCK" />
+	        <jaxb:typesafeEnumMember value="PREORDER" name="PREORDER" />
+	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ProductGroupSummaryStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="RUNNING" name="RUNNING" />
+	        <jaxb:typesafeEnumMember value="PAUSED" name="PAUSED" />
+	        <jaxb:typesafeEnumMember value="EXCLUDED" name="EXCLUDED" />
+	        <jaxb:typesafeEnumMember value="ARCHIVED" name="ARCHIVED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportingColumnAsync']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="SPEND_IN_MICRO_DOLLAR" name="SPEND_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="PAID_IMPRESSION" name="PAID_IMPRESSION" />
+	        <jaxb:typesafeEnumMember value="CPC_IN_MICRO_DOLLAR" name="CPC_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="ECPC_IN_MICRO_DOLLAR" name="ECPC_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="CTR" name="CTR" />
+	        <jaxb:typesafeEnumMember value="ECTR" name="ECTR" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_NAME" name="CAMPAIGN_NAME" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_STATUS" name="CAMPAIGN_STATUS" />
+	        <jaxb:typesafeEnumMember value="AD_STATUS" name="AD_STATUS" />
+	        <jaxb:typesafeEnumMember value="PIN_PROMOTION_STATUS" name="PIN_PROMOTION_STATUS" />
+	        <jaxb:typesafeEnumMember value="PIN_ID" name="PIN_ID" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT" name="TOTAL_ENGAGEMENT" />
+	        <jaxb:typesafeEnumMember value="ENGAGEMENT_1" name="ENGAGEMENT_1" />
+	        <jaxb:typesafeEnumMember value="ENGAGEMENT_2" name="ENGAGEMENT_2" />
+	        <jaxb:typesafeEnumMember value="ECPM_IN_MICRO_DOLLAR" name="ECPM_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="CTR_2" name="CTR_2" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_ID" name="CAMPAIGN_ID" />
+	        <jaxb:typesafeEnumMember value="ADVERTISER_ID" name="ADVERTISER_ID" />
+	        <jaxb:typesafeEnumMember value="AD_ACCOUNT_ID" name="AD_ACCOUNT_ID" />
+	        <jaxb:typesafeEnumMember value="PIN_PROMOTION_ID" name="PIN_PROMOTION_ID" />
+	        <jaxb:typesafeEnumMember value="AD_ID" name="AD_ID" />
+	        <jaxb:typesafeEnumMember value="AD_GROUP_ID" name="AD_GROUP_ID" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_MANAGED_STATUS" name="CAMPAIGN_MANAGED_STATUS" />
+	        <jaxb:typesafeEnumMember value="CPM_IN_MICRO_DOLLAR" name="CPM_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="AD_GROUP_NAME" name="AD_GROUP_NAME" />
+	        <jaxb:typesafeEnumMember value="AD_GROUP_STATUS" name="AD_GROUP_STATUS" />
+	        <jaxb:typesafeEnumMember value="PRODUCT_GROUP_ID" name="PRODUCT_GROUP_ID" />
+	        <jaxb:typesafeEnumMember value="CLICKTHROUGH_1" name="CLICKTHROUGH_1" />
+	        <jaxb:typesafeEnumMember value="REPIN_1" name="REPIN_1" />
+	        <jaxb:typesafeEnumMember value="IMPRESSION_1" name="IMPRESSION_1" />
+	        <jaxb:typesafeEnumMember value="IMPRESSION_1_GROSS" name="IMPRESSION_1_GROSS" />
+	        <jaxb:typesafeEnumMember value="CLICKTHROUGH_1_GROSS" name="CLICKTHROUGH_1_GROSS" />
+	        <jaxb:typesafeEnumMember value="OUTBOUND_CLICK_1" name="OUTBOUND_CLICK_1" />
+	        <jaxb:typesafeEnumMember value="CLICKTHROUGH_2" name="CLICKTHROUGH_2" />
+	        <jaxb:typesafeEnumMember value="REPIN_2" name="REPIN_2" />
+	        <jaxb:typesafeEnumMember value="IMPRESSION_2" name="IMPRESSION_2" />
+	        <jaxb:typesafeEnumMember value="OUTBOUND_CLICK_2" name="OUTBOUND_CLICK_2" />
+	        <jaxb:typesafeEnumMember value="TOTAL_IMPRESSION_USER" name="TOTAL_IMPRESSION_USER" />
+	        <jaxb:typesafeEnumMember value="TOTAL_IMPRESSION_FREQUENCY" name="TOTAL_IMPRESSION_FREQUENCY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_PAGE_VISIT" name="TOTAL_ENGAGEMENT_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_SIGNUP" name="TOTAL_ENGAGEMENT_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_CHECKOUT" name="TOTAL_ENGAGEMENT_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_CUSTOM" name="TOTAL_ENGAGEMENT_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_ADD_TO_CART" name="TOTAL_ENGAGEMENT_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_LEAD" name="TOTAL_ENGAGEMENT_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_SEARCH" name="TOTAL_ENGAGEMENT_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_WATCH_VIDEO" name="TOTAL_ENGAGEMENT_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_VIEW_CATEGORY" name="TOTAL_ENGAGEMENT_VIEW_CATEGORY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_APP_INSTALL" name="TOTAL_ENGAGEMENT_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_UNKNOWN" name="TOTAL_ENGAGEMENT_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_PAGE_VISIT" name="TOTAL_CLICK_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_SIGNUP" name="TOTAL_CLICK_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_CHECKOUT" name="TOTAL_CLICK_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_CUSTOM" name="TOTAL_CLICK_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_ADD_TO_CART" name="TOTAL_CLICK_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_LEAD" name="TOTAL_CLICK_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_SEARCH" name="TOTAL_CLICK_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_WATCH_VIDEO" name="TOTAL_CLICK_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_VIEW_CATEGORY" name="TOTAL_CLICK_VIEW_CATEGORY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_APP_INSTALL" name="TOTAL_CLICK_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_UNKNOWN" name="TOTAL_CLICK_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_PAGE_VISIT" name="TOTAL_VIEW_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_SIGNUP" name="TOTAL_VIEW_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CHECKOUT" name="TOTAL_VIEW_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CUSTOM" name="TOTAL_VIEW_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_ADD_TO_CART" name="TOTAL_VIEW_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_LEAD" name="TOTAL_VIEW_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_SEARCH" name="TOTAL_VIEW_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_WATCH_VIDEO" name="TOTAL_VIEW_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_VIEW_CATEGORY" name="TOTAL_VIEW_VIEW_CATEGORY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_APP_INSTALL" name="TOTAL_VIEW_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_UNKNOWN" name="TOTAL_VIEW_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSIONS" name="TOTAL_CONVERSIONS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSIONS_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CONVERSIONS_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_PAGE_VISIT_QUANTITY" name="TOTAL_ENGAGEMENT_PAGE_VISIT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_SIGNUP_QUANTITY" name="TOTAL_ENGAGEMENT_SIGNUP_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_CHECKOUT_QUANTITY" name="TOTAL_ENGAGEMENT_CHECKOUT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_CUSTOM_QUANTITY" name="TOTAL_ENGAGEMENT_CUSTOM_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_ADD_TO_CART_QUANTITY" name="TOTAL_ENGAGEMENT_ADD_TO_CART_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_LEAD_QUANTITY" name="TOTAL_ENGAGEMENT_LEAD_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_SEARCH_QUANTITY" name="TOTAL_ENGAGEMENT_SEARCH_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_WATCH_VIDEO_QUANTITY" name="TOTAL_ENGAGEMENT_WATCH_VIDEO_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_VIEW_CATEGORY_QUANTITY" name="TOTAL_ENGAGEMENT_VIEW_CATEGORY_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ENGAGEMENT_UNKNOWN_QUANTITY" name="TOTAL_ENGAGEMENT_UNKNOWN_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_PAGE_VISIT_QUANTITY" name="TOTAL_CLICK_PAGE_VISIT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_SIGNUP_QUANTITY" name="TOTAL_CLICK_SIGNUP_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_CHECKOUT_QUANTITY" name="TOTAL_CLICK_CHECKOUT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_CUSTOM_QUANTITY" name="TOTAL_CLICK_CUSTOM_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_ADD_TO_CART_QUANTITY" name="TOTAL_CLICK_ADD_TO_CART_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_LEAD_QUANTITY" name="TOTAL_CLICK_LEAD_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_SEARCH_QUANTITY" name="TOTAL_CLICK_SEARCH_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_WATCH_VIDEO_QUANTITY" name="TOTAL_CLICK_WATCH_VIDEO_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_VIEW_CATEGORY_QUANTITY" name="TOTAL_CLICK_VIEW_CATEGORY_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICK_UNKNOWN_QUANTITY" name="TOTAL_CLICK_UNKNOWN_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_PAGE_VISIT_QUANTITY" name="TOTAL_VIEW_PAGE_VISIT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_SIGNUP_QUANTITY" name="TOTAL_VIEW_SIGNUP_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CHECKOUT_QUANTITY" name="TOTAL_VIEW_CHECKOUT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CUSTOM_QUANTITY" name="TOTAL_VIEW_CUSTOM_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_ADD_TO_CART_QUANTITY" name="TOTAL_VIEW_ADD_TO_CART_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_LEAD_QUANTITY" name="TOTAL_VIEW_LEAD_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_SEARCH_QUANTITY" name="TOTAL_VIEW_SEARCH_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_WATCH_VIDEO_QUANTITY" name="TOTAL_VIEW_WATCH_VIDEO_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_VIEW_CATEGORY_QUANTITY" name="TOTAL_VIEW_VIEW_CATEGORY_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_UNKNOWN_QUANTITY" name="TOTAL_VIEW_UNKNOWN_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSIONS_QUANTITY" name="TOTAL_CONVERSIONS_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="ONSITE_CHECKOUTS_1" name="ONSITE_CHECKOUTS_1" />
+	        <jaxb:typesafeEnumMember value="PIN_PROMOTION_NAME" name="PIN_PROMOTION_NAME" />
+	        <jaxb:typesafeEnumMember value="AD_NAME" name="AD_NAME" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_LIFETIME_SPEND_CAP" name="CAMPAIGN_LIFETIME_SPEND_CAP" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_DAILY_SPEND_CAP" name="CAMPAIGN_DAILY_SPEND_CAP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_PAGE_VISIT_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_PAGE_VISIT_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_PAGE_VISIT_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_PAGE_VISIT_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_PAGE_VISIT_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_PAGE_VISIT_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_PAGE_VISIT_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_SIGNUP_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_SIGNUP_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_SIGNUP_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_SIGNUP_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_SIGNUP_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_SIGNUP_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_SIGNUP_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_SIGNUP_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_SIGNUP_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_CHECKOUT_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_CHECKOUT_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_CHECKOUT_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_CHECKOUT_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_CHECKOUT_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_CHECKOUT_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_CHECKOUT_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_CHECKOUT_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_CHECKOUT_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_CUSTOM_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_CUSTOM_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_CUSTOM_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_CUSTOM_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_CUSTOM_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_CUSTOM_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_CUSTOM_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_CUSTOM_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_CUSTOM_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_ADD_TO_CART_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_ADD_TO_CART_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_ADD_TO_CART_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_ADD_TO_CART_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_ADD_TO_CART_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_ADD_TO_CART_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_ADD_TO_CART_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_ADD_TO_CART_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_ADD_TO_CART_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_LEAD_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_LEAD_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_LEAD_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_LEAD_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_LEAD_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_LEAD_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_LEAD_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_LEAD_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_LEAD_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_SEARCH_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_SEARCH_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_SEARCH_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_SEARCH_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_SEARCH_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_SEARCH_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_SEARCH_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_SEARCH_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_SEARCH_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_WATCH_VIDEO_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_WATCH_VIDEO_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_WATCH_VIDEO_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_WATCH_VIDEO_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_WATCH_VIDEO_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_WATCH_VIDEO_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_WATCH_VIDEO_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_WATCH_VIDEO_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_WATCH_VIDEO_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_VIEW_CATEGORY_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_VIEW_CATEGORY_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_VIEW_CATEGORY_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_VIEW_CATEGORY_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_VIEW_CATEGORY_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_VIEW_CATEGORY_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_VIEW_CATEGORY_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_VIEW_CATEGORY_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_VIEW_CATEGORY_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_APP_INSTALL_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_APP_INSTALL_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_APP_INSTALL_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_APP_INSTALL_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_APP_INSTALL_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_APP_INSTALL_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_APP_INSTALL_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_APP_INSTALL_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_APP_INSTALL_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_UNKNOWN_DESKTOP_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_DESKTOP_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_UNKNOWN_DESKTOP_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_DESKTOP_ACTION_TO_TABLET_CONVERSION" name="TOTAL_UNKNOWN_DESKTOP_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_MOBILE_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_UNKNOWN_MOBILE_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_MOBILE_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_UNKNOWN_MOBILE_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_MOBILE_ACTION_TO_TABLET_CONVERSION" name="TOTAL_UNKNOWN_MOBILE_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_TABLET_ACTION_TO_DESKTOP_CONVERSION" name="TOTAL_UNKNOWN_TABLET_ACTION_TO_DESKTOP_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_TABLET_ACTION_TO_MOBILE_CONVERSION" name="TOTAL_UNKNOWN_TABLET_ACTION_TO_MOBILE_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_TABLET_ACTION_TO_TABLET_CONVERSION" name="TOTAL_UNKNOWN_TABLET_ACTION_TO_TABLET_CONVERSION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT" name="TOTAL_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM" name="TOTAL_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD" name="TOTAL_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL" name="TOTAL_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_QUANTITY" name="TOTAL_CHECKOUT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="APP_INSTALL_COST_PER_ACTION" name="APP_INSTALL_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="VIDEO_3SEC_VIEWS_1" name="VIDEO_3SEC_VIEWS_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P100_COMPLETE_1" name="VIDEO_P100_COMPLETE_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P0_COMBINED_1" name="VIDEO_P0_COMBINED_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P25_COMBINED_1" name="VIDEO_P25_COMBINED_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P50_COMBINED_1" name="VIDEO_P50_COMBINED_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P75_COMBINED_1" name="VIDEO_P75_COMBINED_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P95_COMBINED_1" name="VIDEO_P95_COMBINED_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_MRC_VIEWS_1" name="VIDEO_MRC_VIEWS_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_3SEC_VIEWS_2" name="VIDEO_3SEC_VIEWS_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P100_COMPLETE_2" name="VIDEO_P100_COMPLETE_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P0_COMBINED_2" name="VIDEO_P0_COMBINED_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P25_COMBINED_2" name="VIDEO_P25_COMBINED_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P50_COMBINED_2" name="VIDEO_P50_COMBINED_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P75_COMBINED_2" name="VIDEO_P75_COMBINED_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_P95_COMBINED_2" name="VIDEO_P95_COMBINED_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_MRC_VIEWS_2" name="VIDEO_MRC_VIEWS_2" />
+	        <jaxb:typesafeEnumMember value="VIDEO_LENGTH" name="VIDEO_LENGTH" />
+	        <jaxb:typesafeEnumMember value="CPV_IN_MICRO_DOLLAR" name="CPV_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="CPCV_IN_MICRO_DOLLAR" name="CPCV_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="CPCV_P95_IN_MICRO_DOLLAR" name="CPCV_P95_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_3SEC_VIEWS" name="TOTAL_VIDEO_3SEC_VIEWS" />
+	        <jaxb:typesafeEnumMember value="VIDEO_AVG_WATCHTIME_IN_SECOND_1" name="VIDEO_AVG_WATCHTIME_IN_SECOND_1" />
+	        <jaxb:typesafeEnumMember value="VIDEO_AVG_WATCHTIME_IN_SECOND_2" name="VIDEO_AVG_WATCHTIME_IN_SECOND_2" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND" name="TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND" />
+	        <jaxb:typesafeEnumMember value="WEB_CHECKOUT_COST_PER_ACTION" name="WEB_CHECKOUT_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_CHECKOUT_ROAS" name="WEB_CHECKOUT_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT" name="TOTAL_WEB_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_CHECKOUT" name="TOTAL_WEB_CLICK_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_CHECKOUT" name="TOTAL_WEB_ENGAGEMENT_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CHECKOUT" name="TOTAL_WEB_VIEW_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="INAPP_CHECKOUT_COST_PER_ACTION" name="INAPP_CHECKOUT_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="INAPP_CHECKOUT_ROAS" name="INAPP_CHECKOUT_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT" name="TOTAL_INAPP_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_CHECKOUT" name="TOTAL_INAPP_CLICK_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_CHECKOUT" name="TOTAL_INAPP_ENGAGEMENT_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_CHECKOUT" name="TOTAL_INAPP_VIEW_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_CHECKOUT_COST_PER_ACTION" name="OFFLINE_CHECKOUT_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_CHECKOUT_ROAS" name="OFFLINE_CHECKOUT_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT" name="TOTAL_OFFLINE_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_CHECKOUT" name="TOTAL_OFFLINE_CLICK_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_CHECKOUT" name="TOTAL_OFFLINE_ENGAGEMENT_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_CHECKOUT" name="TOTAL_OFFLINE_VIEW_CHECKOUT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_ADD_TO_CART_COST_PER_ACTION" name="WEB_ADD_TO_CART_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_ADD_TO_CART_ROAS" name="WEB_ADD_TO_CART_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART" name="TOTAL_WEB_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_ADD_TO_CART" name="TOTAL_WEB_CLICK_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_ADD_TO_CART" name="TOTAL_WEB_ENGAGEMENT_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_ADD_TO_CART" name="TOTAL_WEB_VIEW_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="INAPP_ADD_TO_CART_COST_PER_ACTION" name="INAPP_ADD_TO_CART_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="INAPP_ADD_TO_CART_ROAS" name="INAPP_ADD_TO_CART_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART" name="TOTAL_INAPP_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_ADD_TO_CART" name="TOTAL_INAPP_CLICK_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_CLICK_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_ADD_TO_CART" name="TOTAL_INAPP_ENGAGEMENT_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_ENGAGEMENT_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_ADD_TO_CART" name="TOTAL_INAPP_VIEW_ADD_TO_CART" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_VIEW_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_PAGE_VISIT_COST_PER_ACTION" name="WEB_PAGE_VISIT_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_PAGE_VISIT_ROAS" name="WEB_PAGE_VISIT_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT" name="TOTAL_WEB_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_PAGE_VISIT" name="TOTAL_WEB_CLICK_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_PAGE_VISIT" name="TOTAL_WEB_ENGAGEMENT_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_PAGE_VISIT" name="TOTAL_WEB_VIEW_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_SIGNUP_COST_PER_ACTION" name="WEB_SIGNUP_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_SIGNUP_ROAS" name="WEB_SIGNUP_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP" name="TOTAL_WEB_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_SIGNUP" name="TOTAL_WEB_CLICK_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_SIGNUP" name="TOTAL_WEB_ENGAGEMENT_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_SIGNUP" name="TOTAL_WEB_VIEW_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="INAPP_SIGNUP_COST_PER_ACTION" name="INAPP_SIGNUP_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="INAPP_SIGNUP_ROAS" name="INAPP_SIGNUP_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP" name="TOTAL_INAPP_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_SIGNUP" name="TOTAL_INAPP_CLICK_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_SIGNUP" name="TOTAL_INAPP_ENGAGEMENT_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_SIGNUP" name="TOTAL_INAPP_VIEW_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_SIGNUP_COST_PER_ACTION" name="OFFLINE_SIGNUP_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_SIGNUP_ROAS" name="OFFLINE_SIGNUP_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP" name="TOTAL_OFFLINE_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_SIGNUP" name="TOTAL_OFFLINE_CLICK_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_SIGNUP" name="TOTAL_OFFLINE_ENGAGEMENT_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_SIGNUP" name="TOTAL_OFFLINE_VIEW_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_WATCH_VIDEO_COST_PER_ACTION" name="WEB_WATCH_VIDEO_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_WATCH_VIDEO_ROAS" name="WEB_WATCH_VIDEO_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO" name="TOTAL_WEB_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_WATCH_VIDEO" name="TOTAL_WEB_CLICK_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_WATCH_VIDEO" name="TOTAL_WEB_ENGAGEMENT_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_WATCH_VIDEO" name="TOTAL_WEB_VIEW_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_LEAD_COST_PER_ACTION" name="WEB_LEAD_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_LEAD_ROAS" name="WEB_LEAD_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD" name="TOTAL_WEB_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_LEAD" name="TOTAL_WEB_CLICK_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_LEAD" name="TOTAL_WEB_ENGAGEMENT_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_LEAD" name="TOTAL_WEB_VIEW_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_LEAD_COST_PER_ACTION" name="OFFLINE_LEAD_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_LEAD_ROAS" name="OFFLINE_LEAD_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD" name="TOTAL_OFFLINE_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_LEAD" name="TOTAL_OFFLINE_CLICK_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_CLICK_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_LEAD" name="TOTAL_OFFLINE_ENGAGEMENT_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_ENGAGEMENT_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_LEAD" name="TOTAL_OFFLINE_VIEW_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_VIEW_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_SEARCH_COST_PER_ACTION" name="WEB_SEARCH_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_SEARCH_ROAS" name="WEB_SEARCH_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH" name="TOTAL_WEB_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_SEARCH" name="TOTAL_WEB_CLICK_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_SEARCH" name="TOTAL_WEB_ENGAGEMENT_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_SEARCH" name="TOTAL_WEB_VIEW_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="INAPP_SEARCH_COST_PER_ACTION" name="INAPP_SEARCH_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="INAPP_SEARCH_ROAS" name="INAPP_SEARCH_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH" name="TOTAL_INAPP_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_SEARCH" name="TOTAL_INAPP_CLICK_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_CLICK_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_SEARCH" name="TOTAL_INAPP_ENGAGEMENT_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_ENGAGEMENT_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_SEARCH" name="TOTAL_INAPP_VIEW_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_VIEW_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_VIEW_CATEGORY_COST_PER_ACTION" name="WEB_VIEW_CATEGORY_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_VIEW_CATEGORY_ROAS" name="WEB_VIEW_CATEGORY_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY" name="TOTAL_WEB_VIEW_CATEGORY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_VIEW_CATEGORY" name="TOTAL_WEB_CLICK_VIEW_CATEGORY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_VIEW_CATEGORY" name="TOTAL_WEB_ENGAGEMENT_VIEW_CATEGORY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_VIEW_CATEGORY" name="TOTAL_WEB_VIEW_VIEW_CATEGORY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_CUSTOM_COST_PER_ACTION" name="WEB_CUSTOM_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_CUSTOM_ROAS" name="WEB_CUSTOM_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM" name="TOTAL_WEB_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_CUSTOM" name="TOTAL_WEB_CLICK_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_CUSTOM" name="TOTAL_WEB_ENGAGEMENT_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CUSTOM" name="TOTAL_WEB_VIEW_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_CUSTOM_COST_PER_ACTION" name="OFFLINE_CUSTOM_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_CUSTOM_ROAS" name="OFFLINE_CUSTOM_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM" name="TOTAL_OFFLINE_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_CUSTOM" name="TOTAL_OFFLINE_CLICK_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_CLICK_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_CUSTOM" name="TOTAL_OFFLINE_ENGAGEMENT_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_ENGAGEMENT_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_CUSTOM" name="TOTAL_OFFLINE_VIEW_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_VIEW_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="WEB_UNKNOWN_COST_PER_ACTION" name="WEB_UNKNOWN_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="WEB_UNKNOWN_ROAS" name="WEB_UNKNOWN_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN" name="TOTAL_WEB_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_UNKNOWN" name="TOTAL_WEB_CLICK_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_UNKNOWN" name="TOTAL_WEB_ENGAGEMENT_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_UNKNOWN" name="TOTAL_WEB_VIEW_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WEB_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="INAPP_UNKNOWN_COST_PER_ACTION" name="INAPP_UNKNOWN_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="INAPP_UNKNOWN_ROAS" name="INAPP_UNKNOWN_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN" name="TOTAL_INAPP_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_UNKNOWN" name="TOTAL_INAPP_CLICK_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_UNKNOWN" name="TOTAL_INAPP_ENGAGEMENT_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_UNKNOWN" name="TOTAL_INAPP_VIEW_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_UNKNOWN_COST_PER_ACTION" name="OFFLINE_UNKNOWN_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="OFFLINE_UNKNOWN_ROAS" name="OFFLINE_UNKNOWN_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN" name="TOTAL_OFFLINE_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_UNKNOWN" name="TOTAL_OFFLINE_CLICK_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_UNKNOWN" name="TOTAL_OFFLINE_ENGAGEMENT_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_UNKNOWN" name="TOTAL_OFFLINE_VIEW_UNKNOWN" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" name="TOTAL_OFFLINE_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="INAPP_APP_INSTALL_COST_PER_ACTION" name="INAPP_APP_INSTALL_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="INAPP_APP_INSTALL_ROAS" name="INAPP_APP_INSTALL_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_APP_INSTALL" name="TOTAL_INAPP_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_APP_INSTALL" name="TOTAL_INAPP_CLICK_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CLICK_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_CLICK_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_APP_INSTALL" name="TOTAL_INAPP_ENGAGEMENT_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ENGAGEMENT_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_ENGAGEMENT_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_APP_INSTALL" name="TOTAL_INAPP_VIEW_APP_INSTALL" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_INAPP_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="IDEA_PIN_PRODUCT_TAG_VISIT_1" name="IDEA_PIN_PRODUCT_TAG_VISIT_1" />
+	        <jaxb:typesafeEnumMember value="IDEA_PIN_PRODUCT_TAG_VISIT_2" name="IDEA_PIN_PRODUCT_TAG_VISIT_2" />
+	        <jaxb:typesafeEnumMember value="REPIN_RATE" name="REPIN_RATE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_P95_COMBINED" name="TOTAL_VIDEO_P95_COMBINED" />
+	        <jaxb:typesafeEnumMember value="AD_GROUP_ENTITY_STATUS" name="AD_GROUP_ENTITY_STATUS" />
+	        <jaxb:typesafeEnumMember value="ECPCV_P95_IN_DOLLAR" name="ECPCV_P95_IN_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="ENGAGEMENT_RATE" name="ENGAGEMENT_RATE" />
+	        <jaxb:typesafeEnumMember value="PAGE_VISIT_COST_PER_ACTION" name="PAGE_VISIT_COST_PER_ACTION" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT" name="TOTAL_PAGE_VISIT" />
+	        <jaxb:typesafeEnumMember value="CHECKOUT_ROAS" name="CHECKOUT_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="ECPCV_IN_DOLLAR" name="ECPCV_IN_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_P75_COMBINED" name="TOTAL_VIDEO_P75_COMBINED" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_P50_COMBINED" name="TOTAL_VIDEO_P50_COMBINED" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP" name="TOTAL_SIGNUP" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_P0_COMBINED" name="TOTAL_VIDEO_P0_COMBINED" />
+	        <jaxb:typesafeEnumMember value="SPEND_IN_DOLLAR" name="SPEND_IN_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="EENGAGEMENT_RATE" name="EENGAGEMENT_RATE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_P25_COMBINED" name="TOTAL_VIDEO_P25_COMBINED" />
+	        <jaxb:typesafeEnumMember value="CPM_IN_DOLLAR" name="CPM_IN_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="ECPV_IN_DOLLAR" name="ECPV_IN_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CLICKTHROUGH" name="TOTAL_CLICKTHROUGH" />
+	        <jaxb:typesafeEnumMember value="ECPE_IN_DOLLAR" name="ECPE_IN_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_P100_COMPLETE" name="TOTAL_VIDEO_P100_COMPLETE" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_ENTITY_STATUS" name="CAMPAIGN_ENTITY_STATUS" />
+	        <jaxb:typesafeEnumMember value="PAGE_VISIT_ROAS" name="PAGE_VISIT_ROAS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_REPIN_RATE" name="TOTAL_REPIN_RATE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_MRC_VIEWS" name="TOTAL_VIDEO_MRC_VIEWS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT" name="TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT" />
+	        <jaxb:typesafeEnumMember value="ECPC_IN_DOLLAR" name="ECPC_IN_DOLLAR" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+
+</jaxws:bindings>

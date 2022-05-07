@@ -1,0 +1,14 @@
+# openapi::Board
+
+Board
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **character** |  | [optional] [readonly] 
+**name** | **character** |  | 
+**description** | **character** |  | [optional] 
+**owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
+**privacy** | **character** | Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt; | [optional] [default to &#39;PUBLIC&#39;]
+
+

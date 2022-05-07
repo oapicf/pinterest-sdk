@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Currency Codes from ISO 4217",
+  "name": "Currency",
+  "symbols": [
+    "UNK",
+    "USD",
+    "GBP",
+    "CAD",
+    "EUR",
+    "AUD",
+    "NZD",
+    "SEK",
+    "ILS",
+    "CHF",
+    "HKD",
+    "JPY",
+    "SGD",
+    "KRW",
+    "NOK",
+    "DKK",
+    "PLN",
+    "RON",
+    "HUF",
+    "CZK",
+    "BRL",
+    "MXN",
+    "ARS",
+    "CLP",
+    "COP"
+  ]
+}

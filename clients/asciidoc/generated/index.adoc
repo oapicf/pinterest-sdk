@@ -1,0 +1,10621 @@
+= Pinterest REST API
+pinterest-api@pinterest.com
+5.3.0
+:toc: left
+:numbered:
+:toclevels: 3
+:source-highlighter: highlightjs
+:keywords: openapi, rest, Pinterest REST API
+:specDir: 
+:snippetDir: 
+:generator-template: v1 2019-12-20
+:info-url: https://developers.pinterest.com/
+:app-name: Pinterest REST API
+
+[abstract]
+.Abstract
+Pinterest's REST API
+
+
+// markup not found, no include::{specDir}intro.adoc[opts=optional]
+
+
+== Access
+
+* *HTTP Basic* Authentication _basic_
+
+
+
+* *OAuth*  AuthorizationUrl: _https://www.pinterest.com/oauth/_, TokenUrl:   _https://api.pinterest.com/v5/oauth/token_ 
+
+
+
+== Endpoints
+
+
+[.AdAccounts]
+=== AdAccounts
+
+
+[.adAccount/analytics]
+==== adAccount/analytics
+
+`GET /ad_accounts/{ad_account_id}/analytics`
+
+Get ad account analytics
+
+===== Description
+
+Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/analytics/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| start_date
+| Metric report start date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| end_date
+| Metric report end date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| columns
+| Columns to retrieve. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned <<String>>
+| X
+| null
+| 
+
+| granularity
+| Granularity 
+| X
+| null
+| 
+
+| click_window_days
+| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| engagement_window_days
+| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| view_window_days
+| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. 
+| -
+| 1
+| 
+
+| conversion_report_time
+| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. 
+| -
+| TIME_OF_AD_ACTION
+| 
+
+|===
+
+
+===== Return Type
+
+
+<<List>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+| List[<<object>>] 
+
+
+| 400
+| Invalid ad account analytics parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/analytics/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/analytics/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/analytics/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/analytics/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.adAccounts/list]
+==== adAccounts/list
+
+`GET /ad_accounts`
+
+List ad accounts
+
+===== Description
+
+Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
+
+
+// markup not found, no include::{specDir}ad_accounts/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+| include_shared_accounts
+| Include shared ad accounts 
+| -
+| true
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Paginated>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.adGroups/analytics]
+==== adGroups/analytics
+
+`GET /ad_accounts/{ad_account_id}/ad_groups/analytics`
+
+Get ad group analytics
+
+===== Description
+
+Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ad_groups/analytics/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| start_date
+| Metric report start date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| end_date
+| Metric report end date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| ad_group_ids
+| List of Ad group Ids to use to filter the results. <<String>>
+| X
+| null
+| 
+
+| columns
+| Columns to retrieve. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned <<String>>
+| X
+| null
+| 
+
+| granularity
+| Granularity 
+| X
+| null
+| 
+
+| click_window_days
+| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| engagement_window_days
+| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| view_window_days
+| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. 
+| -
+| 1
+| 
+
+| conversion_report_time
+| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. 
+| -
+| TIME_OF_AD_ACTION
+| 
+
+|===
+
+
+===== Return Type
+
+
+<<List>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+| List[<<object>>] 
+
+
+| 400
+| Invalid ad account group analytics parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ad_groups/analytics/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ad_groups/analytics/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/ad_groups/analytics/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ad_groups/analytics/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.adGroups/list]
+==== adGroups/list
+
+`GET /ad_accounts/{ad_account_id}/ad_groups`
+
+List ad groups
+
+===== Description
+
+Get a list of the ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ad_groups/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| campaign_ids
+| List of Campaign Ids to use to filter the results. <<String>>
+| -
+| null
+| 
+
+| ad_group_ids
+| List of Ad group Ids to use to filter the results. <<String>>
+| -
+| null
+| 
+
+| entity_statuses
+| Entity status <<String>>
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+| order
+| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. 
+| -
+| null
+| 
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| translate_interests_to_names
+| Return interests as text names (if value is true) rather than topic IDs. 
+| -
+| false
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<Paginated>>
+
+
+| 400
+| Invalid ad account group parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ad_groups/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ad_groups/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/ad_groups/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ad_groups/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.ads/analytics]
+==== ads/analytics
+
+`GET /ad_accounts/{ad_account_id}/ads/analytics`
+
+Get ad analytics
+
+===== Description
+
+Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ads/analytics/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| start_date
+| Metric report start date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| end_date
+| Metric report end date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| ad_ids
+| List of Ad Ids to use to filter the results. <<String>>
+| X
+| null
+| 
+
+| columns
+| Columns to retrieve. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned <<String>>
+| X
+| null
+| 
+
+| granularity
+| Granularity 
+| X
+| null
+| 
+
+| click_window_days
+| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| engagement_window_days
+| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| view_window_days
+| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. 
+| -
+| 1
+| 
+
+| conversion_report_time
+| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. 
+| -
+| TIME_OF_AD_ACTION
+| 
+
+|===
+
+
+===== Return Type
+
+
+<<List>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+| List[<<object>>] 
+
+
+| 400
+| Invalid ad account ads analytics parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ads/analytics/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ads/analytics/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/ads/analytics/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ads/analytics/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.ads/list]
+==== ads/list
+
+`GET /ad_accounts/{ad_account_id}/ads`
+
+List ads
+
+===== Description
+
+Get a list of the ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ads/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| campaign_ids
+| List of Campaign Ids to use to filter the results. <<String>>
+| -
+| null
+| 
+
+| ad_group_ids
+| List of Ad group Ids to use to filter the results. <<String>>
+| -
+| null
+| 
+
+| ad_ids
+| List of Ad Ids to use to filter the results. <<String>>
+| -
+| null
+| 
+
+| entity_statuses
+| Entity status <<String>>
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+| order
+| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. 
+| -
+| null
+| 
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<Paginated>>
+
+
+| 400
+| Invalid ad account ads parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ads/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/ads/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/ads/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/ads/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.analytics/createReport]
+==== analytics/createReport
+
+`POST /ad_accounts/{ad_account_id}/reports`
+
+Create async request for an account analytics report
+
+===== Description
+
+This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/reports/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| AdsAnalyticsCreateAsyncRequest
+|  <<AdsAnalyticsCreateAsyncRequest>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<AdsAnalyticsCreateAsyncResponse>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<AdsAnalyticsCreateAsyncResponse>>
+
+
+| 400
+| Invalid ad account ads analytics parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/reports/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/reports/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/reports/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/reports/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.analytics/getReport]
+==== analytics/getReport
+
+`GET /ad_accounts/{ad_account_id}/reports`
+
+Get the account analytics report created by the async call
+
+===== Description
+
+This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report and it's valid for an hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/reports/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| token
+| Token returned from the post request creation call 
+| X
+| null
+| 
+
+|===
+
+
+===== Return Type
+
+<<AdsAnalyticsGetAsyncResponse>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<AdsAnalyticsGetAsyncResponse>>
+
+
+| 400
+| Invalid ad account ads analytics parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/reports/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/reports/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/reports/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/reports/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.campaigns/analytics]
+==== campaigns/analytics
+
+`GET /ad_accounts/{ad_account_id}/campaigns/analytics`
+
+Get campaign analytics
+
+===== Description
+
+Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/campaigns/analytics/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| start_date
+| Metric report start date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| end_date
+| Metric report end date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| campaign_ids
+| List of Campaign Ids to use to filter the results. <<String>>
+| X
+| null
+| 
+
+| columns
+| Columns to retrieve. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned <<String>>
+| X
+| null
+| 
+
+| granularity
+| Granularity 
+| X
+| null
+| 
+
+| click_window_days
+| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| engagement_window_days
+| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| view_window_days
+| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. 
+| -
+| 1
+| 
+
+| conversion_report_time
+| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. 
+| -
+| TIME_OF_AD_ACTION
+| 
+
+|===
+
+
+===== Return Type
+
+
+<<List>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+| List[<<object>>] 
+
+
+| 400
+| Invalid ad account campaign analytics parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/campaigns/analytics/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/campaigns/analytics/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/campaigns/analytics/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/campaigns/analytics/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.campaigns/list]
+==== campaigns/list
+
+`GET /ad_accounts/{ad_account_id}/campaigns`
+
+List campaigns
+
+===== Description
+
+Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/campaigns/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| campaign_ids
+| List of Campaign Ids to use to filter the results. <<String>>
+| -
+| null
+| 
+
+| entity_statuses
+| Entity status <<String>>
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+| order
+| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. 
+| -
+| null
+| 
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<Paginated>>
+
+
+| 400
+| Invalid ad account campaign parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/campaigns/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/campaigns/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/campaigns/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/campaigns/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.productGroups/analytics]
+==== productGroups/analytics
+
+`GET /ad_accounts/{ad_account_id}/product_groups/analytics`
+
+Get product group analytics
+
+===== Description
+
+Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/product_groups/analytics/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| start_date
+| Metric report start date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| end_date
+| Metric report end date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| product_group_ids
+| List of Product group Ids to use to filter the results. <<String>>
+| X
+| null
+| 
+
+| columns
+| Columns to retrieve. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned <<String>>
+| X
+| null
+| 
+
+| granularity
+| Granularity 
+| X
+| null
+| 
+
+| click_window_days
+| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| engagement_window_days
+| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. 
+| -
+| 30
+| 
+
+| view_window_days
+| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. 
+| -
+| 1
+| 
+
+| conversion_report_time
+| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. 
+| -
+| TIME_OF_AD_ACTION
+| 
+
+|===
+
+
+===== Return Type
+
+
+<<List>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+| List[<<object>>] 
+
+
+| 400
+| Invalid ad account ads analytics parameters.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/product_groups/analytics/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}ad_accounts/\{ad_account_id\}/product_groups/analytics/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :ad_accounts/{ad_account_id}/product_groups/analytics/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}ad_accounts/\{ad_account_id\}/product_groups/analytics/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Boards]
+=== Boards
+
+
+[.boardSections/create]
+==== boardSections/create
+
+`POST /boards/{board_id}/sections`
+
+Create board section
+
+===== Description
+
+Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| BoardSection
+| Create a board section. <<BoardSection>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<BoardSection>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| response
+|  <<BoardSection>>
+
+
+| 400
+| Invalid board section parameters.
+|  <<Error>>
+
+
+| 403
+| Not authorized to create board sections.
+|  <<Error>>
+
+
+| 409
+| Could not get exclusive access to the board to create a new section.
+|  <<Error>>
+
+
+| 500
+| Could not create a new board section.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/sections/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boardSections/delete]
+==== boardSections/delete
+
+`DELETE /boards/{board_id}/sections/{section_id}`
+
+Delete board section
+
+===== Description
+
+Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/\{section_id\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+| section_id
+| Unique identifier of a board section. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| Board section deleted successfully
+|  <<>>
+
+
+| 403
+| Not authorized to delete board section.
+|  <<Error>>
+
+
+| 404
+| Board section not found.
+|  <<Error>>
+
+
+| 409
+| Board section conflict.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/\{section_id\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/\{section_id\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/sections/{section_id}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/\{section_id\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boardSections/list]
+==== boardSections/list
+
+`GET /boards/{board_id}/sections`
+
+List board sections
+
+===== Description
+
+Get a list of all board sections from a board owned by the \"operation user_account\" - or a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Paginated>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/sections/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boardSections/listPins]
+==== boardSections/listPins
+
+`GET /boards/{board_id}/sections/{section_id}/pins`
+
+List Pins on board section
+
+===== Description
+
+Get a list of the Pins on a board section of a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/\{section_id\}/pins/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+| section_id
+| Unique identifier of a board section. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Paginated>>
+
+
+| 403
+| Not authorized to access Pins on board section.
+|  <<Error>>
+
+
+| 404
+| Board or section not found.
+|  <<Error>>
+
+
+| 409
+| Board section conflict.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/\{section_id\}/pins/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/\{section_id\}/pins/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/sections/{section_id}/pins/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/\{section_id\}/pins/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boardSections/update]
+==== boardSections/update
+
+`PATCH /boards/{board_id}/sections/{section_id}`
+
+Update board section
+
+===== Description
+
+Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/\{section_id\}/PATCH/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+| section_id
+| Unique identifier of a board section. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| BoardSection
+| Update a board section. <<BoardSection>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<BoardSection>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<BoardSection>>
+
+
+| 400
+| Invalid board section parameters.
+|  <<Error>>
+
+
+| 403
+| Not authorized to update board section.
+|  <<Error>>
+
+
+| 409
+| Board section conflict.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/\{section_id\}/PATCH/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/sections/\{section_id\}/PATCH/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/sections/{section_id}/PATCH/PATCH.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/sections/\{section_id\}/PATCH/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boards/create]
+==== boards/create
+
+`POST /boards`
+
+Create board
+
+===== Description
+
+Create a board owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| Board
+| Create a board using a single board json object. <<Board>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<Board>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| response
+|  <<Board>>
+
+
+| 400
+| The board name is invalid or duplicated.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boards/delete]
+==== boards/delete
+
+`DELETE /boards/{board_id}`
+
+Delete board
+
+===== Description
+
+Delete a board owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| Board deleted successfully
+|  <<>>
+
+
+| 403
+| Not authorized to delete the board.
+|  <<Error>>
+
+
+| 404
+| Board not found.
+|  <<Error>>
+
+
+| 409
+| Could not get exclusive access to delete the board.
+|  <<Error>>
+
+
+| 429
+| This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boards/get]
+==== boards/get
+
+`GET /boards/{board_id}`
+
+Get board
+
+===== Description
+
+Get a board owned by the operation user_account - or a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+<<Board>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Board>>
+
+
+| 404
+| Board not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boards/list]
+==== boards/list
+
+`GET /boards`
+
+List boards
+
+===== Description
+
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator  Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+
+
+// markup not found, no include::{specDir}boards/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+| privacy
+| Privacy setting for a board. 
+| -
+| null
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Paginated>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boards/listPins]
+==== boards/listPins
+
+`GET /boards/{board_id}/pins`
+
+List Pins on board
+
+===== Description
+
+Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/pins/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Paginated>>
+
+
+| 404
+| Board not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/pins/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/pins/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/pins/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/pins/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.boards/update]
+==== boards/update
+
+`PATCH /boards/{board_id}`
+
+Update board
+
+===== Description
+
+Update a board owned by the \"operating user_account\".
+
+
+// markup not found, no include::{specDir}boards/\{board_id\}/PATCH/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| board_id
+| Unique identifier of a board. 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| BoardUpdate
+| Update a board. <<BoardUpdate>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<Board>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Board>>
+
+
+| 400
+| Invalid board parameters.
+|  <<Error>>
+
+
+| 403
+| Not authorized to update the board.
+|  <<Error>>
+
+
+| 429
+| This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/PATCH/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}boards/\{board_id\}/PATCH/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :boards/{board_id}/PATCH/PATCH.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}boards/\{board_id\}/PATCH/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Catalogs]
+=== Catalogs
+
+
+[.catalogsProductGroups/create]
+==== catalogsProductGroups/create
+
+`POST /catalogs/product_groups`
+
+Create product group
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Create product group to use in Catalogs.
+
+
+// markup not found, no include::{specDir}catalogs/product_groups/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| CatalogsProductGroupCreateRequest
+| Request object used to created a catalogs product group. <<CatalogsProductGroupCreateRequest>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+
+<<Object>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| Success
+|  <<Object>>
+
+
+| 400
+| Invalid body.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 403
+| Forbidden. Account not approved for feed mutations yet.
+|  <<Error>>
+
+
+| 409
+| Conflict. Can&#39;t create this catalogs product group with this value.
+|  <<Error>>
+
+
+| 0
+| Unexpected error.
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/product_groups/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/product_groups/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.catalogsProductGroups/delete]
+==== catalogsProductGroups/delete
+
+`DELETE /catalogs/product_groups/{product_group_id}`
+
+Delete product group
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Delete a product group from being in use in Catalogs.
+
+
+// markup not found, no include::{specDir}catalogs/product_groups/\{product_group_id\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| product_group_id
+| Unique identifier of a product group 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| Catalogs Product Group deleted successfully.
+|  <<>>
+
+
+| 400
+| Invalid catalogs product group id parameters.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 403
+| Forbidden. Account not approved for feed mutations yet.
+|  <<Error>>
+
+
+| 404
+| Catalogs product group not found.
+|  <<Error>>
+
+
+| 409
+| Conflict. Can&#39;t delete this catalogs product group.
+|  <<Error>>
+
+
+| 0
+| Unexpected error.
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/\{product_group_id\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/\{product_group_id\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/product_groups/{product_group_id}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/product_groups/\{product_group_id\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.catalogsProductGroups/list]
+==== catalogsProductGroups/list
+
+`GET /catalogs/product_groups`
+
+Get product groups list
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Get a list of product groups for a given Catalogs Feed Id.
+
+
+// markup not found, no include::{specDir}catalogs/product_groups/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| feed_id
+| Unique identifier of a feed 
+| X
+| null
+| /^\\d+$/
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<Paginated>>
+
+
+| 400
+| Invalid feed parameters.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 403
+| Forbidden. Account not approved for feed mutations yet.
+|  <<Error>>
+
+
+| 404
+| Data feed not found.
+|  <<Error>>
+
+
+| 409
+| Conflict. Can&#39;t create this catalogs product group with this value.
+|  <<Error>>
+
+
+| 0
+| Unexpected error.
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/product_groups/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/product_groups/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.catalogsProductGroups/update]
+==== catalogsProductGroups/update
+
+`PATCH /catalogs/product_groups/{product_group_id}`
+
+Update product group
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Update product group to use in Catalogs.
+
+
+// markup not found, no include::{specDir}catalogs/product_groups/\{product_group_id\}/PATCH/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| product_group_id
+| Unique identifier of a product group 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| CatalogsProductGroupUpdateRequest
+| Request object used to Update a catalogs product group. <<CatalogsProductGroupUpdateRequest>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<CatalogsProductGroup>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<CatalogsProductGroup>>
+
+
+| 400
+| Invalid parameters.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 404
+| Catalogs product group not found.
+|  <<Error>>
+
+
+| 409
+| Conflict. Can&#39;t update this catalogs product group to this value.
+|  <<Error>>
+
+
+| 0
+| Unexpected error.
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/\{product_group_id\}/PATCH/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/product_groups/\{product_group_id\}/PATCH/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/product_groups/{product_group_id}/PATCH/PATCH.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/product_groups/\{product_group_id\}/PATCH/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.feedProcessingResults/list]
+==== feedProcessingResults/list
+
+`GET /catalogs/feeds/{feed_id}/processing_results`
+
+List processing results for a given feed
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Fetch a feed processing results owned by the owner user account.
+
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/processing_results/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| feed_id
+| Unique identifier of a feed 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<Paginated>>
+
+
+| 400
+| Invalid parameters.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 404
+| Feed not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error.
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/processing_results/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/processing_results/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/feeds/{feed_id}/processing_results/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/processing_results/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.feeds/create]
+==== feeds/create
+
+`POST /catalogs/feeds`
+
+Create feed
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Create a new feed owned by the \"operating user_account\".
+
+
+// markup not found, no include::{specDir}catalogs/feeds/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| CatalogsFeedsCreateRequest
+| Request object used to created a feed. <<CatalogsFeedsCreateRequest>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<CatalogsFeed>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| Success
+|  <<CatalogsFeed>>
+
+
+| 400
+| Invalid feed parameters.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 403
+| Business account required.
+|  <<Error>>
+
+
+| 409
+| User website required.
+|  <<Error>>
+
+
+| 422
+| Unique feed name is required.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/feeds/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/feeds/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.feeds/delete]
+==== feeds/delete
+
+`DELETE /catalogs/feeds/{feed_id}`
+
+Delete feed
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Delete a feed owned by the \"operating user_account\".
+
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| feed_id
+| Unique identifier of a feed 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| Feed deleted successfully.
+|  <<>>
+
+
+| 400
+| Invalid feed parameters.
+|  <<Error>>
+
+
+| 403
+| Forbidden. Account not approved for feed mutations yet.
+|  <<Error>>
+
+
+| 404
+| Data feed not found.
+|  <<Error>>
+
+
+| 409
+| Conflict. Can&#39;t delete a feed with active promotions.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/feeds/{feed_id}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.feeds/get]
+==== feeds/get
+
+`GET /catalogs/feeds/{feed_id}`
+
+Get feed
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Get a single feed owned by the \"operating user_account\".
+
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| feed_id
+| Unique identifier of a feed 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+<<CatalogsFeed>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<CatalogsFeed>>
+
+
+| 400
+| Invalid feed parameters.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 404
+| Data feed not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error.
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/feeds/{feed_id}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.feeds/list]
+==== feeds/list
+
+`GET /catalogs/feeds`
+
+List feeds
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Fetch feeds owned by the \"operating user_account\".
+
+
+// markup not found, no include::{specDir}catalogs/feeds/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<Paginated>>
+
+
+| 400
+| Invalid parameters.
+|  <<Error>>
+
+
+| 401
+| Unauthorized access.
+|  <<Error>>
+
+
+| 0
+| Unexpected error.
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/feeds/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/feeds/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.feeds/update]
+==== feeds/update
+
+`PATCH /catalogs/feeds/{feed_id}`
+
+Update feed
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Update a feed owned by the \"operating user_account\".
+
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/PATCH/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| feed_id
+| Unique identifier of a feed 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| CatalogsFeedsUpdateRequest
+| Request object used to update a feed. <<CatalogsFeedsUpdateRequest>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<CatalogsFeed>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+|  <<CatalogsFeed>>
+
+
+| 400
+| Invalid feed parameters.
+|  <<Error>>
+
+
+| 403
+| Forbidden. Account not approved for feed mutations yet.
+|  <<Error>>
+
+
+| 404
+| Data feed not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/PATCH/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/feeds/\{feed_id\}/PATCH/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/feeds/{feed_id}/PATCH/PATCH.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/feeds/\{feed_id\}/PATCH/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.items/get]
+==== items/get
+
+`GET /catalogs/items`
+
+Get catalogs items
+
+===== Description
+
+Get the items of the catalog created by the \"operating user_account\"
+
+
+// markup not found, no include::{specDir}catalogs/items/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| country
+| Country for the Catalogs Items 
+| X
+| null
+| 
+
+| item_ids
+| Catalos Item ids <<String>>
+| X
+| null
+| 
+
+| language
+| Language for the Catalogs Items 
+| X
+| null
+| 
+
+|===
+
+
+===== Return Type
+
+<<CatalogsItems>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Response containing the requested catalogs items
+|  <<CatalogsItems>>
+
+
+| 401
+| Not authorized to access catalogs items
+|  <<Error>>
+
+
+| 403
+| Not authorized to access catalogs items
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/items/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/items/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/items/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/items/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.itemsBatch/get]
+==== itemsBatch/get
+
+`GET /catalogs/items/batch/{batch_id}`
+
+Get catalogs items batch
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  Get a single catalogs items batch created by the \"operating user_account\".
+
+
+// markup not found, no include::{specDir}catalogs/items/batch/\{batch_id\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| batch_id
+| Id of a catalogs items batch to fetch 
+| X
+| null
+| 
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+<<CatalogsItemsBatch>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Response containing the requested catalogs items batch
+|  <<CatalogsItemsBatch>>
+
+
+| 401
+| Not authorized to access catalogs items batch
+|  <<Error>>
+
+
+| 403
+| Not authorized to access catalogs items batch
+|  <<Error>>
+
+
+| 404
+| Catalogs items batch not found
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/items/batch/\{batch_id\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/items/batch/\{batch_id\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/items/batch/{batch_id}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/items/batch/\{batch_id\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.itemsBatch/post]
+==== itemsBatch/post
+
+`POST /catalogs/items/batch`
+
+Perform an operation on an item batch
+
+===== Description
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/api/v5/#tag/Understanding-catalog-management'>Learn more</a>.</strong>  This endpoint supports multiple operations on a set of one or more catalog items.
+
+
+// markup not found, no include::{specDir}catalogs/items/batch/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| CatalogsItemsBatchRequest
+| Request object used to create catalogs items in a batch <<CatalogsItemsBatchRequest>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<CatalogsItemsBatch>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Response containing the requested catalogs items batch
+|  <<CatalogsItemsBatch>>
+
+
+| 401
+| Not authorized to post catalogs items
+|  <<Error>>
+
+
+| 403
+| Not authorized to post catalogs items
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}catalogs/items/batch/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}catalogs/items/batch/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :catalogs/items/batch/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}catalogs/items/batch/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Media]
+=== Media
+
+
+[.media/create]
+==== media/create
+
+`POST /media`
+
+Register media upload
+
+===== Description
+
+Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/solutions/content-apps/#creatingvideopins'>Learn more</a></strong> about video Pin creation.
+
+
+// markup not found, no include::{specDir}media/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| MediaUploadRequest
+| Create a media upload request <<MediaUploadRequest>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<MediaUpload>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| response
+|  <<MediaUpload>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}media/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}media/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :media/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}media/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.media/get]
+==== media/get
+
+`GET /media/{media_id}`
+
+Get media upload details
+
+===== Description
+
+Get details for a registered media upload, including its current status.  <strong><a href='/docs/solutions/content-apps/#creatingvideopins'>Learn more</a></strong> about video Pin creation.
+
+
+// markup not found, no include::{specDir}media/\{media_id\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| media_id
+| Media identifier 
+| X
+| null
+| /^\\d+$/
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+<<MediaUploadDetails>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<MediaUploadDetails>>
+
+
+| 404
+| Media upload not found
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}media/\{media_id\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}media/\{media_id\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :media/{media_id}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}media/\{media_id\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.media/list]
+==== media/list
+
+`GET /media`
+
+List media uploads
+
+===== Description
+
+List media uploads filtered by given parameters.  <strong><a href='/docs/solutions/content-apps/#creatingvideopins'>Learn more</a></strong> about video Pin creation.
+
+
+// markup not found, no include::{specDir}media/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| bookmark
+| Cursor used to fetch the next page of items 
+| -
+| null
+| 
+
+| page_size
+| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. 
+| -
+| 25
+| 
+
+|===
+
+
+===== Return Type
+
+<<Paginated>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Paginated>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}media/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}media/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :media/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}media/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Oauth]
+=== Oauth
+
+
+[.oauth/token]
+==== oauth/token
+
+`POST /oauth/token`
+
+Generate OAuth access token
+
+===== Description
+
+Generate an OAuth access token by using an authorization code or a refresh token.  See <a href='/docs/api/v5/#tag/Authentication'>Authentication</a> for more.
+
+
+// markup not found, no include::{specDir}oauth/token/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+====== Form Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| grant_type
+|  <<string>>
+| X
+| null
+| 
+
+|===
+
+
+
+
+===== Return Type
+
+<<OauthAccessTokenResponse>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<OauthAccessTokenResponse>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}oauth/token/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}oauth/token/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :oauth/token/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}oauth/token/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.Pins]
+=== Pins
+
+
+[.pins/analytics]
+==== pins/analytics
+
+`GET /pins/{pin_id}/analytics`
+
+Get Pin analytics
+
+===== Description
+
+Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.
+
+
+// markup not found, no include::{specDir}pins/\{pin_id\}/analytics/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| pin_id
+| Unique identifier of a Pin. 
+| X
+| null
+| 
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| start_date
+| Metric report start date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| end_date
+| Metric report end date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| app_types
+| Apps or devices to get data for, default is all. 
+| -
+| ALL
+| 
+
+| metric_types
+| Pin metric types to get data for, default is all. <<String>>
+| X
+| null
+| 
+
+| split_field
+| How to split the data into groups. Not including this param means data won&#39;t be split. 
+| -
+| NO_SPLIT
+| 
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| -
+| null
+| /^\\d+$/
+
+|===
+
+
+===== Return Type
+
+map[<<AnalyticsMetricsResponse>>]
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+| Map[<<AnalyticsMetricsResponse>>] 
+
+
+| 403
+| Not authorized to access board or Pin.
+|  <<Error>>
+
+
+| 404
+| Pin not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}pins/\{pin_id\}/analytics/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}pins/\{pin_id\}/analytics/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :pins/{pin_id}/analytics/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}pins/\{pin_id\}/analytics/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.pins/create]
+==== pins/create
+
+`POST /pins`
+
+Create Pin
+
+===== Description
+
+Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/solutions/content-apps'>Content App Solutions Guide</a>.  <strong><a href='/docs/solutions/content-apps/#creatingvideopins'>Learn more</a></strong> about video Pin creation.
+
+
+// markup not found, no include::{specDir}pins/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| Pin
+| Create a new Pin. <<Pin>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<Pin>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 201
+| Successful pin creation.
+|  <<Pin>>
+
+
+| 400
+| Invalid Pin parameters response
+|  <<Error>>
+
+
+| 403
+| The Pin&#39;s image is too small, too large or is broken
+|  <<Error>>
+
+
+| 404
+| Board or section not found
+|  <<Error>>
+
+
+| 429
+| This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}pins/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}pins/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :pins/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}pins/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.pins/delete]
+==== pins/delete
+
+`DELETE /pins/{pin_id}`
+
+Delete Pin
+
+===== Description
+
+Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.
+
+
+// markup not found, no include::{specDir}pins/\{pin_id\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| pin_id
+| Unique identifier of a Pin. 
+| X
+| null
+| 
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+
+
+-
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 204
+| Successfully deleted Pin
+|  <<>>
+
+
+| 403
+| Not authorized to access board or Pin.
+|  <<Error>>
+
+
+| 404
+| Pin not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}pins/\{pin_id\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}pins/\{pin_id\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :pins/{pin_id}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}pins/\{pin_id\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.pins/get]
+==== pins/get
+
+`GET /pins/{pin_id}`
+
+Get Pin
+
+===== Description
+
+Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+
+
+// markup not found, no include::{specDir}pins/\{pin_id\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| pin_id
+| Unique identifier of a Pin. 
+| X
+| null
+| 
+
+|===
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| -
+| null
+| /^\\d+$/
+
+|===
+
+
+===== Return Type
+
+<<Pin>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Pin>>
+
+
+| 403
+| Not authorized to access board or Pin.
+|  <<Error>>
+
+
+| 404
+| Pin not found.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}pins/\{pin_id\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}pins/\{pin_id\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :pins/{pin_id}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}pins/\{pin_id\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.UserAccount]
+=== UserAccount
+
+
+[.userAccount/analytics]
+==== userAccount/analytics
+
+`GET /user_account/analytics`
+
+Get user account analytics
+
+===== Description
+
+Get analytics for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+
+
+// markup not found, no include::{specDir}user_account/analytics/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| start_date
+| Metric report start date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| end_date
+| Metric report end date (UTC). Format: YYYY-MM-DD 
+| X
+| null
+| 
+
+| from_claimed_content
+| Filter on Pins that match your claimed domain. 
+| -
+| BOTH
+| 
+
+| pin_format
+| Pin formats to get data for, default is all. 
+| -
+| ALL
+| 
+
+| app_types
+| Apps or devices to get data for, default is all. 
+| -
+| ALL
+| 
+
+| metric_types
+| Metric types to get data for, default is all.  <<String>>
+| -
+| null
+| 
+
+| split_field
+| How to split the data into groups. Not including this param means data won&#39;t be split. 
+| -
+| NO_SPLIT
+| 
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| -
+| null
+| /^\\d+$/
+
+|===
+
+
+===== Return Type
+
+map[<<AnalyticsMetricsResponse>>]
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Success
+| Map[<<AnalyticsMetricsResponse>>] 
+
+
+| 403
+| Not authorized to access the user account analytics.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}user_account/analytics/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}user_account/analytics/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :user_account/analytics/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}user_account/analytics/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.userAccount/get]
+==== userAccount/get
+
+`GET /user_account`
+
+Get user account
+
+===== Description
+
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/api/v5/#tag/Understanding-business-access'>Understanding Business Access</a> for more information.
+
+
+// markup not found, no include::{specDir}user_account/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+====== Query Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| ad_account_id
+| Unique identifier of an ad account. 
+| -
+| null
+| /^\\d+$/
+
+|===
+
+
+===== Return Type
+
+<<Account>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| response
+|  <<Account>>
+
+
+| 403
+| Not authorized to access the user account.
+|  <<Error>>
+
+
+| 0
+| Unexpected error
+|  <<Error>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}user_account/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}user_account/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :user_account/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}user_account/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[#models]
+== Models
+
+
+[#Account]
+=== _Account_ 
+
+
+
+[.fields-Account]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| account_type
+| 
+| String 
+| Type of account
+|  _Enum:_ PINNER, BUSINESS, 
+
+| profile_image
+| 
+| String 
+| 
+|  
+
+| website_url
+| 
+| String 
+| 
+|  
+
+| username
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#ActionType]
+=== _ActionType_ 
+
+Ad group billable event type.
+
+[.fields-ActionType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#AdAccount]
+=== _AdAccount_ 
+
+
+
+[.fields-AdAccount]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| 
+| String 
+| 
+|  
+
+| name
+| 
+| String 
+| 
+|  
+
+| owner
+| 
+| Ad_account_owner 
+| 
+|  
+
+| country
+| 
+| Country 
+| 
+|  
+
+| currency
+| 
+| Currency 
+| 
+|  
+
+|===
+
+
+[#AdAccountOwner]
+=== _AdAccountOwner_ Ad account owner
+
+
+
+[.fields-AdAccountOwner]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| username
+| 
+| String 
+| Public username for the user account
+|  
+
+|===
+
+
+[#AdGroupResponse]
+=== _AdGroupResponse_ 
+
+
+
+[.fields-AdGroupResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| 
+| String 
+| Ad group name.
+|  
+
+| status
+| 
+| EntityStatus 
+| Ad group/entity status.
+|  
+
+| budget_in_micro_currency
+| 
+| Integer 
+| Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
+|  
+
+| bid_in_micro_currency
+| 
+| Integer 
+| Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
+|  
+
+| budget_type
+| 
+| String 
+| Budget type. If DAILY, an ad group&#39;s daily spend will not exceed the budget parameter value. If LIFETIME, the end_time parameter is **REQUIRED**, and the ad group spend is spread evenly between the ad group &#x60;start_time&#x60; and &#x60;end_time&#x60; range. A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome.
+|  _Enum:_ DAILY, LIFETIME, CBO_ADGROUP, 
+
+| start_time
+| 
+| Integer 
+| Ad group start time. Unix timestamp in seconds. Defaults to current time.
+|  
+
+| end_time
+| 
+| Integer 
+| Ad group end time. Unix timestamp in seconds.
+|  
+
+| targeting_spec
+| 
+| Map  of <<array>>
+| Ad group targeting specification defining the ad group target audience. For example, &#39;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#39;
+|  
+
+| lifetime_frequency_cap
+| 
+| Integer 
+| Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\\\&quot;/docs/redoc/#section/Billable-event\\\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
+|  
+
+| tracking_urls
+| 
+| TrackingUrls 
+| Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+|  
+
+| auto_targeting_enabled
+| 
+| Boolean 
+| Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+|  
+
+| placement_group
+| 
+| PlacementGroupType 
+| &lt;a href&#x3D;\\\&quot;/docs/redoc/#section/Placement-group\\\&quot;&gt;Placement group&lt;/a&gt;.
+|  
+
+| pacing_delivery_type
+| 
+| PacingDeliveryType 
+| Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.
+|  
+
+| conversion_learning_mode_type
+| 
+| String 
+| oCPM learn mode
+|  _Enum:_ NOT_ACTIVE, ACTIVE, null, 
+
+| summary_status
+| 
+| AdGroupSummaryStatus 
+| Ad group summary status.
+|  
+
+| feed_profile_id
+| 
+| String 
+| Feed Profile ID associated to the adgroup.
+|  
+
+| campaign_id
+| 
+| String 
+| Campaign ID of the ad group.
+|  
+
+| billable_event
+| 
+| ActionType 
+| 
+|  
+
+| id
+| 
+| String 
+| Ad group ID.
+|  
+
+| type
+| 
+| String 
+| Always \&quot;adgroup\&quot;.
+|  
+
+| ad_account_id
+| 
+| String 
+| Advertiser ID.
+|  
+
+| created_time
+| 
+| Integer 
+| Ad group creation time. Unix timestamp in seconds.
+|  
+
+| updated_time
+| 
+| Integer 
+| Ad group last update time. Unix timestamp in seconds.
+|  
+
+|===
+
+
+[#AdGroupResponseAllOf]
+=== _AdGroupResponseAllOf_ 
+
+
+
+[.fields-AdGroupResponseAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| 
+| String 
+| Ad group name.
+|  
+
+| status
+| 
+| EntityStatus 
+| Ad group/entity status.
+|  
+
+| budget_in_micro_currency
+| 
+| Integer 
+| Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
+|  
+
+| bid_in_micro_currency
+| 
+| Integer 
+| Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
+|  
+
+| budget_type
+| 
+| String 
+| Budget type. If DAILY, an ad group&#39;s daily spend will not exceed the budget parameter value. If LIFETIME, the end_time parameter is **REQUIRED**, and the ad group spend is spread evenly between the ad group &#x60;start_time&#x60; and &#x60;end_time&#x60; range. A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome.
+|  _Enum:_ DAILY, LIFETIME, CBO_ADGROUP, 
+
+| start_time
+| 
+| Integer 
+| Ad group start time. Unix timestamp in seconds. Defaults to current time.
+|  
+
+| end_time
+| 
+| Integer 
+| Ad group end time. Unix timestamp in seconds.
+|  
+
+| targeting_spec
+| 
+| Map  of <<array>>
+| Ad group targeting specification defining the ad group target audience. For example, &#39;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#39;
+|  
+
+| lifetime_frequency_cap
+| 
+| Integer 
+| Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\\\&quot;/docs/redoc/#section/Billable-event\\\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
+|  
+
+| tracking_urls
+| 
+| TrackingUrls 
+| Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+|  
+
+| auto_targeting_enabled
+| 
+| Boolean 
+| Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+|  
+
+| placement_group
+| 
+| PlacementGroupType 
+| &lt;a href&#x3D;\\\&quot;/docs/redoc/#section/Placement-group\\\&quot;&gt;Placement group&lt;/a&gt;.
+|  
+
+| pacing_delivery_type
+| 
+| PacingDeliveryType 
+| Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.
+|  
+
+| conversion_learning_mode_type
+| 
+| String 
+| oCPM learn mode
+|  _Enum:_ NOT_ACTIVE, ACTIVE, null, 
+
+| summary_status
+| 
+| AdGroupSummaryStatus 
+| Ad group summary status.
+|  
+
+| feed_profile_id
+| 
+| String 
+| Feed Profile ID associated to the adgroup.
+|  
+
+|===
+
+
+[#AdGroupResponseAllOf1]
+=== _AdGroupResponseAllOf1_ 
+
+
+
+[.fields-AdGroupResponseAllOf1]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| campaign_id
+| 
+| String 
+| Campaign ID of the ad group.
+|  
+
+| billable_event
+| 
+| ActionType 
+| 
+|  
+
+| id
+| 
+| String 
+| Ad group ID.
+|  
+
+| type
+| 
+| String 
+| Always \&quot;adgroup\&quot;.
+|  
+
+| ad_account_id
+| 
+| String 
+| Advertiser ID.
+|  
+
+| created_time
+| 
+| Integer 
+| Ad group creation time. Unix timestamp in seconds.
+|  
+
+| updated_time
+| 
+| Integer 
+| Ad group last update time. Unix timestamp in seconds.
+|  
+
+|===
+
+
+[#AdGroupSummaryStatus]
+=== _AdGroupSummaryStatus_ 
+
+Summary status for ad group
+
+[.fields-AdGroupSummaryStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#AdResponse]
+=== _AdResponse_ 
+
+
+
+[.fields-AdResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ad_group_id
+| 
+| String 
+| ID of the ad group that contains the ad.
+|  
+
+| android_deep_link
+| 
+| String 
+| Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+|  
+
+| carousel_android_deep_links
+| 
+| List  of <<string>>
+| Comma-separated deep links for the carousel pin on Android.
+|  
+
+| carousel_destination_urls
+| 
+| List  of <<string>>
+| Comma-separated destination URLs for the carousel pin to promote.
+|  
+
+| carousel_ios_deep_links
+| 
+| List  of <<string>>
+| Comma-separated deep links for the carousel pin on iOS.
+|  
+
+| click_tracking_url
+| 
+| String 
+| Tracking url for the ad clicks.
+|  
+
+| creative_type
+| 
+| String 
+| Ad creative type enum
+|  _Enum:_ REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, STORY, 
+
+| destination_url
+| 
+| String 
+| Destination URL.
+|  
+
+| ios_deep_link
+| 
+| String 
+| Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+|  
+
+| is_pin_deleted
+| 
+| Boolean 
+| Is original pin deleted?
+|  
+
+| is_removable
+| 
+| Boolean 
+| Is pin repinnable?
+|  
+
+| name
+| 
+| String 
+| Name of the ad - 255 chars max.
+|  
+
+| pin_id
+| 
+| String 
+| Pin ID.
+|  
+
+| status
+| 
+| EntityStatus 
+| 
+|  
+
+| tracking_urls
+| 
+| TrackingUrls 
+| 
+|  
+
+| view_tracking_url
+| 
+| String 
+| Tracking URL for ad impressions.
+|  
+
+| ad_account_id
+| 
+| String 
+| The ID of the advertiser that this ad belongs to.
+|  
+
+| campaign_id
+| 
+| String 
+| ID of the ad campaign that contains this ad.
+|  
+
+| collection_items_destination_url_template
+| 
+| String 
+| Destination URL template for all items within a collections drawer.
+|  
+
+| created_time
+| 
+| Integer 
+| Pin creation time. Unix timestamp in seconds.
+|  
+
+| id
+| 
+| String 
+| The ID of this ad.
+|  
+
+| rejected_reasons
+| 
+| List  of <<string>>
+| Enum reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;.
+|  _Enum:_ 
+
+| rejection_labels
+| 
+| List  of <<string>>
+| Text reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;.
+|  
+
+| review_status
+| 
+| String 
+| Ad review status
+|  _Enum:_ OTHER, PENDING, REJECTED, APPROVED, 
+
+| type
+| 
+| String 
+| Always \&quot;ad\&quot;.
+|  
+
+| updated_time
+| 
+| Integer 
+| Last update time. Unix timestamp in seconds.
+|  
+
+| summary_status
+| 
+| PinPromotionSummaryStatus 
+| Ad summary status
+|  
+
+|===
+
+
+[#AdResponseAllOf]
+=== _AdResponseAllOf_ 
+
+Creation fields
+
+[.fields-AdResponseAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ad_group_id
+| 
+| String 
+| ID of the ad group that contains the ad.
+|  
+
+| android_deep_link
+| 
+| String 
+| Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+|  
+
+| carousel_android_deep_links
+| 
+| List  of <<string>>
+| Comma-separated deep links for the carousel pin on Android.
+|  
+
+| carousel_destination_urls
+| 
+| List  of <<string>>
+| Comma-separated destination URLs for the carousel pin to promote.
+|  
+
+| carousel_ios_deep_links
+| 
+| List  of <<string>>
+| Comma-separated deep links for the carousel pin on iOS.
+|  
+
+| click_tracking_url
+| 
+| String 
+| Tracking url for the ad clicks.
+|  
+
+| creative_type
+| 
+| String 
+| Ad creative type enum
+|  _Enum:_ REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, STORY, 
+
+| destination_url
+| 
+| String 
+| Destination URL.
+|  
+
+| ios_deep_link
+| 
+| String 
+| Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+|  
+
+| is_pin_deleted
+| 
+| Boolean 
+| Is original pin deleted?
+|  
+
+| is_removable
+| 
+| Boolean 
+| Is pin repinnable?
+|  
+
+| name
+| 
+| String 
+| Name of the ad - 255 chars max.
+|  
+
+| pin_id
+| 
+| String 
+| Pin ID.
+|  
+
+| status
+| 
+| EntityStatus 
+| 
+|  
+
+| tracking_urls
+| 
+| TrackingUrls 
+| 
+|  
+
+| view_tracking_url
+| 
+| String 
+| Tracking URL for ad impressions.
+|  
+
+|===
+
+
+[#AdResponseAllOf1]
+=== _AdResponseAllOf1_ 
+
+
+
+[.fields-AdResponseAllOf1]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ad_account_id
+| 
+| String 
+| The ID of the advertiser that this ad belongs to.
+|  
+
+| campaign_id
+| 
+| String 
+| ID of the ad campaign that contains this ad.
+|  
+
+| collection_items_destination_url_template
+| 
+| String 
+| Destination URL template for all items within a collections drawer.
+|  
+
+| created_time
+| 
+| Integer 
+| Pin creation time. Unix timestamp in seconds.
+|  
+
+| id
+| 
+| String 
+| The ID of this ad.
+|  
+
+| rejected_reasons
+| 
+| List  of <<string>>
+| Enum reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;.
+|  _Enum:_ 
+
+| rejection_labels
+| 
+| List  of <<string>>
+| Text reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;.
+|  
+
+| review_status
+| 
+| String 
+| Ad review status
+|  _Enum:_ OTHER, PENDING, REJECTED, APPROVED, 
+
+| type
+| 
+| String 
+| Always \&quot;ad\&quot;.
+|  
+
+| updated_time
+| 
+| Integer 
+| Last update time. Unix timestamp in seconds.
+|  
+
+| summary_status
+| 
+| PinPromotionSummaryStatus 
+| Ad summary status
+|  
+
+|===
+
+
+[#AdsAnalyticsCreateAsyncRequest]
+=== _AdsAnalyticsCreateAsyncRequest_ 
+
+
+
+[.fields-AdsAnalyticsCreateAsyncRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| start_date
+| X
+| String 
+| Metric report start date (UTC). Format: YYYY-MM-DD
+|  
+
+| end_date
+| X
+| String 
+| Metric report end date (UTC). Format: YYYY-MM-DD
+|  
+
+| granularity
+| X
+| Granularity 
+| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+|  
+
+| click_window_days
+| 
+| ConversionAttributionWindowDays 
+| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+|  
+
+| engagement_window_days
+| 
+| ConversionAttributionWindowDays 
+| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+|  
+
+| view_window_days
+| 
+| ConversionAttributionWindowDays 
+| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
+|  
+
+| conversion_report_time
+| 
+| ConversionReportTimeType 
+| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+|  
+
+| attribution_types
+| 
+| List  of <<ConversionReportAttributionType>>
+| List of types of attribution for the conversion report
+|  
+
+| columns
+| X
+| List  of <<ReportingColumnAsync>>
+| Metric and entity columns
+|  
+
+| level
+| X
+| MetricsReportingLevel 
+| Level of the report
+|  
+
+| report_format
+| 
+| DataOutputFormat 
+| Specification for formatting report data
+|  
+
+| campaign_ids
+| 
+| List  of <<string>>
+| List of campaign ids
+|  
+
+| campaign_statuses
+| 
+| List  of <<CampaignSummaryStatus>>
+| List of status values for filtering
+|  
+
+| campaign_objective_types
+| 
+| List  of <<ObjectiveType>>
+| List of values for filtering
+|  
+
+| ad_group_ids
+| 
+| List  of <<string>>
+| List of ad group ids
+|  
+
+| ad_group_statuses
+| 
+| List  of <<AdGroupSummaryStatus>>
+| List of values for filtering
+|  
+
+| ad_ids
+| 
+| List  of <<string>>
+| List of ad ids
+|  
+
+| ad_statuses
+| 
+| List  of <<PinPromotionSummaryStatus>>
+| List of values for filtering
+|  
+
+| product_group_ids
+| 
+| List  of <<string>>
+| List of product group ids
+|  
+
+| product_group_statuses
+| 
+| List  of <<ProductGroupSummaryStatus>>
+| List of values for filtering
+|  
+
+| product_item_ids
+| 
+| List  of <<string>>
+| List of product item ids
+|  
+
+| targeting_types
+| 
+| List  of <<AdsAnalyticsTargetingType>>
+| List of targeting types
+|  
+
+| metrics_filters
+| 
+| List  of <<AdsAnalyticsMetricsFilter>>
+| List of metrics filters
+|  
+
+|===
+
+
+[#AdsAnalyticsCreateAsyncRequestAllOf]
+=== _AdsAnalyticsCreateAsyncRequestAllOf_ 
+
+
+
+[.fields-AdsAnalyticsCreateAsyncRequestAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| start_date
+| X
+| String 
+| Metric report start date (UTC). Format: YYYY-MM-DD
+|  
+
+| end_date
+| X
+| String 
+| Metric report end date (UTC). Format: YYYY-MM-DD
+|  
+
+| granularity
+| X
+| Granularity 
+| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+|  
+
+| click_window_days
+| 
+| ConversionAttributionWindowDays 
+| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+|  
+
+| engagement_window_days
+| 
+| ConversionAttributionWindowDays 
+| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+|  
+
+| view_window_days
+| 
+| ConversionAttributionWindowDays 
+| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
+|  
+
+| conversion_report_time
+| 
+| ConversionReportTimeType 
+| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+|  
+
+| attribution_types
+| 
+| List  of <<ConversionReportAttributionType>>
+| List of types of attribution for the conversion report
+|  
+
+|===
+
+
+[#AdsAnalyticsCreateAsyncRequestAllOf1]
+=== _AdsAnalyticsCreateAsyncRequestAllOf1_ 
+
+
+
+[.fields-AdsAnalyticsCreateAsyncRequestAllOf1]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| columns
+| X
+| List  of <<ReportingColumnAsync>>
+| Metric and entity columns
+|  
+
+| level
+| X
+| MetricsReportingLevel 
+| Level of the report
+|  
+
+| report_format
+| 
+| DataOutputFormat 
+| Specification for formatting report data
+|  
+
+|===
+
+
+[#AdsAnalyticsCreateAsyncResponse]
+=== _AdsAnalyticsCreateAsyncResponse_ 
+
+
+
+[.fields-AdsAnalyticsCreateAsyncResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| report_status
+| 
+| String 
+| 
+|  
+
+| token
+| 
+| String 
+| 
+|  
+
+| message
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#AdsAnalyticsFilterColumn]
+=== _AdsAnalyticsFilterColumn_ 
+
+Reporting columns for sync reporting data filter
+
+[.fields-AdsAnalyticsFilterColumn]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#AdsAnalyticsFilterOperator]
+=== _AdsAnalyticsFilterOperator_ 
+
+Filter operator for sync reporting
+
+[.fields-AdsAnalyticsFilterOperator]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#AdsAnalyticsGetAsyncResponse]
+=== _AdsAnalyticsGetAsyncResponse_ 
+
+
+
+[.fields-AdsAnalyticsGetAsyncResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| report_status
+| 
+| String 
+| 
+|  
+
+| url
+| 
+| String 
+| 
+|  
+
+| size
+| 
+| BigDecimal 
+| 
+|  
+
+|===
+
+
+[#AdsAnalyticsMetricsFilter]
+=== _AdsAnalyticsMetricsFilter_ 
+
+
+
+[.fields-AdsAnalyticsMetricsFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| field
+| 
+| AdsAnalyticsFilterColumn 
+| 
+|  
+
+| operator
+| 
+| AdsAnalyticsFilterOperator 
+| 
+|  
+
+| values
+| 
+| List  of <<number>>
+| List of values for filtering
+|  
+
+|===
+
+
+[#AdsAnalyticsTargetingType]
+=== _AdsAnalyticsTargetingType_ 
+
+Reporting targeting type
+
+[.fields-AdsAnalyticsTargetingType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#AnalyticsMetricsResponse]
+=== _AnalyticsMetricsResponse_ 
+
+
+
+[.fields-AnalyticsMetricsResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| daily_metrics
+| 
+| List  of <<AnalyticsMetricsResponse_daily_metrics>>
+| Array with the requested daily metric records
+|  
+
+| summary_metrics
+| 
+| Map  of <<number>>
+| The metric name and value over the requested period for each requested metric
+|  
+
+|===
+
+
+[#AnalyticsMetricsResponseDailyMetrics]
+=== _AnalyticsMetricsResponseDailyMetrics_ 
+
+
+
+[.fields-AnalyticsMetricsResponseDailyMetrics]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| data_status
+| 
+| String 
+| Metrics availablity, e.g., \&quot;READY\&quot;.
+|  _Enum:_ PROCESSING, READY, ESTIMATE, BEFORE_BUSINESS_CREATED, BEFORE_DATA_RETENTION_PERIOD, BEFORE_PIN_DATA_RETENTION_PERIOD, BEFORE_METRIC_START_DATE, BEFORE_CORE_METRIC_START_DATE, BEFORE_PIN_FORMAT_METRIC_START_DATE, BEFORE_AUDIENCE_METRIC_START_DATE, BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE, BEFORE_VIDEO_METRIC_START_DATE, BEFORE_CONVERSION_METRIC_START_DATE, PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD, IN_BAD_TAG_DATE, BEFORE_PUBLISHED_METRIC_START_DATE, BEFORE_ASSIST_METRIC_START_DATE, BEFORE_PIN_CREATED, BEFORE_ACCOUNT_CLAIMED, BEFORE_DEMOGRAPHIC_FILTERS_START_DATE, AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD, AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD, BEFORE_PRODUCT_GROUP_FILTER_START_DATE, 
+
+| date
+| 
+| String 
+| Metrics date (UTC): YYYY-MM-DD.
+|  
+
+| metrics
+| 
+| Map  of <<number>>
+| The metric name and daily value for each requested metric
+|  
+
+|===
+
+
+[#AvailabilityFilter]
+=== _AvailabilityFilter_ 
+
+
+
+[.fields-AvailabilityFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| AVAILABILITY
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#BatchOperation]
+=== _BatchOperation_ 
+
+The operation performed by the batch
+
+[.fields-BatchOperation]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#BatchOperationStatus]
+=== _BatchOperationStatus_ 
+
+The status of the operation performed by the batch
+
+[.fields-BatchOperationStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#Board]
+=== _Board_ Board
+
+Board
+
+[.fields-Board]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| 
+| String 
+| 
+|  
+
+| name
+| X
+| String 
+| 
+|  
+
+| description
+| 
+| String 
+| 
+|  
+
+| owner
+| 
+| BoardOwner 
+| 
+|  
+
+| privacy
+| 
+| String 
+| Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt;
+|  _Enum:_ PUBLIC, PROTECTED, SECRET, 
+
+|===
+
+
+[#BoardOwner]
+=== _BoardOwner_ Board owner
+
+
+
+[.fields-BoardOwner]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| username
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#BoardSection]
+=== _BoardSection_ Board section
+
+Sections help organize pins within a board.
+
+[.fields-BoardSection]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| 
+| String 
+| 
+|  
+
+| name
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#BoardUpdate]
+=== _BoardUpdate_ BoardUpdate
+
+Board fields for updates
+
+[.fields-BoardUpdate]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| 
+| String 
+| 
+|  
+
+| description
+| 
+| String 
+| 
+|  
+
+| privacy
+| 
+| String 
+| 
+|  _Enum:_ PUBLIC, SECRET, 
+
+|===
+
+
+[#BrandFilter]
+=== _BrandFilter_ 
+
+
+
+[.fields-BrandFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| BRAND
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#CampaignCommon]
+=== _CampaignCommon_ 
+
+Campaign Data
+
+[.fields-CampaignCommon]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ad_account_id
+| X
+| String 
+| Campaign&#39;s Advertiser ID.
+|  
+
+| name
+| 
+| String 
+| Campaign name.
+|  
+
+| status
+| 
+| EntityStatus 
+| 
+|  
+
+| lifetime_spend_cap
+| 
+| Integer 
+| Campaign total spending cap.
+|  
+
+| daily_spend_cap
+| 
+| Integer 
+| Campaign daily spending cap.
+|  
+
+| order_line_id
+| 
+| String 
+| Order line ID that appears on the invoice.
+|  
+
+| tracking_urls
+| 
+| TrackingUrls 
+| 
+|  
+
+| start_time
+| 
+| Integer 
+| Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+|  
+
+| end_time
+| 
+| Integer 
+| Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+|  
+
+|===
+
+
+[#CampaignResponse]
+=== _CampaignResponse_ 
+
+
+
+[.fields-CampaignResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| X
+| String 
+| Campaign ID.
+|  
+
+| ad_account_id
+| X
+| String 
+| Campaign&#39;s Advertiser ID.
+|  
+
+| name
+| 
+| String 
+| Campaign name.
+|  
+
+| status
+| 
+| EntityStatus 
+| 
+|  
+
+| lifetime_spend_cap
+| 
+| Integer 
+| Campaign total spending cap.
+|  
+
+| daily_spend_cap
+| 
+| Integer 
+| Campaign daily spending cap.
+|  
+
+| order_line_id
+| 
+| String 
+| Order line ID that appears on the invoice.
+|  
+
+| tracking_urls
+| 
+| TrackingUrls 
+| 
+|  
+
+| start_time
+| 
+| Integer 
+| Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+|  
+
+| end_time
+| 
+| Integer 
+| Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+|  
+
+| objective_type
+| 
+| ObjectiveType 
+| 
+|  
+
+| created_time
+| 
+| Integer 
+| Campaign creation time. Unix timestamp in seconds.
+|  
+
+| updated_time
+| 
+| Integer 
+| UTC timestamp. Last update time.
+|  
+
+| type
+| 
+| String 
+| Always \&quot;campaign\&quot;.
+|  
+
+|===
+
+
+[#CampaignResponseAllOf]
+=== _CampaignResponseAllOf_ 
+
+
+
+[.fields-CampaignResponseAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| X
+| String 
+| Campaign ID.
+|  
+
+|===
+
+
+[#CampaignResponseAllOf1]
+=== _CampaignResponseAllOf1_ 
+
+
+
+[.fields-CampaignResponseAllOf1]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| objective_type
+| 
+| ObjectiveType 
+| 
+|  
+
+| created_time
+| 
+| Integer 
+| Campaign creation time. Unix timestamp in seconds.
+|  
+
+| updated_time
+| 
+| Integer 
+| UTC timestamp. Last update time.
+|  
+
+| type
+| 
+| String 
+| Always \&quot;campaign\&quot;.
+|  
+
+|===
+
+
+[#CampaignSummaryStatus]
+=== _CampaignSummaryStatus_ 
+
+Summary status for campaign
+
+[.fields-CampaignSummaryStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#CatalogsDbItem]
+=== _CatalogsDbItem_ db_item
+
+
+
+[.fields-CatalogsDbItem]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| created_at
+| 
+| Date 
+| 
+| date-time 
+
+| id
+| 
+| String 
+| 
+|  
+
+| updated_at
+| 
+| Date 
+| 
+| date-time 
+
+|===
+
+
+[#CatalogsFeed]
+=== _CatalogsFeed_ feed
+
+Catalogs Catalogs Feed object
+
+[.fields-CatalogsFeed]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| created_at
+| 
+| Date 
+| 
+| date-time 
+
+| id
+| 
+| String 
+| 
+|  
+
+| updated_at
+| 
+| Date 
+| 
+| date-time 
+
+| default_country
+| X
+| Country 
+| 
+|  
+
+| default_availability
+| X
+| ProductAvailabilityType 
+| 
+|  
+
+| default_currency
+| X
+| NullableCurrency 
+| 
+|  
+
+| name
+| X
+| String 
+| A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+|  
+
+| format
+| X
+| CatalogsFormat 
+| 
+|  
+
+| default_locale
+| X
+| String 
+| The locale used within a feed for product descriptions.
+|  
+
+| credentials
+| X
+| CatalogsFeedCredentials 
+| 
+|  
+
+| location
+| X
+| String 
+| The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+|  
+
+| preferred_processing_schedule
+| X
+| CatalogsFeedProcessingSchedule 
+| 
+|  
+
+| status
+| X
+| CatalogsStatus 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedCredentials]
+=== _CatalogsFeedCredentials_ 
+
+Use this if your feed file requires username and password.
+
+[.fields-CatalogsFeedCredentials]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| password
+| X
+| String 
+| The required password for downloading a feed.
+| password 
+
+| username
+| X
+| String 
+| The required username for downloading a feed.
+|  
+
+|===
+
+
+[#CatalogsFeedIngestionDetails]
+=== _CatalogsFeedIngestionDetails_ 
+
+
+
+[.fields-CatalogsFeedIngestionDetails]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| errors
+| X
+| CatalogsFeedIngestionErrors 
+| 
+|  
+
+| info
+| X
+| CatalogsFeedIngestionInfo 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedIngestionErrors]
+=== _CatalogsFeedIngestionErrors_ 
+
+
+
+[.fields-CatalogsFeedIngestionErrors]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| image_download_error
+| 
+| Integer 
+| 
+|  
+
+| image_download_connection_timeout
+| 
+| Integer 
+| 
+|  
+
+| image_format_unrecognize
+| 
+| Integer 
+| 
+|  
+
+| line_level_internal_error
+| 
+| Integer 
+| 
+|  
+
+| large_product_count_decrease
+| 
+| Integer 
+| 
+|  _Enum:_ 1, 
+
+|===
+
+
+[#CatalogsFeedIngestionInfo]
+=== _CatalogsFeedIngestionInfo_ 
+
+
+
+[.fields-CatalogsFeedIngestionInfo]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| in_stock
+| 
+| Integer 
+| 
+|  
+
+| out_of_stock
+| 
+| Integer 
+| 
+|  
+
+| preorder
+| 
+| Integer 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedProcessingResult]
+=== _CatalogsFeedProcessingResult_ 
+
+
+
+[.fields-CatalogsFeedProcessingResult]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| created_at
+| 
+| Date 
+| 
+| date-time 
+
+| id
+| 
+| String 
+| 
+|  
+
+| updated_at
+| 
+| Date 
+| 
+| date-time 
+
+| ingestion_details
+| X
+| CatalogsFeedIngestionDetails 
+| 
+|  
+
+| status
+| X
+| CatalogsFeedProcessingStatus 
+| 
+|  
+
+| product_counts
+| X
+| CatalogsFeedProductCounts 
+| 
+|  
+
+| validation_details
+| X
+| CatalogsFeedValidationDetails 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedProcessingResultFields]
+=== _CatalogsFeedProcessingResultFields_ catalogs_feed_processing_result_fields
+
+
+
+[.fields-CatalogsFeedProcessingResultFields]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ingestion_details
+| X
+| CatalogsFeedIngestionDetails 
+| 
+|  
+
+| status
+| X
+| CatalogsFeedProcessingStatus 
+| 
+|  
+
+| product_counts
+| X
+| CatalogsFeedProductCounts 
+| 
+|  
+
+| validation_details
+| X
+| CatalogsFeedValidationDetails 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedProcessingSchedule]
+=== _CatalogsFeedProcessingSchedule_ catalogs_processing_schedule
+
+Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).
+
+[.fields-CatalogsFeedProcessingSchedule]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| time
+| X
+| String 
+| A time in format HH:MM with leading 0 (zero)
+|  
+
+| timezone
+| X
+| String 
+| The timezone considered for the processing schedule time.
+|  _Enum:_ Africa/Abidjan, Africa/Accra, Africa/Algiers, Africa/Bissau, Africa/Cairo, Africa/Casablanca, Africa/Ceuta, Africa/El_Aaiun, Africa/Johannesburg, Africa/Juba, Africa/Khartoum, Africa/Lagos, Africa/Maputo, Africa/Monrovia, Africa/Nairobi, Africa/Ndjamena, Africa/Sao_Tome, Africa/Tripoli, Africa/Tunis, Africa/Windhoek, America/Adak, America/Anchorage, America/Araguaina, America/Argentina/Buenos_Aires, America/Argentina/Catamarca, America/Argentina/Cordoba, America/Argentina/Jujuy, America/Argentina/La_Rioja, America/Argentina/Mendoza, America/Argentina/Rio_Gallegos, America/Argentina/Salta, America/Argentina/San_Juan, America/Argentina/San_Luis, America/Argentina/Tucuman, America/Argentina/Ushuaia, America/Asuncion, America/Atikokan, America/Bahia, America/Bahia_Banderas, America/Barbados, America/Belem, America/Belize, America/Blanc-Sablon, America/Boa_Vista, America/Bogota, America/Boise, America/Cambridge_Bay, America/Campo_Grande, America/Cancun, America/Caracas, America/Cayenne, America/Chicago, America/Chihuahua, America/Costa_Rica, America/Creston, America/Cuiaba, America/Curacao, America/Danmarkshavn, America/Dawson, America/Dawson_Creek, America/Denver, America/Detroit, America/Edmonton, America/Eirunepe, America/El_Salvador, America/Fort_Nelson, America/Fortaleza, America/Glace_Bay, America/Goose_Bay, America/Grand_Turk, America/Guatemala, America/Guayaquil, America/Guyana, America/Halifax, America/Havana, America/Hermosillo, America/Indiana/Indianapolis, America/Indiana/Knox, America/Indiana/Marengo, America/Indiana/Petersburg, America/Indiana/Tell_City, America/Indiana/Vevay, America/Indiana/Vincennes, America/Indiana/Winamac, America/Inuvik, America/Iqaluit, America/Jamaica, America/Juneau, America/Kentucky/Louisville, America/Kentucky/Monticello, America/La_Paz, America/Lima, America/Los_Angeles, America/Maceio, America/Managua, America/Manaus, America/Martinique, America/Matamoros, America/Mazatlan, America/Menominee, America/Merida, America/Metlakatla, America/Mexico_City, America/Miquelon, America/Moncton, America/Monterrey, America/Montevideo, America/Nassau, America/New_York, America/Nipigon, America/Nome, America/Noronha, America/North_Dakota/Beulah, America/North_Dakota/Center, America/North_Dakota/New_Salem, America/Nuuk, America/Ojinaga, America/Panama, America/Pangnirtung, America/Paramaribo, America/Phoenix, America/Port-au-Prince, America/Port_of_Spain, America/Porto_Velho, America/Puerto_Rico, America/Punta_Arenas, America/Rainy_River, America/Rankin_Inlet, America/Recife, America/Regina, America/Resolute, America/Rio_Branco, America/Santarem, America/Santiago, America/Santo_Domingo, America/Sao_Paulo, America/Scoresbysund, America/Sitka, America/St_Johns, America/Swift_Current, America/Tegucigalpa, America/Thule, America/Thunder_Bay, America/Tijuana, America/Toronto, America/Vancouver, America/Whitehorse, America/Winnipeg, America/Yakutat, America/Yellowknife, Antarctica/Casey, Antarctica/Davis, Antarctica/DumontDUrville, Antarctica/Macquarie, Antarctica/Mawson, Antarctica/Palmer, Antarctica/Rothera, Antarctica/Syowa, Antarctica/Troll, Antarctica/Vostok, Asia/Almaty, Asia/Amman, Asia/Anadyr, Asia/Aqtau, Asia/Aqtobe, Asia/Ashgabat, Asia/Atyrau, Asia/Baghdad, Asia/Baku, Asia/Bangkok, Asia/Barnaul, Asia/Beirut, Asia/Bishkek, Asia/Brunei, Asia/Chita, Asia/Choibalsan, Asia/Colombo, Asia/Damascus, Asia/Dhaka, Asia/Dili, Asia/Dubai, Asia/Dushanbe, Asia/Famagusta, Asia/Gaza, Asia/Hebron, Asia/Ho_Chi_Minh, Asia/Hong_Kong, Asia/Hovd, Asia/Irkutsk, Asia/Jakarta, Asia/Jayapura, Asia/Jerusalem, Asia/Kabul, Asia/Kamchatka, Asia/Karachi, Asia/Kathmandu, Asia/Khandyga, Asia/Kolkata, Asia/Krasnoyarsk, Asia/Kuala_Lumpur, Asia/Kuching, Asia/Macau, Asia/Magadan, Asia/Makassar, Asia/Manila, Asia/Nicosia, Asia/Novokuznetsk, Asia/Novosibirsk, Asia/Omsk, Asia/Oral, Asia/Pontianak, Asia/Pyongyang, Asia/Qatar, Asia/Qostanay, Asia/Qyzylorda, Asia/Riyadh, Asia/Sakhalin, Asia/Samarkand, Asia/Seoul, Asia/Shanghai, Asia/Singapore, Asia/Srednekolymsk, Asia/Taipei, Asia/Tashkent, Asia/Tbilisi, Asia/Tehran, Asia/Thimphu, Asia/Tokyo, Asia/Tomsk, Asia/Ulaanbaatar, Asia/Urumqi, Asia/Ust-Nera, Asia/Vladivostok, Asia/Yakutsk, Asia/Yangon, Asia/Yekaterinburg, Asia/Yerevan, Atlantic/Azores, Atlantic/Bermuda, Atlantic/Canary, Atlantic/Cape_Verde, Atlantic/Faroe, Atlantic/Madeira, Atlantic/Reykjavik, Atlantic/South_Georgia, Atlantic/Stanley, Australia/Adelaide, Australia/Brisbane, Australia/Broken_Hill, Australia/Currie, Australia/Darwin, Australia/Eucla, Australia/Hobart, Australia/Lindeman, Australia/Lord_Howe, Australia/Melbourne, Australia/Perth, Australia/Sydney, CET, CST6CDT, EET, EST, EST5EDT, Etc/GMT, Etc/GMT+1, Etc/GMT+10, Etc/GMT+11, Etc/GMT+12, Etc/GMT+2, Etc/GMT+3, Etc/GMT+4, Etc/GMT+5, Etc/GMT+6, Etc/GMT+7, Etc/GMT+8, Etc/GMT+9, Etc/GMT-1, Etc/GMT-10, Etc/GMT-11, Etc/GMT-12, Etc/GMT-13, Etc/GMT-14, Etc/GMT-2, Etc/GMT-3, Etc/GMT-4, Etc/GMT-5, Etc/GMT-6, Etc/GMT-7, Etc/GMT-8, Etc/GMT-9, Etc/UTC, Europe/Amsterdam, Europe/Andorra, Europe/Astrakhan, Europe/Athens, Europe/Belgrade, Europe/Berlin, Europe/Brussels, Europe/Bucharest, Europe/Budapest, Europe/Chisinau, Europe/Copenhagen, Europe/Dublin, Europe/Gibraltar, Europe/Helsinki, Europe/Istanbul, Europe/Kaliningrad, Europe/Kiev, Europe/Kirov, Europe/Lisbon, Europe/London, Europe/Luxembourg, Europe/Madrid, Europe/Malta, Europe/Minsk, Europe/Monaco, Europe/Moscow, Europe/Oslo, Europe/Paris, Europe/Prague, Europe/Riga, Europe/Rome, Europe/Samara, Europe/Saratov, Europe/Simferopol, Europe/Sofia, Europe/Stockholm, Europe/Tallinn, Europe/Tirane, Europe/Ulyanovsk, Europe/Uzhgorod, Europe/Vienna, Europe/Vilnius, Europe/Volgograd, Europe/Warsaw, Europe/Zaporozhye, Europe/Zurich, HST, Indian/Chagos, Indian/Christmas, Indian/Cocos, Indian/Kerguelen, Indian/Mahe, Indian/Maldives, Indian/Mauritius, Indian/Reunion, MET, MST, MST7MDT, PST8PDT, Pacific/Apia, Pacific/Auckland, Pacific/Bougainville, Pacific/Chatham, Pacific/Chuuk, Pacific/Easter, Pacific/Efate, Pacific/Enderbury, Pacific/Fakaofo, Pacific/Fiji, Pacific/Funafuti, Pacific/Galapagos, Pacific/Gambier, Pacific/Guadalcanal, Pacific/Guam, Pacific/Honolulu, Pacific/Kiritimati, Pacific/Kosrae, Pacific/Kwajalein, Pacific/Majuro, Pacific/Marquesas, Pacific/Nauru, Pacific/Niue, Pacific/Norfolk, Pacific/Noumea, Pacific/Pago_Pago, Pacific/Palau, Pacific/Pitcairn, Pacific/Pohnpei, Pacific/Port_Moresby, Pacific/Rarotonga, Pacific/Tahiti, Pacific/Tarawa, Pacific/Tongatapu, Pacific/Wake, Pacific/Wallis, WET, null, 
+
+|===
+
+
+[#CatalogsFeedProcessingStatus]
+=== _CatalogsFeedProcessingStatus_ 
+
+
+
+[.fields-CatalogsFeedProcessingStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#CatalogsFeedProductCounts]
+=== _CatalogsFeedProductCounts_ 
+
+The counts can be null early in the process.
+
+[.fields-CatalogsFeedProductCounts]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| original
+| 
+| Integer 
+| The number of products in the feed file
+|  
+
+|===
+
+
+[#CatalogsFeedValidationDetails]
+=== _CatalogsFeedValidationDetails_ 
+
+
+
+[.fields-CatalogsFeedValidationDetails]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| errors
+| X
+| CatalogsFeedValidationErrors 
+| 
+|  
+
+| warnings
+| X
+| CatalogsFeedValidationWarnings 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedValidationErrors]
+=== _CatalogsFeedValidationErrors_ 
+
+
+
+[.fields-CatalogsFeedValidationErrors]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| fetch_error
+| 
+| Integer 
+| 
+|  
+
+| fetch_inactive_feed_error
+| 
+| Integer 
+| 
+|  
+
+| encoding_error
+| 
+| Integer 
+| 
+|  
+
+| delimiter_error
+| 
+| Integer 
+| 
+|  
+
+| required_columns_missing
+| 
+| Integer 
+| 
+|  
+
+| image_link_invalid
+| 
+| Integer 
+| 
+|  
+
+| itemid_missing
+| 
+| Integer 
+| 
+|  
+
+| title_missing
+| 
+| Integer 
+| 
+|  
+
+| description_missing
+| 
+| Integer 
+| 
+|  
+
+| product_category_invalid
+| 
+| Integer 
+| 
+|  
+
+| product_link_missing
+| 
+| Integer 
+| 
+|  
+
+| image_link_missing
+| 
+| Integer 
+| 
+|  
+
+| availability_invalid
+| 
+| Integer 
+| 
+|  
+
+| product_price_invalid
+| 
+| Integer 
+| 
+|  
+
+| link_format_invalid
+| 
+| Integer 
+| 
+|  
+
+| parse_line_error
+| 
+| Integer 
+| 
+|  
+
+| adwords_format_invalid
+| 
+| Integer 
+| 
+|  
+
+| product_category_missing
+| 
+| Integer 
+| 
+|  
+
+| internal_service_error
+| 
+| Integer 
+| 
+|  
+
+| no_verified_domain
+| 
+| Integer 
+| 
+|  
+
+| adult_invalid
+| 
+| Integer 
+| 
+|  
+
+| invalid_domain
+| 
+| Integer 
+| 
+|  
+
+| feed_length_too_long
+| 
+| Integer 
+| 
+|  
+
+| link_length_too_long
+| 
+| Integer 
+| 
+|  
+
+| malformed_xml
+| 
+| Integer 
+| 
+|  
+
+| redirect_invalid
+| 
+| Integer 
+| 
+|  
+
+| price_missing
+| 
+| Integer 
+| 
+|  
+
+| feed_too_small
+| 
+| Integer 
+| 
+|  
+
+| condition_invalid
+| 
+| Integer 
+| 
+|  
+
+| shopify_no_products
+| 
+| Integer 
+| 
+|  
+
+| max_items_per_item_group_exceeded
+| 
+| Integer 
+| 
+|  
+
+| item_main_image_download_failure
+| 
+| Integer 
+| 
+|  
+
+| pinjoin_content_unsafe
+| 
+| Integer 
+| 
+|  
+
+| blocklisted_image_signature
+| 
+| Integer 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedValidationWarnings]
+=== _CatalogsFeedValidationWarnings_ 
+
+
+
+[.fields-CatalogsFeedValidationWarnings]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| title_length_too_long
+| 
+| Integer 
+| 
+|  
+
+| description_length_too_long
+| 
+| Integer 
+| 
+|  
+
+| gender_invalid
+| 
+| Integer 
+| 
+|  
+
+| age_group_invalid
+| 
+| Integer 
+| 
+|  
+
+| size_type_invalid
+| 
+| Integer 
+| 
+|  
+
+| link_format_warning
+| 
+| Integer 
+| 
+|  
+
+| duplicate_products
+| 
+| Integer 
+| 
+|  
+
+| duplicate_links
+| 
+| Integer 
+| 
+|  
+
+| sales_price_invalid
+| 
+| Integer 
+| 
+|  
+
+| product_category_depth_warning
+| 
+| Integer 
+| 
+|  
+
+| adwords_same_as_link
+| 
+| Integer 
+| 
+|  
+
+| duplicate_headers
+| 
+| Integer 
+| 
+|  
+
+| fetch_same_signature
+| 
+| Integer 
+| 
+|  
+
+| adwords_format_warning
+| 
+| Integer 
+| 
+|  
+
+| additional_image_link_warning
+| 
+| Integer 
+| 
+|  
+
+| image_link_warning
+| 
+| Integer 
+| 
+|  
+
+| shipping_invalid
+| 
+| Integer 
+| 
+|  
+
+| tax_invalid
+| 
+| Integer 
+| 
+|  
+
+| shipping_weight_invalid
+| 
+| Integer 
+| 
+|  
+
+| expiration_date_invalid
+| 
+| Integer 
+| 
+|  
+
+| availability_date_invalid
+| 
+| Integer 
+| 
+|  
+
+| sale_date_invalid
+| 
+| Integer 
+| 
+|  
+
+| weight_unit_invalid
+| 
+| Integer 
+| 
+|  
+
+| is_bundle_invalid
+| 
+| Integer 
+| 
+|  
+
+| updated_time_invalid
+| 
+| Integer 
+| 
+|  
+
+| custom_label_length_too_long
+| 
+| Integer 
+| 
+|  
+
+| product_type_length_too_long
+| 
+| Integer 
+| 
+|  
+
+| too_many_additional_image_links
+| 
+| Integer 
+| 
+|  
+
+| multipack_invalid
+| 
+| Integer 
+| 
+|  
+
+| indexed_product_count_large_delta
+| 
+| Integer 
+| 
+|  
+
+| item_additional_image_download_failure
+| 
+| Integer 
+| 
+|  
+
+| optional_product_category_missing
+| 
+| Integer 
+| 
+|  
+
+| optional_product_category_invalid
+| 
+| Integer 
+| 
+|  
+
+| optional_condition_missing
+| 
+| Integer 
+| 
+|  
+
+| optional_condition_invalid
+| 
+| Integer 
+| 
+|  
+
+| ios_deep_link_invalid
+| 
+| Integer 
+| 
+|  
+
+| android_deep_link_invalid
+| 
+| Integer 
+| 
+|  
+
+| availability_normalized
+| 
+| Integer 
+| 
+|  
+
+| condition_normalized
+| 
+| Integer 
+| 
+|  
+
+| gender_normalized
+| 
+| Integer 
+| 
+|  
+
+| size_type_normalized
+| 
+| Integer 
+| 
+|  
+
+| age_group_normalized
+| 
+| Integer 
+| 
+|  
+
+| utm_source_auto_corrected
+| 
+| Integer 
+| 
+|  
+
+| country_does_not_map_to_currency
+| 
+| Integer 
+| 
+|  
+
+| min_ad_price_invalid
+| 
+| Integer 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedsCreateRequest]
+=== _CatalogsFeedsCreateRequest_ feeds_create_request
+
+Request object for creating a feed. Please, be aware that &quot;default_country&quot; and &quot;default_locale&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
+
+[.fields-CatalogsFeedsCreateRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| default_country
+| 
+| Country 
+| 
+|  
+
+| default_availability
+| 
+| ProductAvailabilityType 
+| 
+|  
+
+| default_currency
+| 
+| NullableCurrency 
+| 
+|  
+
+| name
+| X
+| String 
+| A human-friendly name associated to a given feed.
+|  
+
+| format
+| X
+| CatalogsFormat 
+| 
+|  
+
+| default_locale
+| 
+| String 
+| The locale used within a feed for product descriptions.
+|  
+
+| credentials
+| 
+| CatalogsFeedCredentials 
+| 
+|  
+
+| location
+| X
+| String 
+| The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+|  
+
+| preferred_processing_schedule
+| 
+| CatalogsFeedProcessingSchedule 
+| 
+|  
+
+|===
+
+
+[#CatalogsFeedsUpdateRequest]
+=== _CatalogsFeedsUpdateRequest_ catalogs_feeds_update_request
+
+Request object for updating a feed.
+
+[.fields-CatalogsFeedsUpdateRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| default_availability
+| 
+| ProductAvailabilityType 
+| 
+|  
+
+| default_currency
+| 
+| NullableCurrency 
+| 
+|  
+
+| name
+| 
+| String 
+| A human-friendly name associated to a given feed.
+|  
+
+| format
+| 
+| CatalogsFormat 
+| 
+|  
+
+| credentials
+| 
+| CatalogsFeedCredentials 
+| 
+|  
+
+| location
+| 
+| String 
+| The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+|  
+
+| preferred_processing_schedule
+| 
+| CatalogsFeedProcessingSchedule 
+| 
+|  
+
+| status
+| 
+| CatalogsStatus 
+| 
+|  
+
+|===
+
+
+[#CatalogsFormat]
+=== _CatalogsFormat_ 
+
+The file format of a feed.
+
+[.fields-CatalogsFormat]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#CatalogsItems]
+=== _CatalogsItems_ 
+
+Response object of catalogs items
+
+[.fields-CatalogsItems]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| items
+| 
+| List  of <<ItemBatchRecord>>
+| Array with catalogs items
+|  
+
+|===
+
+
+[#CatalogsItemsBatch]
+=== _CatalogsItemsBatch_ 
+
+Object describing the catalogs items batch
+
+[.fields-CatalogsItemsBatch]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| items
+| 
+| List  of <<ItemProcessingRecord>>
+| Array with the catalogs items processing records part of the catalogs items batch
+|  
+
+| batch_id
+| 
+| String 
+| Id of the catalogs items batch
+|  
+
+| created_time
+| 
+| Date 
+| Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+| date-time 
+
+| completed_time
+| 
+| Date 
+| Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+| date-time 
+
+| status
+| 
+| BatchOperationStatus 
+| 
+|  
+
+|===
+
+
+[#CatalogsItemsBatchRequest]
+=== _CatalogsItemsBatchRequest_ 
+
+Request object of catalogs items batch
+
+[.fields-CatalogsItemsBatchRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| country
+| 
+| Country 
+| 
+|  
+
+| language
+| 
+| Language 
+| 
+|  
+
+| operation
+| 
+| BatchOperation 
+| 
+|  
+
+| items
+| 
+| List  of <<ItemBatchRecord>>
+| Array with catalogs items
+|  
+
+|===
+
+
+[#CatalogsProductGroup]
+=== _CatalogsProductGroup_ 
+
+catalog product group entity
+
+[.fields-CatalogsProductGroup]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| X
+| String 
+| ID of the catalog product group.
+|  
+
+| name
+| 
+| String 
+| Name of catalog product group
+|  
+
+| description
+| 
+| String 
+| 
+|  
+
+| filters
+| X
+| CatalogsProductGroupFilters 
+| 
+|  
+
+| type
+| 
+| CatalogsProductGroupType 
+| 
+|  
+
+| status
+| 
+| CatalogsProductGroupStatus 
+| 
+|  
+
+| feed_id
+| 
+| String 
+| id of the catalogs feed belonging to this catalog product group
+|  
+
+| created_at
+| 
+| Integer 
+| Unix timestamp in seconds of when catalog product group was created.
+|  
+
+| updated_at
+| 
+| Integer 
+| Unix timestamp in seconds of last time catalog product group was updated.
+|  
+
+|===
+
+
+[#CatalogsProductGroupCreateRequest]
+=== _CatalogsProductGroupCreateRequest_ product_groups_create_request
+
+Request object for creating a product group.
+
+[.fields-CatalogsProductGroupCreateRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| feed_id
+| X
+| String 
+| Catalog Feed id pertaining to the catalog product group.
+|  
+
+| name
+| X
+| String 
+| 
+|  
+
+| description
+| 
+| String 
+| 
+|  
+
+| filters
+| X
+| CatalogsProductGroupFilters 
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupCurrencyCriteria]
+=== _CatalogsProductGroupCurrencyCriteria_ catalogs_product_group_currency_criteria
+
+
+
+[.fields-CatalogsProductGroupCurrencyCriteria]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| values
+| X
+| NonNullableCatalogsCurrency 
+| 
+|  
+
+| negated
+| X
+| Boolean 
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupFilterKeys]
+=== _CatalogsProductGroupFilterKeys_ catalogs_product_group_keys
+
+
+
+[.fields-CatalogsProductGroupFilterKeys]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| MIN_PRICE
+| X
+| CatalogsProductGroupPricingCriteria 
+| 
+|  
+
+| MAX_PRICE
+| X
+| CatalogsProductGroupPricingCriteria 
+| 
+|  
+
+| CURRENCY
+| X
+| CatalogsProductGroupCurrencyCriteria 
+| 
+|  
+
+| ITEM_ID
+| X
+| CatalogsProductGroupCurrencyCriteria 
+| 
+|  
+
+| AVAILABILITY
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| BRAND
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| CONDITION
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| CUSTOM_LABEL_0
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| CUSTOM_LABEL_1
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| CUSTOM_LABEL_2
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| CUSTOM_LABEL_3
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| CUSTOM_LABEL_4
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| ITEM_GROUP_ID
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| GENDER
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+| PRODUCT_TYPE_4
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| PRODUCT_TYPE_3
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| PRODUCT_TYPE_2
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| PRODUCT_TYPE_1
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| PRODUCT_TYPE_0
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| GOOGLE_PRODUCT_CATEGORY_6
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| GOOGLE_PRODUCT_CATEGORY_5
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| GOOGLE_PRODUCT_CATEGORY_4
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| GOOGLE_PRODUCT_CATEGORY_3
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| GOOGLE_PRODUCT_CATEGORY_2
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| GOOGLE_PRODUCT_CATEGORY_1
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+| GOOGLE_PRODUCT_CATEGORY_0
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupFilters]
+=== _CatalogsProductGroupFilters_ catalogs_product_group_filters
+
+Object holding a group of filters for a catalog product group
+
+[.fields-CatalogsProductGroupFilters]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| any_of
+| 
+| List  of <<CatalogsProductGroupFilterKeys>>
+| 
+|  
+
+| all_of
+| 
+| List  of <<CatalogsProductGroupFilterKeys>>
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupFiltersAllOf]
+=== _CatalogsProductGroupFiltersAllOf_ 
+
+
+
+[.fields-CatalogsProductGroupFiltersAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| all_of
+| 
+| List  of <<CatalogsProductGroupFilterKeys>>
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupFiltersAnyOf]
+=== _CatalogsProductGroupFiltersAnyOf_ 
+
+
+
+[.fields-CatalogsProductGroupFiltersAnyOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| any_of
+| 
+| List  of <<CatalogsProductGroupFilterKeys>>
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupMultipleStringCriteria]
+=== _CatalogsProductGroupMultipleStringCriteria_ catalogs_product_group_multiple_string_criteria
+
+
+
+[.fields-CatalogsProductGroupMultipleStringCriteria]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| values
+| X
+| List  of <<string>>
+| 
+|  
+
+| negated
+| X
+| Boolean 
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupMultipleStringListCriteria]
+=== _CatalogsProductGroupMultipleStringListCriteria_ catalogs_product_group_multiple_string_list_criteria
+
+
+
+[.fields-CatalogsProductGroupMultipleStringListCriteria]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| values
+| X
+| List  of <<array>>
+| 
+|  
+
+| negated
+| X
+| Boolean 
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupPricingCriteria]
+=== _CatalogsProductGroupPricingCriteria_ catalogs_product_group_pricing_criteria
+
+
+
+[.fields-CatalogsProductGroupPricingCriteria]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| inclusion
+| X
+| Boolean 
+| 
+|  
+
+| values
+| X
+| BigDecimal 
+| 
+|  
+
+| negated
+| X
+| Boolean 
+| 
+|  
+
+|===
+
+
+[#CatalogsProductGroupStatus]
+=== _CatalogsProductGroupStatus_ 
+
+
+
+[.fields-CatalogsProductGroupStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#CatalogsProductGroupType]
+=== _CatalogsProductGroupType_ product_group_type
+
+Catalog product group type
+
+[.fields-CatalogsProductGroupType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#CatalogsProductGroupUpdateRequest]
+=== _CatalogsProductGroupUpdateRequest_ product_groups_update_request
+
+Request object for updating a product group.
+
+[.fields-CatalogsProductGroupUpdateRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| feed_id
+| X
+| String 
+| Catalog Feed id pertaining to the catalog product group.
+|  
+
+| name
+| X
+| String 
+| 
+|  
+
+| description
+| 
+| String 
+| 
+|  
+
+| filters
+| X
+| CatalogsProductGroupFilters 
+| 
+|  
+
+|===
+
+
+[#CatalogsStatus]
+=== _CatalogsStatus_ 
+
+Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
+
+[.fields-CatalogsStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ConditionFilter]
+=== _ConditionFilter_ 
+
+
+
+[.fields-ConditionFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| CONDITION
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#ConversionAttributionWindowDays]
+=== _ConversionAttributionWindowDays_ 
+
+
+
+[.fields-ConversionAttributionWindowDays]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ConversionReportAttributionType]
+=== _ConversionReportAttributionType_ 
+
+Attribution type. Refers to the Pinterest Tag endpoints
+
+[.fields-ConversionReportAttributionType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ConversionReportTimeType]
+=== _ConversionReportTimeType_ 
+
+Conversion report time type
+
+[.fields-ConversionReportTimeType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#Country]
+=== _Country_ 
+
+Country ID from ISO 3166-1 alpha-2.
+
+[.fields-Country]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#Currency]
+=== _Currency_ 
+
+Currency Codes from ISO 4217
+
+[.fields-Currency]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#CurrencyFilter]
+=== _CurrencyFilter_ 
+
+
+
+[.fields-CurrencyFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| CURRENCY
+| X
+| CatalogsProductGroupCurrencyCriteria 
+| 
+|  
+
+|===
+
+
+[#CustomLabel0Filter]
+=== _CustomLabel0Filter_ 
+
+
+
+[.fields-CustomLabel0Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| CUSTOM_LABEL_0
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#CustomLabel1Filter]
+=== _CustomLabel1Filter_ 
+
+
+
+[.fields-CustomLabel1Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| CUSTOM_LABEL_1
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#CustomLabel2Filter]
+=== _CustomLabel2Filter_ 
+
+
+
+[.fields-CustomLabel2Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| CUSTOM_LABEL_2
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#CustomLabel3Filter]
+=== _CustomLabel3Filter_ 
+
+
+
+[.fields-CustomLabel3Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| CUSTOM_LABEL_3
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#CustomLabel4Filter]
+=== _CustomLabel4Filter_ 
+
+
+
+[.fields-CustomLabel4Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| CUSTOM_LABEL_4
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#DataOutputFormat]
+=== _DataOutputFormat_ 
+
+Format of generated report
+
+[.fields-DataOutputFormat]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#EntityStatus]
+=== _EntityStatus_ 
+
+Entity status
+
+[.fields-EntityStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#Error]
+=== _Error_ Error
+
+
+
+[.fields-Error]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| code
+| X
+| Integer 
+| 
+|  
+
+| message
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#FeedFields]
+=== _FeedFields_ feed_fields
+
+
+
+[.fields-FeedFields]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| default_country
+| X
+| Country 
+| 
+|  
+
+| default_availability
+| X
+| ProductAvailabilityType 
+| 
+|  
+
+| default_currency
+| X
+| NullableCurrency 
+| 
+|  
+
+| name
+| X
+| String 
+| A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+|  
+
+| format
+| X
+| CatalogsFormat 
+| 
+|  
+
+| default_locale
+| X
+| String 
+| The locale used within a feed for product descriptions.
+|  
+
+| credentials
+| X
+| CatalogsFeedCredentials 
+| 
+|  
+
+| location
+| X
+| String 
+| The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+|  
+
+| preferred_processing_schedule
+| X
+| CatalogsFeedProcessingSchedule 
+| 
+|  
+
+| status
+| X
+| CatalogsStatus 
+| 
+|  
+
+|===
+
+
+[#GenderFilter]
+=== _GenderFilter_ 
+
+
+
+[.fields-GenderFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GENDER
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#GoogleProductCategory0Filter]
+=== _GoogleProductCategory0Filter_ 
+
+
+
+[.fields-GoogleProductCategory0Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GOOGLE_PRODUCT_CATEGORY_0
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#GoogleProductCategory1Filter]
+=== _GoogleProductCategory1Filter_ 
+
+
+
+[.fields-GoogleProductCategory1Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GOOGLE_PRODUCT_CATEGORY_1
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#GoogleProductCategory2Filter]
+=== _GoogleProductCategory2Filter_ 
+
+
+
+[.fields-GoogleProductCategory2Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GOOGLE_PRODUCT_CATEGORY_2
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#GoogleProductCategory3Filter]
+=== _GoogleProductCategory3Filter_ 
+
+
+
+[.fields-GoogleProductCategory3Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GOOGLE_PRODUCT_CATEGORY_3
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#GoogleProductCategory4Filter]
+=== _GoogleProductCategory4Filter_ 
+
+
+
+[.fields-GoogleProductCategory4Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GOOGLE_PRODUCT_CATEGORY_4
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#GoogleProductCategory5Filter]
+=== _GoogleProductCategory5Filter_ 
+
+
+
+[.fields-GoogleProductCategory5Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GOOGLE_PRODUCT_CATEGORY_5
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#GoogleProductCategory6Filter]
+=== _GoogleProductCategory6Filter_ 
+
+
+
+[.fields-GoogleProductCategory6Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| GOOGLE_PRODUCT_CATEGORY_6
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#Granularity]
+=== _Granularity_ 
+
+
+
+[.fields-Granularity]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ImageDetails]
+=== _ImageDetails_ ImageDetails
+
+
+
+[.fields-ImageDetails]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| width
+| X
+| Integer 
+| 
+|  
+
+| height
+| X
+| Integer 
+| 
+|  
+
+| url
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#ItemAttributes]
+=== _ItemAttributes_ 
+
+
+
+[.fields-ItemAttributes]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ad_link
+| 
+| String 
+| Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
+|  
+
+| additional_image_link
+| 
+| List  of <<string>>
+| The links to additional images for your product. Up to five additional images can be used to show a product from different angles or to show different stages. Separate each additional image with a comma. We recommend enclosing the whole string with quotes. Must begin with http:// or https://
+|  
+
+| adult
+| 
+| Boolean 
+| Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.
+|  
+
+| age_group
+| 
+| String 
+| The age group to apply a demographic range to the product. Must be one of the following values: ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, ‘adult’.
+|  
+
+| availability
+| 
+| String 
+| The availability of the product. Must be one of the following values: ‘in stock’, ‘out of stock’, ‘preorder’.
+|  
+
+| average_review_rating
+| 
+| BigDecimal 
+| Average reviews for the item. Can be a number from 1-5.
+|  
+
+| brand
+| 
+| String 
+| The brand of the product.
+|  
+
+| color
+| 
+| String 
+| The primary color of the product.
+|  
+
+| condition
+| 
+| String 
+| The condition of the product. Must be one of the following values: ‘new’, ‘used’, ‘refurbished’.
+|  
+
+| custom_label_0
+| 
+| String 
+| Custom grouping of products.
+|  
+
+| custom_label_1
+| 
+| String 
+| Custom grouping of products.
+|  
+
+| custom_label_2
+| 
+| String 
+| Custom grouping of products.
+|  
+
+| custom_label_3
+| 
+| String 
+| Custom grouping of products.
+|  
+
+| custom_label_4
+| 
+| String 
+| Custom grouping of products.
+|  
+
+| description
+| 
+| String 
+| The description of the product.
+|  
+
+| free_shipping_label
+| 
+| Boolean 
+| The item is free to ship.
+|  
+
+| free_shipping_limit
+| 
+| String 
+| The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
+|  
+
+| gender
+| 
+| String 
+| The gender associated with the product. Must be one of the following values: ‘male’, ‘female’, ‘unisex’.
+|  
+
+| google_product_category
+| 
+| String 
+| The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+|  
+
+| gtin
+| 
+| Integer 
+| The unique universal product identifier.
+|  
+
+| id
+| 
+| String 
+| The user-created unique ID that represents the product. Only Unicode characters are accepted.
+|  
+
+| image_link
+| 
+| List  of <<string>>
+| The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://
+|  
+
+| item_group_id
+| 
+| String 
+| The parent ID of the product.
+|  
+
+| last_updated_time
+| 
+| Long 
+| The millisecond timestamp when the item was lastly modified by the merchant.
+| int64 
+
+| link
+| 
+| String 
+| The landing page for the product.
+|  
+
+| material
+| 
+| String 
+| The material used to make the product.
+|  
+
+| min_ad_price
+| 
+| String 
+| The minimum advertised price of the product. It supports the following formats, \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars.
+|  
+
+| mobile_link
+| 
+| String 
+| The mobile-optimized version of your landing page. Must begin with http:// or https://.
+|  
+
+| mpn
+| 
+| String 
+| Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
+|  
+
+| number_of_ratings
+| 
+| Integer 
+| The number of ratings for the item.
+|  
+
+| number_of_reviews
+| 
+| Integer 
+| The number of reviews available for the item.
+|  
+
+| pattern
+| 
+| String 
+| The description of the pattern used for the product.
+|  
+
+| price
+| 
+| String 
+| The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.
+|  
+
+| product_type
+| 
+| String 
+| The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.
+|  
+
+| sale_price
+| 
+| String 
+| The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.
+|  
+
+| shipping
+| 
+| String 
+| Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
+|  
+
+| shipping_height
+| 
+| String 
+| The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+|  
+
+| shipping_weight
+| 
+| String 
+| The weight of the product. Ensure there is a space between the numeric string and the metric.
+|  
+
+| shipping_width
+| 
+| String 
+| The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+|  
+
+| size
+| 
+| String 
+| The size of the product.
+|  
+
+| size_system
+| 
+| String 
+| Indicates the country’s sizing system in which you are submitting your product.
+|  
+
+| size_type
+| 
+| String 
+| Additional description for the size. Must be one of the following values: ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, ‘maternity’.
+|  
+
+| tax
+| 
+| String 
+| Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
+|  
+
+| title
+| 
+| String 
+| The name of the product.
+|  
+
+|===
+
+
+[#ItemBatchRecord]
+=== _ItemBatchRecord_ 
+
+Object describing an item batch record
+
+[.fields-ItemBatchRecord]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| item_id
+| 
+| String 
+| The catalog item id in the merchant namespace
+|  
+
+| attributes
+| 
+| ItemAttributes 
+| 
+|  
+
+|===
+
+
+[#ItemGroupIdFilter]
+=== _ItemGroupIdFilter_ 
+
+
+
+[.fields-ItemGroupIdFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ITEM_GROUP_ID
+| X
+| CatalogsProductGroupMultipleStringCriteria 
+| 
+|  
+
+|===
+
+
+[#ItemIdFilter]
+=== _ItemIdFilter_ 
+
+
+
+[.fields-ItemIdFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| ITEM_ID
+| X
+| CatalogsProductGroupCurrencyCriteria 
+| 
+|  
+
+|===
+
+
+[#ItemProcessingRecord]
+=== _ItemProcessingRecord_ 
+
+Object describing an item processing record
+
+[.fields-ItemProcessingRecord]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| item_id
+| 
+| String 
+| The catalog item id in the merchant namespace
+|  
+
+| errors
+| 
+| List  of <<ItemValidationEvent>>
+| Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
+|  
+
+| warnings
+| 
+| List  of <<ItemValidationEvent>>
+| Array with the validation warnings for the item processing record
+|  
+
+| status
+| 
+| ItemProcessingStatus 
+| 
+|  
+
+|===
+
+
+[#ItemProcessingStatus]
+=== _ItemProcessingStatus_ 
+
+The status of the item processing record
+
+[.fields-ItemProcessingStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ItemValidationEvent]
+=== _ItemValidationEvent_ 
+
+Object describing an item validation event
+
+[.fields-ItemValidationEvent]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| attribute
+| 
+| String 
+| The attribute that the item validation event references
+|  
+
+| code
+| 
+| Integer 
+| The event code that the item validation event references
+|  
+
+| message
+| 
+| String 
+| Title message describing the item validation event
+|  
+
+|===
+
+
+[#Language]
+=== _Language_ 
+
+Language code, which is among the offical ISO 639-1 language list.
+
+[.fields-Language]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#MaxPriceFilter]
+=== _MaxPriceFilter_ 
+
+
+
+[.fields-MaxPriceFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| MAX_PRICE
+| X
+| CatalogsProductGroupPricingCriteria 
+| 
+|  
+
+|===
+
+
+[#MediaUpload]
+=== _MediaUpload_ Media upload
+
+Media upload that has been registered but not uploaded/processed yet.
+
+[.fields-MediaUpload]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| media_id
+| 
+| String 
+| Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+|  
+
+| media_type
+| 
+| MediaUploadType 
+| 
+|  
+
+| upload_url
+| 
+| String 
+| The URL where you will POST your media file.
+|  
+
+| upload_parameters
+| 
+| MediaUpload_allOf_upload_parameters 
+| 
+|  
+
+|===
+
+
+[#MediaUploadAllOf]
+=== _MediaUploadAllOf_ 
+
+
+
+[.fields-MediaUploadAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| media_id
+| 
+| String 
+| Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+|  
+
+| media_type
+| 
+| MediaUploadType 
+| 
+|  
+
+| upload_url
+| 
+| String 
+| The URL where you will POST your media file.
+|  
+
+| upload_parameters
+| 
+| MediaUpload_allOf_upload_parameters 
+| 
+|  
+
+|===
+
+
+[#MediaUploadAllOfUploadParameters]
+=== _MediaUploadAllOfUploadParameters_ 
+
+The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+
+[.fields-MediaUploadAllOfUploadParameters]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| x-amz-date
+| 
+| String 
+| 
+|  
+
+| x-amz-signature
+| 
+| String 
+| 
+|  
+
+| x-amz-security-token
+| 
+| String 
+| 
+|  
+
+| x-amz-algorithm
+| 
+| String 
+| 
+|  
+
+| key
+| 
+| String 
+| 
+|  
+
+| policy
+| 
+| String 
+| 
+|  
+
+| x-amz-credential
+| 
+| String 
+| 
+|  
+
+| Content-Type
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#MediaUploadDetails]
+=== _MediaUploadDetails_ Media upload details
+
+Media upload details
+
+[.fields-MediaUploadDetails]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| media_id
+| 
+| String 
+| 
+|  
+
+| media_type
+| 
+| MediaUploadType 
+| 
+|  
+
+| status
+| 
+| MediaUploadStatus 
+| 
+|  
+
+|===
+
+
+[#MediaUploadRequest]
+=== _MediaUploadRequest_ Media upload request
+
+Media upload request
+
+[.fields-MediaUploadRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| media_type
+| X
+| MediaUploadType 
+| 
+|  
+
+|===
+
+
+[#MediaUploadStatus]
+=== _MediaUploadStatus_ 
+
+Media upload status
+
+[.fields-MediaUploadStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#MediaUploadType]
+=== _MediaUploadType_ 
+
+
+
+[.fields-MediaUploadType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#MetricsReportingLevel]
+=== _MetricsReportingLevel_ 
+
+Level of the reporting request
+
+[.fields-MetricsReportingLevel]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#MinPriceFilter]
+=== _MinPriceFilter_ 
+
+
+
+[.fields-MinPriceFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| MIN_PRICE
+| X
+| CatalogsProductGroupPricingCriteria 
+| 
+|  
+
+|===
+
+
+[#NonNullableCatalogsCurrency]
+=== _NonNullableCatalogsCurrency_ 
+
+Currency Codes from ISO 4217.
+
+[.fields-NonNullableCatalogsCurrency]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#NullableCurrency]
+=== _NullableCurrency_ 
+
+Currency Codes from ISO 4217.
+
+[.fields-NullableCurrency]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#OauthAccessTokenRequestCode]
+=== _OauthAccessTokenRequestCode_ authorization_code
+
+A request to exchange an authorization code for an access token.
+
+[.fields-OauthAccessTokenRequestCode]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| grant_type
+| X
+| String 
+| 
+|  _Enum:_ authorization_code, refresh_token, 
+
+| code
+| X
+| String 
+| 
+|  
+
+| redirect_uri
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#OauthAccessTokenRequestCodeAllOf]
+=== _OauthAccessTokenRequestCodeAllOf_ 
+
+
+
+[.fields-OauthAccessTokenRequestCodeAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| code
+| X
+| String 
+| 
+|  
+
+| redirect_uri
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#OauthAccessTokenRequestRefresh]
+=== _OauthAccessTokenRequestRefresh_ refresh_token
+
+A request to exchange a refresh token for a new access token.
+
+[.fields-OauthAccessTokenRequestRefresh]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| grant_type
+| X
+| String 
+| 
+|  _Enum:_ authorization_code, refresh_token, 
+
+| refresh_token
+| X
+| String 
+| 
+|  
+
+| scope
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#OauthAccessTokenRequestRefreshAllOf]
+=== _OauthAccessTokenRequestRefreshAllOf_ 
+
+
+
+[.fields-OauthAccessTokenRequestRefreshAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| refresh_token
+| X
+| String 
+| 
+|  
+
+| scope
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#OauthAccessTokenResponse]
+=== _OauthAccessTokenResponse_ OAuth access token response
+
+A successful OAuth access token response.
+
+[.fields-OauthAccessTokenResponse]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| response_type
+| 
+| String 
+| 
+|  _Enum:_ authorization_code, refresh_token, 
+
+| access_token
+| X
+| String 
+| 
+|  
+
+| token_type
+| X
+| String 
+| 
+|  
+
+| expires_in
+| X
+| Integer 
+| 
+|  
+
+| scope
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#OauthAccessTokenResponseCode]
+=== _OauthAccessTokenResponseCode_ OAuth access token response
+
+A successful OAuth access token response for the authorization code flow.
+
+[.fields-OauthAccessTokenResponseCode]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| response_type
+| 
+| String 
+| 
+|  _Enum:_ authorization_code, refresh_token, 
+
+| access_token
+| X
+| String 
+| 
+|  
+
+| token_type
+| X
+| String 
+| 
+|  
+
+| expires_in
+| X
+| Integer 
+| 
+|  
+
+| scope
+| X
+| String 
+| 
+|  
+
+| refresh_token
+| X
+| String 
+| 
+|  
+
+| refresh_token_expires_in
+| X
+| Integer 
+| 
+|  
+
+|===
+
+
+[#OauthAccessTokenResponseCodeAllOf]
+=== _OauthAccessTokenResponseCodeAllOf_ 
+
+
+
+[.fields-OauthAccessTokenResponseCodeAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| refresh_token
+| X
+| String 
+| 
+|  
+
+| refresh_token_expires_in
+| X
+| Integer 
+| 
+|  
+
+|===
+
+
+[#OauthAccessTokenResponseRefresh]
+=== _OauthAccessTokenResponseRefresh_ OAuth access token response
+
+A successful OAuth access token response for the refresh token flow.
+
+[.fields-OauthAccessTokenResponseRefresh]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| response_type
+| 
+| String 
+| 
+|  _Enum:_ authorization_code, refresh_token, 
+
+| access_token
+| X
+| String 
+| 
+|  
+
+| token_type
+| X
+| String 
+| 
+|  
+
+| expires_in
+| X
+| Integer 
+| 
+|  
+
+| scope
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#ObjectiveType]
+=== _ObjectiveType_ 
+
+Campaign objective type.
+
+[.fields-ObjectiveType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#PacingDeliveryType]
+=== _PacingDeliveryType_ 
+
+Ad group pacing delivery type
+
+[.fields-PacingDeliveryType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#Paginated]
+=== _Paginated_ 
+
+
+
+[.fields-Paginated]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| items
+| X
+| List  of <<object>>
+| 
+|  
+
+| bookmark
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#Pin]
+=== _Pin_ Pin
+
+Pin
+
+[.fields-Pin]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| 
+| String 
+| 
+|  
+
+| created_at
+| 
+| Date 
+| 
+| date-time 
+
+| link
+| 
+| String 
+| 
+|  
+
+| title
+| 
+| String 
+| 
+|  
+
+| description
+| 
+| String 
+| 
+|  
+
+| alt_text
+| 
+| String 
+| 
+|  
+
+| board_id
+| 
+| String 
+| The board to which this Pin belongs.
+|  
+
+| board_section_id
+| 
+| String 
+| The board section to which this Pin belongs.
+|  
+
+| board_owner
+| 
+| BoardOwner 
+| 
+|  
+
+| media
+| 
+| PinMedia 
+| 
+|  
+
+| media_source
+| 
+| PinMediaSource 
+| 
+|  
+
+|===
+
+
+[#PinMedia]
+=== _PinMedia_ Pin media
+
+Pin media objects.
+
+[.fields-PinMedia]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| media_type
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#PinMediaSource]
+=== _PinMediaSource_ Pin media source
+
+Pin media source.
+
+[.fields-PinMediaSource]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| source_type
+| X
+| String 
+| 
+|  _Enum:_ video_id, 
+
+| content_type
+| X
+| String 
+| 
+|  _Enum:_ image/jpeg, image/png, 
+
+| data
+| X
+| String 
+| 
+|  
+
+| url
+| X
+| String 
+| 
+|  
+
+| cover_image_url
+| X
+| String 
+| 
+|  
+
+| media_id
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#PinMediaSourceImageBase64]
+=== _PinMediaSourceImageBase64_ Image Base64
+
+Base64-encoded image media source
+
+[.fields-PinMediaSourceImageBase64]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| source_type
+| X
+| String 
+| 
+|  _Enum:_ image_base64, 
+
+| content_type
+| X
+| String 
+| 
+|  _Enum:_ image/jpeg, image/png, 
+
+| data
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#PinMediaSourceImageURL]
+=== _PinMediaSourceImageURL_ Image URL
+
+Image URL-based media source
+
+[.fields-PinMediaSourceImageURL]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| source_type
+| X
+| String 
+| 
+|  _Enum:_ image_url, 
+
+| url
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#PinMediaSourceVideoID]
+=== _PinMediaSourceVideoID_ Video ID
+
+Video ID-based media source
+
+[.fields-PinMediaSourceVideoID]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| source_type
+| X
+| String 
+| 
+|  _Enum:_ video_id, 
+
+| cover_image_url
+| X
+| String 
+| 
+|  
+
+| media_id
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#PinMediaWithImage]
+=== _PinMediaWithImage_ image
+
+Pin with image.
+
+[.fields-PinMediaWithImage]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| images
+| 
+| Map  of <<ImageDetails>>
+| 
+|  
+
+| media_type
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#PinMediaWithImageAllOf]
+=== _PinMediaWithImageAllOf_ 
+
+
+
+[.fields-PinMediaWithImageAllOf]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| images
+| 
+| Map  of <<ImageDetails>>
+| 
+|  
+
+|===
+
+
+[#PinPromotionSummaryStatus]
+=== _PinPromotionSummaryStatus_ 
+
+Summary status for pin promotions
+
+[.fields-PinPromotionSummaryStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#PlacementGroupType]
+=== _PlacementGroupType_ 
+
+Campaign placement group type
+
+[.fields-PlacementGroupType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ProductAvailabilityType]
+=== _ProductAvailabilityType_ 
+
+Default availability for products in a feed.
+
+[.fields-ProductAvailabilityType]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ProductGroupSummaryStatus]
+=== _ProductGroupSummaryStatus_ 
+
+Summary status for product group
+
+[.fields-ProductGroupSummaryStatus]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#ProductType0Filter]
+=== _ProductType0Filter_ 
+
+
+
+[.fields-ProductType0Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| PRODUCT_TYPE_0
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#ProductType1Filter]
+=== _ProductType1Filter_ 
+
+
+
+[.fields-ProductType1Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| PRODUCT_TYPE_1
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#ProductType2Filter]
+=== _ProductType2Filter_ 
+
+
+
+[.fields-ProductType2Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| PRODUCT_TYPE_2
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#ProductType3Filter]
+=== _ProductType3Filter_ 
+
+
+
+[.fields-ProductType3Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| PRODUCT_TYPE_3
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#ProductType4Filter]
+=== _ProductType4Filter_ 
+
+
+
+[.fields-ProductType4Filter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| PRODUCT_TYPE_4
+| X
+| CatalogsProductGroupMultipleStringListCriteria 
+| 
+|  
+
+|===
+
+
+[#ReportingColumnAsync]
+=== _ReportingColumnAsync_ 
+
+Reporting columns
+
+[.fields-ReportingColumnAsync]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+|===
+
+
+[#TargetingTypeFilter]
+=== _TargetingTypeFilter_ 
+
+
+
+[.fields-TargetingTypeFilter]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| targeting_types
+| 
+| List  of <<AdsAnalyticsTargetingType>>
+| List of targeting types
+|  
+
+|===
+
+
+[#TrackingUrls]
+=== _TrackingUrls_ 
+
+Third-party tracking URLs. Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking&quot; target&#x3D;&quot;_blank&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+
+[.fields-TrackingUrls]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| impression
+| 
+| List  of <<string>>
+| 
+|  
+
+| click
+| 
+| List  of <<string>>
+| 
+|  
+
+| engagement
+| 
+| List  of <<string>>
+| 
+|  
+
+| buyable_button
+| 
+| List  of <<string>>
+| 
+|  
+
+| audience_verification
+| 
+| List  of <<string>>
+| 
+|  
+
+|===
+
+

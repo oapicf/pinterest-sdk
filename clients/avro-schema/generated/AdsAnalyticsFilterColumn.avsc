@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Reporting columns for sync reporting data filter",
+  "name": "AdsAnalyticsFilterColumn",
+  "symbols": [
+    "SPEND_IN_DOLLAR",
+    "TOTAL_IMPRESSION"
+  ]
+}

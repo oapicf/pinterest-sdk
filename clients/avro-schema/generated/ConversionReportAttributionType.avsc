@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Attribution type. Refers to the Pinterest Tag endpoints",
+  "name": "ConversionReportAttributionType",
+  "symbols": [
+    "INDIVIDUAL",
+    "HOUSEHOLD"
+  ]
+}

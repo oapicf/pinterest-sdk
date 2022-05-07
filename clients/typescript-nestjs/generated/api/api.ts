@@ -1,0 +1,15 @@
+export * from './adAccounts.service';
+import { AdAccountsService } from './adAccounts.service';
+export * from './boards.service';
+import { BoardsService } from './boards.service';
+export * from './catalogs.service';
+import { CatalogsService } from './catalogs.service';
+export * from './media.service';
+import { MediaService } from './media.service';
+export * from './oauth.service';
+import { OauthService } from './oauth.service';
+export * from './pins.service';
+import { PinsService } from './pins.service';
+export * from './userAccount.service';
+import { UserAccountService } from './userAccount.service';
+export const APIS = [AdAccountsService, BoardsService, CatalogsService, MediaService, OauthService, PinsService, UserAccountService];

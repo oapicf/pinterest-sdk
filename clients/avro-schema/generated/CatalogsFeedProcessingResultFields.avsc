@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsFeedProcessingResultFields",
+  "fields": [
+    {
+      "name": "ingestion_details",
+      "type": "model.CatalogsFeedIngestionDetails",
+      "doc": ""
+    },
+    {
+      "name": "status",
+      "type": "model.CatalogsFeedProcessingStatus",
+      "doc": ""
+    },
+    {
+      "name": "product_counts",
+      "type": "model.CatalogsFeedProductCounts",
+      "doc": ""
+    },
+    {
+      "name": "validation_details",
+      "type": "model.CatalogsFeedValidationDetails",
+      "doc": ""
+    }
+  ]
+
+}

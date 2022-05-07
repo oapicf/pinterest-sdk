@@ -1,0 +1,37 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Base64-encoded image media source",
+  "name": "PinMediaSourceImageBase64",
+  "fields": [
+    {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSourceImageBase64_sourceUnderscoretype",
+        "symbols": [
+          "image_base64"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "content_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSourceImageBase64_contentUnderscoretype",
+        "symbols": [
+          "image/jpeg",
+          "image/png"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "data",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

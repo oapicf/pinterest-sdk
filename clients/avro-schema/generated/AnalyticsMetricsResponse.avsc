@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AnalyticsMetricsResponse",
+  "fields": [
+    {
+      "name": "daily_metrics",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AnalyticsMetricsResponseDailyMetrics"
+      }],
+      "doc": "Array with the requested daily metric records",
+      "default": null
+    },
+    {
+      "name": "summary_metrics",
+      "type": ["null", {
+        "type": "map",
+        "items": "double"
+      }],
+      "doc": "The metric name and value over the requested period for each requested metric",
+      "default": null
+    }
+  ]
+
+}

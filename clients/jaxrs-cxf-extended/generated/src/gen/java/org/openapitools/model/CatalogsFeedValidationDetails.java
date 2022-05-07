@@ -1,0 +1,95 @@
+package org.openapitools.model;
+
+import org.openapitools.model.CatalogsFeedValidationErrors;
+import org.openapitools.model.CatalogsFeedValidationWarnings;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class CatalogsFeedValidationDetails  {
+  
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsFeedValidationErrors errors;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsFeedValidationWarnings warnings;
+ /**
+  * Get errors
+  * @return errors
+  */
+  @JsonProperty("errors")
+  @NotNull
+  public CatalogsFeedValidationErrors getErrors() {
+    return errors;
+  }
+
+  /**
+   * Sets the <code>errors</code> property.
+   */
+ public void setErrors(CatalogsFeedValidationErrors errors) {
+    this.errors = errors;
+  }
+
+  /**
+   * Sets the <code>errors</code> property.
+   */
+  public CatalogsFeedValidationDetails errors(CatalogsFeedValidationErrors errors) {
+    this.errors = errors;
+    return this;
+  }
+
+ /**
+  * Get warnings
+  * @return warnings
+  */
+  @JsonProperty("warnings")
+  @NotNull
+  public CatalogsFeedValidationWarnings getWarnings() {
+    return warnings;
+  }
+
+  /**
+   * Sets the <code>warnings</code> property.
+   */
+ public void setWarnings(CatalogsFeedValidationWarnings warnings) {
+    this.warnings = warnings;
+  }
+
+  /**
+   * Sets the <code>warnings</code> property.
+   */
+  public CatalogsFeedValidationDetails warnings(CatalogsFeedValidationWarnings warnings) {
+    this.warnings = warnings;
+    return this;
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CatalogsFeedValidationDetails {\n");
+    
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

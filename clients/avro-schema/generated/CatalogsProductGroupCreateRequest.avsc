@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object for creating a product group.",
+  "name": "CatalogsProductGroupCreateRequest",
+  "fields": [
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": "Catalog Feed id pertaining to the catalog product group."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsProductGroupFilters",
+      "doc": ""
+    }
+  ]
+
+}

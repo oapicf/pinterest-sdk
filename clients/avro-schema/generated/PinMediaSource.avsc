@@ -1,0 +1,52 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin media source.",
+  "name": "PinMediaSource",
+  "fields": [
+    {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSource_sourceUnderscoretype",
+        "symbols": [
+          "video_id"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "content_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSource_contentUnderscoretype",
+        "symbols": [
+          "image/jpeg",
+          "image/png"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "data",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "cover_image_url",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "media_id",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

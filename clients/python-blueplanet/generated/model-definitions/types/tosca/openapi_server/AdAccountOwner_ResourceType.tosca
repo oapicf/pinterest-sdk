@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdAccountOwner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdAccountOwner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdAccountOwner {
+    title = AdAccountOwner
+    description = AdAccountOwner
+    derivedFrom = Root
+    properties {
+        username {
+          type =  string
+          description = "Public username for the user account"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdAccountOwner {
+    title = AdAccountOwner
+    description = AdAccountOwner
+    implements = openapi_server.resourceTypes.AdAccountOwner
+
+  }
+}

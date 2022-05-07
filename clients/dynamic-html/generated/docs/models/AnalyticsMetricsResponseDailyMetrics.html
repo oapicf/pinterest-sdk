@@ -1,0 +1,44 @@
+
+<h2>AnalyticsMetricsResponseDailyMetrics</h2>
+<ul class="parameter">
+  <li class="param-required-false">dataUnderscorestatus : String
+    <br/>Metrics availablity, e.g., \&quot;READY\&quot;.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>PROCESSING</dd>
+            <dd>READY</dd>
+            <dd>ESTIMATE</dd>
+            <dd>BEFORE_BUSINESS_CREATED</dd>
+            <dd>BEFORE_DATA_RETENTION_PERIOD</dd>
+            <dd>BEFORE_PIN_DATA_RETENTION_PERIOD</dd>
+            <dd>BEFORE_METRIC_START_DATE</dd>
+            <dd>BEFORE_CORE_METRIC_START_DATE</dd>
+            <dd>BEFORE_PIN_FORMAT_METRIC_START_DATE</dd>
+            <dd>BEFORE_AUDIENCE_METRIC_START_DATE</dd>
+            <dd>BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE</dd>
+            <dd>BEFORE_VIDEO_METRIC_START_DATE</dd>
+            <dd>BEFORE_CONVERSION_METRIC_START_DATE</dd>
+            <dd>PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD</dd>
+            <dd>IN_BAD_TAG_DATE</dd>
+            <dd>BEFORE_PUBLISHED_METRIC_START_DATE</dd>
+            <dd>BEFORE_ASSIST_METRIC_START_DATE</dd>
+            <dd>BEFORE_PIN_CREATED</dd>
+            <dd>BEFORE_ACCOUNT_CLAIMED</dd>
+            <dd>BEFORE_DEMOGRAPHIC_FILTERS_START_DATE</dd>
+            <dd>AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD</dd>
+            <dd>AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD</dd>
+            <dd>BEFORE_PRODUCT_GROUP_FILTER_START_DATE</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">date : String
+    <br/>Metrics date (UTC): YYYY-MM-DD.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">metrics : Map
+    <br/>The metric name and daily value for each requested metric
+  </li>
+</ul>

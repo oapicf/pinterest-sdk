@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CurrencyFilter",
+  "fields": [
+    {
+      "name": "CURRENCY",
+      "type": "model.CatalogsProductGroupCurrencyCriteria",
+      "doc": ""
+    }
+  ]
+
+}

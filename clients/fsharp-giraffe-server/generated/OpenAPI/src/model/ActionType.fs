@@ -1,0 +1,13 @@
+namespace OpenAPI.Model
+
+open System
+open System.Collections.Generic
+
+module ActionType =
+
+  //#region ActionType
+
+
+  type ActionType = {
+  }
+  //#endregion

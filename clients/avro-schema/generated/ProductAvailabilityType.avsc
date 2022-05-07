@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Default availability for products in a feed.",
+  "name": "ProductAvailabilityType",
+  "symbols": [
+    "IN_STOCK",
+    "OUT_OF_STOCK",
+    "PREORDER",
+    "null"
+  ]
+}

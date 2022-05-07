@@ -1,0 +1,929 @@
+@startuml
+
+title Pinterest REST API Schemas Diagram
+
+entity Account {
+    account_type: String
+    profile_image: String
+    website_url: String
+    username: String
+}
+
+entity ActionType {
+}
+
+entity AdAccount {
+    id: String
+    name: String
+    owner: AdAccountOwner
+    country: Country
+    currency: Currency
+}
+
+entity AdAccountOwner {
+    username: String
+}
+
+entity AdGroupResponse {
+    name: String
+    status: EntityStatus
+    budget_in_micro_currency: Integer
+    bid_in_micro_currency: Integer
+    budget_type: String
+    start_time: Integer
+    end_time: Integer
+    targeting_spec: Map
+    lifetime_frequency_cap: Integer
+    tracking_urls: TrackingUrls
+    auto_targeting_enabled: Boolean
+    placement_group: PlacementGroupType
+    pacing_delivery_type: PacingDeliveryType
+    conversion_learning_mode_type: String
+    summary_status: AdGroupSummaryStatus
+    feed_profile_id: String
+}
+
+entity AdGroupResponseAllOf1 {
+    campaign_id: String
+    billable_event: ActionType
+    id: String
+    type: String
+    ad_account_id: String
+    created_time: Integer
+    updated_time: Integer
+}
+
+entity AdGroupSummaryStatus {
+}
+
+entity AdResponse {
+    ad_group_id: String
+    android_deep_link: String
+    carousel_android_deep_links: List<String>
+    carousel_destination_urls: List<String>
+    carousel_ios_deep_links: List<String>
+    click_tracking_url: String
+    creative_type: String
+    destination_url: String
+    ios_deep_link: String
+    is_pin_deleted: Boolean
+    is_removable: Boolean
+    name: String
+    pin_id: String
+    status: EntityStatus
+    tracking_urls: TrackingUrls
+    view_tracking_url: String
+}
+
+entity AdResponseAllOf1 {
+    ad_account_id: String
+    campaign_id: String
+    collection_items_destination_url_template: String
+    created_time: Integer
+    id: String
+    rejected_reasons: List<String>
+    rejection_labels: List<String>
+    review_status: String
+    type: String
+    updated_time: Integer
+    summary_status: PinPromotionSummaryStatus
+}
+
+entity AdsAnalyticsCreateAsyncRequest {
+    * start_date: String
+    * end_date: String
+    * granularity: Granularity
+    click_window_days: ConversionAttributionWindowDays
+    engagement_window_days: ConversionAttributionWindowDays
+    view_window_days: ConversionAttributionWindowDays
+    conversion_report_time: ConversionReportTimeType
+    attribution_types: List<ConversionReportAttributionType>
+}
+
+entity AdsAnalyticsCreateAsyncRequestAllOf1 {
+    * columns: List<ReportingColumnAsync>
+    * level: MetricsReportingLevel
+    report_format: DataOutputFormat
+}
+
+entity AdsAnalyticsCreateAsyncResponse {
+    report_status: String
+    token: String
+    message: String
+}
+
+entity AdsAnalyticsFilterColumn {
+}
+
+entity AdsAnalyticsFilterOperator {
+}
+
+entity AdsAnalyticsGetAsyncResponse {
+    report_status: String
+    url: String
+    size: BigDecimal
+}
+
+entity AdsAnalyticsMetricsFilter {
+    field: AdsAnalyticsFilterColumn
+    operator: AdsAnalyticsFilterOperator
+    values: List<BigDecimal>
+}
+
+entity AdsAnalyticsTargetingType {
+}
+
+entity AnalyticsMetricsResponse {
+    daily_metrics: List<AnalyticsMetricsResponseDailyMetrics>
+    summary_metrics: Map
+}
+
+entity AnalyticsMetricsResponseDailyMetrics {
+    data_status: String
+    date: String
+    metrics: Map
+}
+
+entity AvailabilityFilter {
+    * AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity BatchOperation {
+}
+
+entity BatchOperationStatus {
+}
+
+entity Board {
+    id: String
+    * name: String
+    description: String
+    owner: BoardOwner
+    privacy: String
+}
+
+entity BoardOwner {
+    username: String
+}
+
+entity BoardSection {
+    id: String
+    name: String
+}
+
+entity BoardUpdate {
+    name: String
+    description: String
+    privacy: String
+}
+
+entity BrandFilter {
+    * BRAND: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CampaignCommon {
+    * ad_account_id: String
+    name: String
+    status: EntityStatus
+    lifetime_spend_cap: Integer
+    daily_spend_cap: Integer
+    order_line_id: String
+    tracking_urls: TrackingUrls
+    start_time: Integer
+    end_time: Integer
+}
+
+entity CampaignResponse {
+    * id: String
+}
+
+entity CampaignResponseAllOf1 {
+    objective_type: ObjectiveType
+    created_time: Integer
+    updated_time: Integer
+    type: String
+}
+
+entity CampaignSummaryStatus {
+}
+
+entity CatalogsDbItem {
+    created_at: Date
+    id: String
+    updated_at: Date
+}
+
+entity CatalogsFeed {
+}
+
+entity CatalogsFeedCredentials {
+    * password: String
+    * username: String
+}
+
+entity CatalogsFeedIngestionDetails {
+    * errors: CatalogsFeedIngestionErrors
+    * info: CatalogsFeedIngestionInfo
+}
+
+entity CatalogsFeedIngestionErrors {
+    image_download_error: Integer
+    image_download_connection_timeout: Integer
+    image_format_unrecognize: Integer
+    line_level_internal_error: Integer
+    large_product_count_decrease: Integer
+}
+
+entity CatalogsFeedIngestionInfo {
+    in_stock: Integer
+    out_of_stock: Integer
+    preorder: Integer
+}
+
+entity CatalogsFeedProcessingResult {
+}
+
+entity CatalogsFeedProcessingResultFields {
+    * ingestion_details: CatalogsFeedIngestionDetails
+    * status: CatalogsFeedProcessingStatus
+    * product_counts: CatalogsFeedProductCounts
+    * validation_details: CatalogsFeedValidationDetails
+}
+
+entity CatalogsFeedProcessingSchedule {
+    * time: String
+    * timezone: String
+}
+
+entity CatalogsFeedProcessingStatus {
+}
+
+entity CatalogsFeedProductCounts {
+    original: Integer
+}
+
+entity CatalogsFeedValidationDetails {
+    * errors: CatalogsFeedValidationErrors
+    * warnings: CatalogsFeedValidationWarnings
+}
+
+entity CatalogsFeedValidationErrors {
+    fetch_error: Integer
+    fetch_inactive_feed_error: Integer
+    encoding_error: Integer
+    delimiter_error: Integer
+    required_columns_missing: Integer
+    image_link_invalid: Integer
+    itemid_missing: Integer
+    title_missing: Integer
+    description_missing: Integer
+    product_category_invalid: Integer
+    product_link_missing: Integer
+    image_link_missing: Integer
+    availability_invalid: Integer
+    product_price_invalid: Integer
+    link_format_invalid: Integer
+    parse_line_error: Integer
+    adwords_format_invalid: Integer
+    product_category_missing: Integer
+    internal_service_error: Integer
+    no_verified_domain: Integer
+    adult_invalid: Integer
+    invalid_domain: Integer
+    feed_length_too_long: Integer
+    link_length_too_long: Integer
+    malformed_xml: Integer
+    redirect_invalid: Integer
+    price_missing: Integer
+    feed_too_small: Integer
+    condition_invalid: Integer
+    shopify_no_products: Integer
+    max_items_per_item_group_exceeded: Integer
+    item_main_image_download_failure: Integer
+    pinjoin_content_unsafe: Integer
+    blocklisted_image_signature: Integer
+}
+
+entity CatalogsFeedValidationWarnings {
+    title_length_too_long: Integer
+    description_length_too_long: Integer
+    gender_invalid: Integer
+    age_group_invalid: Integer
+    size_type_invalid: Integer
+    link_format_warning: Integer
+    duplicate_products: Integer
+    duplicate_links: Integer
+    sales_price_invalid: Integer
+    product_category_depth_warning: Integer
+    adwords_same_as_link: Integer
+    duplicate_headers: Integer
+    fetch_same_signature: Integer
+    adwords_format_warning: Integer
+    additional_image_link_warning: Integer
+    image_link_warning: Integer
+    shipping_invalid: Integer
+    tax_invalid: Integer
+    shipping_weight_invalid: Integer
+    expiration_date_invalid: Integer
+    availability_date_invalid: Integer
+    sale_date_invalid: Integer
+    weight_unit_invalid: Integer
+    is_bundle_invalid: Integer
+    updated_time_invalid: Integer
+    custom_label_length_too_long: Integer
+    product_type_length_too_long: Integer
+    too_many_additional_image_links: Integer
+    multipack_invalid: Integer
+    indexed_product_count_large_delta: Integer
+    item_additional_image_download_failure: Integer
+    optional_product_category_missing: Integer
+    optional_product_category_invalid: Integer
+    optional_condition_missing: Integer
+    optional_condition_invalid: Integer
+    ios_deep_link_invalid: Integer
+    android_deep_link_invalid: Integer
+    availability_normalized: Integer
+    condition_normalized: Integer
+    gender_normalized: Integer
+    size_type_normalized: Integer
+    age_group_normalized: Integer
+    utm_source_auto_corrected: Integer
+    country_does_not_map_to_currency: Integer
+    min_ad_price_invalid: Integer
+}
+
+entity CatalogsFeedsCreateRequest {
+    default_country: Country
+    default_availability: ProductAvailabilityType
+    default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    default_locale: String
+    credentials: CatalogsFeedCredentials
+    * location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+}
+
+entity CatalogsFeedsUpdateRequest {
+    default_availability: ProductAvailabilityType
+    default_currency: NullableCurrency
+    name: String
+    format: CatalogsFormat
+    credentials: CatalogsFeedCredentials
+    location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    status: CatalogsStatus
+}
+
+entity CatalogsFormat {
+}
+
+entity CatalogsItems {
+    items: List<ItemBatchRecord>
+}
+
+entity CatalogsItemsBatch {
+    items: List<ItemProcessingRecord>
+    batch_id: String
+    created_time: Date
+    completed_time: Date
+    status: BatchOperationStatus
+}
+
+entity CatalogsItemsBatchRequest {
+    country: Country
+    language: Language
+    operation: BatchOperation
+    items: List<ItemBatchRecord>
+}
+
+entity CatalogsProductGroup {
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+    type: CatalogsProductGroupType
+    status: CatalogsProductGroupStatus
+    feed_id: String
+    created_at: Integer
+    updated_at: Integer
+}
+
+entity CatalogsProductGroupCreateRequest {
+    * feed_id: String
+    * name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+}
+
+entity CatalogsProductGroupCurrencyCriteria {
+    * values: NonNullableCatalogsCurrency
+    * negated: Boolean
+}
+
+entity CatalogsProductGroupFilterKeys {
+    * MIN_PRICE: CatalogsProductGroupPricingCriteria
+    * MAX_PRICE: CatalogsProductGroupPricingCriteria
+    * CURRENCY: CatalogsProductGroupCurrencyCriteria
+    * ITEM_ID: CatalogsProductGroupCurrencyCriteria
+    * AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
+    * BRAND: CatalogsProductGroupMultipleStringCriteria
+    * CONDITION: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
+    * ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
+    * GENDER: CatalogsProductGroupMultipleStringCriteria
+    * PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_1: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity CatalogsProductGroupFilters {
+    any_of: List<CatalogsProductGroupFilterKeys>
+    all_of: List<CatalogsProductGroupFilterKeys>
+}
+
+entity CatalogsProductGroupFiltersAnyOf {
+    any_of: List<CatalogsProductGroupFilterKeys>
+}
+
+entity CatalogsProductGroupMultipleStringCriteria {
+    * values: List<String>
+    * negated: Boolean
+}
+
+entity CatalogsProductGroupMultipleStringListCriteria {
+    * values: List<List>
+    * negated: Boolean
+}
+
+entity CatalogsProductGroupPricingCriteria {
+    * inclusion: Boolean
+    * values: BigDecimal
+    * negated: Boolean
+}
+
+entity CatalogsProductGroupStatus {
+}
+
+entity CatalogsProductGroupType {
+}
+
+entity CatalogsProductGroupUpdateRequest {
+    * feed_id: String
+    * name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+}
+
+entity CatalogsStatus {
+}
+
+entity ConditionFilter {
+    * CONDITION: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity ConversionAttributionWindowDays {
+}
+
+entity ConversionReportAttributionType {
+}
+
+entity ConversionReportTimeType {
+}
+
+entity Country {
+}
+
+entity Currency {
+}
+
+entity CurrencyFilter {
+    * CURRENCY: CatalogsProductGroupCurrencyCriteria
+}
+
+entity CustomLabel0Filter {
+    * CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel1Filter {
+    * CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel2Filter {
+    * CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel3Filter {
+    * CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel4Filter {
+    * CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity DataOutputFormat {
+}
+
+entity EntityStatus {
+}
+
+entity Error {
+    * code: Integer
+    * message: String
+}
+
+entity FeedFields {
+    * default_country: Country
+    * default_availability: ProductAvailabilityType
+    * default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    * default_locale: String
+    * credentials: CatalogsFeedCredentials
+    * location: String
+    * preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    * status: CatalogsStatus
+}
+
+entity GenderFilter {
+    * GENDER: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity GoogleProductCategory0Filter {
+    * GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory1Filter {
+    * GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory2Filter {
+    * GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory3Filter {
+    * GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory4Filter {
+    * GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory5Filter {
+    * GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory6Filter {
+    * GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity Granularity {
+}
+
+entity ImageDetails {
+    * width: Integer
+    * height: Integer
+    * url: String
+}
+
+entity ItemAttributes {
+    ad_link: String
+    additional_image_link: List<String>
+    adult: Boolean
+    age_group: String
+    availability: String
+    average_review_rating: BigDecimal
+    brand: String
+    color: String
+    condition: String
+    custom_label_0: String
+    custom_label_1: String
+    custom_label_2: String
+    custom_label_3: String
+    custom_label_4: String
+    description: String
+    free_shipping_label: Boolean
+    free_shipping_limit: String
+    gender: String
+    google_product_category: String
+    gtin: Integer
+    id: String
+    image_link: List<String>
+    item_group_id: String
+    last_updated_time: Long
+    link: String
+    material: String
+    min_ad_price: String
+    mobile_link: String
+    mpn: String
+    number_of_ratings: Integer
+    number_of_reviews: Integer
+    pattern: String
+    price: String
+    product_type: String
+    sale_price: String
+    shipping: String
+    shipping_height: String
+    shipping_weight: String
+    shipping_width: String
+    size: String
+    size_system: String
+    size_type: String
+    tax: String
+    title: String
+}
+
+entity ItemBatchRecord {
+    item_id: String
+    attributes: ItemAttributes
+}
+
+entity ItemGroupIdFilter {
+    * ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity ItemIdFilter {
+    * ITEM_ID: CatalogsProductGroupCurrencyCriteria
+}
+
+entity ItemProcessingRecord {
+    item_id: String
+    errors: List<ItemValidationEvent>
+    warnings: List<ItemValidationEvent>
+    status: ItemProcessingStatus
+}
+
+entity ItemProcessingStatus {
+}
+
+entity ItemValidationEvent {
+    attribute: String
+    code: Integer
+    message: String
+}
+
+entity Language {
+}
+
+entity MaxPriceFilter {
+    * MAX_PRICE: CatalogsProductGroupPricingCriteria
+}
+
+entity MediaUpload {
+    media_id: String
+    media_type: MediaUploadType
+    upload_url: String
+    upload_parameters: MediaUploadAllOfUploadParameters
+}
+
+entity MediaUploadAllOfUploadParameters {
+    x-amz-date: String
+    x-amz-signature: String
+    x-amz-security-token: String
+    x-amz-algorithm: String
+    key: String
+    policy: String
+    x-amz-credential: String
+    Content-Type: String
+}
+
+entity MediaUploadDetails {
+    media_id: String
+    media_type: MediaUploadType
+    status: MediaUploadStatus
+}
+
+entity MediaUploadRequest {
+    * media_type: MediaUploadType
+}
+
+entity MediaUploadStatus {
+}
+
+entity MediaUploadType {
+}
+
+entity MetricsReportingLevel {
+}
+
+entity MinPriceFilter {
+    * MIN_PRICE: CatalogsProductGroupPricingCriteria
+}
+
+entity NonNullableCatalogsCurrency {
+}
+
+entity NullableCurrency {
+}
+
+entity OauthAccessTokenRequestCode {
+    * code: String
+    * redirect_uri: String
+}
+
+entity OauthAccessTokenRequestRefresh {
+    * refresh_token: String
+    scope: String
+}
+
+entity OauthAccessTokenResponse {
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
+}
+
+entity OauthAccessTokenResponseCode {
+    * refresh_token: String
+    * refresh_token_expires_in: Integer
+}
+
+entity OauthAccessTokenResponseRefresh {
+}
+
+entity ObjectiveType {
+}
+
+entity PacingDeliveryType {
+}
+
+entity Paginated {
+    * items: List<Object>
+    bookmark: String
+}
+
+entity Pin {
+    id: String
+    created_at: Date
+    link: String
+    title: String
+    description: String
+    alt_text: String
+    board_id: String
+    board_section_id: String
+    board_owner: BoardOwner
+    media: PinMedia
+    media_source: PinMediaSource
+}
+
+entity PinMedia {
+    media_type: String
+}
+
+entity PinMediaSource {
+    * source_type: String
+    * content_type: String
+    * data: String
+    * url: String
+    * cover_image_url: String
+    * media_id: String
+}
+
+entity PinMediaSourceImageBase64 {
+    * source_type: String
+    * content_type: String
+    * data: String
+}
+
+entity PinMediaSourceImageURL {
+    * source_type: String
+    * url: String
+}
+
+entity PinMediaSourceVideoID {
+    * source_type: String
+    * cover_image_url: String
+    * media_id: String
+}
+
+entity PinMediaWithImage {
+    images: Map
+}
+
+entity PinPromotionSummaryStatus {
+}
+
+entity PlacementGroupType {
+}
+
+entity ProductAvailabilityType {
+}
+
+entity ProductGroupSummaryStatus {
+}
+
+entity ProductType0Filter {
+    * PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType1Filter {
+    * PRODUCT_TYPE_1: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType2Filter {
+    * PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType3Filter {
+    * PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType4Filter {
+    * PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ReportingColumnAsync {
+}
+
+entity TargetingTypeFilter {
+    targeting_types: List<AdsAnalyticsTargetingType>
+}
+
+entity TrackingUrls {
+    impression: List<String>
+    click: List<String>
+    engagement: List<String>
+    buyable_button: List<String>
+    audience_verification: List<String>
+}
+
+AdGroupResponseAllOf1 <|--- AdGroupResponse
+AdResponseAllOf1 <|--- AdResponse
+AdsAnalyticsCreateAsyncRequestAllOf1 <|--- AdsAnalyticsCreateAsyncRequest
+CampaignCommon <|--- CampaignResponse
+CampaignResponseAllOf1 <|--- CampaignResponse
+CatalogsDbItem <|--- CatalogsFeed
+FeedFields <|--- CatalogsFeed
+CatalogsDbItem <|--- CatalogsFeedProcessingResult
+CatalogsFeedProcessingResultFields <|--- CatalogsFeedProcessingResult
+OauthAccessTokenRequest <|--- OauthAccessTokenRequestCode
+OauthAccessTokenRequest <|--- OauthAccessTokenRequestRefresh
+OauthAccessTokenResponse <|--- OauthAccessTokenResponseCode
+OauthAccessTokenResponse <|--- OauthAccessTokenResponseRefresh
+PinMedia <|--- PinMediaWithImage
+
+AdsAnalyticsCreateAsyncRequestAllOf1 -- MetricsReportingLevel : level
+AdsAnalyticsCreateAsyncRequestAllOf1 -- DataOutputFormat : report_format
+MediaUploadRequest -- MediaUploadType : media_type
+AdAccount -- AdAccountOwner : owner
+AdsAnalyticsCreateAsyncRequest -- Granularity : granularity
+AdsAnalyticsCreateAsyncRequest -- ConversionAttributionWindowDays : click_window_days
+AdsAnalyticsCreateAsyncRequest -- ConversionAttributionWindowDays : engagement_window_days
+AdsAnalyticsCreateAsyncRequest -- ConversionAttributionWindowDays : view_window_days
+AdsAnalyticsCreateAsyncRequest -- ConversionReportTimeType : conversion_report_time
+Board -- BoardOwner : owner
+CatalogsFeedsCreateRequest -- CatalogsFeedCredentials : credentials
+CatalogsFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+AdResponseAllOf1 -- PinPromotionSummaryStatus : summary_status
+CampaignCommon -- EntityStatus : status
+CampaignCommon -- TrackingUrls : tracking_urls
+FeedFields -- CatalogsFeedCredentials : credentials
+FeedFields -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+AdResponse -- TrackingUrls : tracking_urls
+AdGroupResponse -- EntityStatus : status
+AdGroupResponse -- TrackingUrls : tracking_urls
+AdGroupResponse -- PlacementGroupType : placement_group
+AdGroupResponse -- PacingDeliveryType : pacing_delivery_type
+AdGroupResponse -- AdGroupSummaryStatus : summary_status
+Pin -- BoardOwner : board_owner
+Pin -- PinMedia : media
+Pin -- PinMediaSource : media_source
+CatalogsFeedProcessingResultFields -- CatalogsFeedIngestionDetails : ingestion_details
+CatalogsFeedProcessingResultFields -- CatalogsFeedProductCounts : product_counts
+CatalogsFeedProcessingResultFields -- CatalogsFeedValidationDetails : validation_details
+CatalogsProductGroupCreateRequest -- CatalogsProductGroupFilters : filters
+ItemBatchRecord -- ItemAttributes : attributes
+CatalogsFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
+CatalogsFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsItemsBatchRequest -- "0..*" ItemBatchRecord : items
+MediaUpload -- MediaUploadType : media_type
+MediaUpload -- MediaUploadAllOfUploadParameters : upload_parameters
+CatalogsProductGroup -- CatalogsProductGroupFilters : filters
+CatalogsItemsBatch -- "0..*" ItemProcessingRecord : items
+CatalogsFeedValidationDetails -- CatalogsFeedValidationErrors : errors
+CatalogsFeedValidationDetails -- CatalogsFeedValidationWarnings : warnings
+ItemProcessingRecord -- "0..*" ItemValidationEvent : errors
+ItemProcessingRecord -- "0..*" ItemValidationEvent : warnings
+CatalogsFeedIngestionDetails -- CatalogsFeedIngestionErrors : errors
+CatalogsFeedIngestionDetails -- CatalogsFeedIngestionInfo : info
+CatalogsItems -- "0..*" ItemBatchRecord : items
+MediaUploadDetails -- MediaUploadType : media_type
+MediaUploadDetails -- MediaUploadStatus : status
+AnalyticsMetricsResponse -- "0..*" AnalyticsMetricsResponseDailyMetrics : daily_metrics
+CatalogsProductGroupUpdateRequest -- CatalogsProductGroupFilters : filters
+
+@enduml

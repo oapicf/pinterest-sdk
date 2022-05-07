@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "GoogleProductCategory3Filter",
+  "fields": [
+    {
+      "name": "GOOGLE_PRODUCT_CATEGORY_3",
+      "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    }
+  ]
+
+}

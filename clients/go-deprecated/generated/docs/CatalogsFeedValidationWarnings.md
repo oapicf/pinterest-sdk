@@ -1,0 +1,55 @@
+# CatalogsFeedValidationWarnings
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**TitleLengthTooLong** | **int32** |  | [optional] 
+**DescriptionLengthTooLong** | **int32** |  | [optional] 
+**GenderInvalid** | **int32** |  | [optional] 
+**AgeGroupInvalid** | **int32** |  | [optional] 
+**SizeTypeInvalid** | **int32** |  | [optional] 
+**LinkFormatWarning** | **int32** |  | [optional] 
+**DuplicateProducts** | **int32** |  | [optional] 
+**DuplicateLinks** | **int32** |  | [optional] 
+**SalesPriceInvalid** | **int32** |  | [optional] 
+**ProductCategoryDepthWarning** | **int32** |  | [optional] 
+**AdwordsSameAsLink** | **int32** |  | [optional] 
+**DuplicateHeaders** | **int32** |  | [optional] 
+**FetchSameSignature** | **int32** |  | [optional] 
+**AdwordsFormatWarning** | **int32** |  | [optional] 
+**AdditionalImageLinkWarning** | **int32** |  | [optional] 
+**ImageLinkWarning** | **int32** |  | [optional] 
+**ShippingInvalid** | **int32** |  | [optional] 
+**TaxInvalid** | **int32** |  | [optional] 
+**ShippingWeightInvalid** | **int32** |  | [optional] 
+**ExpirationDateInvalid** | **int32** |  | [optional] 
+**AvailabilityDateInvalid** | **int32** |  | [optional] 
+**SaleDateInvalid** | **int32** |  | [optional] 
+**WeightUnitInvalid** | **int32** |  | [optional] 
+**IsBundleInvalid** | **int32** |  | [optional] 
+**UpdatedTimeInvalid** | **int32** |  | [optional] 
+**CustomLabelLengthTooLong** | **int32** |  | [optional] 
+**ProductTypeLengthTooLong** | **int32** |  | [optional] 
+**TooManyAdditionalImageLinks** | **int32** |  | [optional] 
+**MultipackInvalid** | **int32** |  | [optional] 
+**IndexedProductCountLargeDelta** | **int32** |  | [optional] 
+**ItemAdditionalImageDownloadFailure** | **int32** |  | [optional] 
+**OptionalProductCategoryMissing** | **int32** |  | [optional] 
+**OptionalProductCategoryInvalid** | **int32** |  | [optional] 
+**OptionalConditionMissing** | **int32** |  | [optional] 
+**OptionalConditionInvalid** | **int32** |  | [optional] 
+**IosDeepLinkInvalid** | **int32** |  | [optional] 
+**AndroidDeepLinkInvalid** | **int32** |  | [optional] 
+**AvailabilityNormalized** | **int32** |  | [optional] 
+**ConditionNormalized** | **int32** |  | [optional] 
+**GenderNormalized** | **int32** |  | [optional] 
+**SizeTypeNormalized** | **int32** |  | [optional] 
+**AgeGroupNormalized** | **int32** |  | [optional] 
+**UtmSourceAutoCorrected** | **int32** |  | [optional] 
+**CountryDoesNotMapToCurrency** | **int32** |  | [optional] 
+**MinAdPriceInvalid** | **int32** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

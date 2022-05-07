@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Response object of catalogs items",
+  "name": "CatalogsItems",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ItemBatchRecord"
+      }],
+      "doc": "Array with catalogs items",
+      "default": null
+    }
+  ]
+
+}

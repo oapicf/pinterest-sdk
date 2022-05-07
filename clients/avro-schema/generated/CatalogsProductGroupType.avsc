@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Catalog product group type",
+  "name": "CatalogsProductGroupType",
+  "symbols": [
+    "MERCHANT_CREATED",
+    "ALL_PRODUCTS",
+    "BEST_DEALS",
+    "PINNER_FAVORITES",
+    "TOP_SELLERS",
+    "BACK_IN_STOCK",
+    "NEW_ARRIVALS"
+  ]
+}
