@@ -9,7 +9,7 @@ clean:
 	rm -rf clients/*/generated
 
 deps:
-	mkdir -p specification/ && curl https://raw.githubusercontent.com/pinterest/api-description/main/v5/openapi.yaml --output specification/pinterest.yaml
+	mkdir -p specification/ && curl https://raw.githubusercontent.com/pinterest/api-description/main/v5/openapi.yaml --output specification/pinterest.yml
 	docker pull openapitools/openapi-generator-cli:v$(oag_version)
 	npm install -g bootprint bootprint-openapi gh-pages mocha
 
@@ -36,7 +36,7 @@ generate-langs:
 		  --rm \
 		  -v $(GEN_BASE_DIR):/local openapitools/openapi-generator-cli:v$(oag_version) \
 		  generate \
-		  --input-spec /local/specification/pokeapi.yml \
+		  --input-spec /local/specification/pinterest.yml \
 		  --config /local/clients/$$lang/conf.json \
 		  --generator-name $$lang \
 		  --output /local/clients/$$lang/generated; \
@@ -56,7 +56,7 @@ generate-langs-primary:
 		  --rm \
 		  -v $(GEN_BASE_DIR):/local openapitools/openapi-generator-cli:v$(oag_version) \
 		  generate \
-		  --input-spec /local/specification/pokeapi.yml \
+		  --input-spec /local/specification/pinterest.yml \
 		  --config /local/clients/$$lang/conf.json \
 		  --generator-name $$lang \
 		  --output /local/clients/$$lang/generated; \
@@ -83,8 +83,8 @@ build-ruby:
 	cd clients/ruby/generated/ && \
 	  gem install bundler --version=1.17.3 && \
 	  bundle install --binstubs && \
-	  gem build pokeapi_client.gemspec && \
-	  gem install ./pokeapi_client-*.gem
+	  gem build pinterest_sdk.gemspec && \
+	  gem install ./pinterest_sdk-*.gem
 
 test-javascript: build-javascript
 	cd clients/javascript/generated/ && \
@@ -107,13 +107,13 @@ publish-python: build-python
 
 publish-ruby: build-ruby
 	cd clients/ruby/generated/ && \
-	  gem push `ls pokeapi_client-*.gem`
+	  gem push `ls pinterest_sdk-*.gem`
 
 doc:
-	bootprint openapi specification/pokeapi.yml doc/api/latest/
+	bootprint openapi specification/pinterest.yml doc/api/latest/
 
 doc-version:
-	bootprint openapi specification/pokeapi.yml doc/api/$(version)/
+	bootprint openapi specification/pinterest.yml doc/api/$(version)/
 
 doc-publish:
 	CACHE_DIR=/tmp gh-pages --dist doc/
