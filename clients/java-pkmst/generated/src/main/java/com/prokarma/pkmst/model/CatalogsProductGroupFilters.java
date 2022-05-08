@@ -20,7 +20,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object holding a group of filters for a catalog product group")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-05-07T06:39:36.253940Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-05-08T00:31:47.777767Z[Etc/UTC]")
 public class CatalogsProductGroupFilters   {
   @JsonProperty("any_of")
   

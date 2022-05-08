@@ -35,7 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class CatalogsFeedsCreateRequest {
   public static final String SERIALIZED_NAME_DEFAULT_COUNTRY = "default_country";
   @SerializedName(SERIALIZED_NAME_DEFAULT_COUNTRY)

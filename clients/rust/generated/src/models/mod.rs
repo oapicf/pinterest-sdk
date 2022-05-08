@@ -228,6 +228,8 @@ pub mod non_nullable_catalogs_currency;
 pub use self::non_nullable_catalogs_currency::NonNullableCatalogsCurrency;
 pub mod nullable_currency;
 pub use self::nullable_currency::NullableCurrency;
+pub mod oauth_access_token_request;
+pub use self::oauth_access_token_request::OauthAccessTokenRequest;
 pub mod oauth_access_token_request_code;
 pub use self::oauth_access_token_request_code::OauthAccessTokenRequestCode;
 pub mod oauth_access_token_request_code_all_of;

@@ -33,7 +33,7 @@ import java.util.List;
  * Object holding a group of filters for a catalog product group
  */
 @ApiModel(description = "Object holding a group of filters for a catalog product group")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class CatalogsProductGroupFilters {
   public static final String SERIALIZED_NAME_ANY_OF = "any_of";
   @SerializedName(SERIALIZED_NAME_ANY_OF)

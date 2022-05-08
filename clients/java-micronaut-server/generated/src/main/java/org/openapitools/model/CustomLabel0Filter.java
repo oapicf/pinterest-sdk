@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   CustomLabel0Filter.JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L0
 })
 @JsonTypeName("CustomLabel0Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class CustomLabel0Filter {
     public static final String JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L0 = "CUSTOM_LABEL_0";

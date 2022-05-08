@@ -11,7 +11,7 @@ import org.openapitools.model.OauthAccessTokenResponse;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A successful OAuth access token response for the refresh token flow.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-07T06:42:17.586199Z[Etc/UTC]")
+@ApiModel(description="A successful OAuth access token response for the refresh token flow.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-08T00:33:33.395237Z[Etc/UTC]")
 public class OauthAccessTokenResponseRefresh extends OauthAccessTokenResponse  {
   
 

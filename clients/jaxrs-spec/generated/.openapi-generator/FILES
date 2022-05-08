@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 pom.xml
 src/gen/java/org/openapitools/api/AdAccountsApi.java
@@ -124,6 +123,7 @@ src/gen/java/org/openapitools/model/MetricsReportingLevel.java
 src/gen/java/org/openapitools/model/MinPriceFilter.java
 src/gen/java/org/openapitools/model/NonNullableCatalogsCurrency.java
 src/gen/java/org/openapitools/model/NullableCurrency.java
+src/gen/java/org/openapitools/model/OauthAccessTokenRequest.java
 src/gen/java/org/openapitools/model/OauthAccessTokenRequestCode.java
 src/gen/java/org/openapitools/model/OauthAccessTokenRequestCodeAllOf.java
 src/gen/java/org/openapitools/model/OauthAccessTokenRequestRefresh.java

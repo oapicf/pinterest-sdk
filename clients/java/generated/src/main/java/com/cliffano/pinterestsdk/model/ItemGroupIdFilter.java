@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * ItemGroupIdFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class ItemGroupIdFilter {
   public static final String SERIALIZED_NAME_I_T_E_M_G_R_O_U_P_I_D = "ITEM_GROUP_ID";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_G_R_O_U_P_I_D)

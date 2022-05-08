@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 pom.xml
 src/gen/java/org/openapitools/api/AdAccountsApi.java
 src/gen/java/org/openapitools/api/BoardsApi.java
@@ -122,6 +121,7 @@ src/gen/java/org/openapitools/model/MetricsReportingLevel.java
 src/gen/java/org/openapitools/model/MinPriceFilter.java
 src/gen/java/org/openapitools/model/NonNullableCatalogsCurrency.java
 src/gen/java/org/openapitools/model/NullableCurrency.java
+src/gen/java/org/openapitools/model/OauthAccessTokenRequest.java
 src/gen/java/org/openapitools/model/OauthAccessTokenRequestCode.java
 src/gen/java/org/openapitools/model/OauthAccessTokenRequestCodeAllOf.java
 src/gen/java/org/openapitools/model/OauthAccessTokenRequestRefresh.java
@@ -153,10 +153,3 @@ src/gen/java/org/openapitools/model/ProductType4Filter.java
 src/gen/java/org/openapitools/model/ReportingColumnAsync.java
 src/gen/java/org/openapitools/model/TargetingTypeFilter.java
 src/gen/java/org/openapitools/model/TrackingUrls.java
-src/test/java/org/openapitools/api/AdAccountsApiTest.java
-src/test/java/org/openapitools/api/BoardsApiTest.java
-src/test/java/org/openapitools/api/CatalogsApiTest.java
-src/test/java/org/openapitools/api/MediaApiTest.java
-src/test/java/org/openapitools/api/OauthApiTest.java
-src/test/java/org/openapitools/api/PinsApiTest.java
-src/test/java/org/openapitools/api/UserAccountApiTest.java

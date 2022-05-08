@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * MinPriceFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class MinPriceFilter {
   public static final String SERIALIZED_NAME_M_I_N_P_R_I_C_E = "MIN_PRICE";
   @SerializedName(SERIALIZED_NAME_M_I_N_P_R_I_C_E)

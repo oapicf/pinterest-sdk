@@ -25,14 +25,14 @@ class OauthAccessTokenRequestRefresh {
      * Constructs a new <code>OauthAccessTokenRequestRefresh</code>.
      * A request to exchange a refresh token for a new access token.
      * @alias module:model/OauthAccessTokenRequestRefresh
-     * @extends 
+     * @extends module:model/OauthAccessTokenRequest
      * @implements module:model/OauthAccessTokenRequest
      * @implements module:model/OauthAccessTokenRequestRefreshAllOf
      * @param grantType {module:model/OauthAccessTokenRequestRefresh.GrantTypeEnum} 
      * @param refreshToken {String} 
      */
     constructor(grantType, refreshToken) { 
-        OauthAccessTokenRequestRefreshAllOf.initialize(this, refreshToken);
+        OauthAccessTokenRequest.initialize(this, grantType);OauthAccessTokenRequestRefreshAllOf.initialize(this, refreshToken);
         OauthAccessTokenRequestRefresh.initialize(this, grantType, refreshToken);
     }
 
@@ -55,9 +55,7 @@ class OauthAccessTokenRequestRefresh {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new OauthAccessTokenRequestRefresh();
-
-            ApiClient.constructFromObject(data, obj, '');
-            
+            OauthAccessTokenRequest.constructFromObject(data, obj);
             OauthAccessTokenRequest.constructFromObject(data, obj);
             OauthAccessTokenRequestRefreshAllOf.constructFromObject(data, obj);
 
@@ -85,6 +83,11 @@ OauthAccessTokenRequestRefresh.prototype['refresh_token'] = undefined;
 OauthAccessTokenRequestRefresh.prototype['scope'] = undefined;
 
 
+// Implement OauthAccessTokenRequest interface:
+/**
+ * @member {module:model/OauthAccessTokenRequest.GrantTypeEnum} grant_type
+ */
+OauthAccessTokenRequest.prototype['grant_type'] = undefined;
 // Implement OauthAccessTokenRequestRefreshAllOf interface:
 /**
  * @member {String} refresh_token

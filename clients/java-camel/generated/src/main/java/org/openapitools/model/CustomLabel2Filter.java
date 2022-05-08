@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CustomLabel2Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-07T06:40:56.403503Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-08T00:32:37.756477Z[Etc/UTC]")
 public class CustomLabel2Filter   {
 
   @JsonProperty("CUSTOM_LABEL_2")

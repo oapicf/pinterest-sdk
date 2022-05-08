@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 build.gradle.kts
 pom.xml
@@ -128,6 +127,7 @@ src/main/kotlin/org/openapitools/model/MetricsReportingLevel.kt
 src/main/kotlin/org/openapitools/model/MinPriceFilter.kt
 src/main/kotlin/org/openapitools/model/NonNullableCatalogsCurrency.kt
 src/main/kotlin/org/openapitools/model/NullableCurrency.kt
+src/main/kotlin/org/openapitools/model/OauthAccessTokenRequest.kt
 src/main/kotlin/org/openapitools/model/OauthAccessTokenRequestCode.kt
 src/main/kotlin/org/openapitools/model/OauthAccessTokenRequestCodeAllOf.kt
 src/main/kotlin/org/openapitools/model/OauthAccessTokenRequestRefresh.kt
@@ -160,10 +160,3 @@ src/main/kotlin/org/openapitools/model/ReportingColumnAsync.kt
 src/main/kotlin/org/openapitools/model/TargetingTypeFilter.kt
 src/main/kotlin/org/openapitools/model/TrackingUrls.kt
 src/main/resources/application.yaml
-src/test/kotlin/org/openapitools/api/AdAccountsApiTest.kt
-src/test/kotlin/org/openapitools/api/BoardsApiTest.kt
-src/test/kotlin/org/openapitools/api/CatalogsApiTest.kt
-src/test/kotlin/org/openapitools/api/MediaApiTest.kt
-src/test/kotlin/org/openapitools/api/OauthApiTest.kt
-src/test/kotlin/org/openapitools/api/PinsApiTest.kt
-src/test/kotlin/org/openapitools/api/UserAccountApiTest.kt

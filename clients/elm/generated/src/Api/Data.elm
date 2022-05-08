@@ -124,6 +124,7 @@ module Api.Data exposing
     , MinPriceFilter
     , NonNullableCatalogsCurrency(..), nonNullableCatalogsCurrencyVariants
     , NullableCurrency(..), nullableCurrencyVariants
+    , OauthAccessTokenRequest(..), OauthAccessTokenRequestGrantType(..), oauthAccessTokenRequestGrantTypeVariants
     , OauthAccessTokenRequestCode
     , OauthAccessTokenRequestRefresh
     , OauthAccessTokenResponse(..), OauthAccessTokenResponseResponseType(..), oauthAccessTokenResponseResponseTypeVariants
@@ -260,6 +261,7 @@ module Api.Data exposing
     , encodeMinPriceFilter
     , encodeNonNullableCatalogsCurrency
     , encodeNullableCurrency
+    , encodeOauthAccessTokenRequest
     , encodeOauthAccessTokenRequestCode
     , encodeOauthAccessTokenRequestRefresh
     , encodeOauthAccessTokenResponse
@@ -396,6 +398,7 @@ module Api.Data exposing
     , minPriceFilterDecoder
     , nonNullableCatalogsCurrencyDecoder
     , nullableCurrencyDecoder
+    , oauthAccessTokenRequestDecoder
     , oauthAccessTokenRequestCodeDecoder
     , oauthAccessTokenRequestRefreshDecoder
     , oauthAccessTokenResponseDecoder
@@ -4235,10 +4238,35 @@ nullableCurrencyVariants =
     ]
 
 
+{-| Describes the valid schema for possible OAuth access token requests.
+-}
+type OauthAccessTokenRequest
+    = OauthAccessTokenRequest BaseOauthAccessTokenRequest
+    | OauthAccessTokenRequestOauthAccessTokenRequestCode OauthAccessTokenRequestCode
+    | OauthAccessTokenRequestOauthAccessTokenRequestRefresh OauthAccessTokenRequestRefresh
+
+
+type alias BaseOauthAccessTokenRequest =
+    { grantType : OauthAccessTokenRequestGrantType
+    }
+
+
+type OauthAccessTokenRequestGrantType
+    = OauthAccessTokenRequestGrantTypeAuthorizationCode
+    | OauthAccessTokenRequestGrantTypeRefreshToken
+
+
+oauthAccessTokenRequestGrantTypeVariants : List OauthAccessTokenRequestGrantType
+oauthAccessTokenRequestGrantTypeVariants =
+    [ OauthAccessTokenRequestGrantTypeAuthorizationCode
+    , OauthAccessTokenRequestGrantTypeRefreshToken
+    ]
+
+
 {-| A request to exchange an authorization code for an access token.
 -}
 type alias OauthAccessTokenRequestCode =
-    { oauthAccessTokenRequest: OauthAccessTokenRequest
+    { baseOauthAccessTokenRequest: BaseOauthAccessTokenRequest
     , code : String
     , redirectUri : String
     }
@@ -4247,7 +4275,7 @@ type alias OauthAccessTokenRequestCode =
 {-| A request to exchange a refresh token for a new access token.
 -}
 type alias OauthAccessTokenRequestRefresh =
-    { oauthAccessTokenRequest: OauthAccessTokenRequest
+    { baseOauthAccessTokenRequest: BaseOauthAccessTokenRequest
     , refreshToken : String
     , scope : Maybe String
     }
@@ -11882,6 +11910,55 @@ encodeNullableCurrency =
     Json.Encode.string << stringFromNullableCurrency
 
 
+encodeOauthAccessTokenRequest : OauthAccessTokenRequest -> Json.Encode.Value
+encodeOauthAccessTokenRequest model =
+    case model of
+        OauthAccessTokenRequest subModel ->
+            encodeBaseOauthAccessTokenRequest subModel
+
+        OauthAccessTokenRequestOauthAccessTokenRequestCode subModel ->
+            encodeOauthAccessTokenRequestCodeWithTag ("grantType", "authorization_code") subModel
+
+
+        OauthAccessTokenRequestOauthAccessTokenRequestRefresh subModel ->
+            encodeOauthAccessTokenRequestRefreshWithTag ("grantType", "refresh_token") subModel
+
+
+encodeBaseOauthAccessTokenRequest : BaseOauthAccessTokenRequest -> Json.Encode.Value
+encodeBaseOauthAccessTokenRequest =
+    encodeObject << encodeBaseOauthAccessTokenRequestPairs
+
+
+encodeBaseOauthAccessTokenRequestWithTag : ( String, String ) -> BaseOauthAccessTokenRequest -> Json.Encode.Value
+encodeBaseOauthAccessTokenRequestWithTag (tagField, tag) model =
+    encodeObject (encodeBaseOauthAccessTokenRequestPairs model ++ [ encode tagField Json.Encode.string tag ])
+
+
+encodeBaseOauthAccessTokenRequestPairs : BaseOauthAccessTokenRequest -> List EncodedField
+encodeBaseOauthAccessTokenRequestPairs model =
+    let
+        pairs =
+            [ encode "grant_type" encodeOauthAccessTokenRequestGrantType model.grantType
+            ]
+    in
+    pairs
+
+stringFromOauthAccessTokenRequestGrantType : OauthAccessTokenRequestGrantType -> String
+stringFromOauthAccessTokenRequestGrantType model =
+    case model of
+        OauthAccessTokenRequestGrantTypeAuthorizationCode ->
+            "authorization_code"
+
+        OauthAccessTokenRequestGrantTypeRefreshToken ->
+            "refresh_token"
+
+
+encodeOauthAccessTokenRequestGrantType : OauthAccessTokenRequestGrantType -> Json.Encode.Value
+encodeOauthAccessTokenRequestGrantType =
+    Json.Encode.string << stringFromOauthAccessTokenRequestGrantType
+
+
+
 encodeOauthAccessTokenRequestCode : OauthAccessTokenRequestCode -> Json.Encode.Value
 encodeOauthAccessTokenRequestCode =
     encodeObject << encodeOauthAccessTokenRequestCodePairs
@@ -11900,7 +11977,7 @@ encodeOauthAccessTokenRequestCodePairs model =
             , encode "redirect_uri" Json.Encode.string model.redirectUri
             ]
     in
-    encodeOauthAccessTokenRequestPairs model.oauthAccessTokenRequest ++ pairs
+    encodeBaseOauthAccessTokenRequestPairs model.baseOauthAccessTokenRequest ++ pairs
 
 
 encodeOauthAccessTokenRequestRefresh : OauthAccessTokenRequestRefresh -> Json.Encode.Value
@@ -11921,7 +11998,7 @@ encodeOauthAccessTokenRequestRefreshPairs model =
             , maybeEncode "scope" Json.Encode.string model.scope
             ]
     in
-    encodeOauthAccessTokenRequestPairs model.oauthAccessTokenRequest ++ pairs
+    encodeBaseOauthAccessTokenRequestPairs model.baseOauthAccessTokenRequest ++ pairs
 
 
 encodeOauthAccessTokenResponse : OauthAccessTokenResponse -> Json.Encode.Value
@@ -19302,10 +19379,53 @@ nullableCurrencyDecoder =
             )
 
 
+oauthAccessTokenRequestDecoder : Json.Decode.Decoder OauthAccessTokenRequest
+oauthAccessTokenRequestDecoder =
+    Json.Decode.field "grantType" Json.Decode.string
+        |> Json.Decode.andThen oauthAccessTokenRequestTagDecoder
+
+
+oauthAccessTokenRequestTagDecoder : String -> Json.Decode.Decoder OauthAccessTokenRequest
+oauthAccessTokenRequestTagDecoder tag =
+    case tag of
+        "authorization_code" ->
+            Json.Decode.map OauthAccessTokenRequestOauthAccessTokenRequestCode oauthAccessTokenRequestCodeDecoder
+
+        "refresh_token" ->
+            Json.Decode.map OauthAccessTokenRequestOauthAccessTokenRequestRefresh oauthAccessTokenRequestRefreshDecoder
+
+        _ ->
+            Json.Decode.map OauthAccessTokenRequest baseOauthAccessTokenRequestDecoder
+
+
+baseOauthAccessTokenRequestDecoder : Json.Decode.Decoder BaseOauthAccessTokenRequest
+baseOauthAccessTokenRequestDecoder =
+    Json.Decode.succeed BaseOauthAccessTokenRequest
+        |> decode "grant_type" oauthAccessTokenRequestGrantTypeDecoder 
+
+
+oauthAccessTokenRequestGrantTypeDecoder : Json.Decode.Decoder OauthAccessTokenRequestGrantType
+oauthAccessTokenRequestGrantTypeDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "authorization_code" ->
+                        Json.Decode.succeed OauthAccessTokenRequestGrantTypeAuthorizationCode
+
+                    "refresh_token" ->
+                        Json.Decode.succeed OauthAccessTokenRequestGrantTypeRefreshToken
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+
 oauthAccessTokenRequestCodeDecoder : Json.Decode.Decoder OauthAccessTokenRequestCode
 oauthAccessTokenRequestCodeDecoder =
     Json.Decode.succeed OauthAccessTokenRequestCode
-        |> decodeChain oauthAccessTokenRequestDecoder
+        |> decodeChain baseOauthAccessTokenRequestDecoder
         |> decode "code" Json.Decode.string 
         |> decode "redirect_uri" Json.Decode.string 
 
@@ -19313,7 +19433,7 @@ oauthAccessTokenRequestCodeDecoder =
 oauthAccessTokenRequestRefreshDecoder : Json.Decode.Decoder OauthAccessTokenRequestRefresh
 oauthAccessTokenRequestRefreshDecoder =
     Json.Decode.succeed OauthAccessTokenRequestRefresh
-        |> decodeChain oauthAccessTokenRequestDecoder
+        |> decodeChain baseOauthAccessTokenRequestDecoder
         |> decode "refresh_token" Json.Decode.string 
         |> maybeDecode "scope" Json.Decode.string Nothing
 

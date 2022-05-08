@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -131,6 +130,7 @@ docs/MetricsReportingLevel.md
 docs/MinPriceFilter.md
 docs/NonNullableCatalogsCurrency.md
 docs/NullableCurrency.md
+docs/OauthAccessTokenRequest.md
 docs/OauthAccessTokenRequestCode.md
 docs/OauthAccessTokenRequestCodeAllOf.md
 docs/OauthAccessTokenRequestRefresh.md
@@ -283,6 +283,7 @@ model_metrics_reporting_level.go
 model_min_price_filter.go
 model_non_nullable_catalogs_currency.go
 model_nullable_currency.go
+model_oauth_access_token_request.go
 model_oauth_access_token_request_code.go
 model_oauth_access_token_request_code_all_of.go
 model_oauth_access_token_request_refresh.go

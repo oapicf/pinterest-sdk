@@ -33,6 +33,11 @@ class OauthAccessTokenRequestRefresh {
     scope;
 
     /**
+     * @member {OauthAccessTokenRequest.GrantTypeEnum} grant_type
+     * @type {OauthAccessTokenRequest.GrantTypeEnum}
+     */
+    #grant_type;
+    /**
      * @member {String} refresh_token
      * @type {String}
      */
@@ -48,14 +53,14 @@ class OauthAccessTokenRequestRefresh {
      * Constructs a new <code>OauthAccessTokenRequestRefresh</code>.
      * A request to exchange a refresh token for a new access token.
      * @alias module:model/OauthAccessTokenRequestRefresh
-     * @extends 
+     * @extends module:model/OauthAccessTokenRequest
      * @implements module:model/OauthAccessTokenRequest
      * @implements module:model/OauthAccessTokenRequestRefreshAllOf
      * @param grantType {OauthAccessTokenRequestRefresh.GrantTypeEnum} 
      * @param refreshToken {String} 
      */
     constructor(grantType, refreshToken) { 
-        OauthAccessTokenRequestRefreshAllOf.initialize(this, refreshToken);
+        OauthAccessTokenRequest.initialize(this, grantType);OauthAccessTokenRequestRefreshAllOf.initialize(this, refreshToken);
         OauthAccessTokenRequestRefresh.initialize(this, grantType, refreshToken);
     }
 
@@ -78,9 +83,7 @@ class OauthAccessTokenRequestRefresh {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new OauthAccessTokenRequestRefresh();
-
-            ApiClient.constructFromObject(data, obj, '');
-            
+            OauthAccessTokenRequest.constructFromObject(data, obj);
             OauthAccessTokenRequest.constructFromObject(data, obj);
             OauthAccessTokenRequestRefreshAllOf.constructFromObject(data, obj);
 

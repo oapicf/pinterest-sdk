@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   Error.JSON_PROPERTY_MESSAGE
 })
 @JsonTypeName("Error")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class Error {
     public static final String JSON_PROPERTY_CODE = "code";

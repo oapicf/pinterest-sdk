@@ -191,6 +191,7 @@ This runs all tests and packages the library.
          - [org.openapitools.server.api.model.MinPriceFilter](docs/MinPriceFilter.md)
          - [org.openapitools.server.api.model.NonNullableCatalogsCurrency](docs/NonNullableCatalogsCurrency.md)
          - [org.openapitools.server.api.model.NullableCurrency](docs/NullableCurrency.md)
+         - [org.openapitools.server.api.model.OauthAccessTokenRequest](docs/OauthAccessTokenRequest.md)
          - [org.openapitools.server.api.model.OauthAccessTokenRequestCode](docs/OauthAccessTokenRequestCode.md)
          - [org.openapitools.server.api.model.OauthAccessTokenRequestCodeAllOf](docs/OauthAccessTokenRequestCodeAllOf.md)
          - [org.openapitools.server.api.model.OauthAccessTokenRequestRefresh](docs/OauthAccessTokenRequestRefresh.md)

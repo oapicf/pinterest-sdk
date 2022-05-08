@@ -57,15 +57,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getGrantType() const;
-    bool grantTypeIsSet() const;
-    void unsetGrant_type();
-
-    void setGrantType(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
     utility::string_t getCode() const;
     bool codeIsSet() const;
     void unsetCode();
@@ -83,8 +74,6 @@ public:
 
 
 protected:
-    utility::string_t m_Grant_type;
-    bool m_Grant_typeIsSet;
     utility::string_t m_Code;
     bool m_CodeIsSet;
     utility::string_t m_Redirect_uri;

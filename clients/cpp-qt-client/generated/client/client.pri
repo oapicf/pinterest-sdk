@@ -117,6 +117,7 @@ HEADERS += \
     $${PWD}/OAIMinPriceFilter.h \
     $${PWD}/OAINonNullableCatalogsCurrency.h \
     $${PWD}/OAINullableCurrency.h \
+    $${PWD}/OAIOauthAccessTokenRequest.h \
     $${PWD}/OAIOauthAccessTokenRequestCode.h \
     $${PWD}/OAIOauthAccessTokenRequestCode_allOf.h \
     $${PWD}/OAIOauthAccessTokenRequestRefresh.h \
@@ -283,6 +284,7 @@ SOURCES += \
     $${PWD}/OAIMinPriceFilter.cpp \
     $${PWD}/OAINonNullableCatalogsCurrency.cpp \
     $${PWD}/OAINullableCurrency.cpp \
+    $${PWD}/OAIOauthAccessTokenRequest.cpp \
     $${PWD}/OAIOauthAccessTokenRequestCode.cpp \
     $${PWD}/OAIOauthAccessTokenRequestCode_allOf.cpp \
     $${PWD}/OAIOauthAccessTokenRequestRefresh.cpp \

@@ -49,8 +49,9 @@
     <Compile Include="src/model/OauthAccessTokenResponseRefresh.fs" />
     <Compile Include="src/model/OauthAccessTokenResponseCode.fs" />
     <Compile Include="src/model/OauthAccessTokenRequestRefreshAllOf.fs" />
-    <Compile Include="src/model/OauthAccessTokenRequestRefresh.fs" />
+    <Compile Include="src/model/OauthAccessTokenRequest.fs" />
     <Compile Include="src/model/OauthAccessTokenRequestCodeAllOf.fs" />
+    <Compile Include="src/model/OauthAccessTokenRequestRefresh.fs" />
     <Compile Include="src/model/OauthAccessTokenRequestCode.fs" />
     <Compile Include="src/model/NullableCurrency.fs" />
     <Compile Include="src/model/NonNullableCatalogsCurrency.fs" />

@@ -230,6 +230,7 @@ Class | Method | HTTP request | Description
  - [MinPriceFilter](MinPriceFilter.md)
  - [NonNullableCatalogsCurrency](NonNullableCatalogsCurrency.md)
  - [NullableCurrency](NullableCurrency.md)
+ - [OauthAccessTokenRequest](OauthAccessTokenRequest.md)
  - [OauthAccessTokenRequestCode](OauthAccessTokenRequestCode.md)
  - [OauthAccessTokenRequestCodeAllOf](OauthAccessTokenRequestCodeAllOf.md)
  - [OauthAccessTokenRequestRefresh](OauthAccessTokenRequestRefresh.md)

@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 Cartfile
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
@@ -132,6 +131,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/MinPriceFilter.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ModelError.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NonNullableCatalogsCurrency.swift
 OpenAPIClient/Classes/OpenAPIs/Models/NullableCurrency.swift
+OpenAPIClient/Classes/OpenAPIs/Models/OauthAccessTokenRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OauthAccessTokenRequestCode.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OauthAccessTokenRequestCodeAllOf.swift
 OpenAPIClient/Classes/OpenAPIs/Models/OauthAccessTokenRequestRefresh.swift
@@ -288,6 +288,7 @@ docs/ModelError.md
 docs/NonNullableCatalogsCurrency.md
 docs/NullableCurrency.md
 docs/OauthAPI.md
+docs/OauthAccessTokenRequest.md
 docs/OauthAccessTokenRequestCode.md
 docs/OauthAccessTokenRequestCodeAllOf.md
 docs/OauthAccessTokenRequestRefresh.md

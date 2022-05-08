@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-07T06:42:33.868481Z[Etc/UTC]")
+@ApiModel(description="Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-08T00:33:44.584572Z[Etc/UTC]")
 public class CatalogsFeedProcessingSchedule   {
   
 

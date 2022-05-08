@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @Path("/oauth/token")
 @Api(description = "the oauth API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-07T06:42:49.569940Z[Etc/UTC]")public class OauthApi {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-08T00:33:54.705491Z[Etc/UTC]")public class OauthApi {
 
     @POST
     @Consumes({ "application/x-www-form-urlencoded" })

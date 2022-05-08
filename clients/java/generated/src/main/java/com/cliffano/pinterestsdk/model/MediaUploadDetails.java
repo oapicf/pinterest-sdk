@@ -30,7 +30,7 @@ import java.io.IOException;
  * Media upload details
  */
 @ApiModel(description = "Media upload details")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class MediaUploadDetails {
   public static final String SERIALIZED_NAME_MEDIA_ID = "media_id";
   @SerializedName(SERIALIZED_NAME_MEDIA_ID)

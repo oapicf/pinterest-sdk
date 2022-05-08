@@ -29,7 +29,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   CustomLabel2Filter.JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L2
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CustomLabel2Filter   {
   public static final String JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L2 = "CUSTOM_LABEL_2";
   @JsonProperty(JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L2)

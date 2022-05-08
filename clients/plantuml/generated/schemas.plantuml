@@ -729,6 +729,10 @@ entity NonNullableCatalogsCurrency {
 entity NullableCurrency {
 }
 
+entity OauthAccessTokenRequest {
+    * grant_type: String
+}
+
 entity OauthAccessTokenRequestCode {
     * code: String
     * redirect_uri: String

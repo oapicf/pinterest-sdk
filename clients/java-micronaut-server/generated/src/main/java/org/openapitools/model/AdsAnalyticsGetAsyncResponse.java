@@ -34,7 +34,7 @@ import javax.annotation.Generated;
   AdsAnalyticsGetAsyncResponse.JSON_PROPERTY_SIZE
 })
 @JsonTypeName("AdsAnalyticsGetAsyncResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class AdsAnalyticsGetAsyncResponse {
     public static final String JSON_PROPERTY_REPORT_STATUS = "report_status";

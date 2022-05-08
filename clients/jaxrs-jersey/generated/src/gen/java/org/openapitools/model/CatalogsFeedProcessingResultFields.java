@@ -35,7 +35,7 @@ import javax.validation.Valid;
   CatalogsFeedProcessingResultFields.JSON_PROPERTY_PRODUCT_COUNTS,
   CatalogsFeedProcessingResultFields.JSON_PROPERTY_VALIDATION_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsFeedProcessingResultFields   {
   public static final String JSON_PROPERTY_INGESTION_DETAILS = "ingestion_details";
   @JsonProperty(JSON_PROPERTY_INGESTION_DETAILS)

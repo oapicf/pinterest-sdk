@@ -28,7 +28,7 @@ import java.io.IOException;
  * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
  */
 @ApiModel(description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class MediaUploadAllOfUploadParameters {
   public static final String SERIALIZED_NAME_X_AMZ_DATE = "x-amz-date";
   @SerializedName(SERIALIZED_NAME_X_AMZ_DATE)

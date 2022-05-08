@@ -537,6 +537,12 @@
 	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='GrantUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />

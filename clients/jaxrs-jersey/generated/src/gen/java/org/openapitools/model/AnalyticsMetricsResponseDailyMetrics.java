@@ -35,7 +35,7 @@ import javax.validation.Valid;
   AnalyticsMetricsResponseDailyMetrics.JSON_PROPERTY_DATE,
   AnalyticsMetricsResponseDailyMetrics.JSON_PROPERTY_METRICS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class AnalyticsMetricsResponseDailyMetrics   {
   /**
    * Metrics availablity, e.g., \&quot;READY\&quot;.

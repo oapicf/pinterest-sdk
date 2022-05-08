@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 ApiClient.cpp
 ApiClient.h
 ApiConfiguration.cpp
@@ -265,6 +264,8 @@ model/NonNullableCatalogsCurrency.cpp
 model/NonNullableCatalogsCurrency.h
 model/NullableCurrency.cpp
 model/NullableCurrency.h
+model/OauthAccessTokenRequest.cpp
+model/OauthAccessTokenRequest.h
 model/OauthAccessTokenRequestCode.cpp
 model/OauthAccessTokenRequestCode.h
 model/OauthAccessTokenRequestCode_allOf.cpp

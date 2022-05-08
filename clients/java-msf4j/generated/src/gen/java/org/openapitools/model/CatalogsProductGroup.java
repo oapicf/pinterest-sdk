@@ -14,7 +14,7 @@ import org.openapitools.model.CatalogsProductGroupType;
  * catalog product group entity
  */
 @ApiModel(description = "catalog product group entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-07T06:39:19.282212Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
 public class CatalogsProductGroup   {
   @JsonProperty("id")
   private String id;

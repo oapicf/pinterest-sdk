@@ -76,7 +76,7 @@ import javax.annotation.Generated;
   ItemAttributes.JSON_PROPERTY_TITLE
 })
 @JsonTypeName("ItemAttributes")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class ItemAttributes {
     public static final String JSON_PROPERTY_AD_LINK = "ad_link";

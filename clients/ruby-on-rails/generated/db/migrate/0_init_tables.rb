@@ -1098,6 +1098,12 @@ class InitTables < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table "oauth_access_token_request".pluralize.to_sym, id: false do |t|
+      t.string :grant_type
+
+      t.timestamps
+    end
+
     create_table "oauth_access_token_request_code".pluralize.to_sym, id: false do |t|
       t.string :grant_type
       t.string :code

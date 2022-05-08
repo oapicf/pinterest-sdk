@@ -1,6 +1,5 @@
 .cargo/config
 .gitignore
-.openapi-generator-ignore
 Cargo.toml
 README.md
 api/openapi.yaml
@@ -119,6 +118,7 @@ docs/MetricsReportingLevel.md
 docs/MinPriceFilter.md
 docs/NonNullableCatalogsCurrency.md
 docs/NullableCurrency.md
+docs/OauthAccessTokenRequest.md
 docs/OauthAccessTokenRequestCode.md
 docs/OauthAccessTokenRequestCodeAllOf.md
 docs/OauthAccessTokenRequestRefresh.md

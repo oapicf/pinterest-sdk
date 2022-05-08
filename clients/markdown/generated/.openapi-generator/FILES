@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Apis/AdAccountsApi.md
 Apis/BoardsApi.md
 Apis/CatalogsApi.md
@@ -119,6 +118,7 @@ Models/MetricsReportingLevel.md
 Models/MinPriceFilter.md
 Models/NonNullableCatalogsCurrency.md
 Models/NullableCurrency.md
+Models/OauthAccessTokenRequest.md
 Models/OauthAccessTokenRequestCode.md
 Models/OauthAccessTokenRequestCode_allOf.md
 Models/OauthAccessTokenRequestRefresh.md

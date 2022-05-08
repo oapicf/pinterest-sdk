@@ -29,7 +29,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   AvailabilityFilter.JSON_PROPERTY_A_V_A_I_L_A_B_I_L_I_T_Y
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class AvailabilityFilter   {
   public static final String JSON_PROPERTY_A_V_A_I_L_A_B_I_L_I_T_Y = "AVAILABILITY";
   @JsonProperty(JSON_PROPERTY_A_V_A_I_L_A_B_I_L_I_T_Y)

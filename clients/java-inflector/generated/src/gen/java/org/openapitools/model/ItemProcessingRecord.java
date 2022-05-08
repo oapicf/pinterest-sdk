@@ -17,7 +17,7 @@ import org.openapitools.model.ItemValidationEvent;
  **/
 
 @ApiModel(description = "Object describing an item processing record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-07T06:38:14.669946Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-08T00:27:15.493537Z[Etc/UTC]")
 public class ItemProcessingRecord   {
   @JsonProperty("item_id")
   private String itemId;

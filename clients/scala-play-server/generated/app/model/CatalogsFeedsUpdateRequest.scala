@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-07T10:47:31.836531Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
 case class CatalogsFeedsUpdateRequest(
   defaultAvailability: Option[ProductAvailabilityType],
   defaultCurrency: Option[NullableCurrency],

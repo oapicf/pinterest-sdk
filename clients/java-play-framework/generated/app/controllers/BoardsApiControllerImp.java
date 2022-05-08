@@ -14,7 +14,7 @@ import java.util.LinkedHashSet;
 import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2022-05-07T06:39:52.689511Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2022-05-08T00:31:58.024547Z[Etc/UTC]")
 public class BoardsApiControllerImp extends BoardsApiControllerImpInterface {
     @Override
     public BoardSection boardSectionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$")String boardId, BoardSection boardSection) throws Exception {

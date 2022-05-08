@@ -13,7 +13,7 @@ import org.openapitools.model.CatalogsProductGroupFilterKeys;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-07T06:38:14.669946Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-08T00:27:15.493537Z[Etc/UTC]")
 public class CatalogsProductGroupFiltersAnyOf   {
   @JsonProperty("any_of")
   private List<CatalogsProductGroupFilterKeys> anyOf = null;

@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 .travis.yml
 README.md
 api_client.ecf
@@ -121,6 +120,7 @@ docs/METRICS_REPORTING_LEVEL.md
 docs/MIN_PRICE_FILTER.md
 docs/NON_NULLABLE_CATALOGS_CURRENCY.md
 docs/NULLABLE_CURRENCY.md
+docs/OAUTH_ACCESS_TOKEN_REQUEST.md
 docs/OAUTH_ACCESS_TOKEN_REQUEST_CODE.md
 docs/OAUTH_ACCESS_TOKEN_REQUEST_CODE_ALL_OF.md
 docs/OAUTH_ACCESS_TOKEN_REQUEST_REFRESH.md
@@ -278,6 +278,7 @@ src/domain/metrics_reporting_level.e
 src/domain/min_price_filter.e
 src/domain/non_nullable_catalogs_currency.e
 src/domain/nullable_currency.e
+src/domain/oauth_access_token_request.e
 src/domain/oauth_access_token_request_code.e
 src/domain/oauth_access_token_request_code_all_of.e
 src/domain/oauth_access_token_request_refresh.e
@@ -325,11 +326,4 @@ src/framework/serialization/api_serializer.e
 src/framework/serialization/json_basic_reflector_deserializer.e
 src/framework/serialization/json_type_utilities_ext.e
 test/api_test.ecf
-test/apis/adaccounts_api_test.e
-test/apis/boards_api_test.e
-test/apis/catalogs_api_test.e
-test/apis/media_api_test.e
-test/apis/oauth_api_test.e
-test/apis/pins_api_test.e
-test/apis/useraccount_api_test.e
 test/application.e

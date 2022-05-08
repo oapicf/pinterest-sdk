@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Model/Account.sql
 Model/ActionType.sql
 Model/AdAccount.sql
@@ -114,6 +113,7 @@ Model/MetricsReportingLevel.sql
 Model/MinPriceFilter.sql
 Model/NonNullableCatalogsCurrency.sql
 Model/NullableCurrency.sql
+Model/OauthAccessTokenRequest.sql
 Model/OauthAccessTokenRequestCode.sql
 Model/OauthAccessTokenRequestCodeAllOf.sql
 Model/OauthAccessTokenRequestRefresh.sql

@@ -1,5 +1,4 @@
 .docs/api/openapi.yaml
-.openapi-generator-ignore
 Dockerfile
 README.md
 go.mod
@@ -128,6 +127,7 @@ models/model_metrics_reporting_level.go
 models/model_min_price_filter.go
 models/model_non_nullable_catalogs_currency.go
 models/model_nullable_currency.go
+models/model_oauth_access_token_request.go
 models/model_oauth_access_token_request_code.go
 models/model_oauth_access_token_request_code_all_of.go
 models/model_oauth_access_token_request_refresh.go

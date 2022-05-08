@@ -36,7 +36,7 @@ import javax.validation.Valid;
   ItemProcessingRecord.JSON_PROPERTY_WARNINGS,
   ItemProcessingRecord.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class ItemProcessingRecord   {
   public static final String JSON_PROPERTY_ITEM_ID = "item_id";
   @JsonProperty(JSON_PROPERTY_ITEM_ID)

@@ -38,7 +38,7 @@ import javax.validation.Valid;
   CatalogsItemsBatch.JSON_PROPERTY_COMPLETED_TIME,
   CatalogsItemsBatch.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsItemsBatch   {
   public static final String JSON_PROPERTY_ITEMS = "items";
   @JsonProperty(JSON_PROPERTY_ITEMS)

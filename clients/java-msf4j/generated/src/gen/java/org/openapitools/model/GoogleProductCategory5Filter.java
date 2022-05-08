@@ -10,7 +10,7 @@ import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 /**
  * GoogleProductCategory5Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-07T06:39:19.282212Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
 public class GoogleProductCategory5Filter   {
   @JsonProperty("GOOGLE_PRODUCT_CATEGORY_5")
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5;

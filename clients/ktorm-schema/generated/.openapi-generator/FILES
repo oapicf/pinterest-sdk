@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 build.gradle
 docs/Account.md
@@ -116,6 +115,7 @@ docs/MetricsReportingLevel.md
 docs/MinPriceFilter.md
 docs/NonNullableCatalogsCurrency.md
 docs/NullableCurrency.md
+docs/OauthAccessTokenRequest.md
 docs/OauthAccessTokenRequestCode.md
 docs/OauthAccessTokenRequestCodeAllOf.md
 docs/OauthAccessTokenRequestRefresh.md
@@ -264,6 +264,7 @@ src/main/kotlin/org/openapitools/database/models/MetricsReportingLevel.kt
 src/main/kotlin/org/openapitools/database/models/MinPriceFilter.kt
 src/main/kotlin/org/openapitools/database/models/NonNullableCatalogsCurrency.kt
 src/main/kotlin/org/openapitools/database/models/NullableCurrency.kt
+src/main/kotlin/org/openapitools/database/models/OauthAccessTokenRequest.kt
 src/main/kotlin/org/openapitools/database/models/OauthAccessTokenRequestCode.kt
 src/main/kotlin/org/openapitools/database/models/OauthAccessTokenRequestCodeAllOf.kt
 src/main/kotlin/org/openapitools/database/models/OauthAccessTokenRequestRefresh.kt

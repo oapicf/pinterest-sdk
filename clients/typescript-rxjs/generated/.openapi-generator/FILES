@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 apis/AdAccountsApi.ts
 apis/BoardsApi.ts
 apis/CatalogsApi.ts
@@ -124,6 +123,7 @@ models/MinPriceFilter.ts
 models/ModelError.ts
 models/NonNullableCatalogsCurrency.ts
 models/NullableCurrency.ts
+models/OauthAccessTokenRequest.ts
 models/OauthAccessTokenRequestCode.ts
 models/OauthAccessTokenRequestCodeAllOf.ts
 models/OauthAccessTokenRequestRefresh.ts

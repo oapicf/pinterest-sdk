@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   ItemGroupIdFilter.JSON_PROPERTY_I_T_E_M_G_R_O_U_P_I_D
 })
 @JsonTypeName("ItemGroupIdFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class ItemGroupIdFilter {
     public static final String JSON_PROPERTY_I_T_E_M_G_R_O_U_P_I_D = "ITEM_GROUP_ID";

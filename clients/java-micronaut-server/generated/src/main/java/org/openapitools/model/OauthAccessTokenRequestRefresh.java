@@ -34,7 +34,7 @@ import javax.annotation.Generated;
   OauthAccessTokenRequestRefresh.JSON_PROPERTY_SCOPE
 })
 @JsonTypeName("OauthAccessTokenRequestRefresh")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
     public static final String JSON_PROPERTY_REFRESH_TOKEN = "refresh_token";
@@ -44,7 +44,7 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
     private String scope;
 
     public OauthAccessTokenRequestRefresh(String refreshToken, GrantTypeEnum grantType) {
-        super();
+        super(grantType);
         this.refreshToken = refreshToken;
     }
 

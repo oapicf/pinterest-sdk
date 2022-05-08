@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 OpenAPI/OpenAPI.fsproj
 OpenAPI/build.bat
 OpenAPI/build.sh
@@ -146,6 +145,7 @@ OpenAPI/src/model/MetricsReportingLevel.fs
 OpenAPI/src/model/MinPriceFilter.fs
 OpenAPI/src/model/NonNullableCatalogsCurrency.fs
 OpenAPI/src/model/NullableCurrency.fs
+OpenAPI/src/model/OauthAccessTokenRequest.fs
 OpenAPI/src/model/OauthAccessTokenRequestCode.fs
 OpenAPI/src/model/OauthAccessTokenRequestCodeAllOf.fs
 OpenAPI/src/model/OauthAccessTokenRequestRefresh.fs

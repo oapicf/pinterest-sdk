@@ -19,7 +19,7 @@ import org.openapitools.model.PinMediaWithImageAllOf;
  **/
 
 @ApiModel(description = "Pin with image.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-07T06:38:14.669946Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-08T00:27:15.493537Z[Etc/UTC]")
 public class PinMediaWithImage extends PinMedia  {
   @JsonProperty("images")
   private Map<String, ImageDetails> images = null;

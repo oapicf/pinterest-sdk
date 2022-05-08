@@ -10,7 +10,7 @@ import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 /**
  * ProductType1Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-07T06:39:19.282212Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
 public class ProductType1Filter   {
   @JsonProperty("PRODUCT_TYPE_1")
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_1;

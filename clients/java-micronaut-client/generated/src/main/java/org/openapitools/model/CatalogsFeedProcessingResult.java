@@ -43,7 +43,7 @@ import javax.annotation.Generated;
   CatalogsFeedProcessingResult.JSON_PROPERTY_VALIDATION_DETAILS
 })
 @JsonTypeName("CatalogsFeedProcessingResult")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class CatalogsFeedProcessingResult {
     public static final String JSON_PROPERTY_CREATED_AT = "created_at";

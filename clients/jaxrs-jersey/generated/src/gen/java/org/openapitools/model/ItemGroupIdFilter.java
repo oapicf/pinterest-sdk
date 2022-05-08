@@ -29,7 +29,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   ItemGroupIdFilter.JSON_PROPERTY_I_T_E_M_G_R_O_U_P_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class ItemGroupIdFilter   {
   public static final String JSON_PROPERTY_I_T_E_M_G_R_O_U_P_I_D = "ITEM_GROUP_ID";
   @JsonProperty(JSON_PROPERTY_I_T_E_M_G_R_O_U_P_I_D)

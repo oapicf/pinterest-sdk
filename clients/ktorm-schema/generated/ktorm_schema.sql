@@ -1521,6 +1521,16 @@ CREATE TABLE IF NOT EXISTS `MinPriceFilter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `OauthAccessTokenRequest` generated from model 'oauthAccessTokenRequest'
+-- Describes the valid schema for possible OAuth access token requests.
+--
+
+CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequest` (
+  `grant_type` text NOT NULL
+);  /*Describes the valid schema for possible OAuth access token requests.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenRequestCode` generated from model 'oauthAccessTokenRequestCode'
 -- A request to exchange an authorization code for an access token.
 --

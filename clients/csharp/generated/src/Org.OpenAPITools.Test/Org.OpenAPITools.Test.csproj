@@ -81,7 +81,7 @@ Contact: pinterest-api@pinterest.com
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Org.OpenAPITools\Org.OpenAPITools.csproj">
-          <Project>{0D7C0B10-752C-4D50-B4D1-29B910CF4111}</Project>
+          <Project>{D034061F-18DC-4A3E-A3C9-B829B0363329}</Project>
           <Name>Org.OpenAPITools</Name>
       </ProjectReference>
   </ItemGroup>

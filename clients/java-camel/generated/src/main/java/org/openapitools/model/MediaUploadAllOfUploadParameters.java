@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MediaUpload_allOf_upload_parameters", description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-07T06:40:56.403503Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-08T00:32:37.756477Z[Etc/UTC]")
 public class MediaUploadAllOfUploadParameters   {
 
   @JsonProperty("x-amz-date")

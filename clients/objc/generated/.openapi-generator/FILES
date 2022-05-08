@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 OpenAPIClient.podspec
 OpenAPIClient/Api/OAIAdAccountsApi.h
 OpenAPIClient/Api/OAIAdAccountsApi.m
@@ -267,6 +266,8 @@ OpenAPIClient/Model/OAINonNullableCatalogsCurrency.h
 OpenAPIClient/Model/OAINonNullableCatalogsCurrency.m
 OpenAPIClient/Model/OAINullableCurrency.h
 OpenAPIClient/Model/OAINullableCurrency.m
+OpenAPIClient/Model/OAIOauthAccessTokenRequest.h
+OpenAPIClient/Model/OAIOauthAccessTokenRequest.m
 OpenAPIClient/Model/OAIOauthAccessTokenRequestCode.h
 OpenAPIClient/Model/OAIOauthAccessTokenRequestCode.m
 OpenAPIClient/Model/OAIOauthAccessTokenRequestCodeAllOf.h
@@ -449,6 +450,7 @@ docs/OAIMetricsReportingLevel.md
 docs/OAIMinPriceFilter.md
 docs/OAINonNullableCatalogsCurrency.md
 docs/OAINullableCurrency.md
+docs/OAIOauthAccessTokenRequest.md
 docs/OAIOauthAccessTokenRequestCode.md
 docs/OAIOauthAccessTokenRequestCodeAllOf.md
 docs/OAIOauthAccessTokenRequestRefresh.md

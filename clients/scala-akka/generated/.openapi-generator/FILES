@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 build.sbt
 pom.xml
@@ -132,6 +131,7 @@ src/main/scala/org/openapitools/client/model/MetricsReportingLevel.scala
 src/main/scala/org/openapitools/client/model/MinPriceFilter.scala
 src/main/scala/org/openapitools/client/model/NonNullableCatalogsCurrency.scala
 src/main/scala/org/openapitools/client/model/NullableCurrency.scala
+src/main/scala/org/openapitools/client/model/OauthAccessTokenRequest.scala
 src/main/scala/org/openapitools/client/model/OauthAccessTokenRequestCode.scala
 src/main/scala/org/openapitools/client/model/OauthAccessTokenRequestCodeAllOf.scala
 src/main/scala/org/openapitools/client/model/OauthAccessTokenRequestRefresh.scala

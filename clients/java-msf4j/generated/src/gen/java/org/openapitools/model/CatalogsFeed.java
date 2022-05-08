@@ -20,7 +20,7 @@ import org.openapitools.model.ProductAvailabilityType;
  * Catalogs Catalogs Feed object
  */
 @ApiModel(description = "Catalogs Catalogs Feed object")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-07T06:39:19.282212Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
 public class CatalogsFeed   {
   @JsonProperty("created_at")
   private Date createdAt;

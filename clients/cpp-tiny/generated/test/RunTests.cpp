@@ -229,6 +229,8 @@
 
 #include "NullableCurrencyTest.cpp"
 
+#include "OauthAccessTokenRequestTest.cpp"
+
 #include "OauthAccessTokenRequestCodeTest.cpp"
 
 #include "OauthAccessTokenRequestCode_allOfTest.cpp"
@@ -1566,6 +1568,10 @@ void runTests(){
     
     
     
+    
+    
+    
+    RUN_TEST(test_OauthAccessTokenRequest_grant_type_is_assigned_from_json);
     
     
     
@@ -3047,6 +3053,10 @@ void runTests(){
     
     
     
+    
+    
+    
+    RUN_TEST(test_OauthAccessTokenRequest_grant_type_is_converted_to_json);
     
     
     

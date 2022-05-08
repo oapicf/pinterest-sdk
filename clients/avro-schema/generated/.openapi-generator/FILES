@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Account.avsc
 ActionType.avsc
 AdAccount.avsc
@@ -114,6 +113,7 @@ MetricsReportingLevel.avsc
 MinPriceFilter.avsc
 NonNullableCatalogsCurrency.avsc
 NullableCurrency.avsc
+OauthAccessTokenRequest.avsc
 OauthAccessTokenRequestCode.avsc
 OauthAccessTokenRequestCodeAllOf.avsc
 OauthAccessTokenRequestRefresh.avsc

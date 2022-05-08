@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 build.gradle
 src/gatling/resources/conf/CD.conf
 src/gatling/resources/conf/CI.conf
@@ -129,6 +128,7 @@ src/gatling/scala/org/openapitools/client/model/MetricsReportingLevel.scala
 src/gatling/scala/org/openapitools/client/model/MinPriceFilter.scala
 src/gatling/scala/org/openapitools/client/model/NonNullableCatalogsCurrency.scala
 src/gatling/scala/org/openapitools/client/model/NullableCurrency.scala
+src/gatling/scala/org/openapitools/client/model/OauthAccessTokenRequest.scala
 src/gatling/scala/org/openapitools/client/model/OauthAccessTokenRequestCode.scala
 src/gatling/scala/org/openapitools/client/model/OauthAccessTokenRequestCodeAllOf.scala
 src/gatling/scala/org/openapitools/client/model/OauthAccessTokenRequestRefresh.scala

@@ -119,6 +119,7 @@ MetricsReportingLevel : org.openapitools.model.MetricsReportingLevel
 MinPriceFilter : org.openapitools.model.MinPriceFilter
 NonNullableCatalogsCurrency : org.openapitools.model.NonNullableCatalogsCurrency
 NullableCurrency : org.openapitools.model.NullableCurrency
+OauthAccessTokenRequest : org.openapitools.model.OauthAccessTokenRequest
 OauthAccessTokenRequestCode : org.openapitools.model.OauthAccessTokenRequestCode
 OauthAccessTokenRequestCodeAllOf : org.openapitools.model.OauthAccessTokenRequestCodeAllOf
 OauthAccessTokenRequestRefresh : org.openapitools.model.OauthAccessTokenRequestRefresh

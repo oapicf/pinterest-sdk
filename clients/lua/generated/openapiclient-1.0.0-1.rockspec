@@ -145,6 +145,7 @@ build = {
 		["openapiclient.model.min_price_filter"] = "openapiclient/model/min_price_filter.lua";
 		["openapiclient.model.non_nullable_catalogs_currency"] = "openapiclient/model/non_nullable_catalogs_currency.lua";
 		["openapiclient.model.nullable_currency"] = "openapiclient/model/nullable_currency.lua";
+		["openapiclient.model.oauth_access_token_request"] = "openapiclient/model/oauth_access_token_request.lua";
 		["openapiclient.model.oauth_access_token_request_code"] = "openapiclient/model/oauth_access_token_request_code.lua";
 		["openapiclient.model.oauth_access_token_request_code_all_of"] = "openapiclient/model/oauth_access_token_request_code_all_of.lua";
 		["openapiclient.model.oauth_access_token_request_refresh"] = "openapiclient/model/oauth_access_token_request_refresh.lua";

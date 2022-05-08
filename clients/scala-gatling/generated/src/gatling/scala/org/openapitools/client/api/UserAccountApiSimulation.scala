@@ -72,14 +72,14 @@ class UserAccountApiSimulation extends Simulation {
         .feed(user_account/analyticsQUERYFeeder)
         .exec(http("userAccountAnalytics")
         .httpRequest("GET","/user_account/analytics")
+        .queryParam("from_claimed_content","${from_claimed_content}")
+        .queryParam("start_date","${start_date}")
         .queryParam("pin_format","${pin_format}")
-        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("end_date","${end_date}")
         .queryParam("metric_types","${metric_types}")
         .queryParam("split_field","${split_field}")
-        .queryParam("start_date","${start_date}")
         .queryParam("app_types","${app_types}")
-        .queryParam("end_date","${end_date}")
-        .queryParam("from_claimed_content","${from_claimed_content}")
+        .queryParam("ad_account_id","${ad_account_id}")
 )
 
     // Run scnuserAccountAnalytics with warm up and reach a constant rate for entire duration

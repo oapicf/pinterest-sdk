@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 LICENSE
 README
 app/Module.java
@@ -117,6 +116,7 @@ app/apimodels/MetricsReportingLevel.java
 app/apimodels/MinPriceFilter.java
 app/apimodels/NonNullableCatalogsCurrency.java
 app/apimodels/NullableCurrency.java
+app/apimodels/OauthAccessTokenRequest.java
 app/apimodels/OauthAccessTokenRequestCode.java
 app/apimodels/OauthAccessTokenRequestCodeAllOf.java
 app/apimodels/OauthAccessTokenRequestRefresh.java

@@ -31,7 +31,7 @@ import javax.validation.Valid;
   CatalogsFeedProcessingSchedule.JSON_PROPERTY_TIME,
   CatalogsFeedProcessingSchedule.JSON_PROPERTY_TIMEZONE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsFeedProcessingSchedule   {
   public static final String JSON_PROPERTY_TIME = "time";
   @JsonProperty(JSON_PROPERTY_TIME)

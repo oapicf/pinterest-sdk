@@ -40,7 +40,7 @@ import org.openapitools.model.ProductType4Filter;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-07T06:38:14.669946Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-08T00:27:15.493537Z[Etc/UTC]")
 public class CatalogsProductGroupFilterKeys   {
   @JsonProperty("MIN_PRICE")
   private CatalogsProductGroupPricingCriteria MIN_PRICE;

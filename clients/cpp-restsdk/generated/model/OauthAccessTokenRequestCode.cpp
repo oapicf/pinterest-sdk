@@ -24,8 +24,6 @@ namespace model {
 
 OauthAccessTokenRequestCode::OauthAccessTokenRequestCode()
 {
-    m_Grant_type = utility::conversions::to_string_t("");
-    m_Grant_typeIsSet = false;
     m_Code = utility::conversions::to_string_t("");
     m_CodeIsSet = false;
     m_Redirect_uri = utility::conversions::to_string_t("");
@@ -45,10 +43,6 @@ web::json::value OauthAccessTokenRequestCode::toJson() const
 {
     web::json::value val = this->OauthAccessTokenRequest::toJson();
     
-    if(m_Grant_typeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("grant_type"))] = ModelBase::toJson(m_Grant_type);
-    }
     if(m_CodeIsSet)
     {
         val[utility::conversions::to_string_t(U("code"))] = ModelBase::toJson(m_Code);
@@ -66,16 +60,6 @@ bool OauthAccessTokenRequestCode::fromJson(const web::json::value& val)
     bool ok = true;
     ok &= this->OauthAccessTokenRequest::fromJson(val);
     
-    if(val.has_field(utility::conversions::to_string_t(U("grant_type"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("grant_type")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_grant_type;
-            ok &= ModelBase::fromJson(fieldValue, refVal_grant_type);
-            setGrantType(refVal_grant_type);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(U("code"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("code")));
@@ -150,26 +134,6 @@ bool OauthAccessTokenRequestCode::fromMultiPart(std::shared_ptr<MultipartFormDat
     return ok;
 }
 
-utility::string_t OauthAccessTokenRequestCode::getGrantType() const
-{
-    return m_Grant_type;
-}
-
-void OauthAccessTokenRequestCode::setGrantType(const utility::string_t& value)
-{
-    m_Grant_type = value;
-    m_Grant_typeIsSet = true;
-}
-
-bool OauthAccessTokenRequestCode::grantTypeIsSet() const
-{
-    return m_Grant_typeIsSet;
-}
-
-void OauthAccessTokenRequestCode::unsetGrant_type()
-{
-    m_Grant_typeIsSet = false;
-}
 utility::string_t OauthAccessTokenRequestCode::getCode() const
 {
     return m_Code;

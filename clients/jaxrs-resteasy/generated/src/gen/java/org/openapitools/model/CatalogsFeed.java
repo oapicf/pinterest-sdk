@@ -19,7 +19,7 @@ import org.openapitools.model.ProductAvailabilityType;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Catalogs Catalogs Feed object")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-07T06:42:17.586199Z[Etc/UTC]")
+@ApiModel(description="Catalogs Catalogs Feed object")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-08T00:33:33.395237Z[Etc/UTC]")
 public class CatalogsFeed   {
   
   private Date createdAt;

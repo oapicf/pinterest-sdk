@@ -53,6 +53,19 @@ public class JSON {
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+                .registerTypeSelector(OauthAccessTokenRequest.class, new TypeSelector<OauthAccessTokenRequest>() {
+                    @Override
+                    public Class<? extends OauthAccessTokenRequest> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("OauthAccessTokenRequestCode", OauthAccessTokenRequestCode.class);
+                        classByDiscriminatorValue.put("OauthAccessTokenRequestRefresh", OauthAccessTokenRequestRefresh.class);
+                        classByDiscriminatorValue.put("authorization_code", OauthAccessTokenRequestCode.class);
+                        classByDiscriminatorValue.put("refresh_token", OauthAccessTokenRequestRefresh.class);
+                        classByDiscriminatorValue.put("OauthAccessTokenRequest", OauthAccessTokenRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "grant_type"));
+                    }
+          })
                 .registerTypeSelector(OauthAccessTokenRequestCode.class, new TypeSelector<OauthAccessTokenRequestCode>() {
                     @Override
                     public Class<? extends OauthAccessTokenRequestCode> getClassForElement(JsonElement readElement) {

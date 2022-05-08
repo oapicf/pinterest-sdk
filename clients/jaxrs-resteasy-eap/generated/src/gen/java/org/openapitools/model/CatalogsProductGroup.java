@@ -13,7 +13,7 @@ import org.openapitools.model.CatalogsProductGroupType;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="catalog product group entity")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-07T06:42:33.868481Z[Etc/UTC]")
+@ApiModel(description="catalog product group entity")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-08T00:33:44.584572Z[Etc/UTC]")
 public class CatalogsProductGroup   {
   
 

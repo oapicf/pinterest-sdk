@@ -30,7 +30,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Request object for creating a product group.
  */
 @ApiModel(description = "Request object for creating a product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class CatalogsProductGroupCreateRequest {
   public static final String SERIALIZED_NAME_FEED_ID = "feed_id";
   @SerializedName(SERIALIZED_NAME_FEED_ID)

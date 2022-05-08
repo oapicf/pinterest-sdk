@@ -31,7 +31,7 @@ import java.io.IOException;
  * Media upload that has been registered but not uploaded/processed yet.
  */
 @ApiModel(description = "Media upload that has been registered but not uploaded/processed yet.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class MediaUpload {
   public static final String SERIALIZED_NAME_MEDIA_ID = "media_id";
   @SerializedName(SERIALIZED_NAME_MEDIA_ID)

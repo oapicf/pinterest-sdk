@@ -41,7 +41,7 @@ import javax.validation.Valid;
   CatalogsFeedProcessingResult.JSON_PROPERTY_PRODUCT_COUNTS,
   CatalogsFeedProcessingResult.JSON_PROPERTY_VALIDATION_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsFeedProcessingResult   {
   public static final String JSON_PROPERTY_CREATED_AT = "created_at";
   @JsonProperty(JSON_PROPERTY_CREATED_AT)

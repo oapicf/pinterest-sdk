@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   ProductType0Filter.JSON_PROPERTY_P_R_O_D_U_C_T_T_Y_P_E0
 })
 @JsonTypeName("ProductType0Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class ProductType0Filter {
     public static final String JSON_PROPERTY_P_R_O_D_U_C_T_T_Y_P_E0 = "PRODUCT_TYPE_0";

@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   MinPriceFilter.JSON_PROPERTY_M_I_N_P_R_I_C_E
 })
 @JsonTypeName("MinPriceFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class MinPriceFilter {
     public static final String JSON_PROPERTY_M_I_N_P_R_I_C_E = "MIN_PRICE";

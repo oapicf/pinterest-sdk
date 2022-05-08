@@ -24,8 +24,6 @@ namespace model {
 
 OauthAccessTokenRequestRefresh::OauthAccessTokenRequestRefresh()
 {
-    m_Grant_type = utility::conversions::to_string_t("");
-    m_Grant_typeIsSet = false;
     m_Refresh_token = utility::conversions::to_string_t("");
     m_Refresh_tokenIsSet = false;
     m_Scope = utility::conversions::to_string_t("");
@@ -46,10 +44,6 @@ web::json::value OauthAccessTokenRequestRefresh::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_Grant_typeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("grant_type"))] = ModelBase::toJson(m_Grant_type);
-    }
     if(m_Refresh_tokenIsSet)
     {
         val[utility::conversions::to_string_t(U("refresh_token"))] = ModelBase::toJson(m_Refresh_token);
@@ -66,16 +60,6 @@ bool OauthAccessTokenRequestRefresh::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("grant_type"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("grant_type")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_grant_type;
-            ok &= ModelBase::fromJson(fieldValue, refVal_grant_type);
-            setGrantType(refVal_grant_type);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(U("refresh_token"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("refresh_token")));
@@ -150,26 +134,6 @@ bool OauthAccessTokenRequestRefresh::fromMultiPart(std::shared_ptr<MultipartForm
     return ok;
 }
 
-utility::string_t OauthAccessTokenRequestRefresh::getGrantType() const
-{
-    return m_Grant_type;
-}
-
-void OauthAccessTokenRequestRefresh::setGrantType(const utility::string_t& value)
-{
-    m_Grant_type = value;
-    m_Grant_typeIsSet = true;
-}
-
-bool OauthAccessTokenRequestRefresh::grantTypeIsSet() const
-{
-    return m_Grant_typeIsSet;
-}
-
-void OauthAccessTokenRequestRefresh::unsetGrant_type()
-{
-    m_Grant_typeIsSet = false;
-}
 utility::string_t OauthAccessTokenRequestRefresh::getRefreshToken() const
 {
     return m_Refresh_token;

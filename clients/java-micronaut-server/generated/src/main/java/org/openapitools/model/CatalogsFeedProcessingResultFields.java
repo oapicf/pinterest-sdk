@@ -37,7 +37,7 @@ import javax.annotation.Generated;
   CatalogsFeedProcessingResultFields.JSON_PROPERTY_VALIDATION_DETAILS
 })
 @JsonTypeName("catalogs_feed_processing_result_fields")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class CatalogsFeedProcessingResultFields {
     public static final String JSON_PROPERTY_INGESTION_DETAILS = "ingestion_details";

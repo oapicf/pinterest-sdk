@@ -16,7 +16,7 @@ import org.openapitools.model.PinMediaSourceVideoID;
  * Pin media source.
  */
 @ApiModel(description = "Pin media source.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-07T06:39:19.282212Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
 public class PinMediaSource   {
   /**
    * Gets or Sets sourceType

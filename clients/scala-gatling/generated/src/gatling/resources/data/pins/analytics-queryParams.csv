@@ -1,1 +1,1 @@
-split_field,ad_account_id,metric_types,start_date,app_types,end_date
+start_date,metric_types,split_field,end_date,app_types,ad_account_id

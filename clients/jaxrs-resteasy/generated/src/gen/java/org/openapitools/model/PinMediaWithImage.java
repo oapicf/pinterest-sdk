@@ -15,7 +15,7 @@ import org.openapitools.model.PinMediaWithImageAllOf;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin with image.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-07T06:42:17.586199Z[Etc/UTC]")
+@ApiModel(description="Pin with image.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-08T00:33:33.395237Z[Etc/UTC]")
 public class PinMediaWithImage extends PinMedia  {
   
   private Map<String, ImageDetails> images = new HashMap<String, ImageDetails>();

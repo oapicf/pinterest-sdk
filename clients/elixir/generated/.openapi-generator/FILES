@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 config/config.exs
 lib/pinterest_restapi/api/ad_accounts.ex
@@ -126,6 +125,7 @@ lib/pinterest_restapi/model/metrics_reporting_level.ex
 lib/pinterest_restapi/model/min_price_filter.ex
 lib/pinterest_restapi/model/non_nullable_catalogs_currency.ex
 lib/pinterest_restapi/model/nullable_currency.ex
+lib/pinterest_restapi/model/oauth_access_token_request.ex
 lib/pinterest_restapi/model/oauth_access_token_request_code.ex
 lib/pinterest_restapi/model/oauth_access_token_request_code_all_of.ex
 lib/pinterest_restapi/model/oauth_access_token_request_refresh.ex

@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   AvailabilityFilter.JSON_PROPERTY_A_V_A_I_L_A_B_I_L_I_T_Y
 })
 @JsonTypeName("AvailabilityFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class AvailabilityFilter {
     public static final String JSON_PROPERTY_A_V_A_I_L_A_B_I_L_I_T_Y = "AVAILABILITY";

@@ -21,7 +21,7 @@ import org.openapitools.model.CatalogsProductGroupPricingCriteria;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2022-05-07T06:40:09.212272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2022-05-08T00:32:08.284608Z[Etc/UTC]")
 public class MaxPriceFilter   {
   
   private CatalogsProductGroupPricingCriteria MAX_PRICE;

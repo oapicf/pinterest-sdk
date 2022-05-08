@@ -131,6 +131,7 @@ add_library(${PROJECT_NAME}
     OAIMinPriceFilter.cpp
     OAINonNullableCatalogsCurrency.cpp
     OAINullableCurrency.cpp
+    OAIOauthAccessTokenRequest.cpp
     OAIOauthAccessTokenRequestCode.cpp
     OAIOauthAccessTokenRequestCode_allOf.cpp
     OAIOauthAccessTokenRequestRefresh.cpp

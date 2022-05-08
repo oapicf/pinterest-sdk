@@ -34,6 +34,7 @@ object EnumsSerializers {
     new EnumNameSerializer(BoardUpdateEnums.Privacy) :+
     new EnumNameSerializer(CatalogsFeedIngestionErrorsEnums.LargeProductCountDecrease) :+
     new EnumNameSerializer(CatalogsFeedProcessingScheduleEnums.Timezone) :+
+    new EnumNameSerializer(OauthAccessTokenRequestEnums.GrantType) :+
     new EnumNameSerializer(OauthAccessTokenRequestCodeEnums.GrantType) :+
     new EnumNameSerializer(OauthAccessTokenRequestRefreshEnums.GrantType) :+
     new EnumNameSerializer(OauthAccessTokenResponseEnums.ResponseType) :+

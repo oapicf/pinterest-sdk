@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 build.gradle
 build.sbt
 git_push.sh
@@ -134,6 +133,7 @@ src/main/scala/org/openapitools/client/model/MetricsReportingLevel.scala
 src/main/scala/org/openapitools/client/model/MinPriceFilter.scala
 src/main/scala/org/openapitools/client/model/NonNullableCatalogsCurrency.scala
 src/main/scala/org/openapitools/client/model/NullableCurrency.scala
+src/main/scala/org/openapitools/client/model/OauthAccessTokenRequest.scala
 src/main/scala/org/openapitools/client/model/OauthAccessTokenRequestCode.scala
 src/main/scala/org/openapitools/client/model/OauthAccessTokenRequestCodeAllOf.scala
 src/main/scala/org/openapitools/client/model/OauthAccessTokenRequestRefresh.scala

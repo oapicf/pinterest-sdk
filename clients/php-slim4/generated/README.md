@@ -295,6 +295,7 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\MinPriceFilter
 * OpenAPIServer\Model\NonNullableCatalogsCurrency
 * OpenAPIServer\Model\NullableCurrency
+* OpenAPIServer\Model\OauthAccessTokenRequest
 * OpenAPIServer\Model\OauthAccessTokenRequestCode
 * OpenAPIServer\Model\OauthAccessTokenRequestCodeAllOf
 * OpenAPIServer\Model\OauthAccessTokenRequestRefresh

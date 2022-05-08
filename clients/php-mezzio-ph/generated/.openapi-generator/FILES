@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 application/config.yml
 application/config/app.yml
@@ -192,6 +191,7 @@ src/App/DTO/MetricsReportingLevel.php
 src/App/DTO/MinPriceFilter.php
 src/App/DTO/NonNullableCatalogsCurrency.php
 src/App/DTO/NullableCurrency.php
+src/App/DTO/OauthAccessTokenRequest.php
 src/App/DTO/OauthAccessTokenRequestCode.php
 src/App/DTO/OauthAccessTokenRequestCodeAllOf.php
 src/App/DTO/OauthAccessTokenRequestRefresh.php

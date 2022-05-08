@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Org.OpenAPITools.sln
 README.md
 build.bat
@@ -133,6 +132,7 @@ src/Org.OpenAPITools/Models/MetricsReportingLevel.cs
 src/Org.OpenAPITools/Models/MinPriceFilter.cs
 src/Org.OpenAPITools/Models/NonNullableCatalogsCurrency.cs
 src/Org.OpenAPITools/Models/NullableCurrency.cs
+src/Org.OpenAPITools/Models/OauthAccessTokenRequest.cs
 src/Org.OpenAPITools/Models/OauthAccessTokenRequestCode.cs
 src/Org.OpenAPITools/Models/OauthAccessTokenRequestCodeAllOf.cs
 src/Org.OpenAPITools/Models/OauthAccessTokenRequestRefresh.cs

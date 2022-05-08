@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 build.sbt
 src/main/scala/org/openapitools/server/AkkaHttpHelper.scala
@@ -127,6 +126,7 @@ src/main/scala/org/openapitools/server/model/MetricsReportingLevel.scala
 src/main/scala/org/openapitools/server/model/MinPriceFilter.scala
 src/main/scala/org/openapitools/server/model/NonNullableCatalogsCurrency.scala
 src/main/scala/org/openapitools/server/model/NullableCurrency.scala
+src/main/scala/org/openapitools/server/model/OauthAccessTokenRequest.scala
 src/main/scala/org/openapitools/server/model/OauthAccessTokenRequestCode.scala
 src/main/scala/org/openapitools/server/model/OauthAccessTokenRequestCodeAllOf.scala
 src/main/scala/org/openapitools/server/model/OauthAccessTokenRequestRefresh.scala

@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 ApiServiceBinder.ts
 Headers.ts
 HttpClient.ts
@@ -127,6 +126,7 @@ model/minPriceFilter.ts
 model/modelError.ts
 model/nonNullableCatalogsCurrency.ts
 model/nullableCurrency.ts
+model/oauthAccessTokenRequest.ts
 model/oauthAccessTokenRequestCode.ts
 model/oauthAccessTokenRequestCodeAllOf.ts
 model/oauthAccessTokenRequestRefresh.ts

@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ItemIdFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-05-07T06:39:36.253940Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-05-08T00:31:47.777767Z[Etc/UTC]")
 public class ItemIdFilter   {
   @JsonProperty("ITEM_ID")
   private CatalogsProductGroupCurrencyCriteria ITEM_ID;

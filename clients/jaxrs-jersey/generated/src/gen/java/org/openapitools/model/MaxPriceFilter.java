@@ -29,7 +29,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   MaxPriceFilter.JSON_PROPERTY_M_A_X_P_R_I_C_E
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class MaxPriceFilter   {
   public static final String JSON_PROPERTY_M_A_X_P_R_I_C_E = "MAX_PRICE";
   @JsonProperty(JSON_PROPERTY_M_A_X_P_R_I_C_E)

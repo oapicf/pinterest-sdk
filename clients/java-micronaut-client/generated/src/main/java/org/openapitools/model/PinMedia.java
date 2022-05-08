@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   PinMedia.JSON_PROPERTY_MEDIA_TYPE
 })
 @JsonTypeName("PinMedia")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "media_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaWithImage.class, name = "image"),

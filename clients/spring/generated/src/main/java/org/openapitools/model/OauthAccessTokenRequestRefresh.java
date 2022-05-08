@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "OauthAccessTokenRequestRefresh", description = "A request to exchange a refresh token for a new access token.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-07T10:48:11.625089Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-08T00:42:02.037116Z[Etc/UTC]")
 public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest  {
 
   @JsonProperty("refresh_token")

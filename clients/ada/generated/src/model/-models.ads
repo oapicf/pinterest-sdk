@@ -754,2482 +754,364 @@ package .Models is
 
 
 
+   --  ------------------------------
+   --  OAuth access token request
+   --  Describes the valid schema for possible OAuth access token requests.
+   --  ------------------------------
+   type OauthAccessTokenRequest_Type is
+     record
+       Grant_Type : Swagger.UString;
+     end record;
 
-   type NullableCurrency_Type is
+   package OauthAccessTokenRequest_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => OauthAccessTokenRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OauthAccessTokenRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OauthAccessTokenRequest_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out OauthAccessTokenRequest_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out OauthAccessTokenRequest_Type_Vectors.Vector);
+
+
+
+
+   type NonNullableCatalogsCurrency_Type is
      record
      end record;
 
-   package NullableCurrency_Type_Vectors is
+   package NonNullableCatalogsCurrency_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => NullableCurrency_Type);
+                                  Element_Type => NonNullableCatalogsCurrency_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in NullableCurrency_Type);
+                        Value : in NonNullableCatalogsCurrency_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in NullableCurrency_Type_Vectors.Vector);
+                        Value : in NonNullableCatalogsCurrency_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out NullableCurrency_Type);
+                          Value : out NonNullableCatalogsCurrency_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out NullableCurrency_Type_Vectors.Vector);
-
-
-
-
-   type MetricsReportingLevel_Type is
-     record
-     end record;
-
-   package MetricsReportingLevel_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => MetricsReportingLevel_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MetricsReportingLevel_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MetricsReportingLevel_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MetricsReportingLevel_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MetricsReportingLevel_Type_Vectors.Vector);
-
-
-
-
-   type MediaUploadStatus_Type is
-     record
-     end record;
-
-   package MediaUploadStatus_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => MediaUploadStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MediaUploadStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MediaUploadStatus_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MediaUploadStatus_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MediaUploadStatus_Type_Vectors.Vector);
+                          Value : out NonNullableCatalogsCurrency_Type_Vectors.Vector);
 
 
 
    --  ------------------------------
-   --  Media upload details
-   --  Media upload details
+   --  catalogs_product_group_currency_criteria
    --  ------------------------------
-   type MediaUploadDetails_Type is
+   type CatalogsProductGroupCurrencyCriteria_Type is
      record
-       Media_Id : Swagger.Nullable_UString;
+       Values : .Models.NonNullableCatalogsCurrency_Type;
+       Negated : Boolean;
+     end record;
+
+   package CatalogsProductGroupCurrencyCriteria_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupCurrencyCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupCurrencyCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupCurrencyCriteria_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupCurrencyCriteria_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupCurrencyCriteria_Type_Vectors.Vector);
+
+
+
+
+   type ItemIdFilter_Type is
+     record
+       ITEM_ID : .Models.CatalogsProductGroupCurrencyCriteria_Type;
+     end record;
+
+   package ItemIdFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ItemIdFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ItemIdFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ItemIdFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ItemIdFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ItemIdFilter_Type_Vectors.Vector);
+
+
+
+
+   type CurrencyFilter_Type is
+     record
+       CURRENCY : .Models.CatalogsProductGroupCurrencyCriteria_Type;
+     end record;
+
+   package CurrencyFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CurrencyFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CurrencyFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CurrencyFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CurrencyFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CurrencyFilter_Type_Vectors.Vector);
+
+
+
+
+   type MediaUploadType_Type is
+     record
+     end record;
+
+   package MediaUploadType_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => MediaUploadType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MediaUploadType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MediaUploadType_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MediaUploadType_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MediaUploadType_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  Media upload request
+   --  Media upload request
+   --  ------------------------------
+   type MediaUploadRequest_Type is
+     record
        Media_Type : MediaUploadType_Type;
-       Status : MediaUploadStatus_Type;
      end record;
 
-   package MediaUploadDetails_Type_Vectors is
+   package MediaUploadRequest_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => MediaUploadDetails_Type);
+                                  Element_Type => MediaUploadRequest_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in MediaUploadDetails_Type);
+                        Value : in MediaUploadRequest_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in MediaUploadDetails_Type_Vectors.Vector);
+                        Value : in MediaUploadRequest_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out MediaUploadDetails_Type);
+                          Value : out MediaUploadRequest_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out MediaUploadDetails_Type_Vectors.Vector);
+                          Value : out MediaUploadRequest_Type_Vectors.Vector);
 
 
 
 
-   type Language_Type is
+   type ItemValidationEvent_Type is
      record
-     end record;
-
-   package Language_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Language_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Language_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Language_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Language_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Language_Type_Vectors.Vector);
-
-
-
-
-   type ItemProcessingStatus_Type is
-     record
-     end record;
-
-   package ItemProcessingStatus_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ItemProcessingStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ItemProcessingStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ItemProcessingStatus_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ItemProcessingStatus_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ItemProcessingStatus_Type_Vectors.Vector);
-
-
-
-
-   type Granularity_Type is
-     record
-     end record;
-
-   package Granularity_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Granularity_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Granularity_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Granularity_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Granularity_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Granularity_Type_Vectors.Vector);
-
-
-
-
-   type DataOutputFormat_Type is
-     record
-     end record;
-
-   package DataOutputFormat_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => DataOutputFormat_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DataOutputFormat_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in DataOutputFormat_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out DataOutputFormat_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out DataOutputFormat_Type_Vectors.Vector);
-
-
-
-
-   type Country_Type is
-     record
-     end record;
-
-   package Country_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Country_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Country_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Country_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Country_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Country_Type_Vectors.Vector);
-
-
-
-
-   type ConversionReportAttributionType_Type is
-     record
-     end record;
-
-   package ConversionReportAttributionType_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ConversionReportAttributionType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConversionReportAttributionType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConversionReportAttributionType_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConversionReportAttributionType_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConversionReportAttributionType_Type_Vectors.Vector);
-
-
-
-
-   type AdsAnalyticsCreateAsyncRequestAllOf_Type is
-     record
-       Start_Date : Swagger.UString;
-       End_Date : Swagger.UString;
-       Granularity : Granularity_Type;
-       Click_Window_Days : .Models.ConversionAttributionWindowDays_Type;
-       Engagement_Window_Days : .Models.ConversionAttributionWindowDays_Type;
-       View_Window_Days : .Models.ConversionAttributionWindowDays_Type;
-       Conversion_Report_Time : ConversionReportTimeType_Type;
-       Attribution_Types : .Models.ConversionReportAttributionType_Type_Vectors.Vector;
-     end record;
-
-   package AdsAnalyticsCreateAsyncRequestAllOf_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdsAnalyticsCreateAsyncRequestAllOf_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsCreateAsyncRequestAllOf_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsCreateAsyncRequestAllOf_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsCreateAsyncRequestAllOf_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsCreateAsyncRequestAllOf_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  catalogs_product_group_pricing_criteria
-   --  ------------------------------
-   type CatalogsProductGroupPricingCriteria_Type is
-     record
-       Inclusion : Boolean;
-       Values : Swagger.Number;
-       Negated : Boolean;
-     end record;
-
-   package CatalogsProductGroupPricingCriteria_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupPricingCriteria_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupPricingCriteria_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupPricingCriteria_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupPricingCriteria_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupPricingCriteria_Type_Vectors.Vector);
-
-
-
-
-   type MaxPriceFilter_Type is
-     record
-       MAX_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
-     end record;
-
-   package MaxPriceFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => MaxPriceFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MaxPriceFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MaxPriceFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MaxPriceFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MaxPriceFilter_Type_Vectors.Vector);
-
-
-
-
-   type MinPriceFilter_Type is
-     record
-       MIN_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
-     end record;
-
-   package MinPriceFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => MinPriceFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MinPriceFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in MinPriceFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MinPriceFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out MinPriceFilter_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  catalogs_product_group_multiple_string_criteria
-   --  ------------------------------
-   type CatalogsProductGroupMultipleStringCriteria_Type is
-     record
-       Values : Swagger.UString_Vectors.Vector;
-       Negated : Boolean;
-     end record;
-
-   package CatalogsProductGroupMultipleStringCriteria_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupMultipleStringCriteria_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupMultipleStringCriteria_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupMultipleStringCriteria_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupMultipleStringCriteria_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupMultipleStringCriteria_Type_Vectors.Vector);
-
-
-
-
-   type GenderFilter_Type is
-     record
-       GENDER : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package GenderFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GenderFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GenderFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GenderFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GenderFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GenderFilter_Type_Vectors.Vector);
-
-
-
-
-   type CustomLabel4Filter_Type is
-     record
-       CUSTOM_LABEL_4 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package CustomLabel4Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CustomLabel4Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel4Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel4Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel4Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel4Filter_Type_Vectors.Vector);
-
-
-
-
-   type CustomLabel2Filter_Type is
-     record
-       CUSTOM_LABEL_2 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package CustomLabel2Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CustomLabel2Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel2Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel2Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel2Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel2Filter_Type_Vectors.Vector);
-
-
-
-
-   type CustomLabel0Filter_Type is
-     record
-       CUSTOM_LABEL_0 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package CustomLabel0Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CustomLabel0Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel0Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel0Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel0Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel0Filter_Type_Vectors.Vector);
-
-
-
-
-   type BrandFilter_Type is
-     record
-       BRAND : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package BrandFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => BrandFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BrandFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BrandFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BrandFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BrandFilter_Type_Vectors.Vector);
-
-
-
-
-   type AvailabilityFilter_Type is
-     record
-       AVAILABILITY : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package AvailabilityFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AvailabilityFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AvailabilityFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AvailabilityFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AvailabilityFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AvailabilityFilter_Type_Vectors.Vector);
-
-
-
-
-   type ConditionFilter_Type is
-     record
-       CONDITION : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package ConditionFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ConditionFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConditionFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConditionFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConditionFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConditionFilter_Type_Vectors.Vector);
-
-
-
-
-   type CustomLabel1Filter_Type is
-     record
-       CUSTOM_LABEL_1 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package CustomLabel1Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CustomLabel1Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel1Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel1Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel1Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel1Filter_Type_Vectors.Vector);
-
-
-
-
-   type CustomLabel3Filter_Type is
-     record
-       CUSTOM_LABEL_3 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package CustomLabel3Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CustomLabel3Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel3Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomLabel3Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel3Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CustomLabel3Filter_Type_Vectors.Vector);
-
-
-
-
-   type ItemGroupIdFilter_Type is
-     record
-       ITEM_GROUP_ID : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-     end record;
-
-   package ItemGroupIdFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ItemGroupIdFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ItemGroupIdFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ItemGroupIdFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ItemGroupIdFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ItemGroupIdFilter_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  product_group_type
-   --  Catalog product group type
-   --  ------------------------------
-   type CatalogsProductGroupType_Type is
-     record
-     end record;
-
-   package CatalogsProductGroupType_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupType_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupType_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupType_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedValidationWarnings_Type is
-     record
-       Title_Length_Too_Long : Swagger.Nullable_Integer;
-       Description_Length_Too_Long : Swagger.Nullable_Integer;
-       Gender_Invalid : Swagger.Nullable_Integer;
-       Age_Group_Invalid : Swagger.Nullable_Integer;
-       Size_Type_Invalid : Swagger.Nullable_Integer;
-       Link_Format_Warning : Swagger.Nullable_Integer;
-       Duplicate_Products : Swagger.Nullable_Integer;
-       Duplicate_Links : Swagger.Nullable_Integer;
-       Sales_Price_Invalid : Swagger.Nullable_Integer;
-       Product_Category_Depth_Warning : Swagger.Nullable_Integer;
-       Adwords_Same_As_Link : Swagger.Nullable_Integer;
-       Duplicate_Headers : Swagger.Nullable_Integer;
-       Fetch_Same_Signature : Swagger.Nullable_Integer;
-       Adwords_Format_Warning : Swagger.Nullable_Integer;
-       Additional_Image_Link_Warning : Swagger.Nullable_Integer;
-       Image_Link_Warning : Swagger.Nullable_Integer;
-       Shipping_Invalid : Swagger.Nullable_Integer;
-       Tax_Invalid : Swagger.Nullable_Integer;
-       Shipping_Weight_Invalid : Swagger.Nullable_Integer;
-       Expiration_Date_Invalid : Swagger.Nullable_Integer;
-       Availability_Date_Invalid : Swagger.Nullable_Integer;
-       Sale_Date_Invalid : Swagger.Nullable_Integer;
-       Weight_Unit_Invalid : Swagger.Nullable_Integer;
-       Is_Bundle_Invalid : Swagger.Nullable_Integer;
-       Updated_Time_Invalid : Swagger.Nullable_Integer;
-       Custom_Label_Length_Too_Long : Swagger.Nullable_Integer;
-       Product_Type_Length_Too_Long : Swagger.Nullable_Integer;
-       Too_Many_Additional_Image_Links : Swagger.Nullable_Integer;
-       Multipack_Invalid : Swagger.Nullable_Integer;
-       Indexed_Product_Count_Large_Delta : Swagger.Nullable_Integer;
-       Item_Additional_Image_Download_Failure : Swagger.Nullable_Integer;
-       Optional_Product_Category_Missing : Swagger.Nullable_Integer;
-       Optional_Product_Category_Invalid : Swagger.Nullable_Integer;
-       Optional_Condition_Missing : Swagger.Nullable_Integer;
-       Optional_Condition_Invalid : Swagger.Nullable_Integer;
-       Ios_Deep_Link_Invalid : Swagger.Nullable_Integer;
-       Android_Deep_Link_Invalid : Swagger.Nullable_Integer;
-       Availability_Normalized : Swagger.Nullable_Integer;
-       Condition_Normalized : Swagger.Nullable_Integer;
-       Gender_Normalized : Swagger.Nullable_Integer;
-       Size_Type_Normalized : Swagger.Nullable_Integer;
-       Age_Group_Normalized : Swagger.Nullable_Integer;
-       Utm_Source_Auto_Corrected : Swagger.Nullable_Integer;
-       Country_Does_Not_Map_To_Currency : Swagger.Nullable_Integer;
-       Min_Ad_Price_Invalid : Swagger.Nullable_Integer;
-     end record;
-
-   package CatalogsFeedValidationWarnings_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedValidationWarnings_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedValidationWarnings_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedValidationWarnings_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedValidationWarnings_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedValidationWarnings_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  catalogs_processing_schedule
-   --  Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).
-   --  ------------------------------
-   type CatalogsFeedProcessingSchedule_Type is
-     record
-       Time : Swagger.UString;
-       Timezone : Swagger.UString;
-     end record;
-
-   package CatalogsFeedProcessingSchedule_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedProcessingSchedule_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingSchedule_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingSchedule_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingSchedule_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingSchedule_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedIngestionErrors_Type is
-     record
-       Image_Download_Error : Swagger.Nullable_Integer;
-       Image_Download_Connection_Timeout : Swagger.Nullable_Integer;
-       Image_Format_Unrecognize : Swagger.Nullable_Integer;
-       Line_Level_Internal_Error : Swagger.Nullable_Integer;
-       Large_Product_Count_Decrease : Swagger.Nullable_Integer;
-     end record;
-
-   package CatalogsFeedIngestionErrors_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedIngestionErrors_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedIngestionErrors_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedIngestionErrors_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedIngestionErrors_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedIngestionErrors_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedCredentials_Type is
-     record
-       Password : Swagger.UString;
-       Username : Swagger.UString;
-     end record;
-
-   package CatalogsFeedCredentials_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedCredentials_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedCredentials_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedCredentials_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedCredentials_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedCredentials_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  db_item
-   --  ------------------------------
-   type CatalogsDbItem_Type is
-     record
-       Created_At : Swagger.Nullable_Date;
-       Id : Swagger.Nullable_UString;
-       Updated_At : Swagger.Nullable_Date;
-     end record;
-
-   package CatalogsDbItem_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsDbItem_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsDbItem_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsDbItem_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsDbItem_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsDbItem_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  BoardUpdate
-   --  Board fields for updates
-   --  ------------------------------
-   type BoardUpdate_Type is
-     record
-       Name : Swagger.Nullable_UString;
-       Description : Swagger.Nullable_UString;
-       Privacy : Swagger.Nullable_UString;
-     end record;
-
-   package BoardUpdate_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => BoardUpdate_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BoardUpdate_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BoardUpdate_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BoardUpdate_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BoardUpdate_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  Board owner
-   --  ------------------------------
-   type BoardOwner_Type is
-     record
-       Username : Swagger.Nullable_UString;
-     end record;
-
-   package BoardOwner_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => BoardOwner_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BoardOwner_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BoardOwner_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BoardOwner_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BoardOwner_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  Board
-   --  Board
-   --  ------------------------------
-   type Board_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       Name : Swagger.UString;
-       Description : Swagger.Nullable_UString;
-       Owner : .Models.BoardOwner_Type;
-       Privacy : Swagger.Nullable_UString;
-     end record;
-
-   package Board_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Board_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Board_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Board_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Board_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Board_Type_Vectors.Vector);
-
-
-
-
-   type BatchOperationStatus_Type is
-     record
-     end record;
-
-   package BatchOperationStatus_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => BatchOperationStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BatchOperationStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BatchOperationStatus_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BatchOperationStatus_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BatchOperationStatus_Type_Vectors.Vector);
-
-
-
-
-   type AdsAnalyticsCreateAsyncResponse_Type is
-     record
-       Report_Status : Swagger.Nullable_UString;
-       Token : Swagger.Nullable_UString;
+       Attribute : Swagger.Nullable_UString;
+       Code : Swagger.Nullable_Integer;
        Message : Swagger.Nullable_UString;
      end record;
 
-   package AdsAnalyticsCreateAsyncResponse_Type_Vectors is
+   package ItemValidationEvent_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdsAnalyticsCreateAsyncResponse_Type);
+                                  Element_Type => ItemValidationEvent_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in AdsAnalyticsCreateAsyncResponse_Type);
+                        Value : in ItemValidationEvent_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in AdsAnalyticsCreateAsyncResponse_Type_Vectors.Vector);
+                        Value : in ItemValidationEvent_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out AdsAnalyticsCreateAsyncResponse_Type);
+                          Value : out ItemValidationEvent_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out AdsAnalyticsCreateAsyncResponse_Type_Vectors.Vector);
+                          Value : out ItemValidationEvent_Type_Vectors.Vector);
 
 
 
 
-   type AdsAnalyticsGetAsyncResponse_Type is
+   type ItemAttributes_Type is
      record
-       Report_Status : Swagger.Nullable_UString;
-       Url : Swagger.Nullable_UString;
-       Size : Swagger.Number;
-     end record;
-
-   package AdsAnalyticsGetAsyncResponse_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdsAnalyticsGetAsyncResponse_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsGetAsyncResponse_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsGetAsyncResponse_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsGetAsyncResponse_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsGetAsyncResponse_Type_Vectors.Vector);
-
-
-
-
-   type AdsAnalyticsTargetingType_Type is
-     record
-     end record;
-
-   package AdsAnalyticsTargetingType_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdsAnalyticsTargetingType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsTargetingType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsTargetingType_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsTargetingType_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsTargetingType_Type_Vectors.Vector);
-
-
-
-
-   type TargetingTypeFilter_Type is
-     record
-       Targeting_Types : .Models.AdsAnalyticsTargetingType_Type_Vectors.Vector;
-     end record;
-
-   package TargetingTypeFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => TargetingTypeFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in TargetingTypeFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in TargetingTypeFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out TargetingTypeFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out TargetingTypeFilter_Type_Vectors.Vector);
-
-
-
-
-   type AdsAnalyticsFilterColumn_Type is
-     record
-     end record;
-
-   package AdsAnalyticsFilterColumn_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdsAnalyticsFilterColumn_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsFilterColumn_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsFilterColumn_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsFilterColumn_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsFilterColumn_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  Error
-   --  ------------------------------
-   type Error_Type is
-     record
-       Code : Integer;
-       Message : Swagger.UString;
-     end record;
-
-   package Error_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Error_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Error_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Error_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Error_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Error_Type_Vectors.Vector);
-
-
-
-
-   type Account_Type is
-     record
-       Account_Type : Swagger.Nullable_UString;
-       Profile_Image : Swagger.Nullable_UString;
-       Website_Url : Swagger.Nullable_UString;
-       Username : Swagger.Nullable_UString;
-     end record;
-
-   package Account_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Account_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Account_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Account_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Account_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Account_Type_Vectors.Vector);
-
-
-
-
-   type AdGroupSummaryStatus_Type is
-     record
-     end record;
-
-   package AdGroupSummaryStatus_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdGroupSummaryStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdGroupSummaryStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdGroupSummaryStatus_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdGroupSummaryStatus_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdGroupSummaryStatus_Type_Vectors.Vector);
-
-
-
-
-   type AdsAnalyticsFilterOperator_Type is
-     record
-     end record;
-
-   package AdsAnalyticsFilterOperator_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdsAnalyticsFilterOperator_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsFilterOperator_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsFilterOperator_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsFilterOperator_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsFilterOperator_Type_Vectors.Vector);
-
-
-
-
-   type AdsAnalyticsMetricsFilter_Type is
-     record
-       Field : .Models.AdsAnalyticsFilterColumn_Type;
-       Operator : .Models.AdsAnalyticsFilterOperator_Type;
-       Values : Swagger.Number_Vectors.Vector;
-     end record;
-
-   package AdsAnalyticsMetricsFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdsAnalyticsMetricsFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsMetricsFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in AdsAnalyticsMetricsFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsMetricsFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out AdsAnalyticsMetricsFilter_Type_Vectors.Vector);
-
-
-
-
-   type ActionType_Type is
-     record
-     end record;
-
-   package ActionType_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ActionType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ActionType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ActionType_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ActionType_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ActionType_Type_Vectors.Vector);
-
-
-
-
-   type AdGroupResponse_Type is
-     record
-       Name : Swagger.Nullable_UString;
-       Status : EntityStatus_Type;
-       Budget_In_Micro_Currency : Swagger.Nullable_Integer;
-       Bid_In_Micro_Currency : Swagger.Nullable_Integer;
-       Budget_Type : Swagger.Nullable_UString;
-       Start_Time : Swagger.Nullable_Integer;
-       End_Time : Swagger.Nullable_Integer;
-       Targeting_Spec : Swagger.UString_Vectors.Vector_Map;
-       Lifetime_Frequency_Cap : Swagger.Nullable_Integer;
-       Tracking_Urls : .Models.TrackingUrls_Type;
-       Auto_Targeting_Enabled : Swagger.Nullable_Boolean;
-       Placement_Group : PlacementGroupType_Type;
-       Pacing_Delivery_Type : PacingDeliveryType_Type;
-       Conversion_Learning_Mode_Type : Swagger.Nullable_UString;
-       Summary_Status : AdGroupSummaryStatus_Type;
-       Feed_Profile_Id : Swagger.Nullable_UString;
-       Campaign_Id : Swagger.Nullable_UString;
-       Billable_Event : .Models.ActionType_Type;
+       Ad_Link : Swagger.Nullable_UString;
+       Additional_Image_Link : Swagger.UString_Vectors.Vector;
+       Adult : Swagger.Nullable_Boolean;
+       Age_Group : Swagger.Nullable_UString;
+       Availability : Swagger.Nullable_UString;
+       Average_Review_Rating : Swagger.Number;
+       Brand : Swagger.Nullable_UString;
+       Color : Swagger.Nullable_UString;
+       Condition : Swagger.Nullable_UString;
+       Custom_Label_0 : Swagger.Nullable_UString;
+       Custom_Label_1 : Swagger.Nullable_UString;
+       Custom_Label_2 : Swagger.Nullable_UString;
+       Custom_Label_3 : Swagger.Nullable_UString;
+       Custom_Label_4 : Swagger.Nullable_UString;
+       Description : Swagger.Nullable_UString;
+       Free_Shipping_Label : Swagger.Nullable_Boolean;
+       Free_Shipping_Limit : Swagger.Nullable_UString;
+       Gender : Swagger.Nullable_UString;
+       Google_Product_Category : Swagger.Nullable_UString;
+       Gtin : Swagger.Nullable_Integer;
        Id : Swagger.Nullable_UString;
-       P_Type : Swagger.Nullable_UString;
-       Ad_Account_Id : Swagger.Nullable_UString;
-       Created_Time : Swagger.Nullable_Integer;
-       Updated_Time : Swagger.Nullable_Integer;
+       Image_Link : Swagger.UString_Vectors.Vector;
+       Item_Group_Id : Swagger.Nullable_UString;
+       Last_Updated_Time : Swagger.Nullable_Long;
+       Link : Swagger.Nullable_UString;
+       Material : Swagger.Nullable_UString;
+       Min_Ad_Price : Swagger.Nullable_UString;
+       Mobile_Link : Swagger.Nullable_UString;
+       Mpn : Swagger.Nullable_UString;
+       Number_Of_Ratings : Swagger.Nullable_Integer;
+       Number_Of_Reviews : Swagger.Nullable_Integer;
+       Pattern : Swagger.Nullable_UString;
+       Price : Swagger.Nullable_UString;
+       Product_Type : Swagger.Nullable_UString;
+       Sale_Price : Swagger.Nullable_UString;
+       Shipping : Swagger.Nullable_UString;
+       Shipping_Height : Swagger.Nullable_UString;
+       Shipping_Weight : Swagger.Nullable_UString;
+       Shipping_Width : Swagger.Nullable_UString;
+       Size : Swagger.Nullable_UString;
+       Size_System : Swagger.Nullable_UString;
+       Size_Type : Swagger.Nullable_UString;
+       Tax : Swagger.Nullable_UString;
+       Title : Swagger.Nullable_UString;
      end record;
 
-   package AdGroupResponse_Type_Vectors is
+   package ItemAttributes_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdGroupResponse_Type);
+                                  Element_Type => ItemAttributes_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in AdGroupResponse_Type);
+                        Value : in ItemAttributes_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in AdGroupResponse_Type_Vectors.Vector);
+                        Value : in ItemAttributes_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out AdGroupResponse_Type);
+                          Value : out ItemAttributes_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out AdGroupResponse_Type_Vectors.Vector);
+                          Value : out ItemAttributes_Type_Vectors.Vector);
 
 
 
 
-   type AdGroupResponseAllOf1_Type is
+   type ItemBatchRecord_Type is
      record
-       Campaign_Id : Swagger.Nullable_UString;
-       Billable_Event : .Models.ActionType_Type;
-       Id : Swagger.Nullable_UString;
-       P_Type : Swagger.Nullable_UString;
-       Ad_Account_Id : Swagger.Nullable_UString;
-       Created_Time : Swagger.Nullable_Integer;
-       Updated_Time : Swagger.Nullable_Integer;
+       Item_Id : Swagger.Nullable_UString;
+       Attributes : .Models.ItemAttributes_Type;
      end record;
 
-   package AdGroupResponseAllOf1_Type_Vectors is
+   package ItemBatchRecord_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => AdGroupResponseAllOf1_Type);
+                                  Element_Type => ItemBatchRecord_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in AdGroupResponseAllOf1_Type);
+                        Value : in ItemBatchRecord_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in AdGroupResponseAllOf1_Type_Vectors.Vector);
+                        Value : in ItemBatchRecord_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out AdGroupResponseAllOf1_Type);
+                          Value : out ItemBatchRecord_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out AdGroupResponseAllOf1_Type_Vectors.Vector);
+                          Value : out ItemBatchRecord_Type_Vectors.Vector);
 
 
 
 
-   type BatchOperation_Type is
+   type CatalogsItems_Type is
      record
+       Items : .Models.ItemBatchRecord_Type_Vectors.Vector;
      end record;
 
-   package BatchOperation_Type_Vectors is
+   package CatalogsItems_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => BatchOperation_Type);
+                                  Element_Type => CatalogsItems_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in BatchOperation_Type);
+                        Value : in CatalogsItems_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in BatchOperation_Type_Vectors.Vector);
+                        Value : in CatalogsItems_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out BatchOperation_Type);
+                          Value : out CatalogsItems_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out BatchOperation_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  Board section
-   --  Sections help organize pins within a board.
-   --  ------------------------------
-   type BoardSection_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       Name : Swagger.Nullable_UString;
-     end record;
-
-   package BoardSection_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => BoardSection_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BoardSection_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BoardSection_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BoardSection_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out BoardSection_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedIngestionInfo_Type is
-     record
-       In_Stock : Swagger.Nullable_Integer;
-       Out_Of_Stock : Swagger.Nullable_Integer;
-       Preorder : Swagger.Nullable_Integer;
-     end record;
-
-   package CatalogsFeedIngestionInfo_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedIngestionInfo_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedIngestionInfo_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedIngestionInfo_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedIngestionInfo_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedIngestionInfo_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedIngestionDetails_Type is
-     record
-       Errors : .Models.CatalogsFeedIngestionErrors_Type;
-       Info : .Models.CatalogsFeedIngestionInfo_Type;
-     end record;
-
-   package CatalogsFeedIngestionDetails_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedIngestionDetails_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedIngestionDetails_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedIngestionDetails_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedIngestionDetails_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedIngestionDetails_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedProcessingStatus_Type is
-     record
-     end record;
-
-   package CatalogsFeedProcessingStatus_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedProcessingStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingStatus_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingStatus_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingStatus_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedProductCounts_Type is
-     record
-       Original : Swagger.Nullable_Integer;
-     end record;
-
-   package CatalogsFeedProductCounts_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedProductCounts_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProductCounts_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProductCounts_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProductCounts_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProductCounts_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedValidationErrors_Type is
-     record
-       Fetch_Error : Swagger.Nullable_Integer;
-       Fetch_Inactive_Feed_Error : Swagger.Nullable_Integer;
-       Encoding_Error : Swagger.Nullable_Integer;
-       Delimiter_Error : Swagger.Nullable_Integer;
-       Required_Columns_Missing : Swagger.Nullable_Integer;
-       Image_Link_Invalid : Swagger.Nullable_Integer;
-       Itemid_Missing : Swagger.Nullable_Integer;
-       Title_Missing : Swagger.Nullable_Integer;
-       Description_Missing : Swagger.Nullable_Integer;
-       Product_Category_Invalid : Swagger.Nullable_Integer;
-       Product_Link_Missing : Swagger.Nullable_Integer;
-       Image_Link_Missing : Swagger.Nullable_Integer;
-       Availability_Invalid : Swagger.Nullable_Integer;
-       Product_Price_Invalid : Swagger.Nullable_Integer;
-       Link_Format_Invalid : Swagger.Nullable_Integer;
-       Parse_Line_Error : Swagger.Nullable_Integer;
-       Adwords_Format_Invalid : Swagger.Nullable_Integer;
-       Product_Category_Missing : Swagger.Nullable_Integer;
-       Internal_Service_Error : Swagger.Nullable_Integer;
-       No_Verified_Domain : Swagger.Nullable_Integer;
-       Adult_Invalid : Swagger.Nullable_Integer;
-       Invalid_Domain : Swagger.Nullable_Integer;
-       Feed_Length_Too_Long : Swagger.Nullable_Integer;
-       Link_Length_Too_Long : Swagger.Nullable_Integer;
-       Malformed_Xml : Swagger.Nullable_Integer;
-       Redirect_Invalid : Swagger.Nullable_Integer;
-       Price_Missing : Swagger.Nullable_Integer;
-       Feed_Too_Small : Swagger.Nullable_Integer;
-       Condition_Invalid : Swagger.Nullable_Integer;
-       Shopify_No_Products : Swagger.Nullable_Integer;
-       Max_Items_Per_Item_Group_Exceeded : Swagger.Nullable_Integer;
-       Item_Main_Image_Download_Failure : Swagger.Nullable_Integer;
-       Pinjoin_Content_Unsafe : Swagger.Nullable_Integer;
-       Blocklisted_Image_Signature : Swagger.Nullable_Integer;
-     end record;
-
-   package CatalogsFeedValidationErrors_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedValidationErrors_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedValidationErrors_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedValidationErrors_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedValidationErrors_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedValidationErrors_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedValidationDetails_Type is
-     record
-       Errors : .Models.CatalogsFeedValidationErrors_Type;
-       Warnings : .Models.CatalogsFeedValidationWarnings_Type;
-     end record;
-
-   package CatalogsFeedValidationDetails_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedValidationDetails_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedValidationDetails_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedValidationDetails_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedValidationDetails_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedValidationDetails_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFeedProcessingResult_Type is
-     record
-       Created_At : Swagger.Nullable_Date;
-       Id : Swagger.Nullable_UString;
-       Updated_At : Swagger.Nullable_Date;
-       Ingestion_Details : .Models.CatalogsFeedIngestionDetails_Type;
-       Status : .Models.CatalogsFeedProcessingStatus_Type;
-       Product_Counts : .Models.CatalogsFeedProductCounts_Type;
-       Validation_Details : .Models.CatalogsFeedValidationDetails_Type;
-     end record;
-
-   package CatalogsFeedProcessingResult_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedProcessingResult_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingResult_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingResult_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingResult_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingResult_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  catalogs_feed_processing_result_fields
-   --  ------------------------------
-   type CatalogsFeedProcessingResultFields_Type is
-     record
-       Ingestion_Details : .Models.CatalogsFeedIngestionDetails_Type;
-       Status : .Models.CatalogsFeedProcessingStatus_Type;
-       Product_Counts : .Models.CatalogsFeedProductCounts_Type;
-       Validation_Details : .Models.CatalogsFeedValidationDetails_Type;
-     end record;
-
-   package CatalogsFeedProcessingResultFields_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedProcessingResultFields_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingResultFields_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedProcessingResultFields_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingResultFields_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedProcessingResultFields_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsFormat_Type is
-     record
-     end record;
-
-   package CatalogsFormat_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFormat_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFormat_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFormat_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFormat_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFormat_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  feeds_create_request
-   --  Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
-   --  ------------------------------
-   type CatalogsFeedsCreateRequest_Type is
-     record
-       Default_Country : .Models.Country_Type;
-       Default_Availability : .Models.ProductAvailabilityType_Type;
-       Default_Currency : .Models.NullableCurrency_Type;
-       Name : Swagger.UString;
-       Format : .Models.CatalogsFormat_Type;
-       Default_Locale : Swagger.Nullable_UString;
-       Credentials : .Models.CatalogsFeedCredentials_Type;
-       Location : Swagger.UString;
-       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
-     end record;
-
-   package CatalogsFeedsCreateRequest_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedsCreateRequest_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedsCreateRequest_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedsCreateRequest_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedsCreateRequest_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedsCreateRequest_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsStatus_Type is
-     record
-     end record;
-
-   package CatalogsStatus_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsStatus_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsStatus_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsStatus_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  feed_fields
-   --  ------------------------------
-   type FeedFields_Type is
-     record
-       Default_Country : .Models.Country_Type;
-       Default_Availability : .Models.ProductAvailabilityType_Type;
-       Default_Currency : .Models.NullableCurrency_Type;
-       Name : Swagger.UString;
-       Format : .Models.CatalogsFormat_Type;
-       Default_Locale : Swagger.UString;
-       Credentials : .Models.CatalogsFeedCredentials_Type;
-       Location : Swagger.UString;
-       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
-       Status : .Models.CatalogsStatus_Type;
-     end record;
-
-   package FeedFields_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => FeedFields_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in FeedFields_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in FeedFields_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out FeedFields_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out FeedFields_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  catalogs_feeds_update_request
-   --  Request object for updating a feed.
-   --  ------------------------------
-   type CatalogsFeedsUpdateRequest_Type is
-     record
-       Default_Availability : .Models.ProductAvailabilityType_Type;
-       Default_Currency : .Models.NullableCurrency_Type;
-       Name : Swagger.Nullable_UString;
-       Format : .Models.CatalogsFormat_Type;
-       Credentials : .Models.CatalogsFeedCredentials_Type;
-       Location : Swagger.Nullable_UString;
-       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
-       Status : .Models.CatalogsStatus_Type;
-     end record;
-
-   package CatalogsFeedsUpdateRequest_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeedsUpdateRequest_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedsUpdateRequest_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeedsUpdateRequest_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedsUpdateRequest_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeedsUpdateRequest_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  feed
-   --  Catalogs Catalogs Feed object
-   --  ------------------------------
-   type CatalogsFeed_Type is
-     record
-       Created_At : Swagger.Nullable_Date;
-       Id : Swagger.Nullable_UString;
-       Updated_At : Swagger.Nullable_Date;
-       Default_Country : .Models.Country_Type;
-       Default_Availability : .Models.ProductAvailabilityType_Type;
-       Default_Currency : .Models.NullableCurrency_Type;
-       Name : Swagger.UString;
-       Format : .Models.CatalogsFormat_Type;
-       Default_Locale : Swagger.UString;
-       Credentials : .Models.CatalogsFeedCredentials_Type;
-       Location : Swagger.UString;
-       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
-       Status : .Models.CatalogsStatus_Type;
-     end record;
-
-   package CatalogsFeed_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsFeed_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeed_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsFeed_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeed_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsFeed_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsProductGroupStatus_Type is
-     record
-     end record;
-
-   package CatalogsProductGroupStatus_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupStatus_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupStatus_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupStatus_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupStatus_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  catalogs_product_group_multiple_string_list_criteria
-   --  ------------------------------
-   type CatalogsProductGroupMultipleStringListCriteria_Type is
-     record
-       Values : Swagger.UString_Vectors.Vector_Vectors.Vector;
-       Negated : Boolean;
-     end record;
-
-   package CatalogsProductGroupMultipleStringListCriteria_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupMultipleStringListCriteria_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupMultipleStringListCriteria_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupMultipleStringListCriteria_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupMultipleStringListCriteria_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupMultipleStringListCriteria_Type_Vectors.Vector);
-
-
-
-
-   type GoogleProductCategory0Filter_Type is
-     record
-       GOOGLE_PRODUCT_CATEGORY_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package GoogleProductCategory0Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GoogleProductCategory0Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory0Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory0Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory0Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory0Filter_Type_Vectors.Vector);
-
-
-
-
-   type GoogleProductCategory2Filter_Type is
-     record
-       GOOGLE_PRODUCT_CATEGORY_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package GoogleProductCategory2Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GoogleProductCategory2Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory2Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory2Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory2Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory2Filter_Type_Vectors.Vector);
-
-
-
-
-   type GoogleProductCategory4Filter_Type is
-     record
-       GOOGLE_PRODUCT_CATEGORY_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package GoogleProductCategory4Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GoogleProductCategory4Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory4Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory4Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory4Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory4Filter_Type_Vectors.Vector);
-
-
-
-
-   type GoogleProductCategory6Filter_Type is
-     record
-       GOOGLE_PRODUCT_CATEGORY_6 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package GoogleProductCategory6Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GoogleProductCategory6Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory6Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory6Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory6Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory6Filter_Type_Vectors.Vector);
-
-
-
-
-   type ProductType1Filter_Type is
-     record
-       PRODUCT_TYPE_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package ProductType1Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ProductType1Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType1Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType1Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType1Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType1Filter_Type_Vectors.Vector);
-
-
-
-
-   type ProductType3Filter_Type is
-     record
-       PRODUCT_TYPE_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package ProductType3Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ProductType3Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType3Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType3Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType3Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType3Filter_Type_Vectors.Vector);
-
-
-
-
-   type ProductType4Filter_Type is
-     record
-       PRODUCT_TYPE_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package ProductType4Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ProductType4Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType4Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType4Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType4Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType4Filter_Type_Vectors.Vector);
-
-
-
-
-   type ProductType2Filter_Type is
-     record
-       PRODUCT_TYPE_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package ProductType2Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ProductType2Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType2Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType2Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType2Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType2Filter_Type_Vectors.Vector);
-
-
-
-
-   type ProductType0Filter_Type is
-     record
-       PRODUCT_TYPE_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package ProductType0Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ProductType0Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType0Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductType0Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType0Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ProductType0Filter_Type_Vectors.Vector);
-
-
-
-
-   type GoogleProductCategory5Filter_Type is
-     record
-       GOOGLE_PRODUCT_CATEGORY_5 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package GoogleProductCategory5Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GoogleProductCategory5Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory5Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory5Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory5Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory5Filter_Type_Vectors.Vector);
-
-
-
-
-   type GoogleProductCategory3Filter_Type is
-     record
-       GOOGLE_PRODUCT_CATEGORY_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package GoogleProductCategory3Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GoogleProductCategory3Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory3Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory3Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory3Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory3Filter_Type_Vectors.Vector);
-
-
-
-
-   type GoogleProductCategory1Filter_Type is
-     record
-       GOOGLE_PRODUCT_CATEGORY_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package GoogleProductCategory1Filter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => GoogleProductCategory1Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory1Filter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in GoogleProductCategory1Filter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory1Filter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out GoogleProductCategory1Filter_Type_Vectors.Vector);
-
-
-
-
-   type ConversionAttributionWindowDays_Type is
-     record
-     end record;
-
-   package ConversionAttributionWindowDays_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ConversionAttributionWindowDays_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConversionAttributionWindowDays_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConversionAttributionWindowDays_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConversionAttributionWindowDays_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConversionAttributionWindowDays_Type_Vectors.Vector);
-
-
-
-
-   type ConversionReportTimeType_Type is
-     record
-     end record;
-
-   package ConversionReportTimeType_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ConversionReportTimeType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConversionReportTimeType_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ConversionReportTimeType_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConversionReportTimeType_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ConversionReportTimeType_Type_Vectors.Vector);
-
-
-
-
-   type Currency_Type is
-     record
-     end record;
-
-   package Currency_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Currency_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Currency_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Currency_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Currency_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Currency_Type_Vectors.Vector);
+                          Value : out CatalogsItems_Type_Vectors.Vector);
 
 
 
@@ -3358,191 +1240,2428 @@ package .Models is
 
 
 
-   type ItemAttributes_Type is
+   type Currency_Type is
      record
-       Ad_Link : Swagger.Nullable_UString;
-       Additional_Image_Link : Swagger.UString_Vectors.Vector;
-       Adult : Swagger.Nullable_Boolean;
-       Age_Group : Swagger.Nullable_UString;
-       Availability : Swagger.Nullable_UString;
-       Average_Review_Rating : Swagger.Number;
-       Brand : Swagger.Nullable_UString;
-       Color : Swagger.Nullable_UString;
-       Condition : Swagger.Nullable_UString;
-       Custom_Label_0 : Swagger.Nullable_UString;
-       Custom_Label_1 : Swagger.Nullable_UString;
-       Custom_Label_2 : Swagger.Nullable_UString;
-       Custom_Label_3 : Swagger.Nullable_UString;
-       Custom_Label_4 : Swagger.Nullable_UString;
-       Description : Swagger.Nullable_UString;
-       Free_Shipping_Label : Swagger.Nullable_Boolean;
-       Free_Shipping_Limit : Swagger.Nullable_UString;
-       Gender : Swagger.Nullable_UString;
-       Google_Product_Category : Swagger.Nullable_UString;
-       Gtin : Swagger.Nullable_Integer;
+     end record;
+
+   package Currency_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Currency_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Currency_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Currency_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Currency_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Currency_Type_Vectors.Vector);
+
+
+
+
+   type ConversionReportTimeType_Type is
+     record
+     end record;
+
+   package ConversionReportTimeType_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ConversionReportTimeType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConversionReportTimeType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConversionReportTimeType_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConversionReportTimeType_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConversionReportTimeType_Type_Vectors.Vector);
+
+
+
+
+   type ConversionAttributionWindowDays_Type is
+     record
+     end record;
+
+   package ConversionAttributionWindowDays_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ConversionAttributionWindowDays_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConversionAttributionWindowDays_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConversionAttributionWindowDays_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConversionAttributionWindowDays_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConversionAttributionWindowDays_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  catalogs_product_group_multiple_string_list_criteria
+   --  ------------------------------
+   type CatalogsProductGroupMultipleStringListCriteria_Type is
+     record
+       Values : Swagger.UString_Vectors.Vector_Vectors.Vector;
+       Negated : Boolean;
+     end record;
+
+   package CatalogsProductGroupMultipleStringListCriteria_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupMultipleStringListCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupMultipleStringListCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupMultipleStringListCriteria_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupMultipleStringListCriteria_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupMultipleStringListCriteria_Type_Vectors.Vector);
+
+
+
+
+   type GoogleProductCategory1Filter_Type is
+     record
+       GOOGLE_PRODUCT_CATEGORY_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package GoogleProductCategory1Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GoogleProductCategory1Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory1Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory1Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory1Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory1Filter_Type_Vectors.Vector);
+
+
+
+
+   type GoogleProductCategory3Filter_Type is
+     record
+       GOOGLE_PRODUCT_CATEGORY_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package GoogleProductCategory3Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GoogleProductCategory3Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory3Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory3Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory3Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory3Filter_Type_Vectors.Vector);
+
+
+
+
+   type GoogleProductCategory5Filter_Type is
+     record
+       GOOGLE_PRODUCT_CATEGORY_5 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package GoogleProductCategory5Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GoogleProductCategory5Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory5Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory5Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory5Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory5Filter_Type_Vectors.Vector);
+
+
+
+
+   type ProductType0Filter_Type is
+     record
+       PRODUCT_TYPE_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package ProductType0Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ProductType0Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType0Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType0Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType0Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType0Filter_Type_Vectors.Vector);
+
+
+
+
+   type ProductType2Filter_Type is
+     record
+       PRODUCT_TYPE_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package ProductType2Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ProductType2Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType2Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType2Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType2Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType2Filter_Type_Vectors.Vector);
+
+
+
+
+   type ProductType4Filter_Type is
+     record
+       PRODUCT_TYPE_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package ProductType4Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ProductType4Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType4Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType4Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType4Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType4Filter_Type_Vectors.Vector);
+
+
+
+
+   type ProductType3Filter_Type is
+     record
+       PRODUCT_TYPE_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package ProductType3Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ProductType3Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType3Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType3Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType3Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType3Filter_Type_Vectors.Vector);
+
+
+
+
+   type ProductType1Filter_Type is
+     record
+       PRODUCT_TYPE_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package ProductType1Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ProductType1Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType1Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductType1Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType1Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ProductType1Filter_Type_Vectors.Vector);
+
+
+
+
+   type GoogleProductCategory6Filter_Type is
+     record
+       GOOGLE_PRODUCT_CATEGORY_6 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package GoogleProductCategory6Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GoogleProductCategory6Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory6Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory6Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory6Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory6Filter_Type_Vectors.Vector);
+
+
+
+
+   type GoogleProductCategory4Filter_Type is
+     record
+       GOOGLE_PRODUCT_CATEGORY_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package GoogleProductCategory4Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GoogleProductCategory4Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory4Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory4Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory4Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory4Filter_Type_Vectors.Vector);
+
+
+
+
+   type GoogleProductCategory2Filter_Type is
+     record
+       GOOGLE_PRODUCT_CATEGORY_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package GoogleProductCategory2Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GoogleProductCategory2Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory2Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory2Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory2Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory2Filter_Type_Vectors.Vector);
+
+
+
+
+   type GoogleProductCategory0Filter_Type is
+     record
+       GOOGLE_PRODUCT_CATEGORY_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package GoogleProductCategory0Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GoogleProductCategory0Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory0Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GoogleProductCategory0Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory0Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GoogleProductCategory0Filter_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsProductGroupStatus_Type is
+     record
+     end record;
+
+   package CatalogsProductGroupStatus_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupStatus_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupStatus_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupStatus_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsStatus_Type is
+     record
+     end record;
+
+   package CatalogsStatus_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsStatus_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsStatus_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsStatus_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFormat_Type is
+     record
+     end record;
+
+   package CatalogsFormat_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFormat_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFormat_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFormat_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFormat_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFormat_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedValidationErrors_Type is
+     record
+       Fetch_Error : Swagger.Nullable_Integer;
+       Fetch_Inactive_Feed_Error : Swagger.Nullable_Integer;
+       Encoding_Error : Swagger.Nullable_Integer;
+       Delimiter_Error : Swagger.Nullable_Integer;
+       Required_Columns_Missing : Swagger.Nullable_Integer;
+       Image_Link_Invalid : Swagger.Nullable_Integer;
+       Itemid_Missing : Swagger.Nullable_Integer;
+       Title_Missing : Swagger.Nullable_Integer;
+       Description_Missing : Swagger.Nullable_Integer;
+       Product_Category_Invalid : Swagger.Nullable_Integer;
+       Product_Link_Missing : Swagger.Nullable_Integer;
+       Image_Link_Missing : Swagger.Nullable_Integer;
+       Availability_Invalid : Swagger.Nullable_Integer;
+       Product_Price_Invalid : Swagger.Nullable_Integer;
+       Link_Format_Invalid : Swagger.Nullable_Integer;
+       Parse_Line_Error : Swagger.Nullable_Integer;
+       Adwords_Format_Invalid : Swagger.Nullable_Integer;
+       Product_Category_Missing : Swagger.Nullable_Integer;
+       Internal_Service_Error : Swagger.Nullable_Integer;
+       No_Verified_Domain : Swagger.Nullable_Integer;
+       Adult_Invalid : Swagger.Nullable_Integer;
+       Invalid_Domain : Swagger.Nullable_Integer;
+       Feed_Length_Too_Long : Swagger.Nullable_Integer;
+       Link_Length_Too_Long : Swagger.Nullable_Integer;
+       Malformed_Xml : Swagger.Nullable_Integer;
+       Redirect_Invalid : Swagger.Nullable_Integer;
+       Price_Missing : Swagger.Nullable_Integer;
+       Feed_Too_Small : Swagger.Nullable_Integer;
+       Condition_Invalid : Swagger.Nullable_Integer;
+       Shopify_No_Products : Swagger.Nullable_Integer;
+       Max_Items_Per_Item_Group_Exceeded : Swagger.Nullable_Integer;
+       Item_Main_Image_Download_Failure : Swagger.Nullable_Integer;
+       Pinjoin_Content_Unsafe : Swagger.Nullable_Integer;
+       Blocklisted_Image_Signature : Swagger.Nullable_Integer;
+     end record;
+
+   package CatalogsFeedValidationErrors_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedValidationErrors_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedValidationErrors_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedValidationErrors_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedValidationErrors_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedValidationErrors_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedProductCounts_Type is
+     record
+       Original : Swagger.Nullable_Integer;
+     end record;
+
+   package CatalogsFeedProductCounts_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedProductCounts_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProductCounts_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProductCounts_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProductCounts_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProductCounts_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedProcessingStatus_Type is
+     record
+     end record;
+
+   package CatalogsFeedProcessingStatus_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedProcessingStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingStatus_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingStatus_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingStatus_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedIngestionInfo_Type is
+     record
+       In_Stock : Swagger.Nullable_Integer;
+       Out_Of_Stock : Swagger.Nullable_Integer;
+       Preorder : Swagger.Nullable_Integer;
+     end record;
+
+   package CatalogsFeedIngestionInfo_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedIngestionInfo_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedIngestionInfo_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedIngestionInfo_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedIngestionInfo_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedIngestionInfo_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  Board section
+   --  Sections help organize pins within a board.
+   --  ------------------------------
+   type BoardSection_Type is
+     record
        Id : Swagger.Nullable_UString;
-       Image_Link : Swagger.UString_Vectors.Vector;
-       Item_Group_Id : Swagger.Nullable_UString;
-       Last_Updated_Time : Swagger.Nullable_Long;
-       Link : Swagger.Nullable_UString;
-       Material : Swagger.Nullable_UString;
-       Min_Ad_Price : Swagger.Nullable_UString;
-       Mobile_Link : Swagger.Nullable_UString;
-       Mpn : Swagger.Nullable_UString;
-       Number_Of_Ratings : Swagger.Nullable_Integer;
-       Number_Of_Reviews : Swagger.Nullable_Integer;
-       Pattern : Swagger.Nullable_UString;
-       Price : Swagger.Nullable_UString;
-       Product_Type : Swagger.Nullable_UString;
-       Sale_Price : Swagger.Nullable_UString;
-       Shipping : Swagger.Nullable_UString;
-       Shipping_Height : Swagger.Nullable_UString;
-       Shipping_Weight : Swagger.Nullable_UString;
-       Shipping_Width : Swagger.Nullable_UString;
-       Size : Swagger.Nullable_UString;
-       Size_System : Swagger.Nullable_UString;
-       Size_Type : Swagger.Nullable_UString;
-       Tax : Swagger.Nullable_UString;
-       Title : Swagger.Nullable_UString;
+       Name : Swagger.Nullable_UString;
      end record;
 
-   package ItemAttributes_Type_Vectors is
+   package BoardSection_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ItemAttributes_Type);
+                                  Element_Type => BoardSection_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in ItemAttributes_Type);
+                        Value : in BoardSection_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in ItemAttributes_Type_Vectors.Vector);
+                        Value : in BoardSection_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out ItemAttributes_Type);
+                          Value : out BoardSection_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out ItemAttributes_Type_Vectors.Vector);
+                          Value : out BoardSection_Type_Vectors.Vector);
 
 
 
 
-   type ItemBatchRecord_Type is
+   type BatchOperation_Type is
      record
-       Item_Id : Swagger.Nullable_UString;
-       Attributes : .Models.ItemAttributes_Type;
      end record;
 
-   package ItemBatchRecord_Type_Vectors is
+   package BatchOperation_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ItemBatchRecord_Type);
+                                  Element_Type => BatchOperation_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in ItemBatchRecord_Type);
+                        Value : in BatchOperation_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in ItemBatchRecord_Type_Vectors.Vector);
+                        Value : in BatchOperation_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out ItemBatchRecord_Type);
+                          Value : out BatchOperation_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out ItemBatchRecord_Type_Vectors.Vector);
+                          Value : out BatchOperation_Type_Vectors.Vector);
 
 
 
 
-   type CatalogsItemsBatchRequest_Type is
+   type ActionType_Type is
      record
-       Country : .Models.Country_Type;
-       Language : .Models.Language_Type;
-       Operation : .Models.BatchOperation_Type;
-       Items : .Models.ItemBatchRecord_Type_Vectors.Vector;
      end record;
 
-   package CatalogsItemsBatchRequest_Type_Vectors is
+   package ActionType_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsItemsBatchRequest_Type);
+                                  Element_Type => ActionType_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsItemsBatchRequest_Type);
+                        Value : in ActionType_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsItemsBatchRequest_Type_Vectors.Vector);
+                        Value : in ActionType_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsItemsBatchRequest_Type);
+                          Value : out ActionType_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsItemsBatchRequest_Type_Vectors.Vector);
+                          Value : out ActionType_Type_Vectors.Vector);
 
 
 
 
-   type CatalogsItems_Type is
+   type AdGroupResponse_Type is
      record
-       Items : .Models.ItemBatchRecord_Type_Vectors.Vector;
+       Name : Swagger.Nullable_UString;
+       Status : EntityStatus_Type;
+       Budget_In_Micro_Currency : Swagger.Nullable_Integer;
+       Bid_In_Micro_Currency : Swagger.Nullable_Integer;
+       Budget_Type : Swagger.Nullable_UString;
+       Start_Time : Swagger.Nullable_Integer;
+       End_Time : Swagger.Nullable_Integer;
+       Targeting_Spec : Swagger.UString_Vectors.Vector_Map;
+       Lifetime_Frequency_Cap : Swagger.Nullable_Integer;
+       Tracking_Urls : .Models.TrackingUrls_Type;
+       Auto_Targeting_Enabled : Swagger.Nullable_Boolean;
+       Placement_Group : PlacementGroupType_Type;
+       Pacing_Delivery_Type : PacingDeliveryType_Type;
+       Conversion_Learning_Mode_Type : Swagger.Nullable_UString;
+       Summary_Status : AdGroupSummaryStatus_Type;
+       Feed_Profile_Id : Swagger.Nullable_UString;
+       Campaign_Id : Swagger.Nullable_UString;
+       Billable_Event : .Models.ActionType_Type;
+       Id : Swagger.Nullable_UString;
+       P_Type : Swagger.Nullable_UString;
+       Ad_Account_Id : Swagger.Nullable_UString;
+       Created_Time : Swagger.Nullable_Integer;
+       Updated_Time : Swagger.Nullable_Integer;
      end record;
 
-   package CatalogsItems_Type_Vectors is
+   package AdGroupResponse_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsItems_Type);
+                                  Element_Type => AdGroupResponse_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsItems_Type);
+                        Value : in AdGroupResponse_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsItems_Type_Vectors.Vector);
+                        Value : in AdGroupResponse_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsItems_Type);
+                          Value : out AdGroupResponse_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsItems_Type_Vectors.Vector);
+                          Value : out AdGroupResponse_Type_Vectors.Vector);
 
 
 
 
-   type ItemValidationEvent_Type is
+   type AdGroupResponseAllOf1_Type is
      record
-       Attribute : Swagger.Nullable_UString;
-       Code : Swagger.Nullable_Integer;
+       Campaign_Id : Swagger.Nullable_UString;
+       Billable_Event : .Models.ActionType_Type;
+       Id : Swagger.Nullable_UString;
+       P_Type : Swagger.Nullable_UString;
+       Ad_Account_Id : Swagger.Nullable_UString;
+       Created_Time : Swagger.Nullable_Integer;
+       Updated_Time : Swagger.Nullable_Integer;
+     end record;
+
+   package AdGroupResponseAllOf1_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdGroupResponseAllOf1_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdGroupResponseAllOf1_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdGroupResponseAllOf1_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdGroupResponseAllOf1_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdGroupResponseAllOf1_Type_Vectors.Vector);
+
+
+
+
+   type AdsAnalyticsFilterOperator_Type is
+     record
+     end record;
+
+   package AdsAnalyticsFilterOperator_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdsAnalyticsFilterOperator_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsFilterOperator_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsFilterOperator_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsFilterOperator_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsFilterOperator_Type_Vectors.Vector);
+
+
+
+
+   type AdGroupSummaryStatus_Type is
+     record
+     end record;
+
+   package AdGroupSummaryStatus_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdGroupSummaryStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdGroupSummaryStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdGroupSummaryStatus_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdGroupSummaryStatus_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdGroupSummaryStatus_Type_Vectors.Vector);
+
+
+
+
+   type Account_Type is
+     record
+       Account_Type : Swagger.Nullable_UString;
+       Profile_Image : Swagger.Nullable_UString;
+       Website_Url : Swagger.Nullable_UString;
+       Username : Swagger.Nullable_UString;
+     end record;
+
+   package Account_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Account_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Account_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Account_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Account_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Account_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  Error
+   --  ------------------------------
+   type Error_Type is
+     record
+       Code : Integer;
+       Message : Swagger.UString;
+     end record;
+
+   package Error_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Error_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Error_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Error_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Error_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Error_Type_Vectors.Vector);
+
+
+
+
+   type AdsAnalyticsFilterColumn_Type is
+     record
+     end record;
+
+   package AdsAnalyticsFilterColumn_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdsAnalyticsFilterColumn_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsFilterColumn_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsFilterColumn_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsFilterColumn_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsFilterColumn_Type_Vectors.Vector);
+
+
+
+
+   type AdsAnalyticsMetricsFilter_Type is
+     record
+       Field : .Models.AdsAnalyticsFilterColumn_Type;
+       Operator : .Models.AdsAnalyticsFilterOperator_Type;
+       Values : Swagger.Number_Vectors.Vector;
+     end record;
+
+   package AdsAnalyticsMetricsFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdsAnalyticsMetricsFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsMetricsFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsMetricsFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsMetricsFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsMetricsFilter_Type_Vectors.Vector);
+
+
+
+
+   type AdsAnalyticsTargetingType_Type is
+     record
+     end record;
+
+   package AdsAnalyticsTargetingType_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdsAnalyticsTargetingType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsTargetingType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsTargetingType_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsTargetingType_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsTargetingType_Type_Vectors.Vector);
+
+
+
+
+   type TargetingTypeFilter_Type is
+     record
+       Targeting_Types : .Models.AdsAnalyticsTargetingType_Type_Vectors.Vector;
+     end record;
+
+   package TargetingTypeFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => TargetingTypeFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in TargetingTypeFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in TargetingTypeFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out TargetingTypeFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out TargetingTypeFilter_Type_Vectors.Vector);
+
+
+
+
+   type AdsAnalyticsGetAsyncResponse_Type is
+     record
+       Report_Status : Swagger.Nullable_UString;
+       Url : Swagger.Nullable_UString;
+       Size : Swagger.Number;
+     end record;
+
+   package AdsAnalyticsGetAsyncResponse_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdsAnalyticsGetAsyncResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsGetAsyncResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsGetAsyncResponse_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsGetAsyncResponse_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsGetAsyncResponse_Type_Vectors.Vector);
+
+
+
+
+   type AdsAnalyticsCreateAsyncResponse_Type is
+     record
+       Report_Status : Swagger.Nullable_UString;
+       Token : Swagger.Nullable_UString;
        Message : Swagger.Nullable_UString;
      end record;
 
-   package ItemValidationEvent_Type_Vectors is
+   package AdsAnalyticsCreateAsyncResponse_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ItemValidationEvent_Type);
+                                  Element_Type => AdsAnalyticsCreateAsyncResponse_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in ItemValidationEvent_Type);
+                        Value : in AdsAnalyticsCreateAsyncResponse_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in ItemValidationEvent_Type_Vectors.Vector);
+                        Value : in AdsAnalyticsCreateAsyncResponse_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out ItemValidationEvent_Type);
+                          Value : out AdsAnalyticsCreateAsyncResponse_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out ItemValidationEvent_Type_Vectors.Vector);
+                          Value : out AdsAnalyticsCreateAsyncResponse_Type_Vectors.Vector);
+
+
+
+
+   type BatchOperationStatus_Type is
+     record
+     end record;
+
+   package BatchOperationStatus_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => BatchOperationStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BatchOperationStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BatchOperationStatus_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BatchOperationStatus_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BatchOperationStatus_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  Board owner
+   --  ------------------------------
+   type BoardOwner_Type is
+     record
+       Username : Swagger.Nullable_UString;
+     end record;
+
+   package BoardOwner_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => BoardOwner_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BoardOwner_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BoardOwner_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BoardOwner_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BoardOwner_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  Board
+   --  Board
+   --  ------------------------------
+   type Board_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       Name : Swagger.UString;
+       Description : Swagger.Nullable_UString;
+       Owner : .Models.BoardOwner_Type;
+       Privacy : Swagger.Nullable_UString;
+     end record;
+
+   package Board_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Board_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Board_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Board_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Board_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Board_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  BoardUpdate
+   --  Board fields for updates
+   --  ------------------------------
+   type BoardUpdate_Type is
+     record
+       Name : Swagger.Nullable_UString;
+       Description : Swagger.Nullable_UString;
+       Privacy : Swagger.Nullable_UString;
+     end record;
+
+   package BoardUpdate_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => BoardUpdate_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BoardUpdate_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BoardUpdate_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BoardUpdate_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BoardUpdate_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  db_item
+   --  ------------------------------
+   type CatalogsDbItem_Type is
+     record
+       Created_At : Swagger.Nullable_Date;
+       Id : Swagger.Nullable_UString;
+       Updated_At : Swagger.Nullable_Date;
+     end record;
+
+   package CatalogsDbItem_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsDbItem_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsDbItem_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsDbItem_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsDbItem_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsDbItem_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedCredentials_Type is
+     record
+       Password : Swagger.UString;
+       Username : Swagger.UString;
+     end record;
+
+   package CatalogsFeedCredentials_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedCredentials_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedCredentials_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedCredentials_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedCredentials_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedCredentials_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedIngestionErrors_Type is
+     record
+       Image_Download_Error : Swagger.Nullable_Integer;
+       Image_Download_Connection_Timeout : Swagger.Nullable_Integer;
+       Image_Format_Unrecognize : Swagger.Nullable_Integer;
+       Line_Level_Internal_Error : Swagger.Nullable_Integer;
+       Large_Product_Count_Decrease : Swagger.Nullable_Integer;
+     end record;
+
+   package CatalogsFeedIngestionErrors_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedIngestionErrors_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedIngestionErrors_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedIngestionErrors_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedIngestionErrors_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedIngestionErrors_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedIngestionDetails_Type is
+     record
+       Errors : .Models.CatalogsFeedIngestionErrors_Type;
+       Info : .Models.CatalogsFeedIngestionInfo_Type;
+     end record;
+
+   package CatalogsFeedIngestionDetails_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedIngestionDetails_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedIngestionDetails_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedIngestionDetails_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedIngestionDetails_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedIngestionDetails_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  catalogs_processing_schedule
+   --  Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).
+   --  ------------------------------
+   type CatalogsFeedProcessingSchedule_Type is
+     record
+       Time : Swagger.UString;
+       Timezone : Swagger.UString;
+     end record;
+
+   package CatalogsFeedProcessingSchedule_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedProcessingSchedule_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingSchedule_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingSchedule_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingSchedule_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingSchedule_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedValidationWarnings_Type is
+     record
+       Title_Length_Too_Long : Swagger.Nullable_Integer;
+       Description_Length_Too_Long : Swagger.Nullable_Integer;
+       Gender_Invalid : Swagger.Nullable_Integer;
+       Age_Group_Invalid : Swagger.Nullable_Integer;
+       Size_Type_Invalid : Swagger.Nullable_Integer;
+       Link_Format_Warning : Swagger.Nullable_Integer;
+       Duplicate_Products : Swagger.Nullable_Integer;
+       Duplicate_Links : Swagger.Nullable_Integer;
+       Sales_Price_Invalid : Swagger.Nullable_Integer;
+       Product_Category_Depth_Warning : Swagger.Nullable_Integer;
+       Adwords_Same_As_Link : Swagger.Nullable_Integer;
+       Duplicate_Headers : Swagger.Nullable_Integer;
+       Fetch_Same_Signature : Swagger.Nullable_Integer;
+       Adwords_Format_Warning : Swagger.Nullable_Integer;
+       Additional_Image_Link_Warning : Swagger.Nullable_Integer;
+       Image_Link_Warning : Swagger.Nullable_Integer;
+       Shipping_Invalid : Swagger.Nullable_Integer;
+       Tax_Invalid : Swagger.Nullable_Integer;
+       Shipping_Weight_Invalid : Swagger.Nullable_Integer;
+       Expiration_Date_Invalid : Swagger.Nullable_Integer;
+       Availability_Date_Invalid : Swagger.Nullable_Integer;
+       Sale_Date_Invalid : Swagger.Nullable_Integer;
+       Weight_Unit_Invalid : Swagger.Nullable_Integer;
+       Is_Bundle_Invalid : Swagger.Nullable_Integer;
+       Updated_Time_Invalid : Swagger.Nullable_Integer;
+       Custom_Label_Length_Too_Long : Swagger.Nullable_Integer;
+       Product_Type_Length_Too_Long : Swagger.Nullable_Integer;
+       Too_Many_Additional_Image_Links : Swagger.Nullable_Integer;
+       Multipack_Invalid : Swagger.Nullable_Integer;
+       Indexed_Product_Count_Large_Delta : Swagger.Nullable_Integer;
+       Item_Additional_Image_Download_Failure : Swagger.Nullable_Integer;
+       Optional_Product_Category_Missing : Swagger.Nullable_Integer;
+       Optional_Product_Category_Invalid : Swagger.Nullable_Integer;
+       Optional_Condition_Missing : Swagger.Nullable_Integer;
+       Optional_Condition_Invalid : Swagger.Nullable_Integer;
+       Ios_Deep_Link_Invalid : Swagger.Nullable_Integer;
+       Android_Deep_Link_Invalid : Swagger.Nullable_Integer;
+       Availability_Normalized : Swagger.Nullable_Integer;
+       Condition_Normalized : Swagger.Nullable_Integer;
+       Gender_Normalized : Swagger.Nullable_Integer;
+       Size_Type_Normalized : Swagger.Nullable_Integer;
+       Age_Group_Normalized : Swagger.Nullable_Integer;
+       Utm_Source_Auto_Corrected : Swagger.Nullable_Integer;
+       Country_Does_Not_Map_To_Currency : Swagger.Nullable_Integer;
+       Min_Ad_Price_Invalid : Swagger.Nullable_Integer;
+     end record;
+
+   package CatalogsFeedValidationWarnings_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedValidationWarnings_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedValidationWarnings_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedValidationWarnings_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedValidationWarnings_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedValidationWarnings_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedValidationDetails_Type is
+     record
+       Errors : .Models.CatalogsFeedValidationErrors_Type;
+       Warnings : .Models.CatalogsFeedValidationWarnings_Type;
+     end record;
+
+   package CatalogsFeedValidationDetails_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedValidationDetails_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedValidationDetails_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedValidationDetails_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedValidationDetails_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedValidationDetails_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsFeedProcessingResult_Type is
+     record
+       Created_At : Swagger.Nullable_Date;
+       Id : Swagger.Nullable_UString;
+       Updated_At : Swagger.Nullable_Date;
+       Ingestion_Details : .Models.CatalogsFeedIngestionDetails_Type;
+       Status : .Models.CatalogsFeedProcessingStatus_Type;
+       Product_Counts : .Models.CatalogsFeedProductCounts_Type;
+       Validation_Details : .Models.CatalogsFeedValidationDetails_Type;
+     end record;
+
+   package CatalogsFeedProcessingResult_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedProcessingResult_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingResult_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingResult_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingResult_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingResult_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  catalogs_feed_processing_result_fields
+   --  ------------------------------
+   type CatalogsFeedProcessingResultFields_Type is
+     record
+       Ingestion_Details : .Models.CatalogsFeedIngestionDetails_Type;
+       Status : .Models.CatalogsFeedProcessingStatus_Type;
+       Product_Counts : .Models.CatalogsFeedProductCounts_Type;
+       Validation_Details : .Models.CatalogsFeedValidationDetails_Type;
+     end record;
+
+   package CatalogsFeedProcessingResultFields_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsFeedProcessingResultFields_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingResultFields_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsFeedProcessingResultFields_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingResultFields_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsFeedProcessingResultFields_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  product_group_type
+   --  Catalog product group type
+   --  ------------------------------
+   type CatalogsProductGroupType_Type is
+     record
+     end record;
+
+   package CatalogsProductGroupType_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupType_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupType_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupType_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  catalogs_product_group_multiple_string_criteria
+   --  ------------------------------
+   type CatalogsProductGroupMultipleStringCriteria_Type is
+     record
+       Values : Swagger.UString_Vectors.Vector;
+       Negated : Boolean;
+     end record;
+
+   package CatalogsProductGroupMultipleStringCriteria_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupMultipleStringCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupMultipleStringCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupMultipleStringCriteria_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupMultipleStringCriteria_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupMultipleStringCriteria_Type_Vectors.Vector);
+
+
+
+
+   type ItemGroupIdFilter_Type is
+     record
+       ITEM_GROUP_ID : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package ItemGroupIdFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ItemGroupIdFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ItemGroupIdFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ItemGroupIdFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ItemGroupIdFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ItemGroupIdFilter_Type_Vectors.Vector);
+
+
+
+
+   type CustomLabel3Filter_Type is
+     record
+       CUSTOM_LABEL_3 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package CustomLabel3Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CustomLabel3Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel3Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel3Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel3Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel3Filter_Type_Vectors.Vector);
+
+
+
+
+   type CustomLabel1Filter_Type is
+     record
+       CUSTOM_LABEL_1 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package CustomLabel1Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CustomLabel1Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel1Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel1Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel1Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel1Filter_Type_Vectors.Vector);
+
+
+
+
+   type ConditionFilter_Type is
+     record
+       CONDITION : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package ConditionFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ConditionFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConditionFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConditionFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConditionFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConditionFilter_Type_Vectors.Vector);
+
+
+
+
+   type AvailabilityFilter_Type is
+     record
+       AVAILABILITY : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package AvailabilityFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AvailabilityFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AvailabilityFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AvailabilityFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AvailabilityFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AvailabilityFilter_Type_Vectors.Vector);
+
+
+
+
+   type BrandFilter_Type is
+     record
+       BRAND : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package BrandFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => BrandFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BrandFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BrandFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BrandFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out BrandFilter_Type_Vectors.Vector);
+
+
+
+
+   type CustomLabel0Filter_Type is
+     record
+       CUSTOM_LABEL_0 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package CustomLabel0Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CustomLabel0Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel0Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel0Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel0Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel0Filter_Type_Vectors.Vector);
+
+
+
+
+   type CustomLabel2Filter_Type is
+     record
+       CUSTOM_LABEL_2 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package CustomLabel2Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CustomLabel2Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel2Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel2Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel2Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel2Filter_Type_Vectors.Vector);
+
+
+
+
+   type CustomLabel4Filter_Type is
+     record
+       CUSTOM_LABEL_4 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package CustomLabel4Filter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CustomLabel4Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel4Filter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomLabel4Filter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel4Filter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CustomLabel4Filter_Type_Vectors.Vector);
+
+
+
+
+   type GenderFilter_Type is
+     record
+       GENDER : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+     end record;
+
+   package GenderFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => GenderFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GenderFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in GenderFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GenderFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out GenderFilter_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  catalogs_product_group_pricing_criteria
+   --  ------------------------------
+   type CatalogsProductGroupPricingCriteria_Type is
+     record
+       Inclusion : Boolean;
+       Values : Swagger.Number;
+       Negated : Boolean;
+     end record;
+
+   package CatalogsProductGroupPricingCriteria_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupPricingCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupPricingCriteria_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupPricingCriteria_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupPricingCriteria_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupPricingCriteria_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  catalogs_product_group_keys
+   --  ------------------------------
+   type CatalogsProductGroupFilterKeys_Type is
+     record
+       MIN_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
+       MAX_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
+       CURRENCY : .Models.CatalogsProductGroupCurrencyCriteria_Type;
+       ITEM_ID : .Models.CatalogsProductGroupCurrencyCriteria_Type;
+       AVAILABILITY : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       BRAND : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       CONDITION : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       CUSTOM_LABEL_0 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       CUSTOM_LABEL_1 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       CUSTOM_LABEL_2 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       CUSTOM_LABEL_3 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       CUSTOM_LABEL_4 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       ITEM_GROUP_ID : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       GENDER : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
+       PRODUCT_TYPE_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       PRODUCT_TYPE_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       PRODUCT_TYPE_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       PRODUCT_TYPE_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       PRODUCT_TYPE_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       GOOGLE_PRODUCT_CATEGORY_6 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       GOOGLE_PRODUCT_CATEGORY_5 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       GOOGLE_PRODUCT_CATEGORY_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       GOOGLE_PRODUCT_CATEGORY_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       GOOGLE_PRODUCT_CATEGORY_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       GOOGLE_PRODUCT_CATEGORY_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+       GOOGLE_PRODUCT_CATEGORY_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
+     end record;
+
+   package CatalogsProductGroupFilterKeys_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupFilterKeys_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFilterKeys_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFilterKeys_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFilterKeys_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFilterKeys_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsProductGroupFiltersAllOf_Type is
+     record
+       All_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
+     end record;
+
+   package CatalogsProductGroupFiltersAllOf_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupFiltersAllOf_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFiltersAllOf_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFiltersAllOf_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFiltersAllOf_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFiltersAllOf_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsProductGroupFiltersAnyOf_Type is
+     record
+       Any_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
+     end record;
+
+   package CatalogsProductGroupFiltersAnyOf_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupFiltersAnyOf_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFiltersAnyOf_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFiltersAnyOf_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFiltersAnyOf_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFiltersAnyOf_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  catalogs_product_group_filters
+   --  Object holding a group of filters for a catalog product group
+   --  ------------------------------
+   type CatalogsProductGroupFilters_Type is
+     record
+       Any_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
+       All_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
+     end record;
+
+   package CatalogsProductGroupFilters_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupFilters_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFilters_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupFilters_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFilters_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupFilters_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  product_groups_create_request
+   --  Request object for creating a product group.
+   --  ------------------------------
+   type CatalogsProductGroupCreateRequest_Type is
+     record
+       Feed_Id : Swagger.UString;
+       Name : Swagger.UString;
+       Description : Swagger.Nullable_UString;
+       Filters : .Models.CatalogsProductGroupFilters_Type;
+     end record;
+
+   package CatalogsProductGroupCreateRequest_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupCreateRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupCreateRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupCreateRequest_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupCreateRequest_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupCreateRequest_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  product_groups_update_request
+   --  Request object for updating a product group.
+   --  ------------------------------
+   type CatalogsProductGroupUpdateRequest_Type is
+     record
+       Feed_Id : Swagger.UString;
+       Name : Swagger.UString;
+       Description : Swagger.Nullable_UString;
+       Filters : .Models.CatalogsProductGroupFilters_Type;
+     end record;
+
+   package CatalogsProductGroupUpdateRequest_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroupUpdateRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupUpdateRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroupUpdateRequest_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupUpdateRequest_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroupUpdateRequest_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsProductGroup_Type is
+     record
+       Id : Swagger.UString;
+       Name : Swagger.Nullable_UString;
+       Description : Swagger.Nullable_UString;
+       Filters : .Models.CatalogsProductGroupFilters_Type;
+       P_Type : .Models.CatalogsProductGroupType_Type;
+       Status : .Models.CatalogsProductGroupStatus_Type;
+       Feed_Id : Swagger.Nullable_UString;
+       Created_At : Swagger.Nullable_Integer;
+       Updated_At : Swagger.Nullable_Integer;
+     end record;
+
+   package CatalogsProductGroup_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsProductGroup_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroup_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsProductGroup_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroup_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsProductGroup_Type_Vectors.Vector);
+
+
+
+
+   type MinPriceFilter_Type is
+     record
+       MIN_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
+     end record;
+
+   package MinPriceFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => MinPriceFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MinPriceFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MinPriceFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MinPriceFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MinPriceFilter_Type_Vectors.Vector);
+
+
+
+
+   type MaxPriceFilter_Type is
+     record
+       MAX_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
+     end record;
+
+   package MaxPriceFilter_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => MaxPriceFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MaxPriceFilter_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in MaxPriceFilter_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MaxPriceFilter_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out MaxPriceFilter_Type_Vectors.Vector);
+
+
+
+
+   type ConversionReportAttributionType_Type is
+     record
+     end record;
+
+   package ConversionReportAttributionType_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ConversionReportAttributionType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConversionReportAttributionType_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ConversionReportAttributionType_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConversionReportAttributionType_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ConversionReportAttributionType_Type_Vectors.Vector);
+
+
+
+
+   type AdsAnalyticsCreateAsyncRequestAllOf_Type is
+     record
+       Start_Date : Swagger.UString;
+       End_Date : Swagger.UString;
+       Granularity : Granularity_Type;
+       Click_Window_Days : .Models.ConversionAttributionWindowDays_Type;
+       Engagement_Window_Days : .Models.ConversionAttributionWindowDays_Type;
+       View_Window_Days : .Models.ConversionAttributionWindowDays_Type;
+       Conversion_Report_Time : ConversionReportTimeType_Type;
+       Attribution_Types : .Models.ConversionReportAttributionType_Type_Vectors.Vector;
+     end record;
+
+   package AdsAnalyticsCreateAsyncRequestAllOf_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => AdsAnalyticsCreateAsyncRequestAllOf_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsCreateAsyncRequestAllOf_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AdsAnalyticsCreateAsyncRequestAllOf_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsCreateAsyncRequestAllOf_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out AdsAnalyticsCreateAsyncRequestAllOf_Type_Vectors.Vector);
+
+
+
+
+   type Country_Type is
+     record
+     end record;
+
+   package Country_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Country_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Country_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Country_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Country_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Country_Type_Vectors.Vector);
+
+
+
+
+   type DataOutputFormat_Type is
+     record
+     end record;
+
+   package DataOutputFormat_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => DataOutputFormat_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DataOutputFormat_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in DataOutputFormat_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out DataOutputFormat_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out DataOutputFormat_Type_Vectors.Vector);
+
+
+
+
+   type Granularity_Type is
+     record
+     end record;
+
+   package Granularity_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Granularity_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Granularity_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Granularity_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Granularity_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Granularity_Type_Vectors.Vector);
+
+
+
+
+   type ItemProcessingStatus_Type is
+     record
+     end record;
+
+   package ItemProcessingStatus_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => ItemProcessingStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ItemProcessingStatus_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ItemProcessingStatus_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ItemProcessingStatus_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out ItemProcessingStatus_Type_Vectors.Vector);
 
 
 
@@ -3609,422 +3728,334 @@ package .Models is
 
 
 
-   --  ------------------------------
-   --  Media upload request
-   --  Media upload request
-   --  ------------------------------
-   type MediaUploadRequest_Type is
+
+   type Language_Type is
      record
+     end record;
+
+   package Language_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Language_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Language_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Language_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Language_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Language_Type_Vectors.Vector);
+
+
+
+
+   type CatalogsItemsBatchRequest_Type is
+     record
+       Country : .Models.Country_Type;
+       Language : .Models.Language_Type;
+       Operation : .Models.BatchOperation_Type;
+       Items : .Models.ItemBatchRecord_Type_Vectors.Vector;
+     end record;
+
+   package CatalogsItemsBatchRequest_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => CatalogsItemsBatchRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsItemsBatchRequest_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogsItemsBatchRequest_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsItemsBatchRequest_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out CatalogsItemsBatchRequest_Type_Vectors.Vector);
+
+
+
+   --  ------------------------------
+   --  Media upload details
+   --  Media upload details
+   --  ------------------------------
+   type MediaUploadDetails_Type is
+     record
+       Media_Id : Swagger.Nullable_UString;
        Media_Type : MediaUploadType_Type;
+       Status : MediaUploadStatus_Type;
      end record;
 
-   package MediaUploadRequest_Type_Vectors is
+   package MediaUploadDetails_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => MediaUploadRequest_Type);
+                                  Element_Type => MediaUploadDetails_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in MediaUploadRequest_Type);
+                        Value : in MediaUploadDetails_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in MediaUploadRequest_Type_Vectors.Vector);
+                        Value : in MediaUploadDetails_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out MediaUploadRequest_Type);
+                          Value : out MediaUploadDetails_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out MediaUploadRequest_Type_Vectors.Vector);
+                          Value : out MediaUploadDetails_Type_Vectors.Vector);
 
 
 
 
-   type MediaUploadType_Type is
+   type MediaUploadStatus_Type is
      record
      end record;
 
-   package MediaUploadType_Type_Vectors is
+   package MediaUploadStatus_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => MediaUploadType_Type);
+                                  Element_Type => MediaUploadStatus_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in MediaUploadType_Type);
+                        Value : in MediaUploadStatus_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in MediaUploadType_Type_Vectors.Vector);
+                        Value : in MediaUploadStatus_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out MediaUploadType_Type);
+                          Value : out MediaUploadStatus_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out MediaUploadType_Type_Vectors.Vector);
+                          Value : out MediaUploadStatus_Type_Vectors.Vector);
 
 
 
 
-   type NonNullableCatalogsCurrency_Type is
+   type MetricsReportingLevel_Type is
      record
      end record;
 
-   package NonNullableCatalogsCurrency_Type_Vectors is
+   package MetricsReportingLevel_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => NonNullableCatalogsCurrency_Type);
+                                  Element_Type => MetricsReportingLevel_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in NonNullableCatalogsCurrency_Type);
+                        Value : in MetricsReportingLevel_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in NonNullableCatalogsCurrency_Type_Vectors.Vector);
+                        Value : in MetricsReportingLevel_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out NonNullableCatalogsCurrency_Type);
+                          Value : out MetricsReportingLevel_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out NonNullableCatalogsCurrency_Type_Vectors.Vector);
+                          Value : out MetricsReportingLevel_Type_Vectors.Vector);
+
+
+
+
+   type NullableCurrency_Type is
+     record
+     end record;
+
+   package NullableCurrency_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => NullableCurrency_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in NullableCurrency_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in NullableCurrency_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out NullableCurrency_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out NullableCurrency_Type_Vectors.Vector);
 
 
 
    --  ------------------------------
-   --  catalogs_product_group_currency_criteria
+   --  feed_fields
    --  ------------------------------
-   type CatalogsProductGroupCurrencyCriteria_Type is
+   type FeedFields_Type is
      record
-       Values : .Models.NonNullableCatalogsCurrency_Type;
-       Negated : Boolean;
+       Default_Country : .Models.Country_Type;
+       Default_Availability : .Models.ProductAvailabilityType_Type;
+       Default_Currency : .Models.NullableCurrency_Type;
+       Name : Swagger.UString;
+       Format : .Models.CatalogsFormat_Type;
+       Default_Locale : Swagger.UString;
+       Credentials : .Models.CatalogsFeedCredentials_Type;
+       Location : Swagger.UString;
+       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
+       Status : .Models.CatalogsStatus_Type;
      end record;
 
-   package CatalogsProductGroupCurrencyCriteria_Type_Vectors is
+   package FeedFields_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupCurrencyCriteria_Type);
+                                  Element_Type => FeedFields_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroupCurrencyCriteria_Type);
+                        Value : in FeedFields_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroupCurrencyCriteria_Type_Vectors.Vector);
+                        Value : in FeedFields_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroupCurrencyCriteria_Type);
+                          Value : out FeedFields_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroupCurrencyCriteria_Type_Vectors.Vector);
+                          Value : out FeedFields_Type_Vectors.Vector);
 
 
 
    --  ------------------------------
-   --  catalogs_product_group_keys
+   --  catalogs_feeds_update_request
+   --  Request object for updating a feed.
    --  ------------------------------
-   type CatalogsProductGroupFilterKeys_Type is
+   type CatalogsFeedsUpdateRequest_Type is
      record
-       MIN_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
-       MAX_PRICE : .Models.CatalogsProductGroupPricingCriteria_Type;
-       CURRENCY : .Models.CatalogsProductGroupCurrencyCriteria_Type;
-       ITEM_ID : .Models.CatalogsProductGroupCurrencyCriteria_Type;
-       AVAILABILITY : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       BRAND : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       CONDITION : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       CUSTOM_LABEL_0 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       CUSTOM_LABEL_1 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       CUSTOM_LABEL_2 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       CUSTOM_LABEL_3 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       CUSTOM_LABEL_4 : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       ITEM_GROUP_ID : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       GENDER : .Models.CatalogsProductGroupMultipleStringCriteria_Type;
-       PRODUCT_TYPE_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       PRODUCT_TYPE_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       PRODUCT_TYPE_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       PRODUCT_TYPE_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       PRODUCT_TYPE_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       GOOGLE_PRODUCT_CATEGORY_6 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       GOOGLE_PRODUCT_CATEGORY_5 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       GOOGLE_PRODUCT_CATEGORY_4 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       GOOGLE_PRODUCT_CATEGORY_3 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       GOOGLE_PRODUCT_CATEGORY_2 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       GOOGLE_PRODUCT_CATEGORY_1 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-       GOOGLE_PRODUCT_CATEGORY_0 : .Models.CatalogsProductGroupMultipleStringListCriteria_Type;
-     end record;
-
-   package CatalogsProductGroupFilterKeys_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupFilterKeys_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFilterKeys_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFilterKeys_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFilterKeys_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFilterKeys_Type_Vectors.Vector);
-
-
-
-   --  ------------------------------
-   --  catalogs_product_group_filters
-   --  Object holding a group of filters for a catalog product group
-   --  ------------------------------
-   type CatalogsProductGroupFilters_Type is
-     record
-       Any_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
-       All_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
-     end record;
-
-   package CatalogsProductGroupFilters_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupFilters_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFilters_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFilters_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFilters_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFilters_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsProductGroup_Type is
-     record
-       Id : Swagger.UString;
+       Default_Availability : .Models.ProductAvailabilityType_Type;
+       Default_Currency : .Models.NullableCurrency_Type;
        Name : Swagger.Nullable_UString;
-       Description : Swagger.Nullable_UString;
-       Filters : .Models.CatalogsProductGroupFilters_Type;
-       P_Type : .Models.CatalogsProductGroupType_Type;
-       Status : .Models.CatalogsProductGroupStatus_Type;
-       Feed_Id : Swagger.Nullable_UString;
-       Created_At : Swagger.Nullable_Integer;
-       Updated_At : Swagger.Nullable_Integer;
+       Format : .Models.CatalogsFormat_Type;
+       Credentials : .Models.CatalogsFeedCredentials_Type;
+       Location : Swagger.Nullable_UString;
+       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
+       Status : .Models.CatalogsStatus_Type;
      end record;
 
-   package CatalogsProductGroup_Type_Vectors is
+   package CatalogsFeedsUpdateRequest_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroup_Type);
+                                  Element_Type => CatalogsFeedsUpdateRequest_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroup_Type);
+                        Value : in CatalogsFeedsUpdateRequest_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroup_Type_Vectors.Vector);
+                        Value : in CatalogsFeedsUpdateRequest_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroup_Type);
+                          Value : out CatalogsFeedsUpdateRequest_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroup_Type_Vectors.Vector);
+                          Value : out CatalogsFeedsUpdateRequest_Type_Vectors.Vector);
 
 
 
    --  ------------------------------
-   --  product_groups_update_request
-   --  Request object for updating a product group.
+   --  feeds_create_request
+   --  Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
    --  ------------------------------
-   type CatalogsProductGroupUpdateRequest_Type is
+   type CatalogsFeedsCreateRequest_Type is
      record
-       Feed_Id : Swagger.UString;
+       Default_Country : .Models.Country_Type;
+       Default_Availability : .Models.ProductAvailabilityType_Type;
+       Default_Currency : .Models.NullableCurrency_Type;
        Name : Swagger.UString;
-       Description : Swagger.Nullable_UString;
-       Filters : .Models.CatalogsProductGroupFilters_Type;
+       Format : .Models.CatalogsFormat_Type;
+       Default_Locale : Swagger.Nullable_UString;
+       Credentials : .Models.CatalogsFeedCredentials_Type;
+       Location : Swagger.UString;
+       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
      end record;
 
-   package CatalogsProductGroupUpdateRequest_Type_Vectors is
+   package CatalogsFeedsCreateRequest_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupUpdateRequest_Type);
+                                  Element_Type => CatalogsFeedsCreateRequest_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroupUpdateRequest_Type);
+                        Value : in CatalogsFeedsCreateRequest_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroupUpdateRequest_Type_Vectors.Vector);
+                        Value : in CatalogsFeedsCreateRequest_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroupUpdateRequest_Type);
+                          Value : out CatalogsFeedsCreateRequest_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroupUpdateRequest_Type_Vectors.Vector);
+                          Value : out CatalogsFeedsCreateRequest_Type_Vectors.Vector);
 
 
 
    --  ------------------------------
-   --  product_groups_create_request
-   --  Request object for creating a product group.
+   --  feed
+   --  Catalogs Catalogs Feed object
    --  ------------------------------
-   type CatalogsProductGroupCreateRequest_Type is
+   type CatalogsFeed_Type is
      record
-       Feed_Id : Swagger.UString;
+       Created_At : Swagger.Nullable_Date;
+       Id : Swagger.Nullable_UString;
+       Updated_At : Swagger.Nullable_Date;
+       Default_Country : .Models.Country_Type;
+       Default_Availability : .Models.ProductAvailabilityType_Type;
+       Default_Currency : .Models.NullableCurrency_Type;
        Name : Swagger.UString;
-       Description : Swagger.Nullable_UString;
-       Filters : .Models.CatalogsProductGroupFilters_Type;
+       Format : .Models.CatalogsFormat_Type;
+       Default_Locale : Swagger.UString;
+       Credentials : .Models.CatalogsFeedCredentials_Type;
+       Location : Swagger.UString;
+       Preferred_Processing_Schedule : .Models.CatalogsFeedProcessingSchedule_Type;
+       Status : .Models.CatalogsStatus_Type;
      end record;
 
-   package CatalogsProductGroupCreateRequest_Type_Vectors is
+   package CatalogsFeed_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupCreateRequest_Type);
+                                  Element_Type => CatalogsFeed_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroupCreateRequest_Type);
+                        Value : in CatalogsFeed_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CatalogsProductGroupCreateRequest_Type_Vectors.Vector);
+                        Value : in CatalogsFeed_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroupCreateRequest_Type);
+                          Value : out CatalogsFeed_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out CatalogsProductGroupCreateRequest_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsProductGroupFiltersAnyOf_Type is
-     record
-       Any_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
-     end record;
-
-   package CatalogsProductGroupFiltersAnyOf_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupFiltersAnyOf_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFiltersAnyOf_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFiltersAnyOf_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFiltersAnyOf_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFiltersAnyOf_Type_Vectors.Vector);
-
-
-
-
-   type CatalogsProductGroupFiltersAllOf_Type is
-     record
-       All_Of : .Models.CatalogsProductGroupFilterKeys_Type_Vectors.Vector;
-     end record;
-
-   package CatalogsProductGroupFiltersAllOf_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CatalogsProductGroupFiltersAllOf_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFiltersAllOf_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogsProductGroupFiltersAllOf_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFiltersAllOf_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CatalogsProductGroupFiltersAllOf_Type_Vectors.Vector);
-
-
-
-
-   type CurrencyFilter_Type is
-     record
-       CURRENCY : .Models.CatalogsProductGroupCurrencyCriteria_Type;
-     end record;
-
-   package CurrencyFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => CurrencyFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CurrencyFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CurrencyFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CurrencyFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out CurrencyFilter_Type_Vectors.Vector);
-
-
-
-
-   type ItemIdFilter_Type is
-     record
-       ITEM_ID : .Models.CatalogsProductGroupCurrencyCriteria_Type;
-     end record;
-
-   package ItemIdFilter_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => ItemIdFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ItemIdFilter_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ItemIdFilter_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ItemIdFilter_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out ItemIdFilter_Type_Vectors.Vector);
+                          Value : out CatalogsFeed_Type_Vectors.Vector);
 
 
 

@@ -59,15 +59,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getGrantType() const;
-    bool grantTypeIsSet() const;
-    void unsetGrant_type();
-
-    void setGrantType(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
     utility::string_t getRefreshToken() const;
     bool refreshTokenIsSet() const;
     void unsetRefresh_token();
@@ -85,8 +76,6 @@ public:
 
 
 protected:
-    utility::string_t m_Grant_type;
-    bool m_Grant_typeIsSet;
     utility::string_t m_Refresh_token;
     bool m_Refresh_tokenIsSet;
     utility::string_t m_Scope;

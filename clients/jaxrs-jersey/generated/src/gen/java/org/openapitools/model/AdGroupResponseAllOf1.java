@@ -35,7 +35,7 @@ import javax.validation.Valid;
   AdGroupResponseAllOf1.JSON_PROPERTY_CREATED_TIME,
   AdGroupResponseAllOf1.JSON_PROPERTY_UPDATED_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class AdGroupResponseAllOf1   {
   public static final String JSON_PROPERTY_CAMPAIGN_ID = "campaign_id";
   @JsonProperty(JSON_PROPERTY_CAMPAIGN_ID)

@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   CurrencyFilter.JSON_PROPERTY_C_U_R_R_E_N_C_Y
 })
 @JsonTypeName("CurrencyFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class CurrencyFilter {
     public static final String JSON_PROPERTY_C_U_R_R_E_N_C_Y = "CURRENCY";

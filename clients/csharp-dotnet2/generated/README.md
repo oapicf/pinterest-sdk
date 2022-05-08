@@ -251,6 +251,7 @@ Class | Method | HTTP request | Description
  - [Org.OpenAPITools.Model.MinPriceFilter](docs/MinPriceFilter.md)
  - [Org.OpenAPITools.Model.NonNullableCatalogsCurrency](docs/NonNullableCatalogsCurrency.md)
  - [Org.OpenAPITools.Model.NullableCurrency](docs/NullableCurrency.md)
+ - [Org.OpenAPITools.Model.OauthAccessTokenRequest](docs/OauthAccessTokenRequest.md)
  - [Org.OpenAPITools.Model.OauthAccessTokenRequestCode](docs/OauthAccessTokenRequestCode.md)
  - [Org.OpenAPITools.Model.OauthAccessTokenRequestCodeAllOf](docs/OauthAccessTokenRequestCodeAllOf.md)
  - [Org.OpenAPITools.Model.OauthAccessTokenRequestRefresh](docs/OauthAccessTokenRequestRefresh.md)

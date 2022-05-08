@@ -21,22 +21,12 @@ inherit
 
 feature --Access
 
-    grant_type: detachable STRING_32
-      
     refresh_token: detachable STRING_32
       
     scope: detachable STRING_32
       
 
 feature -- Change Element
-
-    set_grant_type (a_name: like grant_type)
-        -- Set 'grant_type' with 'a_name'.
-      do
-        grant_type := a_name
-      ensure
-        grant_type_set: grant_type = a_name
-      end
 
     set_refresh_token (a_name: like refresh_token)
         -- Set 'refresh_token' with 'a_name'.
@@ -63,11 +53,6 @@ feature -- Change Element
         create Result.make_empty
         Result.append(out_oauthaccesstokenrequest)
         Result.append("%Nclass OAUTH_ACCESS_TOKEN_REQUEST_REFRESH%N")
-        if attached grant_type as l_grant_type then
-          Result.append ("%Ngrant_type:")
-          Result.append (l_grant_type.out)
-          Result.append ("%N")
-        end
         if attached refresh_token as l_refresh_token then
           Result.append ("%Nrefresh_token:")
           Result.append (l_refresh_token.out)

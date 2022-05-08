@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * AdResponseAllOf1
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-07T10:48:11.625089Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-08T00:42:02.037116Z[Etc/UTC]")
 public class AdResponseAllOf1   {
 
   @JsonProperty("ad_account_id")

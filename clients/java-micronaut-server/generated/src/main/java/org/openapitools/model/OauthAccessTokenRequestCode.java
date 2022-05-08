@@ -34,7 +34,7 @@ import javax.annotation.Generated;
   OauthAccessTokenRequestCode.JSON_PROPERTY_REDIRECT_URI
 })
 @JsonTypeName("OauthAccessTokenRequestCode")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest {
     public static final String JSON_PROPERTY_CODE = "code";
@@ -44,7 +44,7 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest {
     private String redirectUri;
 
     public OauthAccessTokenRequestCode(String code, String redirectUri, GrantTypeEnum grantType) {
-        super();
+        super(grantType);
         this.code = code;
         this.redirectUri = redirectUri;
     }

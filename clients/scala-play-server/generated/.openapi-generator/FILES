@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 app/api/AdAccountsApi.scala
 app/api/AdAccountsApiController.scala
@@ -137,6 +136,7 @@ app/model/MetricsReportingLevel.scala
 app/model/MinPriceFilter.scala
 app/model/NonNullableCatalogsCurrency.scala
 app/model/NullableCurrency.scala
+app/model/OauthAccessTokenRequest.scala
 app/model/OauthAccessTokenRequestCode.scala
 app/model/OauthAccessTokenRequestCodeAllOf.scala
 app/model/OauthAccessTokenRequestRefresh.scala

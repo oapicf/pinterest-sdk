@@ -128,6 +128,7 @@ import MetricsReportingLevel from './model/MetricsReportingLevel';
 import MinPriceFilter from './model/MinPriceFilter';
 import NonNullableCatalogsCurrency from './model/NonNullableCatalogsCurrency';
 import NullableCurrency from './model/NullableCurrency';
+import OauthAccessTokenRequest from './model/OauthAccessTokenRequest';
 import OauthAccessTokenRequestCode from './model/OauthAccessTokenRequestCode';
 import OauthAccessTokenRequestCodeAllOf from './model/OauthAccessTokenRequestCodeAllOf';
 import OauthAccessTokenRequestRefresh from './model/OauthAccessTokenRequestRefresh';
@@ -895,6 +896,12 @@ export {
      * @property {module:model/NullableCurrency}
      */
     NullableCurrency,
+
+    /**
+     * The OauthAccessTokenRequest model constructor.
+     * @property {module:model/OauthAccessTokenRequest}
+     */
+    OauthAccessTokenRequest,
 
     /**
      * The OauthAccessTokenRequestCode model constructor.

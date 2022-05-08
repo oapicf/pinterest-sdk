@@ -157,6 +157,7 @@ Import the following:
 #import <OpenAPIClient/OAIMinPriceFilter.h>
 #import <OpenAPIClient/OAINonNullableCatalogsCurrency.h>
 #import <OpenAPIClient/OAINullableCurrency.h>
+#import <OpenAPIClient/OAIOauthAccessTokenRequest.h>
 #import <OpenAPIClient/OAIOauthAccessTokenRequestCode.h>
 #import <OpenAPIClient/OAIOauthAccessTokenRequestCodeAllOf.h>
 #import <OpenAPIClient/OAIOauthAccessTokenRequestRefresh.h>
@@ -418,6 +419,7 @@ Class | Method | HTTP request | Description
  - [OAIMinPriceFilter](docs/OAIMinPriceFilter.md)
  - [OAINonNullableCatalogsCurrency](docs/OAINonNullableCatalogsCurrency.md)
  - [OAINullableCurrency](docs/OAINullableCurrency.md)
+ - [OAIOauthAccessTokenRequest](docs/OAIOauthAccessTokenRequest.md)
  - [OAIOauthAccessTokenRequestCode](docs/OAIOauthAccessTokenRequestCode.md)
  - [OAIOauthAccessTokenRequestCodeAllOf](docs/OAIOauthAccessTokenRequestCodeAllOf.md)
  - [OAIOauthAccessTokenRequestRefresh](docs/OAIOauthAccessTokenRequestRefresh.md)

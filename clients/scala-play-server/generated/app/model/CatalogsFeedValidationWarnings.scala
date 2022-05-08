@@ -6,7 +6,7 @@ import play.api.libs.json._
   * Represents the Swagger definition for CatalogsFeedValidationWarnings.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-07T10:47:31.836531Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
 case class CatalogsFeedValidationWarnings(
   titleLengthTooLong: Option[Int],
   descriptionLengthTooLong: Option[Int],

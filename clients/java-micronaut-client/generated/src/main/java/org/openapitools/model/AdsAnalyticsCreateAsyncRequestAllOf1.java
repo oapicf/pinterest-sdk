@@ -37,7 +37,7 @@ import javax.annotation.Generated;
   AdsAnalyticsCreateAsyncRequestAllOf1.JSON_PROPERTY_REPORT_FORMAT
 })
 @JsonTypeName("AdsAnalyticsCreateAsyncRequest_allOf_1")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class AdsAnalyticsCreateAsyncRequestAllOf1 {
     public static final String JSON_PROPERTY_COLUMNS = "columns";

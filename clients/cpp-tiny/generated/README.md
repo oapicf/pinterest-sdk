@@ -219,6 +219,7 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*MinPriceFilter* | |
 |*NonNullableCatalogsCurrency* | Currency Codes from ISO 4217.|
 |*NullableCurrency* | Currency Codes from ISO 4217.|
+|*OauthAccessTokenRequest* | Describes the valid schema for possible OAuth access token requests.|
 |*OauthAccessTokenRequestCode* | A request to exchange an authorization code for an access token.|
 |*OauthAccessTokenRequestCode_allOf* | |
 |*OauthAccessTokenRequestRefresh* | A request to exchange a refresh token for a new access token.|

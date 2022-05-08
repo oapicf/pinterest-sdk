@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Dockerfile
 README.md
 build.gradle
@@ -130,6 +129,7 @@ src/main/kotlin/org/openapitools/server/models/MetricsReportingLevel.kt
 src/main/kotlin/org/openapitools/server/models/MinPriceFilter.kt
 src/main/kotlin/org/openapitools/server/models/NonNullableCatalogsCurrency.kt
 src/main/kotlin/org/openapitools/server/models/NullableCurrency.kt
+src/main/kotlin/org/openapitools/server/models/OauthAccessTokenRequest.kt
 src/main/kotlin/org/openapitools/server/models/OauthAccessTokenRequestCode.kt
 src/main/kotlin/org/openapitools/server/models/OauthAccessTokenRequestCodeAllOf.kt
 src/main/kotlin/org/openapitools/server/models/OauthAccessTokenRequestRefresh.kt

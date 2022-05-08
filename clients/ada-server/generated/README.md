@@ -242,6 +242,7 @@ Method | HTTP request | Description
  - [.Models.OauthAccessTokenRequestCode_Type](OauthAccessTokenRequestCode_Type.md)
  - [.Models.OauthAccessTokenRequestRefreshAllOf_Type](OauthAccessTokenRequestRefreshAllOf_Type.md)
  - [.Models.OauthAccessTokenRequestRefresh_Type](OauthAccessTokenRequestRefresh_Type.md)
+ - [.Models.OauthAccessTokenRequest_Type](OauthAccessTokenRequest_Type.md)
  - [.Models.OauthAccessTokenResponseCodeAllOf_Type](OauthAccessTokenResponseCodeAllOf_Type.md)
  - [.Models.OauthAccessTokenResponseCode_Type](OauthAccessTokenResponseCode_Type.md)
  - [.Models.OauthAccessTokenResponseRefresh_Type](OauthAccessTokenResponseRefresh_Type.md)

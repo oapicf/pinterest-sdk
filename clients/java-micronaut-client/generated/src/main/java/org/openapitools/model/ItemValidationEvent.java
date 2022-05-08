@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   ItemValidationEvent.JSON_PROPERTY_MESSAGE
 })
 @JsonTypeName("ItemValidationEvent")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class ItemValidationEvent {
     public static final String JSON_PROPERTY_ATTRIBUTE = "attribute";

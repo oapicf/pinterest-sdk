@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * CustomLabel3Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class CustomLabel3Filter {
   public static final String SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L3 = "CUSTOM_LABEL_3";
   @SerializedName(SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L3)

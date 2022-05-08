@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 compile-mono.sh
 docs/Account.md
@@ -121,6 +120,7 @@ docs/MetricsReportingLevel.md
 docs/MinPriceFilter.md
 docs/NonNullableCatalogsCurrency.md
 docs/NullableCurrency.md
+docs/OauthAccessTokenRequest.md
 docs/OauthAccessTokenRequestCode.md
 docs/OauthAccessTokenRequestCodeAllOf.md
 docs/OauthAccessTokenRequestRefresh.md
@@ -280,6 +280,7 @@ src/main/CsharpDotNet2/Org/OpenAPITools/Model/MetricsReportingLevel.cs
 src/main/CsharpDotNet2/Org/OpenAPITools/Model/MinPriceFilter.cs
 src/main/CsharpDotNet2/Org/OpenAPITools/Model/NonNullableCatalogsCurrency.cs
 src/main/CsharpDotNet2/Org/OpenAPITools/Model/NullableCurrency.cs
+src/main/CsharpDotNet2/Org/OpenAPITools/Model/OauthAccessTokenRequest.cs
 src/main/CsharpDotNet2/Org/OpenAPITools/Model/OauthAccessTokenRequestCode.cs
 src/main/CsharpDotNet2/Org/OpenAPITools/Model/OauthAccessTokenRequestCodeAllOf.cs
 src/main/CsharpDotNet2/Org/OpenAPITools/Model/OauthAccessTokenRequestRefresh.cs

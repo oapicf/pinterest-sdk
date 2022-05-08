@@ -32,7 +32,7 @@ import java.io.IOException;
  * A request to exchange a refresh token for a new access token.
  */
 @ApiModel(description = "A request to exchange a refresh token for a new access token.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
   public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)

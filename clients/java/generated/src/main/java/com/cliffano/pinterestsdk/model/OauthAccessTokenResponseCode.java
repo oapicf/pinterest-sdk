@@ -32,7 +32,7 @@ import java.io.IOException;
  * A successful OAuth access token response for the authorization code flow.
  */
 @ApiModel(description = "A successful OAuth access token response for the authorization code flow.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class OauthAccessTokenResponseCode extends OauthAccessTokenResponse {
   public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)

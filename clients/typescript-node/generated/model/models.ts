@@ -115,6 +115,7 @@ export * from './minPriceFilter';
 export * from './modelError';
 export * from './nonNullableCatalogsCurrency';
 export * from './nullableCurrency';
+export * from './oauthAccessTokenRequest';
 export * from './oauthAccessTokenRequestCode';
 export * from './oauthAccessTokenRequestCodeAllOf';
 export * from './oauthAccessTokenRequestRefresh';
@@ -275,6 +276,7 @@ import { MinPriceFilter } from './minPriceFilter';
 import { ModelError } from './modelError';
 import { NonNullableCatalogsCurrency } from './nonNullableCatalogsCurrency';
 import { NullableCurrency } from './nullableCurrency';
+import { OauthAccessTokenRequest } from './oauthAccessTokenRequest';
 import { OauthAccessTokenRequestCode } from './oauthAccessTokenRequestCode';
 import { OauthAccessTokenRequestCodeAllOf } from './oauthAccessTokenRequestCodeAllOf';
 import { OauthAccessTokenRequestRefresh } from './oauthAccessTokenRequestRefresh';
@@ -364,6 +366,7 @@ let enumsMap: {[index: string]: any} = {
         "MetricsReportingLevel": MetricsReportingLevel,
         "NonNullableCatalogsCurrency": NonNullableCatalogsCurrency,
         "NullableCurrency": NullableCurrency,
+        "OauthAccessTokenRequest.GrantTypeEnum": OauthAccessTokenRequest.GrantTypeEnum,
         "OauthAccessTokenResponse.ResponseTypeEnum": OauthAccessTokenResponse.ResponseTypeEnum,
         "ObjectiveType": ObjectiveType,
         "PacingDeliveryType": PacingDeliveryType,
@@ -468,6 +471,7 @@ let typeMap: {[index: string]: any} = {
     "MediaUploadRequest": MediaUploadRequest,
     "MinPriceFilter": MinPriceFilter,
     "ModelError": ModelError,
+    "OauthAccessTokenRequest": OauthAccessTokenRequest,
     "OauthAccessTokenRequestCode": OauthAccessTokenRequestCode,
     "OauthAccessTokenRequestCodeAllOf": OauthAccessTokenRequestCodeAllOf,
     "OauthAccessTokenRequestRefresh": OauthAccessTokenRequestRefresh,

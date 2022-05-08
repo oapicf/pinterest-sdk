@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 server/CMakeLists.txt
 server/Dockerfile
 server/LICENSE.txt
@@ -257,6 +256,8 @@ server/src/models/OAINonNullableCatalogsCurrency.cpp
 server/src/models/OAINonNullableCatalogsCurrency.h
 server/src/models/OAINullableCurrency.cpp
 server/src/models/OAINullableCurrency.h
+server/src/models/OAIOauthAccessTokenRequest.cpp
+server/src/models/OAIOauthAccessTokenRequest.h
 server/src/models/OAIOauthAccessTokenRequestCode.cpp
 server/src/models/OAIOauthAccessTokenRequestCode.h
 server/src/models/OAIOauthAccessTokenRequestCode_allOf.cpp

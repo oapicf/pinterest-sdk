@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 OpenAPI.Build.cs
 Private/OpenAPIAccount.cpp
 Private/OpenAPIActionType.cpp
@@ -127,6 +126,7 @@ Private/OpenAPIModule.cpp
 Private/OpenAPIModule.h
 Private/OpenAPINonNullableCatalogsCurrency.cpp
 Private/OpenAPINullableCurrency.cpp
+Private/OpenAPIOauthAccessTokenRequest.cpp
 Private/OpenAPIOauthAccessTokenRequestCode.cpp
 Private/OpenAPIOauthAccessTokenRequestCodeAllOf.cpp
 Private/OpenAPIOauthAccessTokenRequestRefresh.cpp
@@ -289,6 +289,7 @@ Public/OpenAPIMetricsReportingLevel.h
 Public/OpenAPIMinPriceFilter.h
 Public/OpenAPINonNullableCatalogsCurrency.h
 Public/OpenAPINullableCurrency.h
+Public/OpenAPIOauthAccessTokenRequest.h
 Public/OpenAPIOauthAccessTokenRequestCode.h
 Public/OpenAPIOauthAccessTokenRequestCodeAllOf.h
 Public/OpenAPIOauthAccessTokenRequestRefresh.h

@@ -52,7 +52,7 @@ import javax.validation.Valid;
   AdGroupResponseAllOf.JSON_PROPERTY_SUMMARY_STATUS,
   AdGroupResponseAllOf.JSON_PROPERTY_FEED_PROFILE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class AdGroupResponseAllOf   {
   public static final String JSON_PROPERTY_NAME = "name";
   @JsonProperty(JSON_PROPERTY_NAME)

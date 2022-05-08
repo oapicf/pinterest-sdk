@@ -41,7 +41,7 @@ import javax.annotation.Generated;
   CatalogsItemsBatch.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("CatalogsItemsBatch")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class CatalogsItemsBatch {
     public static final String JSON_PROPERTY_ITEMS = "items";

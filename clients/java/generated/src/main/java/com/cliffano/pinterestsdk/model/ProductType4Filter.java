@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * ProductType4Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class ProductType4Filter {
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E4 = "PRODUCT_TYPE_4";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E4)

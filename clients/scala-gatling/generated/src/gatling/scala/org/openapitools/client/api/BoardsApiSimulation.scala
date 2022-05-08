@@ -209,9 +209,9 @@ class BoardsApiSimulation extends Simulation {
         .feed(boards/listQUERYFeeder)
         .exec(http("boardsList")
         .httpRequest("GET","/boards")
-        .queryParam("privacy","${privacy}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("privacy","${privacy}")
 )
 
     // Run scnboardsList with warm up and reach a constant rate for entire duration

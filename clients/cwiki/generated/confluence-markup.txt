@@ -7232,6 +7232,15 @@ A non empty errors list causes the item processing to fail. |  |
  |NULL |"null" | |
          
         
+        {anchor:OauthAccessTokenRequestModelAnchor}
+        h3. OauthAccessTokenRequest
+
+        Describes the valid schema for possible OAuth access token requests.
+
+        
+        ||Field Name||Required||Type||Description||Enum||
+         |grant_type |(/) |{noformat:nopanel=true}String{noformat} | |  [authorization_code, refresh_token]  |
+         
         {anchor:OauthAccessTokenRequestCodeModelAnchor}
         h3. OauthAccessTokenRequestCode
 

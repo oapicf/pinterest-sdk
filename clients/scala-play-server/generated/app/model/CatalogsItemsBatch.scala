@@ -11,7 +11,7 @@ import java.time.OffsetDateTime
   * @param completedTime Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-07T10:47:31.836531Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
 case class CatalogsItemsBatch(
   items: Option[List[ItemProcessingRecord]],
   batchId: Option[String],

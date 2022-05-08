@@ -68,7 +68,7 @@ import javax.validation.Valid;
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_TARGETING_TYPES,
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_METRICS_FILTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class AdsAnalyticsCreateAsyncRequest   {
   public static final String JSON_PROPERTY_START_DATE = "start_date";
   @JsonProperty(JSON_PROPERTY_START_DATE)

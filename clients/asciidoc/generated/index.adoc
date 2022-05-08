@@ -9790,6 +9790,25 @@ Currency Codes from ISO 4217.
 |===
 
 
+[#OauthAccessTokenRequest]
+=== _OauthAccessTokenRequest_ OAuth access token request
+
+Describes the valid schema for possible OAuth access token requests.
+
+[.fields-OauthAccessTokenRequest]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| grant_type
+| X
+| String 
+| 
+|  _Enum:_ authorization_code, refresh_token, 
+
+|===
+
+
 [#OauthAccessTokenRequestCode]
 === _OauthAccessTokenRequestCode_ authorization_code
 

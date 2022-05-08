@@ -33,6 +33,11 @@ class OauthAccessTokenRequestCode {
     redirect_uri;
 
     /**
+     * @member {OauthAccessTokenRequest.GrantTypeEnum} grant_type
+     * @type {OauthAccessTokenRequest.GrantTypeEnum}
+     */
+    #grant_type;
+    /**
      * @member {String} code
      * @type {String}
      */
@@ -48,7 +53,7 @@ class OauthAccessTokenRequestCode {
      * Constructs a new <code>OauthAccessTokenRequestCode</code>.
      * A request to exchange an authorization code for an access token.
      * @alias module:model/OauthAccessTokenRequestCode
-     * @extends 
+     * @extends module:model/OauthAccessTokenRequest
      * @implements module:model/OauthAccessTokenRequest
      * @implements module:model/OauthAccessTokenRequestCodeAllOf
      * @param grantType {OauthAccessTokenRequestCode.GrantTypeEnum} 
@@ -56,7 +61,7 @@ class OauthAccessTokenRequestCode {
      * @param redirectUri {String} 
      */
     constructor(grantType, code, redirectUri) { 
-        OauthAccessTokenRequestCodeAllOf.initialize(this, code, redirectUri);
+        OauthAccessTokenRequest.initialize(this, grantType);OauthAccessTokenRequestCodeAllOf.initialize(this, code, redirectUri);
         OauthAccessTokenRequestCode.initialize(this, grantType, code, redirectUri);
     }
 
@@ -80,9 +85,7 @@ class OauthAccessTokenRequestCode {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new OauthAccessTokenRequestCode();
-
-            ApiClient.constructFromObject(data, obj, '');
-            
+            OauthAccessTokenRequest.constructFromObject(data, obj);
             OauthAccessTokenRequest.constructFromObject(data, obj);
             OauthAccessTokenRequestCodeAllOf.constructFromObject(data, obj);
 

@@ -31,7 +31,7 @@ import java.io.IOException;
  * A successful OAuth access token response for the refresh token flow.
  */
 @ApiModel(description = "A successful OAuth access token response for the refresh token flow.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-07T06:37:33.786272Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-05-08T00:26:51.345731Z[Etc/UTC]")
 public class OauthAccessTokenResponseRefresh extends OauthAccessTokenResponse {
   public OauthAccessTokenResponseRefresh() { 
     this.responseType = this.getClass().getSimpleName();

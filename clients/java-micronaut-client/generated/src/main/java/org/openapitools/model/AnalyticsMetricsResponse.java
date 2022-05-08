@@ -37,7 +37,7 @@ import javax.annotation.Generated;
   AnalyticsMetricsResponse.JSON_PROPERTY_SUMMARY_METRICS
 })
 @JsonTypeName("AnalyticsMetricsResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class AnalyticsMetricsResponse {
     public static final String JSON_PROPERTY_DAILY_METRICS = "daily_metrics";

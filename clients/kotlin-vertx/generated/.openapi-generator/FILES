@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 pom.xml
 src/main/kotlin/org/openapitools/server/api/model/Account.kt
@@ -116,6 +115,7 @@ src/main/kotlin/org/openapitools/server/api/model/MetricsReportingLevel.kt
 src/main/kotlin/org/openapitools/server/api/model/MinPriceFilter.kt
 src/main/kotlin/org/openapitools/server/api/model/NonNullableCatalogsCurrency.kt
 src/main/kotlin/org/openapitools/server/api/model/NullableCurrency.kt
+src/main/kotlin/org/openapitools/server/api/model/OauthAccessTokenRequest.kt
 src/main/kotlin/org/openapitools/server/api/model/OauthAccessTokenRequestCode.kt
 src/main/kotlin/org/openapitools/server/api/model/OauthAccessTokenRequestCodeAllOf.kt
 src/main/kotlin/org/openapitools/server/api/model/OauthAccessTokenRequestRefresh.kt

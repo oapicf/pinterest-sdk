@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   GenderFilter.JSON_PROPERTY_G_E_N_D_E_R
 })
 @JsonTypeName("GenderFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class GenderFilter {
     public static final String JSON_PROPERTY_G_E_N_D_E_R = "GENDER";

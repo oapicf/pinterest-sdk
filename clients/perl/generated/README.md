@@ -358,6 +358,7 @@ use WWW::OpenAPIClient::Object::MetricsReportingLevel;
 use WWW::OpenAPIClient::Object::MinPriceFilter;
 use WWW::OpenAPIClient::Object::NonNullableCatalogsCurrency;
 use WWW::OpenAPIClient::Object::NullableCurrency;
+use WWW::OpenAPIClient::Object::OauthAccessTokenRequest;
 use WWW::OpenAPIClient::Object::OauthAccessTokenRequestCode;
 use WWW::OpenAPIClient::Object::OauthAccessTokenRequestCodeAllOf;
 use WWW::OpenAPIClient::Object::OauthAccessTokenRequestRefresh;
@@ -524,6 +525,7 @@ use WWW::OpenAPIClient::Object::MetricsReportingLevel;
 use WWW::OpenAPIClient::Object::MinPriceFilter;
 use WWW::OpenAPIClient::Object::NonNullableCatalogsCurrency;
 use WWW::OpenAPIClient::Object::NullableCurrency;
+use WWW::OpenAPIClient::Object::OauthAccessTokenRequest;
 use WWW::OpenAPIClient::Object::OauthAccessTokenRequestCode;
 use WWW::OpenAPIClient::Object::OauthAccessTokenRequestCodeAllOf;
 use WWW::OpenAPIClient::Object::OauthAccessTokenRequestRefresh;
@@ -754,6 +756,7 @@ Class | Method | HTTP request | Description
  - [WWW::OpenAPIClient::Object::MinPriceFilter](docs/MinPriceFilter.md)
  - [WWW::OpenAPIClient::Object::NonNullableCatalogsCurrency](docs/NonNullableCatalogsCurrency.md)
  - [WWW::OpenAPIClient::Object::NullableCurrency](docs/NullableCurrency.md)
+ - [WWW::OpenAPIClient::Object::OauthAccessTokenRequest](docs/OauthAccessTokenRequest.md)
  - [WWW::OpenAPIClient::Object::OauthAccessTokenRequestCode](docs/OauthAccessTokenRequestCode.md)
  - [WWW::OpenAPIClient::Object::OauthAccessTokenRequestCodeAllOf](docs/OauthAccessTokenRequestCodeAllOf.md)
  - [WWW::OpenAPIClient::Object::OauthAccessTokenRequestRefresh](docs/OauthAccessTokenRequestRefresh.md)

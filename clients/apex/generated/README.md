@@ -235,6 +235,7 @@ Class | Method | HTTP request | Description
  - [OASMinPriceFilter](OASMinPriceFilter.md)
  - [OASNonNullableCatalogsCurrency](OASNonNullableCatalogsCurrency.md)
  - [OASNullableCurrency](OASNullableCurrency.md)
+ - [OASOauthAccessTokenRequest](OASOauthAccessTokenRequest.md)
  - [OASOauthAccessTokenRequestCode](OASOauthAccessTokenRequestCode.md)
  - [OASOauthAccessTokenRequestCodeAllOf](OASOauthAccessTokenRequestCodeAllOf.md)
  - [OASOauthAccessTokenRequestRefresh](OASOauthAccessTokenRequestRefresh.md)

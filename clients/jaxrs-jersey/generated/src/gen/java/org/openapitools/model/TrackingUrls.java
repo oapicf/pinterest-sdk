@@ -35,7 +35,7 @@ import javax.validation.Valid;
   TrackingUrls.JSON_PROPERTY_BUYABLE_BUTTON,
   TrackingUrls.JSON_PROPERTY_AUDIENCE_VERIFICATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class TrackingUrls   {
   public static final String JSON_PROPERTY_IMPRESSION = "impression";
   @JsonProperty(JSON_PROPERTY_IMPRESSION)

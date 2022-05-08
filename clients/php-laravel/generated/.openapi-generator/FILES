@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 lib/.editorconfig
 lib/.env.example
 lib/.gitattributes
@@ -138,6 +137,7 @@ lib/app/Models/MetricsReportingLevel.php
 lib/app/Models/MinPriceFilter.php
 lib/app/Models/NonNullableCatalogsCurrency.php
 lib/app/Models/NullableCurrency.php
+lib/app/Models/OauthAccessTokenRequest.php
 lib/app/Models/OauthAccessTokenRequestCode.php
 lib/app/Models/OauthAccessTokenRequestCodeAllOf.php
 lib/app/Models/OauthAccessTokenRequestRefresh.php

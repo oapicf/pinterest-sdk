@@ -85,7 +85,7 @@ import javax.annotation.Generated;
   CatalogsProductGroupFilterKeys.JSON_PROPERTY_G_O_O_G_L_E_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y0
 })
 @JsonTypeName("CatalogsProductGroupFilterKeys")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class CatalogsProductGroupFilterKeys {
     public static final String JSON_PROPERTY_M_I_N_P_R_I_C_E = "MIN_PRICE";

@@ -70,7 +70,7 @@ import javax.annotation.Generated;
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_METRICS_FILTERS
 })
 @JsonTypeName("AdsAnalyticsCreateAsyncRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class AdsAnalyticsCreateAsyncRequest {
     public static final String JSON_PROPERTY_START_DATE = "start_date";

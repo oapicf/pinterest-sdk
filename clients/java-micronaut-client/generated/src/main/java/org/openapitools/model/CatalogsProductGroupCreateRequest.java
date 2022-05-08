@@ -36,7 +36,7 @@ import javax.annotation.Generated;
   CatalogsProductGroupCreateRequest.JSON_PROPERTY_FILTERS
 })
 @JsonTypeName("CatalogsProductGroupCreateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class CatalogsProductGroupCreateRequest {
     public static final String JSON_PROPERTY_FEED_ID = "feed_id";

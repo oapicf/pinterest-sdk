@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   ConditionFilter.JSON_PROPERTY_C_O_N_D_I_T_I_O_N
 })
 @JsonTypeName("ConditionFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class ConditionFilter {
     public static final String JSON_PROPERTY_C_O_N_D_I_T_I_O_N = "CONDITION";

@@ -19,7 +19,7 @@ import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class BoardsApiServiceImpl extends BoardsApiService {
     @Override
     public Response boardSectionsCreate( @Pattern(regexp="^\\d+$")String boardId, BoardSection boardSection, SecurityContext securityContext) throws NotFoundException {

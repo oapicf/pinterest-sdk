@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Describes the valid schema for possible OAuth access token requests.",
+  "name": "OauthAccessTokenRequest",
+  "fields": [
+    {
+      "name": "grant_type",
+      "type": {
+        "type": "enum",
+        "name": "OauthAccessTokenRequest_grantUnderscoretype",
+        "symbols": [
+          "authorization_code",
+          "refresh_token"
+        ]
+      },
+      "doc": ""
+    }
+  ]
+
+}

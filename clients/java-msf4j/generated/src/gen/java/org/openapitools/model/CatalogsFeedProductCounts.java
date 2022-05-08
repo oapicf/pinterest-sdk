@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The counts can be null early in the process.
  */
 @ApiModel(description = "The counts can be null early in the process.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-07T06:39:19.282212Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
 public class CatalogsFeedProductCounts   {
   @JsonProperty("original")
   private Integer original;

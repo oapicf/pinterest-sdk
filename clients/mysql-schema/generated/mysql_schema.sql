@@ -1152,6 +1152,15 @@ CREATE TABLE IF NOT EXISTS `MinPriceFilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `OauthAccessTokenRequest` generated from model 'OauthAccessTokenRequest'
+-- Describes the valid schema for possible OAuth access token requests.
+--
+
+CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequest` (
+  `grant_type` ENUM('authorization_code', 'refresh_token') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Describes the valid schema for possible OAuth access token requests.';
+
+--
 -- Table structure for table `OauthAccessTokenRequestCode` generated from model 'OauthAccessTokenRequestCode'
 -- A request to exchange an authorization code for an access token.
 --

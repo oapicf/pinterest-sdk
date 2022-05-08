@@ -2528,6 +2528,14 @@
           <xs:element minOccurs="1" name="MIN_PRICE" type="xs:anyType" />
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="OauthAccessTokenRequest">
+        <xs:annotation>
+          <xs:documentation>Describes the valid schema for possible OAuth access token requests.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="1" name="grant_type" type="schemas:GrantUnderscoretype" />
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="OauthAccessTokenRequestCode">
         <xs:annotation>
           <xs:documentation>A request to exchange an authorization code for an access token.</xs:documentation>
@@ -3299,6 +3307,12 @@
           <xs:enumeration value="Pacific/Wallis" />
           <xs:enumeration value="WET" />
           <xs:enumeration value="null" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="GrantUnderscoretype">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="authorization_code" />
+          <xs:enumeration value="refresh_token" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="ResponseUnderscoretype">

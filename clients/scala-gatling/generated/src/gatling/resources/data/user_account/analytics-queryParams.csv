@@ -1,1 +1,1 @@
-pin_format,ad_account_id,metric_types,split_field,start_date,app_types,end_date,from_claimed_content
+from_claimed_content,start_date,pin_format,end_date,metric_types,split_field,app_types,ad_account_id

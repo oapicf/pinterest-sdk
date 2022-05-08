@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Language code, which is among the offical ISO 639-1 language list.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-07T06:40:56.403503Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-08T00:32:37.756477Z[Etc/UTC]")
 public enum Language {
   
   AM("AM"),

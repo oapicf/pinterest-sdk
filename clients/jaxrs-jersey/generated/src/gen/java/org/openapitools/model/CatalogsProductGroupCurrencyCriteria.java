@@ -30,7 +30,7 @@ import javax.validation.Valid;
   CatalogsProductGroupCurrencyCriteria.JSON_PROPERTY_VALUES,
   CatalogsProductGroupCurrencyCriteria.JSON_PROPERTY_NEGATED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsProductGroupCurrencyCriteria   {
   public static final String JSON_PROPERTY_VALUES = "values";
   @JsonProperty(JSON_PROPERTY_VALUES)

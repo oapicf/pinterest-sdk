@@ -31,7 +31,7 @@ import javax.validation.Valid;
   Paginated.JSON_PROPERTY_ITEMS,
   Paginated.JSON_PROPERTY_BOOKMARK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class Paginated   {
   public static final String JSON_PROPERTY_ITEMS = "items";
   @JsonProperty(JSON_PROPERTY_ITEMS)

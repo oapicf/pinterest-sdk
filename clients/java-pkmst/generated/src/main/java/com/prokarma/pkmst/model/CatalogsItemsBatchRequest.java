@@ -21,7 +21,7 @@ import java.util.List;
  */
 @ApiModel(description = "Request object of catalogs items batch")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-05-07T06:39:36.253940Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-05-08T00:31:47.777767Z[Etc/UTC]")
 public class CatalogsItemsBatchRequest   {
   @JsonProperty("country")
   private Country country;

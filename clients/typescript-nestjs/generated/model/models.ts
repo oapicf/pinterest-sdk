@@ -113,6 +113,7 @@ export * from './minPriceFilter';
 export * from './error';
 export * from './nonNullableCatalogsCurrency';
 export * from './nullableCurrency';
+export * from './oauthAccessTokenRequest';
 export * from './oauthAccessTokenRequestCode';
 export * from './oauthAccessTokenRequestCodeAllOf';
 export * from './oauthAccessTokenRequestRefresh';

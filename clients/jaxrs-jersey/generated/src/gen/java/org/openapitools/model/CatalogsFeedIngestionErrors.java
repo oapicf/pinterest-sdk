@@ -33,7 +33,7 @@ import javax.validation.Valid;
   CatalogsFeedIngestionErrors.JSON_PROPERTY_LINE_LEVEL_INTERNAL_ERROR,
   CatalogsFeedIngestionErrors.JSON_PROPERTY_LARGE_PRODUCT_COUNT_DECREASE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsFeedIngestionErrors   {
   public static final String JSON_PROPERTY_IMAGE_DOWNLOAD_ERROR = "image_download_error";
   @JsonProperty(JSON_PROPERTY_IMAGE_DOWNLOAD_ERROR)

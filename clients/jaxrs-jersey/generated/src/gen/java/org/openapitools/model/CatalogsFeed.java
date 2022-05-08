@@ -51,7 +51,7 @@ import javax.validation.Valid;
   CatalogsFeed.JSON_PROPERTY_PREFERRED_PROCESSING_SCHEDULE,
   CatalogsFeed.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsFeed   {
   public static final String JSON_PROPERTY_CREATED_AT = "created_at";
   @JsonProperty(JSON_PROPERTY_CREATED_AT)

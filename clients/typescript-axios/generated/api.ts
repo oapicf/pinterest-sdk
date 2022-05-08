@@ -5432,6 +5432,27 @@ export type NullableCurrency = typeof NullableCurrency[keyof typeof NullableCurr
 
 
 /**
+ * Describes the valid schema for possible OAuth access token requests.
+ * @export
+ * @interface OauthAccessTokenRequest
+ */
+export interface OauthAccessTokenRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenRequest
+     */
+    'grant_type': OauthAccessTokenRequestGrantTypeEnum;
+}
+
+export const OauthAccessTokenRequestGrantTypeEnum = {
+    AuthorizationCode: 'authorization_code',
+    RefreshToken: 'refresh_token'
+} as const;
+
+export type OauthAccessTokenRequestGrantTypeEnum = typeof OauthAccessTokenRequestGrantTypeEnum[keyof typeof OauthAccessTokenRequestGrantTypeEnum];
+
+/**
  * A request to exchange an authorization code for an access token.
  * @export
  * @interface OauthAccessTokenRequestCode

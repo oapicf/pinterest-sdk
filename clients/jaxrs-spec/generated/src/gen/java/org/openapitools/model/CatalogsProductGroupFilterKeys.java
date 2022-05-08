@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsProductGroupFilterKeys")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-07T06:42:49.569940Z[Etc/UTC]")public class CatalogsProductGroupFilterKeys   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-08T00:33:54.705491Z[Etc/UTC]")public class CatalogsProductGroupFilterKeys   {
   
   private @Valid CatalogsProductGroupPricingCriteria MIN_PRICE;
   private @Valid CatalogsProductGroupPricingCriteria MAX_PRICE;

@@ -345,6 +345,7 @@ Class | Method | HTTP request | Description
  - [MinPriceFilter](docs/MinPriceFilter.md)
  - [NonNullableCatalogsCurrency](docs/NonNullableCatalogsCurrency.md)
  - [NullableCurrency](docs/NullableCurrency.md)
+ - [OauthAccessTokenRequest](docs/OauthAccessTokenRequest.md)
  - [OauthAccessTokenRequestCode](docs/OauthAccessTokenRequestCode.md)
  - [OauthAccessTokenRequestCodeAllOf](docs/OauthAccessTokenRequestCodeAllOf.md)
  - [OauthAccessTokenRequestRefresh](docs/OauthAccessTokenRequestRefresh.md)

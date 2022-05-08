@@ -256,6 +256,7 @@ Class | Method | HTTP request | Description
  - [PinterestSdkClient::MinPriceFilter](docs/MinPriceFilter.md)
  - [PinterestSdkClient::NonNullableCatalogsCurrency](docs/NonNullableCatalogsCurrency.md)
  - [PinterestSdkClient::NullableCurrency](docs/NullableCurrency.md)
+ - [PinterestSdkClient::OauthAccessTokenRequest](docs/OauthAccessTokenRequest.md)
  - [PinterestSdkClient::OauthAccessTokenRequestCode](docs/OauthAccessTokenRequestCode.md)
  - [PinterestSdkClient::OauthAccessTokenRequestCodeAllOf](docs/OauthAccessTokenRequestCodeAllOf.md)
  - [PinterestSdkClient::OauthAccessTokenRequestRefresh](docs/OauthAccessTokenRequestRefresh.md)

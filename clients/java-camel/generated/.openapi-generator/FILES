@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 src/main/java/org/openapitools/RestConfiguration.java
 src/main/java/org/openapitools/api/AdAccountsApi.java
 src/main/java/org/openapitools/api/BoardsApi.java
@@ -122,6 +121,7 @@ src/main/java/org/openapitools/model/MetricsReportingLevel.java
 src/main/java/org/openapitools/model/MinPriceFilter.java
 src/main/java/org/openapitools/model/NonNullableCatalogsCurrency.java
 src/main/java/org/openapitools/model/NullableCurrency.java
+src/main/java/org/openapitools/model/OauthAccessTokenRequest.java
 src/main/java/org/openapitools/model/OauthAccessTokenRequestCode.java
 src/main/java/org/openapitools/model/OauthAccessTokenRequestCodeAllOf.java
 src/main/java/org/openapitools/model/OauthAccessTokenRequestRefresh.java

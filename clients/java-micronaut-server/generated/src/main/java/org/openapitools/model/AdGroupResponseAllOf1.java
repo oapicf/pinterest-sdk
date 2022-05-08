@@ -37,7 +37,7 @@ import javax.annotation.Generated;
   AdGroupResponseAllOf1.JSON_PROPERTY_UPDATED_TIME
 })
 @JsonTypeName("AdGroupResponse_allOf_1")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class AdGroupResponseAllOf1 {
     public static final String JSON_PROPERTY_CAMPAIGN_ID = "campaign_id";

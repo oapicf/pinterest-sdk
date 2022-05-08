@@ -119,6 +119,7 @@ module PinterestRESTAPI.Types (
   MinPriceFilter (..),
   NonNullableCatalogsCurrency (..),
   NullableCurrency (..),
+  OauthAccessTokenRequest (..),
   OauthAccessTokenRequestCode (..),
   OauthAccessTokenRequestCodeAllOf (..),
   OauthAccessTokenRequestRefresh (..),
@@ -1852,6 +1853,17 @@ instance FromJSON NullableCurrency where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "nullableCurrency")
 instance ToJSON NullableCurrency where
   toJSON = genericToJSON (removeFieldLabelPrefix False "nullableCurrency")
+
+
+-- | Describes the valid schema for possible OAuth access token requests.
+data OauthAccessTokenRequest = OauthAccessTokenRequest
+  { oauthAccessTokenRequestGrantUnderscoretype :: Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenRequest where
+  parseJSON = genericParseJSON (removeFieldLabelPrefix True "oauthAccessTokenRequest")
+instance ToJSON OauthAccessTokenRequest where
+  toJSON = genericToJSON (removeFieldLabelPrefix False "oauthAccessTokenRequest")
 
 
 -- | A request to exchange an authorization code for an access token.

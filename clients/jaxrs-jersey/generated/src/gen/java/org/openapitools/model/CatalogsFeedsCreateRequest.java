@@ -43,7 +43,7 @@ import javax.validation.Valid;
   CatalogsFeedsCreateRequest.JSON_PROPERTY_LOCATION,
   CatalogsFeedsCreateRequest.JSON_PROPERTY_PREFERRED_PROCESSING_SCHEDULE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class CatalogsFeedsCreateRequest   {
   public static final String JSON_PROPERTY_DEFAULT_COUNTRY = "default_country";
   @JsonProperty(JSON_PROPERTY_DEFAULT_COUNTRY)

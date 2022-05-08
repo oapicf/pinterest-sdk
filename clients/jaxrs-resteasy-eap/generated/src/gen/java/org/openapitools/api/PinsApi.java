@@ -26,7 +26,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the pins API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-07T06:42:33.868481Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-08T00:33:44.584572Z[Etc/UTC]")
 public interface PinsApi  {
 
     @GET

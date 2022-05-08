@@ -135,6 +135,7 @@ main =
       propMimeEq MimeJSON (Proxy :: Proxy MinPriceFilter)
       propMimeEq MimeJSON (Proxy :: Proxy NonNullableCatalogsCurrency)
       propMimeEq MimeJSON (Proxy :: Proxy NullableCurrency)
+      propMimeEq MimeJSON (Proxy :: Proxy OauthAccessTokenRequest)
       propMimeEq MimeJSON (Proxy :: Proxy OauthAccessTokenRequestCode)
       propMimeEq MimeJSON (Proxy :: Proxy OauthAccessTokenRequestCodeAllOf)
       propMimeEq MimeJSON (Proxy :: Proxy OauthAccessTokenRequestRefresh)

@@ -51,7 +51,7 @@ import javax.annotation.Generated;
   AdResponseAllOf.JSON_PROPERTY_VIEW_TRACKING_URL
 })
 @JsonTypeName("AdResponse_allOf")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class AdResponseAllOf {
     public static final String JSON_PROPERTY_AD_GROUP_ID = "ad_group_id";

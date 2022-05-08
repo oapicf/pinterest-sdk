@@ -1225,6 +1225,14 @@ genMinPriceFilter n =
   MinPriceFilter
     <$> arbitraryReduced n -- minPriceFilterMinPrice :: CatalogsProductGroupPricingCriteria
   
+instance Arbitrary OauthAccessTokenRequest where
+  arbitrary = sized genOauthAccessTokenRequest
+
+genOauthAccessTokenRequest :: Int -> Gen OauthAccessTokenRequest
+genOauthAccessTokenRequest n =
+  OauthAccessTokenRequest
+    <$> arbitrary -- oauthAccessTokenRequestGrantType :: E'GrantType
+  
 instance Arbitrary OauthAccessTokenRequestCode where
   arbitrary = sized genOauthAccessTokenRequestCode
 

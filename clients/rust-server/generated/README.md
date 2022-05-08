@@ -14,7 +14,7 @@ To see how to make this your own, look here:
 [README]((https://openapi-generator.tech))
 
 - API version: 5.3.0
-- Build date: 2022-05-07T10:45:57.788524Z[Etc/UTC]
+- Build date: 2022-05-08T00:40:25.757135Z[Etc/UTC]
 
 For more information, please visit [https://developers.pinterest.com/](https://developers.pinterest.com/)
 
@@ -291,6 +291,7 @@ Method | HTTP request | Description
  - [MinPriceFilter](docs/MinPriceFilter.md)
  - [NonNullableCatalogsCurrency](docs/NonNullableCatalogsCurrency.md)
  - [NullableCurrency](docs/NullableCurrency.md)
+ - [OauthAccessTokenRequest](docs/OauthAccessTokenRequest.md)
  - [OauthAccessTokenRequestCode](docs/OauthAccessTokenRequestCode.md)
  - [OauthAccessTokenRequestCodeAllOf](docs/OauthAccessTokenRequestCodeAllOf.md)
  - [OauthAccessTokenRequestRefresh](docs/OauthAccessTokenRequestRefresh.md)

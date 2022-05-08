@@ -34,8 +34,9 @@ The following models have been auto-generated from the provided OpenAPI schema:
 - model/OauthAccessTokenResponseRefreshModel.fs
 - model/OauthAccessTokenResponseCodeModel.fs
 - model/OauthAccessTokenRequestRefreshAllOfModel.fs
-- model/OauthAccessTokenRequestRefreshModel.fs
+- model/OauthAccessTokenRequestModel.fs
 - model/OauthAccessTokenRequestCodeAllOfModel.fs
+- model/OauthAccessTokenRequestRefreshModel.fs
 - model/OauthAccessTokenRequestCodeModel.fs
 - model/NullableCurrencyModel.fs
 - model/NonNullableCatalogsCurrencyModel.fs

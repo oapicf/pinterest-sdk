@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   GoogleProductCategory3Filter.JSON_PROPERTY_G_O_O_G_L_E_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y3
 })
 @JsonTypeName("GoogleProductCategory3Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-07T06:38:30.955411Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2022-05-08T00:31:09.924165Z[Etc/UTC]")
 @Introspected
 public class GoogleProductCategory3Filter {
     public static final String JSON_PROPERTY_G_O_O_G_L_E_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y3 = "GOOGLE_PRODUCT_CATEGORY_3";

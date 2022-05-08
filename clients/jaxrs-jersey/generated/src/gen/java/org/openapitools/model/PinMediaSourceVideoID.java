@@ -32,7 +32,7 @@ import javax.validation.Valid;
   PinMediaSourceVideoID.JSON_PROPERTY_COVER_IMAGE_URL,
   PinMediaSourceVideoID.JSON_PROPERTY_MEDIA_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class PinMediaSourceVideoID   {
   /**
    * Gets or Sets sourceType

@@ -35,7 +35,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   PinMediaWithImage.JSON_PROPERTY_IMAGES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class PinMediaWithImage extends PinMedia  {
   public static final String JSON_PROPERTY_IMAGES = "images";
   @JsonProperty(JSON_PROPERTY_IMAGES)

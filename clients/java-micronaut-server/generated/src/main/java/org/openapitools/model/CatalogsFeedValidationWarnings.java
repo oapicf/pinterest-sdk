@@ -74,7 +74,7 @@ import javax.annotation.Generated;
   CatalogsFeedValidationWarnings.JSON_PROPERTY_MIN_AD_PRICE_INVALID
 })
 @JsonTypeName("CatalogsFeedValidationWarnings")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-07T06:38:54.481854Z[Etc/UTC]")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2022-05-08T00:31:24.314778Z[Etc/UTC]")
 @Introspected
 public class CatalogsFeedValidationWarnings {
     public static final String JSON_PROPERTY_TITLE_LENGTH_TOO_LONG = "title_length_too_long";

@@ -31,7 +31,7 @@ import javax.validation.Valid;
   ItemValidationEvent.JSON_PROPERTY_CODE,
   ItemValidationEvent.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-07T06:42:01.683468Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
 public class ItemValidationEvent   {
   public static final String JSON_PROPERTY_ATTRIBUTE = "attribute";
   @JsonProperty(JSON_PROPERTY_ATTRIBUTE)
