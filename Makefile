@@ -36,6 +36,8 @@ generate-langs:
 		  --rm \
 		  -v $(GEN_BASE_DIR):/local openapitools/openapi-generator-cli:v$(oag_version) \
 		  generate \
+		  --global-property skipFormModel=false \
+		  --global-property generateAliasAsModel=true \
 		  --input-spec /local/specification/pinterest.yml \
 		  --config /local/clients/$$lang/conf.json \
 		  --generator-name $$lang \
