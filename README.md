@@ -6,9 +6,9 @@
 Pinterest SDK
 -------------
 
-Pinterest SDK is a set of generated SDK (client libraries) for [Pinterest REST API](https://developers.pinterest.com/docs/api/v5/) from their [OpenAPI v3 specification](https://github.com/pinterest/api-description).
+Pinterest SDK is a set of generated client libraries for [Pinterest REST API](https://developers.pinterest.com/docs/api/v5/) from their [OpenAPI v3 specification](https://github.com/pinterest/api-description).
 
-The API clients are generated using [OpenAPI Generator](https://openapi-generator.tech/).
+The client libraries are generated using [OpenAPI Generator](https://openapi-generator.tech/).
 
 Published packages
 ------------------
@@ -29,7 +29,7 @@ Version Matrix
 Usage
 -----
 
-Generate API clients of the currently supported languages:
+Generate client libraries of the currently supported languages:
 
     make generate GEN_BASE_DIR=<path/to/pinterest-sdk>
 
