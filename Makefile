@@ -11,9 +11,11 @@ clean:
 
 deps:
 	mkdir -p specification/ && curl https://raw.githubusercontent.com/pinterest/api-description/main/v5/openapi.yaml --output specification/pinterest.yml
-	yq -i '.info.contact.name = "Cliffano Subagio"
-	       .info.contact.url = "https://github.com/cliffano/pinterest-sdk"
-	       .info.contact.email = "blah@cliffano.com"' specification/pinterest.yml
+	yq -i '
+	  .info.contact.name = "Cliffano Subagio" |
+	  .info.contact.url = "https://github.com/cliffano/pinterest-sdk" |
+	  .info.contact.email = "blah@cliffano.com"
+	' specification/pinterest.yml
 	docker pull openapitools/openapi-generator-cli:v$(oag_version)
 	npm install -g bootprint bootprint-openapi gh-pages mocha
 
