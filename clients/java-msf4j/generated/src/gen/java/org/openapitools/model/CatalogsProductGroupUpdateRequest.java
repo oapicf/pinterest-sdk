@@ -12,7 +12,7 @@ import org.openapitools.model.CatalogsProductGroupFilters;
  * Request object for updating a product group.
  */
 @ApiModel(description = "Request object for updating a product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-07-01T11:59:44.239108Z[Etc/UTC]")
 public class CatalogsProductGroupUpdateRequest   {
   @JsonProperty("feed_id")
   private String feedId;

@@ -12,7 +12,7 @@ import org.openapitools.model.OauthAccessTokenRequestRefreshAllOf;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A request to exchange a refresh token for a new access token.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-08T00:33:44.584572Z[Etc/UTC]")
+@ApiModel(description="A request to exchange a refresh token for a new access token.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-07-01T12:01:06.911267Z[Etc/UTC]")
 public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest  {
   
 

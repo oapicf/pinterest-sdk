@@ -40,12 +40,12 @@ Details on auth methods can be found in the [auth.md](doc/auth.md).
 
 ## Author
 
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
 
 

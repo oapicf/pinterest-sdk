@@ -13,7 +13,7 @@ import org.openapitools.model.ItemBatchRecord;
  * Response object of catalogs items
  */
 @ApiModel(description = "Response object of catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-07-01T11:59:44.239108Z[Etc/UTC]")
 public class CatalogsItems   {
   @JsonProperty("items")
   private List<ItemBatchRecord> items = null;

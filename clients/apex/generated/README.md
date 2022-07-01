@@ -299,5 +299,5 @@ Authentication schemes defined for the API:
 
 ## Author
 
-pinterest-api@pinterest.com
+blah@cliffano.com
 

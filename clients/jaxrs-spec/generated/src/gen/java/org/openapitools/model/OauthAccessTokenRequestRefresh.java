@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A request to exchange a refresh token for a new access token.")
 @JsonTypeName("OauthAccessTokenRequestRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-08T00:33:54.705491Z[Etc/UTC]")public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-07-01T12:01:13.464712Z[Etc/UTC]")public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest  {
   
   private @Valid String refreshToken;
   private @Valid String scope;

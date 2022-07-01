@@ -2,7 +2,7 @@
 
 Pinterest's REST API
 
-For more information, please visit [https://developers.pinterest.com/](https://developers.pinterest.com/).
+For more information, please visit [https://github.com/cliffano/pinterest-sdk](https://github.com/cliffano/pinterest-sdk).
 
 ## Installation & Usage
 
@@ -319,7 +319,7 @@ vendor/bin/phpunit
 
 ## Author
 
-pinterest-api@pinterest.com
+blah@cliffano.com
 
 ## About this package
 

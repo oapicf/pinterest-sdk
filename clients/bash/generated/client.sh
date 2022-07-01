@@ -18,7 +18,7 @@
 # https://spdx.org/licenses/MIT
 #
 # CONTACT:
-# pinterest-api@pinterest.com
+# blah@cliffano.com
 #
 # MORE INFORMATION:
 # https://developers.pinterest.com/
@@ -1073,7 +1073,7 @@ print_about() {
     echo -e "${BOLD}${WHITE}Pinterest REST API command line client (API version 5.3.0)${OFF}"
     echo ""
     echo -e "License: MIT"
-    echo -e "Contact: pinterest-api@pinterest.com"
+    echo -e "Contact: blah@cliffano.com"
     echo ""
 read -r -d '' appdescription <<EOF
 

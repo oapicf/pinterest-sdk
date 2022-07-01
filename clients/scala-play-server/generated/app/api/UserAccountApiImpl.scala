@@ -8,7 +8,7 @@ import java.time.LocalDate
 /**
   * Provides a default implementation for [[UserAccountApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-07-01T12:06:32.599878Z[Etc/UTC]")
 class UserAccountApiImpl extends UserAccountApi {
   /**
     * @inheritdoc

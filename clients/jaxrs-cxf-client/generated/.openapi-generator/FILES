@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 pom.xml
 src/gen/java/org/openapitools/api/AdAccountsApi.java
 src/gen/java/org/openapitools/api/BoardsApi.java
@@ -153,3 +154,10 @@ src/gen/java/org/openapitools/model/ProductType4Filter.java
 src/gen/java/org/openapitools/model/ReportingColumnAsync.java
 src/gen/java/org/openapitools/model/TargetingTypeFilter.java
 src/gen/java/org/openapitools/model/TrackingUrls.java
+src/test/java/org/openapitools/api/AdAccountsApiTest.java
+src/test/java/org/openapitools/api/BoardsApiTest.java
+src/test/java/org/openapitools/api/CatalogsApiTest.java
+src/test/java/org/openapitools/api/MediaApiTest.java
+src/test/java/org/openapitools/api/OauthApiTest.java
+src/test/java/org/openapitools/api/PinsApiTest.java
+src/test/java/org/openapitools/api/UserAccountApiTest.java

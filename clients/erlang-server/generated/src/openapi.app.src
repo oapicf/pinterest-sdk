@@ -15,5 +15,5 @@
     ]},
     {modules, []},
     {licenses, ["MIT"]},
-    {links, ["https://developers.pinterest.com/"]}
+    {links, ["https://github.com/cliffano/pinterest-sdk"]}
 ]}.

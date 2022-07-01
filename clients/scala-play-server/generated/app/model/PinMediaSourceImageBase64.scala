@@ -6,7 +6,7 @@ import play.api.libs.json._
   * Base64-encoded image media source
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-07-01T12:06:32.599878Z[Etc/UTC]")
 case class PinMediaSourceImageBase64(
   sourceType: PinMediaSourceImageBase64.SourceType.Value,
   contentType: PinMediaSourceImageBase64.ContentType.Value,

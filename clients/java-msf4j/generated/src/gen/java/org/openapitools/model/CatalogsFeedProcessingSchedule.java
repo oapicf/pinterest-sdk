@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).
  */
 @ApiModel(description = "Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-07-01T11:59:44.239108Z[Etc/UTC]")
 public class CatalogsFeedProcessingSchedule   {
   @JsonProperty("time")
   private String time;

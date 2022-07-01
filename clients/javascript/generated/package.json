@@ -1,6 +1,6 @@
 {
   "name": "pinterest-sdk",
-  "version": "1.0.0-pre.0",
+  "version": "1.0.1-pre.0",
   "description": "Pinterests_REST_API",
   "license": "MIT",
   "main": "dist/index.js",

@@ -13,7 +13,7 @@ import org.openapitools.model.OauthAccessTokenRequestCodeAllOf;
  * A request to exchange an authorization code for an access token.
  */
 @ApiModel(description = "A request to exchange an authorization code for an access token.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-07-01T11:59:44.239108Z[Etc/UTC]")
 public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
   @JsonProperty("code")
   private String code;

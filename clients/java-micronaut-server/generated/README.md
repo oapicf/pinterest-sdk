@@ -24,12 +24,12 @@ Description on how to create Apis is given inside individual api guides:
 
 ## Author
 
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
-pinterest-api@pinterest.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
+blah@cliffano.com
 
 

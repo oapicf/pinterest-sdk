@@ -12,7 +12,7 @@ import org.openapitools.model.OauthAccessTokenRequestCodeAllOf;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A request to exchange an authorization code for an access token.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-08T00:33:44.584572Z[Etc/UTC]")
+@ApiModel(description="A request to exchange an authorization code for an access token.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-07-01T12:01:06.911267Z[Etc/UTC]")
 public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
   
 

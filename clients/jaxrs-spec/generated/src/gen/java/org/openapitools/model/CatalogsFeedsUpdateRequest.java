@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for updating a feed.")
 @JsonTypeName("CatalogsFeedsUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-08T00:33:54.705491Z[Etc/UTC]")public class CatalogsFeedsUpdateRequest   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-07-01T12:01:13.464712Z[Etc/UTC]")public class CatalogsFeedsUpdateRequest   {
   
   private @Valid ProductAvailabilityType defaultAvailability;
   private @Valid NullableCurrency defaultCurrency;

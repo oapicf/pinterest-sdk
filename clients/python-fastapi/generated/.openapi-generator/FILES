@@ -1,5 +1,6 @@
 .flake8
 .gitignore
+.openapi-generator-ignore
 Dockerfile
 README.md
 docker-compose.yaml
@@ -167,3 +168,10 @@ src/openapi_server/models/targeting_type_filter.py
 src/openapi_server/models/tracking_urls.py
 src/openapi_server/security_api.py
 tests/conftest.py
+tests/test_ad_accounts_api.py
+tests/test_boards_api.py
+tests/test_catalogs_api.py
+tests/test_media_api.py
+tests/test_oauth_api.py
+tests/test_pins_api.py
+tests/test_user_account_api.py

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Summary status for product group
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-08T00:42:02.037116Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-07-01T12:06:55.503075Z[Etc/UTC]")
 public enum ProductGroupSummaryStatus {
   
   RUNNING("RUNNING"),

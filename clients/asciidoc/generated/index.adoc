@@ -1,5 +1,5 @@
 = Pinterest REST API
-pinterest-api@pinterest.com
+blah@cliffano.com
 5.3.0
 :toc: left
 :numbered:
@@ -9,7 +9,7 @@ pinterest-api@pinterest.com
 :specDir: 
 :snippetDir: 
 :generator-template: v1 2019-12-20
-:info-url: https://developers.pinterest.com/
+:info-url: https://github.com/cliffano/pinterest-sdk
 :app-name: Pinterest REST API
 
 [abstract]

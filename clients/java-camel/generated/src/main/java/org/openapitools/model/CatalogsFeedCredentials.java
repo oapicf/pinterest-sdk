@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedCredentials", description = "Use this if your feed file requires username and password.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-08T00:32:37.756477Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-07-01T12:00:23.697640Z[Etc/UTC]")
 public class CatalogsFeedCredentials   {
 
   @JsonProperty("password")

@@ -78,12 +78,12 @@ class PinsApiSimulation extends Simulation {
         .feed(pins/analyticsPATHFeeder)
         .exec(http("pinsAnalytics")
         .httpRequest("GET","/pins/${pin_id}/analytics")
-        .queryParam("start_date","${start_date}")
-        .queryParam("metric_types","${metric_types}")
-        .queryParam("split_field","${split_field}")
         .queryParam("end_date","${end_date}")
-        .queryParam("app_types","${app_types}")
         .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("app_types","${app_types}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("split_field","${split_field}")
+        .queryParam("metric_types","${metric_types}")
 )
 
     // Run scnpinsAnalytics with warm up and reach a constant rate for entire duration

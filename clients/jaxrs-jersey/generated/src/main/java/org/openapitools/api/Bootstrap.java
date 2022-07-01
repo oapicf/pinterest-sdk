@@ -18,7 +18,7 @@ public class Bootstrap extends HttpServlet {
       .description("Pinterest's REST API")
       .termsOfService("https://developers.pinterest.com/terms/")
       .contact(new Contact()
-        .email("pinterest-api@pinterest.com"))
+        .email("blah@cliffano.com"))
       .license(new License()
         .name("MIT")
         .url("https://spdx.org/licenses/MIT"));

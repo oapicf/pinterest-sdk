@@ -4,7 +4,7 @@
  * Pinterest's REST API
  *
  * OpenAPI document version: 5.3.0
- * Maintained by: pinterest-api@pinterest.com
+ * Maintained by: blah@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
  */
@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2022-05-08T00:32:08.284608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2022-07-01T12:00:04.324408Z[Etc/UTC]")
 public class ImageDetails   {
   
   private Integer width;

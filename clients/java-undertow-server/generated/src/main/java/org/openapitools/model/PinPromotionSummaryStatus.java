@@ -4,7 +4,7 @@
  * Pinterest's REST API
  *
  * OpenAPI document version: 5.3.0
- * Maintained by: pinterest-api@pinterest.com
+ * Maintained by: blah@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
  */

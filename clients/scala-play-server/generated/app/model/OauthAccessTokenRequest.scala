@@ -6,7 +6,7 @@ import play.api.libs.json._
   * Describes the valid schema for possible OAuth access token requests.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-07-01T12:06:32.599878Z[Etc/UTC]")
 case class OauthAccessTokenRequest(
   grantType: OauthAccessTokenRequest.GrantType.Value
   additionalProperties: 

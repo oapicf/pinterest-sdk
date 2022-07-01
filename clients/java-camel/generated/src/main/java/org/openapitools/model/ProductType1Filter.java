@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * ProductType1Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-08T00:32:37.756477Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-07-01T12:00:23.697640Z[Etc/UTC]")
 public class ProductType1Filter   {
 
   @JsonProperty("PRODUCT_TYPE_1")

@@ -7,7 +7,7 @@ import play.api.mvc._
 import model.Error
 import model.OauthAccessTokenResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-07-01T12:06:32.599878Z[Etc/UTC]")
 @Singleton
 class OauthApiController @Inject()(cc: ControllerComponents, api: OauthApi) extends AbstractController(cc) {
   /**

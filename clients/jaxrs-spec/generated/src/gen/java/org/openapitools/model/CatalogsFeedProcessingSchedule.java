@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).")
 @JsonTypeName("CatalogsFeedProcessingSchedule")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-08T00:33:54.705491Z[Etc/UTC]")public class CatalogsFeedProcessingSchedule   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-07-01T12:01:13.464712Z[Etc/UTC]")public class CatalogsFeedProcessingSchedule   {
   
   private @Valid String time;
 

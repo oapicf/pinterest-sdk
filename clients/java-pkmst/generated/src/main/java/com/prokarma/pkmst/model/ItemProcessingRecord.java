@@ -19,7 +19,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object describing an item processing record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-05-08T00:31:47.777767Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2022-07-01T11:59:50.950161Z[Etc/UTC]")
 public class ItemProcessingRecord   {
   @JsonProperty("item_id")
   private String itemId;

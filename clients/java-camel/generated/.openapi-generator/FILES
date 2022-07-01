@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 src/main/java/org/openapitools/RestConfiguration.java
 src/main/java/org/openapitools/api/AdAccountsApi.java
 src/main/java/org/openapitools/api/BoardsApi.java

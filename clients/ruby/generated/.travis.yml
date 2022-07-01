@@ -11,4 +11,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build pinterest_sdk.gemspec
-  - gem install ./pinterest_sdk-1.0.0-pre.0.gem
+  - gem install ./pinterest_sdk-1.0.1-pre.0.gem

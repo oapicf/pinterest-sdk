@@ -15,7 +15,7 @@ import org.openapitools.model.ItemProcessingRecord;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing the catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-08T00:33:33.395237Z[Etc/UTC]")
+@ApiModel(description="Object describing the catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-07-01T12:00:58.963610Z[Etc/UTC]")
 public class CatalogsItemsBatch   {
   
   private List<ItemProcessingRecord> items = new ArrayList<ItemProcessingRecord>();

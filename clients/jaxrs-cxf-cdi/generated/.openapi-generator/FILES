@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 pom.xml
 src/gen/java/org/openapitools/api/AdAccountsApi.java
 src/gen/java/org/openapitools/api/AdAccountsApiService.java

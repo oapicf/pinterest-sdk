@@ -119,9 +119,9 @@ class CatalogsApiSimulation extends Simulation {
         .feed(catalogs_product_groups/listQUERYFeeder)
         .exec(http("catalogsProductGroupsList")
         .httpRequest("GET","/catalogs/product_groups")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("feed_id","${feed_id}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scncatalogsProductGroupsList with warm up and reach a constant rate for entire duration
@@ -151,8 +151,8 @@ class CatalogsApiSimulation extends Simulation {
         .feed(feed_processing_results/listPATHFeeder)
         .exec(http("feedProcessingResultsList")
         .httpRequest("GET","/catalogs/feeds/${feed_id}/processing_results")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnfeedProcessingResultsList with warm up and reach a constant rate for entire duration
@@ -208,8 +208,8 @@ class CatalogsApiSimulation extends Simulation {
         .feed(feeds/listQUERYFeeder)
         .exec(http("feedsList")
         .httpRequest("GET","/catalogs/feeds")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnfeedsList with warm up and reach a constant rate for entire duration
@@ -265,9 +265,9 @@ class CatalogsApiSimulation extends Simulation {
         .feed(items/getQUERYFeeder)
         .exec(http("itemsGet")
         .httpRequest("GET","/catalogs/items")
-        .queryParam("country","${country}")
-        .queryParam("language","${language}")
         .queryParam("item_ids","${item_ids}")
+        .queryParam("language","${language}")
+        .queryParam("country","${country}")
 )
 
     // Run scnitemsGet with warm up and reach a constant rate for entire duration

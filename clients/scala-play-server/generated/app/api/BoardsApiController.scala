@@ -11,7 +11,7 @@ import model.Error
 import model.JsObject
 import model.Paginated
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-07-01T12:06:32.599878Z[Etc/UTC]")
 @Singleton
 class BoardsApiController @Inject()(cc: ControllerComponents, api: BoardsApi) extends AbstractController(cc) {
   /**

@@ -15,7 +15,7 @@ import org.openapitools.model.PinMediaSourceVideoID;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin media source.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-08T00:33:33.395237Z[Etc/UTC]")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
+@ApiModel(description="Pin media source.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-07-01T12:00:58.963610Z[Etc/UTC]")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaSourceImageBase64.class, name = "image_base64"),
   @JsonSubTypes.Type(value = PinMediaSourceImageURL.class, name = "image_url"),

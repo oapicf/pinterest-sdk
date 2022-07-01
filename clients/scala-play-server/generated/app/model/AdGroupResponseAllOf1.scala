@@ -12,7 +12,7 @@ import play.api.libs.json._
   * @param updatedTime Ad group last update time. Unix timestamp in seconds.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-05-08T00:41:34.847921Z[Etc/UTC]")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2022-07-01T12:06:32.599878Z[Etc/UTC]")
 case class AdGroupResponseAllOf1(
   campaignId: Option[String],
   billableEvent: Option[ActionType],

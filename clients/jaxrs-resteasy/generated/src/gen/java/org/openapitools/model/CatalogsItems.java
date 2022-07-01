@@ -12,7 +12,7 @@ import org.openapitools.model.ItemBatchRecord;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Response object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-05-08T00:33:33.395237Z[Etc/UTC]")
+@ApiModel(description="Response object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-07-01T12:00:58.963610Z[Etc/UTC]")
 public class CatalogsItems   {
   
   private List<ItemBatchRecord> items = new ArrayList<ItemBatchRecord>();

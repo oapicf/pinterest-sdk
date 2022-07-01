@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 apis/AdAccountsApi.ts
 apis/BoardsApi.ts
 apis/CatalogsApi.ts

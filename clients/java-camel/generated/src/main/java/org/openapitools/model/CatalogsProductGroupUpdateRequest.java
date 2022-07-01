@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupUpdateRequest", description = "Request object for updating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-08T00:32:37.756477Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-07-01T12:00:23.697640Z[Etc/UTC]")
 public class CatalogsProductGroupUpdateRequest   {
 
   @JsonProperty("feed_id")

@@ -20,7 +20,7 @@ import java.util.LinkedHashSet;
 import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2022-05-08T00:31:58.024547Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2022-07-01T11:59:57.602846Z[Etc/UTC]")
 public class CatalogsApiControllerImp extends CatalogsApiControllerImpInterface {
     @Override
     public Object catalogsProductGroupsCreate(Http.Request request, CatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest) throws Exception {

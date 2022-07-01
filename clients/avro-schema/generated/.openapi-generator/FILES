@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 Account.avsc
 ActionType.avsc
 AdAccount.avsc

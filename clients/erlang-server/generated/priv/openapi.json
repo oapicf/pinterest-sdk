@@ -2,9 +2,9 @@
   "openapi" : "3.0.3",
   "info" : {
     "contact" : {
-      "email" : "pinterest-api@pinterest.com",
-      "name" : "Pinterest, Inc.",
-      "url" : "https://developers.pinterest.com/"
+      "email" : "blah@cliffano.com",
+      "name" : "Cliffano Subagio",
+      "url" : "https://github.com/cliffano/pinterest-sdk"
     },
     "description" : "Pinterest's REST API",
     "license" : {

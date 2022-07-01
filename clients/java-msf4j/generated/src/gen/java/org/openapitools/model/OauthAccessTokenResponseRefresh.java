@@ -12,7 +12,7 @@ import org.openapitools.model.OauthAccessTokenResponse;
  * A successful OAuth access token response for the refresh token flow.
  */
 @ApiModel(description = "A successful OAuth access token response for the refresh token flow.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-07-01T11:59:44.239108Z[Etc/UTC]")
 public class OauthAccessTokenResponseRefresh extends OauthAccessTokenResponse  {
 
   @Override

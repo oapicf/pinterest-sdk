@@ -16,7 +16,7 @@ import org.openapitools.model.OauthAccessTokenResponseCodeAllOf;
  **/
 
 @ApiModel(description = "A successful OAuth access token response for the authorization code flow.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-05-08T00:27:15.493537Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2022-07-01T11:59:18.260123Z[Etc/UTC]")
 public class OauthAccessTokenResponseCode extends OauthAccessTokenResponse  {
   @JsonProperty("refresh_token")
   private String refreshToken;

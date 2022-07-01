@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 OpenAPI.Build.cs
 Private/OpenAPIAccount.cpp
 Private/OpenAPIActionType.cpp

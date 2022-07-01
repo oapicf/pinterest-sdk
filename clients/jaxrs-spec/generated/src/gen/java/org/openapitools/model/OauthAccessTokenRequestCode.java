@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A request to exchange an authorization code for an access token.")
 @JsonTypeName("OauthAccessTokenRequestCode")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-05-08T00:33:54.705491Z[Etc/UTC]")public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-07-01T12:01:13.464712Z[Etc/UTC]")public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
   
   private @Valid String code;
   private @Valid String redirectUri;

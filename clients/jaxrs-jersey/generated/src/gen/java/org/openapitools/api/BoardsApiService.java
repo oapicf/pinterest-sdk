@@ -19,7 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-05-08T00:33:19.615491Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2022-07-01T12:00:52.037403Z[Etc/UTC]")
 public abstract class BoardsApiService {
     public abstract Response boardSectionsCreate( @Pattern(regexp="^\\d+$")String boardId,BoardSection boardSection,SecurityContext securityContext) throws NotFoundException;
     public abstract Response boardSectionsDelete( @Pattern(regexp="^\\d+$")String boardId, @Pattern(regexp="^\\d+$")String sectionId,SecurityContext securityContext) throws NotFoundException;

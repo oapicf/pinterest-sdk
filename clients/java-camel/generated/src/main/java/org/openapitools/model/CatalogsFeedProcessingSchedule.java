@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedProcessingSchedule", description = "Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-05-08T00:32:37.756477Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2022-07-01T12:00:23.697640Z[Etc/UTC]")
 public class CatalogsFeedProcessingSchedule   {
 
   @JsonProperty("time")

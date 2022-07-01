@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * CatalogsProductGroupMultipleStringListCriteria
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-05-08T00:31:37.849823Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2022-07-01T11:59:44.239108Z[Etc/UTC]")
 public class CatalogsProductGroupMultipleStringListCriteria   {
   @JsonProperty("values")
   private List<List<String>> values = new ArrayList<List<String>>();

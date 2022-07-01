@@ -121,8 +121,8 @@ class BoardsApiSimulation extends Simulation {
         .feed(board_sections/listPATHFeeder)
         .exec(http("boardSectionsList")
         .httpRequest("GET","/boards/${board_id}/sections")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardSectionsList with warm up and reach a constant rate for entire duration
@@ -138,8 +138,8 @@ class BoardsApiSimulation extends Simulation {
         .feed(board_sections/list_pinsPATHFeeder)
         .exec(http("boardSectionsListPins")
         .httpRequest("GET","/boards/${board_id}/sections/${section_id}/pins")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardSectionsListPins with warm up and reach a constant rate for entire duration
@@ -209,9 +209,9 @@ class BoardsApiSimulation extends Simulation {
         .feed(boards/listQUERYFeeder)
         .exec(http("boardsList")
         .httpRequest("GET","/boards")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("privacy","${privacy}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardsList with warm up and reach a constant rate for entire duration
@@ -227,8 +227,8 @@ class BoardsApiSimulation extends Simulation {
         .feed(boards/list_pinsPATHFeeder)
         .exec(http("boardsListPins")
         .httpRequest("GET","/boards/${board_id}/pins")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardsListPins with warm up and reach a constant rate for entire duration

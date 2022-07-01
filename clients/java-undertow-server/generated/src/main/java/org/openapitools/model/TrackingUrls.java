@@ -4,7 +4,7 @@
  * Pinterest's REST API
  *
  * OpenAPI document version: 5.3.0
- * Maintained by: pinterest-api@pinterest.com
+ * Maintained by: blah@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
  */
@@ -25,7 +25,7 @@ import java.util.List;
  */
 
 @ApiModel(description = "Third-party tracking URLs. Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2022-05-08T00:32:08.284608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2022-07-01T12:00:04.324408Z[Etc/UTC]")
 public class TrackingUrls   {
   
   private List<String> impression = new ArrayList<String>();

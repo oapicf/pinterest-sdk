@@ -13,8 +13,8 @@ To see how to make this your own, look here:
 [README](https://openapi-generator.tech)
 
 - API version: 5.3.0
-- Build date: 2022-05-08T00:24:26.831792Z[Etc/UTC]
-For more information, please visit [https://developers.pinterest.com/](https://developers.pinterest.com/)
+- Build date: 2022-07-01T11:57:25.551536Z[Etc/UTC]
+For more information, please visit [https://github.com/cliffano/pinterest-sdk](https://github.com/cliffano/pinterest-sdk)
 
 ### Running the server
 

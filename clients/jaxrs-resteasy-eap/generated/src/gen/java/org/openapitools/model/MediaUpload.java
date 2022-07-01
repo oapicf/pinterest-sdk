@@ -12,7 +12,7 @@ import org.openapitools.model.MediaUploadType;
 import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Media upload that has been registered but not uploaded/processed yet.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-05-08T00:33:44.584572Z[Etc/UTC]")
+@ApiModel(description="Media upload that has been registered but not uploaded/processed yet.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-07-01T12:01:06.911267Z[Etc/UTC]")
 public class MediaUpload   {
   
 

@@ -2,7 +2,7 @@
 
 Pinterest's REST API
 
-For more information, please visit [https://developers.pinterest.com/](https://developers.pinterest.com/)
+For more information, please visit [https://github.com/cliffano/pinterest-sdk](https://github.com/cliffano/pinterest-sdk)
 
 ## Overview
 
@@ -232,5 +232,5 @@ cargo doc --open
 
 ## Author
 
-pinterest-api@pinterest.com
+blah@cliffano.com
 
