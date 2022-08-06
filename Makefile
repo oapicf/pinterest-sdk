@@ -1,125 +1,37 @@
-# Excluded due to unexpected exception: k6
-LANGS = ada ada-server android apache2 apex asciidoc aspnetcore avro-schema bash crystal c clojure cwiki cpp-qt-client cpp-qt-qhttpengine-server cpp-pistache-server cpp-restbed-server cpp-restsdk cpp-tiny cpp-tizen cpp-ue4 csharp csharp-netcore csharp-dotnet2 csharp-nancyfx-deprecated csharp-netcore-functions dart dart-dio dart-dio-next dart-jaguar eiffel elixir elm erlang-client erlang-proper erlang-server flash-deprecated fsharp-functions fsharp-giraffe-server go go-deprecated go-echo-server go-server go-gin-server graphql-schema graphql-nodejs-express-server groovy kotlin kotlin-server kotlin-server-deprecated kotlin-spring kotlin-vertx ktorm-schema haskell-http-client haskell haskell-yesod java jaxrs-cxf-client java-inflector java-micronaut-client java-micronaut-server java-msf4j java-pkmst java-play-framework java-undertow-server java-vertx java-vertx-web java-camel jaxrs-cxf jaxrs-cxf-extended jaxrs-cxf-cdi jaxrs-jersey jaxrs-resteasy jaxrs-resteasy-eap jaxrs-spec javascript javascript-apollo javascript-flowtyped javascript-closure-angular jmeter lua markdown mysql-schema nim nodejs-express-server objc ocaml openapi openapi-yaml plantuml perl php php-laravel php-lumen php-slim-deprecated php-slim4 php-silex-deprecated php-symfony php-mezzio-ph php-dt powershell protobuf-schema python-legacy python python-fastapi python-experimental python-flask python-aiohttp python-blueplanet r ruby ruby-on-rails ruby-sinatra rust rust-server scalatra scala-akka scala-akka-http-server scala-finch scala-httpclient-deprecated scala-gatling scala-lagom-server scala-play-server scala-sttp scalaz spring dynamic-html html html2 swift5 typescript typescript-angular typescript-angularjs-deprecated typescript-aurelia typescript-axios typescript-fetch typescript-inversify typescript-jquery typescript-nestjs typescript-node typescript-redux-query typescript-rxjs wsdl-schema
-LANGS_PRIMARY = java javascript python ruby
-oag_version = 5.4.0
-version ?= 1.1.1-pre.0
+SPEC_URI=https://raw.githubusercontent.com/pinterest/api-description/main/v5/openapi.yaml
 
-ci: clean deps generate test-javascript test-python test-ruby doc
-
-clean:
-	rm -rf clients/*/generated
-
-deps:
-	mkdir -p specification/ && curl https://raw.githubusercontent.com/pinterest/api-description/main/v5/openapi.yaml --output specification/pinterest.yml
-	yq -i '.info.contact.name = "Cliffano Subagio" | .info.contact.url = "https://github.com/cliffano/pinterest-sdk" | .info.contact.email = "blah@cliffano.com"' specification/pinterest.yml
-	docker pull openapitools/openapi-generator-cli:v$(oag_version)
-	npm install -g bootprint bootprint-openapi gh-pages mocha
-
-conf-placeholder:
-	for lang in ${LANGS} ; do \
-	  mkdir -p clients/$$lang/; \
-	  cp fixtures/conf-placeholder.json clients/$$lang/conf.json; \
-	done
-
-local-generate:
-	LOCAL=true make generate
+ci:
+	make -f Makefile-swaggy-c ci \
+	  SPEC_URI=${SPEC_URI} \
+		GEN_BASE_DIR=/home/runner/work/pinterest-sdk/pinterest-sdk
+	make overwrite-spec
+	make -f Makefile-swaggy-c ci \
+	  SPEC_URI=${SPEC_URI} \
+		GEN_BASE_DIR=/home/runner/work/pinterest-sdk/pinterest-sdk
 
 generate:
-	if [ "${LOCAL}" = "true" ]; then \
-	  make  generate-langs GEN_BASE_DIR=/Users/cliffano/dev/workspace-studio/pinterest-sdk; \
-	elif [ "${GITHUB_ACTIONS}" = "true" ]; then \
-	  make generate-langs GEN_BASE_DIR=/home/runner/work/pinterest-sdk/pinterest-sdk; \
-	fi
+	make -f Makefile-swaggy-c clean deps init-spec \
+	  SPEC_URI=${SPEC_URI} \
+		GEN_BASE_DIR=/Users/cliffano/dev/workspace-studio/pinterest-sdk
+	make overwrite-spec
+	make -f Makefile-swaggy-c generate-primary build-javascript build-python build-ruby test-javascript test-python test-ruby doc \
+	  SPEC_URI=${SPEC_URI} \
+		GEN_BASE_DIR=/Users/cliffano/dev/workspace-studio/pinterest-sdk
 
-generate-langs:
-	for lang in ${LANGS} ; do \
-	  docker \
-		  run \
-		  --rm \
-		  -v $(GEN_BASE_DIR):/local openapitools/openapi-generator-cli:v$(oag_version) \
-		  generate \
-		  --global-property skipFormModel=false \
-		  --global-property generateAliasAsModel=true \
-		  --input-spec /local/specification/pinterest.yml \
-		  --config /local/clients/$$lang/conf.json \
-		  --generator-name $$lang \
-		  --output /local/clients/$$lang/generated; \
-	done
+overwrite-spec:
+	yq -i '.info.contact.name = "Cliffano Subagio" | .info.contact.url = "https://github.com/cliffano/pinterest-sdk" | .info.contact.email = "blah@cliffano.com"' stage/specification.yml
 
-generate-primary:
-	if [ "${LOCAL}" = "true" ]; then \
-	  make  generate-langs-primary GEN_BASE_DIR=/Users/cliffano/dev/workspace-studio/pinterest-sdk; \
-	elif [ "${GITHUB_ACTIONS}" = "true" ]; then \
-	  make generate-langs-primary GEN_BASE_DIR=/home/runner/work/pinterest-sdk/pinterest-sdk; \
-	fi
+publish-javascript:
+	make -f Makefile-swaggy-c publish-javascript
 
-generate-langs-primary:
-	for lang in ${LANGS_PRIMARY} ; do \
-	  docker \
-		  run \
-		  --rm \
-		  -v $(GEN_BASE_DIR):/local openapitools/openapi-generator-cli:v$(oag_version) \
-		  generate \
-		  --input-spec /local/specification/pinterest.yml \
-		  --config /local/clients/$$lang/conf.json \
-		  --generator-name $$lang \
-		  --output /local/clients/$$lang/generated; \
-	done
+publish-python:
+	make -f Makefile-swaggy-c publish-python
 
-build-javascript:
-	npm install -g babel-cli
-	cd clients/javascript/generated/ && \
-	  npm install && \
-	  npm link && \
-	  npm run build
-	cd test/javascript/ && \
-	  npm link ../../clients/javascript/generated/
-
-build-python:
-	sudo apt-get install -y python-setuptools
-	pip install twine wheel
-	cd clients/python/generated/ && \
-	  pip install -r requirements.txt && \
-	  python3 setup.py sdist bdist_wheel && \
-	  python3 setup.py install
-
-build-ruby:
-	cd clients/ruby/generated/ && \
-	  gem install bundler --version=1.17.3 && \
-	  bundle install --binstubs && \
-	  gem build pinterest_sdk.gemspec && \
-	  gem install ./pinterest_sdk-*.gem
-
-test-javascript: build-javascript
-	cd clients/javascript/generated/ && \
-	  npm run test
-	mocha --timeout 5000 test/javascript/
-
-test-python: build-python
-	cd clients/python/generated/ && \
-	  twine check dist/*
-
-test-ruby: build-ruby
-
-publish-javascript: build-javascript
-	cd clients/javascript/generated/ && \
-	  npm publish
-
-publish-python: build-python
-	cd clients/python/generated/ && \
-	  twine upload dist/*
-
-publish-ruby: build-ruby
-	cd clients/ruby/generated/ && \
-	  gem push `ls pinterest_sdk-*.gem`
-
-doc:
-	bootprint openapi specification/pinterest.yml doc/api/latest/
-
-doc-version:
-	bootprint openapi specification/pinterest.yml doc/api/$(version)/
+publish-ruby:
+	make -f Makefile-swaggy-c publish-ruby
 
 doc-publish:
-	CACHE_DIR=/tmp gh-pages --dist doc/
+	make -f Makefile-swaggy-c deps init-spec doc-latest doc-publish \
+	  SPEC_URI=${SPEC_URI} \
 
-.PHONY: clean conf-placeholder deps generate build-javascript build-python build-ruby test-javascript test-python test-ruby publish-javascript publish-python publish-ruby doc doc-publish
+.PHONY: ci generate publish-javascript publish-python publish-ruby doc-publish

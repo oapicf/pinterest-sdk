@@ -19,7 +19,7 @@ Published packages
 | Python | [pinterestsdk]((https://pypi.python.org/pypi/pinterestsdk)) | [![Published Version](https://img.shields.io/pypi/v/pinterestsdk.svg)](https://pypi.python.org/pypi/pinterestsdk) |
 | Ruby | [pinterest_sdk]((https://rubygems.org/gems/pinterest_sdk)) | [![Published Version](https://img.shields.io/gem/v/pinterest_sdk.svg)](https://rubygems.org/gems/pinterest_sdk) |
 
-Version Matrix
+Version matrix
 --------------
 
 | Pinterest SDK Version | Pinterest OpenAPI Spec Version | OpenAPI Version | OpenAPI Generator Version |
