@@ -24,15 +24,9 @@ Version matrix
 
 | Pinterest SDK Version | Pinterest OpenAPI Spec Version | OpenAPI Version | OpenAPI Generator Version |
 |-----------------------|--------------------------------|-----------------|---------------------------|
+| 1.2.0 | 5.3.0 | 3.0.3 | 6.0.1 |
 | 1.1.0 | 5.3.0 | 3.0.3 | 5.4.0 |
 | 1.0.0 | 5.3.0 | 3.0.3 | 5.4.0 |
-
-Usage
------
-
-Generate client libraries of the currently supported languages:
-
-    make generate GEN_BASE_DIR=<path/to/pinterest-sdk>
 
 Installation
 ------------

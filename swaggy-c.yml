@@ -1,0 +1,9 @@
+spec_uri: https://raw.githubusercontent.com/pinterest/api-description/main/v5/openapi.yaml
+version: 1.1.1-pre.0
+contact:
+  name: Cliffano Subagio
+  url: https://github.com/cliffano/pinterest-sdk
+  email: blah@cliffano.com
+base_dir:
+  github_actions: /home/runner/work/pinterest-sdk/pinterest-sdk
+  local: /Users/cliffano/dev/workspace-studio/pinterest-sdk
