@@ -29,7 +29,7 @@ CampaignCommon::__init()
 	//lifetime_spend_cap = int(0);
 	//daily_spend_cap = int(0);
 	//order_line_id = std::string();
-	//tracking_urls = null;
+	//tracking_urls = new AdCommon_tracking_urls();
 	//start_time = int(0);
 	//end_time = int(0);
 }
@@ -161,11 +161,11 @@ CampaignCommon::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrackingUrls")) {
-			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
+		if (isprimitive("AdCommon_tracking_urls")) {
+			jsonToValue(&tracking_urls, node, "AdCommon_tracking_urls", "AdCommon_tracking_urls");
 		} else {
 			
-			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
+			AdCommon_tracking_urls* obj = static_cast<AdCommon_tracking_urls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -258,13 +258,13 @@ CampaignCommon::toJson()
 	}
 	const gchar *order_line_idKey = "order_line_id";
 	json_object_set_member(pJsonObject, order_line_idKey, node);
-	if (isprimitive("TrackingUrls")) {
-		TrackingUrls obj = getTrackingUrls();
-		node = converttoJson(&obj, "TrackingUrls", "");
+	if (isprimitive("AdCommon_tracking_urls")) {
+		AdCommon_tracking_urls obj = getTrackingUrls();
+		node = converttoJson(&obj, "AdCommon_tracking_urls", "");
 	}
 	else {
 		
-		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
+		AdCommon_tracking_urls obj = static_cast<AdCommon_tracking_urls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -370,14 +370,14 @@ CampaignCommon::setOrderLineId(std::string  order_line_id)
 	this->order_line_id = order_line_id;
 }
 
-TrackingUrls
+AdCommon_tracking_urls
 CampaignCommon::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-CampaignCommon::setTrackingUrls(TrackingUrls  tracking_urls)
+CampaignCommon::setTrackingUrls(AdCommon_tracking_urls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }

@@ -27,25 +27,27 @@ AdGroupResponse::__init()
 	//status = std::string();
 	//budget_in_micro_currency = int(0);
 	//bid_in_micro_currency = int(0);
-	//budget_type = std::string();
+	//bid_strategy_type = std::string();
+	//budget_type = new BudgetType();
 	//start_time = int(0);
 	//end_time = int(0);
 	//new std::map()std::map> targeting_spec;
 	//lifetime_frequency_cap = int(0);
-	//tracking_urls = null;
+	//tracking_urls = new AdGroupCommon_tracking_urls();
 	//auto_targeting_enabled = bool(false);
 	//placement_group = std::string();
 	//pacing_delivery_type = std::string();
-	//conversion_learning_mode_type = std::string();
-	//summary_status = std::string();
-	//feed_profile_id = std::string();
 	//campaign_id = std::string();
 	//billable_event = new ActionType();
 	//id = std::string();
-	//type = std::string();
 	//ad_account_id = std::string();
 	//created_time = int(0);
 	//updated_time = int(0);
+	//type = std::string();
+	//conversion_learning_mode_type = std::string();
+	//summary_status = std::string();
+	//feed_profile_id = std::string();
+	//dca_assets = null;
 }
 
 void
@@ -70,6 +72,11 @@ AdGroupResponse::__cleanup()
 	//
 	//delete bid_in_micro_currency;
 	//bid_in_micro_currency = NULL;
+	//}
+	//if(bid_strategy_type != NULL) {
+	//
+	//delete bid_strategy_type;
+	//bid_strategy_type = NULL;
 	//}
 	//if(budget_type != NULL) {
 	//
@@ -116,21 +123,6 @@ AdGroupResponse::__cleanup()
 	//delete pacing_delivery_type;
 	//pacing_delivery_type = NULL;
 	//}
-	//if(conversion_learning_mode_type != NULL) {
-	//
-	//delete conversion_learning_mode_type;
-	//conversion_learning_mode_type = NULL;
-	//}
-	//if(summary_status != NULL) {
-	//
-	//delete summary_status;
-	//summary_status = NULL;
-	//}
-	//if(feed_profile_id != NULL) {
-	//
-	//delete feed_profile_id;
-	//feed_profile_id = NULL;
-	//}
 	//if(campaign_id != NULL) {
 	//
 	//delete campaign_id;
@@ -146,11 +138,6 @@ AdGroupResponse::__cleanup()
 	//delete id;
 	//id = NULL;
 	//}
-	//if(type != NULL) {
-	//
-	//delete type;
-	//type = NULL;
-	//}
 	//if(ad_account_id != NULL) {
 	//
 	//delete ad_account_id;
@@ -165,6 +152,31 @@ AdGroupResponse::__cleanup()
 	//
 	//delete updated_time;
 	//updated_time = NULL;
+	//}
+	//if(type != NULL) {
+	//
+	//delete type;
+	//type = NULL;
+	//}
+	//if(conversion_learning_mode_type != NULL) {
+	//
+	//delete conversion_learning_mode_type;
+	//conversion_learning_mode_type = NULL;
+	//}
+	//if(summary_status != NULL) {
+	//
+	//delete summary_status;
+	//summary_status = NULL;
+	//}
+	//if(feed_profile_id != NULL) {
+	//
+	//delete feed_profile_id;
+	//feed_profile_id = NULL;
+	//}
+	//if(dca_assets != NULL) {
+	//
+	//delete dca_assets;
+	//dca_assets = NULL;
 	//}
 	//
 }
@@ -218,14 +230,28 @@ AdGroupResponse::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *bid_strategy_typeKey = "bid_strategy_type";
+	node = json_object_get_member(pJsonObject, bid_strategy_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&bid_strategy_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *budget_typeKey = "budget_type";
 	node = json_object_get_member(pJsonObject, budget_typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&budget_type, node, "std::string", "");
+		if (isprimitive("BudgetType")) {
+			jsonToValue(&budget_type, node, "BudgetType", "BudgetType");
 		} else {
+			
+			BudgetType* obj = static_cast<BudgetType*> (&budget_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -279,11 +305,11 @@ AdGroupResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrackingUrls")) {
-			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
+		if (isprimitive("AdGroupCommon_tracking_urls")) {
+			jsonToValue(&tracking_urls, node, "AdGroupCommon_tracking_urls", "AdGroupCommon_tracking_urls");
 		} else {
 			
-			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
+			AdGroupCommon_tracking_urls* obj = static_cast<AdGroupCommon_tracking_urls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -317,39 +343,6 @@ AdGroupResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("PacingDeliveryType")) {
 			jsonToValue(&pacing_delivery_type, node, "PacingDeliveryType", "PacingDeliveryType");
-		} else {
-			
-		}
-	}
-	const gchar *conversion_learning_mode_typeKey = "conversion_learning_mode_type";
-	node = json_object_get_member(pJsonObject, conversion_learning_mode_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&conversion_learning_mode_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *summary_statusKey = "summary_status";
-	node = json_object_get_member(pJsonObject, summary_statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("AdGroupSummaryStatus")) {
-			jsonToValue(&summary_status, node, "AdGroupSummaryStatus", "AdGroupSummaryStatus");
-		} else {
-			
-		}
-	}
-	const gchar *feed_profile_idKey = "feed_profile_id";
-	node = json_object_get_member(pJsonObject, feed_profile_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&feed_profile_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -390,17 +383,6 @@ AdGroupResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *typeKey = "type";
-	node = json_object_get_member(pJsonObject, typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *ad_account_idKey = "ad_account_id";
 	node = json_object_get_member(pJsonObject, ad_account_idKey);
 	if (node !=NULL) {
@@ -431,6 +413,64 @@ AdGroupResponse::fromJson(char* jsonStr)
 		if (isprimitive("int")) {
 			jsonToValue(&updated_time, node, "int", "");
 		} else {
+			
+		}
+	}
+	const gchar *typeKey = "type";
+	node = json_object_get_member(pJsonObject, typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&type, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *conversion_learning_mode_typeKey = "conversion_learning_mode_type";
+	node = json_object_get_member(pJsonObject, conversion_learning_mode_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&conversion_learning_mode_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *summary_statusKey = "summary_status";
+	node = json_object_get_member(pJsonObject, summary_statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AdGroupSummaryStatus")) {
+			jsonToValue(&summary_status, node, "AdGroupSummaryStatus", "AdGroupSummaryStatus");
+		} else {
+			
+		}
+	}
+	const gchar *feed_profile_idKey = "feed_profile_id";
+	node = json_object_get_member(pJsonObject, feed_profile_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&feed_profile_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *dca_assetsKey = "dca_assets";
+	node = json_object_get_member(pJsonObject, dca_assetsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AnyType")) {
+			jsonToValue(&dca_assets, node, "AnyType", "");
+		} else {
+			
+			AnyType* obj = static_cast<AnyType*> (&dca_assets);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -483,10 +523,24 @@ AdGroupResponse::toJson()
 	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
 	json_object_set_member(pJsonObject, bid_in_micro_currencyKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getBudgetType();
+		std::string obj = getBidStrategyType();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
+		
+	}
+	const gchar *bid_strategy_typeKey = "bid_strategy_type";
+	json_object_set_member(pJsonObject, bid_strategy_typeKey, node);
+	if (isprimitive("BudgetType")) {
+		BudgetType obj = getBudgetType();
+		node = converttoJson(&obj, "BudgetType", "");
+	}
+	else {
+		
+		BudgetType obj = static_cast<BudgetType> (getBudgetType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *budget_typeKey = "budget_type";
@@ -537,13 +591,13 @@ AdGroupResponse::toJson()
 	}
 	const gchar *lifetime_frequency_capKey = "lifetime_frequency_cap";
 	json_object_set_member(pJsonObject, lifetime_frequency_capKey, node);
-	if (isprimitive("TrackingUrls")) {
-		TrackingUrls obj = getTrackingUrls();
-		node = converttoJson(&obj, "TrackingUrls", "");
+	if (isprimitive("AdGroupCommon_tracking_urls")) {
+		AdGroupCommon_tracking_urls obj = getTrackingUrls();
+		node = converttoJson(&obj, "AdGroupCommon_tracking_urls", "");
 	}
 	else {
 		
-		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
+		AdGroupCommon_tracking_urls obj = static_cast<AdGroupCommon_tracking_urls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -579,33 +633,6 @@ AdGroupResponse::toJson()
 	const gchar *pacing_delivery_typeKey = "pacing_delivery_type";
 	json_object_set_member(pJsonObject, pacing_delivery_typeKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getConversionLearningModeType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *conversion_learning_mode_typeKey = "conversion_learning_mode_type";
-	json_object_set_member(pJsonObject, conversion_learning_mode_typeKey, node);
-	if (isprimitive("AdGroupSummaryStatus")) {
-		AdGroupSummaryStatus obj = getSummaryStatus();
-		node = converttoJson(&obj, "AdGroupSummaryStatus", "");
-	}
-	else {
-		
-	}
-	const gchar *summary_statusKey = "summary_status";
-	json_object_set_member(pJsonObject, summary_statusKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getFeedProfileId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *feed_profile_idKey = "feed_profile_id";
-	json_object_set_member(pJsonObject, feed_profile_idKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getCampaignId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -638,15 +665,6 @@ AdGroupResponse::toJson()
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getAdAccountId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -673,6 +691,56 @@ AdGroupResponse::toJson()
 	}
 	const gchar *updated_timeKey = "updated_time";
 	json_object_set_member(pJsonObject, updated_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *typeKey = "type";
+	json_object_set_member(pJsonObject, typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getConversionLearningModeType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *conversion_learning_mode_typeKey = "conversion_learning_mode_type";
+	json_object_set_member(pJsonObject, conversion_learning_mode_typeKey, node);
+	if (isprimitive("AdGroupSummaryStatus")) {
+		AdGroupSummaryStatus obj = getSummaryStatus();
+		node = converttoJson(&obj, "AdGroupSummaryStatus", "");
+	}
+	else {
+		
+	}
+	const gchar *summary_statusKey = "summary_status";
+	json_object_set_member(pJsonObject, summary_statusKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getFeedProfileId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *feed_profile_idKey = "feed_profile_id";
+	json_object_set_member(pJsonObject, feed_profile_idKey, node);
+	if (isprimitive("AnyType")) {
+		AnyType obj = getDcaAssets();
+		node = converttoJson(&obj, "AnyType", "");
+	}
+	else {
+		
+		AnyType obj = static_cast<AnyType> (getDcaAssets());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *dca_assetsKey = "dca_assets";
+	json_object_set_member(pJsonObject, dca_assetsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -730,13 +798,25 @@ AdGroupResponse::setBidInMicroCurrency(int  bid_in_micro_currency)
 }
 
 std::string
+AdGroupResponse::getBidStrategyType()
+{
+	return bid_strategy_type;
+}
+
+void
+AdGroupResponse::setBidStrategyType(std::string  bid_strategy_type)
+{
+	this->bid_strategy_type = bid_strategy_type;
+}
+
+BudgetType
 AdGroupResponse::getBudgetType()
 {
 	return budget_type;
 }
 
 void
-AdGroupResponse::setBudgetType(std::string  budget_type)
+AdGroupResponse::setBudgetType(BudgetType  budget_type)
 {
 	this->budget_type = budget_type;
 }
@@ -789,14 +869,14 @@ AdGroupResponse::setLifetimeFrequencyCap(int  lifetime_frequency_cap)
 	this->lifetime_frequency_cap = lifetime_frequency_cap;
 }
 
-TrackingUrls
+AdGroupCommon_tracking_urls
 AdGroupResponse::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdGroupResponse::setTrackingUrls(TrackingUrls  tracking_urls)
+AdGroupResponse::setTrackingUrls(AdGroupCommon_tracking_urls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -838,42 +918,6 @@ AdGroupResponse::setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type)
 }
 
 std::string
-AdGroupResponse::getConversionLearningModeType()
-{
-	return conversion_learning_mode_type;
-}
-
-void
-AdGroupResponse::setConversionLearningModeType(std::string  conversion_learning_mode_type)
-{
-	this->conversion_learning_mode_type = conversion_learning_mode_type;
-}
-
-AdGroupSummaryStatus
-AdGroupResponse::getSummaryStatus()
-{
-	return summary_status;
-}
-
-void
-AdGroupResponse::setSummaryStatus(AdGroupSummaryStatus  summary_status)
-{
-	this->summary_status = summary_status;
-}
-
-std::string
-AdGroupResponse::getFeedProfileId()
-{
-	return feed_profile_id;
-}
-
-void
-AdGroupResponse::setFeedProfileId(std::string  feed_profile_id)
-{
-	this->feed_profile_id = feed_profile_id;
-}
-
-std::string
 AdGroupResponse::getCampaignId()
 {
 	return campaign_id;
@@ -910,18 +954,6 @@ AdGroupResponse::setId(std::string  id)
 }
 
 std::string
-AdGroupResponse::getType()
-{
-	return type;
-}
-
-void
-AdGroupResponse::setType(std::string  type)
-{
-	this->type = type;
-}
-
-std::string
 AdGroupResponse::getAdAccountId()
 {
 	return ad_account_id;
@@ -955,6 +987,66 @@ void
 AdGroupResponse::setUpdatedTime(int  updated_time)
 {
 	this->updated_time = updated_time;
+}
+
+std::string
+AdGroupResponse::getType()
+{
+	return type;
+}
+
+void
+AdGroupResponse::setType(std::string  type)
+{
+	this->type = type;
+}
+
+std::string
+AdGroupResponse::getConversionLearningModeType()
+{
+	return conversion_learning_mode_type;
+}
+
+void
+AdGroupResponse::setConversionLearningModeType(std::string  conversion_learning_mode_type)
+{
+	this->conversion_learning_mode_type = conversion_learning_mode_type;
+}
+
+AdGroupSummaryStatus
+AdGroupResponse::getSummaryStatus()
+{
+	return summary_status;
+}
+
+void
+AdGroupResponse::setSummaryStatus(AdGroupSummaryStatus  summary_status)
+{
+	this->summary_status = summary_status;
+}
+
+std::string
+AdGroupResponse::getFeedProfileId()
+{
+	return feed_profile_id;
+}
+
+void
+AdGroupResponse::setFeedProfileId(std::string  feed_profile_id)
+{
+	this->feed_profile_id = feed_profile_id;
+}
+
+AnyType
+AdGroupResponse::getDcaAssets()
+{
+	return dca_assets;
+}
+
+void
+AdGroupResponse::setDcaAssets(AnyType  dca_assets)
+{
+	this->dca_assets = dca_assets;
 }
 
 

@@ -164,7 +164,7 @@ static bool mediaCreateHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = mediaCreateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -326,7 +326,7 @@ static bool mediaGetHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = mediaGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -377,14 +377,14 @@ bool MediaManager::mediaGetSync(char * accessToken,
 static bool mediaListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
+	void(* handler)(Media_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Media_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Paginated out;
+	Media_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -392,12 +392,12 @@ static bool mediaListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 
 
 
-		if (isprimitive("Paginated")) {
+		if (isprimitive("Media_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
+			jsonToValue(&out, pJson, "Media_list_200_response", "Media_list_200_response");
 			json_node_free(pJson);
 
-			if ("Paginated" == "std::string") {
+			if ("Media_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -436,7 +436,7 @@ static bool mediaListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 
 static bool mediaListHelper(char * accessToken,
 	std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Media_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -491,7 +491,7 @@ static bool mediaListHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = mediaListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -521,7 +521,7 @@ static bool mediaListHelper(char * accessToken,
 
 bool MediaManager::mediaListAsync(char * accessToken,
 	std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Media_list_200_response, Error, void* )
 	, void* userData)
 {
 	return mediaListHelper(accessToken,
@@ -531,7 +531,7 @@ bool MediaManager::mediaListAsync(char * accessToken,
 
 bool MediaManager::mediaListSync(char * accessToken,
 	std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Media_list_200_response, Error, void* )
 	, void* userData)
 {
 	return mediaListHelper(accessToken,

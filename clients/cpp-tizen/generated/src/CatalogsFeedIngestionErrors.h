@@ -45,48 +45,32 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Some items include images that can't be found.
 	 */
-	int getImageDownloadError();
+	int getIMAGEDOWNLOADERROR();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include images that can't be found.
 	 */
-	void setImageDownloadError(int  image_download_error);
-	/*! \brief Get 
+	void setIMAGEDOWNLOADERROR(int  iMAGE_DOWNLOAD_ERROR);
+	/*! \brief Get We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
 	 */
-	int getImageDownloadConnectionTimeout();
+	int getLINELEVELINTERNALERROR();
 
-	/*! \brief Set 
+	/*! \brief Set We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
 	 */
-	void setImageDownloadConnectionTimeout(int  image_download_connection_timeout);
-	/*! \brief Get 
+	void setLINELEVELINTERNALERROR(int  lINE_LEVEL_INTERNAL_ERROR);
+	/*! \brief Get The product count has decreased by more than 99% compared to the last successful ingestion.
 	 */
-	int getImageFormatUnrecognize();
+	int getLARGEPRODUCTCOUNTDECREASE();
 
-	/*! \brief Set 
+	/*! \brief Set The product count has decreased by more than 99% compared to the last successful ingestion.
 	 */
-	void setImageFormatUnrecognize(int  image_format_unrecognize);
-	/*! \brief Get 
-	 */
-	int getLineLevelInternalError();
-
-	/*! \brief Set 
-	 */
-	void setLineLevelInternalError(int  line_level_internal_error);
-	/*! \brief Get 
-	 */
-	int getLargeProductCountDecrease();
-
-	/*! \brief Set 
-	 */
-	void setLargeProductCountDecrease(int  large_product_count_decrease);
+	void setLARGEPRODUCTCOUNTDECREASE(int  lARGE_PRODUCT_COUNT_DECREASE);
 
 private:
-	int image_download_error;
-	int image_download_connection_timeout;
-	int image_format_unrecognize;
-	int line_level_internal_error;
-	int large_product_count_decrease;
+	int iMAGE_DOWNLOAD_ERROR;
+	int lINE_LEVEL_INTERNAL_ERROR;
+	int lARGE_PRODUCT_COUNT_DECREASE;
 	void __init();
 	void __cleanup();
 

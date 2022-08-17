@@ -1,7 +1,0 @@
-.openapi-generator-ignore
-README.md
-Setup.hs
-lib/PinterestREST/API.hs
-lib/PinterestREST/Types.hs
-pinterest-rest.cabal
-stack.yaml

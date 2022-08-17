@@ -55,12 +55,12 @@ AnalyticsMetricsResponse::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<AnalyticsMetricsResponse_daily_metrics> new_list;
-			AnalyticsMetricsResponse_daily_metrics inst;
+			list<AnalyticsMetricsResponse_daily_metrics_inner> new_list;
+			AnalyticsMetricsResponse_daily_metrics_inner inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("AnalyticsMetricsResponse_daily_metrics")) {
-					jsonToValue(&inst, temp_json, "AnalyticsMetricsResponse_daily_metrics", "");
+				if (isprimitive("AnalyticsMetricsResponse_daily_metrics_inner")) {
+					jsonToValue(&inst, temp_json, "AnalyticsMetricsResponse_daily_metrics_inner", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -96,18 +96,18 @@ AnalyticsMetricsResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("AnalyticsMetricsResponse_daily_metrics")) {
-		list<AnalyticsMetricsResponse_daily_metrics> new_list = static_cast<list <AnalyticsMetricsResponse_daily_metrics> > (getDailyMetrics());
-		node = converttoJson(&new_list, "AnalyticsMetricsResponse_daily_metrics", "array");
+	if (isprimitive("AnalyticsMetricsResponse_daily_metrics_inner")) {
+		list<AnalyticsMetricsResponse_daily_metrics_inner> new_list = static_cast<list <AnalyticsMetricsResponse_daily_metrics_inner> > (getDailyMetrics());
+		node = converttoJson(&new_list, "AnalyticsMetricsResponse_daily_metrics_inner", "array");
 	} else {
 		node = json_node_alloc();
-		list<AnalyticsMetricsResponse_daily_metrics> new_list = static_cast<list <AnalyticsMetricsResponse_daily_metrics> > (getDailyMetrics());
+		list<AnalyticsMetricsResponse_daily_metrics_inner> new_list = static_cast<list <AnalyticsMetricsResponse_daily_metrics_inner> > (getDailyMetrics());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<AnalyticsMetricsResponse_daily_metrics>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AnalyticsMetricsResponse_daily_metrics_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			AnalyticsMetricsResponse_daily_metrics obj = *it;
+			AnalyticsMetricsResponse_daily_metrics_inner obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -148,14 +148,14 @@ AnalyticsMetricsResponse::toJson()
 	return ret;
 }
 
-std::list<AnalyticsMetricsResponse_daily_metrics>
+std::list<AnalyticsMetricsResponse_daily_metrics_inner>
 AnalyticsMetricsResponse::getDailyMetrics()
 {
 	return daily_metrics;
 }
 
 void
-AnalyticsMetricsResponse::setDailyMetrics(std::list <AnalyticsMetricsResponse_daily_metrics> daily_metrics)
+AnalyticsMetricsResponse::setDailyMetrics(std::list <AnalyticsMetricsResponse_daily_metrics_inner> daily_metrics)
 {
 	this->daily_metrics = daily_metrics;
 }

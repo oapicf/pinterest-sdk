@@ -1,2 +1,0 @@
-testCase,httpStatusCode,catalogsProductGroupCreateRequest,productGroupId,feedId,bookmark,pageSize,productGroupId,catalogsProductGroupUpdateRequest,feedId,bookmark,pageSize,catalogsFeedsCreateRequest,feedId,feedId,bookmark,pageSize,feedId,catalogsFeedsUpdateRequest,country,itemIds,language,batchId,catalogsItemsBatchRequest
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

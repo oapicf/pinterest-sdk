@@ -1,14 +1,15 @@
 /*
- * PinMedia.h
+ * Pin_media.h
  *
- * Pin media objects.
+ * 
  */
 
-#ifndef _PinMedia_H_
-#define _PinMedia_H_
+#ifndef _Pin_media_H_
+#define _Pin_media_H_
 
 
 #include <string>
+#include "PinMedia.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -20,22 +21,22 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin media objects.
+/*! \brief 
  *
  *  \ingroup Models
  *
  */
 
-class PinMedia : public Object {
+class Pin_media : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	PinMedia();
-	PinMedia(char* str);
+	Pin_media();
+	Pin_media(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~PinMedia();
+	virtual ~Pin_media();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -62,4 +63,4 @@ private:
 }
 }
 
-#endif /* _PinMedia_H_ */
+#endif /* _Pin_media_H_ */

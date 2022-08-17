@@ -5,14 +5,38 @@ HEADERS += \
     $${PWD}/OAIAccount.h \
     $${PWD}/OAIActionType.h \
     $${PWD}/OAIAdAccount.h \
+    $${PWD}/OAIAdAccountAnalyticsResponse_inner.h \
+    $${PWD}/OAIAdAccountCreateRequest.h \
+    $${PWD}/OAIAdArrayResponse.h \
+    $${PWD}/OAIAdArrayResponseElement.h \
+    $${PWD}/OAIAdCommon.h \
+    $${PWD}/OAIAdCommon_tracking_urls.h \
+    $${PWD}/OAIAdCreateRequest_inner.h \
+    $${PWD}/OAIAdGroupArrayResponse.h \
+    $${PWD}/OAIAdGroupArrayResponseElement.h \
+    $${PWD}/OAIAdGroupCommon.h \
+    $${PWD}/OAIAdGroupCommon_tracking_urls.h \
+    $${PWD}/OAIAdGroupCreateRequest.h \
+    $${PWD}/OAIAdGroupCreateRequest_allOf.h \
     $${PWD}/OAIAdGroupResponse.h \
     $${PWD}/OAIAdGroupResponse_allOf.h \
-    $${PWD}/OAIAdGroupResponse_allOf_1.h \
     $${PWD}/OAIAdGroupSummaryStatus.h \
+    $${PWD}/OAIAdGroupUpdateRequest.h \
+    $${PWD}/OAIAdGroupUpdateRequest_allOf.h \
+    $${PWD}/OAIAdGroupsAnalyticsResponse_inner.h \
+    $${PWD}/OAIAdPreviewCreateFromImage.h \
+    $${PWD}/OAIAdPreviewCreateFromPin.h \
+    $${PWD}/OAIAdPreviewRequest.h \
+    $${PWD}/OAIAdPreviewURLResponse.h \
     $${PWD}/OAIAdResponse.h \
     $${PWD}/OAIAdResponse_allOf.h \
-    $${PWD}/OAIAdResponse_allOf_1.h \
+    $${PWD}/OAIAdUpdateRequest_1.h \
+    $${PWD}/OAIAdUpdateRequest_inner.h \
     $${PWD}/OAIAd_account_owner.h \
+    $${PWD}/OAIAd_accounts_list_200_response.h \
+    $${PWD}/OAIAd_accounts_list_200_response_allOf.h \
+    $${PWD}/OAIAd_groups_list_200_response.h \
+    $${PWD}/OAIAd_groups_list_200_response_allOf.h \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest.h \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest_allOf.h \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest_allOf_1.h \
@@ -21,22 +45,47 @@ HEADERS += \
     $${PWD}/OAIAdsAnalyticsFilterOperator.h \
     $${PWD}/OAIAdsAnalyticsGetAsyncResponse.h \
     $${PWD}/OAIAdsAnalyticsMetricsFilter.h \
+    $${PWD}/OAIAdsAnalyticsResponse_inner.h \
     $${PWD}/OAIAdsAnalyticsTargetingType.h \
+    $${PWD}/OAIAds_list_200_response.h \
+    $${PWD}/OAIAds_list_200_response_allOf.h \
     $${PWD}/OAIAnalyticsMetricsResponse.h \
-    $${PWD}/OAIAnalyticsMetricsResponse_daily_metrics.h \
+    $${PWD}/OAIAnalyticsMetricsResponse_daily_metrics_inner.h \
     $${PWD}/OAIAvailabilityFilter.h \
     $${PWD}/OAIBatchOperation.h \
     $${PWD}/OAIBatchOperationStatus.h \
+    $${PWD}/OAIBidFloor.h \
+    $${PWD}/OAIBidFloorRequest.h \
+    $${PWD}/OAIBidFloorSpec.h \
     $${PWD}/OAIBoard.h \
     $${PWD}/OAIBoardOwner.h \
     $${PWD}/OAIBoardSection.h \
     $${PWD}/OAIBoardUpdate.h \
+    $${PWD}/OAIBoard_owner.h \
+    $${PWD}/OAIBoard_sections_list_200_response.h \
+    $${PWD}/OAIBoard_sections_list_200_response_allOf.h \
+    $${PWD}/OAIBoard_sections_list_pins_200_response.h \
+    $${PWD}/OAIBoard_sections_list_pins_200_response_allOf.h \
+    $${PWD}/OAIBoards_list_200_response.h \
+    $${PWD}/OAIBoards_list_200_response_allOf.h \
     $${PWD}/OAIBrandFilter.h \
+    $${PWD}/OAIBudgetType.h \
     $${PWD}/OAICampaignCommon.h \
+    $${PWD}/OAICampaignCreateCommon.h \
+    $${PWD}/OAICampaignCreateCommon_allOf.h \
+    $${PWD}/OAICampaignCreateRequest.h \
+    $${PWD}/OAICampaignCreateResponse.h \
+    $${PWD}/OAICampaignCreateResponseData.h \
+    $${PWD}/OAICampaignCreateResponseItem.h \
+    $${PWD}/OAICampaignId.h \
     $${PWD}/OAICampaignResponse.h \
     $${PWD}/OAICampaignResponse_allOf.h \
-    $${PWD}/OAICampaignResponse_allOf_1.h \
     $${PWD}/OAICampaignSummaryStatus.h \
+    $${PWD}/OAICampaignUpdateRequest.h \
+    $${PWD}/OAICampaignUpdateResponse.h \
+    $${PWD}/OAICampaignsAnalyticsResponse_inner.h \
+    $${PWD}/OAICampaigns_list_200_response.h \
+    $${PWD}/OAICampaigns_list_200_response_allOf.h \
     $${PWD}/OAICatalogsDbItem.h \
     $${PWD}/OAICatalogsFeed.h \
     $${PWD}/OAICatalogsFeedCredentials.h \
@@ -53,29 +102,47 @@ HEADERS += \
     $${PWD}/OAICatalogsFeedsCreateRequest.h \
     $${PWD}/OAICatalogsFeedsUpdateRequest.h \
     $${PWD}/OAICatalogsFormat.h \
+    $${PWD}/OAICatalogsItemValidationDetails.h \
+    $${PWD}/OAICatalogsItemValidationErrors.h \
+    $${PWD}/OAICatalogsItemValidationIssue.h \
+    $${PWD}/OAICatalogsItemValidationIssues.h \
+    $${PWD}/OAICatalogsItemValidationWarnings.h \
     $${PWD}/OAICatalogsItems.h \
     $${PWD}/OAICatalogsItemsBatch.h \
     $${PWD}/OAICatalogsItemsBatchRequest.h \
+    $${PWD}/OAICatalogsListProductsByFilterRequest.h \
+    $${PWD}/OAICatalogsListProductsByFilterRequest_oneOf.h \
+    $${PWD}/OAICatalogsProduct.h \
     $${PWD}/OAICatalogsProductGroup.h \
     $${PWD}/OAICatalogsProductGroupCreateRequest.h \
     $${PWD}/OAICatalogsProductGroupCurrencyCriteria.h \
     $${PWD}/OAICatalogsProductGroupFilterKeys.h \
     $${PWD}/OAICatalogsProductGroupFilters.h \
     $${PWD}/OAICatalogsProductGroupFiltersAllOf.h \
+    $${PWD}/OAICatalogsProductGroupFiltersAllOfRequest.h \
+    $${PWD}/OAICatalogsProductGroupFiltersAllOfRequest_anyOf.h \
+    $${PWD}/OAICatalogsProductGroupFiltersAllOfRequest_anyOf_1.h \
     $${PWD}/OAICatalogsProductGroupFiltersAnyOf.h \
     $${PWD}/OAICatalogsProductGroupMultipleStringCriteria.h \
     $${PWD}/OAICatalogsProductGroupMultipleStringListCriteria.h \
     $${PWD}/OAICatalogsProductGroupPricingCriteria.h \
+    $${PWD}/OAICatalogsProductGroupProductCounts.h \
     $${PWD}/OAICatalogsProductGroupStatus.h \
     $${PWD}/OAICatalogsProductGroupType.h \
     $${PWD}/OAICatalogsProductGroupUpdateRequest.h \
+    $${PWD}/OAICatalogsProductMetadata.h \
     $${PWD}/OAICatalogsStatus.h \
     $${PWD}/OAICatalogs_feed_processing_result_fields.h \
+    $${PWD}/OAICatalogs_product_group_feed_based_case.h \
+    $${PWD}/OAICatalogs_product_group_merchant_based_case.h \
+    $${PWD}/OAICatalogs_product_groups_list_200_response.h \
+    $${PWD}/OAICatalogs_product_groups_list_200_response_allOf.h \
     $${PWD}/OAIConditionFilter.h \
     $${PWD}/OAIConversionAttributionWindowDays.h \
     $${PWD}/OAIConversionReportAttributionType.h \
     $${PWD}/OAIConversionReportTimeType.h \
     $${PWD}/OAICountry.h \
+    $${PWD}/OAICreativeType.h \
     $${PWD}/OAICurrency.h \
     $${PWD}/OAICurrencyFilter.h \
     $${PWD}/OAICustomLabel0Filter.h \
@@ -84,9 +151,15 @@ HEADERS += \
     $${PWD}/OAICustomLabel3Filter.h \
     $${PWD}/OAICustomLabel4Filter.h \
     $${PWD}/OAIDataOutputFormat.h \
+    $${PWD}/OAIDataStatus.h \
     $${PWD}/OAIEntityStatus.h \
     $${PWD}/OAIError.h \
+    $${PWD}/OAIException.h \
     $${PWD}/OAIFeed_fields.h \
+    $${PWD}/OAIFeed_processing_results_list_200_response.h \
+    $${PWD}/OAIFeed_processing_results_list_200_response_allOf.h \
+    $${PWD}/OAIFeeds_list_200_response.h \
+    $${PWD}/OAIFeeds_list_200_response_allOf.h \
     $${PWD}/OAIGenderFilter.h \
     $${PWD}/OAIGoogleProductCategory0Filter.h \
     $${PWD}/OAIGoogleProductCategory1Filter.h \
@@ -103,7 +176,13 @@ HEADERS += \
     $${PWD}/OAIItemIdFilter.h \
     $${PWD}/OAIItemProcessingRecord.h \
     $${PWD}/OAIItemProcessingStatus.h \
+    $${PWD}/OAIItemResponse.h \
+    $${PWD}/OAIItemResponse_anyOf.h \
+    $${PWD}/OAIItemResponse_anyOf_1.h \
     $${PWD}/OAIItemValidationEvent.h \
+    $${PWD}/OAIItems.h \
+    $${PWD}/OAIItems_issues_list_200_response.h \
+    $${PWD}/OAIItems_issues_list_200_response_allOf.h \
     $${PWD}/OAILanguage.h \
     $${PWD}/OAIMaxPriceFilter.h \
     $${PWD}/OAIMediaUpload.h \
@@ -113,11 +192,14 @@ HEADERS += \
     $${PWD}/OAIMediaUploadType.h \
     $${PWD}/OAIMediaUpload_allOf.h \
     $${PWD}/OAIMediaUpload_allOf_upload_parameters.h \
+    $${PWD}/OAIMedia_list_200_response.h \
+    $${PWD}/OAIMedia_list_200_response_allOf.h \
     $${PWD}/OAIMetricsReportingLevel.h \
     $${PWD}/OAIMinPriceFilter.h \
     $${PWD}/OAINonNullableCatalogsCurrency.h \
+    $${PWD}/OAINonNullableProductAvailabilityType.h \
+    $${PWD}/OAINullableCatalogsItemFieldType.h \
     $${PWD}/OAINullableCurrency.h \
-    $${PWD}/OAIOauthAccessTokenRequest.h \
     $${PWD}/OAIOauthAccessTokenRequestCode.h \
     $${PWD}/OAIOauthAccessTokenRequestCode_allOf.h \
     $${PWD}/OAIOauthAccessTokenRequestRefresh.h \
@@ -137,25 +219,59 @@ HEADERS += \
     $${PWD}/OAIPinMediaSourceVideoID.h \
     $${PWD}/OAIPinMediaWithImage.h \
     $${PWD}/OAIPinMediaWithImage_allOf.h \
+    $${PWD}/OAIPinMediaWithVideo.h \
+    $${PWD}/OAIPinMediaWithVideo_allOf.h \
     $${PWD}/OAIPinPromotionSummaryStatus.h \
+    $${PWD}/OAIPin_media.h \
+    $${PWD}/OAIPin_media_source.h \
     $${PWD}/OAIPlacementGroupType.h \
     $${PWD}/OAIProductAvailabilityType.h \
+    $${PWD}/OAIProductGroupAnalyticsResponse_inner.h \
+    $${PWD}/OAIProductGroupPromotion.h \
+    $${PWD}/OAIProductGroupPromotionArrayElement.h \
+    $${PWD}/OAIProductGroupPromotionCommon.h \
+    $${PWD}/OAIProductGroupPromotionCreateRequest.h \
+    $${PWD}/OAIProductGroupPromotionUpdateItem.h \
+    $${PWD}/OAIProductGroupPromotionUpdateRequest.h \
+    $${PWD}/OAIProductGroupPromotionUpdateResponseItem.h \
     $${PWD}/OAIProductGroupSummaryStatus.h \
     $${PWD}/OAIProductType0Filter.h \
     $${PWD}/OAIProductType1Filter.h \
     $${PWD}/OAIProductType2Filter.h \
     $${PWD}/OAIProductType3Filter.h \
     $${PWD}/OAIProductType4Filter.h \
+    $${PWD}/OAIProduct_groups_create_request_feed_base_case.h \
+    $${PWD}/OAIProducts_by_product_group_filter_list_200_response.h \
+    $${PWD}/OAIProducts_by_product_group_filter_list_200_response_allOf.h \
+    $${PWD}/OAIRelatedTerms.h \
+    $${PWD}/OAIRelatedTerms_related_terms_list_inner.h \
     $${PWD}/OAIReportingColumnAsync.h \
+    $${PWD}/OAITargetingSpec.h \
+    $${PWD}/OAITargetingSpec_1.h \
+    $${PWD}/OAITargetingSpec_SHOPPING_RETARGETING.h \
+    $${PWD}/OAITargetingSpec_SHOPPING_RETARGETING_1_inner.h \
     $${PWD}/OAITargetingTypeFilter.h \
+    $${PWD}/OAITermsOfService.h \
+    $${PWD}/OAITopPinsAnalyticsResponse.h \
+    $${PWD}/OAITopPinsAnalyticsResponse_date_availability.h \
+    $${PWD}/OAITopPinsAnalyticsResponse_pins_inner.h \
+    $${PWD}/OAITopVideoPinsAnalyticsResponse.h \
+    $${PWD}/OAITopVideoPinsAnalyticsResponse_pins_inner.h \
     $${PWD}/OAITrackingUrls.h \
+    $${PWD}/OAIUserListOperationType.h \
 # APIs
     $${PWD}/OAIAdAccountsApi.h \
+    $${PWD}/OAIAdGroupsApi.h \
+    $${PWD}/OAIAdsApi.h \
     $${PWD}/OAIBoardsApi.h \
+    $${PWD}/OAICampaignsApi.h \
     $${PWD}/OAICatalogsApi.h \
     $${PWD}/OAIMediaApi.h \
     $${PWD}/OAIOauthApi.h \
     $${PWD}/OAIPinsApi.h \
+    $${PWD}/OAIProductGroupPromotionsApi.h \
+    $${PWD}/OAITermsApi.h \
+    $${PWD}/OAITermsOfServiceApi.h \
     $${PWD}/OAIUserAccountApi.h \
 # Others
     $${PWD}/OAIHelpers.h \
@@ -172,14 +288,38 @@ SOURCES += \
     $${PWD}/OAIAccount.cpp \
     $${PWD}/OAIActionType.cpp \
     $${PWD}/OAIAdAccount.cpp \
+    $${PWD}/OAIAdAccountAnalyticsResponse_inner.cpp \
+    $${PWD}/OAIAdAccountCreateRequest.cpp \
+    $${PWD}/OAIAdArrayResponse.cpp \
+    $${PWD}/OAIAdArrayResponseElement.cpp \
+    $${PWD}/OAIAdCommon.cpp \
+    $${PWD}/OAIAdCommon_tracking_urls.cpp \
+    $${PWD}/OAIAdCreateRequest_inner.cpp \
+    $${PWD}/OAIAdGroupArrayResponse.cpp \
+    $${PWD}/OAIAdGroupArrayResponseElement.cpp \
+    $${PWD}/OAIAdGroupCommon.cpp \
+    $${PWD}/OAIAdGroupCommon_tracking_urls.cpp \
+    $${PWD}/OAIAdGroupCreateRequest.cpp \
+    $${PWD}/OAIAdGroupCreateRequest_allOf.cpp \
     $${PWD}/OAIAdGroupResponse.cpp \
     $${PWD}/OAIAdGroupResponse_allOf.cpp \
-    $${PWD}/OAIAdGroupResponse_allOf_1.cpp \
     $${PWD}/OAIAdGroupSummaryStatus.cpp \
+    $${PWD}/OAIAdGroupUpdateRequest.cpp \
+    $${PWD}/OAIAdGroupUpdateRequest_allOf.cpp \
+    $${PWD}/OAIAdGroupsAnalyticsResponse_inner.cpp \
+    $${PWD}/OAIAdPreviewCreateFromImage.cpp \
+    $${PWD}/OAIAdPreviewCreateFromPin.cpp \
+    $${PWD}/OAIAdPreviewRequest.cpp \
+    $${PWD}/OAIAdPreviewURLResponse.cpp \
     $${PWD}/OAIAdResponse.cpp \
     $${PWD}/OAIAdResponse_allOf.cpp \
-    $${PWD}/OAIAdResponse_allOf_1.cpp \
+    $${PWD}/OAIAdUpdateRequest_1.cpp \
+    $${PWD}/OAIAdUpdateRequest_inner.cpp \
     $${PWD}/OAIAd_account_owner.cpp \
+    $${PWD}/OAIAd_accounts_list_200_response.cpp \
+    $${PWD}/OAIAd_accounts_list_200_response_allOf.cpp \
+    $${PWD}/OAIAd_groups_list_200_response.cpp \
+    $${PWD}/OAIAd_groups_list_200_response_allOf.cpp \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest.cpp \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest_allOf.cpp \
     $${PWD}/OAIAdsAnalyticsCreateAsyncRequest_allOf_1.cpp \
@@ -188,22 +328,47 @@ SOURCES += \
     $${PWD}/OAIAdsAnalyticsFilterOperator.cpp \
     $${PWD}/OAIAdsAnalyticsGetAsyncResponse.cpp \
     $${PWD}/OAIAdsAnalyticsMetricsFilter.cpp \
+    $${PWD}/OAIAdsAnalyticsResponse_inner.cpp \
     $${PWD}/OAIAdsAnalyticsTargetingType.cpp \
+    $${PWD}/OAIAds_list_200_response.cpp \
+    $${PWD}/OAIAds_list_200_response_allOf.cpp \
     $${PWD}/OAIAnalyticsMetricsResponse.cpp \
-    $${PWD}/OAIAnalyticsMetricsResponse_daily_metrics.cpp \
+    $${PWD}/OAIAnalyticsMetricsResponse_daily_metrics_inner.cpp \
     $${PWD}/OAIAvailabilityFilter.cpp \
     $${PWD}/OAIBatchOperation.cpp \
     $${PWD}/OAIBatchOperationStatus.cpp \
+    $${PWD}/OAIBidFloor.cpp \
+    $${PWD}/OAIBidFloorRequest.cpp \
+    $${PWD}/OAIBidFloorSpec.cpp \
     $${PWD}/OAIBoard.cpp \
     $${PWD}/OAIBoardOwner.cpp \
     $${PWD}/OAIBoardSection.cpp \
     $${PWD}/OAIBoardUpdate.cpp \
+    $${PWD}/OAIBoard_owner.cpp \
+    $${PWD}/OAIBoard_sections_list_200_response.cpp \
+    $${PWD}/OAIBoard_sections_list_200_response_allOf.cpp \
+    $${PWD}/OAIBoard_sections_list_pins_200_response.cpp \
+    $${PWD}/OAIBoard_sections_list_pins_200_response_allOf.cpp \
+    $${PWD}/OAIBoards_list_200_response.cpp \
+    $${PWD}/OAIBoards_list_200_response_allOf.cpp \
     $${PWD}/OAIBrandFilter.cpp \
+    $${PWD}/OAIBudgetType.cpp \
     $${PWD}/OAICampaignCommon.cpp \
+    $${PWD}/OAICampaignCreateCommon.cpp \
+    $${PWD}/OAICampaignCreateCommon_allOf.cpp \
+    $${PWD}/OAICampaignCreateRequest.cpp \
+    $${PWD}/OAICampaignCreateResponse.cpp \
+    $${PWD}/OAICampaignCreateResponseData.cpp \
+    $${PWD}/OAICampaignCreateResponseItem.cpp \
+    $${PWD}/OAICampaignId.cpp \
     $${PWD}/OAICampaignResponse.cpp \
     $${PWD}/OAICampaignResponse_allOf.cpp \
-    $${PWD}/OAICampaignResponse_allOf_1.cpp \
     $${PWD}/OAICampaignSummaryStatus.cpp \
+    $${PWD}/OAICampaignUpdateRequest.cpp \
+    $${PWD}/OAICampaignUpdateResponse.cpp \
+    $${PWD}/OAICampaignsAnalyticsResponse_inner.cpp \
+    $${PWD}/OAICampaigns_list_200_response.cpp \
+    $${PWD}/OAICampaigns_list_200_response_allOf.cpp \
     $${PWD}/OAICatalogsDbItem.cpp \
     $${PWD}/OAICatalogsFeed.cpp \
     $${PWD}/OAICatalogsFeedCredentials.cpp \
@@ -220,29 +385,47 @@ SOURCES += \
     $${PWD}/OAICatalogsFeedsCreateRequest.cpp \
     $${PWD}/OAICatalogsFeedsUpdateRequest.cpp \
     $${PWD}/OAICatalogsFormat.cpp \
+    $${PWD}/OAICatalogsItemValidationDetails.cpp \
+    $${PWD}/OAICatalogsItemValidationErrors.cpp \
+    $${PWD}/OAICatalogsItemValidationIssue.cpp \
+    $${PWD}/OAICatalogsItemValidationIssues.cpp \
+    $${PWD}/OAICatalogsItemValidationWarnings.cpp \
     $${PWD}/OAICatalogsItems.cpp \
     $${PWD}/OAICatalogsItemsBatch.cpp \
     $${PWD}/OAICatalogsItemsBatchRequest.cpp \
+    $${PWD}/OAICatalogsListProductsByFilterRequest.cpp \
+    $${PWD}/OAICatalogsListProductsByFilterRequest_oneOf.cpp \
+    $${PWD}/OAICatalogsProduct.cpp \
     $${PWD}/OAICatalogsProductGroup.cpp \
     $${PWD}/OAICatalogsProductGroupCreateRequest.cpp \
     $${PWD}/OAICatalogsProductGroupCurrencyCriteria.cpp \
     $${PWD}/OAICatalogsProductGroupFilterKeys.cpp \
     $${PWD}/OAICatalogsProductGroupFilters.cpp \
     $${PWD}/OAICatalogsProductGroupFiltersAllOf.cpp \
+    $${PWD}/OAICatalogsProductGroupFiltersAllOfRequest.cpp \
+    $${PWD}/OAICatalogsProductGroupFiltersAllOfRequest_anyOf.cpp \
+    $${PWD}/OAICatalogsProductGroupFiltersAllOfRequest_anyOf_1.cpp \
     $${PWD}/OAICatalogsProductGroupFiltersAnyOf.cpp \
     $${PWD}/OAICatalogsProductGroupMultipleStringCriteria.cpp \
     $${PWD}/OAICatalogsProductGroupMultipleStringListCriteria.cpp \
     $${PWD}/OAICatalogsProductGroupPricingCriteria.cpp \
+    $${PWD}/OAICatalogsProductGroupProductCounts.cpp \
     $${PWD}/OAICatalogsProductGroupStatus.cpp \
     $${PWD}/OAICatalogsProductGroupType.cpp \
     $${PWD}/OAICatalogsProductGroupUpdateRequest.cpp \
+    $${PWD}/OAICatalogsProductMetadata.cpp \
     $${PWD}/OAICatalogsStatus.cpp \
     $${PWD}/OAICatalogs_feed_processing_result_fields.cpp \
+    $${PWD}/OAICatalogs_product_group_feed_based_case.cpp \
+    $${PWD}/OAICatalogs_product_group_merchant_based_case.cpp \
+    $${PWD}/OAICatalogs_product_groups_list_200_response.cpp \
+    $${PWD}/OAICatalogs_product_groups_list_200_response_allOf.cpp \
     $${PWD}/OAIConditionFilter.cpp \
     $${PWD}/OAIConversionAttributionWindowDays.cpp \
     $${PWD}/OAIConversionReportAttributionType.cpp \
     $${PWD}/OAIConversionReportTimeType.cpp \
     $${PWD}/OAICountry.cpp \
+    $${PWD}/OAICreativeType.cpp \
     $${PWD}/OAICurrency.cpp \
     $${PWD}/OAICurrencyFilter.cpp \
     $${PWD}/OAICustomLabel0Filter.cpp \
@@ -251,9 +434,15 @@ SOURCES += \
     $${PWD}/OAICustomLabel3Filter.cpp \
     $${PWD}/OAICustomLabel4Filter.cpp \
     $${PWD}/OAIDataOutputFormat.cpp \
+    $${PWD}/OAIDataStatus.cpp \
     $${PWD}/OAIEntityStatus.cpp \
     $${PWD}/OAIError.cpp \
+    $${PWD}/OAIException.cpp \
     $${PWD}/OAIFeed_fields.cpp \
+    $${PWD}/OAIFeed_processing_results_list_200_response.cpp \
+    $${PWD}/OAIFeed_processing_results_list_200_response_allOf.cpp \
+    $${PWD}/OAIFeeds_list_200_response.cpp \
+    $${PWD}/OAIFeeds_list_200_response_allOf.cpp \
     $${PWD}/OAIGenderFilter.cpp \
     $${PWD}/OAIGoogleProductCategory0Filter.cpp \
     $${PWD}/OAIGoogleProductCategory1Filter.cpp \
@@ -270,7 +459,13 @@ SOURCES += \
     $${PWD}/OAIItemIdFilter.cpp \
     $${PWD}/OAIItemProcessingRecord.cpp \
     $${PWD}/OAIItemProcessingStatus.cpp \
+    $${PWD}/OAIItemResponse.cpp \
+    $${PWD}/OAIItemResponse_anyOf.cpp \
+    $${PWD}/OAIItemResponse_anyOf_1.cpp \
     $${PWD}/OAIItemValidationEvent.cpp \
+    $${PWD}/OAIItems.cpp \
+    $${PWD}/OAIItems_issues_list_200_response.cpp \
+    $${PWD}/OAIItems_issues_list_200_response_allOf.cpp \
     $${PWD}/OAILanguage.cpp \
     $${PWD}/OAIMaxPriceFilter.cpp \
     $${PWD}/OAIMediaUpload.cpp \
@@ -280,11 +475,14 @@ SOURCES += \
     $${PWD}/OAIMediaUploadType.cpp \
     $${PWD}/OAIMediaUpload_allOf.cpp \
     $${PWD}/OAIMediaUpload_allOf_upload_parameters.cpp \
+    $${PWD}/OAIMedia_list_200_response.cpp \
+    $${PWD}/OAIMedia_list_200_response_allOf.cpp \
     $${PWD}/OAIMetricsReportingLevel.cpp \
     $${PWD}/OAIMinPriceFilter.cpp \
     $${PWD}/OAINonNullableCatalogsCurrency.cpp \
+    $${PWD}/OAINonNullableProductAvailabilityType.cpp \
+    $${PWD}/OAINullableCatalogsItemFieldType.cpp \
     $${PWD}/OAINullableCurrency.cpp \
-    $${PWD}/OAIOauthAccessTokenRequest.cpp \
     $${PWD}/OAIOauthAccessTokenRequestCode.cpp \
     $${PWD}/OAIOauthAccessTokenRequestCode_allOf.cpp \
     $${PWD}/OAIOauthAccessTokenRequestRefresh.cpp \
@@ -304,25 +502,59 @@ SOURCES += \
     $${PWD}/OAIPinMediaSourceVideoID.cpp \
     $${PWD}/OAIPinMediaWithImage.cpp \
     $${PWD}/OAIPinMediaWithImage_allOf.cpp \
+    $${PWD}/OAIPinMediaWithVideo.cpp \
+    $${PWD}/OAIPinMediaWithVideo_allOf.cpp \
     $${PWD}/OAIPinPromotionSummaryStatus.cpp \
+    $${PWD}/OAIPin_media.cpp \
+    $${PWD}/OAIPin_media_source.cpp \
     $${PWD}/OAIPlacementGroupType.cpp \
     $${PWD}/OAIProductAvailabilityType.cpp \
+    $${PWD}/OAIProductGroupAnalyticsResponse_inner.cpp \
+    $${PWD}/OAIProductGroupPromotion.cpp \
+    $${PWD}/OAIProductGroupPromotionArrayElement.cpp \
+    $${PWD}/OAIProductGroupPromotionCommon.cpp \
+    $${PWD}/OAIProductGroupPromotionCreateRequest.cpp \
+    $${PWD}/OAIProductGroupPromotionUpdateItem.cpp \
+    $${PWD}/OAIProductGroupPromotionUpdateRequest.cpp \
+    $${PWD}/OAIProductGroupPromotionUpdateResponseItem.cpp \
     $${PWD}/OAIProductGroupSummaryStatus.cpp \
     $${PWD}/OAIProductType0Filter.cpp \
     $${PWD}/OAIProductType1Filter.cpp \
     $${PWD}/OAIProductType2Filter.cpp \
     $${PWD}/OAIProductType3Filter.cpp \
     $${PWD}/OAIProductType4Filter.cpp \
+    $${PWD}/OAIProduct_groups_create_request_feed_base_case.cpp \
+    $${PWD}/OAIProducts_by_product_group_filter_list_200_response.cpp \
+    $${PWD}/OAIProducts_by_product_group_filter_list_200_response_allOf.cpp \
+    $${PWD}/OAIRelatedTerms.cpp \
+    $${PWD}/OAIRelatedTerms_related_terms_list_inner.cpp \
     $${PWD}/OAIReportingColumnAsync.cpp \
+    $${PWD}/OAITargetingSpec.cpp \
+    $${PWD}/OAITargetingSpec_1.cpp \
+    $${PWD}/OAITargetingSpec_SHOPPING_RETARGETING.cpp \
+    $${PWD}/OAITargetingSpec_SHOPPING_RETARGETING_1_inner.cpp \
     $${PWD}/OAITargetingTypeFilter.cpp \
+    $${PWD}/OAITermsOfService.cpp \
+    $${PWD}/OAITopPinsAnalyticsResponse.cpp \
+    $${PWD}/OAITopPinsAnalyticsResponse_date_availability.cpp \
+    $${PWD}/OAITopPinsAnalyticsResponse_pins_inner.cpp \
+    $${PWD}/OAITopVideoPinsAnalyticsResponse.cpp \
+    $${PWD}/OAITopVideoPinsAnalyticsResponse_pins_inner.cpp \
     $${PWD}/OAITrackingUrls.cpp \
+    $${PWD}/OAIUserListOperationType.cpp \
 # APIs
     $${PWD}/OAIAdAccountsApi.cpp \
+    $${PWD}/OAIAdGroupsApi.cpp \
+    $${PWD}/OAIAdsApi.cpp \
     $${PWD}/OAIBoardsApi.cpp \
+    $${PWD}/OAICampaignsApi.cpp \
     $${PWD}/OAICatalogsApi.cpp \
     $${PWD}/OAIMediaApi.cpp \
     $${PWD}/OAIOauthApi.cpp \
     $${PWD}/OAIPinsApi.cpp \
+    $${PWD}/OAIProductGroupPromotionsApi.cpp \
+    $${PWD}/OAITermsApi.cpp \
+    $${PWD}/OAITermsOfServiceApi.cpp \
     $${PWD}/OAIUserAccountApi.cpp \
 # Others
     $${PWD}/OAIHelpers.cpp \

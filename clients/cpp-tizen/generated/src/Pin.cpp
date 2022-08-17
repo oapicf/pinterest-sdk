@@ -28,12 +28,13 @@ Pin::__init()
 	//link = std::string();
 	//title = std::string();
 	//description = std::string();
+	//dominant_color = std::string();
 	//alt_text = std::string();
 	//board_id = std::string();
 	//board_section_id = std::string();
-	//board_owner = null;
-	//media = null;
-	//media_source = null;
+	//board_owner = new Board_owner();
+	//media = new Pin_media();
+	//media_source = new Pin_media_source();
 }
 
 void
@@ -63,6 +64,11 @@ Pin::__cleanup()
 	//
 	//delete description;
 	//description = NULL;
+	//}
+	//if(dominant_color != NULL) {
+	//
+	//delete dominant_color;
+	//dominant_color = NULL;
 	//}
 	//if(alt_text != NULL) {
 	//
@@ -157,6 +163,17 @@ Pin::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *dominant_colorKey = "dominant_color";
+	node = json_object_get_member(pJsonObject, dominant_colorKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&dominant_color, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *alt_textKey = "alt_text";
 	node = json_object_get_member(pJsonObject, alt_textKey);
 	if (node !=NULL) {
@@ -195,11 +212,11 @@ Pin::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("BoardOwner")) {
-			jsonToValue(&board_owner, node, "BoardOwner", "BoardOwner");
+		if (isprimitive("Board_owner")) {
+			jsonToValue(&board_owner, node, "Board_owner", "Board_owner");
 		} else {
 			
-			BoardOwner* obj = static_cast<BoardOwner*> (&board_owner);
+			Board_owner* obj = static_cast<Board_owner*> (&board_owner);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -209,11 +226,11 @@ Pin::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("PinMedia")) {
-			jsonToValue(&media, node, "PinMedia", "PinMedia");
+		if (isprimitive("Pin_media")) {
+			jsonToValue(&media, node, "Pin_media", "Pin_media");
 		} else {
 			
-			PinMedia* obj = static_cast<PinMedia*> (&media);
+			Pin_media* obj = static_cast<Pin_media*> (&media);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -223,11 +240,11 @@ Pin::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("PinMediaSource")) {
-			jsonToValue(&media_source, node, "PinMediaSource", "PinMediaSource");
+		if (isprimitive("Pin_media_source")) {
+			jsonToValue(&media_source, node, "Pin_media_source", "Pin_media_source");
 		} else {
 			
-			PinMediaSource* obj = static_cast<PinMediaSource*> (&media_source);
+			Pin_media_source* obj = static_cast<Pin_media_source*> (&media_source);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -290,6 +307,15 @@ Pin::toJson()
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getDominantColor();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *dominant_colorKey = "dominant_color";
+	json_object_set_member(pJsonObject, dominant_colorKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getAltText();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -316,13 +342,13 @@ Pin::toJson()
 	}
 	const gchar *board_section_idKey = "board_section_id";
 	json_object_set_member(pJsonObject, board_section_idKey, node);
-	if (isprimitive("BoardOwner")) {
-		BoardOwner obj = getBoardOwner();
-		node = converttoJson(&obj, "BoardOwner", "");
+	if (isprimitive("Board_owner")) {
+		Board_owner obj = getBoardOwner();
+		node = converttoJson(&obj, "Board_owner", "");
 	}
 	else {
 		
-		BoardOwner obj = static_cast<BoardOwner> (getBoardOwner());
+		Board_owner obj = static_cast<Board_owner> (getBoardOwner());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -330,13 +356,13 @@ Pin::toJson()
 	}
 	const gchar *board_ownerKey = "board_owner";
 	json_object_set_member(pJsonObject, board_ownerKey, node);
-	if (isprimitive("PinMedia")) {
-		PinMedia obj = getMedia();
-		node = converttoJson(&obj, "PinMedia", "");
+	if (isprimitive("Pin_media")) {
+		Pin_media obj = getMedia();
+		node = converttoJson(&obj, "Pin_media", "");
 	}
 	else {
 		
-		PinMedia obj = static_cast<PinMedia> (getMedia());
+		Pin_media obj = static_cast<Pin_media> (getMedia());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -344,13 +370,13 @@ Pin::toJson()
 	}
 	const gchar *mediaKey = "media";
 	json_object_set_member(pJsonObject, mediaKey, node);
-	if (isprimitive("PinMediaSource")) {
-		PinMediaSource obj = getMediaSource();
-		node = converttoJson(&obj, "PinMediaSource", "");
+	if (isprimitive("Pin_media_source")) {
+		Pin_media_source obj = getMediaSource();
+		node = converttoJson(&obj, "Pin_media_source", "");
 	}
 	else {
 		
-		PinMediaSource obj = static_cast<PinMediaSource> (getMediaSource());
+		Pin_media_source obj = static_cast<Pin_media_source> (getMediaSource());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -427,6 +453,18 @@ Pin::setDescription(std::string  description)
 }
 
 std::string
+Pin::getDominantColor()
+{
+	return dominant_color;
+}
+
+void
+Pin::setDominantColor(std::string  dominant_color)
+{
+	this->dominant_color = dominant_color;
+}
+
+std::string
 Pin::getAltText()
 {
 	return alt_text;
@@ -462,38 +500,38 @@ Pin::setBoardSectionId(std::string  board_section_id)
 	this->board_section_id = board_section_id;
 }
 
-BoardOwner
+Board_owner
 Pin::getBoardOwner()
 {
 	return board_owner;
 }
 
 void
-Pin::setBoardOwner(BoardOwner  board_owner)
+Pin::setBoardOwner(Board_owner  board_owner)
 {
 	this->board_owner = board_owner;
 }
 
-PinMedia
+Pin_media
 Pin::getMedia()
 {
 	return media;
 }
 
 void
-Pin::setMedia(PinMedia  media)
+Pin::setMedia(Pin_media  media)
 {
 	this->media = media;
 }
 
-PinMediaSource
+Pin_media_source
 Pin::getMediaSource()
 {
 	return media_source;
 }
 
 void
-Pin::setMediaSource(PinMediaSource  media_source)
+Pin::setMediaSource(Pin_media_source  media_source)
 {
 	this->media_source = media_source;
 }

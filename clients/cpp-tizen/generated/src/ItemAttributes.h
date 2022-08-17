@@ -95,6 +95,13 @@ public:
 	/*! \brief Set The brand of the product.
 	 */
 	void setBrand(std::string  brand);
+	/*! \brief Get Set this attribute to FALSE to indicate items that should be excluded from the Pinterest Checkout program. Note, this product is currently being tested and your account must be enrolled. Please contact your Account Manager or contact us for more information.
+	 */
+	bool getCheckoutEnabled();
+
+	/*! \brief Set Set this attribute to FALSE to indicate items that should be excluded from the Pinterest Checkout program. Note, this product is currently being tested and your account must be enrolled. Please contact your Account Manager or contact us for more information.
+	 */
+	void setCheckoutEnabled(bool  checkout_enabled);
 	/*! \brief Get The primary color of the product.
 	 */
 	std::string getColor();
@@ -354,6 +361,20 @@ public:
 	/*! \brief Set The name of the product.
 	 */
 	void setTitle(std::string  title);
+	/*! \brief Get Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
+	 */
+	std::list<std::string> getVariantNames();
+
+	/*! \brief Set Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
+	 */
+	void setVariantNames(std::list <std::string> variant_names);
+	/*! \brief Get Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
+	 */
+	std::list<std::string> getVariantValues();
+
+	/*! \brief Set Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
+	 */
+	void setVariantValues(std::list <std::string> variant_values);
 
 private:
 	std::string ad_link;
@@ -363,6 +384,7 @@ private:
 	std::string availability;
 	long long average_review_rating;
 	std::string brand;
+	bool checkout_enabled;
 	std::string color;
 	std::string condition;
 	std::string custom_label_0;
@@ -400,6 +422,8 @@ private:
 	std::string size_type;
 	std::string tax;
 	std::string title;
+	std::list <std::string>variant_names;
+	std::list <std::string>variant_values;
 	void __init();
 	void __cleanup();
 

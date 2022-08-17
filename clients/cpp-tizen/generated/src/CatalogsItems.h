@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "ItemBatchRecord.h"
+#include "ItemResponse.h"
 #include <list>
 #include "Object.h"
 
@@ -49,14 +49,14 @@ public:
 
 	/*! \brief Get Array with catalogs items
 	 */
-	std::list<ItemBatchRecord> getItems();
+	std::list<ItemResponse> getItems();
 
 	/*! \brief Set Array with catalogs items
 	 */
-	void setItems(std::list <ItemBatchRecord> items);
+	void setItems(std::list <ItemResponse> items);
 
 private:
-	std::list <ItemBatchRecord>items;
+	std::list <ItemResponse>items;
 	void __init();
 	void __cleanup();
 

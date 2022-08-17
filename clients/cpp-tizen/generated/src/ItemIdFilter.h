@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "CatalogsProductGroupCurrencyCriteria.h"
+#include "CatalogsProductGroupMultipleStringCriteria.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -48,14 +48,14 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupCurrencyCriteria getITEMID();
+	CatalogsProductGroupMultipleStringCriteria getITEMID();
 
 	/*! \brief Set 
 	 */
-	void setITEMID(CatalogsProductGroupCurrencyCriteria  iTEM_ID);
+	void setITEMID(CatalogsProductGroupMultipleStringCriteria  iTEM_ID);
 
 private:
-	CatalogsProductGroupCurrencyCriteria iTEM_ID;
+	CatalogsProductGroupMultipleStringCriteria iTEM_ID;
 	void __init();
 	void __cleanup();
 

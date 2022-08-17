@@ -1,7 +1,7 @@
 /*
  * CatalogsFeed.h
  *
- * Catalogs Catalogs Feed object
+ * Catalogs Feed object
  */
 
 #ifndef _CatalogsFeed_H_
@@ -29,7 +29,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Catalogs Catalogs Feed object
+/*! \brief Catalogs Feed object
  *
  *  \ingroup Models
  *

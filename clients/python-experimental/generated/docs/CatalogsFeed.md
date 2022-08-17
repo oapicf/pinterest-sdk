@@ -1,6 +1,6 @@
 # CatalogsFeed
 
-Catalogs Catalogs Feed object
+Catalogs Feed object
 
 #### Properties
 Name | Type | Description | Notes

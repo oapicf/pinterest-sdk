@@ -23,91 +23,44 @@ AdGroupResponse_allOf::~AdGroupResponse_allOf()
 void
 AdGroupResponse_allOf::__init()
 {
-	//name = std::string();
-	//status = std::string();
-	//budget_in_micro_currency = int(0);
-	//bid_in_micro_currency = int(0);
-	//budget_type = std::string();
-	//start_time = int(0);
-	//end_time = int(0);
-	//new std::map()std::map> targeting_spec;
-	//lifetime_frequency_cap = int(0);
-	//tracking_urls = null;
-	//auto_targeting_enabled = bool(false);
-	//placement_group = std::string();
-	//pacing_delivery_type = std::string();
+	//id = std::string();
+	//ad_account_id = std::string();
+	//created_time = int(0);
+	//updated_time = int(0);
+	//type = std::string();
 	//conversion_learning_mode_type = std::string();
 	//summary_status = std::string();
 	//feed_profile_id = std::string();
+	//dca_assets = null;
 }
 
 void
 AdGroupResponse_allOf::__cleanup()
 {
-	//if(name != NULL) {
+	//if(id != NULL) {
 	//
-	//delete name;
-	//name = NULL;
+	//delete id;
+	//id = NULL;
 	//}
-	//if(status != NULL) {
+	//if(ad_account_id != NULL) {
 	//
-	//delete status;
-	//status = NULL;
+	//delete ad_account_id;
+	//ad_account_id = NULL;
 	//}
-	//if(budget_in_micro_currency != NULL) {
+	//if(created_time != NULL) {
 	//
-	//delete budget_in_micro_currency;
-	//budget_in_micro_currency = NULL;
+	//delete created_time;
+	//created_time = NULL;
 	//}
-	//if(bid_in_micro_currency != NULL) {
+	//if(updated_time != NULL) {
 	//
-	//delete bid_in_micro_currency;
-	//bid_in_micro_currency = NULL;
+	//delete updated_time;
+	//updated_time = NULL;
 	//}
-	//if(budget_type != NULL) {
+	//if(type != NULL) {
 	//
-	//delete budget_type;
-	//budget_type = NULL;
-	//}
-	//if(start_time != NULL) {
-	//
-	//delete start_time;
-	//start_time = NULL;
-	//}
-	//if(end_time != NULL) {
-	//
-	//delete end_time;
-	//end_time = NULL;
-	//}
-	//if(targeting_spec != NULL) {
-	//targeting_spec.RemoveAll(true);
-	//delete targeting_spec;
-	//targeting_spec = NULL;
-	//}
-	//if(lifetime_frequency_cap != NULL) {
-	//
-	//delete lifetime_frequency_cap;
-	//lifetime_frequency_cap = NULL;
-	//}
-	//if(tracking_urls != NULL) {
-	//
-	//delete tracking_urls;
-	//tracking_urls = NULL;
-	//}
-	//if(auto_targeting_enabled != NULL) {
-	//
-	//delete auto_targeting_enabled;
-	//auto_targeting_enabled = NULL;
-	//}
-	//if(placement_group != NULL) {
-	//
-	//delete placement_group;
-	//placement_group = NULL;
-	//}
-	//if(pacing_delivery_type != NULL) {
-	//
-	//delete pacing_delivery_type;
-	//pacing_delivery_type = NULL;
+	//delete type;
+	//type = NULL;
 	//}
 	//if(conversion_learning_mode_type != NULL) {
 	//
@@ -124,6 +77,11 @@ AdGroupResponse_allOf::__cleanup()
 	//delete feed_profile_id;
 	//feed_profile_id = NULL;
 	//}
+	//if(dca_assets != NULL) {
+	//
+	//delete dca_assets;
+	//dca_assets = NULL;
+	//}
 	//
 }
 
@@ -132,149 +90,57 @@ AdGroupResponse_allOf::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
+			jsonToValue(&id, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("EntityStatus")) {
-			jsonToValue(&status, node, "EntityStatus", "EntityStatus");
-		} else {
-			
-		}
-	}
-	const gchar *budget_in_micro_currencyKey = "budget_in_micro_currency";
-	node = json_object_get_member(pJsonObject, budget_in_micro_currencyKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&budget_in_micro_currency, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
-	node = json_object_get_member(pJsonObject, bid_in_micro_currencyKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&bid_in_micro_currency, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *budget_typeKey = "budget_type";
-	node = json_object_get_member(pJsonObject, budget_typeKey);
+	const gchar *ad_account_idKey = "ad_account_id";
+	node = json_object_get_member(pJsonObject, ad_account_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&budget_type, node, "std::string", "");
+			jsonToValue(&ad_account_id, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *start_timeKey = "start_time";
-	node = json_object_get_member(pJsonObject, start_timeKey);
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&start_time, node, "int", "");
+			jsonToValue(&created_time, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *end_timeKey = "end_time";
-	node = json_object_get_member(pJsonObject, end_timeKey);
+	const gchar *updated_timeKey = "updated_time";
+	node = json_object_get_member(pJsonObject, updated_timeKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&end_time, node, "int", "");
+			jsonToValue(&updated_time, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *targeting_specKey = "targeting_spec";
-	node = json_object_get_member(pJsonObject, targeting_specKey);
-	if (node !=NULL) {
-	
-		{
-			JsonObject* json_obj = json_node_get_object(node);
-			map<string,string> new_map;
-			json_object_foreach_member(json_obj,helper_func,&new_map);
-			targeting_spec = new_map;
-		}
-		
-	}
-	const gchar *lifetime_frequency_capKey = "lifetime_frequency_cap";
-	node = json_object_get_member(pJsonObject, lifetime_frequency_capKey);
+	const gchar *typeKey = "type";
+	node = json_object_get_member(pJsonObject, typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&lifetime_frequency_cap, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *tracking_urlsKey = "tracking_urls";
-	node = json_object_get_member(pJsonObject, tracking_urlsKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("TrackingUrls")) {
-			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
-		} else {
-			
-			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *auto_targeting_enabledKey = "auto_targeting_enabled";
-	node = json_object_get_member(pJsonObject, auto_targeting_enabledKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&auto_targeting_enabled, node, "bool", "");
-		} else {
-			
-		}
-	}
-	const gchar *placement_groupKey = "placement_group";
-	node = json_object_get_member(pJsonObject, placement_groupKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("PlacementGroupType")) {
-			jsonToValue(&placement_group, node, "PlacementGroupType", "PlacementGroupType");
-		} else {
-			
-		}
-	}
-	const gchar *pacing_delivery_typeKey = "pacing_delivery_type";
-	node = json_object_get_member(pJsonObject, pacing_delivery_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("PacingDeliveryType")) {
-			jsonToValue(&pacing_delivery_type, node, "PacingDeliveryType", "PacingDeliveryType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&type, node, "std::string", "");
 		} else {
 			
 		}
@@ -312,6 +178,20 @@ AdGroupResponse_allOf::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *dca_assetsKey = "dca_assets";
+	node = json_object_get_member(pJsonObject, dca_assetsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AnyType")) {
+			jsonToValue(&dca_assets, node, "AnyType", "");
+		} else {
+			
+			AnyType* obj = static_cast<AnyType*> (&dca_assets);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 AdGroupResponse_allOf::AdGroupResponse_allOf(char* json)
@@ -325,137 +205,50 @@ AdGroupResponse_allOf::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getName();
+		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("EntityStatus")) {
-		EntityStatus obj = getStatus();
-		node = converttoJson(&obj, "EntityStatus", "");
-	}
-	else {
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("int")) {
-		int obj = getBudgetInMicroCurrency();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *budget_in_micro_currencyKey = "budget_in_micro_currency";
-	json_object_set_member(pJsonObject, budget_in_micro_currencyKey, node);
-	if (isprimitive("int")) {
-		int obj = getBidInMicroCurrency();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
-	json_object_set_member(pJsonObject, bid_in_micro_currencyKey, node);
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getBudgetType();
+		std::string obj = getAdAccountId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *budget_typeKey = "budget_type";
-	json_object_set_member(pJsonObject, budget_typeKey, node);
+	const gchar *ad_account_idKey = "ad_account_id";
+	json_object_set_member(pJsonObject, ad_account_idKey, node);
 	if (isprimitive("int")) {
-		int obj = getStartTime();
+		int obj = getCreatedTime();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *start_timeKey = "start_time";
-	json_object_set_member(pJsonObject, start_timeKey, node);
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
 	if (isprimitive("int")) {
-		int obj = getEndTime();
+		int obj = getUpdatedTime();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *end_timeKey = "end_time";
-	json_object_set_member(pJsonObject, end_timeKey, node);
-
-
-	{
-		JsonObject* json_obj;
-		map<string, string> new_list = static_cast<map <string, string> > (getTargetingSpec());
-		json_obj = json_object_new();
-		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			string obj = (*it).first;
-			string obj2 = (*it).second;
-			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
-			json_object_set_member(json_obj, obj.c_str(), tempnode);
-		}
-	node = json_node_alloc();
-	json_node_init_object(node, json_obj);
-	json_object_unref(json_obj);
-	}
-
-	const gchar *targeting_specKey = "targeting_spec";
-	json_object_set_member(pJsonObject, targeting_specKey, node);
-	if (isprimitive("int")) {
-		int obj = getLifetimeFrequencyCap();
-		node = converttoJson(&obj, "int", "");
+	const gchar *updated_timeKey = "updated_time";
+	json_object_set_member(pJsonObject, updated_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *lifetime_frequency_capKey = "lifetime_frequency_cap";
-	json_object_set_member(pJsonObject, lifetime_frequency_capKey, node);
-	if (isprimitive("TrackingUrls")) {
-		TrackingUrls obj = getTrackingUrls();
-		node = converttoJson(&obj, "TrackingUrls", "");
-	}
-	else {
-		
-		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *tracking_urlsKey = "tracking_urls";
-	json_object_set_member(pJsonObject, tracking_urlsKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getAutoTargetingEnabled();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *auto_targeting_enabledKey = "auto_targeting_enabled";
-	json_object_set_member(pJsonObject, auto_targeting_enabledKey, node);
-	if (isprimitive("PlacementGroupType")) {
-		PlacementGroupType obj = getPlacementGroup();
-		node = converttoJson(&obj, "PlacementGroupType", "");
-	}
-	else {
-		
-	}
-	const gchar *placement_groupKey = "placement_group";
-	json_object_set_member(pJsonObject, placement_groupKey, node);
-	if (isprimitive("PacingDeliveryType")) {
-		PacingDeliveryType obj = getPacingDeliveryType();
-		node = converttoJson(&obj, "PacingDeliveryType", "");
-	}
-	else {
-		
-	}
-	const gchar *pacing_delivery_typeKey = "pacing_delivery_type";
-	json_object_set_member(pJsonObject, pacing_delivery_typeKey, node);
+	const gchar *typeKey = "type";
+	json_object_set_member(pJsonObject, typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getConversionLearningModeType();
 		node = converttoJson(&obj, "std::string", "");
@@ -483,6 +276,20 @@ AdGroupResponse_allOf::toJson()
 	}
 	const gchar *feed_profile_idKey = "feed_profile_id";
 	json_object_set_member(pJsonObject, feed_profile_idKey, node);
+	if (isprimitive("AnyType")) {
+		AnyType obj = getDcaAssets();
+		node = converttoJson(&obj, "AnyType", "");
+	}
+	else {
+		
+		AnyType obj = static_cast<AnyType> (getDcaAssets());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *dca_assetsKey = "dca_assets";
+	json_object_set_member(pJsonObject, dca_assetsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -492,159 +299,63 @@ AdGroupResponse_allOf::toJson()
 }
 
 std::string
-AdGroupResponse_allOf::getName()
+AdGroupResponse_allOf::getId()
 {
-	return name;
+	return id;
 }
 
 void
-AdGroupResponse_allOf::setName(std::string  name)
+AdGroupResponse_allOf::setId(std::string  id)
 {
-	this->name = name;
-}
-
-EntityStatus
-AdGroupResponse_allOf::getStatus()
-{
-	return status;
-}
-
-void
-AdGroupResponse_allOf::setStatus(EntityStatus  status)
-{
-	this->status = status;
-}
-
-int
-AdGroupResponse_allOf::getBudgetInMicroCurrency()
-{
-	return budget_in_micro_currency;
-}
-
-void
-AdGroupResponse_allOf::setBudgetInMicroCurrency(int  budget_in_micro_currency)
-{
-	this->budget_in_micro_currency = budget_in_micro_currency;
-}
-
-int
-AdGroupResponse_allOf::getBidInMicroCurrency()
-{
-	return bid_in_micro_currency;
-}
-
-void
-AdGroupResponse_allOf::setBidInMicroCurrency(int  bid_in_micro_currency)
-{
-	this->bid_in_micro_currency = bid_in_micro_currency;
+	this->id = id;
 }
 
 std::string
-AdGroupResponse_allOf::getBudgetType()
+AdGroupResponse_allOf::getAdAccountId()
 {
-	return budget_type;
+	return ad_account_id;
 }
 
 void
-AdGroupResponse_allOf::setBudgetType(std::string  budget_type)
+AdGroupResponse_allOf::setAdAccountId(std::string  ad_account_id)
 {
-	this->budget_type = budget_type;
+	this->ad_account_id = ad_account_id;
 }
 
 int
-AdGroupResponse_allOf::getStartTime()
+AdGroupResponse_allOf::getCreatedTime()
 {
-	return start_time;
+	return created_time;
 }
 
 void
-AdGroupResponse_allOf::setStartTime(int  start_time)
+AdGroupResponse_allOf::setCreatedTime(int  created_time)
 {
-	this->start_time = start_time;
+	this->created_time = created_time;
 }
 
 int
-AdGroupResponse_allOf::getEndTime()
+AdGroupResponse_allOf::getUpdatedTime()
 {
-	return end_time;
+	return updated_time;
 }
 
 void
-AdGroupResponse_allOf::setEndTime(int  end_time)
+AdGroupResponse_allOf::setUpdatedTime(int  updated_time)
 {
-	this->end_time = end_time;
+	this->updated_time = updated_time;
 }
 
-std::map<string, string>
-AdGroupResponse_allOf::getTargetingSpec()
+std::string
+AdGroupResponse_allOf::getType()
 {
-	return targeting_spec;
-}
-
-void
-AdGroupResponse_allOf::setTargetingSpec(std::map <string, string> targeting_spec)
-{
-	this->targeting_spec = targeting_spec;
-}
-
-int
-AdGroupResponse_allOf::getLifetimeFrequencyCap()
-{
-	return lifetime_frequency_cap;
+	return type;
 }
 
 void
-AdGroupResponse_allOf::setLifetimeFrequencyCap(int  lifetime_frequency_cap)
+AdGroupResponse_allOf::setType(std::string  type)
 {
-	this->lifetime_frequency_cap = lifetime_frequency_cap;
-}
-
-TrackingUrls
-AdGroupResponse_allOf::getTrackingUrls()
-{
-	return tracking_urls;
-}
-
-void
-AdGroupResponse_allOf::setTrackingUrls(TrackingUrls  tracking_urls)
-{
-	this->tracking_urls = tracking_urls;
-}
-
-bool
-AdGroupResponse_allOf::getAutoTargetingEnabled()
-{
-	return auto_targeting_enabled;
-}
-
-void
-AdGroupResponse_allOf::setAutoTargetingEnabled(bool  auto_targeting_enabled)
-{
-	this->auto_targeting_enabled = auto_targeting_enabled;
-}
-
-PlacementGroupType
-AdGroupResponse_allOf::getPlacementGroup()
-{
-	return placement_group;
-}
-
-void
-AdGroupResponse_allOf::setPlacementGroup(PlacementGroupType  placement_group)
-{
-	this->placement_group = placement_group;
-}
-
-PacingDeliveryType
-AdGroupResponse_allOf::getPacingDeliveryType()
-{
-	return pacing_delivery_type;
-}
-
-void
-AdGroupResponse_allOf::setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type)
-{
-	this->pacing_delivery_type = pacing_delivery_type;
+	this->type = type;
 }
 
 std::string
@@ -681,6 +392,18 @@ void
 AdGroupResponse_allOf::setFeedProfileId(std::string  feed_profile_id)
 {
 	this->feed_profile_id = feed_profile_id;
+}
+
+AnyType
+AdGroupResponse_allOf::getDcaAssets()
+{
+	return dca_assets;
+}
+
+void
+AdGroupResponse_allOf::setDcaAssets(AnyType  dca_assets)
+{
+	this->dca_assets = dca_assets;
 }
 
 

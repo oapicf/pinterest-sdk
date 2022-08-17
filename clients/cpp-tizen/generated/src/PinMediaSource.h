@@ -1,17 +1,15 @@
 /*
- * PinMediaSource.h
+ * Pin_media_source.h
  *
- * Pin media source.
+ * 
  */
 
-#ifndef _PinMediaSource_H_
-#define _PinMediaSource_H_
+#ifndef _Pin_media_source_H_
+#define _Pin_media_source_H_
 
 
 #include <string>
-#include "PinMediaSourceImageBase64.h"
-#include "PinMediaSourceImageURL.h"
-#include "PinMediaSourceVideoID.h"
+#include "PinMediaSource.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -23,22 +21,22 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin media source.
+/*! \brief 
  *
  *  \ingroup Models
  *
  */
 
-class PinMediaSource : public Object {
+class Pin_media_source : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	PinMediaSource();
-	PinMediaSource(char* str);
+	Pin_media_source();
+	Pin_media_source(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~PinMediaSource();
+	virtual ~Pin_media_source();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -105,4 +103,4 @@ private:
 }
 }
 
-#endif /* _PinMediaSource_H_ */
+#endif /* _Pin_media_source_H_ */

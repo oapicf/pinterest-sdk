@@ -45,280 +45,248 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Pinterest couldn't download your feed.
 	 */
-	int getFetchError();
+	int getFETCHERROR();
 
-	/*! \brief Set 
+	/*! \brief Set Pinterest couldn't download your feed.
 	 */
-	void setFetchError(int  fetch_error);
-	/*! \brief Get 
+	void setFETCHERROR(int  fETCH_ERROR);
+	/*! \brief Get Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
 	 */
-	int getFetchInactiveFeedError();
+	int getFETCHINACTIVEFEEDERROR();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
 	 */
-	void setFetchInactiveFeedError(int  fetch_inactive_feed_error);
-	/*! \brief Get 
+	void setFETCHINACTIVEFEEDERROR(int  fETCH_INACTIVE_FEED_ERROR);
+	/*! \brief Get Your feed includes data with an unsupported encoding format.
 	 */
-	int getEncodingError();
+	int getENCODINGERROR();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed includes data with an unsupported encoding format.
 	 */
-	void setEncodingError(int  encoding_error);
-	/*! \brief Get 
+	void setENCODINGERROR(int  eNCODING_ERROR);
+	/*! \brief Get Your feed includes data with formatting errors.
 	 */
-	int getDelimiterError();
+	int getDELIMITERERROR();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed includes data with formatting errors.
 	 */
-	void setDelimiterError(int  delimiter_error);
-	/*! \brief Get 
+	void setDELIMITERERROR(int  dELIMITER_ERROR);
+	/*! \brief Get Your feed is missing some required column headers.
 	 */
-	int getRequiredColumnsMissing();
+	int getREQUIREDCOLUMNSMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed is missing some required column headers.
 	 */
-	void setRequiredColumnsMissing(int  required_columns_missing);
-	/*! \brief Get 
+	void setREQUIREDCOLUMNSMISSING(int  rEQUIRED_COLUMNS_MISSING);
+	/*! \brief Get Some image links are formatted incorrectly.
 	 */
-	int getImageLinkInvalid();
+	int getIMAGELINKINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some image links are formatted incorrectly.
 	 */
-	void setImageLinkInvalid(int  image_link_invalid);
-	/*! \brief Get 
+	void setIMAGELINKINVALID(int  iMAGE_LINK_INVALID);
+	/*! \brief Get Some items are missing an item id in their product metadata, those items will not be published.
 	 */
-	int getItemidMissing();
+	int getITEMIDMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing an item id in their product metadata, those items will not be published.
 	 */
-	void setItemidMissing(int  itemid_missing);
-	/*! \brief Get 
+	void setITEMIDMISSING(int  iTEMID_MISSING);
+	/*! \brief Get Some items are missing a title in their product metadata, those items will not be published.
 	 */
-	int getTitleMissing();
+	int getTITLEMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing a title in their product metadata, those items will not be published.
 	 */
-	void setTitleMissing(int  title_missing);
-	/*! \brief Get 
+	void setTITLEMISSING(int  tITLE_MISSING);
+	/*! \brief Get Some items are missing a description in their product metadata, those items will not be published.
 	 */
-	int getDescriptionMissing();
+	int getDESCRIPTIONMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing a description in their product metadata, those items will not be published.
 	 */
-	void setDescriptionMissing(int  description_missing);
-	/*! \brief Get 
+	void setDESCRIPTIONMISSING(int  dESCRIPTION_MISSING);
+	/*! \brief Get Some items are missing a link URL in their product metadata, those items will not be published.
 	 */
-	int getProductCategoryInvalid();
+	int getPRODUCTLINKMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing a link URL in their product metadata, those items will not be published.
 	 */
-	void setProductCategoryInvalid(int  product_category_invalid);
-	/*! \brief Get 
+	void setPRODUCTLINKMISSING(int  pRODUCT_LINK_MISSING);
+	/*! \brief Get Some items are missing an image link URL in their product metadata, those items will not be published.
 	 */
-	int getProductLinkMissing();
+	int getIMAGELINKMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing an image link URL in their product metadata, those items will not be published.
 	 */
-	void setProductLinkMissing(int  product_link_missing);
-	/*! \brief Get 
+	void setIMAGELINKMISSING(int  iMAGE_LINK_MISSING);
+	/*! \brief Get Some items are missing an availability value in their product metadata, those items will not be published.
 	 */
-	int getImageLinkMissing();
+	int getAVAILABILITYINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing an availability value in their product metadata, those items will not be published.
 	 */
-	void setImageLinkMissing(int  image_link_missing);
-	/*! \brief Get 
+	void setAVAILABILITYINVALID(int  aVAILABILITY_INVALID);
+	/*! \brief Get Some items have price formatting errors in their product metadata, those items will not be published.
 	 */
-	int getAvailabilityInvalid();
+	int getPRODUCTPRICEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have price formatting errors in their product metadata, those items will not be published.
 	 */
-	void setAvailabilityInvalid(int  availability_invalid);
-	/*! \brief Get 
+	void setPRODUCTPRICEINVALID(int  pRODUCT_PRICE_INVALID);
+	/*! \brief Get Some link values are formatted incorrectly.
 	 */
-	int getProductPriceInvalid();
+	int getLINKFORMATINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some link values are formatted incorrectly.
 	 */
-	void setProductPriceInvalid(int  product_price_invalid);
-	/*! \brief Get 
+	void setLINKFORMATINVALID(int  lINK_FORMAT_INVALID);
+	/*! \brief Get Your feed contains formatting errors for some items.
 	 */
-	int getLinkFormatInvalid();
+	int getPARSELINEERROR();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed contains formatting errors for some items.
 	 */
-	void setLinkFormatInvalid(int  link_format_invalid);
-	/*! \brief Get 
+	void setPARSELINEERROR(int  pARSE_LINE_ERROR);
+	/*! \brief Get Some adwords links contain too many characters.
 	 */
-	int getParseLineError();
+	int getADWORDSFORMATINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some adwords links contain too many characters.
 	 */
-	void setParseLineError(int  parse_line_error);
-	/*! \brief Get 
+	void setADWORDSFORMATINVALID(int  aDWORDS_FORMAT_INVALID);
+	/*! \brief Get We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.
 	 */
-	int getAdwordsFormatInvalid();
+	int getINTERNALSERVICEERROR();
 
-	/*! \brief Set 
+	/*! \brief Set We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.
 	 */
-	void setAdwordsFormatInvalid(int  adwords_format_invalid);
-	/*! \brief Get 
+	void setINTERNALSERVICEERROR(int  iNTERNAL_SERVICE_ERROR);
+	/*! \brief Get Your merchant domain needs to be claimed.
 	 */
-	int getProductCategoryMissing();
+	int getNOVERIFIEDDOMAIN();
 
-	/*! \brief Set 
+	/*! \brief Set Your merchant domain needs to be claimed.
 	 */
-	void setProductCategoryMissing(int  product_category_missing);
-	/*! \brief Get 
+	void setNOVERIFIEDDOMAIN(int  nO_VERIFIED_DOMAIN);
+	/*! \brief Get Some items have invalid adult values.
 	 */
-	int getInternalServiceError();
+	int getADULTINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have invalid adult values.
 	 */
-	void setInternalServiceError(int  internal_service_error);
-	/*! \brief Get 
+	void setADULTINVALID(int  aDULT_INVALID);
+	/*! \brief Get Some items have image_link URLs that contain too many characters, so those items will not be published.
 	 */
-	int getNoVerifiedDomain();
+	int getIMAGELINKLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have image_link URLs that contain too many characters, so those items will not be published.
 	 */
-	void setNoVerifiedDomain(int  no_verified_domain);
-	/*! \brief Get 
+	void setIMAGELINKLENGTHTOOLONG(int  iMAGE_LINK_LENGTH_TOO_LONG);
+	/*! \brief Get Some of your product link values don't match the verified domain associated with this account.
 	 */
-	int getAdultInvalid();
+	int getINVALIDDOMAIN();
 
-	/*! \brief Set 
+	/*! \brief Set Some of your product link values don't match the verified domain associated with this account.
 	 */
-	void setAdultInvalid(int  adult_invalid);
-	/*! \brief Get 
+	void setINVALIDDOMAIN(int  iNVALID_DOMAIN);
+	/*! \brief Get Your feed contains too many items, some items will not be published.
 	 */
-	int getInvalidDomain();
+	int getFEEDLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed contains too many items, some items will not be published.
 	 */
-	void setInvalidDomain(int  invalid_domain);
-	/*! \brief Get 
+	void setFEEDLENGTHTOOLONG(int  fEED_LENGTH_TOO_LONG);
+	/*! \brief Get Some product links contain too many characters, those items will not be published.
 	 */
-	int getFeedLengthTooLong();
+	int getLINKLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Some product links contain too many characters, those items will not be published.
 	 */
-	void setFeedLengthTooLong(int  feed_length_too_long);
-	/*! \brief Get 
+	void setLINKLENGTHTOOLONG(int  lINK_LENGTH_TOO_LONG);
+	/*! \brief Get Your feed couldn't be validated because the xml file is formatted incorrectly.
 	 */
-	int getLinkLengthTooLong();
+	int getMALFORMEDXML();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed couldn't be validated because the xml file is formatted incorrectly.
 	 */
-	void setLinkLengthTooLong(int  link_length_too_long);
-	/*! \brief Get 
+	void setMALFORMEDXML(int  mALFORMED_XML);
+	/*! \brief Get Some products are missing a price, those items will not be published.
 	 */
-	int getMalformedXml();
+	int getPRICEMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some products are missing a price, those items will not be published.
 	 */
-	void setMalformedXml(int  malformed_xml);
-	/*! \brief Get 
+	void setPRICEMISSING(int  pRICE_MISSING);
+	/*! \brief Get Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
 	 */
-	int getRedirectInvalid();
+	int getFEEDTOOSMALL();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
 	 */
-	void setRedirectInvalid(int  redirect_invalid);
-	/*! \brief Get 
+	void setFEEDTOOSMALL(int  fEED_TOO_SMALL);
+	/*! \brief Get Some items exceed the maximum number of items per item group, those items will not be published.
 	 */
-	int getPriceMissing();
+	int getMAXITEMSPERITEMGROUPEXCEEDED();
 
-	/*! \brief Set 
+	/*! \brief Set Some items exceed the maximum number of items per item group, those items will not be published.
 	 */
-	void setPriceMissing(int  price_missing);
-	/*! \brief Get 
+	void setMAXITEMSPERITEMGROUPEXCEEDED(int  mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED);
+	/*! \brief Get Some items' main images can't be found.
 	 */
-	int getFeedTooSmall();
+	int getITEMMAINIMAGEDOWNLOADFAILURE();
 
-	/*! \brief Set 
+	/*! \brief Set Some items' main images can't be found.
 	 */
-	void setFeedTooSmall(int  feed_too_small);
-	/*! \brief Get 
+	void setITEMMAINIMAGEDOWNLOADFAILURE(int  iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE);
+	/*! \brief Get Some items were not published because they don't meet Pinterest's Merchant Guidelines.
 	 */
-	int getConditionInvalid();
+	int getPINJOINCONTENTUNSAFE();
 
-	/*! \brief Set 
+	/*! \brief Set Some items were not published because they don't meet Pinterest's Merchant Guidelines.
 	 */
-	void setConditionInvalid(int  condition_invalid);
-	/*! \brief Get 
+	void setPINJOINCONTENTUNSAFE(int  pINJOIN_CONTENT_UNSAFE);
+	/*! \brief Get Some items were not published because they don't meet Pinterest's Merchant Guidelines.
 	 */
-	int getShopifyNoProducts();
+	int getBLOCKLISTEDIMAGESIGNATURE();
 
-	/*! \brief Set 
+	/*! \brief Set Some items were not published because they don't meet Pinterest's Merchant Guidelines.
 	 */
-	void setShopifyNoProducts(int  shopify_no_products);
-	/*! \brief Get 
-	 */
-	int getMaxItemsPerItemGroupExceeded();
-
-	/*! \brief Set 
-	 */
-	void setMaxItemsPerItemGroupExceeded(int  max_items_per_item_group_exceeded);
-	/*! \brief Get 
-	 */
-	int getItemMainImageDownloadFailure();
-
-	/*! \brief Set 
-	 */
-	void setItemMainImageDownloadFailure(int  item_main_image_download_failure);
-	/*! \brief Get 
-	 */
-	int getPinjoinContentUnsafe();
-
-	/*! \brief Set 
-	 */
-	void setPinjoinContentUnsafe(int  pinjoin_content_unsafe);
-	/*! \brief Get 
-	 */
-	int getBlocklistedImageSignature();
-
-	/*! \brief Set 
-	 */
-	void setBlocklistedImageSignature(int  blocklisted_image_signature);
+	void setBLOCKLISTEDIMAGESIGNATURE(int  bLOCKLISTED_IMAGE_SIGNATURE);
 
 private:
-	int fetch_error;
-	int fetch_inactive_feed_error;
-	int encoding_error;
-	int delimiter_error;
-	int required_columns_missing;
-	int image_link_invalid;
-	int itemid_missing;
-	int title_missing;
-	int description_missing;
-	int product_category_invalid;
-	int product_link_missing;
-	int image_link_missing;
-	int availability_invalid;
-	int product_price_invalid;
-	int link_format_invalid;
-	int parse_line_error;
-	int adwords_format_invalid;
-	int product_category_missing;
-	int internal_service_error;
-	int no_verified_domain;
-	int adult_invalid;
-	int invalid_domain;
-	int feed_length_too_long;
-	int link_length_too_long;
-	int malformed_xml;
-	int redirect_invalid;
-	int price_missing;
-	int feed_too_small;
-	int condition_invalid;
-	int shopify_no_products;
-	int max_items_per_item_group_exceeded;
-	int item_main_image_download_failure;
-	int pinjoin_content_unsafe;
-	int blocklisted_image_signature;
+	int fETCH_ERROR;
+	int fETCH_INACTIVE_FEED_ERROR;
+	int eNCODING_ERROR;
+	int dELIMITER_ERROR;
+	int rEQUIRED_COLUMNS_MISSING;
+	int iMAGE_LINK_INVALID;
+	int iTEMID_MISSING;
+	int tITLE_MISSING;
+	int dESCRIPTION_MISSING;
+	int pRODUCT_LINK_MISSING;
+	int iMAGE_LINK_MISSING;
+	int aVAILABILITY_INVALID;
+	int pRODUCT_PRICE_INVALID;
+	int lINK_FORMAT_INVALID;
+	int pARSE_LINE_ERROR;
+	int aDWORDS_FORMAT_INVALID;
+	int iNTERNAL_SERVICE_ERROR;
+	int nO_VERIFIED_DOMAIN;
+	int aDULT_INVALID;
+	int iMAGE_LINK_LENGTH_TOO_LONG;
+	int iNVALID_DOMAIN;
+	int fEED_LENGTH_TOO_LONG;
+	int lINK_LENGTH_TOO_LONG;
+	int mALFORMED_XML;
+	int pRICE_MISSING;
+	int fEED_TOO_SMALL;
+	int mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
+	int iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+	int pINJOIN_CONTENT_UNSAFE;
+	int bLOCKLISTED_IMAGE_SIGNATURE;
 	void __init();
 	void __cleanup();
 

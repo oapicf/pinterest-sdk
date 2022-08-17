@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**pins/analytics**](PinsApi.md#pins/analytics) | **GET** /pins/{pin_id}/analytics | Get Pin analytics
-[**pins/create**](PinsApi.md#pins/create) | **POST** /pins | Create Pin
-[**pins/delete**](PinsApi.md#pins/delete) | **DELETE** /pins/{pin_id} | Delete Pin
-[**pins/get**](PinsApi.md#pins/get) | **GET** /pins/{pin_id} | Get Pin
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**pins/analytics**](PinsApi.md#pins/analytics) | **GET** /pins/{pin_id}/analytics | Get Pin analytics |
+| [**pins/create**](PinsApi.md#pins/create) | **POST** /pins | Create Pin |
+| [**pins/delete**](PinsApi.md#pins/delete) | **DELETE** /pins/{pin_id} | Delete Pin |
+| [**pins/get**](PinsApi.md#pins/get) | **GET** /pins/{pin_id} | Get Pin |
 
 
 <a name="pins/analytics"></a>
@@ -20,15 +20,15 @@ Get Pin analytics
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pin\_id** | **String**| Unique identifier of a Pin. | [default to null]
- **start\_date** | **date**| Metric report start date (UTC). Format: YYYY-MM-DD | [default to null]
- **end\_date** | **date**| Metric report end date (UTC). Format: YYYY-MM-DD | [default to null]
- **metric\_types** | [**List**](../Models/String.md)| Pin metric types to get data for, default is all. | [default to null] [enum: IMPRESSION, SAVE, PIN_CLICK, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW]
- **app\_types** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
- **split\_field** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] [enum: NO_SPLIT, APP_TYPE]
- **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pin\_id** | **String**| Unique identifier of a Pin. | [default to null] |
+| **start\_date** | **date**| Metric report start date (UTC). Format: YYYY-MM-DD | [default to null] |
+| **end\_date** | **date**| Metric report end date (UTC). Format: YYYY-MM-DD | [default to null] |
+| **metric\_types** | [**List**](../Models/String.md)| Pin metric types to get data for, default is all. | [default to null] [enum: IMPRESSION, SAVE, PIN_CLICK, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW] |
+| **app\_types** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
+| **split\_field** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] [enum: NO_SPLIT, APP_TYPE] |
+| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 
 ### Return type
 
@@ -53,9 +53,9 @@ Create Pin
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **Pin** | [**Pin**](../Models/Pin.md)| Create a new Pin. |
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **Pin** | [**Pin**](../Models/Pin.md)| Create a new Pin. | |
 
 ### Return type
 
@@ -80,9 +80,9 @@ Delete Pin
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pin\_id** | **String**| Unique identifier of a Pin. | [default to null]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pin\_id** | **String**| Unique identifier of a Pin. | [default to null] |
 
 ### Return type
 
@@ -107,10 +107,10 @@ Get Pin
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pin\_id** | **String**| Unique identifier of a Pin. | [default to null]
- **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pin\_id** | **String**| Unique identifier of a Pin. | [default to null] |
+| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 
 ### Return type
 

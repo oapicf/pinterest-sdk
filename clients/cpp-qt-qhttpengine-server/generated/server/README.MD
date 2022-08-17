@@ -9,7 +9,7 @@ To see how to make this your own, look here:
 
 [README]((https://openapi-generator.tech))
 
-- API version: 5.3.0
+- API version: 5.4.1
 For more information, please visit [https://github.com/cliffano/pinterest-sdk](https://github.com/cliffano/pinterest-sdk)
 
 ## QHTTPEngine

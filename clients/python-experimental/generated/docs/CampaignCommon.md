@@ -5,7 +5,7 @@ Campaign Data
 #### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad_account_id** | **str** | Campaign&#x27;s Advertiser ID. | 
+**ad_account_id** | **str** | Campaign&#x27;s Advertiser ID. | [optional] 
 **name** | **str** | Campaign name. | [optional] 
 **status** | **str** |  | [optional]  if omitted the server will use the default value of "ACTIVE"
 **lifetime_spend_cap** | **int, none_type** | Campaign total spending cap. | [optional] 

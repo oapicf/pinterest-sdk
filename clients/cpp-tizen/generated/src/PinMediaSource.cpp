@@ -5,23 +5,23 @@
 #include "Helpers.h"
 
 
-#include "PinMediaSource.h"
+#include "Pin_media_source.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-PinMediaSource::PinMediaSource()
+Pin_media_source::Pin_media_source()
 {
 	//__init();
 }
 
-PinMediaSource::~PinMediaSource()
+Pin_media_source::~Pin_media_source()
 {
 	//__cleanup();
 }
 
 void
-PinMediaSource::__init()
+Pin_media_source::__init()
 {
 	//source_type = std::string();
 	//content_type = std::string();
@@ -32,7 +32,7 @@ PinMediaSource::__init()
 }
 
 void
-PinMediaSource::__cleanup()
+Pin_media_source::__cleanup()
 {
 	//if(source_type != NULL) {
 	//
@@ -68,7 +68,7 @@ PinMediaSource::__cleanup()
 }
 
 void
-PinMediaSource::fromJson(char* jsonStr)
+Pin_media_source::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
@@ -140,13 +140,13 @@ PinMediaSource::fromJson(char* jsonStr)
 	}
 }
 
-PinMediaSource::PinMediaSource(char* json)
+Pin_media_source::Pin_media_source(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-PinMediaSource::toJson()
+Pin_media_source::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
@@ -213,73 +213,73 @@ PinMediaSource::toJson()
 }
 
 std::string
-PinMediaSource::getSourceType()
+Pin_media_source::getSourceType()
 {
 	return source_type;
 }
 
 void
-PinMediaSource::setSourceType(std::string  source_type)
+Pin_media_source::setSourceType(std::string  source_type)
 {
 	this->source_type = source_type;
 }
 
 std::string
-PinMediaSource::getContentType()
+Pin_media_source::getContentType()
 {
 	return content_type;
 }
 
 void
-PinMediaSource::setContentType(std::string  content_type)
+Pin_media_source::setContentType(std::string  content_type)
 {
 	this->content_type = content_type;
 }
 
 std::string
-PinMediaSource::getData()
+Pin_media_source::getData()
 {
 	return data;
 }
 
 void
-PinMediaSource::setData(std::string  data)
+Pin_media_source::setData(std::string  data)
 {
 	this->data = data;
 }
 
 std::string
-PinMediaSource::getUrl()
+Pin_media_source::getUrl()
 {
 	return url;
 }
 
 void
-PinMediaSource::setUrl(std::string  url)
+Pin_media_source::setUrl(std::string  url)
 {
 	this->url = url;
 }
 
 std::string
-PinMediaSource::getCoverImageUrl()
+Pin_media_source::getCoverImageUrl()
 {
 	return cover_image_url;
 }
 
 void
-PinMediaSource::setCoverImageUrl(std::string  cover_image_url)
+Pin_media_source::setCoverImageUrl(std::string  cover_image_url)
 {
 	this->cover_image_url = cover_image_url;
 }
 
 std::string
-PinMediaSource::getMediaId()
+Pin_media_source::getMediaId()
 {
 	return media_id;
 }
 
 void
-PinMediaSource::setMediaId(std::string  media_id)
+Pin_media_source::setMediaId(std::string  media_id)
 {
 	this->media_id = media_id;
 }

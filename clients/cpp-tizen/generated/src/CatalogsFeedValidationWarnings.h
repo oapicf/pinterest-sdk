@@ -45,368 +45,368 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get The title for some items were truncated because they contain too many characters.
 	 */
-	int getTitleLengthTooLong();
+	int getTITLELENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set The title for some items were truncated because they contain too many characters.
 	 */
-	void setTitleLengthTooLong(int  title_length_too_long);
-	/*! \brief Get 
+	void setTITLELENGTHTOOLONG(int  tITLE_LENGTH_TOO_LONG);
+	/*! \brief Get The description for some items were truncated because they contain too many characters.
 	 */
-	int getDescriptionLengthTooLong();
+	int getDESCRIPTIONLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set The description for some items were truncated because they contain too many characters.
 	 */
-	void setDescriptionLengthTooLong(int  description_length_too_long);
-	/*! \brief Get 
+	void setDESCRIPTIONLENGTHTOOLONG(int  dESCRIPTION_LENGTH_TOO_LONG);
+	/*! \brief Get Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	int getGenderInvalid();
+	int getGENDERINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	void setGenderInvalid(int  gender_invalid);
-	/*! \brief Get 
+	void setGENDERINVALID(int  gENDER_INVALID);
+	/*! \brief Get Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	int getAgeGroupInvalid();
+	int getAGEGROUPINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	void setAgeGroupInvalid(int  age_group_invalid);
-	/*! \brief Get 
+	void setAGEGROUPINVALID(int  aGE_GROUP_INVALID);
+	/*! \brief Get Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	int getSizeTypeInvalid();
+	int getSIZETYPEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	void setSizeTypeInvalid(int  size_type_invalid);
-	/*! \brief Get 
+	void setSIZETYPEINVALID(int  sIZE_TYPE_INVALID);
+	/*! \brief Get Some items have an invalid product link which contains invalid UTM tracking paramaters.
 	 */
-	int getLinkFormatWarning();
+	int getLINKFORMATWARNING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have an invalid product link which contains invalid UTM tracking paramaters.
 	 */
-	void setLinkFormatWarning(int  link_format_warning);
-	/*! \brief Get 
+	void setLINKFORMATWARNING(int  lINK_FORMAT_WARNING);
+	/*! \brief Get Some products are duplicated.
 	 */
-	int getDuplicateProducts();
+	int getDUPLICATEPRODUCTS();
 
-	/*! \brief Set 
+	/*! \brief Set Some products are duplicated.
 	 */
-	void setDuplicateProducts(int  duplicate_products);
-	/*! \brief Get 
+	void setDUPLICATEPRODUCTS(int  dUPLICATE_PRODUCTS);
+	/*! \brief Get Some items have sale price values that are higher than the original price of the item.
 	 */
-	int getDuplicateLinks();
+	int getSALESPRICEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have sale price values that are higher than the original price of the item.
 	 */
-	void setDuplicateLinks(int  duplicate_links);
-	/*! \brief Get 
+	void setSALESPRICEINVALID(int  sALES_PRICE_INVALID);
+	/*! \brief Get Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	int getSalesPriceInvalid();
+	int getPRODUCTCATEGORYDEPTHWARNING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	void setSalesPriceInvalid(int  sales_price_invalid);
-	/*! \brief Get 
+	void setPRODUCTCATEGORYDEPTHWARNING(int  pRODUCT_CATEGORY_DEPTH_WARNING);
+	/*! \brief Get Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
 	 */
-	int getProductCategoryDepthWarning();
+	int getADWORDSSAMEASLINK();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
 	 */
-	void setProductCategoryDepthWarning(int  product_category_depth_warning);
-	/*! \brief Get 
+	void setADWORDSSAMEASLINK(int  aDWORDS_SAME_AS_LINK);
+	/*! \brief Get Your feed contains duplicate headers.
 	 */
-	int getAdwordsSameAsLink();
+	int getDUPLICATEHEADERS();
 
-	/*! \brief Set 
+	/*! \brief Set Your feed contains duplicate headers.
 	 */
-	void setAdwordsSameAsLink(int  adwords_same_as_link);
-	/*! \brief Get 
+	void setDUPLICATEHEADERS(int  dUPLICATE_HEADERS);
+	/*! \brief Get Ingestion completed early because there are no changes to your feed since the last successful update.
 	 */
-	int getDuplicateHeaders();
+	int getFETCHSAMESIGNATURE();
 
-	/*! \brief Set 
+	/*! \brief Set Ingestion completed early because there are no changes to your feed since the last successful update.
 	 */
-	void setDuplicateHeaders(int  duplicate_headers);
-	/*! \brief Get 
+	void setFETCHSAMESIGNATURE(int  fETCH_SAME_SIGNATURE);
+	/*! \brief Get Some items have adwords_redirect links that are formatted incorrectly.
 	 */
-	int getFetchSameSignature();
+	int getADWORDSFORMATWARNING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have adwords_redirect links that are formatted incorrectly.
 	 */
-	void setFetchSameSignature(int  fetch_same_signature);
-	/*! \brief Get 
+	void setADWORDSFORMATWARNING(int  aDWORDS_FORMAT_WARNING);
+	/*! \brief Get Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
 	 */
-	int getAdwordsFormatWarning();
+	int getADDITIONALIMAGELINKLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
 	 */
-	void setAdwordsFormatWarning(int  adwords_format_warning);
-	/*! \brief Get 
+	void setADDITIONALIMAGELINKLENGTHTOOLONG(int  aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG);
+	/*! \brief Get Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
 	 */
-	int getAdditionalImageLinkWarning();
+	int getADDITIONALIMAGELINKWARNING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
 	 */
-	void setAdditionalImageLinkWarning(int  additional_image_link_warning);
-	/*! \brief Get 
+	void setADDITIONALIMAGELINKWARNING(int  aDDITIONAL_IMAGE_LINK_WARNING);
+	/*! \brief Get Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
 	 */
-	int getImageLinkWarning();
+	int getIMAGELINKWARNING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
 	 */
-	void setImageLinkWarning(int  image_link_warning);
-	/*! \brief Get 
+	void setIMAGELINKWARNING(int  iMAGE_LINK_WARNING);
+	/*! \brief Get Some items have shipping values that are formatted incorrectly.
 	 */
-	int getShippingInvalid();
+	int getSHIPPINGINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have shipping values that are formatted incorrectly.
 	 */
-	void setShippingInvalid(int  shipping_invalid);
-	/*! \brief Get 
+	void setSHIPPINGINVALID(int  sHIPPING_INVALID);
+	/*! \brief Get Some items have tax values that are formatted incorrectly.
 	 */
-	int getTaxInvalid();
+	int getTAXINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have tax values that are formatted incorrectly.
 	 */
-	void setTaxInvalid(int  tax_invalid);
-	/*! \brief Get 
+	void setTAXINVALID(int  tAX_INVALID);
+	/*! \brief Get Some items have invalid shipping_weight values.
 	 */
-	int getShippingWeightInvalid();
+	int getSHIPPINGWEIGHTINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have invalid shipping_weight values.
 	 */
-	void setShippingWeightInvalid(int  shipping_weight_invalid);
-	/*! \brief Get 
+	void setSHIPPINGWEIGHTINVALID(int  sHIPPING_WEIGHT_INVALID);
+	/*! \brief Get Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
 	 */
-	int getExpirationDateInvalid();
+	int getEXPIRATIONDATEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
 	 */
-	void setExpirationDateInvalid(int  expiration_date_invalid);
-	/*! \brief Get 
+	void setEXPIRATIONDATEINVALID(int  eXPIRATION_DATE_INVALID);
+	/*! \brief Get Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
 	 */
-	int getAvailabilityDateInvalid();
+	int getAVAILABILITYDATEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
 	 */
-	void setAvailabilityDateInvalid(int  availability_date_invalid);
-	/*! \brief Get 
+	void setAVAILABILITYDATEINVALID(int  aVAILABILITY_DATE_INVALID);
+	/*! \brief Get Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
 	 */
-	int getSaleDateInvalid();
+	int getSALEDATEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
 	 */
-	void setSaleDateInvalid(int  sale_date_invalid);
-	/*! \brief Get 
+	void setSALEDATEINVALID(int  sALE_DATE_INVALID);
+	/*! \brief Get Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
 	 */
-	int getWeightUnitInvalid();
+	int getWEIGHTUNITINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
 	 */
-	void setWeightUnitInvalid(int  weight_unit_invalid);
-	/*! \brief Get 
+	void setWEIGHTUNITINVALID(int  wEIGHT_UNIT_INVALID);
+	/*! \brief Get Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
 	 */
-	int getIsBundleInvalid();
+	int getISBUNDLEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
 	 */
-	void setIsBundleInvalid(int  is_bundle_invalid);
-	/*! \brief Get 
+	void setISBUNDLEINVALID(int  iS_BUNDLE_INVALID);
+	/*! \brief Get Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
 	 */
-	int getUpdatedTimeInvalid();
+	int getUPDATEDTIMEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
 	 */
-	void setUpdatedTimeInvalid(int  updated_time_invalid);
-	/*! \brief Get 
+	void setUPDATEDTIMEINVALID(int  uPDATED_TIME_INVALID);
+	/*! \brief Get Some items have custom_label values that are too long, those items will be published without that custom label.
 	 */
-	int getCustomLabelLengthTooLong();
+	int getCUSTOMLABELLENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have custom_label values that are too long, those items will be published without that custom label.
 	 */
-	void setCustomLabelLengthTooLong(int  custom_label_length_too_long);
-	/*! \brief Get 
+	void setCUSTOMLABELLENGTHTOOLONG(int  cUSTOM_LABEL_LENGTH_TOO_LONG);
+	/*! \brief Get Some items have product_type values that are too long, those items will be published without that product type.
 	 */
-	int getProductTypeLengthTooLong();
+	int getPRODUCTTYPELENGTHTOOLONG();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have product_type values that are too long, those items will be published without that product type.
 	 */
-	void setProductTypeLengthTooLong(int  product_type_length_too_long);
-	/*! \brief Get 
+	void setPRODUCTTYPELENGTHTOOLONG(int  pRODUCT_TYPE_LENGTH_TOO_LONG);
+	/*! \brief Get Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
 	 */
-	int getTooManyAdditionalImageLinks();
+	int getTOOMANYADDITIONALIMAGELINKS();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
 	 */
-	void setTooManyAdditionalImageLinks(int  too_many_additional_image_links);
-	/*! \brief Get 
+	void setTOOMANYADDITIONALIMAGELINKS(int  tOO_MANY_ADDITIONAL_IMAGE_LINKS);
+	/*! \brief Get Some items have invalid multipack values.
 	 */
-	int getMultipackInvalid();
+	int getMULTIPACKINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items have invalid multipack values.
 	 */
-	void setMultipackInvalid(int  multipack_invalid);
-	/*! \brief Get 
+	void setMULTIPACKINVALID(int  mULTIPACK_INVALID);
+	/*! \brief Get The product count has increased or decreased significantly compared to the last successful ingestion.
 	 */
-	int getIndexedProductCountLargeDelta();
+	int getINDEXEDPRODUCTCOUNTLARGEDELTA();
 
-	/*! \brief Set 
+	/*! \brief Set The product count has increased or decreased significantly compared to the last successful ingestion.
 	 */
-	void setIndexedProductCountLargeDelta(int  indexed_product_count_large_delta);
-	/*! \brief Get 
+	void setINDEXEDPRODUCTCOUNTLARGEDELTA(int  iNDEXED_PRODUCT_COUNT_LARGE_DELTA);
+	/*! \brief Get Some items include additional_image_links that can't be found.
 	 */
-	int getItemAdditionalImageDownloadFailure();
+	int getITEMADDITIONALIMAGEDOWNLOADFAILURE();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include additional_image_links that can't be found.
 	 */
-	void setItemAdditionalImageDownloadFailure(int  item_additional_image_download_failure);
-	/*! \brief Get 
+	void setITEMADDITIONALIMAGEDOWNLOADFAILURE(int  iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE);
+	/*! \brief Get Some items are missing a google_product_category.
 	 */
-	int getOptionalProductCategoryMissing();
+	int getOPTIONALPRODUCTCATEGORYMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing a google_product_category.
 	 */
-	void setOptionalProductCategoryMissing(int  optional_product_category_missing);
-	/*! \brief Get 
+	void setOPTIONALPRODUCTCATEGORYMISSING(int  oPTIONAL_PRODUCT_CATEGORY_MISSING);
+	/*! \brief Get Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
 	 */
-	int getOptionalProductCategoryInvalid();
+	int getOPTIONALPRODUCTCATEGORYINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
 	 */
-	void setOptionalProductCategoryInvalid(int  optional_product_category_invalid);
-	/*! \brief Get 
+	void setOPTIONALPRODUCTCATEGORYINVALID(int  oPTIONAL_PRODUCT_CATEGORY_INVALID);
+	/*! \brief Get Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	int getOptionalConditionMissing();
+	int getOPTIONALCONDITIONMISSING();
 
-	/*! \brief Set 
+	/*! \brief Set Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	void setOptionalConditionMissing(int  optional_condition_missing);
-	/*! \brief Get 
+	void setOPTIONALCONDITIONMISSING(int  oPTIONAL_CONDITION_MISSING);
+	/*! \brief Get Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	int getOptionalConditionInvalid();
+	int getOPTIONALCONDITIONINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
-	void setOptionalConditionInvalid(int  optional_condition_invalid);
-	/*! \brief Get 
+	void setOPTIONALCONDITIONINVALID(int  oPTIONAL_CONDITION_INVALID);
+	/*! \brief Get Some items include invalid ios_deep_link values.
 	 */
-	int getIosDeepLinkInvalid();
+	int getIOSDEEPLINKINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include invalid ios_deep_link values.
 	 */
-	void setIosDeepLinkInvalid(int  ios_deep_link_invalid);
-	/*! \brief Get 
+	void setIOSDEEPLINKINVALID(int  iOS_DEEP_LINK_INVALID);
+	/*! \brief Get Some items include invalid android_deep_link.
 	 */
-	int getAndroidDeepLinkInvalid();
+	int getANDROIDDEEPLINKINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include invalid android_deep_link.
 	 */
-	void setAndroidDeepLinkInvalid(int  android_deep_link_invalid);
-	/*! \brief Get 
+	void setANDROIDDEEPLINKINVALID(int  aNDROID_DEEP_LINK_INVALID);
+	/*! \brief Get Some items include availability values that are formatted incorrectly and have been automatically corrected.
 	 */
-	int getAvailabilityNormalized();
+	int getAVAILABILITYNORMALIZED();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include availability values that are formatted incorrectly and have been automatically corrected.
 	 */
-	void setAvailabilityNormalized(int  availability_normalized);
-	/*! \brief Get 
+	void setAVAILABILITYNORMALIZED(int  aVAILABILITY_NORMALIZED);
+	/*! \brief Get Some items include condition values that are formatted incorrectly and have been automatically corrected.
 	 */
-	int getConditionNormalized();
+	int getCONDITIONNORMALIZED();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include condition values that are formatted incorrectly and have been automatically corrected.
 	 */
-	void setConditionNormalized(int  condition_normalized);
-	/*! \brief Get 
+	void setCONDITIONNORMALIZED(int  cONDITION_NORMALIZED);
+	/*! \brief Get Some items include gender values that are formatted incorrectly and have been automatically corrected.
 	 */
-	int getGenderNormalized();
+	int getGENDERNORMALIZED();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include gender values that are formatted incorrectly and have been automatically corrected.
 	 */
-	void setGenderNormalized(int  gender_normalized);
-	/*! \brief Get 
+	void setGENDERNORMALIZED(int  gENDER_NORMALIZED);
+	/*! \brief Get Some items include size_type values that are formatted incorrectly and have been automatically corrected.
 	 */
-	int getSizeTypeNormalized();
+	int getSIZETYPENORMALIZED();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include size_type values that are formatted incorrectly and have been automatically corrected.
 	 */
-	void setSizeTypeNormalized(int  size_type_normalized);
-	/*! \brief Get 
+	void setSIZETYPENORMALIZED(int  sIZE_TYPE_NORMALIZED);
+	/*! \brief Get Some items include age_group values that are formatted incorrectly and have been automatically corrected.
 	 */
-	int getAgeGroupNormalized();
+	int getAGEGROUPNORMALIZED();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include age_group values that are formatted incorrectly and have been automatically corrected.
 	 */
-	void setAgeGroupNormalized(int  age_group_normalized);
-	/*! \brief Get 
+	void setAGEGROUPNORMALIZED(int  aGE_GROUP_NORMALIZED);
+	/*! \brief Get Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
 	 */
-	int getUtmSourceAutoCorrected();
+	int getUTMSOURCEAUTOCORRECTED();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
 	 */
-	void setUtmSourceAutoCorrected(int  utm_source_auto_corrected);
-	/*! \brief Get 
+	void setUTMSOURCEAUTOCORRECTED(int  uTM_SOURCE_AUTO_CORRECTED);
+	/*! \brief Get Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
 	 */
-	int getCountryDoesNotMapToCurrency();
+	int getCOUNTRYDOESNOTMAPTOCURRENCY();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
 	 */
-	void setCountryDoesNotMapToCurrency(int  country_does_not_map_to_currency);
-	/*! \brief Get 
+	void setCOUNTRYDOESNOTMAPTOCURRENCY(int  cOUNTRY_DOES_NOT_MAP_TO_CURRENCY);
+	/*! \brief Get Some items include min_ad_price values that are formatted incorrectly.
 	 */
-	int getMinAdPriceInvalid();
+	int getMINADPRICEINVALID();
 
-	/*! \brief Set 
+	/*! \brief Set Some items include min_ad_price values that are formatted incorrectly.
 	 */
-	void setMinAdPriceInvalid(int  min_ad_price_invalid);
+	void setMINADPRICEINVALID(int  mIN_AD_PRICE_INVALID);
 
 private:
-	int title_length_too_long;
-	int description_length_too_long;
-	int gender_invalid;
-	int age_group_invalid;
-	int size_type_invalid;
-	int link_format_warning;
-	int duplicate_products;
-	int duplicate_links;
-	int sales_price_invalid;
-	int product_category_depth_warning;
-	int adwords_same_as_link;
-	int duplicate_headers;
-	int fetch_same_signature;
-	int adwords_format_warning;
-	int additional_image_link_warning;
-	int image_link_warning;
-	int shipping_invalid;
-	int tax_invalid;
-	int shipping_weight_invalid;
-	int expiration_date_invalid;
-	int availability_date_invalid;
-	int sale_date_invalid;
-	int weight_unit_invalid;
-	int is_bundle_invalid;
-	int updated_time_invalid;
-	int custom_label_length_too_long;
-	int product_type_length_too_long;
-	int too_many_additional_image_links;
-	int multipack_invalid;
-	int indexed_product_count_large_delta;
-	int item_additional_image_download_failure;
-	int optional_product_category_missing;
-	int optional_product_category_invalid;
-	int optional_condition_missing;
-	int optional_condition_invalid;
-	int ios_deep_link_invalid;
-	int android_deep_link_invalid;
-	int availability_normalized;
-	int condition_normalized;
-	int gender_normalized;
-	int size_type_normalized;
-	int age_group_normalized;
-	int utm_source_auto_corrected;
-	int country_does_not_map_to_currency;
-	int min_ad_price_invalid;
+	int tITLE_LENGTH_TOO_LONG;
+	int dESCRIPTION_LENGTH_TOO_LONG;
+	int gENDER_INVALID;
+	int aGE_GROUP_INVALID;
+	int sIZE_TYPE_INVALID;
+	int lINK_FORMAT_WARNING;
+	int dUPLICATE_PRODUCTS;
+	int sALES_PRICE_INVALID;
+	int pRODUCT_CATEGORY_DEPTH_WARNING;
+	int aDWORDS_SAME_AS_LINK;
+	int dUPLICATE_HEADERS;
+	int fETCH_SAME_SIGNATURE;
+	int aDWORDS_FORMAT_WARNING;
+	int aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
+	int aDDITIONAL_IMAGE_LINK_WARNING;
+	int iMAGE_LINK_WARNING;
+	int sHIPPING_INVALID;
+	int tAX_INVALID;
+	int sHIPPING_WEIGHT_INVALID;
+	int eXPIRATION_DATE_INVALID;
+	int aVAILABILITY_DATE_INVALID;
+	int sALE_DATE_INVALID;
+	int wEIGHT_UNIT_INVALID;
+	int iS_BUNDLE_INVALID;
+	int uPDATED_TIME_INVALID;
+	int cUSTOM_LABEL_LENGTH_TOO_LONG;
+	int pRODUCT_TYPE_LENGTH_TOO_LONG;
+	int tOO_MANY_ADDITIONAL_IMAGE_LINKS;
+	int mULTIPACK_INVALID;
+	int iNDEXED_PRODUCT_COUNT_LARGE_DELTA;
+	int iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
+	int oPTIONAL_PRODUCT_CATEGORY_MISSING;
+	int oPTIONAL_PRODUCT_CATEGORY_INVALID;
+	int oPTIONAL_CONDITION_MISSING;
+	int oPTIONAL_CONDITION_INVALID;
+	int iOS_DEEP_LINK_INVALID;
+	int aNDROID_DEEP_LINK_INVALID;
+	int aVAILABILITY_NORMALIZED;
+	int cONDITION_NORMALIZED;
+	int gENDER_NORMALIZED;
+	int sIZE_TYPE_NORMALIZED;
+	int aGE_GROUP_NORMALIZED;
+	int uTM_SOURCE_AUTO_CORRECTED;
+	int cOUNTRY_DOES_NOT_MAP_TO_CURRENCY;
+	int mIN_AD_PRICE_INVALID;
 	void __init();
 	void __cleanup();
 

@@ -49,12 +49,12 @@ CatalogsItems::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<ItemBatchRecord> new_list;
-			ItemBatchRecord inst;
+			list<ItemResponse> new_list;
+			ItemResponse inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("ItemBatchRecord")) {
-					jsonToValue(&inst, temp_json, "ItemBatchRecord", "");
+				if (isprimitive("ItemResponse")) {
+					jsonToValue(&inst, temp_json, "ItemResponse", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -78,18 +78,18 @@ CatalogsItems::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("ItemBatchRecord")) {
-		list<ItemBatchRecord> new_list = static_cast<list <ItemBatchRecord> > (getItems());
-		node = converttoJson(&new_list, "ItemBatchRecord", "array");
+	if (isprimitive("ItemResponse")) {
+		list<ItemResponse> new_list = static_cast<list <ItemResponse> > (getItems());
+		node = converttoJson(&new_list, "ItemResponse", "array");
 	} else {
 		node = json_node_alloc();
-		list<ItemBatchRecord> new_list = static_cast<list <ItemBatchRecord> > (getItems());
+		list<ItemResponse> new_list = static_cast<list <ItemResponse> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<ItemBatchRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<ItemResponse>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			ItemBatchRecord obj = *it;
+			ItemResponse obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -111,14 +111,14 @@ CatalogsItems::toJson()
 	return ret;
 }
 
-std::list<ItemBatchRecord>
+std::list<ItemResponse>
 CatalogsItems::getItems()
 {
 	return items;
 }
 
 void
-CatalogsItems::setItems(std::list <ItemBatchRecord> items)
+CatalogsItems::setItems(std::list <ItemResponse> items)
 {
 	this->items = items;
 }

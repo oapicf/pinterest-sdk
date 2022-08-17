@@ -28,6 +28,7 @@ AdAccount::__init()
 	//owner = new Ad_account_owner();
 	//country = new Country();
 	//currency = new Currency();
+	//new std::list()std::list> permissions;
 }
 
 void
@@ -57,6 +58,11 @@ AdAccount::__cleanup()
 	//
 	//delete currency;
 	//currency = NULL;
+	//}
+	//if(permissions != NULL) {
+	//permissions.RemoveAll(true);
+	//delete permissions;
+	//permissions = NULL;
 	//}
 	//
 }
@@ -130,6 +136,28 @@ AdAccount::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *permissionsKey = "permissions";
+	node = json_object_get_member(pJsonObject, permissionsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			permissions = new_list;
+		}
+		
+	}
 }
 
 AdAccount::AdAccount(char* json)
@@ -202,6 +230,21 @@ AdAccount::toJson()
 	}
 	const gchar *currencyKey = "currency";
 	json_object_set_member(pJsonObject, currencyKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *permissionsKey = "permissions";
+	json_object_set_member(pJsonObject, permissionsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -268,6 +311,18 @@ void
 AdAccount::setCurrency(Currency  currency)
 {
 	this->currency = currency;
+}
+
+std::list<std::string>
+AdAccount::getPermissions()
+{
+	return permissions;
+}
+
+void
+AdAccount::setPermissions(std::list <std::string> permissions)
+{
+	this->permissions = permissions;
 }
 
 

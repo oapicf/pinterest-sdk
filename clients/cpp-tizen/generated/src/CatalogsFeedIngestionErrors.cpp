@@ -23,40 +23,28 @@ CatalogsFeedIngestionErrors::~CatalogsFeedIngestionErrors()
 void
 CatalogsFeedIngestionErrors::__init()
 {
-	//image_download_error = int(0);
-	//image_download_connection_timeout = int(0);
-	//image_format_unrecognize = int(0);
-	//line_level_internal_error = int(0);
-	//large_product_count_decrease = int(0);
+	//iMAGE_DOWNLOAD_ERROR = int(0);
+	//lINE_LEVEL_INTERNAL_ERROR = int(0);
+	//lARGE_PRODUCT_COUNT_DECREASE = int(0);
 }
 
 void
 CatalogsFeedIngestionErrors::__cleanup()
 {
-	//if(image_download_error != NULL) {
+	//if(iMAGE_DOWNLOAD_ERROR != NULL) {
 	//
-	//delete image_download_error;
-	//image_download_error = NULL;
+	//delete iMAGE_DOWNLOAD_ERROR;
+	//iMAGE_DOWNLOAD_ERROR = NULL;
 	//}
-	//if(image_download_connection_timeout != NULL) {
+	//if(lINE_LEVEL_INTERNAL_ERROR != NULL) {
 	//
-	//delete image_download_connection_timeout;
-	//image_download_connection_timeout = NULL;
+	//delete lINE_LEVEL_INTERNAL_ERROR;
+	//lINE_LEVEL_INTERNAL_ERROR = NULL;
 	//}
-	//if(image_format_unrecognize != NULL) {
+	//if(lARGE_PRODUCT_COUNT_DECREASE != NULL) {
 	//
-	//delete image_format_unrecognize;
-	//image_format_unrecognize = NULL;
-	//}
-	//if(line_level_internal_error != NULL) {
-	//
-	//delete line_level_internal_error;
-	//line_level_internal_error = NULL;
-	//}
-	//if(large_product_count_decrease != NULL) {
-	//
-	//delete large_product_count_decrease;
-	//large_product_count_decrease = NULL;
+	//delete lARGE_PRODUCT_COUNT_DECREASE;
+	//lARGE_PRODUCT_COUNT_DECREASE = NULL;
 	//}
 	//
 }
@@ -66,57 +54,35 @@ CatalogsFeedIngestionErrors::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *image_download_errorKey = "image_download_error";
-	node = json_object_get_member(pJsonObject, image_download_errorKey);
+	const gchar *iMAGE_DOWNLOAD_ERRORKey = "IMAGE_DOWNLOAD_ERROR";
+	node = json_object_get_member(pJsonObject, iMAGE_DOWNLOAD_ERRORKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&image_download_error, node, "int", "");
+			jsonToValue(&iMAGE_DOWNLOAD_ERROR, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *image_download_connection_timeoutKey = "image_download_connection_timeout";
-	node = json_object_get_member(pJsonObject, image_download_connection_timeoutKey);
+	const gchar *lINE_LEVEL_INTERNAL_ERRORKey = "LINE_LEVEL_INTERNAL_ERROR";
+	node = json_object_get_member(pJsonObject, lINE_LEVEL_INTERNAL_ERRORKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&image_download_connection_timeout, node, "int", "");
+			jsonToValue(&lINE_LEVEL_INTERNAL_ERROR, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *image_format_unrecognizeKey = "image_format_unrecognize";
-	node = json_object_get_member(pJsonObject, image_format_unrecognizeKey);
+	const gchar *lARGE_PRODUCT_COUNT_DECREASEKey = "LARGE_PRODUCT_COUNT_DECREASE";
+	node = json_object_get_member(pJsonObject, lARGE_PRODUCT_COUNT_DECREASEKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&image_format_unrecognize, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *line_level_internal_errorKey = "line_level_internal_error";
-	node = json_object_get_member(pJsonObject, line_level_internal_errorKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&line_level_internal_error, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *large_product_count_decreaseKey = "large_product_count_decrease";
-	node = json_object_get_member(pJsonObject, large_product_count_decreaseKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&large_product_count_decrease, node, "int", "");
+			jsonToValue(&lARGE_PRODUCT_COUNT_DECREASE, node, "int", "");
 		} else {
 			
 		}
@@ -134,50 +100,32 @@ CatalogsFeedIngestionErrors::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("int")) {
-		int obj = getImageDownloadError();
+		int obj = getIMAGEDOWNLOADERROR();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *image_download_errorKey = "image_download_error";
-	json_object_set_member(pJsonObject, image_download_errorKey, node);
+	const gchar *iMAGE_DOWNLOAD_ERRORKey = "IMAGE_DOWNLOAD_ERROR";
+	json_object_set_member(pJsonObject, iMAGE_DOWNLOAD_ERRORKey, node);
 	if (isprimitive("int")) {
-		int obj = getImageDownloadConnectionTimeout();
+		int obj = getLINELEVELINTERNALERROR();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *image_download_connection_timeoutKey = "image_download_connection_timeout";
-	json_object_set_member(pJsonObject, image_download_connection_timeoutKey, node);
+	const gchar *lINE_LEVEL_INTERNAL_ERRORKey = "LINE_LEVEL_INTERNAL_ERROR";
+	json_object_set_member(pJsonObject, lINE_LEVEL_INTERNAL_ERRORKey, node);
 	if (isprimitive("int")) {
-		int obj = getImageFormatUnrecognize();
+		int obj = getLARGEPRODUCTCOUNTDECREASE();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *image_format_unrecognizeKey = "image_format_unrecognize";
-	json_object_set_member(pJsonObject, image_format_unrecognizeKey, node);
-	if (isprimitive("int")) {
-		int obj = getLineLevelInternalError();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *line_level_internal_errorKey = "line_level_internal_error";
-	json_object_set_member(pJsonObject, line_level_internal_errorKey, node);
-	if (isprimitive("int")) {
-		int obj = getLargeProductCountDecrease();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *large_product_count_decreaseKey = "large_product_count_decrease";
-	json_object_set_member(pJsonObject, large_product_count_decreaseKey, node);
+	const gchar *lARGE_PRODUCT_COUNT_DECREASEKey = "LARGE_PRODUCT_COUNT_DECREASE";
+	json_object_set_member(pJsonObject, lARGE_PRODUCT_COUNT_DECREASEKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -187,63 +135,39 @@ CatalogsFeedIngestionErrors::toJson()
 }
 
 int
-CatalogsFeedIngestionErrors::getImageDownloadError()
+CatalogsFeedIngestionErrors::getIMAGEDOWNLOADERROR()
 {
-	return image_download_error;
+	return iMAGE_DOWNLOAD_ERROR;
 }
 
 void
-CatalogsFeedIngestionErrors::setImageDownloadError(int  image_download_error)
+CatalogsFeedIngestionErrors::setIMAGEDOWNLOADERROR(int  iMAGE_DOWNLOAD_ERROR)
 {
-	this->image_download_error = image_download_error;
+	this->iMAGE_DOWNLOAD_ERROR = iMAGE_DOWNLOAD_ERROR;
 }
 
 int
-CatalogsFeedIngestionErrors::getImageDownloadConnectionTimeout()
+CatalogsFeedIngestionErrors::getLINELEVELINTERNALERROR()
 {
-	return image_download_connection_timeout;
+	return lINE_LEVEL_INTERNAL_ERROR;
 }
 
 void
-CatalogsFeedIngestionErrors::setImageDownloadConnectionTimeout(int  image_download_connection_timeout)
+CatalogsFeedIngestionErrors::setLINELEVELINTERNALERROR(int  lINE_LEVEL_INTERNAL_ERROR)
 {
-	this->image_download_connection_timeout = image_download_connection_timeout;
+	this->lINE_LEVEL_INTERNAL_ERROR = lINE_LEVEL_INTERNAL_ERROR;
 }
 
 int
-CatalogsFeedIngestionErrors::getImageFormatUnrecognize()
+CatalogsFeedIngestionErrors::getLARGEPRODUCTCOUNTDECREASE()
 {
-	return image_format_unrecognize;
+	return lARGE_PRODUCT_COUNT_DECREASE;
 }
 
 void
-CatalogsFeedIngestionErrors::setImageFormatUnrecognize(int  image_format_unrecognize)
+CatalogsFeedIngestionErrors::setLARGEPRODUCTCOUNTDECREASE(int  lARGE_PRODUCT_COUNT_DECREASE)
 {
-	this->image_format_unrecognize = image_format_unrecognize;
-}
-
-int
-CatalogsFeedIngestionErrors::getLineLevelInternalError()
-{
-	return line_level_internal_error;
-}
-
-void
-CatalogsFeedIngestionErrors::setLineLevelInternalError(int  line_level_internal_error)
-{
-	this->line_level_internal_error = line_level_internal_error;
-}
-
-int
-CatalogsFeedIngestionErrors::getLargeProductCountDecrease()
-{
-	return large_product_count_decrease;
-}
-
-void
-CatalogsFeedIngestionErrors::setLargeProductCountDecrease(int  large_product_count_decrease)
-{
-	this->large_product_count_decrease = large_product_count_decrease;
+	this->lARGE_PRODUCT_COUNT_DECREASE = lARGE_PRODUCT_COUNT_DECREASE;
 }
 
 

@@ -27,11 +27,12 @@ CatalogsProductGroup::__init()
 	//name = std::string();
 	//description = std::string();
 	//filters = new CatalogsProductGroupFilters();
+	//is_featured = bool(false);
 	//type = new CatalogsProductGroupType();
 	//status = new CatalogsProductGroupStatus();
-	//feed_id = std::string();
 	//created_at = int(0);
 	//updated_at = int(0);
+	//feed_id = std::string();
 }
 
 void
@@ -57,6 +58,11 @@ CatalogsProductGroup::__cleanup()
 	//delete filters;
 	//filters = NULL;
 	//}
+	//if(is_featured != NULL) {
+	//
+	//delete is_featured;
+	//is_featured = NULL;
+	//}
 	//if(type != NULL) {
 	//
 	//delete type;
@@ -67,11 +73,6 @@ CatalogsProductGroup::__cleanup()
 	//delete status;
 	//status = NULL;
 	//}
-	//if(feed_id != NULL) {
-	//
-	//delete feed_id;
-	//feed_id = NULL;
-	//}
 	//if(created_at != NULL) {
 	//
 	//delete created_at;
@@ -81,6 +82,11 @@ CatalogsProductGroup::__cleanup()
 	//
 	//delete updated_at;
 	//updated_at = NULL;
+	//}
+	//if(feed_id != NULL) {
+	//
+	//delete feed_id;
+	//feed_id = NULL;
 	//}
 	//
 }
@@ -137,6 +143,17 @@ CatalogsProductGroup::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_featuredKey = "is_featured";
+	node = json_object_get_member(pJsonObject, is_featuredKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_featured, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *typeKey = "type";
 	node = json_object_get_member(pJsonObject, typeKey);
 	if (node !=NULL) {
@@ -165,17 +182,6 @@ CatalogsProductGroup::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *feed_idKey = "feed_id";
-	node = json_object_get_member(pJsonObject, feed_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&feed_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *created_atKey = "created_at";
 	node = json_object_get_member(pJsonObject, created_atKey);
 	if (node !=NULL) {
@@ -194,6 +200,17 @@ CatalogsProductGroup::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&updated_at, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *feed_idKey = "feed_id";
+	node = json_object_get_member(pJsonObject, feed_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&feed_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -251,6 +268,15 @@ CatalogsProductGroup::toJson()
 	}
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsFeatured();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_featuredKey = "is_featured";
+	json_object_set_member(pJsonObject, is_featuredKey, node);
 	if (isprimitive("CatalogsProductGroupType")) {
 		CatalogsProductGroupType obj = getType();
 		node = converttoJson(&obj, "CatalogsProductGroupType", "");
@@ -279,15 +305,6 @@ CatalogsProductGroup::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getFeedId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *feed_idKey = "feed_id";
-	json_object_set_member(pJsonObject, feed_idKey, node);
 	if (isprimitive("int")) {
 		int obj = getCreatedAt();
 		node = converttoJson(&obj, "int", "");
@@ -306,6 +323,15 @@ CatalogsProductGroup::toJson()
 	}
 	const gchar *updated_atKey = "updated_at";
 	json_object_set_member(pJsonObject, updated_atKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getFeedId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *feed_idKey = "feed_id";
+	json_object_set_member(pJsonObject, feed_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -362,6 +388,18 @@ CatalogsProductGroup::setFilters(CatalogsProductGroupFilters  filters)
 	this->filters = filters;
 }
 
+bool
+CatalogsProductGroup::getIsFeatured()
+{
+	return is_featured;
+}
+
+void
+CatalogsProductGroup::setIsFeatured(bool  is_featured)
+{
+	this->is_featured = is_featured;
+}
+
 CatalogsProductGroupType
 CatalogsProductGroup::getType()
 {
@@ -386,18 +424,6 @@ CatalogsProductGroup::setStatus(CatalogsProductGroupStatus  status)
 	this->status = status;
 }
 
-std::string
-CatalogsProductGroup::getFeedId()
-{
-	return feed_id;
-}
-
-void
-CatalogsProductGroup::setFeedId(std::string  feed_id)
-{
-	this->feed_id = feed_id;
-}
-
 int
 CatalogsProductGroup::getCreatedAt()
 {
@@ -420,6 +446,18 @@ void
 CatalogsProductGroup::setUpdatedAt(int  updated_at)
 {
 	this->updated_at = updated_at;
+}
+
+std::string
+CatalogsProductGroup::getFeedId()
+{
+	return feed_id;
+}
+
+void
+CatalogsProductGroup::setFeedId(std::string  feed_id)
+{
+	this->feed_id = feed_id;
 }
 
 

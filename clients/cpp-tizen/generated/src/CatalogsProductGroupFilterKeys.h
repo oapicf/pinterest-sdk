@@ -98,11 +98,11 @@ public:
 	void setCURRENCY(CatalogsProductGroupCurrencyCriteria  cURRENCY);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupCurrencyCriteria getITEMID();
+	CatalogsProductGroupMultipleStringCriteria getITEMID();
 
 	/*! \brief Set 
 	 */
-	void setITEMID(CatalogsProductGroupCurrencyCriteria  iTEM_ID);
+	void setITEMID(CatalogsProductGroupMultipleStringCriteria  iTEM_ID);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupMultipleStringCriteria getAVAILABILITY();
@@ -262,7 +262,7 @@ private:
 	CatalogsProductGroupPricingCriteria mIN_PRICE;
 	CatalogsProductGroupPricingCriteria mAX_PRICE;
 	CatalogsProductGroupCurrencyCriteria cURRENCY;
-	CatalogsProductGroupCurrencyCriteria iTEM_ID;
+	CatalogsProductGroupMultipleStringCriteria iTEM_ID;
 	CatalogsProductGroupMultipleStringCriteria aVAILABILITY;
 	CatalogsProductGroupMultipleStringCriteria bRAND;
 	CatalogsProductGroupMultipleStringCriteria cONDITION;

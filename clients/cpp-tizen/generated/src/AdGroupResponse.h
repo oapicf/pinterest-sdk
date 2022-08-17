@@ -10,13 +10,15 @@
 
 #include <string>
 #include "ActionType.h"
+#include "AdGroupCommon.h"
+#include "AdGroupCommon_tracking_urls.h"
 #include "AdGroupResponse_allOf.h"
-#include "AdGroupResponse_allOf_1.h"
 #include "AdGroupSummaryStatus.h"
+#include "AnyType.h"
+#include "BudgetType.h"
 #include "EntityStatus.h"
 #include "PacingDeliveryType.h"
 #include "PlacementGroupType.h"
-#include "TrackingUrls.h"
 #include <list>
 #include <map>
 #include "Object.h"
@@ -83,13 +85,20 @@ public:
 	/*! \brief Set Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
 	 */
 	void setBidInMicroCurrency(int  bid_in_micro_currency);
-	/*! \brief Get Budget type. If DAILY, an ad group's daily spend will not exceed the budget parameter value. If LIFETIME, the end_time parameter is **REQUIRED**, and the ad group spend is spread evenly between the ad group `start_time` and `end_time` range. A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome.
+	/*! \brief Get 
 	 */
-	std::string getBudgetType();
+	std::string getBidStrategyType();
 
-	/*! \brief Set Budget type. If DAILY, an ad group's daily spend will not exceed the budget parameter value. If LIFETIME, the end_time parameter is **REQUIRED**, and the ad group spend is spread evenly between the ad group `start_time` and `end_time` range. A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome.
+	/*! \brief Set 
 	 */
-	void setBudgetType(std::string  budget_type);
+	void setBidStrategyType(std::string  bid_strategy_type);
+	/*! \brief Get 
+	 */
+	BudgetType getBudgetType();
+
+	/*! \brief Set 
+	 */
+	void setBudgetType(BudgetType  budget_type);
 	/*! \brief Get Ad group start time. Unix timestamp in seconds. Defaults to current time.
 	 */
 	int getStartTime();
@@ -118,13 +127,13 @@ public:
 	/*! \brief Set Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\\\"/docs/redoc/#section/Billable-event\\\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
 	 */
 	void setLifetimeFrequencyCap(int  lifetime_frequency_cap);
-	/*! \brief Get Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	/*! \brief Get 
 	 */
-	TrackingUrls getTrackingUrls();
+	AdGroupCommon_tracking_urls getTrackingUrls();
 
-	/*! \brief Set Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	/*! \brief Set 
 	 */
-	void setTrackingUrls(TrackingUrls  tracking_urls);
+	void setTrackingUrls(AdGroupCommon_tracking_urls  tracking_urls);
 	/*! \brief Get Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	 */
 	bool getAutoTargetingEnabled();
@@ -146,27 +155,6 @@ public:
 	/*! \brief Set Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.
 	 */
 	void setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type);
-	/*! \brief Get oCPM learn mode
-	 */
-	std::string getConversionLearningModeType();
-
-	/*! \brief Set oCPM learn mode
-	 */
-	void setConversionLearningModeType(std::string  conversion_learning_mode_type);
-	/*! \brief Get Ad group summary status.
-	 */
-	AdGroupSummaryStatus getSummaryStatus();
-
-	/*! \brief Set Ad group summary status.
-	 */
-	void setSummaryStatus(AdGroupSummaryStatus  summary_status);
-	/*! \brief Get Feed Profile ID associated to the adgroup.
-	 */
-	std::string getFeedProfileId();
-
-	/*! \brief Set Feed Profile ID associated to the adgroup.
-	 */
-	void setFeedProfileId(std::string  feed_profile_id);
 	/*! \brief Get Campaign ID of the ad group.
 	 */
 	std::string getCampaignId();
@@ -188,13 +176,6 @@ public:
 	/*! \brief Set Ad group ID.
 	 */
 	void setId(std::string  id);
-	/*! \brief Get Always \"adgroup\".
-	 */
-	std::string getType();
-
-	/*! \brief Set Always \"adgroup\".
-	 */
-	void setType(std::string  type);
 	/*! \brief Get Advertiser ID.
 	 */
 	std::string getAdAccountId();
@@ -216,31 +197,68 @@ public:
 	/*! \brief Set Ad group last update time. Unix timestamp in seconds.
 	 */
 	void setUpdatedTime(int  updated_time);
+	/*! \brief Get Always \"adgroup\".
+	 */
+	std::string getType();
+
+	/*! \brief Set Always \"adgroup\".
+	 */
+	void setType(std::string  type);
+	/*! \brief Get oCPM learn mode
+	 */
+	std::string getConversionLearningModeType();
+
+	/*! \brief Set oCPM learn mode
+	 */
+	void setConversionLearningModeType(std::string  conversion_learning_mode_type);
+	/*! \brief Get Ad group summary status.
+	 */
+	AdGroupSummaryStatus getSummaryStatus();
+
+	/*! \brief Set Ad group summary status.
+	 */
+	void setSummaryStatus(AdGroupSummaryStatus  summary_status);
+	/*! \brief Get Feed Profile ID associated to the adgroup.
+	 */
+	std::string getFeedProfileId();
+
+	/*! \brief Set Feed Profile ID associated to the adgroup.
+	 */
+	void setFeedProfileId(std::string  feed_profile_id);
+	/*! \brief Get [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.
+	 */
+	AnyType getDcaAssets();
+
+	/*! \brief Set [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.
+	 */
+	void setDcaAssets(AnyType  dca_assets);
 
 private:
 	std::string name;
 	EntityStatus status;
 	int budget_in_micro_currency;
 	int bid_in_micro_currency;
-	std::string budget_type;
+	std::string bid_strategy_type;
+	BudgetType budget_type;
 	int start_time;
 	int end_time;
 	std::map <std::string, std::string>targeting_spec;
 	int lifetime_frequency_cap;
-	TrackingUrls tracking_urls;
+	AdGroupCommon_tracking_urls tracking_urls;
 	bool auto_targeting_enabled;
 	PlacementGroupType placement_group;
 	PacingDeliveryType pacing_delivery_type;
-	std::string conversion_learning_mode_type;
-	AdGroupSummaryStatus summary_status;
-	std::string feed_profile_id;
 	std::string campaign_id;
 	ActionType billable_event;
 	std::string id;
-	std::string type;
 	std::string ad_account_id;
 	int created_time;
 	int updated_time;
+	std::string type;
+	std::string conversion_learning_mode_type;
+	AdGroupSummaryStatus summary_status;
+	std::string feed_profile_id;
+	AnyType dca_assets;
 	void __init();
 	void __cleanup();
 

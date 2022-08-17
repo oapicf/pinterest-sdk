@@ -12,6 +12,7 @@
 #include "Ad_account_owner.h"
 #include "Country.h"
 #include "Currency.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -83,6 +84,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCurrency(Currency  currency);
+	/*! \brief Get 
+	 */
+	std::list<std::string> getPermissions();
+
+	/*! \brief Set 
+	 */
+	void setPermissions(std::list <std::string> permissions);
 
 private:
 	std::string id;
@@ -90,6 +98,7 @@ private:
 	Ad_account_owner owner;
 	Country country;
 	Currency currency;
+	std::list <std::string>permissions;
 	void __init();
 	void __cleanup();
 

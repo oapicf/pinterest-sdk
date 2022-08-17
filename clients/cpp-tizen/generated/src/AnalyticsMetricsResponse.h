@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "AnalyticsMetricsResponse_daily_metrics.h"
+#include "AnalyticsMetricsResponse_daily_metrics_inner.h"
 #include <list>
 #include <map>
 #include "Object.h"
@@ -50,11 +50,11 @@ public:
 
 	/*! \brief Get Array with the requested daily metric records
 	 */
-	std::list<AnalyticsMetricsResponse_daily_metrics> getDailyMetrics();
+	std::list<AnalyticsMetricsResponse_daily_metrics_inner> getDailyMetrics();
 
 	/*! \brief Set Array with the requested daily metric records
 	 */
-	void setDailyMetrics(std::list <AnalyticsMetricsResponse_daily_metrics> daily_metrics);
+	void setDailyMetrics(std::list <AnalyticsMetricsResponse_daily_metrics_inner> daily_metrics);
 	/*! \brief Get The metric name and value over the requested period for each requested metric
 	 */
 	std::map<std::string, std::string> getSummaryMetrics();
@@ -64,7 +64,7 @@ public:
 	void setSummaryMetrics(std::map <std::string, std::string> summary_metrics);
 
 private:
-	std::list <AnalyticsMetricsResponse_daily_metrics>daily_metrics;
+	std::list <AnalyticsMetricsResponse_daily_metrics_inner>daily_metrics;
 	std::map <std::string, std::string>summary_metrics;
 	void __init();
 	void __cleanup();

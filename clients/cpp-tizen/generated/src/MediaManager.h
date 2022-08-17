@@ -9,7 +9,7 @@
 #include "MediaUpload.h"
 #include "MediaUploadDetails.h"
 #include "MediaUploadRequest.h"
-#include "Paginated.h"
+#include "Media_list_200_response.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -93,7 +93,7 @@ bool mediaGetAsync(char * accessToken,
  */
 bool mediaListSync(char * accessToken,
 	std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Media_list_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List media uploads. *Asynchronous*
@@ -107,7 +107,7 @@ bool mediaListSync(char * accessToken,
  */
 bool mediaListAsync(char * accessToken,
 	std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Media_list_200_response, Error, void* )
 	, void* userData);
 
 

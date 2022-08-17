@@ -1,9 +1,0 @@
-{
-  "namespace": "model",
-  "type": "enum",
-  "doc": "",
-  "name": "MediaUploadType",
-  "symbols": [
-    "video"
-  ]
-}

@@ -45,11 +45,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The number of products in the feed file
+	/*! \brief Get The number of products in the feed file.
 	 */
 	int getOriginal();
 
-	/*! \brief Set The number of products in the feed file
+	/*! \brief Set The number of products in the feed file.
 	 */
 	void setOriginal(int  original);
 

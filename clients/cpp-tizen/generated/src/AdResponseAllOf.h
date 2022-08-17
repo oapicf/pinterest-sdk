@@ -1,7 +1,7 @@
 /*
  * AdResponse_allOf.h
  *
- * Creation fields
+ * 
  */
 
 #ifndef _AdResponse_allOf_H_
@@ -9,8 +9,7 @@
 
 
 #include <string>
-#include "EntityStatus.h"
-#include "TrackingUrls.h"
+#include "PinPromotionSummaryStatus.h"
 #include <list>
 #include "Object.h"
 
@@ -23,7 +22,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Creation fields
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -48,136 +47,96 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get ID of the ad group that contains the ad.
+	/*! \brief Get The ID of the advertiser that this ad belongs to.
 	 */
-	std::string getAdGroupId();
+	std::string getAdAccountId();
 
-	/*! \brief Set ID of the ad group that contains the ad.
+	/*! \brief Set The ID of the advertiser that this ad belongs to.
 	 */
-	void setAdGroupId(std::string  ad_group_id);
-	/*! \brief Get Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+	void setAdAccountId(std::string  ad_account_id);
+	/*! \brief Get ID of the ad campaign that contains this ad.
 	 */
-	std::string getAndroidDeepLink();
+	std::string getCampaignId();
 
-	/*! \brief Set Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+	/*! \brief Set ID of the ad campaign that contains this ad.
 	 */
-	void setAndroidDeepLink(std::string  android_deep_link);
-	/*! \brief Get Comma-separated deep links for the carousel pin on Android.
+	void setCampaignId(std::string  campaign_id);
+	/*! \brief Get Destination URL template for all items within a collections drawer.
 	 */
-	std::list<std::string> getCarouselAndroidDeepLinks();
+	std::string getCollectionItemsDestinationUrlTemplate();
 
-	/*! \brief Set Comma-separated deep links for the carousel pin on Android.
+	/*! \brief Set Destination URL template for all items within a collections drawer.
 	 */
-	void setCarouselAndroidDeepLinks(std::list <std::string> carousel_android_deep_links);
-	/*! \brief Get Comma-separated destination URLs for the carousel pin to promote.
+	void setCollectionItemsDestinationUrlTemplate(std::string  collection_items_destination_url_template);
+	/*! \brief Get Pin creation time. Unix timestamp in seconds.
 	 */
-	std::list<std::string> getCarouselDestinationUrls();
+	int getCreatedTime();
 
-	/*! \brief Set Comma-separated destination URLs for the carousel pin to promote.
+	/*! \brief Set Pin creation time. Unix timestamp in seconds.
 	 */
-	void setCarouselDestinationUrls(std::list <std::string> carousel_destination_urls);
-	/*! \brief Get Comma-separated deep links for the carousel pin on iOS.
+	void setCreatedTime(int  created_time);
+	/*! \brief Get The ID of this ad.
 	 */
-	std::list<std::string> getCarouselIosDeepLinks();
+	std::string getId();
 
-	/*! \brief Set Comma-separated deep links for the carousel pin on iOS.
+	/*! \brief Set The ID of this ad.
 	 */
-	void setCarouselIosDeepLinks(std::list <std::string> carousel_ios_deep_links);
-	/*! \brief Get Tracking url for the ad clicks.
+	void setId(std::string  id);
+	/*! \brief Get Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
 	 */
-	std::string getClickTrackingUrl();
+	std::list<std::string> getRejectedReasons();
 
-	/*! \brief Set Tracking url for the ad clicks.
+	/*! \brief Set Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
 	 */
-	void setClickTrackingUrl(std::string  click_tracking_url);
-	/*! \brief Get Ad creative type enum
+	void setRejectedReasons(std::list <std::string> rejected_reasons);
+	/*! \brief Get Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
 	 */
-	std::string getCreativeType();
+	std::list<std::string> getRejectionLabels();
 
-	/*! \brief Set Ad creative type enum
+	/*! \brief Set Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
 	 */
-	void setCreativeType(std::string  creative_type);
-	/*! \brief Get Destination URL.
+	void setRejectionLabels(std::list <std::string> rejection_labels);
+	/*! \brief Get Ad review status
 	 */
-	std::string getDestinationUrl();
+	std::string getReviewStatus();
 
-	/*! \brief Set Destination URL.
+	/*! \brief Set Ad review status
 	 */
-	void setDestinationUrl(std::string  destination_url);
-	/*! \brief Get Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+	void setReviewStatus(std::string  review_status);
+	/*! \brief Get Always \"ad\".
 	 */
-	std::string getIosDeepLink();
+	std::string getType();
 
-	/*! \brief Set Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+	/*! \brief Set Always \"ad\".
 	 */
-	void setIosDeepLink(std::string  ios_deep_link);
-	/*! \brief Get Is original pin deleted?
+	void setType(std::string  type);
+	/*! \brief Get Last update time. Unix timestamp in seconds.
 	 */
-	bool getIsPinDeleted();
+	int getUpdatedTime();
 
-	/*! \brief Set Is original pin deleted?
+	/*! \brief Set Last update time. Unix timestamp in seconds.
 	 */
-	void setIsPinDeleted(bool  is_pin_deleted);
-	/*! \brief Get Is pin repinnable?
+	void setUpdatedTime(int  updated_time);
+	/*! \brief Get Ad summary status
 	 */
-	bool getIsRemovable();
+	PinPromotionSummaryStatus getSummaryStatus();
 
-	/*! \brief Set Is pin repinnable?
+	/*! \brief Set Ad summary status
 	 */
-	void setIsRemovable(bool  is_removable);
-	/*! \brief Get Name of the ad - 255 chars max.
-	 */
-	std::string getName();
-
-	/*! \brief Set Name of the ad - 255 chars max.
-	 */
-	void setName(std::string  name);
-	/*! \brief Get Pin ID.
-	 */
-	std::string getPinId();
-
-	/*! \brief Set Pin ID.
-	 */
-	void setPinId(std::string  pin_id);
-	/*! \brief Get 
-	 */
-	EntityStatus getStatus();
-
-	/*! \brief Set 
-	 */
-	void setStatus(EntityStatus  status);
-	/*! \brief Get 
-	 */
-	TrackingUrls getTrackingUrls();
-
-	/*! \brief Set 
-	 */
-	void setTrackingUrls(TrackingUrls  tracking_urls);
-	/*! \brief Get Tracking URL for ad impressions.
-	 */
-	std::string getViewTrackingUrl();
-
-	/*! \brief Set Tracking URL for ad impressions.
-	 */
-	void setViewTrackingUrl(std::string  view_tracking_url);
+	void setSummaryStatus(PinPromotionSummaryStatus  summary_status);
 
 private:
-	std::string ad_group_id;
-	std::string android_deep_link;
-	std::list <std::string>carousel_android_deep_links;
-	std::list <std::string>carousel_destination_urls;
-	std::list <std::string>carousel_ios_deep_links;
-	std::string click_tracking_url;
-	std::string creative_type;
-	std::string destination_url;
-	std::string ios_deep_link;
-	bool is_pin_deleted;
-	bool is_removable;
-	std::string name;
-	std::string pin_id;
-	EntityStatus status;
-	TrackingUrls tracking_urls;
-	std::string view_tracking_url;
+	std::string ad_account_id;
+	std::string campaign_id;
+	std::string collection_items_destination_url_template;
+	int created_time;
+	std::string id;
+	std::list <std::string>rejected_reasons;
+	std::list <std::string>rejection_labels;
+	std::string review_status;
+	std::string type;
+	int updated_time;
+	PinPromotionSummaryStatus summary_status;
 	void __init();
 	void __cleanup();
 

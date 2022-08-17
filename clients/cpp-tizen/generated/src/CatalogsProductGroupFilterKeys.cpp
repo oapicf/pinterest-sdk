@@ -26,7 +26,7 @@ CatalogsProductGroupFilterKeys::__init()
 	//mIN_PRICE = new CatalogsProductGroupPricingCriteria();
 	//mAX_PRICE = new CatalogsProductGroupPricingCriteria();
 	//cURRENCY = new CatalogsProductGroupCurrencyCriteria();
-	//iTEM_ID = new CatalogsProductGroupCurrencyCriteria();
+	//iTEM_ID = new CatalogsProductGroupMultipleStringCriteria();
 	//aVAILABILITY = new CatalogsProductGroupMultipleStringCriteria();
 	//bRAND = new CatalogsProductGroupMultipleStringCriteria();
 	//cONDITION = new CatalogsProductGroupMultipleStringCriteria();
@@ -239,11 +239,11 @@ CatalogsProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupCurrencyCriteria")) {
-			jsonToValue(&iTEM_ID, node, "CatalogsProductGroupCurrencyCriteria", "");
+		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+			jsonToValue(&iTEM_ID, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
-			CatalogsProductGroupCurrencyCriteria* obj = static_cast<CatalogsProductGroupCurrencyCriteria*> (&iTEM_ID);
+			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&iTEM_ID);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -610,13 +610,13 @@ CatalogsProductGroupFilterKeys::toJson()
 	}
 	const gchar *cURRENCYKey = "CURRENCY";
 	json_object_set_member(pJsonObject, cURRENCYKey, node);
-	if (isprimitive("CatalogsProductGroupCurrencyCriteria")) {
-		CatalogsProductGroupCurrencyCriteria obj = getITEMID();
-		node = converttoJson(&obj, "CatalogsProductGroupCurrencyCriteria", "");
+	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+		CatalogsProductGroupMultipleStringCriteria obj = getITEMID();
+		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupCurrencyCriteria obj = static_cast<CatalogsProductGroupCurrencyCriteria> (getITEMID());
+		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getITEMID());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -976,14 +976,14 @@ CatalogsProductGroupFilterKeys::setCURRENCY(CatalogsProductGroupCurrencyCriteria
 	this->cURRENCY = cURRENCY;
 }
 
-CatalogsProductGroupCurrencyCriteria
+CatalogsProductGroupMultipleStringCriteria
 CatalogsProductGroupFilterKeys::getITEMID()
 {
 	return iTEM_ID;
 }
 
 void
-CatalogsProductGroupFilterKeys::setITEMID(CatalogsProductGroupCurrencyCriteria  iTEM_ID)
+CatalogsProductGroupFilterKeys::setITEMID(CatalogsProductGroupMultipleStringCriteria  iTEM_ID)
 {
 	this->iTEM_ID = iTEM_ID;
 }

@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**oauth/token**](OauthApi.md#oauth/token) | **POST** /oauth/token | Generate OAuth access token
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**oauth/token**](OauthApi.md#oauth/token) | **POST** /oauth/token | Generate OAuth access token |
 
 
 <a name="oauth/token"></a>
@@ -17,9 +17,9 @@ Generate OAuth access token
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **grant\_type** | **String**|  | [default to null] [enum: authorization_code, refresh_token]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **grant\_type** | **String**|  | [default to null] [enum: authorization_code, refresh_token] |
 
 ### Return type
 

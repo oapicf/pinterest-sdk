@@ -4,7 +4,7 @@
 
 Pinterest REST API
 
-- API version: 5.3.0
+- API version: 5.4.1
 
 Pinterest's REST API
 
@@ -124,7 +124,7 @@ void Example::exampleFunction1(){
           loop.quit();
       });
 
-      QList<QString> columns = create(); // QList<QString> | Columns to retrieve. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
+      QList<QString> columns = create(); // QList<QString> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 
       QEventLoop loop;
       connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {

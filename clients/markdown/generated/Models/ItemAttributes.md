@@ -1,52 +1,55 @@
 # ItemAttributes
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ad\_link** | **String** | Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. | [optional] [default to null]
-**additional\_image\_link** | **List** | The links to additional images for your product. Up to five additional images can be used to show a product from different angles or to show different stages. Separate each additional image with a comma. We recommend enclosing the whole string with quotes. Must begin with http:// or https:// | [optional] [default to null]
-**adult** | **Boolean** | Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest. | [optional] [default to null]
-**age\_group** | **String** | The age group to apply a demographic range to the product. Must be one of the following values: ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, ‘adult’. | [optional] [default to null]
-**availability** | **String** | The availability of the product. Must be one of the following values: ‘in stock’, ‘out of stock’, ‘preorder’. | [optional] [default to null]
-**average\_review\_rating** | **BigDecimal** | Average reviews for the item. Can be a number from 1-5. | [optional] [default to null]
-**brand** | **String** | The brand of the product. | [optional] [default to null]
-**color** | **String** | The primary color of the product. | [optional] [default to null]
-**condition** | **String** | The condition of the product. Must be one of the following values: ‘new’, ‘used’, ‘refurbished’. | [optional] [default to null]
-**custom\_label\_0** | **String** | Custom grouping of products. | [optional] [default to null]
-**custom\_label\_1** | **String** | Custom grouping of products. | [optional] [default to null]
-**custom\_label\_2** | **String** | Custom grouping of products. | [optional] [default to null]
-**custom\_label\_3** | **String** | Custom grouping of products. | [optional] [default to null]
-**custom\_label\_4** | **String** | Custom grouping of products. | [optional] [default to null]
-**description** | **String** | The description of the product. | [optional] [default to null]
-**free\_shipping\_label** | **Boolean** | The item is free to ship. | [optional] [default to null]
-**free\_shipping\_limit** | **String** | The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. | [optional] [default to null]
-**gender** | **String** | The gender associated with the product. Must be one of the following values: ‘male’, ‘female’, ‘unisex’. | [optional] [default to null]
-**google\_product\_category** | **String** | The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. | [optional] [default to null]
-**gtin** | **Integer** | The unique universal product identifier. | [optional] [default to null]
-**id** | **String** | The user-created unique ID that represents the product. Only Unicode characters are accepted. | [optional] [default to null]
-**image\_link** | **List** | The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https:// | [optional] [default to null]
-**item\_group\_id** | **String** | The parent ID of the product. | [optional] [default to null]
-**last\_updated\_time** | **Long** | The millisecond timestamp when the item was lastly modified by the merchant. | [optional] [default to null]
-**link** | **String** | The landing page for the product. | [optional] [default to null]
-**material** | **String** | The material used to make the product. | [optional] [default to null]
-**min\_ad\_price** | **String** | The minimum advertised price of the product. It supports the following formats, \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null]
-**mobile\_link** | **String** | The mobile-optimized version of your landing page. Must begin with http:// or https://. | [optional] [default to null]
-**mpn** | **String** | Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer. | [optional] [default to null]
-**number\_of\_ratings** | **Integer** | The number of ratings for the item. | [optional] [default to null]
-**number\_of\_reviews** | **Integer** | The number of reviews available for the item. | [optional] [default to null]
-**pattern** | **String** | The description of the pattern used for the product. | [optional] [default to null]
-**price** | **String** | The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null]
-**product\_type** | **String** | The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe. | [optional] [default to null]
-**sale\_price** | **String** | The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null]
-**shipping** | **String** | Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required. | [optional] [default to null]
-**shipping\_height** | **String** | The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null]
-**shipping\_weight** | **String** | The weight of the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null]
-**shipping\_width** | **String** | The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null]
-**size** | **String** | The size of the product. | [optional] [default to null]
-**size\_system** | **String** | Indicates the country’s sizing system in which you are submitting your product. | [optional] [default to null]
-**size\_type** | **String** | Additional description for the size. Must be one of the following values: ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, ‘maternity’. | [optional] [default to null]
-**tax** | **String** | Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. | [optional] [default to null]
-**title** | **String** | The name of the product. | [optional] [default to null]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **ad\_link** | **String** | Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. | [optional] [default to null] |
+| **additional\_image\_link** | **List** | The links to additional images for your product. Up to five additional images can be used to show a product from different angles or to show different stages. Separate each additional image with a comma. We recommend enclosing the whole string with quotes. Must begin with http:// or https:// | [optional] [default to null] |
+| **adult** | **Boolean** | Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest. | [optional] [default to null] |
+| **age\_group** | **String** | The age group to apply a demographic range to the product. Must be one of the following values: ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, ‘adult’. | [optional] [default to null] |
+| **availability** | **String** | The availability of the product. Must be one of the following values: ‘in stock’, ‘out of stock’, ‘preorder’. | [optional] [default to null] |
+| **average\_review\_rating** | **BigDecimal** | Average reviews for the item. Can be a number from 1-5. | [optional] [default to null] |
+| **brand** | **String** | The brand of the product. | [optional] [default to null] |
+| **checkout\_enabled** | **Boolean** | Set this attribute to FALSE to indicate items that should be excluded from the Pinterest Checkout program. Note, this product is currently being tested and your account must be enrolled. Please contact your Account Manager or contact us for more information. | [optional] [default to null] |
+| **color** | **String** | The primary color of the product. | [optional] [default to null] |
+| **condition** | **String** | The condition of the product. Must be one of the following values: ‘new’, ‘used’, ‘refurbished’. | [optional] [default to null] |
+| **custom\_label\_0** | **String** | Custom grouping of products. | [optional] [default to null] |
+| **custom\_label\_1** | **String** | Custom grouping of products. | [optional] [default to null] |
+| **custom\_label\_2** | **String** | Custom grouping of products. | [optional] [default to null] |
+| **custom\_label\_3** | **String** | Custom grouping of products. | [optional] [default to null] |
+| **custom\_label\_4** | **String** | Custom grouping of products. | [optional] [default to null] |
+| **description** | **String** | The description of the product. | [optional] [default to null] |
+| **free\_shipping\_label** | **Boolean** | The item is free to ship. | [optional] [default to null] |
+| **free\_shipping\_limit** | **String** | The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. | [optional] [default to null] |
+| **gender** | **String** | The gender associated with the product. Must be one of the following values: ‘male’, ‘female’, ‘unisex’. | [optional] [default to null] |
+| **google\_product\_category** | **String** | The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. | [optional] [default to null] |
+| **gtin** | **Integer** | The unique universal product identifier. | [optional] [default to null] |
+| **id** | **String** | The user-created unique ID that represents the product. Only Unicode characters are accepted. | [optional] [default to null] |
+| **image\_link** | **List** | The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https:// | [optional] [default to null] |
+| **item\_group\_id** | **String** | The parent ID of the product. | [optional] [default to null] |
+| **last\_updated\_time** | **Long** | The millisecond timestamp when the item was lastly modified by the merchant. | [optional] [default to null] |
+| **link** | **String** | The landing page for the product. | [optional] [default to null] |
+| **material** | **String** | The material used to make the product. | [optional] [default to null] |
+| **min\_ad\_price** | **String** | The minimum advertised price of the product. It supports the following formats, \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null] |
+| **mobile\_link** | **String** | The mobile-optimized version of your landing page. Must begin with http:// or https://. | [optional] [default to null] |
+| **mpn** | **String** | Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer. | [optional] [default to null] |
+| **number\_of\_ratings** | **Integer** | The number of ratings for the item. | [optional] [default to null] |
+| **number\_of\_reviews** | **Integer** | The number of reviews available for the item. | [optional] [default to null] |
+| **pattern** | **String** | The description of the pattern used for the product. | [optional] [default to null] |
+| **price** | **String** | The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null] |
+| **product\_type** | **String** | The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe. | [optional] [default to null] |
+| **sale\_price** | **String** | The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars. | [optional] [default to null] |
+| **shipping** | **String** | Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required. | [optional] [default to null] |
+| **shipping\_height** | **String** | The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null] |
+| **shipping\_weight** | **String** | The weight of the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null] |
+| **shipping\_width** | **String** | The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. | [optional] [default to null] |
+| **size** | **String** | The size of the product. | [optional] [default to null] |
+| **size\_system** | **String** | Indicates the country’s sizing system in which you are submitting your product. | [optional] [default to null] |
+| **size\_type** | **String** | Additional description for the size. Must be one of the following values: ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, ‘maternity’. | [optional] [default to null] |
+| **tax** | **String** | Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. | [optional] [default to null] |
+| **title** | **String** | The name of the product. | [optional] [default to null] |
+| **variant\_names** | **List** | Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. | [optional] [default to null] |
+| **variant\_values** | **List** | Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names. | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

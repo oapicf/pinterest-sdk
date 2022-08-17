@@ -23,7 +23,7 @@ ItemIdFilter::~ItemIdFilter()
 void
 ItemIdFilter::__init()
 {
-	//iTEM_ID = new CatalogsProductGroupCurrencyCriteria();
+	//iTEM_ID = new CatalogsProductGroupMultipleStringCriteria();
 }
 
 void
@@ -47,11 +47,11 @@ ItemIdFilter::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupCurrencyCriteria")) {
-			jsonToValue(&iTEM_ID, node, "CatalogsProductGroupCurrencyCriteria", "");
+		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+			jsonToValue(&iTEM_ID, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
-			CatalogsProductGroupCurrencyCriteria* obj = static_cast<CatalogsProductGroupCurrencyCriteria*> (&iTEM_ID);
+			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&iTEM_ID);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -68,13 +68,13 @@ ItemIdFilter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsProductGroupCurrencyCriteria")) {
-		CatalogsProductGroupCurrencyCriteria obj = getITEMID();
-		node = converttoJson(&obj, "CatalogsProductGroupCurrencyCriteria", "");
+	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+		CatalogsProductGroupMultipleStringCriteria obj = getITEMID();
+		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupCurrencyCriteria obj = static_cast<CatalogsProductGroupCurrencyCriteria> (getITEMID());
+		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getITEMID());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -90,14 +90,14 @@ ItemIdFilter::toJson()
 	return ret;
 }
 
-CatalogsProductGroupCurrencyCriteria
+CatalogsProductGroupMultipleStringCriteria
 ItemIdFilter::getITEMID()
 {
 	return iTEM_ID;
 }
 
 void
-ItemIdFilter::setITEMID(CatalogsProductGroupCurrencyCriteria  iTEM_ID)
+ItemIdFilter::setITEMID(CatalogsProductGroupMultipleStringCriteria  iTEM_ID)
 {
 	this->iTEM_ID = iTEM_ID;
 }

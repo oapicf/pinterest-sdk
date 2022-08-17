@@ -23,280 +23,280 @@ CatalogsFeedValidationWarnings::~CatalogsFeedValidationWarnings()
 void
 CatalogsFeedValidationWarnings::__init()
 {
-	//title_length_too_long = int(0);
-	//description_length_too_long = int(0);
-	//gender_invalid = int(0);
-	//age_group_invalid = int(0);
-	//size_type_invalid = int(0);
-	//link_format_warning = int(0);
-	//duplicate_products = int(0);
-	//duplicate_links = int(0);
-	//sales_price_invalid = int(0);
-	//product_category_depth_warning = int(0);
-	//adwords_same_as_link = int(0);
-	//duplicate_headers = int(0);
-	//fetch_same_signature = int(0);
-	//adwords_format_warning = int(0);
-	//additional_image_link_warning = int(0);
-	//image_link_warning = int(0);
-	//shipping_invalid = int(0);
-	//tax_invalid = int(0);
-	//shipping_weight_invalid = int(0);
-	//expiration_date_invalid = int(0);
-	//availability_date_invalid = int(0);
-	//sale_date_invalid = int(0);
-	//weight_unit_invalid = int(0);
-	//is_bundle_invalid = int(0);
-	//updated_time_invalid = int(0);
-	//custom_label_length_too_long = int(0);
-	//product_type_length_too_long = int(0);
-	//too_many_additional_image_links = int(0);
-	//multipack_invalid = int(0);
-	//indexed_product_count_large_delta = int(0);
-	//item_additional_image_download_failure = int(0);
-	//optional_product_category_missing = int(0);
-	//optional_product_category_invalid = int(0);
-	//optional_condition_missing = int(0);
-	//optional_condition_invalid = int(0);
-	//ios_deep_link_invalid = int(0);
-	//android_deep_link_invalid = int(0);
-	//availability_normalized = int(0);
-	//condition_normalized = int(0);
-	//gender_normalized = int(0);
-	//size_type_normalized = int(0);
-	//age_group_normalized = int(0);
-	//utm_source_auto_corrected = int(0);
-	//country_does_not_map_to_currency = int(0);
-	//min_ad_price_invalid = int(0);
+	//tITLE_LENGTH_TOO_LONG = int(0);
+	//dESCRIPTION_LENGTH_TOO_LONG = int(0);
+	//gENDER_INVALID = int(0);
+	//aGE_GROUP_INVALID = int(0);
+	//sIZE_TYPE_INVALID = int(0);
+	//lINK_FORMAT_WARNING = int(0);
+	//dUPLICATE_PRODUCTS = int(0);
+	//sALES_PRICE_INVALID = int(0);
+	//pRODUCT_CATEGORY_DEPTH_WARNING = int(0);
+	//aDWORDS_SAME_AS_LINK = int(0);
+	//dUPLICATE_HEADERS = int(0);
+	//fETCH_SAME_SIGNATURE = int(0);
+	//aDWORDS_FORMAT_WARNING = int(0);
+	//aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = int(0);
+	//aDDITIONAL_IMAGE_LINK_WARNING = int(0);
+	//iMAGE_LINK_WARNING = int(0);
+	//sHIPPING_INVALID = int(0);
+	//tAX_INVALID = int(0);
+	//sHIPPING_WEIGHT_INVALID = int(0);
+	//eXPIRATION_DATE_INVALID = int(0);
+	//aVAILABILITY_DATE_INVALID = int(0);
+	//sALE_DATE_INVALID = int(0);
+	//wEIGHT_UNIT_INVALID = int(0);
+	//iS_BUNDLE_INVALID = int(0);
+	//uPDATED_TIME_INVALID = int(0);
+	//cUSTOM_LABEL_LENGTH_TOO_LONG = int(0);
+	//pRODUCT_TYPE_LENGTH_TOO_LONG = int(0);
+	//tOO_MANY_ADDITIONAL_IMAGE_LINKS = int(0);
+	//mULTIPACK_INVALID = int(0);
+	//iNDEXED_PRODUCT_COUNT_LARGE_DELTA = int(0);
+	//iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = int(0);
+	//oPTIONAL_PRODUCT_CATEGORY_MISSING = int(0);
+	//oPTIONAL_PRODUCT_CATEGORY_INVALID = int(0);
+	//oPTIONAL_CONDITION_MISSING = int(0);
+	//oPTIONAL_CONDITION_INVALID = int(0);
+	//iOS_DEEP_LINK_INVALID = int(0);
+	//aNDROID_DEEP_LINK_INVALID = int(0);
+	//aVAILABILITY_NORMALIZED = int(0);
+	//cONDITION_NORMALIZED = int(0);
+	//gENDER_NORMALIZED = int(0);
+	//sIZE_TYPE_NORMALIZED = int(0);
+	//aGE_GROUP_NORMALIZED = int(0);
+	//uTM_SOURCE_AUTO_CORRECTED = int(0);
+	//cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = int(0);
+	//mIN_AD_PRICE_INVALID = int(0);
 }
 
 void
 CatalogsFeedValidationWarnings::__cleanup()
 {
-	//if(title_length_too_long != NULL) {
+	//if(tITLE_LENGTH_TOO_LONG != NULL) {
 	//
-	//delete title_length_too_long;
-	//title_length_too_long = NULL;
+	//delete tITLE_LENGTH_TOO_LONG;
+	//tITLE_LENGTH_TOO_LONG = NULL;
 	//}
-	//if(description_length_too_long != NULL) {
+	//if(dESCRIPTION_LENGTH_TOO_LONG != NULL) {
 	//
-	//delete description_length_too_long;
-	//description_length_too_long = NULL;
+	//delete dESCRIPTION_LENGTH_TOO_LONG;
+	//dESCRIPTION_LENGTH_TOO_LONG = NULL;
 	//}
-	//if(gender_invalid != NULL) {
+	//if(gENDER_INVALID != NULL) {
 	//
-	//delete gender_invalid;
-	//gender_invalid = NULL;
+	//delete gENDER_INVALID;
+	//gENDER_INVALID = NULL;
 	//}
-	//if(age_group_invalid != NULL) {
+	//if(aGE_GROUP_INVALID != NULL) {
 	//
-	//delete age_group_invalid;
-	//age_group_invalid = NULL;
+	//delete aGE_GROUP_INVALID;
+	//aGE_GROUP_INVALID = NULL;
 	//}
-	//if(size_type_invalid != NULL) {
+	//if(sIZE_TYPE_INVALID != NULL) {
 	//
-	//delete size_type_invalid;
-	//size_type_invalid = NULL;
+	//delete sIZE_TYPE_INVALID;
+	//sIZE_TYPE_INVALID = NULL;
 	//}
-	//if(link_format_warning != NULL) {
+	//if(lINK_FORMAT_WARNING != NULL) {
 	//
-	//delete link_format_warning;
-	//link_format_warning = NULL;
+	//delete lINK_FORMAT_WARNING;
+	//lINK_FORMAT_WARNING = NULL;
 	//}
-	//if(duplicate_products != NULL) {
+	//if(dUPLICATE_PRODUCTS != NULL) {
 	//
-	//delete duplicate_products;
-	//duplicate_products = NULL;
+	//delete dUPLICATE_PRODUCTS;
+	//dUPLICATE_PRODUCTS = NULL;
 	//}
-	//if(duplicate_links != NULL) {
+	//if(sALES_PRICE_INVALID != NULL) {
 	//
-	//delete duplicate_links;
-	//duplicate_links = NULL;
+	//delete sALES_PRICE_INVALID;
+	//sALES_PRICE_INVALID = NULL;
 	//}
-	//if(sales_price_invalid != NULL) {
+	//if(pRODUCT_CATEGORY_DEPTH_WARNING != NULL) {
 	//
-	//delete sales_price_invalid;
-	//sales_price_invalid = NULL;
+	//delete pRODUCT_CATEGORY_DEPTH_WARNING;
+	//pRODUCT_CATEGORY_DEPTH_WARNING = NULL;
 	//}
-	//if(product_category_depth_warning != NULL) {
+	//if(aDWORDS_SAME_AS_LINK != NULL) {
 	//
-	//delete product_category_depth_warning;
-	//product_category_depth_warning = NULL;
+	//delete aDWORDS_SAME_AS_LINK;
+	//aDWORDS_SAME_AS_LINK = NULL;
 	//}
-	//if(adwords_same_as_link != NULL) {
+	//if(dUPLICATE_HEADERS != NULL) {
 	//
-	//delete adwords_same_as_link;
-	//adwords_same_as_link = NULL;
+	//delete dUPLICATE_HEADERS;
+	//dUPLICATE_HEADERS = NULL;
 	//}
-	//if(duplicate_headers != NULL) {
+	//if(fETCH_SAME_SIGNATURE != NULL) {
 	//
-	//delete duplicate_headers;
-	//duplicate_headers = NULL;
+	//delete fETCH_SAME_SIGNATURE;
+	//fETCH_SAME_SIGNATURE = NULL;
 	//}
-	//if(fetch_same_signature != NULL) {
+	//if(aDWORDS_FORMAT_WARNING != NULL) {
 	//
-	//delete fetch_same_signature;
-	//fetch_same_signature = NULL;
+	//delete aDWORDS_FORMAT_WARNING;
+	//aDWORDS_FORMAT_WARNING = NULL;
 	//}
-	//if(adwords_format_warning != NULL) {
+	//if(aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG != NULL) {
 	//
-	//delete adwords_format_warning;
-	//adwords_format_warning = NULL;
+	//delete aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
+	//aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = NULL;
 	//}
-	//if(additional_image_link_warning != NULL) {
+	//if(aDDITIONAL_IMAGE_LINK_WARNING != NULL) {
 	//
-	//delete additional_image_link_warning;
-	//additional_image_link_warning = NULL;
+	//delete aDDITIONAL_IMAGE_LINK_WARNING;
+	//aDDITIONAL_IMAGE_LINK_WARNING = NULL;
 	//}
-	//if(image_link_warning != NULL) {
+	//if(iMAGE_LINK_WARNING != NULL) {
 	//
-	//delete image_link_warning;
-	//image_link_warning = NULL;
+	//delete iMAGE_LINK_WARNING;
+	//iMAGE_LINK_WARNING = NULL;
 	//}
-	//if(shipping_invalid != NULL) {
+	//if(sHIPPING_INVALID != NULL) {
 	//
-	//delete shipping_invalid;
-	//shipping_invalid = NULL;
+	//delete sHIPPING_INVALID;
+	//sHIPPING_INVALID = NULL;
 	//}
-	//if(tax_invalid != NULL) {
+	//if(tAX_INVALID != NULL) {
 	//
-	//delete tax_invalid;
-	//tax_invalid = NULL;
+	//delete tAX_INVALID;
+	//tAX_INVALID = NULL;
 	//}
-	//if(shipping_weight_invalid != NULL) {
+	//if(sHIPPING_WEIGHT_INVALID != NULL) {
 	//
-	//delete shipping_weight_invalid;
-	//shipping_weight_invalid = NULL;
+	//delete sHIPPING_WEIGHT_INVALID;
+	//sHIPPING_WEIGHT_INVALID = NULL;
 	//}
-	//if(expiration_date_invalid != NULL) {
+	//if(eXPIRATION_DATE_INVALID != NULL) {
 	//
-	//delete expiration_date_invalid;
-	//expiration_date_invalid = NULL;
+	//delete eXPIRATION_DATE_INVALID;
+	//eXPIRATION_DATE_INVALID = NULL;
 	//}
-	//if(availability_date_invalid != NULL) {
+	//if(aVAILABILITY_DATE_INVALID != NULL) {
 	//
-	//delete availability_date_invalid;
-	//availability_date_invalid = NULL;
+	//delete aVAILABILITY_DATE_INVALID;
+	//aVAILABILITY_DATE_INVALID = NULL;
 	//}
-	//if(sale_date_invalid != NULL) {
+	//if(sALE_DATE_INVALID != NULL) {
 	//
-	//delete sale_date_invalid;
-	//sale_date_invalid = NULL;
+	//delete sALE_DATE_INVALID;
+	//sALE_DATE_INVALID = NULL;
 	//}
-	//if(weight_unit_invalid != NULL) {
+	//if(wEIGHT_UNIT_INVALID != NULL) {
 	//
-	//delete weight_unit_invalid;
-	//weight_unit_invalid = NULL;
+	//delete wEIGHT_UNIT_INVALID;
+	//wEIGHT_UNIT_INVALID = NULL;
 	//}
-	//if(is_bundle_invalid != NULL) {
+	//if(iS_BUNDLE_INVALID != NULL) {
 	//
-	//delete is_bundle_invalid;
-	//is_bundle_invalid = NULL;
+	//delete iS_BUNDLE_INVALID;
+	//iS_BUNDLE_INVALID = NULL;
 	//}
-	//if(updated_time_invalid != NULL) {
+	//if(uPDATED_TIME_INVALID != NULL) {
 	//
-	//delete updated_time_invalid;
-	//updated_time_invalid = NULL;
+	//delete uPDATED_TIME_INVALID;
+	//uPDATED_TIME_INVALID = NULL;
 	//}
-	//if(custom_label_length_too_long != NULL) {
+	//if(cUSTOM_LABEL_LENGTH_TOO_LONG != NULL) {
 	//
-	//delete custom_label_length_too_long;
-	//custom_label_length_too_long = NULL;
+	//delete cUSTOM_LABEL_LENGTH_TOO_LONG;
+	//cUSTOM_LABEL_LENGTH_TOO_LONG = NULL;
 	//}
-	//if(product_type_length_too_long != NULL) {
+	//if(pRODUCT_TYPE_LENGTH_TOO_LONG != NULL) {
 	//
-	//delete product_type_length_too_long;
-	//product_type_length_too_long = NULL;
+	//delete pRODUCT_TYPE_LENGTH_TOO_LONG;
+	//pRODUCT_TYPE_LENGTH_TOO_LONG = NULL;
 	//}
-	//if(too_many_additional_image_links != NULL) {
+	//if(tOO_MANY_ADDITIONAL_IMAGE_LINKS != NULL) {
 	//
-	//delete too_many_additional_image_links;
-	//too_many_additional_image_links = NULL;
+	//delete tOO_MANY_ADDITIONAL_IMAGE_LINKS;
+	//tOO_MANY_ADDITIONAL_IMAGE_LINKS = NULL;
 	//}
-	//if(multipack_invalid != NULL) {
+	//if(mULTIPACK_INVALID != NULL) {
 	//
-	//delete multipack_invalid;
-	//multipack_invalid = NULL;
+	//delete mULTIPACK_INVALID;
+	//mULTIPACK_INVALID = NULL;
 	//}
-	//if(indexed_product_count_large_delta != NULL) {
+	//if(iNDEXED_PRODUCT_COUNT_LARGE_DELTA != NULL) {
 	//
-	//delete indexed_product_count_large_delta;
-	//indexed_product_count_large_delta = NULL;
+	//delete iNDEXED_PRODUCT_COUNT_LARGE_DELTA;
+	//iNDEXED_PRODUCT_COUNT_LARGE_DELTA = NULL;
 	//}
-	//if(item_additional_image_download_failure != NULL) {
+	//if(iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE != NULL) {
 	//
-	//delete item_additional_image_download_failure;
-	//item_additional_image_download_failure = NULL;
+	//delete iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
+	//iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = NULL;
 	//}
-	//if(optional_product_category_missing != NULL) {
+	//if(oPTIONAL_PRODUCT_CATEGORY_MISSING != NULL) {
 	//
-	//delete optional_product_category_missing;
-	//optional_product_category_missing = NULL;
+	//delete oPTIONAL_PRODUCT_CATEGORY_MISSING;
+	//oPTIONAL_PRODUCT_CATEGORY_MISSING = NULL;
 	//}
-	//if(optional_product_category_invalid != NULL) {
+	//if(oPTIONAL_PRODUCT_CATEGORY_INVALID != NULL) {
 	//
-	//delete optional_product_category_invalid;
-	//optional_product_category_invalid = NULL;
+	//delete oPTIONAL_PRODUCT_CATEGORY_INVALID;
+	//oPTIONAL_PRODUCT_CATEGORY_INVALID = NULL;
 	//}
-	//if(optional_condition_missing != NULL) {
+	//if(oPTIONAL_CONDITION_MISSING != NULL) {
 	//
-	//delete optional_condition_missing;
-	//optional_condition_missing = NULL;
+	//delete oPTIONAL_CONDITION_MISSING;
+	//oPTIONAL_CONDITION_MISSING = NULL;
 	//}
-	//if(optional_condition_invalid != NULL) {
+	//if(oPTIONAL_CONDITION_INVALID != NULL) {
 	//
-	//delete optional_condition_invalid;
-	//optional_condition_invalid = NULL;
+	//delete oPTIONAL_CONDITION_INVALID;
+	//oPTIONAL_CONDITION_INVALID = NULL;
 	//}
-	//if(ios_deep_link_invalid != NULL) {
+	//if(iOS_DEEP_LINK_INVALID != NULL) {
 	//
-	//delete ios_deep_link_invalid;
-	//ios_deep_link_invalid = NULL;
+	//delete iOS_DEEP_LINK_INVALID;
+	//iOS_DEEP_LINK_INVALID = NULL;
 	//}
-	//if(android_deep_link_invalid != NULL) {
+	//if(aNDROID_DEEP_LINK_INVALID != NULL) {
 	//
-	//delete android_deep_link_invalid;
-	//android_deep_link_invalid = NULL;
+	//delete aNDROID_DEEP_LINK_INVALID;
+	//aNDROID_DEEP_LINK_INVALID = NULL;
 	//}
-	//if(availability_normalized != NULL) {
+	//if(aVAILABILITY_NORMALIZED != NULL) {
 	//
-	//delete availability_normalized;
-	//availability_normalized = NULL;
+	//delete aVAILABILITY_NORMALIZED;
+	//aVAILABILITY_NORMALIZED = NULL;
 	//}
-	//if(condition_normalized != NULL) {
+	//if(cONDITION_NORMALIZED != NULL) {
 	//
-	//delete condition_normalized;
-	//condition_normalized = NULL;
+	//delete cONDITION_NORMALIZED;
+	//cONDITION_NORMALIZED = NULL;
 	//}
-	//if(gender_normalized != NULL) {
+	//if(gENDER_NORMALIZED != NULL) {
 	//
-	//delete gender_normalized;
-	//gender_normalized = NULL;
+	//delete gENDER_NORMALIZED;
+	//gENDER_NORMALIZED = NULL;
 	//}
-	//if(size_type_normalized != NULL) {
+	//if(sIZE_TYPE_NORMALIZED != NULL) {
 	//
-	//delete size_type_normalized;
-	//size_type_normalized = NULL;
+	//delete sIZE_TYPE_NORMALIZED;
+	//sIZE_TYPE_NORMALIZED = NULL;
 	//}
-	//if(age_group_normalized != NULL) {
+	//if(aGE_GROUP_NORMALIZED != NULL) {
 	//
-	//delete age_group_normalized;
-	//age_group_normalized = NULL;
+	//delete aGE_GROUP_NORMALIZED;
+	//aGE_GROUP_NORMALIZED = NULL;
 	//}
-	//if(utm_source_auto_corrected != NULL) {
+	//if(uTM_SOURCE_AUTO_CORRECTED != NULL) {
 	//
-	//delete utm_source_auto_corrected;
-	//utm_source_auto_corrected = NULL;
+	//delete uTM_SOURCE_AUTO_CORRECTED;
+	//uTM_SOURCE_AUTO_CORRECTED = NULL;
 	//}
-	//if(country_does_not_map_to_currency != NULL) {
+	//if(cOUNTRY_DOES_NOT_MAP_TO_CURRENCY != NULL) {
 	//
-	//delete country_does_not_map_to_currency;
-	//country_does_not_map_to_currency = NULL;
+	//delete cOUNTRY_DOES_NOT_MAP_TO_CURRENCY;
+	//cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = NULL;
 	//}
-	//if(min_ad_price_invalid != NULL) {
+	//if(mIN_AD_PRICE_INVALID != NULL) {
 	//
-	//delete min_ad_price_invalid;
-	//min_ad_price_invalid = NULL;
+	//delete mIN_AD_PRICE_INVALID;
+	//mIN_AD_PRICE_INVALID = NULL;
 	//}
 	//
 }
@@ -306,497 +306,497 @@ CatalogsFeedValidationWarnings::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *title_length_too_longKey = "title_length_too_long";
-	node = json_object_get_member(pJsonObject, title_length_too_longKey);
+	const gchar *tITLE_LENGTH_TOO_LONGKey = "TITLE_LENGTH_TOO_LONG";
+	node = json_object_get_member(pJsonObject, tITLE_LENGTH_TOO_LONGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&title_length_too_long, node, "int", "");
+			jsonToValue(&tITLE_LENGTH_TOO_LONG, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *description_length_too_longKey = "description_length_too_long";
-	node = json_object_get_member(pJsonObject, description_length_too_longKey);
+	const gchar *dESCRIPTION_LENGTH_TOO_LONGKey = "DESCRIPTION_LENGTH_TOO_LONG";
+	node = json_object_get_member(pJsonObject, dESCRIPTION_LENGTH_TOO_LONGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&description_length_too_long, node, "int", "");
+			jsonToValue(&dESCRIPTION_LENGTH_TOO_LONG, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *gender_invalidKey = "gender_invalid";
-	node = json_object_get_member(pJsonObject, gender_invalidKey);
+	const gchar *gENDER_INVALIDKey = "GENDER_INVALID";
+	node = json_object_get_member(pJsonObject, gENDER_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&gender_invalid, node, "int", "");
+			jsonToValue(&gENDER_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *age_group_invalidKey = "age_group_invalid";
-	node = json_object_get_member(pJsonObject, age_group_invalidKey);
+	const gchar *aGE_GROUP_INVALIDKey = "AGE_GROUP_INVALID";
+	node = json_object_get_member(pJsonObject, aGE_GROUP_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&age_group_invalid, node, "int", "");
+			jsonToValue(&aGE_GROUP_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *size_type_invalidKey = "size_type_invalid";
-	node = json_object_get_member(pJsonObject, size_type_invalidKey);
+	const gchar *sIZE_TYPE_INVALIDKey = "SIZE_TYPE_INVALID";
+	node = json_object_get_member(pJsonObject, sIZE_TYPE_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&size_type_invalid, node, "int", "");
+			jsonToValue(&sIZE_TYPE_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *link_format_warningKey = "link_format_warning";
-	node = json_object_get_member(pJsonObject, link_format_warningKey);
+	const gchar *lINK_FORMAT_WARNINGKey = "LINK_FORMAT_WARNING";
+	node = json_object_get_member(pJsonObject, lINK_FORMAT_WARNINGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&link_format_warning, node, "int", "");
+			jsonToValue(&lINK_FORMAT_WARNING, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *duplicate_productsKey = "duplicate_products";
-	node = json_object_get_member(pJsonObject, duplicate_productsKey);
+	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
+	node = json_object_get_member(pJsonObject, dUPLICATE_PRODUCTSKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&duplicate_products, node, "int", "");
+			jsonToValue(&dUPLICATE_PRODUCTS, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *duplicate_linksKey = "duplicate_links";
-	node = json_object_get_member(pJsonObject, duplicate_linksKey);
+	const gchar *sALES_PRICE_INVALIDKey = "SALES_PRICE_INVALID";
+	node = json_object_get_member(pJsonObject, sALES_PRICE_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&duplicate_links, node, "int", "");
+			jsonToValue(&sALES_PRICE_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *sales_price_invalidKey = "sales_price_invalid";
-	node = json_object_get_member(pJsonObject, sales_price_invalidKey);
+	const gchar *pRODUCT_CATEGORY_DEPTH_WARNINGKey = "PRODUCT_CATEGORY_DEPTH_WARNING";
+	node = json_object_get_member(pJsonObject, pRODUCT_CATEGORY_DEPTH_WARNINGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&sales_price_invalid, node, "int", "");
+			jsonToValue(&pRODUCT_CATEGORY_DEPTH_WARNING, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *product_category_depth_warningKey = "product_category_depth_warning";
-	node = json_object_get_member(pJsonObject, product_category_depth_warningKey);
+	const gchar *aDWORDS_SAME_AS_LINKKey = "ADWORDS_SAME_AS_LINK";
+	node = json_object_get_member(pJsonObject, aDWORDS_SAME_AS_LINKKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&product_category_depth_warning, node, "int", "");
+			jsonToValue(&aDWORDS_SAME_AS_LINK, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *adwords_same_as_linkKey = "adwords_same_as_link";
-	node = json_object_get_member(pJsonObject, adwords_same_as_linkKey);
+	const gchar *dUPLICATE_HEADERSKey = "DUPLICATE_HEADERS";
+	node = json_object_get_member(pJsonObject, dUPLICATE_HEADERSKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&adwords_same_as_link, node, "int", "");
+			jsonToValue(&dUPLICATE_HEADERS, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *duplicate_headersKey = "duplicate_headers";
-	node = json_object_get_member(pJsonObject, duplicate_headersKey);
+	const gchar *fETCH_SAME_SIGNATUREKey = "FETCH_SAME_SIGNATURE";
+	node = json_object_get_member(pJsonObject, fETCH_SAME_SIGNATUREKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&duplicate_headers, node, "int", "");
+			jsonToValue(&fETCH_SAME_SIGNATURE, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *fetch_same_signatureKey = "fetch_same_signature";
-	node = json_object_get_member(pJsonObject, fetch_same_signatureKey);
+	const gchar *aDWORDS_FORMAT_WARNINGKey = "ADWORDS_FORMAT_WARNING";
+	node = json_object_get_member(pJsonObject, aDWORDS_FORMAT_WARNINGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&fetch_same_signature, node, "int", "");
+			jsonToValue(&aDWORDS_FORMAT_WARNING, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *adwords_format_warningKey = "adwords_format_warning";
-	node = json_object_get_member(pJsonObject, adwords_format_warningKey);
+	const gchar *aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONGKey = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG";
+	node = json_object_get_member(pJsonObject, aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&adwords_format_warning, node, "int", "");
+			jsonToValue(&aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *additional_image_link_warningKey = "additional_image_link_warning";
-	node = json_object_get_member(pJsonObject, additional_image_link_warningKey);
+	const gchar *aDDITIONAL_IMAGE_LINK_WARNINGKey = "ADDITIONAL_IMAGE_LINK_WARNING";
+	node = json_object_get_member(pJsonObject, aDDITIONAL_IMAGE_LINK_WARNINGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&additional_image_link_warning, node, "int", "");
+			jsonToValue(&aDDITIONAL_IMAGE_LINK_WARNING, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *image_link_warningKey = "image_link_warning";
-	node = json_object_get_member(pJsonObject, image_link_warningKey);
+	const gchar *iMAGE_LINK_WARNINGKey = "IMAGE_LINK_WARNING";
+	node = json_object_get_member(pJsonObject, iMAGE_LINK_WARNINGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&image_link_warning, node, "int", "");
+			jsonToValue(&iMAGE_LINK_WARNING, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *shipping_invalidKey = "shipping_invalid";
-	node = json_object_get_member(pJsonObject, shipping_invalidKey);
+	const gchar *sHIPPING_INVALIDKey = "SHIPPING_INVALID";
+	node = json_object_get_member(pJsonObject, sHIPPING_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&shipping_invalid, node, "int", "");
+			jsonToValue(&sHIPPING_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *tax_invalidKey = "tax_invalid";
-	node = json_object_get_member(pJsonObject, tax_invalidKey);
+	const gchar *tAX_INVALIDKey = "TAX_INVALID";
+	node = json_object_get_member(pJsonObject, tAX_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&tax_invalid, node, "int", "");
+			jsonToValue(&tAX_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *shipping_weight_invalidKey = "shipping_weight_invalid";
-	node = json_object_get_member(pJsonObject, shipping_weight_invalidKey);
+	const gchar *sHIPPING_WEIGHT_INVALIDKey = "SHIPPING_WEIGHT_INVALID";
+	node = json_object_get_member(pJsonObject, sHIPPING_WEIGHT_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&shipping_weight_invalid, node, "int", "");
+			jsonToValue(&sHIPPING_WEIGHT_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *expiration_date_invalidKey = "expiration_date_invalid";
-	node = json_object_get_member(pJsonObject, expiration_date_invalidKey);
+	const gchar *eXPIRATION_DATE_INVALIDKey = "EXPIRATION_DATE_INVALID";
+	node = json_object_get_member(pJsonObject, eXPIRATION_DATE_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&expiration_date_invalid, node, "int", "");
+			jsonToValue(&eXPIRATION_DATE_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *availability_date_invalidKey = "availability_date_invalid";
-	node = json_object_get_member(pJsonObject, availability_date_invalidKey);
+	const gchar *aVAILABILITY_DATE_INVALIDKey = "AVAILABILITY_DATE_INVALID";
+	node = json_object_get_member(pJsonObject, aVAILABILITY_DATE_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&availability_date_invalid, node, "int", "");
+			jsonToValue(&aVAILABILITY_DATE_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *sale_date_invalidKey = "sale_date_invalid";
-	node = json_object_get_member(pJsonObject, sale_date_invalidKey);
+	const gchar *sALE_DATE_INVALIDKey = "SALE_DATE_INVALID";
+	node = json_object_get_member(pJsonObject, sALE_DATE_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&sale_date_invalid, node, "int", "");
+			jsonToValue(&sALE_DATE_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *weight_unit_invalidKey = "weight_unit_invalid";
-	node = json_object_get_member(pJsonObject, weight_unit_invalidKey);
+	const gchar *wEIGHT_UNIT_INVALIDKey = "WEIGHT_UNIT_INVALID";
+	node = json_object_get_member(pJsonObject, wEIGHT_UNIT_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&weight_unit_invalid, node, "int", "");
+			jsonToValue(&wEIGHT_UNIT_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *is_bundle_invalidKey = "is_bundle_invalid";
-	node = json_object_get_member(pJsonObject, is_bundle_invalidKey);
+	const gchar *iS_BUNDLE_INVALIDKey = "IS_BUNDLE_INVALID";
+	node = json_object_get_member(pJsonObject, iS_BUNDLE_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&is_bundle_invalid, node, "int", "");
+			jsonToValue(&iS_BUNDLE_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *updated_time_invalidKey = "updated_time_invalid";
-	node = json_object_get_member(pJsonObject, updated_time_invalidKey);
+	const gchar *uPDATED_TIME_INVALIDKey = "UPDATED_TIME_INVALID";
+	node = json_object_get_member(pJsonObject, uPDATED_TIME_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&updated_time_invalid, node, "int", "");
+			jsonToValue(&uPDATED_TIME_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *custom_label_length_too_longKey = "custom_label_length_too_long";
-	node = json_object_get_member(pJsonObject, custom_label_length_too_longKey);
+	const gchar *cUSTOM_LABEL_LENGTH_TOO_LONGKey = "CUSTOM_LABEL_LENGTH_TOO_LONG";
+	node = json_object_get_member(pJsonObject, cUSTOM_LABEL_LENGTH_TOO_LONGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&custom_label_length_too_long, node, "int", "");
+			jsonToValue(&cUSTOM_LABEL_LENGTH_TOO_LONG, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *product_type_length_too_longKey = "product_type_length_too_long";
-	node = json_object_get_member(pJsonObject, product_type_length_too_longKey);
+	const gchar *pRODUCT_TYPE_LENGTH_TOO_LONGKey = "PRODUCT_TYPE_LENGTH_TOO_LONG";
+	node = json_object_get_member(pJsonObject, pRODUCT_TYPE_LENGTH_TOO_LONGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&product_type_length_too_long, node, "int", "");
+			jsonToValue(&pRODUCT_TYPE_LENGTH_TOO_LONG, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *too_many_additional_image_linksKey = "too_many_additional_image_links";
-	node = json_object_get_member(pJsonObject, too_many_additional_image_linksKey);
+	const gchar *tOO_MANY_ADDITIONAL_IMAGE_LINKSKey = "TOO_MANY_ADDITIONAL_IMAGE_LINKS";
+	node = json_object_get_member(pJsonObject, tOO_MANY_ADDITIONAL_IMAGE_LINKSKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&too_many_additional_image_links, node, "int", "");
+			jsonToValue(&tOO_MANY_ADDITIONAL_IMAGE_LINKS, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *multipack_invalidKey = "multipack_invalid";
-	node = json_object_get_member(pJsonObject, multipack_invalidKey);
+	const gchar *mULTIPACK_INVALIDKey = "MULTIPACK_INVALID";
+	node = json_object_get_member(pJsonObject, mULTIPACK_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&multipack_invalid, node, "int", "");
+			jsonToValue(&mULTIPACK_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *indexed_product_count_large_deltaKey = "indexed_product_count_large_delta";
-	node = json_object_get_member(pJsonObject, indexed_product_count_large_deltaKey);
+	const gchar *iNDEXED_PRODUCT_COUNT_LARGE_DELTAKey = "INDEXED_PRODUCT_COUNT_LARGE_DELTA";
+	node = json_object_get_member(pJsonObject, iNDEXED_PRODUCT_COUNT_LARGE_DELTAKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&indexed_product_count_large_delta, node, "int", "");
+			jsonToValue(&iNDEXED_PRODUCT_COUNT_LARGE_DELTA, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *item_additional_image_download_failureKey = "item_additional_image_download_failure";
-	node = json_object_get_member(pJsonObject, item_additional_image_download_failureKey);
+	const gchar *iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREKey = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE";
+	node = json_object_get_member(pJsonObject, iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&item_additional_image_download_failure, node, "int", "");
+			jsonToValue(&iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *optional_product_category_missingKey = "optional_product_category_missing";
-	node = json_object_get_member(pJsonObject, optional_product_category_missingKey);
+	const gchar *oPTIONAL_PRODUCT_CATEGORY_MISSINGKey = "OPTIONAL_PRODUCT_CATEGORY_MISSING";
+	node = json_object_get_member(pJsonObject, oPTIONAL_PRODUCT_CATEGORY_MISSINGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&optional_product_category_missing, node, "int", "");
+			jsonToValue(&oPTIONAL_PRODUCT_CATEGORY_MISSING, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *optional_product_category_invalidKey = "optional_product_category_invalid";
-	node = json_object_get_member(pJsonObject, optional_product_category_invalidKey);
+	const gchar *oPTIONAL_PRODUCT_CATEGORY_INVALIDKey = "OPTIONAL_PRODUCT_CATEGORY_INVALID";
+	node = json_object_get_member(pJsonObject, oPTIONAL_PRODUCT_CATEGORY_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&optional_product_category_invalid, node, "int", "");
+			jsonToValue(&oPTIONAL_PRODUCT_CATEGORY_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *optional_condition_missingKey = "optional_condition_missing";
-	node = json_object_get_member(pJsonObject, optional_condition_missingKey);
+	const gchar *oPTIONAL_CONDITION_MISSINGKey = "OPTIONAL_CONDITION_MISSING";
+	node = json_object_get_member(pJsonObject, oPTIONAL_CONDITION_MISSINGKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&optional_condition_missing, node, "int", "");
+			jsonToValue(&oPTIONAL_CONDITION_MISSING, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *optional_condition_invalidKey = "optional_condition_invalid";
-	node = json_object_get_member(pJsonObject, optional_condition_invalidKey);
+	const gchar *oPTIONAL_CONDITION_INVALIDKey = "OPTIONAL_CONDITION_INVALID";
+	node = json_object_get_member(pJsonObject, oPTIONAL_CONDITION_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&optional_condition_invalid, node, "int", "");
+			jsonToValue(&oPTIONAL_CONDITION_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *ios_deep_link_invalidKey = "ios_deep_link_invalid";
-	node = json_object_get_member(pJsonObject, ios_deep_link_invalidKey);
+	const gchar *iOS_DEEP_LINK_INVALIDKey = "IOS_DEEP_LINK_INVALID";
+	node = json_object_get_member(pJsonObject, iOS_DEEP_LINK_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&ios_deep_link_invalid, node, "int", "");
+			jsonToValue(&iOS_DEEP_LINK_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *android_deep_link_invalidKey = "android_deep_link_invalid";
-	node = json_object_get_member(pJsonObject, android_deep_link_invalidKey);
+	const gchar *aNDROID_DEEP_LINK_INVALIDKey = "ANDROID_DEEP_LINK_INVALID";
+	node = json_object_get_member(pJsonObject, aNDROID_DEEP_LINK_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&android_deep_link_invalid, node, "int", "");
+			jsonToValue(&aNDROID_DEEP_LINK_INVALID, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *availability_normalizedKey = "availability_normalized";
-	node = json_object_get_member(pJsonObject, availability_normalizedKey);
+	const gchar *aVAILABILITY_NORMALIZEDKey = "AVAILABILITY_NORMALIZED";
+	node = json_object_get_member(pJsonObject, aVAILABILITY_NORMALIZEDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&availability_normalized, node, "int", "");
+			jsonToValue(&aVAILABILITY_NORMALIZED, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *condition_normalizedKey = "condition_normalized";
-	node = json_object_get_member(pJsonObject, condition_normalizedKey);
+	const gchar *cONDITION_NORMALIZEDKey = "CONDITION_NORMALIZED";
+	node = json_object_get_member(pJsonObject, cONDITION_NORMALIZEDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&condition_normalized, node, "int", "");
+			jsonToValue(&cONDITION_NORMALIZED, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *gender_normalizedKey = "gender_normalized";
-	node = json_object_get_member(pJsonObject, gender_normalizedKey);
+	const gchar *gENDER_NORMALIZEDKey = "GENDER_NORMALIZED";
+	node = json_object_get_member(pJsonObject, gENDER_NORMALIZEDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&gender_normalized, node, "int", "");
+			jsonToValue(&gENDER_NORMALIZED, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *size_type_normalizedKey = "size_type_normalized";
-	node = json_object_get_member(pJsonObject, size_type_normalizedKey);
+	const gchar *sIZE_TYPE_NORMALIZEDKey = "SIZE_TYPE_NORMALIZED";
+	node = json_object_get_member(pJsonObject, sIZE_TYPE_NORMALIZEDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&size_type_normalized, node, "int", "");
+			jsonToValue(&sIZE_TYPE_NORMALIZED, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *age_group_normalizedKey = "age_group_normalized";
-	node = json_object_get_member(pJsonObject, age_group_normalizedKey);
+	const gchar *aGE_GROUP_NORMALIZEDKey = "AGE_GROUP_NORMALIZED";
+	node = json_object_get_member(pJsonObject, aGE_GROUP_NORMALIZEDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&age_group_normalized, node, "int", "");
+			jsonToValue(&aGE_GROUP_NORMALIZED, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *utm_source_auto_correctedKey = "utm_source_auto_corrected";
-	node = json_object_get_member(pJsonObject, utm_source_auto_correctedKey);
+	const gchar *uTM_SOURCE_AUTO_CORRECTEDKey = "UTM_SOURCE_AUTO_CORRECTED";
+	node = json_object_get_member(pJsonObject, uTM_SOURCE_AUTO_CORRECTEDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&utm_source_auto_corrected, node, "int", "");
+			jsonToValue(&uTM_SOURCE_AUTO_CORRECTED, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *country_does_not_map_to_currencyKey = "country_does_not_map_to_currency";
-	node = json_object_get_member(pJsonObject, country_does_not_map_to_currencyKey);
+	const gchar *cOUNTRY_DOES_NOT_MAP_TO_CURRENCYKey = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY";
+	node = json_object_get_member(pJsonObject, cOUNTRY_DOES_NOT_MAP_TO_CURRENCYKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&country_does_not_map_to_currency, node, "int", "");
+			jsonToValue(&cOUNTRY_DOES_NOT_MAP_TO_CURRENCY, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *min_ad_price_invalidKey = "min_ad_price_invalid";
-	node = json_object_get_member(pJsonObject, min_ad_price_invalidKey);
+	const gchar *mIN_AD_PRICE_INVALIDKey = "MIN_AD_PRICE_INVALID";
+	node = json_object_get_member(pJsonObject, mIN_AD_PRICE_INVALIDKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&min_ad_price_invalid, node, "int", "");
+			jsonToValue(&mIN_AD_PRICE_INVALID, node, "int", "");
 		} else {
 			
 		}
@@ -814,410 +814,410 @@ CatalogsFeedValidationWarnings::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("int")) {
-		int obj = getTitleLengthTooLong();
+		int obj = getTITLELENGTHTOOLONG();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *title_length_too_longKey = "title_length_too_long";
-	json_object_set_member(pJsonObject, title_length_too_longKey, node);
+	const gchar *tITLE_LENGTH_TOO_LONGKey = "TITLE_LENGTH_TOO_LONG";
+	json_object_set_member(pJsonObject, tITLE_LENGTH_TOO_LONGKey, node);
 	if (isprimitive("int")) {
-		int obj = getDescriptionLengthTooLong();
+		int obj = getDESCRIPTIONLENGTHTOOLONG();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *description_length_too_longKey = "description_length_too_long";
-	json_object_set_member(pJsonObject, description_length_too_longKey, node);
+	const gchar *dESCRIPTION_LENGTH_TOO_LONGKey = "DESCRIPTION_LENGTH_TOO_LONG";
+	json_object_set_member(pJsonObject, dESCRIPTION_LENGTH_TOO_LONGKey, node);
 	if (isprimitive("int")) {
-		int obj = getGenderInvalid();
+		int obj = getGENDERINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *gender_invalidKey = "gender_invalid";
-	json_object_set_member(pJsonObject, gender_invalidKey, node);
+	const gchar *gENDER_INVALIDKey = "GENDER_INVALID";
+	json_object_set_member(pJsonObject, gENDER_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getAgeGroupInvalid();
+		int obj = getAGEGROUPINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *age_group_invalidKey = "age_group_invalid";
-	json_object_set_member(pJsonObject, age_group_invalidKey, node);
+	const gchar *aGE_GROUP_INVALIDKey = "AGE_GROUP_INVALID";
+	json_object_set_member(pJsonObject, aGE_GROUP_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getSizeTypeInvalid();
+		int obj = getSIZETYPEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *size_type_invalidKey = "size_type_invalid";
-	json_object_set_member(pJsonObject, size_type_invalidKey, node);
+	const gchar *sIZE_TYPE_INVALIDKey = "SIZE_TYPE_INVALID";
+	json_object_set_member(pJsonObject, sIZE_TYPE_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getLinkFormatWarning();
+		int obj = getLINKFORMATWARNING();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *link_format_warningKey = "link_format_warning";
-	json_object_set_member(pJsonObject, link_format_warningKey, node);
+	const gchar *lINK_FORMAT_WARNINGKey = "LINK_FORMAT_WARNING";
+	json_object_set_member(pJsonObject, lINK_FORMAT_WARNINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getDuplicateProducts();
+		int obj = getDUPLICATEPRODUCTS();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *duplicate_productsKey = "duplicate_products";
-	json_object_set_member(pJsonObject, duplicate_productsKey, node);
+	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
+	json_object_set_member(pJsonObject, dUPLICATE_PRODUCTSKey, node);
 	if (isprimitive("int")) {
-		int obj = getDuplicateLinks();
+		int obj = getSALESPRICEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *duplicate_linksKey = "duplicate_links";
-	json_object_set_member(pJsonObject, duplicate_linksKey, node);
+	const gchar *sALES_PRICE_INVALIDKey = "SALES_PRICE_INVALID";
+	json_object_set_member(pJsonObject, sALES_PRICE_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getSalesPriceInvalid();
+		int obj = getPRODUCTCATEGORYDEPTHWARNING();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *sales_price_invalidKey = "sales_price_invalid";
-	json_object_set_member(pJsonObject, sales_price_invalidKey, node);
+	const gchar *pRODUCT_CATEGORY_DEPTH_WARNINGKey = "PRODUCT_CATEGORY_DEPTH_WARNING";
+	json_object_set_member(pJsonObject, pRODUCT_CATEGORY_DEPTH_WARNINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getProductCategoryDepthWarning();
+		int obj = getADWORDSSAMEASLINK();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *product_category_depth_warningKey = "product_category_depth_warning";
-	json_object_set_member(pJsonObject, product_category_depth_warningKey, node);
+	const gchar *aDWORDS_SAME_AS_LINKKey = "ADWORDS_SAME_AS_LINK";
+	json_object_set_member(pJsonObject, aDWORDS_SAME_AS_LINKKey, node);
 	if (isprimitive("int")) {
-		int obj = getAdwordsSameAsLink();
+		int obj = getDUPLICATEHEADERS();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *adwords_same_as_linkKey = "adwords_same_as_link";
-	json_object_set_member(pJsonObject, adwords_same_as_linkKey, node);
+	const gchar *dUPLICATE_HEADERSKey = "DUPLICATE_HEADERS";
+	json_object_set_member(pJsonObject, dUPLICATE_HEADERSKey, node);
 	if (isprimitive("int")) {
-		int obj = getDuplicateHeaders();
+		int obj = getFETCHSAMESIGNATURE();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *duplicate_headersKey = "duplicate_headers";
-	json_object_set_member(pJsonObject, duplicate_headersKey, node);
+	const gchar *fETCH_SAME_SIGNATUREKey = "FETCH_SAME_SIGNATURE";
+	json_object_set_member(pJsonObject, fETCH_SAME_SIGNATUREKey, node);
 	if (isprimitive("int")) {
-		int obj = getFetchSameSignature();
+		int obj = getADWORDSFORMATWARNING();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *fetch_same_signatureKey = "fetch_same_signature";
-	json_object_set_member(pJsonObject, fetch_same_signatureKey, node);
+	const gchar *aDWORDS_FORMAT_WARNINGKey = "ADWORDS_FORMAT_WARNING";
+	json_object_set_member(pJsonObject, aDWORDS_FORMAT_WARNINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getAdwordsFormatWarning();
+		int obj = getADDITIONALIMAGELINKLENGTHTOOLONG();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *adwords_format_warningKey = "adwords_format_warning";
-	json_object_set_member(pJsonObject, adwords_format_warningKey, node);
+	const gchar *aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONGKey = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG";
+	json_object_set_member(pJsonObject, aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONGKey, node);
 	if (isprimitive("int")) {
-		int obj = getAdditionalImageLinkWarning();
+		int obj = getADDITIONALIMAGELINKWARNING();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *additional_image_link_warningKey = "additional_image_link_warning";
-	json_object_set_member(pJsonObject, additional_image_link_warningKey, node);
+	const gchar *aDDITIONAL_IMAGE_LINK_WARNINGKey = "ADDITIONAL_IMAGE_LINK_WARNING";
+	json_object_set_member(pJsonObject, aDDITIONAL_IMAGE_LINK_WARNINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getImageLinkWarning();
+		int obj = getIMAGELINKWARNING();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *image_link_warningKey = "image_link_warning";
-	json_object_set_member(pJsonObject, image_link_warningKey, node);
+	const gchar *iMAGE_LINK_WARNINGKey = "IMAGE_LINK_WARNING";
+	json_object_set_member(pJsonObject, iMAGE_LINK_WARNINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getShippingInvalid();
+		int obj = getSHIPPINGINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *shipping_invalidKey = "shipping_invalid";
-	json_object_set_member(pJsonObject, shipping_invalidKey, node);
+	const gchar *sHIPPING_INVALIDKey = "SHIPPING_INVALID";
+	json_object_set_member(pJsonObject, sHIPPING_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getTaxInvalid();
+		int obj = getTAXINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *tax_invalidKey = "tax_invalid";
-	json_object_set_member(pJsonObject, tax_invalidKey, node);
+	const gchar *tAX_INVALIDKey = "TAX_INVALID";
+	json_object_set_member(pJsonObject, tAX_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getShippingWeightInvalid();
+		int obj = getSHIPPINGWEIGHTINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *shipping_weight_invalidKey = "shipping_weight_invalid";
-	json_object_set_member(pJsonObject, shipping_weight_invalidKey, node);
+	const gchar *sHIPPING_WEIGHT_INVALIDKey = "SHIPPING_WEIGHT_INVALID";
+	json_object_set_member(pJsonObject, sHIPPING_WEIGHT_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getExpirationDateInvalid();
+		int obj = getEXPIRATIONDATEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *expiration_date_invalidKey = "expiration_date_invalid";
-	json_object_set_member(pJsonObject, expiration_date_invalidKey, node);
+	const gchar *eXPIRATION_DATE_INVALIDKey = "EXPIRATION_DATE_INVALID";
+	json_object_set_member(pJsonObject, eXPIRATION_DATE_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getAvailabilityDateInvalid();
+		int obj = getAVAILABILITYDATEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *availability_date_invalidKey = "availability_date_invalid";
-	json_object_set_member(pJsonObject, availability_date_invalidKey, node);
+	const gchar *aVAILABILITY_DATE_INVALIDKey = "AVAILABILITY_DATE_INVALID";
+	json_object_set_member(pJsonObject, aVAILABILITY_DATE_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getSaleDateInvalid();
+		int obj = getSALEDATEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *sale_date_invalidKey = "sale_date_invalid";
-	json_object_set_member(pJsonObject, sale_date_invalidKey, node);
+	const gchar *sALE_DATE_INVALIDKey = "SALE_DATE_INVALID";
+	json_object_set_member(pJsonObject, sALE_DATE_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getWeightUnitInvalid();
+		int obj = getWEIGHTUNITINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *weight_unit_invalidKey = "weight_unit_invalid";
-	json_object_set_member(pJsonObject, weight_unit_invalidKey, node);
+	const gchar *wEIGHT_UNIT_INVALIDKey = "WEIGHT_UNIT_INVALID";
+	json_object_set_member(pJsonObject, wEIGHT_UNIT_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getIsBundleInvalid();
+		int obj = getISBUNDLEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *is_bundle_invalidKey = "is_bundle_invalid";
-	json_object_set_member(pJsonObject, is_bundle_invalidKey, node);
+	const gchar *iS_BUNDLE_INVALIDKey = "IS_BUNDLE_INVALID";
+	json_object_set_member(pJsonObject, iS_BUNDLE_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getUpdatedTimeInvalid();
+		int obj = getUPDATEDTIMEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *updated_time_invalidKey = "updated_time_invalid";
-	json_object_set_member(pJsonObject, updated_time_invalidKey, node);
+	const gchar *uPDATED_TIME_INVALIDKey = "UPDATED_TIME_INVALID";
+	json_object_set_member(pJsonObject, uPDATED_TIME_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getCustomLabelLengthTooLong();
+		int obj = getCUSTOMLABELLENGTHTOOLONG();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *custom_label_length_too_longKey = "custom_label_length_too_long";
-	json_object_set_member(pJsonObject, custom_label_length_too_longKey, node);
+	const gchar *cUSTOM_LABEL_LENGTH_TOO_LONGKey = "CUSTOM_LABEL_LENGTH_TOO_LONG";
+	json_object_set_member(pJsonObject, cUSTOM_LABEL_LENGTH_TOO_LONGKey, node);
 	if (isprimitive("int")) {
-		int obj = getProductTypeLengthTooLong();
+		int obj = getPRODUCTTYPELENGTHTOOLONG();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *product_type_length_too_longKey = "product_type_length_too_long";
-	json_object_set_member(pJsonObject, product_type_length_too_longKey, node);
+	const gchar *pRODUCT_TYPE_LENGTH_TOO_LONGKey = "PRODUCT_TYPE_LENGTH_TOO_LONG";
+	json_object_set_member(pJsonObject, pRODUCT_TYPE_LENGTH_TOO_LONGKey, node);
 	if (isprimitive("int")) {
-		int obj = getTooManyAdditionalImageLinks();
+		int obj = getTOOMANYADDITIONALIMAGELINKS();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *too_many_additional_image_linksKey = "too_many_additional_image_links";
-	json_object_set_member(pJsonObject, too_many_additional_image_linksKey, node);
+	const gchar *tOO_MANY_ADDITIONAL_IMAGE_LINKSKey = "TOO_MANY_ADDITIONAL_IMAGE_LINKS";
+	json_object_set_member(pJsonObject, tOO_MANY_ADDITIONAL_IMAGE_LINKSKey, node);
 	if (isprimitive("int")) {
-		int obj = getMultipackInvalid();
+		int obj = getMULTIPACKINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *multipack_invalidKey = "multipack_invalid";
-	json_object_set_member(pJsonObject, multipack_invalidKey, node);
+	const gchar *mULTIPACK_INVALIDKey = "MULTIPACK_INVALID";
+	json_object_set_member(pJsonObject, mULTIPACK_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getIndexedProductCountLargeDelta();
+		int obj = getINDEXEDPRODUCTCOUNTLARGEDELTA();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *indexed_product_count_large_deltaKey = "indexed_product_count_large_delta";
-	json_object_set_member(pJsonObject, indexed_product_count_large_deltaKey, node);
+	const gchar *iNDEXED_PRODUCT_COUNT_LARGE_DELTAKey = "INDEXED_PRODUCT_COUNT_LARGE_DELTA";
+	json_object_set_member(pJsonObject, iNDEXED_PRODUCT_COUNT_LARGE_DELTAKey, node);
 	if (isprimitive("int")) {
-		int obj = getItemAdditionalImageDownloadFailure();
+		int obj = getITEMADDITIONALIMAGEDOWNLOADFAILURE();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *item_additional_image_download_failureKey = "item_additional_image_download_failure";
-	json_object_set_member(pJsonObject, item_additional_image_download_failureKey, node);
+	const gchar *iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREKey = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE";
+	json_object_set_member(pJsonObject, iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREKey, node);
 	if (isprimitive("int")) {
-		int obj = getOptionalProductCategoryMissing();
+		int obj = getOPTIONALPRODUCTCATEGORYMISSING();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *optional_product_category_missingKey = "optional_product_category_missing";
-	json_object_set_member(pJsonObject, optional_product_category_missingKey, node);
+	const gchar *oPTIONAL_PRODUCT_CATEGORY_MISSINGKey = "OPTIONAL_PRODUCT_CATEGORY_MISSING";
+	json_object_set_member(pJsonObject, oPTIONAL_PRODUCT_CATEGORY_MISSINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getOptionalProductCategoryInvalid();
+		int obj = getOPTIONALPRODUCTCATEGORYINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *optional_product_category_invalidKey = "optional_product_category_invalid";
-	json_object_set_member(pJsonObject, optional_product_category_invalidKey, node);
+	const gchar *oPTIONAL_PRODUCT_CATEGORY_INVALIDKey = "OPTIONAL_PRODUCT_CATEGORY_INVALID";
+	json_object_set_member(pJsonObject, oPTIONAL_PRODUCT_CATEGORY_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getOptionalConditionMissing();
+		int obj = getOPTIONALCONDITIONMISSING();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *optional_condition_missingKey = "optional_condition_missing";
-	json_object_set_member(pJsonObject, optional_condition_missingKey, node);
+	const gchar *oPTIONAL_CONDITION_MISSINGKey = "OPTIONAL_CONDITION_MISSING";
+	json_object_set_member(pJsonObject, oPTIONAL_CONDITION_MISSINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getOptionalConditionInvalid();
+		int obj = getOPTIONALCONDITIONINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *optional_condition_invalidKey = "optional_condition_invalid";
-	json_object_set_member(pJsonObject, optional_condition_invalidKey, node);
+	const gchar *oPTIONAL_CONDITION_INVALIDKey = "OPTIONAL_CONDITION_INVALID";
+	json_object_set_member(pJsonObject, oPTIONAL_CONDITION_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getIosDeepLinkInvalid();
+		int obj = getIOSDEEPLINKINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *ios_deep_link_invalidKey = "ios_deep_link_invalid";
-	json_object_set_member(pJsonObject, ios_deep_link_invalidKey, node);
+	const gchar *iOS_DEEP_LINK_INVALIDKey = "IOS_DEEP_LINK_INVALID";
+	json_object_set_member(pJsonObject, iOS_DEEP_LINK_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getAndroidDeepLinkInvalid();
+		int obj = getANDROIDDEEPLINKINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *android_deep_link_invalidKey = "android_deep_link_invalid";
-	json_object_set_member(pJsonObject, android_deep_link_invalidKey, node);
+	const gchar *aNDROID_DEEP_LINK_INVALIDKey = "ANDROID_DEEP_LINK_INVALID";
+	json_object_set_member(pJsonObject, aNDROID_DEEP_LINK_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getAvailabilityNormalized();
+		int obj = getAVAILABILITYNORMALIZED();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *availability_normalizedKey = "availability_normalized";
-	json_object_set_member(pJsonObject, availability_normalizedKey, node);
+	const gchar *aVAILABILITY_NORMALIZEDKey = "AVAILABILITY_NORMALIZED";
+	json_object_set_member(pJsonObject, aVAILABILITY_NORMALIZEDKey, node);
 	if (isprimitive("int")) {
-		int obj = getConditionNormalized();
+		int obj = getCONDITIONNORMALIZED();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *condition_normalizedKey = "condition_normalized";
-	json_object_set_member(pJsonObject, condition_normalizedKey, node);
+	const gchar *cONDITION_NORMALIZEDKey = "CONDITION_NORMALIZED";
+	json_object_set_member(pJsonObject, cONDITION_NORMALIZEDKey, node);
 	if (isprimitive("int")) {
-		int obj = getGenderNormalized();
+		int obj = getGENDERNORMALIZED();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *gender_normalizedKey = "gender_normalized";
-	json_object_set_member(pJsonObject, gender_normalizedKey, node);
+	const gchar *gENDER_NORMALIZEDKey = "GENDER_NORMALIZED";
+	json_object_set_member(pJsonObject, gENDER_NORMALIZEDKey, node);
 	if (isprimitive("int")) {
-		int obj = getSizeTypeNormalized();
+		int obj = getSIZETYPENORMALIZED();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *size_type_normalizedKey = "size_type_normalized";
-	json_object_set_member(pJsonObject, size_type_normalizedKey, node);
+	const gchar *sIZE_TYPE_NORMALIZEDKey = "SIZE_TYPE_NORMALIZED";
+	json_object_set_member(pJsonObject, sIZE_TYPE_NORMALIZEDKey, node);
 	if (isprimitive("int")) {
-		int obj = getAgeGroupNormalized();
+		int obj = getAGEGROUPNORMALIZED();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *age_group_normalizedKey = "age_group_normalized";
-	json_object_set_member(pJsonObject, age_group_normalizedKey, node);
+	const gchar *aGE_GROUP_NORMALIZEDKey = "AGE_GROUP_NORMALIZED";
+	json_object_set_member(pJsonObject, aGE_GROUP_NORMALIZEDKey, node);
 	if (isprimitive("int")) {
-		int obj = getUtmSourceAutoCorrected();
+		int obj = getUTMSOURCEAUTOCORRECTED();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *utm_source_auto_correctedKey = "utm_source_auto_corrected";
-	json_object_set_member(pJsonObject, utm_source_auto_correctedKey, node);
+	const gchar *uTM_SOURCE_AUTO_CORRECTEDKey = "UTM_SOURCE_AUTO_CORRECTED";
+	json_object_set_member(pJsonObject, uTM_SOURCE_AUTO_CORRECTEDKey, node);
 	if (isprimitive("int")) {
-		int obj = getCountryDoesNotMapToCurrency();
+		int obj = getCOUNTRYDOESNOTMAPTOCURRENCY();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *country_does_not_map_to_currencyKey = "country_does_not_map_to_currency";
-	json_object_set_member(pJsonObject, country_does_not_map_to_currencyKey, node);
+	const gchar *cOUNTRY_DOES_NOT_MAP_TO_CURRENCYKey = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY";
+	json_object_set_member(pJsonObject, cOUNTRY_DOES_NOT_MAP_TO_CURRENCYKey, node);
 	if (isprimitive("int")) {
-		int obj = getMinAdPriceInvalid();
+		int obj = getMINADPRICEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *min_ad_price_invalidKey = "min_ad_price_invalid";
-	json_object_set_member(pJsonObject, min_ad_price_invalidKey, node);
+	const gchar *mIN_AD_PRICE_INVALIDKey = "MIN_AD_PRICE_INVALID";
+	json_object_set_member(pJsonObject, mIN_AD_PRICE_INVALIDKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -1227,543 +1227,543 @@ CatalogsFeedValidationWarnings::toJson()
 }
 
 int
-CatalogsFeedValidationWarnings::getTitleLengthTooLong()
+CatalogsFeedValidationWarnings::getTITLELENGTHTOOLONG()
 {
-	return title_length_too_long;
+	return tITLE_LENGTH_TOO_LONG;
 }
 
 void
-CatalogsFeedValidationWarnings::setTitleLengthTooLong(int  title_length_too_long)
+CatalogsFeedValidationWarnings::setTITLELENGTHTOOLONG(int  tITLE_LENGTH_TOO_LONG)
 {
-	this->title_length_too_long = title_length_too_long;
+	this->tITLE_LENGTH_TOO_LONG = tITLE_LENGTH_TOO_LONG;
 }
 
 int
-CatalogsFeedValidationWarnings::getDescriptionLengthTooLong()
+CatalogsFeedValidationWarnings::getDESCRIPTIONLENGTHTOOLONG()
 {
-	return description_length_too_long;
+	return dESCRIPTION_LENGTH_TOO_LONG;
 }
 
 void
-CatalogsFeedValidationWarnings::setDescriptionLengthTooLong(int  description_length_too_long)
+CatalogsFeedValidationWarnings::setDESCRIPTIONLENGTHTOOLONG(int  dESCRIPTION_LENGTH_TOO_LONG)
 {
-	this->description_length_too_long = description_length_too_long;
+	this->dESCRIPTION_LENGTH_TOO_LONG = dESCRIPTION_LENGTH_TOO_LONG;
 }
 
 int
-CatalogsFeedValidationWarnings::getGenderInvalid()
+CatalogsFeedValidationWarnings::getGENDERINVALID()
 {
-	return gender_invalid;
+	return gENDER_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setGenderInvalid(int  gender_invalid)
+CatalogsFeedValidationWarnings::setGENDERINVALID(int  gENDER_INVALID)
 {
-	this->gender_invalid = gender_invalid;
+	this->gENDER_INVALID = gENDER_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getAgeGroupInvalid()
+CatalogsFeedValidationWarnings::getAGEGROUPINVALID()
 {
-	return age_group_invalid;
+	return aGE_GROUP_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setAgeGroupInvalid(int  age_group_invalid)
+CatalogsFeedValidationWarnings::setAGEGROUPINVALID(int  aGE_GROUP_INVALID)
 {
-	this->age_group_invalid = age_group_invalid;
+	this->aGE_GROUP_INVALID = aGE_GROUP_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getSizeTypeInvalid()
+CatalogsFeedValidationWarnings::getSIZETYPEINVALID()
 {
-	return size_type_invalid;
+	return sIZE_TYPE_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setSizeTypeInvalid(int  size_type_invalid)
+CatalogsFeedValidationWarnings::setSIZETYPEINVALID(int  sIZE_TYPE_INVALID)
 {
-	this->size_type_invalid = size_type_invalid;
+	this->sIZE_TYPE_INVALID = sIZE_TYPE_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getLinkFormatWarning()
+CatalogsFeedValidationWarnings::getLINKFORMATWARNING()
 {
-	return link_format_warning;
+	return lINK_FORMAT_WARNING;
 }
 
 void
-CatalogsFeedValidationWarnings::setLinkFormatWarning(int  link_format_warning)
+CatalogsFeedValidationWarnings::setLINKFORMATWARNING(int  lINK_FORMAT_WARNING)
 {
-	this->link_format_warning = link_format_warning;
+	this->lINK_FORMAT_WARNING = lINK_FORMAT_WARNING;
 }
 
 int
-CatalogsFeedValidationWarnings::getDuplicateProducts()
+CatalogsFeedValidationWarnings::getDUPLICATEPRODUCTS()
 {
-	return duplicate_products;
+	return dUPLICATE_PRODUCTS;
 }
 
 void
-CatalogsFeedValidationWarnings::setDuplicateProducts(int  duplicate_products)
+CatalogsFeedValidationWarnings::setDUPLICATEPRODUCTS(int  dUPLICATE_PRODUCTS)
 {
-	this->duplicate_products = duplicate_products;
+	this->dUPLICATE_PRODUCTS = dUPLICATE_PRODUCTS;
 }
 
 int
-CatalogsFeedValidationWarnings::getDuplicateLinks()
+CatalogsFeedValidationWarnings::getSALESPRICEINVALID()
 {
-	return duplicate_links;
+	return sALES_PRICE_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setDuplicateLinks(int  duplicate_links)
+CatalogsFeedValidationWarnings::setSALESPRICEINVALID(int  sALES_PRICE_INVALID)
 {
-	this->duplicate_links = duplicate_links;
+	this->sALES_PRICE_INVALID = sALES_PRICE_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getSalesPriceInvalid()
+CatalogsFeedValidationWarnings::getPRODUCTCATEGORYDEPTHWARNING()
 {
-	return sales_price_invalid;
+	return pRODUCT_CATEGORY_DEPTH_WARNING;
 }
 
 void
-CatalogsFeedValidationWarnings::setSalesPriceInvalid(int  sales_price_invalid)
+CatalogsFeedValidationWarnings::setPRODUCTCATEGORYDEPTHWARNING(int  pRODUCT_CATEGORY_DEPTH_WARNING)
 {
-	this->sales_price_invalid = sales_price_invalid;
+	this->pRODUCT_CATEGORY_DEPTH_WARNING = pRODUCT_CATEGORY_DEPTH_WARNING;
 }
 
 int
-CatalogsFeedValidationWarnings::getProductCategoryDepthWarning()
+CatalogsFeedValidationWarnings::getADWORDSSAMEASLINK()
 {
-	return product_category_depth_warning;
+	return aDWORDS_SAME_AS_LINK;
 }
 
 void
-CatalogsFeedValidationWarnings::setProductCategoryDepthWarning(int  product_category_depth_warning)
+CatalogsFeedValidationWarnings::setADWORDSSAMEASLINK(int  aDWORDS_SAME_AS_LINK)
 {
-	this->product_category_depth_warning = product_category_depth_warning;
+	this->aDWORDS_SAME_AS_LINK = aDWORDS_SAME_AS_LINK;
 }
 
 int
-CatalogsFeedValidationWarnings::getAdwordsSameAsLink()
+CatalogsFeedValidationWarnings::getDUPLICATEHEADERS()
 {
-	return adwords_same_as_link;
+	return dUPLICATE_HEADERS;
 }
 
 void
-CatalogsFeedValidationWarnings::setAdwordsSameAsLink(int  adwords_same_as_link)
+CatalogsFeedValidationWarnings::setDUPLICATEHEADERS(int  dUPLICATE_HEADERS)
 {
-	this->adwords_same_as_link = adwords_same_as_link;
+	this->dUPLICATE_HEADERS = dUPLICATE_HEADERS;
 }
 
 int
-CatalogsFeedValidationWarnings::getDuplicateHeaders()
+CatalogsFeedValidationWarnings::getFETCHSAMESIGNATURE()
 {
-	return duplicate_headers;
+	return fETCH_SAME_SIGNATURE;
 }
 
 void
-CatalogsFeedValidationWarnings::setDuplicateHeaders(int  duplicate_headers)
+CatalogsFeedValidationWarnings::setFETCHSAMESIGNATURE(int  fETCH_SAME_SIGNATURE)
 {
-	this->duplicate_headers = duplicate_headers;
+	this->fETCH_SAME_SIGNATURE = fETCH_SAME_SIGNATURE;
 }
 
 int
-CatalogsFeedValidationWarnings::getFetchSameSignature()
+CatalogsFeedValidationWarnings::getADWORDSFORMATWARNING()
 {
-	return fetch_same_signature;
+	return aDWORDS_FORMAT_WARNING;
 }
 
 void
-CatalogsFeedValidationWarnings::setFetchSameSignature(int  fetch_same_signature)
+CatalogsFeedValidationWarnings::setADWORDSFORMATWARNING(int  aDWORDS_FORMAT_WARNING)
 {
-	this->fetch_same_signature = fetch_same_signature;
+	this->aDWORDS_FORMAT_WARNING = aDWORDS_FORMAT_WARNING;
 }
 
 int
-CatalogsFeedValidationWarnings::getAdwordsFormatWarning()
+CatalogsFeedValidationWarnings::getADDITIONALIMAGELINKLENGTHTOOLONG()
 {
-	return adwords_format_warning;
+	return aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 }
 
 void
-CatalogsFeedValidationWarnings::setAdwordsFormatWarning(int  adwords_format_warning)
+CatalogsFeedValidationWarnings::setADDITIONALIMAGELINKLENGTHTOOLONG(int  aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG)
 {
-	this->adwords_format_warning = adwords_format_warning;
+	this->aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 }
 
 int
-CatalogsFeedValidationWarnings::getAdditionalImageLinkWarning()
+CatalogsFeedValidationWarnings::getADDITIONALIMAGELINKWARNING()
 {
-	return additional_image_link_warning;
+	return aDDITIONAL_IMAGE_LINK_WARNING;
 }
 
 void
-CatalogsFeedValidationWarnings::setAdditionalImageLinkWarning(int  additional_image_link_warning)
+CatalogsFeedValidationWarnings::setADDITIONALIMAGELINKWARNING(int  aDDITIONAL_IMAGE_LINK_WARNING)
 {
-	this->additional_image_link_warning = additional_image_link_warning;
+	this->aDDITIONAL_IMAGE_LINK_WARNING = aDDITIONAL_IMAGE_LINK_WARNING;
 }
 
 int
-CatalogsFeedValidationWarnings::getImageLinkWarning()
+CatalogsFeedValidationWarnings::getIMAGELINKWARNING()
 {
-	return image_link_warning;
+	return iMAGE_LINK_WARNING;
 }
 
 void
-CatalogsFeedValidationWarnings::setImageLinkWarning(int  image_link_warning)
+CatalogsFeedValidationWarnings::setIMAGELINKWARNING(int  iMAGE_LINK_WARNING)
 {
-	this->image_link_warning = image_link_warning;
+	this->iMAGE_LINK_WARNING = iMAGE_LINK_WARNING;
 }
 
 int
-CatalogsFeedValidationWarnings::getShippingInvalid()
+CatalogsFeedValidationWarnings::getSHIPPINGINVALID()
 {
-	return shipping_invalid;
+	return sHIPPING_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setShippingInvalid(int  shipping_invalid)
+CatalogsFeedValidationWarnings::setSHIPPINGINVALID(int  sHIPPING_INVALID)
 {
-	this->shipping_invalid = shipping_invalid;
+	this->sHIPPING_INVALID = sHIPPING_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getTaxInvalid()
+CatalogsFeedValidationWarnings::getTAXINVALID()
 {
-	return tax_invalid;
+	return tAX_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setTaxInvalid(int  tax_invalid)
+CatalogsFeedValidationWarnings::setTAXINVALID(int  tAX_INVALID)
 {
-	this->tax_invalid = tax_invalid;
+	this->tAX_INVALID = tAX_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getShippingWeightInvalid()
+CatalogsFeedValidationWarnings::getSHIPPINGWEIGHTINVALID()
 {
-	return shipping_weight_invalid;
+	return sHIPPING_WEIGHT_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setShippingWeightInvalid(int  shipping_weight_invalid)
+CatalogsFeedValidationWarnings::setSHIPPINGWEIGHTINVALID(int  sHIPPING_WEIGHT_INVALID)
 {
-	this->shipping_weight_invalid = shipping_weight_invalid;
+	this->sHIPPING_WEIGHT_INVALID = sHIPPING_WEIGHT_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getExpirationDateInvalid()
+CatalogsFeedValidationWarnings::getEXPIRATIONDATEINVALID()
 {
-	return expiration_date_invalid;
+	return eXPIRATION_DATE_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setExpirationDateInvalid(int  expiration_date_invalid)
+CatalogsFeedValidationWarnings::setEXPIRATIONDATEINVALID(int  eXPIRATION_DATE_INVALID)
 {
-	this->expiration_date_invalid = expiration_date_invalid;
+	this->eXPIRATION_DATE_INVALID = eXPIRATION_DATE_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getAvailabilityDateInvalid()
+CatalogsFeedValidationWarnings::getAVAILABILITYDATEINVALID()
 {
-	return availability_date_invalid;
+	return aVAILABILITY_DATE_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setAvailabilityDateInvalid(int  availability_date_invalid)
+CatalogsFeedValidationWarnings::setAVAILABILITYDATEINVALID(int  aVAILABILITY_DATE_INVALID)
 {
-	this->availability_date_invalid = availability_date_invalid;
+	this->aVAILABILITY_DATE_INVALID = aVAILABILITY_DATE_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getSaleDateInvalid()
+CatalogsFeedValidationWarnings::getSALEDATEINVALID()
 {
-	return sale_date_invalid;
+	return sALE_DATE_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setSaleDateInvalid(int  sale_date_invalid)
+CatalogsFeedValidationWarnings::setSALEDATEINVALID(int  sALE_DATE_INVALID)
 {
-	this->sale_date_invalid = sale_date_invalid;
+	this->sALE_DATE_INVALID = sALE_DATE_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getWeightUnitInvalid()
+CatalogsFeedValidationWarnings::getWEIGHTUNITINVALID()
 {
-	return weight_unit_invalid;
+	return wEIGHT_UNIT_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setWeightUnitInvalid(int  weight_unit_invalid)
+CatalogsFeedValidationWarnings::setWEIGHTUNITINVALID(int  wEIGHT_UNIT_INVALID)
 {
-	this->weight_unit_invalid = weight_unit_invalid;
+	this->wEIGHT_UNIT_INVALID = wEIGHT_UNIT_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getIsBundleInvalid()
+CatalogsFeedValidationWarnings::getISBUNDLEINVALID()
 {
-	return is_bundle_invalid;
+	return iS_BUNDLE_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setIsBundleInvalid(int  is_bundle_invalid)
+CatalogsFeedValidationWarnings::setISBUNDLEINVALID(int  iS_BUNDLE_INVALID)
 {
-	this->is_bundle_invalid = is_bundle_invalid;
+	this->iS_BUNDLE_INVALID = iS_BUNDLE_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getUpdatedTimeInvalid()
+CatalogsFeedValidationWarnings::getUPDATEDTIMEINVALID()
 {
-	return updated_time_invalid;
+	return uPDATED_TIME_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setUpdatedTimeInvalid(int  updated_time_invalid)
+CatalogsFeedValidationWarnings::setUPDATEDTIMEINVALID(int  uPDATED_TIME_INVALID)
 {
-	this->updated_time_invalid = updated_time_invalid;
+	this->uPDATED_TIME_INVALID = uPDATED_TIME_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getCustomLabelLengthTooLong()
+CatalogsFeedValidationWarnings::getCUSTOMLABELLENGTHTOOLONG()
 {
-	return custom_label_length_too_long;
+	return cUSTOM_LABEL_LENGTH_TOO_LONG;
 }
 
 void
-CatalogsFeedValidationWarnings::setCustomLabelLengthTooLong(int  custom_label_length_too_long)
+CatalogsFeedValidationWarnings::setCUSTOMLABELLENGTHTOOLONG(int  cUSTOM_LABEL_LENGTH_TOO_LONG)
 {
-	this->custom_label_length_too_long = custom_label_length_too_long;
+	this->cUSTOM_LABEL_LENGTH_TOO_LONG = cUSTOM_LABEL_LENGTH_TOO_LONG;
 }
 
 int
-CatalogsFeedValidationWarnings::getProductTypeLengthTooLong()
+CatalogsFeedValidationWarnings::getPRODUCTTYPELENGTHTOOLONG()
 {
-	return product_type_length_too_long;
+	return pRODUCT_TYPE_LENGTH_TOO_LONG;
 }
 
 void
-CatalogsFeedValidationWarnings::setProductTypeLengthTooLong(int  product_type_length_too_long)
+CatalogsFeedValidationWarnings::setPRODUCTTYPELENGTHTOOLONG(int  pRODUCT_TYPE_LENGTH_TOO_LONG)
 {
-	this->product_type_length_too_long = product_type_length_too_long;
+	this->pRODUCT_TYPE_LENGTH_TOO_LONG = pRODUCT_TYPE_LENGTH_TOO_LONG;
 }
 
 int
-CatalogsFeedValidationWarnings::getTooManyAdditionalImageLinks()
+CatalogsFeedValidationWarnings::getTOOMANYADDITIONALIMAGELINKS()
 {
-	return too_many_additional_image_links;
+	return tOO_MANY_ADDITIONAL_IMAGE_LINKS;
 }
 
 void
-CatalogsFeedValidationWarnings::setTooManyAdditionalImageLinks(int  too_many_additional_image_links)
+CatalogsFeedValidationWarnings::setTOOMANYADDITIONALIMAGELINKS(int  tOO_MANY_ADDITIONAL_IMAGE_LINKS)
 {
-	this->too_many_additional_image_links = too_many_additional_image_links;
+	this->tOO_MANY_ADDITIONAL_IMAGE_LINKS = tOO_MANY_ADDITIONAL_IMAGE_LINKS;
 }
 
 int
-CatalogsFeedValidationWarnings::getMultipackInvalid()
+CatalogsFeedValidationWarnings::getMULTIPACKINVALID()
 {
-	return multipack_invalid;
+	return mULTIPACK_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setMultipackInvalid(int  multipack_invalid)
+CatalogsFeedValidationWarnings::setMULTIPACKINVALID(int  mULTIPACK_INVALID)
 {
-	this->multipack_invalid = multipack_invalid;
+	this->mULTIPACK_INVALID = mULTIPACK_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getIndexedProductCountLargeDelta()
+CatalogsFeedValidationWarnings::getINDEXEDPRODUCTCOUNTLARGEDELTA()
 {
-	return indexed_product_count_large_delta;
+	return iNDEXED_PRODUCT_COUNT_LARGE_DELTA;
 }
 
 void
-CatalogsFeedValidationWarnings::setIndexedProductCountLargeDelta(int  indexed_product_count_large_delta)
+CatalogsFeedValidationWarnings::setINDEXEDPRODUCTCOUNTLARGEDELTA(int  iNDEXED_PRODUCT_COUNT_LARGE_DELTA)
 {
-	this->indexed_product_count_large_delta = indexed_product_count_large_delta;
+	this->iNDEXED_PRODUCT_COUNT_LARGE_DELTA = iNDEXED_PRODUCT_COUNT_LARGE_DELTA;
 }
 
 int
-CatalogsFeedValidationWarnings::getItemAdditionalImageDownloadFailure()
+CatalogsFeedValidationWarnings::getITEMADDITIONALIMAGEDOWNLOADFAILURE()
 {
-	return item_additional_image_download_failure;
+	return iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 }
 
 void
-CatalogsFeedValidationWarnings::setItemAdditionalImageDownloadFailure(int  item_additional_image_download_failure)
+CatalogsFeedValidationWarnings::setITEMADDITIONALIMAGEDOWNLOADFAILURE(int  iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE)
 {
-	this->item_additional_image_download_failure = item_additional_image_download_failure;
+	this->iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 }
 
 int
-CatalogsFeedValidationWarnings::getOptionalProductCategoryMissing()
+CatalogsFeedValidationWarnings::getOPTIONALPRODUCTCATEGORYMISSING()
 {
-	return optional_product_category_missing;
+	return oPTIONAL_PRODUCT_CATEGORY_MISSING;
 }
 
 void
-CatalogsFeedValidationWarnings::setOptionalProductCategoryMissing(int  optional_product_category_missing)
+CatalogsFeedValidationWarnings::setOPTIONALPRODUCTCATEGORYMISSING(int  oPTIONAL_PRODUCT_CATEGORY_MISSING)
 {
-	this->optional_product_category_missing = optional_product_category_missing;
+	this->oPTIONAL_PRODUCT_CATEGORY_MISSING = oPTIONAL_PRODUCT_CATEGORY_MISSING;
 }
 
 int
-CatalogsFeedValidationWarnings::getOptionalProductCategoryInvalid()
+CatalogsFeedValidationWarnings::getOPTIONALPRODUCTCATEGORYINVALID()
 {
-	return optional_product_category_invalid;
+	return oPTIONAL_PRODUCT_CATEGORY_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setOptionalProductCategoryInvalid(int  optional_product_category_invalid)
+CatalogsFeedValidationWarnings::setOPTIONALPRODUCTCATEGORYINVALID(int  oPTIONAL_PRODUCT_CATEGORY_INVALID)
 {
-	this->optional_product_category_invalid = optional_product_category_invalid;
+	this->oPTIONAL_PRODUCT_CATEGORY_INVALID = oPTIONAL_PRODUCT_CATEGORY_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getOptionalConditionMissing()
+CatalogsFeedValidationWarnings::getOPTIONALCONDITIONMISSING()
 {
-	return optional_condition_missing;
+	return oPTIONAL_CONDITION_MISSING;
 }
 
 void
-CatalogsFeedValidationWarnings::setOptionalConditionMissing(int  optional_condition_missing)
+CatalogsFeedValidationWarnings::setOPTIONALCONDITIONMISSING(int  oPTIONAL_CONDITION_MISSING)
 {
-	this->optional_condition_missing = optional_condition_missing;
+	this->oPTIONAL_CONDITION_MISSING = oPTIONAL_CONDITION_MISSING;
 }
 
 int
-CatalogsFeedValidationWarnings::getOptionalConditionInvalid()
+CatalogsFeedValidationWarnings::getOPTIONALCONDITIONINVALID()
 {
-	return optional_condition_invalid;
+	return oPTIONAL_CONDITION_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setOptionalConditionInvalid(int  optional_condition_invalid)
+CatalogsFeedValidationWarnings::setOPTIONALCONDITIONINVALID(int  oPTIONAL_CONDITION_INVALID)
 {
-	this->optional_condition_invalid = optional_condition_invalid;
+	this->oPTIONAL_CONDITION_INVALID = oPTIONAL_CONDITION_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getIosDeepLinkInvalid()
+CatalogsFeedValidationWarnings::getIOSDEEPLINKINVALID()
 {
-	return ios_deep_link_invalid;
+	return iOS_DEEP_LINK_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setIosDeepLinkInvalid(int  ios_deep_link_invalid)
+CatalogsFeedValidationWarnings::setIOSDEEPLINKINVALID(int  iOS_DEEP_LINK_INVALID)
 {
-	this->ios_deep_link_invalid = ios_deep_link_invalid;
+	this->iOS_DEEP_LINK_INVALID = iOS_DEEP_LINK_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getAndroidDeepLinkInvalid()
+CatalogsFeedValidationWarnings::getANDROIDDEEPLINKINVALID()
 {
-	return android_deep_link_invalid;
+	return aNDROID_DEEP_LINK_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setAndroidDeepLinkInvalid(int  android_deep_link_invalid)
+CatalogsFeedValidationWarnings::setANDROIDDEEPLINKINVALID(int  aNDROID_DEEP_LINK_INVALID)
 {
-	this->android_deep_link_invalid = android_deep_link_invalid;
+	this->aNDROID_DEEP_LINK_INVALID = aNDROID_DEEP_LINK_INVALID;
 }
 
 int
-CatalogsFeedValidationWarnings::getAvailabilityNormalized()
+CatalogsFeedValidationWarnings::getAVAILABILITYNORMALIZED()
 {
-	return availability_normalized;
+	return aVAILABILITY_NORMALIZED;
 }
 
 void
-CatalogsFeedValidationWarnings::setAvailabilityNormalized(int  availability_normalized)
+CatalogsFeedValidationWarnings::setAVAILABILITYNORMALIZED(int  aVAILABILITY_NORMALIZED)
 {
-	this->availability_normalized = availability_normalized;
+	this->aVAILABILITY_NORMALIZED = aVAILABILITY_NORMALIZED;
 }
 
 int
-CatalogsFeedValidationWarnings::getConditionNormalized()
+CatalogsFeedValidationWarnings::getCONDITIONNORMALIZED()
 {
-	return condition_normalized;
+	return cONDITION_NORMALIZED;
 }
 
 void
-CatalogsFeedValidationWarnings::setConditionNormalized(int  condition_normalized)
+CatalogsFeedValidationWarnings::setCONDITIONNORMALIZED(int  cONDITION_NORMALIZED)
 {
-	this->condition_normalized = condition_normalized;
+	this->cONDITION_NORMALIZED = cONDITION_NORMALIZED;
 }
 
 int
-CatalogsFeedValidationWarnings::getGenderNormalized()
+CatalogsFeedValidationWarnings::getGENDERNORMALIZED()
 {
-	return gender_normalized;
+	return gENDER_NORMALIZED;
 }
 
 void
-CatalogsFeedValidationWarnings::setGenderNormalized(int  gender_normalized)
+CatalogsFeedValidationWarnings::setGENDERNORMALIZED(int  gENDER_NORMALIZED)
 {
-	this->gender_normalized = gender_normalized;
+	this->gENDER_NORMALIZED = gENDER_NORMALIZED;
 }
 
 int
-CatalogsFeedValidationWarnings::getSizeTypeNormalized()
+CatalogsFeedValidationWarnings::getSIZETYPENORMALIZED()
 {
-	return size_type_normalized;
+	return sIZE_TYPE_NORMALIZED;
 }
 
 void
-CatalogsFeedValidationWarnings::setSizeTypeNormalized(int  size_type_normalized)
+CatalogsFeedValidationWarnings::setSIZETYPENORMALIZED(int  sIZE_TYPE_NORMALIZED)
 {
-	this->size_type_normalized = size_type_normalized;
+	this->sIZE_TYPE_NORMALIZED = sIZE_TYPE_NORMALIZED;
 }
 
 int
-CatalogsFeedValidationWarnings::getAgeGroupNormalized()
+CatalogsFeedValidationWarnings::getAGEGROUPNORMALIZED()
 {
-	return age_group_normalized;
+	return aGE_GROUP_NORMALIZED;
 }
 
 void
-CatalogsFeedValidationWarnings::setAgeGroupNormalized(int  age_group_normalized)
+CatalogsFeedValidationWarnings::setAGEGROUPNORMALIZED(int  aGE_GROUP_NORMALIZED)
 {
-	this->age_group_normalized = age_group_normalized;
+	this->aGE_GROUP_NORMALIZED = aGE_GROUP_NORMALIZED;
 }
 
 int
-CatalogsFeedValidationWarnings::getUtmSourceAutoCorrected()
+CatalogsFeedValidationWarnings::getUTMSOURCEAUTOCORRECTED()
 {
-	return utm_source_auto_corrected;
+	return uTM_SOURCE_AUTO_CORRECTED;
 }
 
 void
-CatalogsFeedValidationWarnings::setUtmSourceAutoCorrected(int  utm_source_auto_corrected)
+CatalogsFeedValidationWarnings::setUTMSOURCEAUTOCORRECTED(int  uTM_SOURCE_AUTO_CORRECTED)
 {
-	this->utm_source_auto_corrected = utm_source_auto_corrected;
+	this->uTM_SOURCE_AUTO_CORRECTED = uTM_SOURCE_AUTO_CORRECTED;
 }
 
 int
-CatalogsFeedValidationWarnings::getCountryDoesNotMapToCurrency()
+CatalogsFeedValidationWarnings::getCOUNTRYDOESNOTMAPTOCURRENCY()
 {
-	return country_does_not_map_to_currency;
+	return cOUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 }
 
 void
-CatalogsFeedValidationWarnings::setCountryDoesNotMapToCurrency(int  country_does_not_map_to_currency)
+CatalogsFeedValidationWarnings::setCOUNTRYDOESNOTMAPTOCURRENCY(int  cOUNTRY_DOES_NOT_MAP_TO_CURRENCY)
 {
-	this->country_does_not_map_to_currency = country_does_not_map_to_currency;
+	this->cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = cOUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 }
 
 int
-CatalogsFeedValidationWarnings::getMinAdPriceInvalid()
+CatalogsFeedValidationWarnings::getMINADPRICEINVALID()
 {
-	return min_ad_price_invalid;
+	return mIN_AD_PRICE_INVALID;
 }
 
 void
-CatalogsFeedValidationWarnings::setMinAdPriceInvalid(int  min_ad_price_invalid)
+CatalogsFeedValidationWarnings::setMINADPRICEINVALID(int  mIN_AD_PRICE_INVALID)
 {
-	this->min_ad_price_invalid = min_ad_price_invalid;
+	this->mIN_AD_PRICE_INVALID = mIN_AD_PRICE_INVALID;
 }
 
 

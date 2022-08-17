@@ -9,7 +9,8 @@
 
 
 #include <string>
-#include "CatalogsProductGroupFilters.h"
+#include "CatalogsProductGroupFiltersAllOfRequest.h"
+#include "Product_groups_create_request_feed_base_case.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -46,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Catalog Feed id pertaining to the catalog product group.
-	 */
-	std::string getFeedId();
-
-	/*! \brief Set Catalog Feed id pertaining to the catalog product group.
-	 */
-	void setFeedId(std::string  feed_id);
 	/*! \brief Get 
 	 */
 	std::string getName();
@@ -67,19 +61,34 @@ public:
 	/*! \brief Set 
 	 */
 	void setDescription(std::string  description);
+	/*! \brief Get boolean indicator of whether the product group is being featured or not
+	 */
+	bool getIsFeatured();
+
+	/*! \brief Set boolean indicator of whether the product group is being featured or not
+	 */
+	void setIsFeatured(bool  is_featured);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupFilters getFilters();
+	CatalogsProductGroupFiltersAllOfRequest getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFilters  filters);
+	void setFilters(CatalogsProductGroupFiltersAllOfRequest  filters);
+	/*! \brief Get Catalog Feed id pertaining to the catalog product group.
+	 */
+	std::string getFeedId();
+
+	/*! \brief Set Catalog Feed id pertaining to the catalog product group.
+	 */
+	void setFeedId(std::string  feed_id);
 
 private:
-	std::string feed_id;
 	std::string name;
 	std::string description;
-	CatalogsProductGroupFilters filters;
+	bool is_featured;
+	CatalogsProductGroupFiltersAllOfRequest filters;
+	std::string feed_id;
 	void __init();
 	void __cleanup();
 

@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "BoardOwner.h"
+#include "Board_owner.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -69,11 +69,11 @@ public:
 	void setDescription(std::string  description);
 	/*! \brief Get 
 	 */
-	BoardOwner getOwner();
+	Board_owner getOwner();
 
 	/*! \brief Set 
 	 */
-	void setOwner(BoardOwner  owner);
+	void setOwner(Board_owner  owner);
 	/*! \brief Get Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
 	 */
 	std::string getPrivacy();
@@ -86,7 +86,7 @@ private:
 	std::string id;
 	std::string name;
 	std::string description;
-	BoardOwner owner;
+	Board_owner owner;
 	std::string privacy;
 	void __init();
 	void __cleanup();

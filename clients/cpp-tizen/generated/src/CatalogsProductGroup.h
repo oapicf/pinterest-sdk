@@ -12,6 +12,8 @@
 #include "CatalogsProductGroupFilters.h"
 #include "CatalogsProductGroupStatus.h"
 #include "CatalogsProductGroupType.h"
+#include "Catalogs_product_group_feed_based_case.h"
+#include "Catalogs_product_group_merchant_based_case.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -76,6 +78,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setFilters(CatalogsProductGroupFilters  filters);
+	/*! \brief Get boolean indicator of whether the product group is being featured or not
+	 */
+	bool getIsFeatured();
+
+	/*! \brief Set boolean indicator of whether the product group is being featured or not
+	 */
+	void setIsFeatured(bool  is_featured);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupType getType();
@@ -90,13 +99,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(CatalogsProductGroupStatus  status);
-	/*! \brief Get id of the catalogs feed belonging to this catalog product group
-	 */
-	std::string getFeedId();
-
-	/*! \brief Set id of the catalogs feed belonging to this catalog product group
-	 */
-	void setFeedId(std::string  feed_id);
 	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
 	 */
 	int getCreatedAt();
@@ -111,17 +113,25 @@ public:
 	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	void setUpdatedAt(int  updated_at);
+	/*! \brief Get 
+	 */
+	std::string getFeedId();
+
+	/*! \brief Set 
+	 */
+	void setFeedId(std::string  feed_id);
 
 private:
 	std::string id;
 	std::string name;
 	std::string description;
 	CatalogsProductGroupFilters filters;
+	bool is_featured;
 	CatalogsProductGroupType type;
 	CatalogsProductGroupStatus status;
-	std::string feed_id;
 	int created_at;
 	int updated_at;
+	std::string feed_id;
 	void __init();
 	void __cleanup();
 

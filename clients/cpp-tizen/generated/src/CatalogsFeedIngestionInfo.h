@@ -45,32 +45,32 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get The number of ingested products that are in stock.
 	 */
-	int getInStock();
+	int getINSTOCK();
 
-	/*! \brief Set 
+	/*! \brief Set The number of ingested products that are in stock.
 	 */
-	void setInStock(int  in_stock);
-	/*! \brief Get 
+	void setINSTOCK(int  iN_STOCK);
+	/*! \brief Get The number of ingested products that are in out of stock.
 	 */
-	int getOutOfStock();
+	int getOUTOFSTOCK();
 
-	/*! \brief Set 
+	/*! \brief Set The number of ingested products that are in out of stock.
 	 */
-	void setOutOfStock(int  out_of_stock);
-	/*! \brief Get 
+	void setOUTOFSTOCK(int  oUT_OF_STOCK);
+	/*! \brief Get The number of ingested products that are in preorder.
 	 */
-	int getPreorder();
+	int getPREORDER();
 
-	/*! \brief Set 
+	/*! \brief Set The number of ingested products that are in preorder.
 	 */
-	void setPreorder(int  preorder);
+	void setPREORDER(int  pREORDER);
 
 private:
-	int in_stock;
-	int out_of_stock;
-	int preorder;
+	int iN_STOCK;
+	int oUT_OF_STOCK;
+	int pREORDER;
 	void __init();
 	void __cleanup();
 

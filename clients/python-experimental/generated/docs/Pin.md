@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **link** | **str, none_type** |  | [optional] 
 **title** | **str, none_type** |  | [optional] 
 **description** | **str, none_type** |  | [optional] 
+**dominant_color** | **str, none_type** | Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;. | [optional] 
 **alt_text** | **str, none_type** |  | [optional] 
 **board_id** | **str** | The board to which this Pin belongs. | [optional] 
 **board_section_id** | **str, none_type** | The board section to which this Pin belongs. | [optional] 

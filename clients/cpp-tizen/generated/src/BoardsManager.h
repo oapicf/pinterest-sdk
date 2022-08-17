@@ -8,8 +8,10 @@
 #include "Board.h"
 #include "BoardSection.h"
 #include "BoardUpdate.h"
+#include "Board_sections_list_200_response.h"
+#include "Board_sections_list_pins_200_response.h"
+#include "Boards_list_200_response.h"
 #include "Error.h"
-#include "Paginated.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -98,7 +100,7 @@ bool boardSectionsDeleteAsync(char * accessToken,
  */
 bool boardSectionsListSync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List board sections. *Asynchronous*
@@ -113,7 +115,7 @@ bool boardSectionsListSync(char * accessToken,
  */
 bool boardSectionsListAsync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_200_response, Error, void* )
 	, void* userData);
 
 
@@ -130,7 +132,7 @@ bool boardSectionsListAsync(char * accessToken,
  */
 bool boardSectionsListPinsSync(char * accessToken,
 	std::string boardId, std::string sectionId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List Pins on board section. *Asynchronous*
@@ -146,7 +148,7 @@ bool boardSectionsListPinsSync(char * accessToken,
  */
 bool boardSectionsListPinsAsync(char * accessToken,
 	std::string boardId, std::string sectionId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData);
 
 
@@ -274,7 +276,7 @@ bool boardsGetAsync(char * accessToken,
  */
 bool boardsListSync(char * accessToken,
 	std::string bookmark, int pageSize, std::string privacy, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List boards. *Asynchronous*
@@ -289,7 +291,7 @@ bool boardsListSync(char * accessToken,
  */
 bool boardsListAsync(char * accessToken,
 	std::string bookmark, int pageSize, std::string privacy, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData);
 
 
@@ -305,7 +307,7 @@ bool boardsListAsync(char * accessToken,
  */
 bool boardsListPinsSync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData);
 
 /*! \brief List Pins on board. *Asynchronous*
@@ -320,7 +322,7 @@ bool boardsListPinsSync(char * accessToken,
  */
 bool boardsListPinsAsync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData);
 
 

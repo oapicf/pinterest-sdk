@@ -176,7 +176,7 @@ static bool userAccountAnalyticsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = userAccountAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -221,6 +221,444 @@ bool UserAccountManager::userAccountAnalyticsSync(char * accessToken,
 {
 	return userAccountAnalyticsHelper(accessToken,
 	startDate, endDate, fromClaimedContent, pinFormat, appTypes, metricTypes, splitField, adAccountId, 
+	handler, userData, false);
+}
+
+static bool userAccountAnalyticsTopPinsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
+	= reinterpret_cast<void(*)(TopPinsAnalyticsResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	TopPinsAnalyticsResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("TopPinsAnalyticsResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "TopPinsAnalyticsResponse", "TopPinsAnalyticsResponse");
+			json_node_free(pJson);
+
+			if ("TopPinsAnalyticsResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool userAccountAnalyticsTopPinsHelper(char * accessToken,
+	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&startDate, "Date");
+	queryParams.insert(pair<string, string>("start_date", itemAtq));
+
+
+	itemAtq = stringify(&endDate, "Date");
+	queryParams.insert(pair<string, string>("end_date", itemAtq));
+
+
+	itemAtq = stringify(&sortBy, "std::string");
+	queryParams.insert(pair<string, string>("sort_by", itemAtq));
+
+
+	itemAtq = stringify(&fromClaimedContent, "std::string");
+	queryParams.insert(pair<string, string>("from_claimed_content", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("from_claimed_content");
+	}
+
+
+	itemAtq = stringify(&pinFormat, "std::string");
+	queryParams.insert(pair<string, string>("pin_format", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("pin_format");
+	}
+
+
+	itemAtq = stringify(&appTypes, "std::string");
+	queryParams.insert(pair<string, string>("app_types", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("app_types");
+	}
+
+	for (std::list
+	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("metricTypes", itemAt));
+	}
+	
+
+	itemAtq = stringify(&numOfPins, "int");
+	queryParams.insert(pair<string, string>("num_of_pins", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("num_of_pins");
+	}
+
+
+	itemAtq = stringify(&createdInLastNDays, "int");
+	queryParams.insert(pair<string, string>("created_in_last_n_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("created_in_last_n_days");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/user_account/analytics/top_pins");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UserAccountManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = userAccountAnalyticsTopPinsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UserAccountManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), userAccountAnalyticsTopPinsProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UserAccountManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UserAccountManager::userAccountAnalyticsTopPinsAsync(char * accessToken,
+	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
+	, void* userData)
+{
+	return userAccountAnalyticsTopPinsHelper(accessToken,
+	startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, metricTypes, numOfPins, createdInLastNDays, adAccountId, 
+	handler, userData, true);
+}
+
+bool UserAccountManager::userAccountAnalyticsTopPinsSync(char * accessToken,
+	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	void(* handler)(TopPinsAnalyticsResponse, Error, void* )
+	, void* userData)
+{
+	return userAccountAnalyticsTopPinsHelper(accessToken,
+	startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, metricTypes, numOfPins, createdInLastNDays, adAccountId, 
+	handler, userData, false);
+}
+
+static bool userAccountAnalyticsTopVideoPinsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
+	= reinterpret_cast<void(*)(TopVideoPinsAnalyticsResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	TopVideoPinsAnalyticsResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("TopVideoPinsAnalyticsResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "TopVideoPinsAnalyticsResponse", "TopVideoPinsAnalyticsResponse");
+			json_node_free(pJson);
+
+			if ("TopVideoPinsAnalyticsResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool userAccountAnalyticsTopVideoPinsHelper(char * accessToken,
+	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&startDate, "Date");
+	queryParams.insert(pair<string, string>("start_date", itemAtq));
+
+
+	itemAtq = stringify(&endDate, "Date");
+	queryParams.insert(pair<string, string>("end_date", itemAtq));
+
+
+	itemAtq = stringify(&sortBy, "std::string");
+	queryParams.insert(pair<string, string>("sort_by", itemAtq));
+
+
+	itemAtq = stringify(&fromClaimedContent, "std::string");
+	queryParams.insert(pair<string, string>("from_claimed_content", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("from_claimed_content");
+	}
+
+
+	itemAtq = stringify(&pinFormat, "std::string");
+	queryParams.insert(pair<string, string>("pin_format", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("pin_format");
+	}
+
+
+	itemAtq = stringify(&appTypes, "std::string");
+	queryParams.insert(pair<string, string>("app_types", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("app_types");
+	}
+
+	for (std::list
+	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("metricTypes", itemAt));
+	}
+	
+
+	itemAtq = stringify(&numOfPins, "int");
+	queryParams.insert(pair<string, string>("num_of_pins", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("num_of_pins");
+	}
+
+
+	itemAtq = stringify(&createdInLastNDays, "int");
+	queryParams.insert(pair<string, string>("created_in_last_n_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("created_in_last_n_days");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/user_account/analytics/top_video_pins");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(UserAccountManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = userAccountAnalyticsTopVideoPinsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (UserAccountManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), userAccountAnalyticsTopVideoPinsProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __UserAccountManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool UserAccountManager::userAccountAnalyticsTopVideoPinsAsync(char * accessToken,
+	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
+	, void* userData)
+{
+	return userAccountAnalyticsTopVideoPinsHelper(accessToken,
+	startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, metricTypes, numOfPins, createdInLastNDays, adAccountId, 
+	handler, userData, true);
+}
+
+bool UserAccountManager::userAccountAnalyticsTopVideoPinsSync(char * accessToken,
+	Date startDate, Date endDate, std::string sortBy, std::string fromClaimedContent, std::string pinFormat, std::string appTypes, std::list<std::string> metricTypes, int numOfPins, int createdInLastNDays, std::string adAccountId, 
+	void(* handler)(TopVideoPinsAnalyticsResponse, Error, void* )
+	, void* userData)
+{
+	return userAccountAnalyticsTopVideoPinsHelper(accessToken,
+	startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, metricTypes, numOfPins, createdInLastNDays, adAccountId, 
 	handler, userData, false);
 }
 
@@ -339,7 +777,7 @@ static bool userAccountGetHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = userAccountGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);

@@ -1,7 +1,7 @@
 /*
  * CatalogsProductGroupCurrencyCriteria.h
  *
- * 
+ * A currency filter. This filter cannot be negated
  */
 
 #ifndef _CatalogsProductGroupCurrencyCriteria_H_
@@ -21,7 +21,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief A currency filter. This filter cannot be negated
  *
  *  \ingroup Models
  *

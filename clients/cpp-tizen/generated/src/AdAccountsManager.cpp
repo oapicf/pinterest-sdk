@@ -51,13 +51,13 @@ static gpointer __AdAccountsManagerthreadFunc(gpointer data)
 static bool adAccountAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<std::map>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<std::map>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<std::map> out;
+	std::list<AdAccountAnalyticsResponse_inner> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -71,7 +71,7 @@ static bool adAccountAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			std::map singlemodel;
+			AdAccountAnalyticsResponse_inner singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -97,7 +97,7 @@ static bool adAccountAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 
 static bool adAccountAnalyticsHelper(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -190,7 +190,7 @@ static bool adAccountAnalyticsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = adAccountAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -220,7 +220,7 @@ static bool adAccountAnalyticsHelper(char * accessToken,
 
 bool AdAccountsManager::adAccountAnalyticsAsync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adAccountAnalyticsHelper(accessToken,
@@ -230,7 +230,7 @@ bool AdAccountsManager::adAccountAnalyticsAsync(char * accessToken,
 
 bool AdAccountsManager::adAccountAnalyticsSync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adAccountAnalyticsHelper(accessToken,
@@ -238,17 +238,17 @@ bool AdAccountsManager::adAccountAnalyticsSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool adAccountsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool adAccountsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
+	void(* handler)(AdAccount, Error, void* )
+	= reinterpret_cast<void(*)(AdAccount, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Paginated out;
+	AdAccount out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -256,12 +256,333 @@ static bool adAccountsListProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 
 
-		if (isprimitive("Paginated")) {
+		if (isprimitive("AdAccount")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
+			jsonToValue(&out, pJson, "AdAccount", "AdAccount");
 			json_node_free(pJson);
 
-			if ("Paginated" == "std::string") {
+			if ("AdAccount" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool adAccountsCreateHelper(char * accessToken,
+	std::shared_ptr<AdAccountCreateRequest> adAccountCreateRequest, 
+	void(* handler)(AdAccount, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("AdAccountCreateRequest")) {
+		node = converttoJson(&adAccountCreateRequest, "AdAccountCreateRequest", "");
+	}
+	
+	char *jsonStr =  adAccountCreateRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = adAccountsCreateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), adAccountsCreateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __AdAccountsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool AdAccountsManager::adAccountsCreateAsync(char * accessToken,
+	std::shared_ptr<AdAccountCreateRequest> adAccountCreateRequest, 
+	void(* handler)(AdAccount, Error, void* )
+	, void* userData)
+{
+	return adAccountsCreateHelper(accessToken,
+	adAccountCreateRequest, 
+	handler, userData, true);
+}
+
+bool AdAccountsManager::adAccountsCreateSync(char * accessToken,
+	std::shared_ptr<AdAccountCreateRequest> adAccountCreateRequest, 
+	void(* handler)(AdAccount, Error, void* )
+	, void* userData)
+{
+	return adAccountsCreateHelper(accessToken,
+	adAccountCreateRequest, 
+	handler, userData, false);
+}
+
+static bool adAccountsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(AdAccount, Error, void* )
+	= reinterpret_cast<void(*)(AdAccount, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	AdAccount out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("AdAccount")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "AdAccount", "AdAccount");
+			json_node_free(pJson);
+
+			if ("AdAccount" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool adAccountsGetHelper(char * accessToken,
+	std::string adAccountId, 
+	void(* handler)(AdAccount, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/ad_accounts/{ad_account_id}");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = adAccountsGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), adAccountsGetProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __AdAccountsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool AdAccountsManager::adAccountsGetAsync(char * accessToken,
+	std::string adAccountId, 
+	void(* handler)(AdAccount, Error, void* )
+	, void* userData)
+{
+	return adAccountsGetHelper(accessToken,
+	adAccountId, 
+	handler, userData, true);
+}
+
+bool AdAccountsManager::adAccountsGetSync(char * accessToken,
+	std::string adAccountId, 
+	void(* handler)(AdAccount, Error, void* )
+	, void* userData)
+{
+	return adAccountsGetHelper(accessToken,
+	adAccountId, 
+	handler, userData, false);
+}
+
+static bool adAccountsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(Ad_accounts_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Ad_accounts_list_200_response, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	Ad_accounts_list_200_response out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("Ad_accounts_list_200_response")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "Ad_accounts_list_200_response", "Ad_accounts_list_200_response");
+			json_node_free(pJson);
+
+			if ("Ad_accounts_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -300,7 +621,7 @@ static bool adAccountsListProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 static bool adAccountsListHelper(char * accessToken,
 	std::string bookmark, int pageSize, bool includeSharedAccounts, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Ad_accounts_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -362,7 +683,7 @@ static bool adAccountsListHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = adAccountsListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -392,7 +713,7 @@ static bool adAccountsListHelper(char * accessToken,
 
 bool AdAccountsManager::adAccountsListAsync(char * accessToken,
 	std::string bookmark, int pageSize, bool includeSharedAccounts, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Ad_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsListHelper(accessToken,
@@ -402,7 +723,7 @@ bool AdAccountsManager::adAccountsListAsync(char * accessToken,
 
 bool AdAccountsManager::adAccountsListSync(char * accessToken,
 	std::string bookmark, int pageSize, bool includeSharedAccounts, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Ad_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsListHelper(accessToken,
@@ -413,13 +734,13 @@ bool AdAccountsManager::adAccountsListSync(char * accessToken,
 static bool adGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<std::map>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<std::map>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<AdGroupsAnalyticsResponse_inner>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<AdGroupsAnalyticsResponse_inner>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<std::map> out;
+	std::list<AdGroupsAnalyticsResponse_inner> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -433,7 +754,7 @@ static bool adGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* 
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			std::map singlemodel;
+			AdGroupsAnalyticsResponse_inner singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -459,7 +780,7 @@ static bool adGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* 
 
 static bool adGroupsAnalyticsHelper(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdGroupsAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -558,7 +879,7 @@ static bool adGroupsAnalyticsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = adGroupsAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -588,7 +909,7 @@ static bool adGroupsAnalyticsHelper(char * accessToken,
 
 bool AdAccountsManager::adGroupsAnalyticsAsync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdGroupsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adGroupsAnalyticsHelper(accessToken,
@@ -598,7 +919,7 @@ bool AdAccountsManager::adGroupsAnalyticsAsync(char * accessToken,
 
 bool AdAccountsManager::adGroupsAnalyticsSync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdGroupsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adGroupsAnalyticsHelper(accessToken,
@@ -606,233 +927,16 @@ bool AdAccountsManager::adGroupsAnalyticsSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool adGroupsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	Paginated out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("Paginated")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
-			json_node_free(pJson);
-
-			if ("Paginated" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool adGroupsListHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> adGroupIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, bool translateInterestsToNames, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	for (std::list
-	<std::string>::iterator queryIter = campaignIds.begin(); queryIter != campaignIds.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("campaignIds", itemAt));
-	}
-	
-	for (std::list
-	<std::string>::iterator queryIter = adGroupIds.begin(); queryIter != adGroupIds.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("adGroupIds", itemAt));
-	}
-	
-	for (std::list
-	<std::string>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("entityStatuses", itemAt));
-	}
-	
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&order, "std::string");
-	queryParams.insert(pair<string, string>("order", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
-	}
-
-
-	itemAtq = stringify(&translateInterestsToNames, "bool");
-	queryParams.insert(pair<string, string>("translate_interests_to_names", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("translate_interests_to_names");
-	}
-
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/ad_accounts/{ad_account_id}/ad_groups");
-	int pos;
-
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("GET");
-
-	if(strcmp("PUT", "GET") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = adGroupsListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_freeList_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), adGroupsListProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __AdAccountsManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool AdAccountsManager::adGroupsListAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> adGroupIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, bool translateInterestsToNames, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData)
-{
-	return adGroupsListHelper(accessToken,
-	adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames, 
-	handler, userData, true);
-}
-
-bool AdAccountsManager::adGroupsListSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> adGroupIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, bool translateInterestsToNames, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData)
-{
-	return adGroupsListHelper(accessToken,
-	adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames, 
-	handler, userData, false);
-}
-
 static bool adsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<std::map>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<std::map>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<AdsAnalyticsResponse_inner>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<std::map> out;
+	std::list<AdsAnalyticsResponse_inner> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -846,7 +950,7 @@ static bool adsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* error
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			std::map singlemodel;
+			AdsAnalyticsResponse_inner singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -872,7 +976,7 @@ static bool adsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 static bool adsAnalyticsHelper(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -971,7 +1075,7 @@ static bool adsAnalyticsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = adsAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1001,7 +1105,7 @@ static bool adsAnalyticsHelper(char * accessToken,
 
 bool AdAccountsManager::adsAnalyticsAsync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adsAnalyticsHelper(accessToken,
@@ -1011,230 +1115,11 @@ bool AdAccountsManager::adsAnalyticsAsync(char * accessToken,
 
 bool AdAccountsManager::adsAnalyticsSync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adsAnalyticsHelper(accessToken,
 	adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
-	handler, userData, false);
-}
-
-static bool adsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	Paginated out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("Paginated")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
-			json_node_free(pJson);
-
-			if ("Paginated" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool adsListHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> adGroupIds, std::list<std::string> adIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	for (std::list
-	<std::string>::iterator queryIter = campaignIds.begin(); queryIter != campaignIds.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("campaignIds", itemAt));
-	}
-	
-	for (std::list
-	<std::string>::iterator queryIter = adGroupIds.begin(); queryIter != adGroupIds.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("adGroupIds", itemAt));
-	}
-	
-	for (std::list
-	<std::string>::iterator queryIter = adIds.begin(); queryIter != adIds.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("adIds", itemAt));
-	}
-	
-	for (std::list
-	<std::string>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("entityStatuses", itemAt));
-	}
-	
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&order, "std::string");
-	queryParams.insert(pair<string, string>("order", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
-	}
-
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/ad_accounts/{ad_account_id}/ads");
-	int pos;
-
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("GET");
-
-	if(strcmp("PUT", "GET") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = adsListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_freeList_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), adsListProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __AdAccountsManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool AdAccountsManager::adsListAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> adGroupIds, std::list<std::string> adIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData)
-{
-	return adsListHelper(accessToken,
-	adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark, 
-	handler, userData, true);
-}
-
-bool AdAccountsManager::adsListSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> adGroupIds, std::list<std::string> adIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData)
-{
-	return adsListHelper(accessToken,
-	adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark, 
 	handler, userData, false);
 }
 
@@ -1365,7 +1250,7 @@ static bool analyticsCreateReportHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = analyticsCreateReportProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1531,7 +1416,7 @@ static bool analyticsGetReportHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = analyticsGetReportProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1582,13 +1467,13 @@ bool AdAccountsManager::analyticsGetReportSync(char * accessToken,
 static bool campaignsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<std::map>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<std::map>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<std::map> out;
+	std::list<CampaignsAnalyticsResponse_inner> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -1602,7 +1487,7 @@ static bool campaignsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			std::map singlemodel;
+			CampaignsAnalyticsResponse_inner singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -1628,7 +1513,7 @@ static bool campaignsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 
 static bool campaignsAnalyticsHelper(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1727,7 +1612,7 @@ static bool campaignsAnalyticsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = campaignsAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1757,7 +1642,7 @@ static bool campaignsAnalyticsHelper(char * accessToken,
 
 bool AdAccountsManager::campaignsAnalyticsAsync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return campaignsAnalyticsHelper(accessToken,
@@ -1767,7 +1652,7 @@ bool AdAccountsManager::campaignsAnalyticsAsync(char * accessToken,
 
 bool AdAccountsManager::campaignsAnalyticsSync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> campaignIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<CampaignsAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return campaignsAnalyticsHelper(accessToken,
@@ -1775,217 +1660,16 @@ bool AdAccountsManager::campaignsAnalyticsSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool campaignsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	Paginated out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("Paginated")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
-			json_node_free(pJson);
-
-			if ("Paginated" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool campaignsListHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	for (std::list
-	<std::string>::iterator queryIter = campaignIds.begin(); queryIter != campaignIds.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("campaignIds", itemAt));
-	}
-	
-	for (std::list
-	<std::string>::iterator queryIter = entityStatuses.begin(); queryIter != entityStatuses.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("entityStatuses", itemAt));
-	}
-	
-
-	itemAtq = stringify(&pageSize, "int");
-	queryParams.insert(pair<string, string>("page_size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&order, "std::string");
-	queryParams.insert(pair<string, string>("order", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("order");
-	}
-
-
-	itemAtq = stringify(&bookmark, "std::string");
-	queryParams.insert(pair<string, string>("bookmark", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("bookmark");
-	}
-
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/ad_accounts/{ad_account_id}/campaigns");
-	int pos;
-
-	string s_adAccountId("{");
-	s_adAccountId.append("ad_account_id");
-	s_adAccountId.append("}");
-	pos = url.find(s_adAccountId);
-	url.erase(pos, s_adAccountId.length());
-	url.insert(pos, stringify(&adAccountId, "std::string"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("GET");
-
-	if(strcmp("PUT", "GET") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = campaignsListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_freeList_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), campaignsListProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __AdAccountsManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool AdAccountsManager::campaignsListAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData)
-{
-	return campaignsListHelper(accessToken,
-	adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, 
-	handler, userData, true);
-}
-
-bool AdAccountsManager::campaignsListSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, std::list<std::string> entityStatuses, int pageSize, std::string order, std::string bookmark, 
-	void(* handler)(Paginated, Error, void* )
-	, void* userData)
-{
-	return campaignsListHelper(accessToken,
-	adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, 
-	handler, userData, false);
-}
-
 static bool productGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<std::map>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<std::map>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<std::map> out;
+	std::list<ProductGroupAnalyticsResponse_inner> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -1999,7 +1683,7 @@ static bool productGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, c
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			std::map singlemodel;
+			ProductGroupAnalyticsResponse_inner singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -2025,7 +1709,7 @@ static bool productGroupsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, c
 
 static bool productGroupsAnalyticsHelper(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -2124,7 +1808,7 @@ static bool productGroupsAnalyticsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = productGroupsAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -2154,7 +1838,7 @@ static bool productGroupsAnalyticsHelper(char * accessToken,
 
 bool AdAccountsManager::productGroupsAnalyticsAsync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return productGroupsAnalyticsHelper(accessToken,
@@ -2164,7 +1848,7 @@ bool AdAccountsManager::productGroupsAnalyticsAsync(char * accessToken,
 
 bool AdAccountsManager::productGroupsAnalyticsSync(char * accessToken,
 	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> productGroupIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
-	void(* handler)(std::list<std::map>, Error, void* )
+	void(* handler)(std::list<ProductGroupAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return productGroupsAnalyticsHelper(accessToken,

@@ -2,19 +2,19 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**boardSections/create**](BoardsApi.md#boardSections/create) | **POST** /boards/{board_id}/sections | Create board section
-[**boardSections/delete**](BoardsApi.md#boardSections/delete) | **DELETE** /boards/{board_id}/sections/{section_id} | Delete board section
-[**boardSections/list**](BoardsApi.md#boardSections/list) | **GET** /boards/{board_id}/sections | List board sections
-[**boardSections/listPins**](BoardsApi.md#boardSections/listPins) | **GET** /boards/{board_id}/sections/{section_id}/pins | List Pins on board section
-[**boardSections/update**](BoardsApi.md#boardSections/update) | **PATCH** /boards/{board_id}/sections/{section_id} | Update board section
-[**boards/create**](BoardsApi.md#boards/create) | **POST** /boards | Create board
-[**boards/delete**](BoardsApi.md#boards/delete) | **DELETE** /boards/{board_id} | Delete board
-[**boards/get**](BoardsApi.md#boards/get) | **GET** /boards/{board_id} | Get board
-[**boards/list**](BoardsApi.md#boards/list) | **GET** /boards | List boards
-[**boards/listPins**](BoardsApi.md#boards/listPins) | **GET** /boards/{board_id}/pins | List Pins on board
-[**boards/update**](BoardsApi.md#boards/update) | **PATCH** /boards/{board_id} | Update board
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**boardSections/create**](BoardsApi.md#boardSections/create) | **POST** /boards/{board_id}/sections | Create board section |
+| [**boardSections/delete**](BoardsApi.md#boardSections/delete) | **DELETE** /boards/{board_id}/sections/{section_id} | Delete board section |
+| [**boardSections/list**](BoardsApi.md#boardSections/list) | **GET** /boards/{board_id}/sections | List board sections |
+| [**boardSections/listPins**](BoardsApi.md#boardSections/listPins) | **GET** /boards/{board_id}/sections/{section_id}/pins | List Pins on board section |
+| [**boardSections/update**](BoardsApi.md#boardSections/update) | **PATCH** /boards/{board_id}/sections/{section_id} | Update board section |
+| [**boards/create**](BoardsApi.md#boards/create) | **POST** /boards | Create board |
+| [**boards/delete**](BoardsApi.md#boards/delete) | **DELETE** /boards/{board_id} | Delete board |
+| [**boards/get**](BoardsApi.md#boards/get) | **GET** /boards/{board_id} | Get board |
+| [**boards/list**](BoardsApi.md#boards/list) | **GET** /boards | List boards |
+| [**boards/listPins**](BoardsApi.md#boards/listPins) | **GET** /boards/{board_id}/pins | List Pins on board |
+| [**boards/update**](BoardsApi.md#boards/update) | **PATCH** /boards/{board_id} | Update board |
 
 
 <a name="boardSections/create"></a>
@@ -27,10 +27,10 @@ Create board section
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
- **BoardSection** | [**BoardSection**](../Models/BoardSection.md)| Create a board section. |
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
+| **BoardSection** | [**BoardSection**](../Models/BoardSection.md)| Create a board section. | |
 
 ### Return type
 
@@ -55,10 +55,10 @@ Delete board section
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
- **section\_id** | **String**| Unique identifier of a board section. | [default to null]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
+| **section\_id** | **String**| Unique identifier of a board section. | [default to null] |
 
 ### Return type
 
@@ -75,7 +75,7 @@ null (empty response body)
 
 <a name="boardSections/list"></a>
 # **boardSections/list**
-> Paginated boardSections/list(board\_id, bookmark, page\_size)
+> board_sections_list_200_response boardSections/list(board\_id, bookmark, page\_size)
 
 List board sections
 
@@ -83,15 +83,15 @@ List board sections
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**Paginated**](../Models/Paginated.md)
+[**board_sections_list_200_response**](../Models/board_sections_list_200_response.md)
 
 ### Authorization
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 <a name="boardSections/listPins"></a>
 # **boardSections/listPins**
-> Paginated boardSections/listPins(board\_id, section\_id, bookmark, page\_size)
+> board_sections_list_pins_200_response boardSections/listPins(board\_id, section\_id, bookmark, page\_size)
 
 List Pins on board section
 
@@ -112,16 +112,16 @@ List Pins on board section
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
- **section\_id** | **String**| Unique identifier of a board section. | [default to null]
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
+| **section\_id** | **String**| Unique identifier of a board section. | [default to null] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**Paginated**](../Models/Paginated.md)
+[**board_sections_list_pins_200_response**](../Models/board_sections_list_pins_200_response.md)
 
 ### Authorization
 
@@ -142,11 +142,11 @@ Update board section
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
- **section\_id** | **String**| Unique identifier of a board section. | [default to null]
- **BoardSection** | [**BoardSection**](../Models/BoardSection.md)| Update a board section. |
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
+| **section\_id** | **String**| Unique identifier of a board section. | [default to null] |
+| **BoardSection** | [**BoardSection**](../Models/BoardSection.md)| Update a board section. | |
 
 ### Return type
 
@@ -171,9 +171,9 @@ Create board
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **Board** | [**Board**](../Models/Board.md)| Create a board using a single board json object. |
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **Board** | [**Board**](../Models/Board.md)| Create a board using a single board json object. | |
 
 ### Return type
 
@@ -198,9 +198,9 @@ Delete board
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
 
 ### Return type
 
@@ -225,9 +225,9 @@ Get board
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
 
 ### Return type
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 <a name="boards/list"></a>
 # **boards/list**
-> Paginated boards/list(bookmark, page\_size, privacy)
+> boards_list_200_response boards/list(bookmark, page\_size, privacy)
 
 List boards
 
@@ -252,15 +252,15 @@ List boards
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **privacy** | **String**| Privacy setting for a board. | [optional] [default to null] [enum: PUBLIC, PROTECTED, SECRET]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **privacy** | **String**| Privacy setting for a board. | [optional] [default to null] [enum: PUBLIC, PROTECTED, SECRET] |
 
 ### Return type
 
-[**Paginated**](../Models/Paginated.md)
+[**boards_list_200_response**](../Models/boards_list_200_response.md)
 
 ### Authorization
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 <a name="boards/listPins"></a>
 # **boards/listPins**
-> Paginated boards/listPins(board\_id, bookmark, page\_size)
+> board_sections_list_pins_200_response boards/listPins(board\_id, bookmark, page\_size)
 
 List Pins on board
 
@@ -281,15 +281,15 @@ List Pins on board
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**Paginated**](../Models/Paginated.md)
+[**board_sections_list_pins_200_response**](../Models/board_sections_list_pins_200_response.md)
 
 ### Authorization
 
@@ -310,10 +310,10 @@ Update board
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board\_id** | **String**| Unique identifier of a board. | [default to null]
- **BoardUpdate** | [**BoardUpdate**](../Models/BoardUpdate.md)| Update a board. |
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **board\_id** | **String**| Unique identifier of a board. | [default to null] |
+| **BoardUpdate** | [**BoardUpdate**](../Models/BoardUpdate.md)| Update a board. | |
 
 ### Return type
 

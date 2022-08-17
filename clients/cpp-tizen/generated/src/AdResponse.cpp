@@ -29,7 +29,7 @@ AdResponse::__init()
 	//new std::list()std::list> carousel_destination_urls;
 	//new std::list()std::list> carousel_ios_deep_links;
 	//click_tracking_url = std::string();
-	//creative_type = std::string();
+	//creative_type = new CreativeType();
 	//destination_url = std::string();
 	//ios_deep_link = std::string();
 	//is_pin_deleted = bool(false);
@@ -37,7 +37,7 @@ AdResponse::__init()
 	//name = std::string();
 	//pin_id = std::string();
 	//status = new EntityStatus();
-	//tracking_urls = null;
+	//tracking_urls = new AdCommon_tracking_urls();
 	//view_tracking_url = std::string();
 	//ad_account_id = std::string();
 	//campaign_id = std::string();
@@ -302,9 +302,12 @@ AdResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&creative_type, node, "std::string", "");
+		if (isprimitive("CreativeType")) {
+			jsonToValue(&creative_type, node, "CreativeType", "CreativeType");
 		} else {
+			
+			CreativeType* obj = static_cast<CreativeType*> (&creative_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -393,11 +396,11 @@ AdResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrackingUrls")) {
-			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
+		if (isprimitive("AdCommon_tracking_urls")) {
+			jsonToValue(&tracking_urls, node, "AdCommon_tracking_urls", "AdCommon_tracking_urls");
 		} else {
 			
-			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
+			AdCommon_tracking_urls* obj = static_cast<AdCommon_tracking_urls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -640,11 +643,16 @@ AdResponse::toJson()
 	}
 	const gchar *click_tracking_urlKey = "click_tracking_url";
 	json_object_set_member(pJsonObject, click_tracking_urlKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCreativeType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("CreativeType")) {
+		CreativeType obj = getCreativeType();
+		node = converttoJson(&obj, "CreativeType", "");
 	}
 	else {
+		
+		CreativeType obj = static_cast<CreativeType> (getCreativeType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *creative_typeKey = "creative_type";
@@ -717,13 +725,13 @@ AdResponse::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("TrackingUrls")) {
-		TrackingUrls obj = getTrackingUrls();
-		node = converttoJson(&obj, "TrackingUrls", "");
+	if (isprimitive("AdCommon_tracking_urls")) {
+		AdCommon_tracking_urls obj = getTrackingUrls();
+		node = converttoJson(&obj, "AdCommon_tracking_urls", "");
 	}
 	else {
 		
-		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
+		AdCommon_tracking_urls obj = static_cast<AdCommon_tracking_urls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -931,14 +939,14 @@ AdResponse::setClickTrackingUrl(std::string  click_tracking_url)
 	this->click_tracking_url = click_tracking_url;
 }
 
-std::string
+CreativeType
 AdResponse::getCreativeType()
 {
 	return creative_type;
 }
 
 void
-AdResponse::setCreativeType(std::string  creative_type)
+AdResponse::setCreativeType(CreativeType  creative_type)
 {
 	this->creative_type = creative_type;
 }
@@ -1027,14 +1035,14 @@ AdResponse::setStatus(EntityStatus  status)
 	this->status = status;
 }
 
-TrackingUrls
+AdCommon_tracking_urls
 AdResponse::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdResponse::setTrackingUrls(TrackingUrls  tracking_urls)
+AdResponse::setTrackingUrls(AdCommon_tracking_urls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }

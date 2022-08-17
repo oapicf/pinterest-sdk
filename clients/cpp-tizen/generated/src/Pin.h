@@ -9,9 +9,9 @@
 
 
 #include <string>
-#include "BoardOwner.h"
-#include "PinMedia.h"
-#include "PinMediaSource.h"
+#include "Board_owner.h"
+#include "Pin_media.h"
+#include "Pin_media_source.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -83,6 +83,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setDescription(std::string  description);
+	/*! \brief Get Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
+	 */
+	std::string getDominantColor();
+
+	/*! \brief Set Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
+	 */
+	void setDominantColor(std::string  dominant_color);
 	/*! \brief Get 
 	 */
 	std::string getAltText();
@@ -106,25 +113,25 @@ public:
 	void setBoardSectionId(std::string  board_section_id);
 	/*! \brief Get 
 	 */
-	BoardOwner getBoardOwner();
+	Board_owner getBoardOwner();
 
 	/*! \brief Set 
 	 */
-	void setBoardOwner(BoardOwner  board_owner);
+	void setBoardOwner(Board_owner  board_owner);
 	/*! \brief Get 
 	 */
-	PinMedia getMedia();
+	Pin_media getMedia();
 
 	/*! \brief Set 
 	 */
-	void setMedia(PinMedia  media);
+	void setMedia(Pin_media  media);
 	/*! \brief Get 
 	 */
-	PinMediaSource getMediaSource();
+	Pin_media_source getMediaSource();
 
 	/*! \brief Set 
 	 */
-	void setMediaSource(PinMediaSource  media_source);
+	void setMediaSource(Pin_media_source  media_source);
 
 private:
 	std::string id;
@@ -132,12 +139,13 @@ private:
 	std::string link;
 	std::string title;
 	std::string description;
+	std::string dominant_color;
 	std::string alt_text;
 	std::string board_id;
 	std::string board_section_id;
-	BoardOwner board_owner;
-	PinMedia media;
-	PinMediaSource media_source;
+	Board_owner board_owner;
+	Pin_media media;
+	Pin_media_source media_source;
 	void __init();
 	void __cleanup();
 

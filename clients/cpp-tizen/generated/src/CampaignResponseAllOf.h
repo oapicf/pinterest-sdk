@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "ObjectiveType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -45,16 +46,56 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Campaign ID.
+	/*! \brief Get 
 	 */
-	std::string getId();
+	ObjectiveType getObjectiveType();
 
-	/*! \brief Set Campaign ID.
+	/*! \brief Set 
 	 */
-	void setId(std::string  id);
+	void setObjectiveType(ObjectiveType  objective_type);
+	/*! \brief Get Campaign creation time. Unix timestamp in seconds.
+	 */
+	int getCreatedTime();
+
+	/*! \brief Set Campaign creation time. Unix timestamp in seconds.
+	 */
+	void setCreatedTime(int  created_time);
+	/*! \brief Get UTC timestamp. Last update time.
+	 */
+	int getUpdatedTime();
+
+	/*! \brief Set UTC timestamp. Last update time.
+	 */
+	void setUpdatedTime(int  updated_time);
+	/*! \brief Get Always \"campaign\".
+	 */
+	std::string getType();
+
+	/*! \brief Set Always \"campaign\".
+	 */
+	void setType(std::string  type);
+	/*! \brief Get Determines if a campaign has flexible daily budgets setup.
+	 */
+	bool getIsFlexibleDailyBudgets();
+
+	/*! \brief Set Determines if a campaign has flexible daily budgets setup.
+	 */
+	void setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets);
+	/*! \brief Get Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+	 */
+	bool getIsCampaignBudgetOptimization();
+
+	/*! \brief Set Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+	 */
+	void setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization);
 
 private:
-	std::string id;
+	ObjectiveType objective_type;
+	int created_time;
+	int updated_time;
+	std::string type;
+	bool is_flexible_daily_budgets;
+	bool is_campaign_budget_optimization;
 	void __init();
 	void __cleanup();
 

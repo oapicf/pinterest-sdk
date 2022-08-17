@@ -26,7 +26,7 @@ Board::__init()
 	//id = std::string();
 	//name = std::string();
 	//description = std::string();
-	//owner = null;
+	//owner = new Board_owner();
 	//privacy = std::string();
 }
 
@@ -104,11 +104,11 @@ Board::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("BoardOwner")) {
-			jsonToValue(&owner, node, "BoardOwner", "BoardOwner");
+		if (isprimitive("Board_owner")) {
+			jsonToValue(&owner, node, "Board_owner", "Board_owner");
 		} else {
 			
-			BoardOwner* obj = static_cast<BoardOwner*> (&owner);
+			Board_owner* obj = static_cast<Board_owner*> (&owner);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -163,13 +163,13 @@ Board::toJson()
 	}
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("BoardOwner")) {
-		BoardOwner obj = getOwner();
-		node = converttoJson(&obj, "BoardOwner", "");
+	if (isprimitive("Board_owner")) {
+		Board_owner obj = getOwner();
+		node = converttoJson(&obj, "Board_owner", "");
 	}
 	else {
 		
-		BoardOwner obj = static_cast<BoardOwner> (getOwner());
+		Board_owner obj = static_cast<Board_owner> (getOwner());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -230,14 +230,14 @@ Board::setDescription(std::string  description)
 	this->description = description;
 }
 
-BoardOwner
+Board_owner
 Board::getOwner()
 {
 	return owner;
 }
 
 void
-Board::setOwner(BoardOwner  owner)
+Board::setOwner(Board_owner  owner)
 {
 	this->owner = owner;
 }

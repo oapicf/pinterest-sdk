@@ -2,11 +2,11 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**media/create**](MediaApi.md#media/create) | **POST** /media | Register media upload
-[**media/get**](MediaApi.md#media/get) | **GET** /media/{media_id} | Get media upload details
-[**media/list**](MediaApi.md#media/list) | **GET** /media | List media uploads
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**media/create**](MediaApi.md#media/create) | **POST** /media | Register media upload |
+| [**media/get**](MediaApi.md#media/get) | **GET** /media/{media_id} | Get media upload details |
+| [**media/list**](MediaApi.md#media/list) | **GET** /media | List media uploads |
 
 
 <a name="media/create"></a>
@@ -19,9 +19,9 @@ Register media upload
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **MediaUploadRequest** | [**MediaUploadRequest**](../Models/MediaUploadRequest.md)| Create a media upload request |
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **MediaUploadRequest** | [**MediaUploadRequest**](../Models/MediaUploadRequest.md)| Create a media upload request | |
 
 ### Return type
 
@@ -46,9 +46,9 @@ Get media upload details
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **media\_id** | **String**| Media identifier | [default to null]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **media\_id** | **String**| Media identifier | [default to null] |
 
 ### Return type
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 <a name="media/list"></a>
 # **media/list**
-> Paginated media/list(bookmark, page\_size)
+> media_list_200_response media/list(bookmark, page\_size)
 
 List media uploads
 
@@ -73,14 +73,14 @@ List media uploads
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Pagination&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
-[**Paginated**](../Models/Paginated.md)
+[**media_list_200_response**](../Models/media_list_200_response.md)
 
 ### Authorization
 

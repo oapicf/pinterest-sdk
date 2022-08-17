@@ -9,11 +9,12 @@
 
 
 #include <string>
+#include "AdCommon.h"
+#include "AdCommon_tracking_urls.h"
 #include "AdResponse_allOf.h"
-#include "AdResponse_allOf_1.h"
+#include "CreativeType.h"
 #include "EntityStatus.h"
 #include "PinPromotionSummaryStatus.h"
-#include "TrackingUrls.h"
 #include <list>
 #include "Object.h"
 
@@ -93,13 +94,13 @@ public:
 	/*! \brief Set Tracking url for the ad clicks.
 	 */
 	void setClickTrackingUrl(std::string  click_tracking_url);
-	/*! \brief Get Ad creative type enum
+	/*! \brief Get 
 	 */
-	std::string getCreativeType();
+	CreativeType getCreativeType();
 
-	/*! \brief Set Ad creative type enum
+	/*! \brief Set 
 	 */
-	void setCreativeType(std::string  creative_type);
+	void setCreativeType(CreativeType  creative_type);
 	/*! \brief Get Destination URL.
 	 */
 	std::string getDestinationUrl();
@@ -151,11 +152,11 @@ public:
 	void setStatus(EntityStatus  status);
 	/*! \brief Get 
 	 */
-	TrackingUrls getTrackingUrls();
+	AdCommon_tracking_urls getTrackingUrls();
 
 	/*! \brief Set 
 	 */
-	void setTrackingUrls(TrackingUrls  tracking_urls);
+	void setTrackingUrls(AdCommon_tracking_urls  tracking_urls);
 	/*! \brief Get Tracking URL for ad impressions.
 	 */
 	std::string getViewTrackingUrl();
@@ -248,7 +249,7 @@ private:
 	std::list <std::string>carousel_destination_urls;
 	std::list <std::string>carousel_ios_deep_links;
 	std::string click_tracking_url;
-	std::string creative_type;
+	CreativeType creative_type;
 	std::string destination_url;
 	std::string ios_deep_link;
 	bool is_pin_deleted;
@@ -256,7 +257,7 @@ private:
 	std::string name;
 	std::string pin_id;
 	EntityStatus status;
-	TrackingUrls tracking_urls;
+	AdCommon_tracking_urls tracking_urls;
 	std::string view_tracking_url;
 	std::string ad_account_id;
 	std::string campaign_id;

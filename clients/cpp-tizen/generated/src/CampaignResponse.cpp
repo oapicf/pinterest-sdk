@@ -30,13 +30,15 @@ CampaignResponse::__init()
 	//lifetime_spend_cap = int(0);
 	//daily_spend_cap = int(0);
 	//order_line_id = std::string();
-	//tracking_urls = null;
+	//tracking_urls = new AdCommon_tracking_urls();
 	//start_time = int(0);
 	//end_time = int(0);
 	//objective_type = new ObjectiveType();
 	//created_time = int(0);
 	//updated_time = int(0);
 	//type = std::string();
+	//is_flexible_daily_budgets = bool(false);
+	//is_campaign_budget_optimization = bool(false);
 }
 
 void
@@ -111,6 +113,16 @@ CampaignResponse::__cleanup()
 	//
 	//delete type;
 	//type = NULL;
+	//}
+	//if(is_flexible_daily_budgets != NULL) {
+	//
+	//delete is_flexible_daily_budgets;
+	//is_flexible_daily_budgets = NULL;
+	//}
+	//if(is_campaign_budget_optimization != NULL) {
+	//
+	//delete is_campaign_budget_optimization;
+	//is_campaign_budget_optimization = NULL;
 	//}
 	//
 }
@@ -202,11 +214,11 @@ CampaignResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TrackingUrls")) {
-			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
+		if (isprimitive("AdCommon_tracking_urls")) {
+			jsonToValue(&tracking_urls, node, "AdCommon_tracking_urls", "AdCommon_tracking_urls");
 		} else {
 			
-			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
+			AdCommon_tracking_urls* obj = static_cast<AdCommon_tracking_urls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -276,6 +288,28 @@ CampaignResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&type, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
+	node = json_object_get_member(pJsonObject, is_flexible_daily_budgetsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_flexible_daily_budgets, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
+	node = json_object_get_member(pJsonObject, is_campaign_budget_optimizationKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_campaign_budget_optimization, node, "bool", "");
 		} else {
 			
 		}
@@ -355,13 +389,13 @@ CampaignResponse::toJson()
 	}
 	const gchar *order_line_idKey = "order_line_id";
 	json_object_set_member(pJsonObject, order_line_idKey, node);
-	if (isprimitive("TrackingUrls")) {
-		TrackingUrls obj = getTrackingUrls();
-		node = converttoJson(&obj, "TrackingUrls", "");
+	if (isprimitive("AdCommon_tracking_urls")) {
+		AdCommon_tracking_urls obj = getTrackingUrls();
+		node = converttoJson(&obj, "AdCommon_tracking_urls", "");
 	}
 	else {
 		
-		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
+		AdCommon_tracking_urls obj = static_cast<AdCommon_tracking_urls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -428,6 +462,24 @@ CampaignResponse::toJson()
 	}
 	const gchar *typeKey = "type";
 	json_object_set_member(pJsonObject, typeKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsFlexibleDailyBudgets();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
+	json_object_set_member(pJsonObject, is_flexible_daily_budgetsKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsCampaignBudgetOptimization();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
+	json_object_set_member(pJsonObject, is_campaign_budget_optimizationKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -520,14 +572,14 @@ CampaignResponse::setOrderLineId(std::string  order_line_id)
 	this->order_line_id = order_line_id;
 }
 
-TrackingUrls
+AdCommon_tracking_urls
 CampaignResponse::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-CampaignResponse::setTrackingUrls(TrackingUrls  tracking_urls)
+CampaignResponse::setTrackingUrls(AdCommon_tracking_urls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -602,6 +654,30 @@ void
 CampaignResponse::setType(std::string  type)
 {
 	this->type = type;
+}
+
+bool
+CampaignResponse::getIsFlexibleDailyBudgets()
+{
+	return is_flexible_daily_budgets;
+}
+
+void
+CampaignResponse::setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets)
+{
+	this->is_flexible_daily_budgets = is_flexible_daily_budgets;
+}
+
+bool
+CampaignResponse::getIsCampaignBudgetOptimization()
+{
+	return is_campaign_budget_optimization;
+}
+
+void
+CampaignResponse::setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization)
+{
+	this->is_campaign_budget_optimization = is_campaign_budget_optimization;
 }
 
 

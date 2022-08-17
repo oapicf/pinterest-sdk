@@ -23,28 +23,28 @@ CatalogsFeedIngestionInfo::~CatalogsFeedIngestionInfo()
 void
 CatalogsFeedIngestionInfo::__init()
 {
-	//in_stock = int(0);
-	//out_of_stock = int(0);
-	//preorder = int(0);
+	//iN_STOCK = int(0);
+	//oUT_OF_STOCK = int(0);
+	//pREORDER = int(0);
 }
 
 void
 CatalogsFeedIngestionInfo::__cleanup()
 {
-	//if(in_stock != NULL) {
+	//if(iN_STOCK != NULL) {
 	//
-	//delete in_stock;
-	//in_stock = NULL;
+	//delete iN_STOCK;
+	//iN_STOCK = NULL;
 	//}
-	//if(out_of_stock != NULL) {
+	//if(oUT_OF_STOCK != NULL) {
 	//
-	//delete out_of_stock;
-	//out_of_stock = NULL;
+	//delete oUT_OF_STOCK;
+	//oUT_OF_STOCK = NULL;
 	//}
-	//if(preorder != NULL) {
+	//if(pREORDER != NULL) {
 	//
-	//delete preorder;
-	//preorder = NULL;
+	//delete pREORDER;
+	//pREORDER = NULL;
 	//}
 	//
 }
@@ -54,35 +54,35 @@ CatalogsFeedIngestionInfo::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *in_stockKey = "in_stock";
-	node = json_object_get_member(pJsonObject, in_stockKey);
+	const gchar *iN_STOCKKey = "IN_STOCK";
+	node = json_object_get_member(pJsonObject, iN_STOCKKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&in_stock, node, "int", "");
+			jsonToValue(&iN_STOCK, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *out_of_stockKey = "out_of_stock";
-	node = json_object_get_member(pJsonObject, out_of_stockKey);
+	const gchar *oUT_OF_STOCKKey = "OUT_OF_STOCK";
+	node = json_object_get_member(pJsonObject, oUT_OF_STOCKKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&out_of_stock, node, "int", "");
+			jsonToValue(&oUT_OF_STOCK, node, "int", "");
 		} else {
 			
 		}
 	}
-	const gchar *preorderKey = "preorder";
-	node = json_object_get_member(pJsonObject, preorderKey);
+	const gchar *pREORDERKey = "PREORDER";
+	node = json_object_get_member(pJsonObject, pREORDERKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("int")) {
-			jsonToValue(&preorder, node, "int", "");
+			jsonToValue(&pREORDER, node, "int", "");
 		} else {
 			
 		}
@@ -100,32 +100,32 @@ CatalogsFeedIngestionInfo::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("int")) {
-		int obj = getInStock();
+		int obj = getINSTOCK();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *in_stockKey = "in_stock";
-	json_object_set_member(pJsonObject, in_stockKey, node);
+	const gchar *iN_STOCKKey = "IN_STOCK";
+	json_object_set_member(pJsonObject, iN_STOCKKey, node);
 	if (isprimitive("int")) {
-		int obj = getOutOfStock();
+		int obj = getOUTOFSTOCK();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *out_of_stockKey = "out_of_stock";
-	json_object_set_member(pJsonObject, out_of_stockKey, node);
+	const gchar *oUT_OF_STOCKKey = "OUT_OF_STOCK";
+	json_object_set_member(pJsonObject, oUT_OF_STOCKKey, node);
 	if (isprimitive("int")) {
-		int obj = getPreorder();
+		int obj = getPREORDER();
 		node = converttoJson(&obj, "int", "");
 	}
 	else {
 		
 	}
-	const gchar *preorderKey = "preorder";
-	json_object_set_member(pJsonObject, preorderKey, node);
+	const gchar *pREORDERKey = "PREORDER";
+	json_object_set_member(pJsonObject, pREORDERKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -135,39 +135,39 @@ CatalogsFeedIngestionInfo::toJson()
 }
 
 int
-CatalogsFeedIngestionInfo::getInStock()
+CatalogsFeedIngestionInfo::getINSTOCK()
 {
-	return in_stock;
+	return iN_STOCK;
 }
 
 void
-CatalogsFeedIngestionInfo::setInStock(int  in_stock)
+CatalogsFeedIngestionInfo::setINSTOCK(int  iN_STOCK)
 {
-	this->in_stock = in_stock;
+	this->iN_STOCK = iN_STOCK;
 }
 
 int
-CatalogsFeedIngestionInfo::getOutOfStock()
+CatalogsFeedIngestionInfo::getOUTOFSTOCK()
 {
-	return out_of_stock;
+	return oUT_OF_STOCK;
 }
 
 void
-CatalogsFeedIngestionInfo::setOutOfStock(int  out_of_stock)
+CatalogsFeedIngestionInfo::setOUTOFSTOCK(int  oUT_OF_STOCK)
 {
-	this->out_of_stock = out_of_stock;
+	this->oUT_OF_STOCK = oUT_OF_STOCK;
 }
 
 int
-CatalogsFeedIngestionInfo::getPreorder()
+CatalogsFeedIngestionInfo::getPREORDER()
 {
-	return preorder;
+	return pREORDER;
 }
 
 void
-CatalogsFeedIngestionInfo::setPreorder(int  preorder)
+CatalogsFeedIngestionInfo::setPREORDER(int  pREORDER)
 {
-	this->preorder = preorder;
+	this->pREORDER = pREORDER;
 }
 
 

@@ -30,6 +30,7 @@ ItemAttributes::__init()
 	//availability = std::string();
 	//average_review_rating = double(0);
 	//brand = std::string();
+	//checkout_enabled = bool(false);
 	//color = std::string();
 	//condition = std::string();
 	//custom_label_0 = std::string();
@@ -67,6 +68,8 @@ ItemAttributes::__init()
 	//size_type = std::string();
 	//tax = std::string();
 	//title = std::string();
+	//new std::list()std::list> variant_names;
+	//new std::list()std::list> variant_values;
 }
 
 void
@@ -106,6 +109,11 @@ ItemAttributes::__cleanup()
 	//
 	//delete brand;
 	//brand = NULL;
+	//}
+	//if(checkout_enabled != NULL) {
+	//
+	//delete checkout_enabled;
+	//checkout_enabled = NULL;
 	//}
 	//if(color != NULL) {
 	//
@@ -292,6 +300,16 @@ ItemAttributes::__cleanup()
 	//delete title;
 	//title = NULL;
 	//}
+	//if(variant_names != NULL) {
+	//variant_names.RemoveAll(true);
+	//delete variant_names;
+	//variant_names = NULL;
+	//}
+	//if(variant_values != NULL) {
+	//variant_values.RemoveAll(true);
+	//delete variant_values;
+	//variant_values = NULL;
+	//}
 	//
 }
 
@@ -387,6 +405,17 @@ ItemAttributes::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&brand, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *checkout_enabledKey = "checkout_enabled";
+	node = json_object_get_member(pJsonObject, checkout_enabledKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&checkout_enabled, node, "bool", "");
 		} else {
 			
 		}
@@ -809,6 +838,50 @@ ItemAttributes::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *variant_namesKey = "variant_names";
+	node = json_object_get_member(pJsonObject, variant_namesKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			variant_names = new_list;
+		}
+		
+	}
+	const gchar *variant_valuesKey = "variant_values";
+	node = json_object_get_member(pJsonObject, variant_valuesKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			variant_values = new_list;
+		}
+		
+	}
 }
 
 ItemAttributes::ItemAttributes(char* json)
@@ -895,6 +968,15 @@ ItemAttributes::toJson()
 	}
 	const gchar *brandKey = "brand";
 	json_object_set_member(pJsonObject, brandKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getCheckoutEnabled();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *checkout_enabledKey = "checkout_enabled";
+	json_object_set_member(pJsonObject, checkout_enabledKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getColor();
 		node = converttoJson(&obj, "std::string", "");
@@ -1234,6 +1316,36 @@ ItemAttributes::toJson()
 	}
 	const gchar *titleKey = "title";
 	json_object_set_member(pJsonObject, titleKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getVariantNames());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getVariantNames());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *variant_namesKey = "variant_names";
+	json_object_set_member(pJsonObject, variant_namesKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getVariantValues());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getVariantValues());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *variant_valuesKey = "variant_values";
+	json_object_set_member(pJsonObject, variant_valuesKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -1324,6 +1436,18 @@ void
 ItemAttributes::setBrand(std::string  brand)
 {
 	this->brand = brand;
+}
+
+bool
+ItemAttributes::getCheckoutEnabled()
+{
+	return checkout_enabled;
+}
+
+void
+ItemAttributes::setCheckoutEnabled(bool  checkout_enabled)
+{
+	this->checkout_enabled = checkout_enabled;
 }
 
 std::string
@@ -1768,6 +1892,30 @@ void
 ItemAttributes::setTitle(std::string  title)
 {
 	this->title = title;
+}
+
+std::list<std::string>
+ItemAttributes::getVariantNames()
+{
+	return variant_names;
+}
+
+void
+ItemAttributes::setVariantNames(std::list <std::string> variant_names)
+{
+	this->variant_names = variant_names;
+}
+
+std::list<std::string>
+ItemAttributes::getVariantValues()
+{
+	return variant_values;
+}
+
+void
+ItemAttributes::setVariantValues(std::list <std::string> variant_values)
+{
+	this->variant_values = variant_values;
 }
 
 

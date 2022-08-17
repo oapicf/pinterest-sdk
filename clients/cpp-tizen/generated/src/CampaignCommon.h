@@ -9,8 +9,8 @@
 
 
 #include <string>
+#include "AdCommon_tracking_urls.h"
 #include "EntityStatus.h"
-#include "TrackingUrls.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -91,11 +91,11 @@ public:
 	void setOrderLineId(std::string  order_line_id);
 	/*! \brief Get 
 	 */
-	TrackingUrls getTrackingUrls();
+	AdCommon_tracking_urls getTrackingUrls();
 
 	/*! \brief Set 
 	 */
-	void setTrackingUrls(TrackingUrls  tracking_urls);
+	void setTrackingUrls(AdCommon_tracking_urls  tracking_urls);
 	/*! \brief Get Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	int getStartTime();
@@ -118,7 +118,7 @@ private:
 	int lifetime_spend_cap;
 	int daily_spend_cap;
 	std::string order_line_id;
-	TrackingUrls tracking_urls;
+	AdCommon_tracking_urls tracking_urls;
 	int start_time;
 	int end_time;
 	void __init();

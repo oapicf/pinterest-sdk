@@ -5,29 +5,29 @@
 #include "Helpers.h"
 
 
-#include "PinMedia.h"
+#include "Pin_media.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-PinMedia::PinMedia()
+Pin_media::Pin_media()
 {
 	//__init();
 }
 
-PinMedia::~PinMedia()
+Pin_media::~Pin_media()
 {
 	//__cleanup();
 }
 
 void
-PinMedia::__init()
+Pin_media::__init()
 {
 	//media_type = std::string();
 }
 
 void
-PinMedia::__cleanup()
+Pin_media::__cleanup()
 {
 	//if(media_type != NULL) {
 	//
@@ -38,7 +38,7 @@ PinMedia::__cleanup()
 }
 
 void
-PinMedia::fromJson(char* jsonStr)
+Pin_media::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
@@ -55,13 +55,13 @@ PinMedia::fromJson(char* jsonStr)
 	}
 }
 
-PinMedia::PinMedia(char* json)
+Pin_media::Pin_media(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-PinMedia::toJson()
+Pin_media::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
@@ -83,13 +83,13 @@ PinMedia::toJson()
 }
 
 std::string
-PinMedia::getMediaType()
+Pin_media::getMediaType()
 {
 	return media_type;
 }
 
 void
-PinMedia::setMediaType(std::string  media_type)
+Pin_media::setMediaType(std::string  media_type)
 {
 	this->media_type = media_type;
 }

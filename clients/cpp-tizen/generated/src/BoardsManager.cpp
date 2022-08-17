@@ -190,7 +190,7 @@ static bool boardSectionsCreateHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardSectionsCreateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -326,7 +326,7 @@ static bool boardSectionsDeleteHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardSectionsDeleteProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -377,14 +377,14 @@ bool BoardsManager::boardSectionsDeleteSync(char * accessToken,
 static bool boardSectionsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
+	void(* handler)(Board_sections_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Board_sections_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Paginated out;
+	Board_sections_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -392,12 +392,12 @@ static bool boardSectionsListProcessor(MemoryStruct_s p_chunk, long code, char* 
 
 
 
-		if (isprimitive("Paginated")) {
+		if (isprimitive("Board_sections_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
+			jsonToValue(&out, pJson, "Board_sections_list_200_response", "Board_sections_list_200_response");
 			json_node_free(pJson);
 
-			if ("Paginated" == "std::string") {
+			if ("Board_sections_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -436,7 +436,7 @@ static bool boardSectionsListProcessor(MemoryStruct_s p_chunk, long code, char* 
 
 static bool boardSectionsListHelper(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -497,7 +497,7 @@ static bool boardSectionsListHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardSectionsListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -527,7 +527,7 @@ static bool boardSectionsListHelper(char * accessToken,
 
 bool BoardsManager::boardSectionsListAsync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardSectionsListHelper(accessToken,
@@ -537,7 +537,7 @@ bool BoardsManager::boardSectionsListAsync(char * accessToken,
 
 bool BoardsManager::boardSectionsListSync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardSectionsListHelper(accessToken,
@@ -548,14 +548,14 @@ bool BoardsManager::boardSectionsListSync(char * accessToken,
 static bool boardSectionsListPinsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Board_sections_list_pins_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Paginated out;
+	Board_sections_list_pins_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -563,12 +563,12 @@ static bool boardSectionsListPinsProcessor(MemoryStruct_s p_chunk, long code, ch
 
 
 
-		if (isprimitive("Paginated")) {
+		if (isprimitive("Board_sections_list_pins_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
+			jsonToValue(&out, pJson, "Board_sections_list_pins_200_response", "Board_sections_list_pins_200_response");
 			json_node_free(pJson);
 
-			if ("Paginated" == "std::string") {
+			if ("Board_sections_list_pins_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -622,7 +622,7 @@ static bool boardSectionsListPinsProcessor(MemoryStruct_s p_chunk, long code, ch
 
 static bool boardSectionsListPinsHelper(char * accessToken,
 	std::string boardId, std::string sectionId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -689,7 +689,7 @@ static bool boardSectionsListPinsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardSectionsListPinsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -719,7 +719,7 @@ static bool boardSectionsListPinsHelper(char * accessToken,
 
 bool BoardsManager::boardSectionsListPinsAsync(char * accessToken,
 	std::string boardId, std::string sectionId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData)
 {
 	return boardSectionsListPinsHelper(accessToken,
@@ -729,7 +729,7 @@ bool BoardsManager::boardSectionsListPinsAsync(char * accessToken,
 
 bool BoardsManager::boardSectionsListPinsSync(char * accessToken,
 	std::string boardId, std::string sectionId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData)
 {
 	return boardSectionsListPinsHelper(accessToken,
@@ -880,7 +880,7 @@ static bool boardSectionsUpdateHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardSectionsUpdateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1049,7 +1049,7 @@ static bool boardsCreateHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardsCreateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1179,7 +1179,7 @@ static bool boardsDeleteHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardsDeleteProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1341,7 +1341,7 @@ static bool boardsGetHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardsGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1392,14 +1392,14 @@ bool BoardsManager::boardsGetSync(char * accessToken,
 static bool boardsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
+	void(* handler)(Boards_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Boards_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Paginated out;
+	Boards_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1407,12 +1407,12 @@ static bool boardsListProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 
 
 
-		if (isprimitive("Paginated")) {
+		if (isprimitive("Boards_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
+			jsonToValue(&out, pJson, "Boards_list_200_response", "Boards_list_200_response");
 			json_node_free(pJson);
 
-			if ("Paginated" == "std::string") {
+			if ("Boards_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -1451,7 +1451,7 @@ static bool boardsListProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 
 static bool boardsListHelper(char * accessToken,
 	std::string bookmark, int pageSize, std::string privacy, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1513,7 +1513,7 @@ static bool boardsListHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardsListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1543,7 +1543,7 @@ static bool boardsListHelper(char * accessToken,
 
 bool BoardsManager::boardsListAsync(char * accessToken,
 	std::string bookmark, int pageSize, std::string privacy, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsListHelper(accessToken,
@@ -1553,7 +1553,7 @@ bool BoardsManager::boardsListAsync(char * accessToken,
 
 bool BoardsManager::boardsListSync(char * accessToken,
 	std::string bookmark, int pageSize, std::string privacy, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Boards_list_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsListHelper(accessToken,
@@ -1564,14 +1564,14 @@ bool BoardsManager::boardsListSync(char * accessToken,
 static bool boardsListPinsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Paginated, Error, void* )
-	= reinterpret_cast<void(*)(Paginated, Error, void* )> (voidHandler);
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Board_sections_list_pins_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Paginated out;
+	Board_sections_list_pins_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1579,12 +1579,12 @@ static bool boardsListPinsProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 
 
-		if (isprimitive("Paginated")) {
+		if (isprimitive("Board_sections_list_pins_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Paginated", "Paginated");
+			jsonToValue(&out, pJson, "Board_sections_list_pins_200_response", "Board_sections_list_pins_200_response");
 			json_node_free(pJson);
 
-			if ("Paginated" == "std::string") {
+			if ("Board_sections_list_pins_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -1628,7 +1628,7 @@ static bool boardsListPinsProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 static bool boardsListPinsHelper(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1689,7 +1689,7 @@ static bool boardsListPinsHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardsListPinsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
@@ -1719,7 +1719,7 @@ static bool boardsListPinsHelper(char * accessToken,
 
 bool BoardsManager::boardsListPinsAsync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsListPinsHelper(accessToken,
@@ -1729,7 +1729,7 @@ bool BoardsManager::boardsListPinsAsync(char * accessToken,
 
 bool BoardsManager::boardsListPinsSync(char * accessToken,
 	std::string boardId, std::string bookmark, int pageSize, 
-	void(* handler)(Paginated, Error, void* )
+	void(* handler)(Board_sections_list_pins_200_response, Error, void* )
 	, void* userData)
 {
 	return boardsListPinsHelper(accessToken,
@@ -1874,7 +1874,7 @@ static bool boardsUpdateHelper(char * accessToken,
 			mBody, headerList, p_chunk, &code, errormsg);
 		bool retval = boardsUpdateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
-		curl_slist_freeList_all(headerList);
+		curl_slist_free_all(headerList);
 		if (p_chunk) {
 			if(p_chunk->memory) {
 				free(p_chunk->memory);
