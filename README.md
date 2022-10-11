@@ -50,4 +50,4 @@ Install Ruby client:
 Colophon
 --------
 
-* [API Documentation](http://cliffano.github.io/pinterest-sdk/api/latest/)
+* [API Documentation](https://cliffano.github.io/pinterest-sdk/api/latest/)
