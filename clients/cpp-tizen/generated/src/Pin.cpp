@@ -35,6 +35,7 @@ Pin::__init()
 	//board_owner = new Board_owner();
 	//media = new Pin_media();
 	//media_source = new Pin_media_source();
+	//parent_pin_id = std::string();
 }
 
 void
@@ -99,6 +100,11 @@ Pin::__cleanup()
 	//
 	//delete media_source;
 	//media_source = NULL;
+	//}
+	//if(parent_pin_id != NULL) {
+	//
+	//delete parent_pin_id;
+	//parent_pin_id = NULL;
 	//}
 	//
 }
@@ -249,6 +255,17 @@ Pin::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *parent_pin_idKey = "parent_pin_id";
+	node = json_object_get_member(pJsonObject, parent_pin_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&parent_pin_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 Pin::Pin(char* json)
@@ -384,6 +401,15 @@ Pin::toJson()
 	}
 	const gchar *media_sourceKey = "media_source";
 	json_object_set_member(pJsonObject, media_sourceKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getParentPinId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *parent_pin_idKey = "parent_pin_id";
+	json_object_set_member(pJsonObject, parent_pin_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -534,6 +560,18 @@ void
 Pin::setMediaSource(Pin_media_source  media_source)
 {
 	this->media_source = media_source;
+}
+
+std::string
+Pin::getParentPinId()
+{
+	return parent_pin_id;
+}
+
+void
+Pin::setParentPinId(std::string  parent_pin_id)
+{
+	this->parent_pin_id = parent_pin_id;
 }
 
 

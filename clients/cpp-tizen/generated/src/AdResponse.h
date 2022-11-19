@@ -9,9 +9,7 @@
 
 
 #include <string>
-#include "AdCommon.h"
 #include "AdCommon_tracking_urls.h"
-#include "AdResponse_allOf.h"
 #include "CreativeType.h"
 #include "EntityStatus.h"
 #include "PinPromotionSummaryStatus.h"

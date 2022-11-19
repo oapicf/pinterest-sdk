@@ -4,7 +4,7 @@
 
 Pinterest REST API
 
-- API version: 5.4.1
+- API version: 5.6.0
 
 Pinterest's REST API
 
@@ -36,12 +36,14 @@ class Example : public QObject {
     QString create();
     QDate create();
     QDate create();
+    QList<OAIAdsAnalyticsTargetingType> create();
     QList<QString> create();
     OAIGranularity create();
     qint32 create();
     qint32 create();
     qint32 create();
     QString create();
+    OAIConversionReportAttributionType create();
 public slots:
    void exampleFunction1();
 };
@@ -62,6 +64,8 @@ QDate Example::create(){
     QDate obj;
 QDate Example::create(){
     QDate obj;
+QList&lt;OAIAdsAnalyticsTargetingType&gt; Example::create(){
+    QList<OAIAdsAnalyticsTargetingType> obj;
 QList&lt;QString&gt; Example::create(){
     QList<QString> obj;
 OAIGranularity Example::create(){
@@ -74,6 +78,8 @@ qint32 Example::create(){
     qint32 obj;
 QString Example::create(){
     QString obj;
+OAIConversionReportAttributionType Example::create(){
+    OAIConversionReportAttributionType obj;
  return obj;
 }
 
@@ -83,10 +89,10 @@ void Example::exampleFunction1(){
       //OAuth Authentication supported right now
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
@@ -94,10 +100,10 @@ void Example::exampleFunction1(){
       QString ad_account_id = create(); // QString | Unique identifier of an ad account.
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
@@ -105,10 +111,10 @@ void Example::exampleFunction1(){
       QDate start_date = create(); // QDate | Metric report start date (UTC). Format: YYYY-MM-DD
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
@@ -116,10 +122,21 @@ void Example::exampleFunction1(){
       QDate end_date = create(); // QDate | Metric report end date (UTC). Format: YYYY-MM-DD
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+          qDebug() << "Error happened while issuing request : " << error_str;
+          loop.quit();
+      });
+
+      QList<OAIAdsAnalyticsTargetingType> targeting_types = create(); // QList<OAIAdsAnalyticsTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+
+      QEventLoop loop;
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
+          loop.quit();
+      });
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
@@ -127,21 +144,21 @@ void Example::exampleFunction1(){
       QList<QString> columns = create(); // QList<QString> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
 
-      OAIGranularity granularity = create(); // OAIGranularity | Granularity
+      OAIGranularity granularity = create(); // OAIGranularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
@@ -149,10 +166,10 @@ void Example::exampleFunction1(){
       qint32 click_window_days = create(); // qint32 | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
@@ -160,10 +177,10 @@ void Example::exampleFunction1(){
       qint32 engagement_window_days = create(); // qint32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
@@ -171,16 +188,27 @@ void Example::exampleFunction1(){
       qint32 view_window_days = create(); // qint32 | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
 
       QEventLoop loop;
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignal, [&]() {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
           loop.quit();
       });
-      connect(&apiInstance, &OAIAdAccountsApi::adAccount_analyticsSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
           qDebug() << "Error happened while issuing request : " << error_str;
           loop.quit();
       });
 
       QString conversion_report_time = create(); // QString | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-      apiInstance.adAccount_analytics(ad_account_idstart_dateend_datecolumnsgranularityclick_window_daysengagement_window_daysview_window_daysconversion_report_time);
+
+      QEventLoop loop;
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
+          loop.quit();
+      });
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+          qDebug() << "Error happened while issuing request : " << error_str;
+          loop.quit();
+      });
+
+      OAIConversionReportAttributionType attribution_types = create(); // OAIConversionReportAttributionType | List of types of attribution for the conversion report
+      apiInstance.adAccountTargetingAnalytics_get(ad_account_idstart_dateend_datetargeting_typescolumnsgranularityclick_window_daysengagement_window_daysview_window_daysconversion_report_timeattribution_types);
       QTimer::singleShot(5000, &loop, &QEventLoop::quit);
       loop.exec();
   }
@@ -246,6 +274,10 @@ Authentication schemes defined for the API:
 
 - **Type**: HTTP basic authentication
 
+### conversion_token
+
+- **Type**: HTTP Bearer Token authentication
+
 ### pinterest_oauth2
 
 
@@ -265,7 +297,8 @@ Authentication schemes defined for the API:
   - pins:read_secret: See your secret Pins
   - pins:write: Create, update, or delete your public Pins
   - pins:write_secret: Create, update, or delete your secret Pins
-  - user_accounts:read: See your user accounts
+  - user_accounts:read: See your user accounts and followers
+  - user_accounts:write: Update your user accounts and followers
 
 
 ## Author

@@ -27,7 +27,7 @@ public:
 
 /*! \brief Get terms of service. *Synchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/features/ads-management/'>Learn more</a>.</strong> <p/> Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
+ * Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param includeHtml Return HTML in TOS text.
  * \param tosType Request type.
@@ -42,7 +42,7 @@ bool termsOfServiceGetSync(char * accessToken,
 
 /*! \brief Get terms of service. *Asynchronous*
  *
- * <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/features/ads-management/'>Learn more</a>.</strong> <p/> Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
+ * Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param includeHtml Return HTML in TOS text.
  * \param tosType Request type.

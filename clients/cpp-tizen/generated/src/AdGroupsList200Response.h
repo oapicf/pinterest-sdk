@@ -10,8 +10,6 @@
 
 #include <string>
 #include "AdGroupResponse.h"
-#include "Ad_groups_list_200_response_allOf.h"
-#include "Paginated.h"
 #include <list>
 #include "Object.h"
 

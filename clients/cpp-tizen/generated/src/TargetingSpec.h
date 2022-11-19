@@ -82,11 +82,11 @@ public:
 	/*! \brief Set Targeted genders. Values: [\"unknown\",\"male\",\"female\"]
 	 */
 	void setGENDER(std::list <std::string> gENDER);
-	/*! \brief Get Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, click here or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both.
+	/*! \brief Get Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both.
 	 */
 	std::list<std::string> getGEO();
 
-	/*! \brief Set Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, click here or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both.
+	/*! \brief Set Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both.
 	 */
 	void setGEO(std::list <std::string> gEO);
 	/*! \brief Get Array of interest object IDs.

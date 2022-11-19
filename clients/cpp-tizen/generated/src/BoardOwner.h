@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "BoardOwner.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API

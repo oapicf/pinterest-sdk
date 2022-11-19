@@ -10,8 +10,6 @@
 
 #include <string>
 #include "AdGroupSummaryStatus.h"
-#include "AdsAnalyticsCreateAsyncRequest_allOf.h"
-#include "AdsAnalyticsCreateAsyncRequest_allOf_1.h"
 #include "AdsAnalyticsMetricsFilter.h"
 #include "AdsAnalyticsTargetingType.h"
 #include "CampaignSummaryStatus.h"
@@ -153,11 +151,11 @@ public:
 	/*! \brief Set List of status values for filtering
 	 */
 	void setCampaignStatuses(std::list <CampaignSummaryStatus> campaign_statuses);
-	/*! \brief Get List of values for filtering
+	/*! \brief Get List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
 	 */
 	std::list<ObjectiveType> getCampaignObjectiveTypes();
 
-	/*! \brief Set List of values for filtering
+	/*! \brief Set List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
 	 */
 	void setCampaignObjectiveTypes(std::list <ObjectiveType> campaign_objective_types);
 	/*! \brief Get List of ad group ids

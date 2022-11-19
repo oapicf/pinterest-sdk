@@ -15,6 +15,7 @@
 | **board\_owner** | [**Board_owner**](Board_owner.md) |  | [optional] [default to null] |
 | **media** | [**Pin_media**](Pin_media.md) |  | [optional] [default to null] |
 | **media\_source** | [**Pin_media_source**](Pin_media_source.md) |  | [optional] [default to null] |
+| **parent\_pin\_id** | **String** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

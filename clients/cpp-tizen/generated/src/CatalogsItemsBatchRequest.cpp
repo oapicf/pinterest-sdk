@@ -109,12 +109,12 @@ CatalogsItemsBatchRequest::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<ItemBatchRecord> new_list;
-			ItemBatchRecord inst;
+			list<ItemDeleteDiscontinuedBatchRecord> new_list;
+			ItemDeleteDiscontinuedBatchRecord inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("ItemBatchRecord")) {
-					jsonToValue(&inst, temp_json, "ItemBatchRecord", "");
+				if (isprimitive("ItemDeleteDiscontinuedBatchRecord")) {
+					jsonToValue(&inst, temp_json, "ItemDeleteDiscontinuedBatchRecord", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -180,18 +180,18 @@ CatalogsItemsBatchRequest::toJson()
 	}
 	const gchar *operationKey = "operation";
 	json_object_set_member(pJsonObject, operationKey, node);
-	if (isprimitive("ItemBatchRecord")) {
-		list<ItemBatchRecord> new_list = static_cast<list <ItemBatchRecord> > (getItems());
-		node = converttoJson(&new_list, "ItemBatchRecord", "array");
+	if (isprimitive("ItemDeleteDiscontinuedBatchRecord")) {
+		list<ItemDeleteDiscontinuedBatchRecord> new_list = static_cast<list <ItemDeleteDiscontinuedBatchRecord> > (getItems());
+		node = converttoJson(&new_list, "ItemDeleteDiscontinuedBatchRecord", "array");
 	} else {
 		node = json_node_alloc();
-		list<ItemBatchRecord> new_list = static_cast<list <ItemBatchRecord> > (getItems());
+		list<ItemDeleteDiscontinuedBatchRecord> new_list = static_cast<list <ItemDeleteDiscontinuedBatchRecord> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<ItemBatchRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<ItemDeleteDiscontinuedBatchRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			ItemBatchRecord obj = *it;
+			ItemDeleteDiscontinuedBatchRecord obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -249,14 +249,14 @@ CatalogsItemsBatchRequest::setOperation(BatchOperation  operation)
 	this->operation = operation;
 }
 
-std::list<ItemBatchRecord>
+std::list<ItemDeleteDiscontinuedBatchRecord>
 CatalogsItemsBatchRequest::getItems()
 {
 	return items;
 }
 
 void
-CatalogsItemsBatchRequest::setItems(std::list <ItemBatchRecord> items)
+CatalogsItemsBatchRequest::setItems(std::list <ItemDeleteDiscontinuedBatchRecord> items)
 {
 	this->items = items;
 }

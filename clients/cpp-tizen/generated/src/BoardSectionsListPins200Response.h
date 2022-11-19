@@ -9,8 +9,6 @@
 
 
 #include <string>
-#include "Board_sections_list_pins_200_response_allOf.h"
-#include "Paginated.h"
 #include "Pin.h"
 #include <list>
 #include "Object.h"

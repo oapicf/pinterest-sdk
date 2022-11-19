@@ -10,8 +10,6 @@
 
 #include <string>
 #include "CatalogsProduct.h"
-#include "Paginated.h"
-#include "Products_by_product_group_filter_list_200_response_allOf.h"
 #include <list>
 #include "Object.h"
 

@@ -23,16 +23,21 @@ CampaignCreateCommon_allOf::~CampaignCreateCommon_allOf()
 void
 CampaignCreateCommon_allOf::__init()
 {
+	//status = std::string();
 	//is_campaign_budget_optimization = bool(false);
 	//is_flexible_daily_budgets = bool(false);
 	//default_ad_group_budget_in_micro_currency = int(0);
 	//is_automated_campaign = bool(false);
-	//objective_type = new ObjectiveType();
 }
 
 void
 CampaignCreateCommon_allOf::__cleanup()
 {
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
+	//}
 	//if(is_campaign_budget_optimization != NULL) {
 	//
 	//delete is_campaign_budget_optimization;
@@ -53,11 +58,6 @@ CampaignCreateCommon_allOf::__cleanup()
 	//delete is_automated_campaign;
 	//is_automated_campaign = NULL;
 	//}
-	//if(objective_type != NULL) {
-	//
-	//delete objective_type;
-	//objective_type = NULL;
-	//}
 	//
 }
 
@@ -66,6 +66,17 @@ CampaignCreateCommon_allOf::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("EntityStatus")) {
+			jsonToValue(&status, node, "EntityStatus", "EntityStatus");
+		} else {
+			
+		}
+	}
 	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
 	node = json_object_get_member(pJsonObject, is_campaign_budget_optimizationKey);
 	if (node !=NULL) {
@@ -110,20 +121,6 @@ CampaignCreateCommon_allOf::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *objective_typeKey = "objective_type";
-	node = json_object_get_member(pJsonObject, objective_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ObjectiveType")) {
-			jsonToValue(&objective_type, node, "ObjectiveType", "ObjectiveType");
-		} else {
-			
-			ObjectiveType* obj = static_cast<ObjectiveType*> (&objective_type);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 CampaignCreateCommon_allOf::CampaignCreateCommon_allOf(char* json)
@@ -136,6 +133,15 @@ CampaignCreateCommon_allOf::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("EntityStatus")) {
+		EntityStatus obj = getStatus();
+		node = converttoJson(&obj, "EntityStatus", "");
+	}
+	else {
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getIsCampaignBudgetOptimization();
 		node = converttoJson(&obj, "bool", "");
@@ -172,26 +178,24 @@ CampaignCreateCommon_allOf::toJson()
 	}
 	const gchar *is_automated_campaignKey = "is_automated_campaign";
 	json_object_set_member(pJsonObject, is_automated_campaignKey, node);
-	if (isprimitive("ObjectiveType")) {
-		ObjectiveType obj = getObjectiveType();
-		node = converttoJson(&obj, "ObjectiveType", "");
-	}
-	else {
-		
-		ObjectiveType obj = static_cast<ObjectiveType> (getObjectiveType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *objective_typeKey = "objective_type";
-	json_object_set_member(pJsonObject, objective_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+EntityStatus
+CampaignCreateCommon_allOf::getStatus()
+{
+	return status;
+}
+
+void
+CampaignCreateCommon_allOf::setStatus(EntityStatus  status)
+{
+	this->status = status;
 }
 
 bool
@@ -240,18 +244,6 @@ void
 CampaignCreateCommon_allOf::setIsAutomatedCampaign(bool  is_automated_campaign)
 {
 	this->is_automated_campaign = is_automated_campaign;
-}
-
-ObjectiveType
-CampaignCreateCommon_allOf::getObjectiveType()
-{
-	return objective_type;
-}
-
-void
-CampaignCreateCommon_allOf::setObjectiveType(ObjectiveType  objective_type)
-{
-	this->objective_type = objective_type;
 }
 
 

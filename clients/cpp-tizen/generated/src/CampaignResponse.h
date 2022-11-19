@@ -10,9 +10,6 @@
 
 #include <string>
 #include "AdCommon_tracking_urls.h"
-#include "CampaignCommon.h"
-#include "CampaignId.h"
-#include "CampaignResponse_allOf.h"
 #include "EntityStatus.h"
 #include "ObjectiveType.h"
 #include "Object.h"

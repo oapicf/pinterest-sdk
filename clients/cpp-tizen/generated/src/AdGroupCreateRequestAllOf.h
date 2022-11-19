@@ -10,6 +10,7 @@
 
 #include <string>
 #include "TargetingSpec.h"
+#include <map>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API

@@ -27,7 +27,7 @@ public:
 
 /*! \brief Generate OAuth access token. *Synchronous*
  *
- * Generate an OAuth access token by using an authorization code or a refresh token.  See <a href='/docs/api/v5/#tag/Authentication'>Authentication</a> for more.
+ * Generate an OAuth access token by using an authorization code or a refresh token.  See <a href='/docs/getting-started/authentication/'>Authentication</a> for more.
  * \param grantType  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -40,7 +40,7 @@ bool oauthTokenSync(char * accessToken,
 
 /*! \brief Generate OAuth access token. *Asynchronous*
  *
- * Generate an OAuth access token by using an authorization code or a refresh token.  See <a href='/docs/api/v5/#tag/Authentication'>Authentication</a> for more.
+ * Generate an OAuth access token by using an authorization code or a refresh token.  See <a href='/docs/getting-started/authentication/'>Authentication</a> for more.
  * \param grantType  *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*

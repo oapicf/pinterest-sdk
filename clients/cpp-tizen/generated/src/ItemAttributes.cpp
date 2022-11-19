@@ -23,8 +23,9 @@ ItemAttributes::~ItemAttributes()
 void
 ItemAttributes::__init()
 {
-	//ad_link = std::string();
 	//new std::list()std::list> additional_image_link;
+	//new std::list()std::list> image_link;
+	//ad_link = std::string();
 	//adult = bool(false);
 	//age_group = std::string();
 	//availability = std::string();
@@ -45,7 +46,6 @@ ItemAttributes::__init()
 	//google_product_category = std::string();
 	//gtin = int(0);
 	//id = std::string();
-	//new std::list()std::list> image_link;
 	//item_group_id = std::string();
 	//last_updated_time = long(0);
 	//link = std::string();
@@ -75,15 +75,20 @@ ItemAttributes::__init()
 void
 ItemAttributes::__cleanup()
 {
-	//if(ad_link != NULL) {
-	//
-	//delete ad_link;
-	//ad_link = NULL;
-	//}
 	//if(additional_image_link != NULL) {
 	//additional_image_link.RemoveAll(true);
 	//delete additional_image_link;
 	//additional_image_link = NULL;
+	//}
+	//if(image_link != NULL) {
+	//image_link.RemoveAll(true);
+	//delete image_link;
+	//image_link = NULL;
+	//}
+	//if(ad_link != NULL) {
+	//
+	//delete ad_link;
+	//ad_link = NULL;
 	//}
 	//if(adult != NULL) {
 	//
@@ -184,11 +189,6 @@ ItemAttributes::__cleanup()
 	//
 	//delete id;
 	//id = NULL;
-	//}
-	//if(image_link != NULL) {
-	//image_link.RemoveAll(true);
-	//delete image_link;
-	//image_link = NULL;
 	//}
 	//if(item_group_id != NULL) {
 	//
@@ -318,17 +318,6 @@ ItemAttributes::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *ad_linkKey = "ad_link";
-	node = json_object_get_member(pJsonObject, ad_linkKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&ad_link, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *additional_image_linkKey = "additional_image_link";
 	node = json_object_get_member(pJsonObject, additional_image_linkKey);
 	if (node !=NULL) {
@@ -350,6 +339,39 @@ ItemAttributes::fromJson(char* jsonStr)
 			additional_image_link = new_list;
 		}
 		
+	}
+	const gchar *image_linkKey = "image_link";
+	node = json_object_get_member(pJsonObject, image_linkKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			image_link = new_list;
+		}
+		
+	}
+	const gchar *ad_linkKey = "ad_link";
+	node = json_object_get_member(pJsonObject, ad_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_link, node, "std::string", "");
+		} else {
+			
+		}
 	}
 	const gchar *adultKey = "adult";
 	node = json_object_get_member(pJsonObject, adultKey);
@@ -573,28 +595,6 @@ ItemAttributes::fromJson(char* jsonStr)
 		} else {
 			
 		}
-	}
-	const gchar *image_linkKey = "image_link";
-	node = json_object_get_member(pJsonObject, image_linkKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			image_link = new_list;
-		}
-		
 	}
 	const gchar *item_group_idKey = "item_group_id";
 	node = json_object_get_member(pJsonObject, item_group_idKey);
@@ -895,15 +895,6 @@ ItemAttributes::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getAdLink();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *ad_linkKey = "ad_link";
-	json_object_set_member(pJsonObject, ad_linkKey, node);
-	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getAdditionalImageLink());
 		node = converttoJson(&new_list, "std::string", "array");
 	} else {
@@ -918,6 +909,30 @@ ItemAttributes::toJson()
 	
 	const gchar *additional_image_linkKey = "additional_image_link";
 	json_object_set_member(pJsonObject, additional_image_linkKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getImageLink());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getImageLink());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *image_linkKey = "image_link";
+	json_object_set_member(pJsonObject, image_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_linkKey = "ad_link";
+	json_object_set_member(pJsonObject, ad_linkKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getAdult();
 		node = converttoJson(&obj, "bool", "");
@@ -1103,21 +1118,6 @@ ItemAttributes::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getImageLink());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getImageLink());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *image_linkKey = "image_link";
-	json_object_set_member(pJsonObject, image_linkKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getItemGroupId();
 		node = converttoJson(&obj, "std::string", "");
@@ -1354,18 +1354,6 @@ ItemAttributes::toJson()
 	return ret;
 }
 
-std::string
-ItemAttributes::getAdLink()
-{
-	return ad_link;
-}
-
-void
-ItemAttributes::setAdLink(std::string  ad_link)
-{
-	this->ad_link = ad_link;
-}
-
 std::list<std::string>
 ItemAttributes::getAdditionalImageLink()
 {
@@ -1376,6 +1364,30 @@ void
 ItemAttributes::setAdditionalImageLink(std::list <std::string> additional_image_link)
 {
 	this->additional_image_link = additional_image_link;
+}
+
+std::list<std::string>
+ItemAttributes::getImageLink()
+{
+	return image_link;
+}
+
+void
+ItemAttributes::setImageLink(std::list <std::string> image_link)
+{
+	this->image_link = image_link;
+}
+
+std::string
+ItemAttributes::getAdLink()
+{
+	return ad_link;
+}
+
+void
+ItemAttributes::setAdLink(std::string  ad_link)
+{
+	this->ad_link = ad_link;
 }
 
 bool
@@ -1616,18 +1628,6 @@ void
 ItemAttributes::setId(std::string  id)
 {
 	this->id = id;
-}
-
-std::list<std::string>
-ItemAttributes::getImageLink()
-{
-	return image_link;
-}
-
-void
-ItemAttributes::setImageLink(std::list <std::string> image_link)
-{
-	this->image_link = image_link;
 }
 
 std::string

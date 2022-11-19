@@ -83,6 +83,13 @@ public:
 	void setAGEGROUPINVALID(CatalogsItemValidationDetails  aGE_GROUP_INVALID);
 	/*! \brief Get 
 	 */
+	CatalogsItemValidationDetails getSIZESYSTEMINVALID();
+
+	/*! \brief Set 
+	 */
+	void setSIZESYSTEMINVALID(CatalogsItemValidationDetails  sIZE_SYSTEM_INVALID);
+	/*! \brief Get 
+	 */
 	CatalogsItemValidationDetails getAGEGROUPNORMALIZED();
 
 	/*! \brief Set 
@@ -167,6 +174,13 @@ public:
 	void setGENDERNORMALIZED(CatalogsItemValidationDetails  gENDER_NORMALIZED);
 	/*! \brief Get 
 	 */
+	CatalogsItemValidationDetails getGTININVALID();
+
+	/*! \brief Set 
+	 */
+	void setGTININVALID(CatalogsItemValidationDetails  gTIN_INVALID);
+	/*! \brief Get 
+	 */
 	CatalogsItemValidationDetails getIMAGELINKWARNING();
 
 	/*! \brief Set 
@@ -207,6 +221,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setMINADPRICEINVALID(CatalogsItemValidationDetails  mIN_AD_PRICE_INVALID);
+	/*! \brief Get 
+	 */
+	CatalogsItemValidationDetails getMPNINVALID();
+
+	/*! \brief Set 
+	 */
+	void setMPNINVALID(CatalogsItemValidationDetails  mPN_INVALID);
 	/*! \brief Get 
 	 */
 	CatalogsItemValidationDetails getMULTIPACKINVALID();
@@ -265,6 +286,20 @@ public:
 	void setSALESPRICEINVALID(CatalogsItemValidationDetails  sALES_PRICE_INVALID);
 	/*! \brief Get 
 	 */
+	CatalogsItemValidationDetails getSALESPRICETOOLOW();
+
+	/*! \brief Set 
+	 */
+	void setSALESPRICETOOLOW(CatalogsItemValidationDetails  sALES_PRICE_TOO_LOW);
+	/*! \brief Get 
+	 */
+	CatalogsItemValidationDetails getSALESPRICETOOHIGH();
+
+	/*! \brief Set 
+	 */
+	void setSALESPRICETOOHIGH(CatalogsItemValidationDetails  sALES_PRICE_TOO_HIGH);
+	/*! \brief Get 
+	 */
 	CatalogsItemValidationDetails getSALEDATEINVALID();
 
 	/*! \brief Set 
@@ -279,11 +314,25 @@ public:
 	void setSHIPPINGINVALID(CatalogsItemValidationDetails  sHIPPING_INVALID);
 	/*! \brief Get 
 	 */
+	CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID();
+
+	/*! \brief Set 
+	 */
+	void setSHIPPINGHEIGHTINVALID(CatalogsItemValidationDetails  sHIPPING_HEIGHT_INVALID);
+	/*! \brief Get 
+	 */
 	CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID();
 
 	/*! \brief Set 
 	 */
 	void setSHIPPINGWEIGHTINVALID(CatalogsItemValidationDetails  sHIPPING_WEIGHT_INVALID);
+	/*! \brief Get 
+	 */
+	CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID();
+
+	/*! \brief Set 
+	 */
+	void setSHIPPINGWIDTHINVALID(CatalogsItemValidationDetails  sHIPPING_WIDTH_INVALID);
 	/*! \brief Get 
 	 */
 	CatalogsItemValidationDetails getSIZETYPEINVALID();
@@ -340,6 +389,7 @@ private:
 	CatalogsItemValidationDetails aDWORDS_FORMAT_WARNING;
 	CatalogsItemValidationDetails aDWORDS_SAME_AS_LINK;
 	CatalogsItemValidationDetails aGE_GROUP_INVALID;
+	CatalogsItemValidationDetails sIZE_SYSTEM_INVALID;
 	CatalogsItemValidationDetails aGE_GROUP_NORMALIZED;
 	CatalogsItemValidationDetails aNDROID_DEEP_LINK_INVALID;
 	CatalogsItemValidationDetails aVAILABILITY_DATE_INVALID;
@@ -352,12 +402,14 @@ private:
 	CatalogsItemValidationDetails eXPIRATION_DATE_INVALID;
 	CatalogsItemValidationDetails gENDER_INVALID;
 	CatalogsItemValidationDetails gENDER_NORMALIZED;
+	CatalogsItemValidationDetails gTIN_INVALID;
 	CatalogsItemValidationDetails iMAGE_LINK_WARNING;
 	CatalogsItemValidationDetails iOS_DEEP_LINK_INVALID;
 	CatalogsItemValidationDetails iS_BUNDLE_INVALID;
 	CatalogsItemValidationDetails iTEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 	CatalogsItemValidationDetails lINK_FORMAT_WARNING;
 	CatalogsItemValidationDetails mIN_AD_PRICE_INVALID;
+	CatalogsItemValidationDetails mPN_INVALID;
 	CatalogsItemValidationDetails mULTIPACK_INVALID;
 	CatalogsItemValidationDetails oPTIONAL_CONDITION_INVALID;
 	CatalogsItemValidationDetails oPTIONAL_CONDITION_MISSING;
@@ -366,9 +418,13 @@ private:
 	CatalogsItemValidationDetails pRODUCT_CATEGORY_DEPTH_WARNING;
 	CatalogsItemValidationDetails pRODUCT_TYPE_LENGTH_TOO_LONG;
 	CatalogsItemValidationDetails sALES_PRICE_INVALID;
+	CatalogsItemValidationDetails sALES_PRICE_TOO_LOW;
+	CatalogsItemValidationDetails sALES_PRICE_TOO_HIGH;
 	CatalogsItemValidationDetails sALE_DATE_INVALID;
 	CatalogsItemValidationDetails sHIPPING_INVALID;
+	CatalogsItemValidationDetails sHIPPING_HEIGHT_INVALID;
 	CatalogsItemValidationDetails sHIPPING_WEIGHT_INVALID;
+	CatalogsItemValidationDetails sHIPPING_WIDTH_INVALID;
 	CatalogsItemValidationDetails sIZE_TYPE_INVALID;
 	CatalogsItemValidationDetails sIZE_TYPE_NORMALIZED;
 	CatalogsItemValidationDetails tAX_INVALID;

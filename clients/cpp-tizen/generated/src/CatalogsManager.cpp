@@ -124,7 +124,7 @@ static bool catalogsProductGroupPinsListProcessor(MemoryStruct_s p_chunk, long c
 }
 
 static bool catalogsProductGroupPinsListHelper(char * accessToken,
-	std::string productGroupId, std::string bookmark, int pageSize, 
+	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Products_by_product_group_filter_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -153,6 +153,13 @@ static bool catalogsProductGroupPinsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -215,22 +222,22 @@ static bool catalogsProductGroupPinsListHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupPinsListAsync(char * accessToken,
-	std::string productGroupId, std::string bookmark, int pageSize, 
+	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Products_by_product_group_filter_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupPinsListHelper(accessToken,
-	productGroupId, bookmark, pageSize, 
+	productGroupId, bookmark, pageSize, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupPinsListSync(char * accessToken,
-	std::string productGroupId, std::string bookmark, int pageSize, 
+	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Products_by_product_group_filter_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupPinsListHelper(accessToken,
-	productGroupId, bookmark, pageSize, 
+	productGroupId, bookmark, pageSize, adAccountId, 
 	handler, userData, false);
 }
 
@@ -315,7 +322,7 @@ static bool catalogsProductGroupsCreateProcessor(MemoryStruct_s p_chunk, long co
 }
 
 static bool catalogsProductGroupsCreateHelper(char * accessToken,
-	std::shared_ptr<CatalogsProductGroupCreateRequest> catalogsProductGroupCreateRequest, 
+	std::shared_ptr<CatalogsProductGroupCreateRequest> catalogsProductGroupCreateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -332,6 +339,13 @@ static bool catalogsProductGroupsCreateHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -399,22 +413,22 @@ static bool catalogsProductGroupsCreateHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsCreateAsync(char * accessToken,
-	std::shared_ptr<CatalogsProductGroupCreateRequest> catalogsProductGroupCreateRequest, 
+	std::shared_ptr<CatalogsProductGroupCreateRequest> catalogsProductGroupCreateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsCreateHelper(accessToken,
-	catalogsProductGroupCreateRequest, 
+	catalogsProductGroupCreateRequest, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsCreateSync(char * accessToken,
-	std::shared_ptr<CatalogsProductGroupCreateRequest> catalogsProductGroupCreateRequest, 
+	std::shared_ptr<CatalogsProductGroupCreateRequest> catalogsProductGroupCreateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsCreateHelper(accessToken,
-	catalogsProductGroupCreateRequest, 
+	catalogsProductGroupCreateRequest, adAccountId, 
 	handler, userData, false);
 }
 
@@ -452,7 +466,7 @@ static bool catalogsProductGroupsDeleteProcessor(MemoryStruct_s p_chunk, long co
 }
 
 static bool catalogsProductGroupsDeleteHelper(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -469,6 +483,13 @@ static bool catalogsProductGroupsDeleteHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -529,22 +550,22 @@ static bool catalogsProductGroupsDeleteHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsDeleteAsync(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return catalogsProductGroupsDeleteHelper(accessToken,
-	productGroupId, 
+	productGroupId, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsDeleteSync(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return catalogsProductGroupsDeleteHelper(accessToken,
-	productGroupId, 
+	productGroupId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -634,7 +655,7 @@ static bool catalogsProductGroupsGetProcessor(MemoryStruct_s p_chunk, long code,
 }
 
 static bool catalogsProductGroupsGetHelper(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -651,6 +672,13 @@ static bool catalogsProductGroupsGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -711,22 +739,22 @@ static bool catalogsProductGroupsGetHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsGetAsync(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsGetHelper(accessToken,
-	productGroupId, 
+	productGroupId, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsGetSync(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsGetHelper(accessToken,
-	productGroupId, 
+	productGroupId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -816,7 +844,7 @@ static bool catalogsProductGroupsListProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool catalogsProductGroupsListHelper(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, 
+	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Catalogs_product_groups_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -849,6 +877,13 @@ static bool catalogsProductGroupsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -905,22 +940,22 @@ static bool catalogsProductGroupsListHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsListAsync(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, 
+	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Catalogs_product_groups_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsListHelper(accessToken,
-	feedId, bookmark, pageSize, 
+	feedId, bookmark, pageSize, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsListSync(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, 
+	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Catalogs_product_groups_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsListHelper(accessToken,
-	feedId, bookmark, pageSize, 
+	feedId, bookmark, pageSize, adAccountId, 
 	handler, userData, false);
 }
 
@@ -995,7 +1030,7 @@ static bool catalogsProductGroupsProductCountsGetProcessor(MemoryStruct_s p_chun
 }
 
 static bool catalogsProductGroupsProductCountsGetHelper(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroupProductCounts, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1012,6 +1047,13 @@ static bool catalogsProductGroupsProductCountsGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -1072,22 +1114,22 @@ static bool catalogsProductGroupsProductCountsGetHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsProductCountsGetAsync(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroupProductCounts, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsProductCountsGetHelper(accessToken,
-	productGroupId, 
+	productGroupId, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsProductCountsGetSync(char * accessToken,
-	std::string productGroupId, 
+	std::string productGroupId, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroupProductCounts, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsProductCountsGetHelper(accessToken,
-	productGroupId, 
+	productGroupId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1177,7 +1219,7 @@ static bool catalogsProductGroupsUpdateProcessor(MemoryStruct_s p_chunk, long co
 }
 
 static bool catalogsProductGroupsUpdateHelper(char * accessToken,
-	std::string productGroupId, std::shared_ptr<CatalogsProductGroupUpdateRequest> catalogsProductGroupUpdateRequest, 
+	std::string productGroupId, std::shared_ptr<CatalogsProductGroupUpdateRequest> catalogsProductGroupUpdateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1194,6 +1236,13 @@ static bool catalogsProductGroupsUpdateHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -1267,22 +1316,22 @@ static bool catalogsProductGroupsUpdateHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsUpdateAsync(char * accessToken,
-	std::string productGroupId, std::shared_ptr<CatalogsProductGroupUpdateRequest> catalogsProductGroupUpdateRequest, 
+	std::string productGroupId, std::shared_ptr<CatalogsProductGroupUpdateRequest> catalogsProductGroupUpdateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsUpdateHelper(accessToken,
-	productGroupId, catalogsProductGroupUpdateRequest, 
+	productGroupId, catalogsProductGroupUpdateRequest, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsUpdateSync(char * accessToken,
-	std::string productGroupId, std::shared_ptr<CatalogsProductGroupUpdateRequest> catalogsProductGroupUpdateRequest, 
+	std::string productGroupId, std::shared_ptr<CatalogsProductGroupUpdateRequest> catalogsProductGroupUpdateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsUpdateHelper(accessToken,
-	productGroupId, catalogsProductGroupUpdateRequest, 
+	productGroupId, catalogsProductGroupUpdateRequest, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1362,7 +1411,7 @@ static bool feedProcessingResultsListProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool feedProcessingResultsListHelper(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, 
+	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Feed_processing_results_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1391,6 +1440,13 @@ static bool feedProcessingResultsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -1453,22 +1509,22 @@ static bool feedProcessingResultsListHelper(char * accessToken,
 
 
 bool CatalogsManager::feedProcessingResultsListAsync(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, 
+	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Feed_processing_results_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedProcessingResultsListHelper(accessToken,
-	feedId, bookmark, pageSize, 
+	feedId, bookmark, pageSize, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::feedProcessingResultsListSync(char * accessToken,
-	std::string feedId, std::string bookmark, int pageSize, 
+	std::string feedId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Feed_processing_results_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedProcessingResultsListHelper(accessToken,
-	feedId, bookmark, pageSize, 
+	feedId, bookmark, pageSize, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1558,7 +1614,7 @@ static bool feedsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool feedsCreateHelper(char * accessToken,
-	std::shared_ptr<CatalogsFeedsCreateRequest> catalogsFeedsCreateRequest, 
+	std::shared_ptr<CatalogsFeedsCreateRequest> catalogsFeedsCreateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1575,6 +1631,13 @@ static bool feedsCreateHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -1642,22 +1705,22 @@ static bool feedsCreateHelper(char * accessToken,
 
 
 bool CatalogsManager::feedsCreateAsync(char * accessToken,
-	std::shared_ptr<CatalogsFeedsCreateRequest> catalogsFeedsCreateRequest, 
+	std::shared_ptr<CatalogsFeedsCreateRequest> catalogsFeedsCreateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsCreateHelper(accessToken,
-	catalogsFeedsCreateRequest, 
+	catalogsFeedsCreateRequest, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::feedsCreateSync(char * accessToken,
-	std::shared_ptr<CatalogsFeedsCreateRequest> catalogsFeedsCreateRequest, 
+	std::shared_ptr<CatalogsFeedsCreateRequest> catalogsFeedsCreateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsCreateHelper(accessToken,
-	catalogsFeedsCreateRequest, 
+	catalogsFeedsCreateRequest, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1695,7 +1758,7 @@ static bool feedsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool feedsDeleteHelper(char * accessToken,
-	std::string feedId, 
+	std::string feedId, std::string adAccountId, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -1712,6 +1775,13 @@ static bool feedsDeleteHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -1772,22 +1842,22 @@ static bool feedsDeleteHelper(char * accessToken,
 
 
 bool CatalogsManager::feedsDeleteAsync(char * accessToken,
-	std::string feedId, 
+	std::string feedId, std::string adAccountId, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return feedsDeleteHelper(accessToken,
-	feedId, 
+	feedId, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::feedsDeleteSync(char * accessToken,
-	std::string feedId, 
+	std::string feedId, std::string adAccountId, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return feedsDeleteHelper(accessToken,
-	feedId, 
+	feedId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -1867,7 +1937,7 @@ static bool feedsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 }
 
 static bool feedsGetHelper(char * accessToken,
-	std::string feedId, 
+	std::string feedId, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1884,6 +1954,13 @@ static bool feedsGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -1944,22 +2021,22 @@ static bool feedsGetHelper(char * accessToken,
 
 
 bool CatalogsManager::feedsGetAsync(char * accessToken,
-	std::string feedId, 
+	std::string feedId, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsGetHelper(accessToken,
-	feedId, 
+	feedId, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::feedsGetSync(char * accessToken,
-	std::string feedId, 
+	std::string feedId, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsGetHelper(accessToken,
-	feedId, 
+	feedId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -2034,7 +2111,7 @@ static bool feedsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool feedsListHelper(char * accessToken,
-	std::string bookmark, int pageSize, 
+	std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Feeds_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2063,6 +2140,13 @@ static bool feedsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -2119,22 +2203,22 @@ static bool feedsListHelper(char * accessToken,
 
 
 bool CatalogsManager::feedsListAsync(char * accessToken,
-	std::string bookmark, int pageSize, 
+	std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Feeds_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedsListHelper(accessToken,
-	bookmark, pageSize, 
+	bookmark, pageSize, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::feedsListSync(char * accessToken,
-	std::string bookmark, int pageSize, 
+	std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Feeds_list_200_response, Error, void* )
 	, void* userData)
 {
 	return feedsListHelper(accessToken,
-	bookmark, pageSize, 
+	bookmark, pageSize, adAccountId, 
 	handler, userData, false);
 }
 
@@ -2214,7 +2298,7 @@ static bool feedsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool feedsUpdateHelper(char * accessToken,
-	std::string feedId, std::shared_ptr<CatalogsFeedsUpdateRequest> catalogsFeedsUpdateRequest, 
+	std::string feedId, std::shared_ptr<CatalogsFeedsUpdateRequest> catalogsFeedsUpdateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2231,6 +2315,13 @@ static bool feedsUpdateHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -2304,22 +2395,22 @@ static bool feedsUpdateHelper(char * accessToken,
 
 
 bool CatalogsManager::feedsUpdateAsync(char * accessToken,
-	std::string feedId, std::shared_ptr<CatalogsFeedsUpdateRequest> catalogsFeedsUpdateRequest, 
+	std::string feedId, std::shared_ptr<CatalogsFeedsUpdateRequest> catalogsFeedsUpdateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsUpdateHelper(accessToken,
-	feedId, catalogsFeedsUpdateRequest, 
+	feedId, catalogsFeedsUpdateRequest, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::feedsUpdateSync(char * accessToken,
-	std::string feedId, std::shared_ptr<CatalogsFeedsUpdateRequest> catalogsFeedsUpdateRequest, 
+	std::string feedId, std::shared_ptr<CatalogsFeedsUpdateRequest> catalogsFeedsUpdateRequest, std::string adAccountId, 
 	void(* handler)(CatalogsFeed, Error, void* )
 	, void* userData)
 {
 	return feedsUpdateHelper(accessToken,
-	feedId, catalogsFeedsUpdateRequest, 
+	feedId, catalogsFeedsUpdateRequest, adAccountId, 
 	handler, userData, false);
 }
 
@@ -2379,6 +2470,11 @@ static bool itemsBatchGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -2399,7 +2495,7 @@ static bool itemsBatchGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool itemsBatchGetHelper(char * accessToken,
-	std::string batchId, 
+	std::string batchId, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2416,6 +2512,13 @@ static bool itemsBatchGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -2476,22 +2579,22 @@ static bool itemsBatchGetHelper(char * accessToken,
 
 
 bool CatalogsManager::itemsBatchGetAsync(char * accessToken,
-	std::string batchId, 
+	std::string batchId, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData)
 {
 	return itemsBatchGetHelper(accessToken,
-	batchId, 
+	batchId, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::itemsBatchGetSync(char * accessToken,
-	std::string batchId, 
+	std::string batchId, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData)
 {
 	return itemsBatchGetHelper(accessToken,
-	batchId, 
+	batchId, adAccountId, 
 	handler, userData, false);
 }
 
@@ -2546,6 +2649,11 @@ static bool itemsBatchPostProcessor(MemoryStruct_s p_chunk, long code, char* err
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -2566,7 +2674,7 @@ static bool itemsBatchPostProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool itemsBatchPostHelper(char * accessToken,
-	std::shared_ptr<CatalogsItemsBatchRequest> catalogsItemsBatchRequest, 
+	std::shared_ptr<CatalogsItemsBatchRequest> catalogsItemsBatchRequest, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2583,6 +2691,13 @@ static bool itemsBatchPostHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -2650,22 +2765,22 @@ static bool itemsBatchPostHelper(char * accessToken,
 
 
 bool CatalogsManager::itemsBatchPostAsync(char * accessToken,
-	std::shared_ptr<CatalogsItemsBatchRequest> catalogsItemsBatchRequest, 
+	std::shared_ptr<CatalogsItemsBatchRequest> catalogsItemsBatchRequest, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData)
 {
 	return itemsBatchPostHelper(accessToken,
-	catalogsItemsBatchRequest, 
+	catalogsItemsBatchRequest, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::itemsBatchPostSync(char * accessToken,
-	std::shared_ptr<CatalogsItemsBatchRequest> catalogsItemsBatchRequest, 
+	std::shared_ptr<CatalogsItemsBatchRequest> catalogsItemsBatchRequest, std::string adAccountId, 
 	void(* handler)(CatalogsItemsBatch, Error, void* )
 	, void* userData)
 {
 	return itemsBatchPostHelper(accessToken,
-	catalogsItemsBatchRequest, 
+	catalogsItemsBatchRequest, adAccountId, 
 	handler, userData, false);
 }
 
@@ -2720,6 +2835,11 @@ static bool itemsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -2740,7 +2860,7 @@ static bool itemsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 }
 
 static bool itemsGetHelper(char * accessToken,
-	std::string country, std::list<std::string> itemIds, std::string language, 
+	std::string country, std::list<std::string> itemIds, std::string language, std::string adAccountId, 
 	void(* handler)(CatalogsItems, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2770,6 +2890,13 @@ static bool itemsGetHelper(char * accessToken,
 
 	itemAtq = stringify(&language, "std::string");
 	queryParams.insert(pair<string, string>("language", itemAtq));
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
 
 	string mBody = "";
 	JsonNode* node;
@@ -2825,22 +2952,22 @@ static bool itemsGetHelper(char * accessToken,
 
 
 bool CatalogsManager::itemsGetAsync(char * accessToken,
-	std::string country, std::list<std::string> itemIds, std::string language, 
+	std::string country, std::list<std::string> itemIds, std::string language, std::string adAccountId, 
 	void(* handler)(CatalogsItems, Error, void* )
 	, void* userData)
 {
 	return itemsGetHelper(accessToken,
-	country, itemIds, language, 
+	country, itemIds, language, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::itemsGetSync(char * accessToken,
-	std::string country, std::list<std::string> itemIds, std::string language, 
+	std::string country, std::list<std::string> itemIds, std::string language, std::string adAccountId, 
 	void(* handler)(CatalogsItems, Error, void* )
 	, void* userData)
 {
 	return itemsGetHelper(accessToken,
-	country, itemIds, language, 
+	country, itemIds, language, adAccountId, 
 	handler, userData, false);
 }
 
@@ -2920,7 +3047,7 @@ static bool itemsIssuesListProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool itemsIssuesListHelper(char * accessToken,
-	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, 
+	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, 
 	void(* handler)(Items_issues_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2965,6 +3092,13 @@ static bool itemsIssuesListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("item_validation_issue", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("item_validation_issue");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -3027,22 +3161,22 @@ static bool itemsIssuesListHelper(char * accessToken,
 
 
 bool CatalogsManager::itemsIssuesListAsync(char * accessToken,
-	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, 
+	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, 
 	void(* handler)(Items_issues_list_200_response, Error, void* )
 	, void* userData)
 {
 	return itemsIssuesListHelper(accessToken,
-	processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, 
+	processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::itemsIssuesListSync(char * accessToken,
-	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, 
+	std::string processingResultId, std::string bookmark, int pageSize, std::list<int> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, std::string adAccountId, 
 	void(* handler)(Items_issues_list_200_response, Error, void* )
 	, void* userData)
 {
 	return itemsIssuesListHelper(accessToken,
-	processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, 
+	processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, 
 	handler, userData, false);
 }
 
@@ -3117,7 +3251,7 @@ static bool productsByProductGroupFilterListProcessor(MemoryStruct_s p_chunk, lo
 }
 
 static bool productsByProductGroupFilterListHelper(char * accessToken,
-	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, 
+	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Products_by_product_group_filter_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -3146,6 +3280,13 @@ static bool productsByProductGroupFilterListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -3215,22 +3356,22 @@ static bool productsByProductGroupFilterListHelper(char * accessToken,
 
 
 bool CatalogsManager::productsByProductGroupFilterListAsync(char * accessToken,
-	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, 
+	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Products_by_product_group_filter_list_200_response, Error, void* )
 	, void* userData)
 {
 	return productsByProductGroupFilterListHelper(accessToken,
-	catalogsListProductsByFilterRequest, bookmark, pageSize, 
+	catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::productsByProductGroupFilterListSync(char * accessToken,
-	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, 
+	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Products_by_product_group_filter_list_200_response, Error, void* )
 	, void* userData)
 {
 	return productsByProductGroupFilterListHelper(accessToken,
-	catalogsListProductsByFilterRequest, bookmark, pageSize, 
+	catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, 
 	handler, userData, false);
 }
 

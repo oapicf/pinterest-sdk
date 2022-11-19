@@ -10,8 +10,6 @@
 
 #include <string>
 #include "AdCommon_tracking_urls.h"
-#include "CampaignCreateCommon.h"
-#include "CampaignResponse.h"
 #include "EntityStatus.h"
 #include "ObjectiveType.h"
 #include "Object.h"
@@ -134,20 +132,13 @@ public:
 	/*! \brief Set When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
 	 */
 	void setDefaultAdGroupBudgetInMicroCurrency(int  default_ad_group_budget_in_micro_currency);
-	/*! \brief Get Specifies whether the campaign was created in the automated campaign flow
+	/*! \brief Get 
 	 */
 	bool getIsAutomatedCampaign();
 
-	/*! \brief Set Specifies whether the campaign was created in the automated campaign flow
-	 */
-	void setIsAutomatedCampaign(bool  is_automated_campaign);
-	/*! \brief Get 
-	 */
-	ObjectiveType getObjectiveType();
-
 	/*! \brief Set 
 	 */
-	void setObjectiveType(ObjectiveType  objective_type);
+	void setIsAutomatedCampaign(bool  is_automated_campaign);
 	/*! \brief Get Campaign ID.
 	 */
 	std::string getId();
@@ -155,6 +146,13 @@ public:
 	/*! \brief Set Campaign ID.
 	 */
 	void setId(std::string  id);
+	/*! \brief Get 
+	 */
+	ObjectiveType getObjectiveType();
+
+	/*! \brief Set 
+	 */
+	void setObjectiveType(ObjectiveType  objective_type);
 	/*! \brief Get Campaign creation time. Unix timestamp in seconds.
 	 */
 	int getCreatedTime();
@@ -191,8 +189,8 @@ private:
 	bool is_flexible_daily_budgets;
 	int default_ad_group_budget_in_micro_currency;
 	bool is_automated_campaign;
-	ObjectiveType objective_type;
 	std::string id;
+	ObjectiveType objective_type;
 	int created_time;
 	int updated_time;
 	std::string type;

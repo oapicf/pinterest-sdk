@@ -80,6 +80,13 @@ public:
 	/*! \brief Set Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
 	void setSIZETYPEINVALID(int  sIZE_TYPE_INVALID);
+	/*! \brief Get Some items have size system values which are not one of the supported size systems.
+	 */
+	int getSIZESYSTEMINVALID();
+
+	/*! \brief Set Some items have size system values which are not one of the supported size systems.
+	 */
+	void setSIZESYSTEMINVALID(int  sIZE_SYSTEM_INVALID);
 	/*! \brief Get Some items have an invalid product link which contains invalid UTM tracking paramaters.
 	 */
 	int getLINKFORMATWARNING();
@@ -360,6 +367,55 @@ public:
 	/*! \brief Set Some items include min_ad_price values that are formatted incorrectly.
 	 */
 	void setMINADPRICEINVALID(int  mIN_AD_PRICE_INVALID);
+	/*! \brief Get Some items include incorrectly formatted GTINs.
+	 */
+	int getGTININVALID();
+
+	/*! \brief Set Some items include incorrectly formatted GTINs.
+	 */
+	void setGTININVALID(int  gTIN_INVALID);
+	/*! \brief Get Some items include inconsistent currencies in price fields.
+	 */
+	int getINCONSISTENTCURRENCYVALUES();
+
+	/*! \brief Set Some items include inconsistent currencies in price fields.
+	 */
+	void setINCONSISTENTCURRENCYVALUES(int  iNCONSISTENT_CURRENCY_VALUES);
+	/*! \brief Get Some items include sales price that is much lower than the list price.
+	 */
+	int getSALESPRICETOOLOW();
+
+	/*! \brief Set Some items include sales price that is much lower than the list price.
+	 */
+	void setSALESPRICETOOLOW(int  sALES_PRICE_TOO_LOW);
+	/*! \brief Get Some items include incorrectly formatted shipping_width.
+	 */
+	int getSHIPPINGWIDTHINVALID();
+
+	/*! \brief Set Some items include incorrectly formatted shipping_width.
+	 */
+	void setSHIPPINGWIDTHINVALID(int  sHIPPING_WIDTH_INVALID);
+	/*! \brief Get Some items include incorrectly formatted shipping_height.
+	 */
+	int getSHIPPINGHEIGHTINVALID();
+
+	/*! \brief Set Some items include incorrectly formatted shipping_height.
+	 */
+	void setSHIPPINGHEIGHTINVALID(int  sHIPPING_HEIGHT_INVALID);
+	/*! \brief Get Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
+	 */
+	int getSALESPRICETOOHIGH();
+
+	/*! \brief Set Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
+	 */
+	void setSALESPRICETOOHIGH(int  sALES_PRICE_TOO_HIGH);
+	/*! \brief Get Some items include incorrectly formatted MPNs.
+	 */
+	int getMPNINVALID();
+
+	/*! \brief Set Some items include incorrectly formatted MPNs.
+	 */
+	void setMPNINVALID(int  mPN_INVALID);
 
 private:
 	int tITLE_LENGTH_TOO_LONG;
@@ -367,6 +423,7 @@ private:
 	int gENDER_INVALID;
 	int aGE_GROUP_INVALID;
 	int sIZE_TYPE_INVALID;
+	int sIZE_SYSTEM_INVALID;
 	int lINK_FORMAT_WARNING;
 	int dUPLICATE_PRODUCTS;
 	int sALES_PRICE_INVALID;
@@ -407,6 +464,13 @@ private:
 	int uTM_SOURCE_AUTO_CORRECTED;
 	int cOUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 	int mIN_AD_PRICE_INVALID;
+	int gTIN_INVALID;
+	int iNCONSISTENT_CURRENCY_VALUES;
+	int sALES_PRICE_TOO_LOW;
+	int sHIPPING_WIDTH_INVALID;
+	int sHIPPING_HEIGHT_INVALID;
+	int sALES_PRICE_TOO_HIGH;
+	int mPN_INVALID;
 	void __init();
 	void __cleanup();
 

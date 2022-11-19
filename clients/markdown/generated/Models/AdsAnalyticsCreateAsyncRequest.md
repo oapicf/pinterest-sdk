@@ -16,7 +16,7 @@
 | **report\_format** | [**DataOutputFormat**](DataOutputFormat.md) | Specification for formatting report data | [optional] [default to JSON] |
 | **campaign\_ids** | **List** | List of campaign ids | [optional] [default to null] |
 | **campaign\_statuses** | [**List**](CampaignSummaryStatus.md) | List of status values for filtering | [optional] [default to null] |
-| **campaign\_objective\_types** | [**List**](ObjectiveType.md) | List of values for filtering | [optional] [default to null] |
+| **campaign\_objective\_types** | [**List**](ObjectiveType.md) | List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] in BETA. | [optional] [default to null] |
 | **ad\_group\_ids** | **List** | List of ad group ids | [optional] [default to null] |
 | **ad\_group\_statuses** | [**List**](AdGroupSummaryStatus.md) | List of values for filtering | [optional] [default to null] |
 | **ad\_ids** | **List** | List of ad ids | [optional] [default to null] |

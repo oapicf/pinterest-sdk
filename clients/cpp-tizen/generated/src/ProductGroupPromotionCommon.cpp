@@ -32,6 +32,7 @@ ProductGroupPromotionCommon::__init()
 	//collections_hero_destination_url = std::string();
 	//slideshow_collections_title = std::string();
 	//slideshow_collections_description = std::string();
+	//is_mdl = bool(false);
 }
 
 void
@@ -81,6 +82,11 @@ ProductGroupPromotionCommon::__cleanup()
 	//
 	//delete slideshow_collections_description;
 	//slideshow_collections_description = NULL;
+	//}
+	//if(is_mdl != NULL) {
+	//
+	//delete is_mdl;
+	//is_mdl = NULL;
 	//}
 	//
 }
@@ -195,6 +201,17 @@ ProductGroupPromotionCommon::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_mdlKey = "is_mdl";
+	node = json_object_get_member(pJsonObject, is_mdlKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_mdl, node, "bool", "");
+		} else {
+			
+		}
+	}
 }
 
 ProductGroupPromotionCommon::ProductGroupPromotionCommon(char* json)
@@ -298,6 +315,15 @@ ProductGroupPromotionCommon::toJson()
 	}
 	const gchar *slideshow_collections_descriptionKey = "slideshow_collections_description";
 	json_object_set_member(pJsonObject, slideshow_collections_descriptionKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsMdl();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_mdlKey = "is_mdl";
+	json_object_set_member(pJsonObject, is_mdlKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -412,6 +438,18 @@ void
 ProductGroupPromotionCommon::setSlideshowCollectionsDescription(std::string  slideshow_collections_description)
 {
 	this->slideshow_collections_description = slideshow_collections_description;
+}
+
+bool
+ProductGroupPromotionCommon::getIsMdl()
+{
+	return is_mdl;
+}
+
+void
+ProductGroupPromotionCommon::setIsMdl(bool  is_mdl)
+{
+	this->is_mdl = is_mdl;
 }
 
 

@@ -36,9 +36,11 @@ CatalogsItemValidationErrors::__init()
 	//iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = new CatalogsItemValidationDetails();
 	//lINK_FORMAT_INVALID = new CatalogsItemValidationDetails();
 	//lINK_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
+	//lIST_PRICE_INVALID = new CatalogsItemValidationDetails();
 	//mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = new CatalogsItemValidationDetails();
 	//pARSE_LINE_ERROR = new CatalogsItemValidationDetails();
 	//pINJOIN_CONTENT_UNSAFE = new CatalogsItemValidationDetails();
+	//pRICE_CANNOT_BE_DETERMINED = new CatalogsItemValidationDetails();
 	//pRICE_MISSING = new CatalogsItemValidationDetails();
 	//pRODUCT_LINK_MISSING = new CatalogsItemValidationDetails();
 	//pRODUCT_PRICE_INVALID = new CatalogsItemValidationDetails();
@@ -113,6 +115,11 @@ CatalogsItemValidationErrors::__cleanup()
 	//delete lINK_LENGTH_TOO_LONG;
 	//lINK_LENGTH_TOO_LONG = NULL;
 	//}
+	//if(lIST_PRICE_INVALID != NULL) {
+	//
+	//delete lIST_PRICE_INVALID;
+	//lIST_PRICE_INVALID = NULL;
+	//}
 	//if(mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED != NULL) {
 	//
 	//delete mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
@@ -127,6 +134,11 @@ CatalogsItemValidationErrors::__cleanup()
 	//
 	//delete pINJOIN_CONTENT_UNSAFE;
 	//pINJOIN_CONTENT_UNSAFE = NULL;
+	//}
+	//if(pRICE_CANNOT_BE_DETERMINED != NULL) {
+	//
+	//delete pRICE_CANNOT_BE_DETERMINED;
+	//pRICE_CANNOT_BE_DETERMINED = NULL;
 	//}
 	//if(pRICE_MISSING != NULL) {
 	//
@@ -338,6 +350,20 @@ CatalogsItemValidationErrors::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *lIST_PRICE_INVALIDKey = "LIST_PRICE_INVALID";
+	node = json_object_get_member(pJsonObject, lIST_PRICE_INVALIDKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsItemValidationDetails")) {
+			jsonToValue(&lIST_PRICE_INVALID, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
+		} else {
+			
+			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&lIST_PRICE_INVALID);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *mAX_ITEMS_PER_ITEM_GROUP_EXCEEDEDKey = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED";
 	node = json_object_get_member(pJsonObject, mAX_ITEMS_PER_ITEM_GROUP_EXCEEDEDKey);
 	if (node !=NULL) {
@@ -376,6 +402,20 @@ CatalogsItemValidationErrors::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&pINJOIN_CONTENT_UNSAFE);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *pRICE_CANNOT_BE_DETERMINEDKey = "PRICE_CANNOT_BE_DETERMINED";
+	node = json_object_get_member(pJsonObject, pRICE_CANNOT_BE_DETERMINEDKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsItemValidationDetails")) {
+			jsonToValue(&pRICE_CANNOT_BE_DETERMINED, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
+		} else {
+			
+			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&pRICE_CANNOT_BE_DETERMINED);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -631,6 +671,20 @@ CatalogsItemValidationErrors::toJson()
 	const gchar *lINK_LENGTH_TOO_LONGKey = "LINK_LENGTH_TOO_LONG";
 	json_object_set_member(pJsonObject, lINK_LENGTH_TOO_LONGKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
+		CatalogsItemValidationDetails obj = getLISTPRICEINVALID();
+		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
+	}
+	else {
+		
+		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getLISTPRICEINVALID());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *lIST_PRICE_INVALIDKey = "LIST_PRICE_INVALID";
+	json_object_set_member(pJsonObject, lIST_PRICE_INVALIDKey, node);
+	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getMAXITEMSPERITEMGROUPEXCEEDED();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
 	}
@@ -672,6 +726,20 @@ CatalogsItemValidationErrors::toJson()
 	}
 	const gchar *pINJOIN_CONTENT_UNSAFEKey = "PINJOIN_CONTENT_UNSAFE";
 	json_object_set_member(pJsonObject, pINJOIN_CONTENT_UNSAFEKey, node);
+	if (isprimitive("CatalogsItemValidationDetails")) {
+		CatalogsItemValidationDetails obj = getPRICECANNOTBEDETERMINED();
+		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
+	}
+	else {
+		
+		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getPRICECANNOTBEDETERMINED());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *pRICE_CANNOT_BE_DETERMINEDKey = "PRICE_CANNOT_BE_DETERMINED";
+	json_object_set_member(pJsonObject, pRICE_CANNOT_BE_DETERMINEDKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getPRICEMISSING();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
@@ -893,6 +961,18 @@ CatalogsItemValidationErrors::setLINKLENGTHTOOLONG(CatalogsItemValidationDetails
 }
 
 CatalogsItemValidationDetails
+CatalogsItemValidationErrors::getLISTPRICEINVALID()
+{
+	return lIST_PRICE_INVALID;
+}
+
+void
+CatalogsItemValidationErrors::setLISTPRICEINVALID(CatalogsItemValidationDetails  lIST_PRICE_INVALID)
+{
+	this->lIST_PRICE_INVALID = lIST_PRICE_INVALID;
+}
+
+CatalogsItemValidationDetails
 CatalogsItemValidationErrors::getMAXITEMSPERITEMGROUPEXCEEDED()
 {
 	return mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
@@ -926,6 +1006,18 @@ void
 CatalogsItemValidationErrors::setPINJOINCONTENTUNSAFE(CatalogsItemValidationDetails  pINJOIN_CONTENT_UNSAFE)
 {
 	this->pINJOIN_CONTENT_UNSAFE = pINJOIN_CONTENT_UNSAFE;
+}
+
+CatalogsItemValidationDetails
+CatalogsItemValidationErrors::getPRICECANNOTBEDETERMINED()
+{
+	return pRICE_CANNOT_BE_DETERMINED;
+}
+
+void
+CatalogsItemValidationErrors::setPRICECANNOTBEDETERMINED(CatalogsItemValidationDetails  pRICE_CANNOT_BE_DETERMINED)
+{
+	this->pRICE_CANNOT_BE_DETERMINED = pRICE_CANNOT_BE_DETERMINED;
 }
 
 CatalogsItemValidationDetails

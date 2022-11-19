@@ -26,6 +26,7 @@ CatalogsFeedIngestionErrors::__init()
 	//iMAGE_DOWNLOAD_ERROR = int(0);
 	//lINE_LEVEL_INTERNAL_ERROR = int(0);
 	//lARGE_PRODUCT_COUNT_DECREASE = int(0);
+	//aCCOUNT_FLAGGED = int(0);
 }
 
 void
@@ -45,6 +46,11 @@ CatalogsFeedIngestionErrors::__cleanup()
 	//
 	//delete lARGE_PRODUCT_COUNT_DECREASE;
 	//lARGE_PRODUCT_COUNT_DECREASE = NULL;
+	//}
+	//if(aCCOUNT_FLAGGED != NULL) {
+	//
+	//delete aCCOUNT_FLAGGED;
+	//aCCOUNT_FLAGGED = NULL;
 	//}
 	//
 }
@@ -83,6 +89,17 @@ CatalogsFeedIngestionErrors::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&lARGE_PRODUCT_COUNT_DECREASE, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *aCCOUNT_FLAGGEDKey = "ACCOUNT_FLAGGED";
+	node = json_object_get_member(pJsonObject, aCCOUNT_FLAGGEDKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&aCCOUNT_FLAGGED, node, "int", "");
 		} else {
 			
 		}
@@ -126,6 +143,15 @@ CatalogsFeedIngestionErrors::toJson()
 	}
 	const gchar *lARGE_PRODUCT_COUNT_DECREASEKey = "LARGE_PRODUCT_COUNT_DECREASE";
 	json_object_set_member(pJsonObject, lARGE_PRODUCT_COUNT_DECREASEKey, node);
+	if (isprimitive("int")) {
+		int obj = getACCOUNTFLAGGED();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *aCCOUNT_FLAGGEDKey = "ACCOUNT_FLAGGED";
+	json_object_set_member(pJsonObject, aCCOUNT_FLAGGEDKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -168,6 +194,18 @@ void
 CatalogsFeedIngestionErrors::setLARGEPRODUCTCOUNTDECREASE(int  lARGE_PRODUCT_COUNT_DECREASE)
 {
 	this->lARGE_PRODUCT_COUNT_DECREASE = lARGE_PRODUCT_COUNT_DECREASE;
+}
+
+int
+CatalogsFeedIngestionErrors::getACCOUNTFLAGGED()
+{
+	return aCCOUNT_FLAGGED;
+}
+
+void
+CatalogsFeedIngestionErrors::setACCOUNTFLAGGED(int  aCCOUNT_FLAGGED)
+{
+	this->aCCOUNT_FLAGGED = aCCOUNT_FLAGGED;
 }
 
 

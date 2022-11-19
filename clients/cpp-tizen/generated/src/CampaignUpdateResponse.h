@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "CampaignCreateResponse.h"
 #include "CampaignCreateResponseItem.h"
 #include <list>
 #include "Object.h"

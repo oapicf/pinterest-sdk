@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Items.h"
+#include "ProductGroupPromotionCommon.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setAdGroupId(std::string  ad_group_id);
 	/*! \brief Get 
 	 */
-	std::list<Items> getProductGroupPromotion();
+	std::list<ProductGroupPromotionCommon> getProductGroupPromotion();
 
 	/*! \brief Set 
 	 */
-	void setProductGroupPromotion(std::list <Items> product_group_promotion);
+	void setProductGroupPromotion(std::list <ProductGroupPromotionCommon> product_group_promotion);
 
 private:
 	std::string ad_group_id;
-	std::list <Items>product_group_promotion;
+	std::list <ProductGroupPromotionCommon>product_group_promotion;
 	void __init();
 	void __cleanup();
 

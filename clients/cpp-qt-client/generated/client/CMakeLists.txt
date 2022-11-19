@@ -21,11 +21,13 @@ add_library(${PROJECT_NAME}
     OAIAdAccount.cpp
     OAIAdAccountAnalyticsResponse_inner.cpp
     OAIAdAccountCreateRequest.cpp
+    OAIAdAccountsCountryResponse.cpp
+    OAIAdAccountsCountryResponseData.cpp
     OAIAdArrayResponse.cpp
     OAIAdArrayResponseElement.cpp
     OAIAdCommon.cpp
     OAIAdCommon_tracking_urls.cpp
-    OAIAdCreateRequest_inner.cpp
+    OAIAdCreateRequest.cpp
     OAIAdGroupArrayResponse.cpp
     OAIAdGroupArrayResponseElement.cpp
     OAIAdGroupCommon.cpp
@@ -44,8 +46,8 @@ add_library(${PROJECT_NAME}
     OAIAdPreviewURLResponse.cpp
     OAIAdResponse.cpp
     OAIAdResponse_allOf.cpp
+    OAIAdUpdateRequest.cpp
     OAIAdUpdateRequest_1.cpp
-    OAIAdUpdateRequest_inner.cpp
     OAIAd_account_owner.cpp
     OAIAd_accounts_list_200_response.cpp
     OAIAd_accounts_list_200_response_allOf.cpp
@@ -65,6 +67,18 @@ add_library(${PROJECT_NAME}
     OAIAds_list_200_response_allOf.cpp
     OAIAnalyticsMetricsResponse.cpp
     OAIAnalyticsMetricsResponse_daily_metrics_inner.cpp
+    OAIAudience.cpp
+    OAIAudienceCommon.cpp
+    OAIAudienceCreateRequest.cpp
+    OAIAudienceCreateRequest_1.cpp
+    OAIAudienceInsightCategoryCommon.cpp
+    OAIAudienceRule.cpp
+    OAIAudienceType.cpp
+    OAIAudienceUpdateOperationType.cpp
+    OAIAudienceUpdateRequest.cpp
+    OAIAudienceUpdateRequest_1.cpp
+    OAIAudiences_list_200_response.cpp
+    OAIAudiences_list_200_response_allOf.cpp
     OAIAvailabilityFilter.cpp
     OAIBatchOperation.cpp
     OAIBatchOperationStatus.cpp
@@ -82,20 +96,35 @@ add_library(${PROJECT_NAME}
     OAIBoard_sections_list_pins_200_response_allOf.cpp
     OAIBoards_list_200_response.cpp
     OAIBoards_list_200_response_allOf.cpp
+    OAIBookClosedResponse.cpp
     OAIBrandFilter.cpp
     OAIBudgetType.cpp
+    OAIBulkDownloadRequest.cpp
+    OAIBulkDownloadRequest_campaign_filter.cpp
+    OAIBulkDownloadResponse.cpp
+    OAIBulkEntityType.cpp
+    OAIBulkOutputFormat.cpp
+    OAIBulkUpsertRequest.cpp
+    OAIBulkUpsertRequestCreate.cpp
+    OAIBulkUpsertRequestUpdate.cpp
+    OAIBulkUpsertResponse.cpp
+    OAIBulkUpsertStatus.cpp
+    OAIBulkUpsertStatusResponse.cpp
     OAICampaignCommon.cpp
     OAICampaignCreateCommon.cpp
     OAICampaignCreateCommon_allOf.cpp
     OAICampaignCreateRequest.cpp
+    OAICampaignCreateRequest_allOf.cpp
     OAICampaignCreateResponse.cpp
     OAICampaignCreateResponseData.cpp
+    OAICampaignCreateResponseData_allOf.cpp
     OAICampaignCreateResponseItem.cpp
     OAICampaignId.cpp
     OAICampaignResponse.cpp
     OAICampaignResponse_allOf.cpp
     OAICampaignSummaryStatus.cpp
     OAICampaignUpdateRequest.cpp
+    OAICampaignUpdateRequest_allOf.cpp
     OAICampaignUpdateResponse.cpp
     OAICampaignsAnalyticsResponse_inner.cpp
     OAICampaigns_list_200_response.cpp
@@ -124,6 +153,9 @@ add_library(${PROJECT_NAME}
     OAICatalogsItems.cpp
     OAICatalogsItemsBatch.cpp
     OAICatalogsItemsBatchRequest.cpp
+    OAICatalogsItemsCreateBatchRequest.cpp
+    OAICatalogsItemsDeleteDiscontinuedBatchRequest.cpp
+    OAICatalogsItemsUpdateBatchRequest.cpp
     OAICatalogsListProductsByFilterRequest.cpp
     OAICatalogsListProductsByFilterRequest_oneOf.cpp
     OAICatalogsProduct.cpp
@@ -152,7 +184,17 @@ add_library(${PROJECT_NAME}
     OAICatalogs_product_groups_list_200_response.cpp
     OAICatalogs_product_groups_list_200_response_allOf.cpp
     OAIConditionFilter.cpp
+    OAIConversionApiResponse.cpp
+    OAIConversionApiResponse_events_inner.cpp
     OAIConversionAttributionWindowDays.cpp
+    OAIConversionEvents.cpp
+    OAIConversionEventsUserData.cpp
+    OAIConversionEventsUserData_anyOf.cpp
+    OAIConversionEventsUserData_anyOf_1.cpp
+    OAIConversionEventsUserData_anyOf_2.cpp
+    OAIConversionEvents_data_inner.cpp
+    OAIConversionEvents_data_inner_custom_data.cpp
+    OAIConversionEvents_data_inner_custom_data_contents_inner.cpp
     OAIConversionReportAttributionType.cpp
     OAIConversionReportTimeType.cpp
     OAICountry.cpp
@@ -164,8 +206,15 @@ add_library(${PROJECT_NAME}
     OAICustomLabel2Filter.cpp
     OAICustomLabel3Filter.cpp
     OAICustomLabel4Filter.cpp
+    OAICustomerList.cpp
+    OAICustomerListRequest.cpp
+    OAICustomerListUpdateRequest.cpp
+    OAICustomer_lists_list_200_response.cpp
+    OAICustomer_lists_list_200_response_allOf.cpp
     OAIDataOutputFormat.cpp
     OAIDataStatus.cpp
+    OAIDeliveryMetricsResponse.cpp
+    OAIDeliveryMetricsResponse_items_inner.cpp
     OAIEntityStatus.cpp
     OAIError.cpp
     OAIException.cpp
@@ -175,6 +224,7 @@ add_library(${PROJECT_NAME}
     OAIFeeds_list_200_response.cpp
     OAIFeeds_list_200_response_allOf.cpp
     OAIGenderFilter.cpp
+    OAIGetAudiencesOrderBy.cpp
     OAIGoogleProductCategory0Filter.cpp
     OAIGoogleProductCategory1Filter.cpp
     OAIGoogleProductCategory2Filter.cpp
@@ -184,8 +234,12 @@ add_library(${PROJECT_NAME}
     OAIGoogleProductCategory6Filter.cpp
     OAIGranularity.cpp
     OAIImageDetails.cpp
+    OAIImageMetadata.cpp
     OAIItemAttributes.cpp
+    OAIItemAttributes_allOf.cpp
     OAIItemBatchRecord.cpp
+    OAIItemCreateBatchRecord.cpp
+    OAIItemDeleteDiscontinuedBatchRecord.cpp
     OAIItemGroupIdFilter.cpp
     OAIItemIdFilter.cpp
     OAIItemProcessingRecord.cpp
@@ -193,11 +247,26 @@ add_library(${PROJECT_NAME}
     OAIItemResponse.cpp
     OAIItemResponse_anyOf.cpp
     OAIItemResponse_anyOf_1.cpp
+    OAIItemUpdateBatchRecord.cpp
     OAIItemValidationEvent.cpp
-    OAIItems.cpp
     OAIItems_issues_list_200_response.cpp
     OAIItems_issues_list_200_response_allOf.cpp
+    OAIKeyword.cpp
+    OAIKeywordError.cpp
+    OAIKeywordMetrics.cpp
+    OAIKeywordMetricsResponse.cpp
+    OAIKeywordUpdate.cpp
+    OAIKeywordUpdateBody.cpp
+    OAIKeywordsCommon.cpp
+    OAIKeywordsMetricsArrayResponse.cpp
+    OAIKeywordsRequest.cpp
+    OAIKeywordsResponse.cpp
+    OAIKeywords_get_200_response.cpp
+    OAIKeywords_get_200_response_allOf.cpp
     OAILanguage.cpp
+    OAILineItem.cpp
+    OAIMatchType.cpp
+    OAIMatchTypeResponse.cpp
     OAIMaxPriceFilter.cpp
     OAIMediaUpload.cpp
     OAIMediaUploadDetails.cpp
@@ -209,6 +278,7 @@ add_library(${PROJECT_NAME}
     OAIMedia_list_200_response.cpp
     OAIMedia_list_200_response_allOf.cpp
     OAIMetricsReportingLevel.cpp
+    OAIMetricsResponse.cpp
     OAIMinPriceFilter.cpp
     OAINonNullableCatalogsCurrency.cpp
     OAINonNullableProductAvailabilityType.cpp
@@ -227,17 +297,26 @@ add_library(${PROJECT_NAME}
     OAIPaginated.cpp
     OAIPin.cpp
     OAIPinMedia.cpp
+    OAIPinMediaMetadata.cpp
     OAIPinMediaSource.cpp
     OAIPinMediaSourceImageBase64.cpp
     OAIPinMediaSourceImageURL.cpp
     OAIPinMediaSourceVideoID.cpp
     OAIPinMediaWithImage.cpp
+    OAIPinMediaWithImageAndVideo.cpp
+    OAIPinMediaWithImageAndVideo_allOf.cpp
     OAIPinMediaWithImage_allOf.cpp
+    OAIPinMediaWithImages.cpp
+    OAIPinMediaWithImages_allOf.cpp
     OAIPinMediaWithVideo.cpp
     OAIPinMediaWithVideo_allOf.cpp
+    OAIPinMediaWithVideos.cpp
+    OAIPinMediaWithVideos_allOf.cpp
     OAIPinPromotionSummaryStatus.cpp
     OAIPin_media.cpp
     OAIPin_media_source.cpp
+    OAIPins_save_request.cpp
+    OAIPinterestTagEventData.cpp
     OAIPlacementGroupType.cpp
     OAIProductAvailabilityType.cpp
     OAIProductGroupAnalyticsResponse_inner.cpp
@@ -260,6 +339,7 @@ add_library(${PROJECT_NAME}
     OAIRelatedTerms.cpp
     OAIRelatedTerms_related_terms_list_inner.cpp
     OAIReportingColumnAsync.cpp
+    OAISingleInterestTargetingOptionResponse.cpp
     OAITargetingSpec.cpp
     OAITargetingSpec_1.cpp
     OAITargetingSpec_SHOPPING_RETARGETING.cpp
@@ -272,17 +352,26 @@ add_library(${PROJECT_NAME}
     OAITopVideoPinsAnalyticsResponse.cpp
     OAITopVideoPinsAnalyticsResponse_pins_inner.cpp
     OAITrackingUrls.cpp
+    OAIUpdatableItemAttributes.cpp
     OAIUserListOperationType.cpp
+    OAIUserListType.cpp
+    OAIVideoMetadata.cpp
     OAIAdAccountsApi.cpp
     OAIAdGroupsApi.cpp
     OAIAdsApi.cpp
+    OAIAudiencesApi.cpp
     OAIBoardsApi.cpp
+    OAIBulkApi.cpp
     OAICampaignsApi.cpp
     OAICatalogsApi.cpp
+    OAIConversionEventsApi.cpp
+    OAICustomerListsApi.cpp
+    OAIKeywordsApi.cpp
     OAIMediaApi.cpp
     OAIOauthApi.cpp
     OAIPinsApi.cpp
     OAIProductGroupPromotionsApi.cpp
+    OAIResourcesApi.cpp
     OAITermsApi.cpp
     OAITermsOfServiceApi.cpp
     OAIUserAccountApi.cpp

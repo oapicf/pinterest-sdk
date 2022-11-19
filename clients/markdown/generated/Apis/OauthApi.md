@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Generate OAuth access token
 
-    Generate an OAuth access token by using an authorization code or a refresh token.  See &lt;a href&#x3D;&#39;/docs/api/v5/#tag/Authentication&#39;&gt;Authentication&lt;/a&gt; for more.
+    Generate an OAuth access token by using an authorization code or a refresh token.  See &lt;a href&#x3D;&#39;/docs/getting-started/authentication/&#39;&gt;Authentication&lt;/a&gt; for more.
 
 ### Parameters
 
@@ -27,7 +27,7 @@ Generate OAuth access token
 
 ### Authorization
 
-No authorization required
+[basic](../README.md#basic)
 
 ### HTTP request headers
 

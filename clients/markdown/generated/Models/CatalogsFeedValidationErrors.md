@@ -33,6 +33,8 @@
 | **ITEM\_MAIN\_IMAGE\_DOWNLOAD\_FAILURE** | **Integer** | Some items&#39; main images can&#39;t be found. | [optional] [default to null] |
 | **PINJOIN\_CONTENT\_UNSAFE** | **Integer** | Some items were not published because they don&#39;t meet Pinterest&#39;s Merchant Guidelines. | [optional] [default to null] |
 | **BLOCKLISTED\_IMAGE\_SIGNATURE** | **Integer** | Some items were not published because they don&#39;t meet Pinterest&#39;s Merchant Guidelines. | [optional] [default to null] |
+| **LIST\_PRICE\_INVALID** | **Integer** | Some items have list price formatting errors in their product metadata, those items will not be published. | [optional] [default to null] |
+| **PRICE\_CANNOT\_BE\_DETERMINED** | **Integer** | Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published. | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

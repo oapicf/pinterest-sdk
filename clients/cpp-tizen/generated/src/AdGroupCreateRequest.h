@@ -10,14 +10,13 @@
 
 #include <string>
 #include "ActionType.h"
-#include "AdGroupCommon.h"
 #include "AdGroupCommon_tracking_urls.h"
-#include "AdGroupCreateRequest_allOf.h"
 #include "BudgetType.h"
 #include "EntityStatus.h"
 #include "PacingDeliveryType.h"
 #include "PlacementGroupType.h"
 #include "TargetingSpec.h"
+#include <map>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -117,11 +116,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setTargetingSpec(TargetingSpec  targeting_spec);
-	/*! \brief Get Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\\\"/docs/redoc/#section/Billable-event\\\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+	/*! \brief Get Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
 	 */
 	int getLifetimeFrequencyCap();
 
-	/*! \brief Set Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\\\"/docs/redoc/#section/Billable-event\\\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+	/*! \brief Set Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
 	 */
 	void setLifetimeFrequencyCap(int  lifetime_frequency_cap);
 	/*! \brief Get 
@@ -138,11 +137,11 @@ public:
 	/*! \brief Set Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	 */
 	void setAutoTargetingEnabled(bool  auto_targeting_enabled);
-	/*! \brief Get <a href=\\\"/docs/redoc/#section/Placement-group\\\">Placement group</a>.
+	/*! \brief Get <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
 	 */
 	PlacementGroupType getPlacementGroup();
 
-	/*! \brief Set <a href=\\\"/docs/redoc/#section/Placement-group\\\">Placement group</a>.
+	/*! \brief Set <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
 	 */
 	void setPlacementGroup(PlacementGroupType  placement_group);
 	/*! \brief Get Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.

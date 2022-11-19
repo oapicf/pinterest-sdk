@@ -9,12 +9,10 @@
 
 
 #include <string>
-#include "CatalogsDbItem.h"
 #include "CatalogsFeedIngestionDetails.h"
 #include "CatalogsFeedProcessingStatus.h"
 #include "CatalogsFeedProductCounts.h"
 #include "CatalogsFeedValidationDetails.h"
-#include "Catalogs_feed_processing_result_fields.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API

@@ -4,7 +4,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **countries** | [**List**](Country.md) |  | [optional] [default to null] |
-| **currency** | [**Currency**](Currency.md) |  | [optional] [default to null] |
+| **currency** | [**Currency**](Currency.md) |  | [default to null] |
 | **objective\_type** | [**ObjectiveType**](ObjectiveType.md) |  | [optional] [default to null] |
 | **billable\_event** | [**ActionType**](ActionType.md) |  | [default to null] |
 | **optimization\_goal\_metadata** | [**Object**](.md) |  | [optional] [default to null] |

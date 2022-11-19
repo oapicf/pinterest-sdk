@@ -110,6 +110,13 @@ public:
 	/*! \brief Set Slideshow Collections Description
 	 */
 	void setSlideshowCollectionsDescription(std::string  slideshow_collections_description);
+	/*! \brief Get If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+	 */
+	bool getIsMdl();
+
+	/*! \brief Set If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+	 */
+	void setIsMdl(bool  is_mdl);
 
 private:
 	EntityStatus status;
@@ -121,6 +128,7 @@ private:
 	std::string collections_hero_destination_url;
 	std::string slideshow_collections_title;
 	std::string slideshow_collections_description;
+	bool is_mdl;
 	void __init();
 	void __cleanup();
 

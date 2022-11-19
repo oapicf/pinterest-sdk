@@ -66,12 +66,12 @@ ProductGroupPromotionCreateRequest::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<Items> new_list;
-			Items inst;
+			list<ProductGroupPromotionCommon> new_list;
+			ProductGroupPromotionCommon inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("Items")) {
-					jsonToValue(&inst, temp_json, "Items", "");
+				if (isprimitive("ProductGroupPromotionCommon")) {
+					jsonToValue(&inst, temp_json, "ProductGroupPromotionCommon", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ ProductGroupPromotionCreateRequest::toJson()
 	}
 	const gchar *ad_group_idKey = "ad_group_id";
 	json_object_set_member(pJsonObject, ad_group_idKey, node);
-	if (isprimitive("Items")) {
-		list<Items> new_list = static_cast<list <Items> > (getProductGroupPromotion());
-		node = converttoJson(&new_list, "Items", "array");
+	if (isprimitive("ProductGroupPromotionCommon")) {
+		list<ProductGroupPromotionCommon> new_list = static_cast<list <ProductGroupPromotionCommon> > (getProductGroupPromotion());
+		node = converttoJson(&new_list, "ProductGroupPromotionCommon", "array");
 	} else {
 		node = json_node_alloc();
-		list<Items> new_list = static_cast<list <Items> > (getProductGroupPromotion());
+		list<ProductGroupPromotionCommon> new_list = static_cast<list <ProductGroupPromotionCommon> > (getProductGroupPromotion());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<Items>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<ProductGroupPromotionCommon>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			Items obj = *it;
+			ProductGroupPromotionCommon obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ ProductGroupPromotionCreateRequest::setAdGroupId(std::string  ad_group_id)
 	this->ad_group_id = ad_group_id;
 }
 
-std::list<Items>
+std::list<ProductGroupPromotionCommon>
 ProductGroupPromotionCreateRequest::getProductGroupPromotion()
 {
 	return product_group_promotion;
 }
 
 void
-ProductGroupPromotionCreateRequest::setProductGroupPromotion(std::list <Items> product_group_promotion)
+ProductGroupPromotionCreateRequest::setProductGroupPromotion(std::list <ProductGroupPromotionCommon> product_group_promotion)
 {
 	this->product_group_promotion = product_group_promotion;
 }

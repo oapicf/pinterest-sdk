@@ -37,7 +37,6 @@ CampaignUpdateRequest::__init()
 	//is_flexible_daily_budgets = bool(false);
 	//default_ad_group_budget_in_micro_currency = int(0);
 	//is_automated_campaign = bool(false);
-	//objective_type = new ObjectiveType();
 }
 
 void
@@ -112,11 +111,6 @@ CampaignUpdateRequest::__cleanup()
 	//
 	//delete is_automated_campaign;
 	//is_automated_campaign = NULL;
-	//}
-	//if(objective_type != NULL) {
-	//
-	//delete objective_type;
-	//objective_type = NULL;
 	//}
 	//
 }
@@ -283,20 +277,6 @@ CampaignUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *objective_typeKey = "objective_type";
-	node = json_object_get_member(pJsonObject, objective_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ObjectiveType")) {
-			jsonToValue(&objective_type, node, "ObjectiveType", "ObjectiveType");
-		} else {
-			
-			ObjectiveType* obj = static_cast<ObjectiveType*> (&objective_type);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 CampaignUpdateRequest::CampaignUpdateRequest(char* json)
@@ -440,20 +420,6 @@ CampaignUpdateRequest::toJson()
 	}
 	const gchar *is_automated_campaignKey = "is_automated_campaign";
 	json_object_set_member(pJsonObject, is_automated_campaignKey, node);
-	if (isprimitive("ObjectiveType")) {
-		ObjectiveType obj = getObjectiveType();
-		node = converttoJson(&obj, "ObjectiveType", "");
-	}
-	else {
-		
-		ObjectiveType obj = static_cast<ObjectiveType> (getObjectiveType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *objective_typeKey = "objective_type";
-	json_object_set_member(pJsonObject, objective_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -628,18 +594,6 @@ void
 CampaignUpdateRequest::setIsAutomatedCampaign(bool  is_automated_campaign)
 {
 	this->is_automated_campaign = is_automated_campaign;
-}
-
-ObjectiveType
-CampaignUpdateRequest::getObjectiveType()
-{
-	return objective_type;
-}
-
-void
-CampaignUpdateRequest::setObjectiveType(ObjectiveType  objective_type)
-{
-	this->objective_type = objective_type;
 }
 
 

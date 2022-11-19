@@ -10,7 +10,6 @@
 
 #include <string>
 #include "MediaUploadType.h"
-#include "MediaUpload_allOf.h"
 #include "MediaUpload_allOf_upload_parameters.h"
 #include "Object.h"
 

@@ -6,7 +6,7 @@
 | **id** | **String** | Campaign ID. | [optional] [default to null] |
 | **ad\_account\_id** | **String** | Campaign&#39;s Advertiser ID. | [optional] [default to null] |
 | **name** | **String** | Campaign name. | [optional] [default to null] |
-| **status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [default to ACTIVE] |
+| **status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [default to null] |
 | **lifetime\_spend\_cap** | **Integer** | Campaign total spending cap. | [optional] [default to null] |
 | **daily\_spend\_cap** | **Integer** | Campaign daily spending cap. | [optional] [default to null] |
 | **order\_line\_id** | **String** | Order line ID that appears on the invoice. | [optional] [default to null] |

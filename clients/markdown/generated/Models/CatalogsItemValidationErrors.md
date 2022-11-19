@@ -16,9 +16,11 @@
 | **ITEM\_MAIN\_IMAGE\_DOWNLOAD\_FAILURE** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **LINK\_FORMAT\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **LINK\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
+| **LIST\_PRICE\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **MAX\_ITEMS\_PER\_ITEM\_GROUP\_EXCEEDED** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **PARSE\_LINE\_ERROR** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **PINJOIN\_CONTENT\_UNSAFE** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
+| **PRICE\_CANNOT\_BE\_DETERMINED** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **PRICE\_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **PRODUCT\_LINK\_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **PRODUCT\_PRICE\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |

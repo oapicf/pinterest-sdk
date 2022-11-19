@@ -139,6 +139,13 @@ public:
 	void setLINKLENGTHTOOLONG(CatalogsItemValidationDetails  lINK_LENGTH_TOO_LONG);
 	/*! \brief Get 
 	 */
+	CatalogsItemValidationDetails getLISTPRICEINVALID();
+
+	/*! \brief Set 
+	 */
+	void setLISTPRICEINVALID(CatalogsItemValidationDetails  lIST_PRICE_INVALID);
+	/*! \brief Get 
+	 */
 	CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED();
 
 	/*! \brief Set 
@@ -158,6 +165,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setPINJOINCONTENTUNSAFE(CatalogsItemValidationDetails  pINJOIN_CONTENT_UNSAFE);
+	/*! \brief Get 
+	 */
+	CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED();
+
+	/*! \brief Set 
+	 */
+	void setPRICECANNOTBEDETERMINED(CatalogsItemValidationDetails  pRICE_CANNOT_BE_DETERMINED);
 	/*! \brief Get 
 	 */
 	CatalogsItemValidationDetails getPRICEMISSING();
@@ -201,9 +215,11 @@ private:
 	CatalogsItemValidationDetails iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 	CatalogsItemValidationDetails lINK_FORMAT_INVALID;
 	CatalogsItemValidationDetails lINK_LENGTH_TOO_LONG;
+	CatalogsItemValidationDetails lIST_PRICE_INVALID;
 	CatalogsItemValidationDetails mAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 	CatalogsItemValidationDetails pARSE_LINE_ERROR;
 	CatalogsItemValidationDetails pINJOIN_CONTENT_UNSAFE;
+	CatalogsItemValidationDetails pRICE_CANNOT_BE_DETERMINED;
 	CatalogsItemValidationDetails pRICE_MISSING;
 	CatalogsItemValidationDetails pRODUCT_LINK_MISSING;
 	CatalogsItemValidationDetails pRODUCT_PRICE_INVALID;

@@ -9,6 +9,7 @@
 #include "Date.h"
 #include "Error.h"
 #include "Pin.h"
+#include "Pins_save_request.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -145,6 +146,35 @@ bool pinsGetSync(char * accessToken,
  */
 bool pinsGetAsync(char * accessToken,
 	std::string pinId, std::string adAccountId, 
+	void(* handler)(Pin, Error, void* )
+	, void* userData);
+
+
+/*! \brief Save pin. *Synchronous*
+ *
+ * Save a pin on a board or board section owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+ * \param pinId Unique identifier of a Pin. *Required*
+ * \param pinsSaveRequest Request object used to save an existing pin *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool pinsSaveSync(char * accessToken,
+	std::string pinId, std::shared_ptr<Pins_save_request> pinsSaveRequest, 
+	void(* handler)(Pin, Error, void* )
+	, void* userData);
+
+/*! \brief Save pin. *Asynchronous*
+ *
+ * Save a pin on a board or board section owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+ * \param pinId Unique identifier of a Pin. *Required*
+ * \param pinsSaveRequest Request object used to save an existing pin *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool pinsSaveAsync(char * accessToken,
+	std::string pinId, std::shared_ptr<Pins_save_request> pinsSaveRequest, 
 	void(* handler)(Pin, Error, void* )
 	, void* userData);
 

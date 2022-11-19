@@ -1,0 +1,11 @@
+# pinterestsdk.model.ads_analytics_filter_column.AdsAnalyticsFilterColumn
+
+Reporting columns for sync reporting data filter
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  | Reporting columns for sync reporting data filter | must be one of ["SPEND_IN_DOLLAR", "TOTAL_IMPRESSION", ] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+

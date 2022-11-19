@@ -1,7 +1,7 @@
 /*
  * ObjectiveType.h
  *
- * Campaign objective type.
+ * Campaign objective type. [\&quot;WEB_SESSIONS\&quot;] in BETA.
  */
 
 #ifndef _ObjectiveType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Campaign objective type.
+/*! \brief Campaign objective type. [\"WEB_SESSIONS\"] in BETA.
  *
  *  \ingroup Models
  *

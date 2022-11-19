@@ -255,6 +255,20 @@ public:
 	/*! \brief Set Some items were not published because they don't meet Pinterest's Merchant Guidelines.
 	 */
 	void setBLOCKLISTEDIMAGESIGNATURE(int  bLOCKLISTED_IMAGE_SIGNATURE);
+	/*! \brief Get Some items have list price formatting errors in their product metadata, those items will not be published.
+	 */
+	int getLISTPRICEINVALID();
+
+	/*! \brief Set Some items have list price formatting errors in their product metadata, those items will not be published.
+	 */
+	void setLISTPRICEINVALID(int  lIST_PRICE_INVALID);
+	/*! \brief Get Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
+	 */
+	int getPRICECANNOTBEDETERMINED();
+
+	/*! \brief Set Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
+	 */
+	void setPRICECANNOTBEDETERMINED(int  pRICE_CANNOT_BE_DETERMINED);
 
 private:
 	int fETCH_ERROR;
@@ -287,6 +301,8 @@ private:
 	int iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 	int pINJOIN_CONTENT_UNSAFE;
 	int bLOCKLISTED_IMAGE_SIGNATURE;
+	int lIST_PRICE_INVALID;
+	int pRICE_CANNOT_BE_DETERMINED;
 	void __init();
 	void __cleanup();
 

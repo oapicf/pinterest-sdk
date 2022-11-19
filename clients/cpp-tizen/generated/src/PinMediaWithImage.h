@@ -11,8 +11,6 @@
 #include <string>
 #include "ImageDetails.h"
 #include "PinMedia.h"
-#include "PinMediaWithImage_allOf.h"
-#include <list>
 #include <map>
 #include "Object.h"
 

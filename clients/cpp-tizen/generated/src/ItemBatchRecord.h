@@ -9,7 +9,10 @@
 
 
 #include <string>
-#include "ItemAttributes.h"
+#include "ItemCreateBatchRecord.h"
+#include "ItemDeleteDiscontinuedBatchRecord.h"
+#include "ItemUpdateBatchRecord.h"
+#include "UpdatableItemAttributes.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -55,15 +58,15 @@ public:
 	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
-	ItemAttributes getAttributes();
+	UpdatableItemAttributes getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(ItemAttributes  attributes);
+	void setAttributes(UpdatableItemAttributes  attributes);
 
 private:
 	std::string item_id;
-	ItemAttributes attributes;
+	UpdatableItemAttributes attributes;
 	void __init();
 	void __cleanup();
 

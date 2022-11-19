@@ -10,7 +10,6 @@
 
 #include <string>
 #include "OauthAccessTokenRequest.h"
-#include "OauthAccessTokenRequestRefresh_allOf.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API

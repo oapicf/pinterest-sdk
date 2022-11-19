@@ -10,7 +10,6 @@
 
 #include <string>
 #include "ImageDetails.h"
-#include <list>
 #include <map>
 #include "Object.h"
 

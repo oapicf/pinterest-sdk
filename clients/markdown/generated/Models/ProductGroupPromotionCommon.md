@@ -12,6 +12,7 @@
 | **collections\_hero\_destination\_url** | **String** | Collections Hero Destination Url | [optional] [default to null] |
 | **slideshow\_collections\_title** | **String** | Slideshow Collections Title | [optional] [default to null] |
 | **slideshow\_collections\_description** | **String** | Slideshow Collections Description | [optional] [default to null] |
+| **is\_mdl** | **Boolean** | If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

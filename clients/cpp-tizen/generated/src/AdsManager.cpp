@@ -223,6 +223,424 @@ bool AdsManager::adPreviewsCreateSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool adTargetingAnalyticsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(MetricsResponse, Error, void* )
+	= reinterpret_cast<void(*)(MetricsResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	MetricsResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("MetricsResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "MetricsResponse", "MetricsResponse");
+			json_node_free(pJson);
+
+			if ("MetricsResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool adTargetingAnalyticsGetHelper(char * accessToken,
+	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	void(* handler)(MetricsResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	for (std::list
+	<std::string>::iterator queryIter = adIds.begin(); queryIter != adIds.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		queryParams.insert(pair<string, string>("adIds", itemAt));
+	}
+	
+
+	itemAtq = stringify(&startDate, "Date");
+	queryParams.insert(pair<string, string>("start_date", itemAtq));
+
+
+	itemAtq = stringify(&endDate, "Date");
+	queryParams.insert(pair<string, string>("end_date", itemAtq));
+
+	for (std::list
+	<AdsAnalyticsTargetingType>::iterator queryIter = targetingTypes.begin(); queryIter != targetingTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "AdsAnalyticsTargetingType");
+		queryParams.insert(pair<string, string>("targetingTypes", itemAt));
+	}
+	
+	for (std::list
+	<std::string>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		queryParams.insert(pair<string, string>("columns", itemAt));
+	}
+	
+
+	itemAtq = stringify(&granularity, "Granularity");
+	queryParams.insert(pair<string, string>("granularity", itemAtq));
+
+
+	itemAtq = stringify(&clickWindowDays, "int");
+	queryParams.insert(pair<string, string>("click_window_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("click_window_days");
+	}
+
+
+	itemAtq = stringify(&engagementWindowDays, "int");
+	queryParams.insert(pair<string, string>("engagement_window_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("engagement_window_days");
+	}
+
+
+	itemAtq = stringify(&viewWindowDays, "int");
+	queryParams.insert(pair<string, string>("view_window_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("view_window_days");
+	}
+
+
+	itemAtq = stringify(&conversionReportTime, "std::string");
+	queryParams.insert(pair<string, string>("conversion_report_time", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("conversion_report_time");
+	}
+
+
+	itemAtq = stringify(&attributionTypes, "ConversionReportAttributionType");
+	queryParams.insert(pair<string, string>("attribution_types", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("attribution_types");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/ad_accounts/{ad_account_id}/ads/targeting_analytics");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(AdsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = adTargetingAnalyticsGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (AdsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), adTargetingAnalyticsGetProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __AdsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool AdsManager::adTargetingAnalyticsGetAsync(char * accessToken,
+	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	void(* handler)(MetricsResponse, Error, void* )
+	, void* userData)
+{
+	return adTargetingAnalyticsGetHelper(accessToken,
+	adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, 
+	handler, userData, true);
+}
+
+bool AdsManager::adTargetingAnalyticsGetSync(char * accessToken,
+	std::string adAccountId, std::list<std::string> adIds, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	void(* handler)(MetricsResponse, Error, void* )
+	, void* userData)
+{
+	return adTargetingAnalyticsGetHelper(accessToken,
+	adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, 
+	handler, userData, false);
+}
+
+static bool adsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<AdsAnalyticsResponse_inner>, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	std::list<AdsAnalyticsResponse_inner> out;
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+		pJson = json_from_string(data, NULL);
+		JsonArray * jsonarray = json_node_get_array (pJson);
+		guint length = json_array_get_length (jsonarray);
+		for(guint i = 0; i < length; i++){
+			JsonNode* myJson = json_array_get_element (jsonarray, i);
+			char * singlenodestr = json_to_string(myJson, false);
+			AdsAnalyticsResponse_inner singlemodel;
+			singlemodel.fromJson(singlenodestr);
+			out.push_front(singlemodel);
+			g_free(static_cast<gpointer>(singlenodestr));
+			json_node_free(myJson);
+		}
+		json_array_unref (jsonarray);
+		json_node_free(pJson);
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool adsAnalyticsHelper(char * accessToken,
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&startDate, "Date");
+	queryParams.insert(pair<string, string>("start_date", itemAtq));
+
+
+	itemAtq = stringify(&endDate, "Date");
+	queryParams.insert(pair<string, string>("end_date", itemAtq));
+
+	for (std::list
+	<std::string>::iterator queryIter = adIds.begin(); queryIter != adIds.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		queryParams.insert(pair<string, string>("adIds", itemAt));
+	}
+	
+	for (std::list
+	<std::string>::iterator queryIter = columns.begin(); queryIter != columns.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		queryParams.insert(pair<string, string>("columns", itemAt));
+	}
+	
+
+	itemAtq = stringify(&granularity, "Granularity");
+	queryParams.insert(pair<string, string>("granularity", itemAtq));
+
+
+	itemAtq = stringify(&clickWindowDays, "int");
+	queryParams.insert(pair<string, string>("click_window_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("click_window_days");
+	}
+
+
+	itemAtq = stringify(&engagementWindowDays, "int");
+	queryParams.insert(pair<string, string>("engagement_window_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("engagement_window_days");
+	}
+
+
+	itemAtq = stringify(&viewWindowDays, "int");
+	queryParams.insert(pair<string, string>("view_window_days", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("view_window_days");
+	}
+
+
+	itemAtq = stringify(&conversionReportTime, "std::string");
+	queryParams.insert(pair<string, string>("conversion_report_time", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("conversion_report_time");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/ad_accounts/{ad_account_id}/ads/analytics");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(AdsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = adsAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (AdsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), adsAnalyticsProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __AdsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool AdsManager::adsAnalyticsAsync(char * accessToken,
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
+	, void* userData)
+{
+	return adsAnalyticsHelper(accessToken,
+	adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	handler, userData, true);
+}
+
+bool AdsManager::adsAnalyticsSync(char * accessToken,
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> adIds, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	void(* handler)(std::list<AdsAnalyticsResponse_inner>, Error, void* )
+	, void* userData)
+{
+	return adsAnalyticsHelper(accessToken,
+	adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	handler, userData, false);
+}
+
 static bool adsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -284,7 +702,7 @@ static bool adsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool adsCreateHelper(char * accessToken,
-	std::string adAccountId, std::list<AdCreateRequest_inner> adCreateRequestInner, 
+	std::string adAccountId, std::list<AdCreateRequest> adCreateRequest, 
 	void(* handler)(AdArrayResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -305,14 +723,14 @@ static bool adsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("AdCreateRequest_inner")) {
-		node = converttoJson(&adCreateRequestInner, "AdCreateRequest_inner", "array");
+	if (isprimitive("AdCreateRequest")) {
+		node = converttoJson(&adCreateRequest, "AdCreateRequest", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<AdCreateRequest_inner>::iterator bodyIter = adCreateRequestInner.begin(); bodyIter != adCreateRequestInner.end(); ++bodyIter) {
-			AdCreateRequest_inner itemAt = (*bodyIter);
+			<AdCreateRequest>::iterator bodyIter = adCreateRequest.begin(); bodyIter != adCreateRequest.end(); ++bodyIter) {
+			AdCreateRequest itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -386,22 +804,22 @@ static bool adsCreateHelper(char * accessToken,
 
 
 bool AdsManager::adsCreateAsync(char * accessToken,
-	std::string adAccountId, std::list<AdCreateRequest_inner> adCreateRequestInner, 
+	std::string adAccountId, std::list<AdCreateRequest> adCreateRequest, 
 	void(* handler)(AdArrayResponse, Error, void* )
 	, void* userData)
 {
 	return adsCreateHelper(accessToken,
-	adAccountId, adCreateRequestInner, 
+	adAccountId, adCreateRequest, 
 	handler, userData, true);
 }
 
 bool AdsManager::adsCreateSync(char * accessToken,
-	std::string adAccountId, std::list<AdCreateRequest_inner> adCreateRequestInner, 
+	std::string adAccountId, std::list<AdCreateRequest> adCreateRequest, 
 	void(* handler)(AdArrayResponse, Error, void* )
 	, void* userData)
 {
 	return adsCreateHelper(accessToken,
-	adAccountId, adCreateRequestInner, 
+	adAccountId, adCreateRequest, 
 	handler, userData, false);
 }
 
@@ -848,7 +1266,7 @@ static bool adsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool adsUpdateHelper(char * accessToken,
-	std::string adAccountId, std::list<AdUpdateRequest_inner> adUpdateRequestInner, 
+	std::string adAccountId, std::list<AdUpdateRequest> adUpdateRequest, 
 	void(* handler)(AdArrayResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -869,14 +1287,14 @@ static bool adsUpdateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 	//TODO: Map Container
-	if (isprimitive("AdUpdateRequest_inner")) {
-		node = converttoJson(&adUpdateRequestInner, "AdUpdateRequest_inner", "array");
+	if (isprimitive("AdUpdateRequest")) {
+		node = converttoJson(&adUpdateRequest, "AdUpdateRequest", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<AdUpdateRequest_inner>::iterator bodyIter = adUpdateRequestInner.begin(); bodyIter != adUpdateRequestInner.end(); ++bodyIter) {
-			AdUpdateRequest_inner itemAt = (*bodyIter);
+			<AdUpdateRequest>::iterator bodyIter = adUpdateRequest.begin(); bodyIter != adUpdateRequest.end(); ++bodyIter) {
+			AdUpdateRequest itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
 			g_free(static_cast<gpointer>(jsonStr));
@@ -950,22 +1368,22 @@ static bool adsUpdateHelper(char * accessToken,
 
 
 bool AdsManager::adsUpdateAsync(char * accessToken,
-	std::string adAccountId, std::list<AdUpdateRequest_inner> adUpdateRequestInner, 
+	std::string adAccountId, std::list<AdUpdateRequest> adUpdateRequest, 
 	void(* handler)(AdArrayResponse, Error, void* )
 	, void* userData)
 {
 	return adsUpdateHelper(accessToken,
-	adAccountId, adUpdateRequestInner, 
+	adAccountId, adUpdateRequest, 
 	handler, userData, true);
 }
 
 bool AdsManager::adsUpdateSync(char * accessToken,
-	std::string adAccountId, std::list<AdUpdateRequest_inner> adUpdateRequestInner, 
+	std::string adAccountId, std::list<AdUpdateRequest> adUpdateRequest, 
 	void(* handler)(AdArrayResponse, Error, void* )
 	, void* userData)
 {
 	return adsUpdateHelper(accessToken,
-	adAccountId, adUpdateRequestInner, 
+	adAccountId, adUpdateRequest, 
 	handler, userData, false);
 }
 

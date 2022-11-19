@@ -132,6 +132,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setMediaSource(Pin_media_source  media_source);
+	/*! \brief Get The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+	 */
+	std::string getParentPinId();
+
+	/*! \brief Set The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+	 */
+	void setParentPinId(std::string  parent_pin_id);
 
 private:
 	std::string id;
@@ -146,6 +153,7 @@ private:
 	Board_owner board_owner;
 	Pin_media media;
 	Pin_media_source media_source;
+	std::string parent_pin_id;
 	void __init();
 	void __cleanup();
 

@@ -8,6 +8,7 @@
 | **GENDER\_INVALID** | **Integer** | Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. | [optional] [default to null] |
 | **AGE\_GROUP\_INVALID** | **Integer** | Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. | [optional] [default to null] |
 | **SIZE\_TYPE\_INVALID** | **Integer** | Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences. | [optional] [default to null] |
+| **SIZE\_SYSTEM\_INVALID** | **Integer** | Some items have size system values which are not one of the supported size systems. | [optional] [default to null] |
 | **LINK\_FORMAT\_WARNING** | **Integer** | Some items have an invalid product link which contains invalid UTM tracking paramaters. | [optional] [default to null] |
 | **DUPLICATE\_PRODUCTS** | **Integer** | Some products are duplicated. | [optional] [default to null] |
 | **SALES\_PRICE\_INVALID** | **Integer** | Some items have sale price values that are higher than the original price of the item. | [optional] [default to null] |
@@ -48,6 +49,13 @@
 | **UTM\_SOURCE\_AUTO\_CORRECTED** | **Integer** | Some items include utm_source values that are formatted incorrectly and have been automatically corrected. | [optional] [default to null] |
 | **COUNTRY\_DOES\_NOT\_MAP\_TO\_CURRENCY** | **Integer** | Some items include a currency that doesn&#39;t match the usual currency for the location where that product is sold or shipped. | [optional] [default to null] |
 | **MIN\_AD\_PRICE\_INVALID** | **Integer** | Some items include min_ad_price values that are formatted incorrectly. | [optional] [default to null] |
+| **GTIN\_INVALID** | **Integer** | Some items include incorrectly formatted GTINs. | [optional] [default to null] |
+| **INCONSISTENT\_CURRENCY\_VALUES** | **Integer** | Some items include inconsistent currencies in price fields. | [optional] [default to null] |
+| **SALES\_PRICE\_TOO\_LOW** | **Integer** | Some items include sales price that is much lower than the list price. | [optional] [default to null] |
+| **SHIPPING\_WIDTH\_INVALID** | **Integer** | Some items include incorrectly formatted shipping_width. | [optional] [default to null] |
+| **SHIPPING\_HEIGHT\_INVALID** | **Integer** | Some items include incorrectly formatted shipping_height. | [optional] [default to null] |
+| **SALES\_PRICE\_TOO\_HIGH** | **Integer** | Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price. | [optional] [default to null] |
+| **MPN\_INVALID** | **Integer** | Some items include incorrectly formatted MPNs. | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

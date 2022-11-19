@@ -8,6 +8,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | [**pins/create**](PinsApi.md#pins/create) | **POST** /pins | Create Pin |
 | [**pins/delete**](PinsApi.md#pins/delete) | **DELETE** /pins/{pin_id} | Delete Pin |
 | [**pins/get**](PinsApi.md#pins/get) | **GET** /pins/{pin_id} | Get Pin |
+| [**pins/save**](PinsApi.md#pins/save) | **POST** /pins/{pin_id}/save | Save pin |
 
 
 <a name="pins/analytics"></a>
@@ -123,5 +124,33 @@ Get Pin
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="pins/save"></a>
+# **pins/save**
+> Pin pins/save(pin\_id, pins\_save\_request)
+
+Save pin
+
+    Save a pin on a board or board section owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pin\_id** | **String**| Unique identifier of a Pin. | [default to null] |
+| **pins\_save\_request** | [**pins_save_request**](../Models/pins_save_request.md)| Request object used to save an existing pin | |
+
+### Return type
+
+[**Pin**](../Models/Pin.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

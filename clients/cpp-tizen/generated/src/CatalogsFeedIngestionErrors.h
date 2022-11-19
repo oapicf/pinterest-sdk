@@ -66,11 +66,19 @@ public:
 	/*! \brief Set The product count has decreased by more than 99% compared to the last successful ingestion.
 	 */
 	void setLARGEPRODUCTCOUNTDECREASE(int  lARGE_PRODUCT_COUNT_DECREASE);
+	/*! \brief Get We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
+	 */
+	int getACCOUNTFLAGGED();
+
+	/*! \brief Set We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
+	 */
+	void setACCOUNTFLAGGED(int  aCCOUNT_FLAGGED);
 
 private:
 	int iMAGE_DOWNLOAD_ERROR;
 	int lINE_LEVEL_INTERNAL_ERROR;
 	int lARGE_PRODUCT_COUNT_DECREASE;
+	int aCCOUNT_FLAGGED;
 	void __init();
 	void __cleanup();
 

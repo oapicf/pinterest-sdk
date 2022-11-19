@@ -13,7 +13,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Get terms of service
 
-    &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/features/ads-management/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt; &lt;p/&gt; Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
+    Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
 
 ### Parameters
 

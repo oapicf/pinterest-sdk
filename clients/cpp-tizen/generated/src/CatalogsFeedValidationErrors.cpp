@@ -53,6 +53,8 @@ CatalogsFeedValidationErrors::__init()
 	//iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE = int(0);
 	//pINJOIN_CONTENT_UNSAFE = int(0);
 	//bLOCKLISTED_IMAGE_SIGNATURE = int(0);
+	//lIST_PRICE_INVALID = int(0);
+	//pRICE_CANNOT_BE_DETERMINED = int(0);
 }
 
 void
@@ -207,6 +209,16 @@ CatalogsFeedValidationErrors::__cleanup()
 	//
 	//delete bLOCKLISTED_IMAGE_SIGNATURE;
 	//bLOCKLISTED_IMAGE_SIGNATURE = NULL;
+	//}
+	//if(lIST_PRICE_INVALID != NULL) {
+	//
+	//delete lIST_PRICE_INVALID;
+	//lIST_PRICE_INVALID = NULL;
+	//}
+	//if(pRICE_CANNOT_BE_DETERMINED != NULL) {
+	//
+	//delete pRICE_CANNOT_BE_DETERMINED;
+	//pRICE_CANNOT_BE_DETERMINED = NULL;
 	//}
 	//
 }
@@ -546,6 +558,28 @@ CatalogsFeedValidationErrors::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *lIST_PRICE_INVALIDKey = "LIST_PRICE_INVALID";
+	node = json_object_get_member(pJsonObject, lIST_PRICE_INVALIDKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&lIST_PRICE_INVALID, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *pRICE_CANNOT_BE_DETERMINEDKey = "PRICE_CANNOT_BE_DETERMINED";
+	node = json_object_get_member(pJsonObject, pRICE_CANNOT_BE_DETERMINEDKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&pRICE_CANNOT_BE_DETERMINED, node, "int", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsFeedValidationErrors::CatalogsFeedValidationErrors(char* json)
@@ -828,6 +862,24 @@ CatalogsFeedValidationErrors::toJson()
 	}
 	const gchar *bLOCKLISTED_IMAGE_SIGNATUREKey = "BLOCKLISTED_IMAGE_SIGNATURE";
 	json_object_set_member(pJsonObject, bLOCKLISTED_IMAGE_SIGNATUREKey, node);
+	if (isprimitive("int")) {
+		int obj = getLISTPRICEINVALID();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *lIST_PRICE_INVALIDKey = "LIST_PRICE_INVALID";
+	json_object_set_member(pJsonObject, lIST_PRICE_INVALIDKey, node);
+	if (isprimitive("int")) {
+		int obj = getPRICECANNOTBEDETERMINED();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *pRICE_CANNOT_BE_DETERMINEDKey = "PRICE_CANNOT_BE_DETERMINED";
+	json_object_set_member(pJsonObject, pRICE_CANNOT_BE_DETERMINEDKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -1194,6 +1246,30 @@ void
 CatalogsFeedValidationErrors::setBLOCKLISTEDIMAGESIGNATURE(int  bLOCKLISTED_IMAGE_SIGNATURE)
 {
 	this->bLOCKLISTED_IMAGE_SIGNATURE = bLOCKLISTED_IMAGE_SIGNATURE;
+}
+
+int
+CatalogsFeedValidationErrors::getLISTPRICEINVALID()
+{
+	return lIST_PRICE_INVALID;
+}
+
+void
+CatalogsFeedValidationErrors::setLISTPRICEINVALID(int  lIST_PRICE_INVALID)
+{
+	this->lIST_PRICE_INVALID = lIST_PRICE_INVALID;
+}
+
+int
+CatalogsFeedValidationErrors::getPRICECANNOTBEDETERMINED()
+{
+	return pRICE_CANNOT_BE_DETERMINED;
+}
+
+void
+CatalogsFeedValidationErrors::setPRICECANNOTBEDETERMINED(int  pRICE_CANNOT_BE_DETERMINED)
+{
+	this->pRICE_CANNOT_BE_DETERMINED = pRICE_CANNOT_BE_DETERMINED;
 }
 
 

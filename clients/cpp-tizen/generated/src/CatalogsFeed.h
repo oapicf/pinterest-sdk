@@ -9,13 +9,11 @@
 
 
 #include <string>
-#include "CatalogsDbItem.h"
 #include "CatalogsFeedCredentials.h"
 #include "CatalogsFeedProcessingSchedule.h"
 #include "CatalogsFormat.h"
 #include "CatalogsStatus.h"
 #include "Country.h"
-#include "Feed_fields.h"
 #include "NullableCurrency.h"
 #include "ProductAvailabilityType.h"
 #include "Object.h"

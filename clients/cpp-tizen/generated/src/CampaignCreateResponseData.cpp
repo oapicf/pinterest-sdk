@@ -36,8 +36,8 @@ CampaignCreateResponseData::__init()
 	//is_flexible_daily_budgets = bool(false);
 	//default_ad_group_budget_in_micro_currency = int(0);
 	//is_automated_campaign = bool(false);
-	//objective_type = new ObjectiveType();
 	//id = std::string();
+	//objective_type = new ObjectiveType();
 	//created_time = int(0);
 	//updated_time = int(0);
 	//type = std::string();
@@ -111,15 +111,15 @@ CampaignCreateResponseData::__cleanup()
 	//delete is_automated_campaign;
 	//is_automated_campaign = NULL;
 	//}
-	//if(objective_type != NULL) {
-	//
-	//delete objective_type;
-	//objective_type = NULL;
-	//}
 	//if(id != NULL) {
 	//
 	//delete id;
 	//id = NULL;
+	//}
+	//if(objective_type != NULL) {
+	//
+	//delete objective_type;
+	//objective_type = NULL;
 	//}
 	//if(created_time != NULL) {
 	//
@@ -290,6 +290,17 @@ CampaignCreateResponseData::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *objective_typeKey = "objective_type";
 	node = json_object_get_member(pJsonObject, objective_typeKey);
 	if (node !=NULL) {
@@ -301,17 +312,6 @@ CampaignCreateResponseData::fromJson(char* jsonStr)
 			
 			ObjectiveType* obj = static_cast<ObjectiveType*> (&objective_type);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
 			
 		}
 	}
@@ -482,6 +482,15 @@ CampaignCreateResponseData::toJson()
 	}
 	const gchar *is_automated_campaignKey = "is_automated_campaign";
 	json_object_set_member(pJsonObject, is_automated_campaignKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("ObjectiveType")) {
 		ObjectiveType obj = getObjectiveType();
 		node = converttoJson(&obj, "ObjectiveType", "");
@@ -496,15 +505,6 @@ CampaignCreateResponseData::toJson()
 	}
 	const gchar *objective_typeKey = "objective_type";
 	json_object_set_member(pJsonObject, objective_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("int")) {
 		int obj = getCreatedTime();
 		node = converttoJson(&obj, "int", "");
@@ -696,18 +696,6 @@ CampaignCreateResponseData::setIsAutomatedCampaign(bool  is_automated_campaign)
 	this->is_automated_campaign = is_automated_campaign;
 }
 
-ObjectiveType
-CampaignCreateResponseData::getObjectiveType()
-{
-	return objective_type;
-}
-
-void
-CampaignCreateResponseData::setObjectiveType(ObjectiveType  objective_type)
-{
-	this->objective_type = objective_type;
-}
-
 std::string
 CampaignCreateResponseData::getId()
 {
@@ -718,6 +706,18 @@ void
 CampaignCreateResponseData::setId(std::string  id)
 {
 	this->id = id;
+}
+
+ObjectiveType
+CampaignCreateResponseData::getObjectiveType()
+{
+	return objective_type;
+}
+
+void
+CampaignCreateResponseData::setObjectiveType(ObjectiveType  objective_type)
+{
+	this->objective_type = objective_type;
 }
 
 int
