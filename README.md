@@ -24,6 +24,7 @@ Version matrix
 
 | Pinterest SDK Version | Pinterest OpenAPI Spec Version | OpenAPI Version | OpenAPI Generator Version |
 |-----------------------|--------------------------------|-----------------|---------------------------|
+| Unreleased | 5.6.0 | 3.0.3 | 6.2.1 |
 | 1.2.0 | 5.4.1 | 3.0.3 | 6.0.1 |
 | 1.1.0 | 5.3.0 | 3.0.3 | 5.4.0 |
 | 1.0.0 | 5.3.0 | 3.0.3 | 5.4.0 |
