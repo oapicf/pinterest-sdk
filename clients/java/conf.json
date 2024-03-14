@@ -18,5 +18,7 @@
     "scmUrl": "https://github.com/oapicf/pinterest-sdk",
     "distributionManagementRepositoryId": "sonatype-release",
     "distributionManagementRepositoryName": "Sonatype Release",
-    "distributionManagementRepositoryUrl": "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+    "distributionManagementRepositoryUrl": "https://oss.sonatype.org/service/local/staging/deploy/maven2",
+    "gitUserId": "oapicf",
+    "gitRepoId": "pinterest-sdk"
   }

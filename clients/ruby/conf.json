@@ -6,5 +6,7 @@
   "gemAuthorEmail": "blah@cliffano.com",
   "gemHomepage": "https://github.com/oapicf/pinterest-sdk",
   "gemLicense": "MIT",
-  "gemRequiredRubyVersion": ">= 2.0"
+  "gemRequiredRubyVersion": ">= 2.0",
+  "gitUserId": "oapicf",
+  "gitRepoId": "pinterest-sdk"
 }
