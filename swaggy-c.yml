@@ -1,5 +1,5 @@
 ---
-spec_uri: https://raw.githubusercontent.com/pinterest/api-description/v5.6.0/v5/openapi.yaml
+spec_uri: https://raw.githubusercontent.com/pinterest/api-description/v5.12.0/v5/openapi.yaml
 version: 1.1.1-pre.0
 contact:
   name: OpenAPI Clients Factory
