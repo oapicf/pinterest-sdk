@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.github.com/cliffano/pinterest-sdk/master/avatar.jpg" alt="Avatar"/>
+<img align="right" src="https://raw.github.com/oapicf/pinterest-sdk/master/avatar.jpg" alt="Avatar"/>
 
-[![Build Status](https://github.com/cliffano/pinterest-sdk/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/cliffano/pinterest-sdk/actions/workflows/ci-workflow.yaml)
+[![Build Status](https://github.com/oapicf/pinterest-sdk/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/oapicf/pinterest-sdk/actions/workflows/ci-workflow.yaml)
 <br/>
 
 Pinterest SDK
@@ -51,4 +51,4 @@ Install Ruby client:
 Colophon
 --------
 
-* [API Documentation](https://cliffano.github.io/pinterest-sdk/api/latest/)
+* [API Documentation](https://oapicf.github.io/pinterest-sdk/api/latest/)

@@ -4,7 +4,7 @@
   "gemVersion": "1.1.1-pre.0",
   "gemAuthor": "Cliffano Subagio",
   "gemAuthorEmail": "blah@cliffano.com",
-  "gemHomepage": "https://github.com/cliffano/pinterest-sdk",
+  "gemHomepage": "https://github.com/oapicf/pinterest-sdk",
   "gemLicense": "MIT",
   "gemRequiredRubyVersion": ">= 2.0"
 }
