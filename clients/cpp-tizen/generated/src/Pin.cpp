@@ -30,12 +30,18 @@ Pin::__init()
 	//description = std::string();
 	//dominant_color = std::string();
 	//alt_text = std::string();
+	//creative_type = std::string();
 	//board_id = std::string();
 	//board_section_id = std::string();
 	//board_owner = new Board_owner();
-	//media = new Pin_media();
+	//is_owner = bool(false);
+	//media = new SummaryPin_media();
 	//media_source = null;
 	//parent_pin_id = std::string();
+	//is_standard = bool(false);
+	//has_been_promoted = bool(false);
+	//note = std::string();
+	//pin_metrics = null;
 }
 
 void
@@ -76,6 +82,11 @@ Pin::__cleanup()
 	//delete alt_text;
 	//alt_text = NULL;
 	//}
+	//if(creative_type != NULL) {
+	//
+	//delete creative_type;
+	//creative_type = NULL;
+	//}
 	//if(board_id != NULL) {
 	//
 	//delete board_id;
@@ -91,6 +102,11 @@ Pin::__cleanup()
 	//delete board_owner;
 	//board_owner = NULL;
 	//}
+	//if(is_owner != NULL) {
+	//
+	//delete is_owner;
+	//is_owner = NULL;
+	//}
 	//if(media != NULL) {
 	//
 	//delete media;
@@ -105,6 +121,26 @@ Pin::__cleanup()
 	//
 	//delete parent_pin_id;
 	//parent_pin_id = NULL;
+	//}
+	//if(is_standard != NULL) {
+	//
+	//delete is_standard;
+	//is_standard = NULL;
+	//}
+	//if(has_been_promoted != NULL) {
+	//
+	//delete has_been_promoted;
+	//has_been_promoted = NULL;
+	//}
+	//if(note != NULL) {
+	//
+	//delete note;
+	//note = NULL;
+	//}
+	//if(pin_metrics != NULL) {
+	//
+	//delete pin_metrics;
+	//pin_metrics = NULL;
 	//}
 	//
 }
@@ -191,6 +227,20 @@ Pin::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *creative_typeKey = "creative_type";
+	node = json_object_get_member(pJsonObject, creative_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CreativeType")) {
+			jsonToValue(&creative_type, node, "CreativeType", "CreativeType");
+		} else {
+			
+			CreativeType* obj = static_cast<CreativeType*> (&creative_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *board_idKey = "board_id";
 	node = json_object_get_member(pJsonObject, board_idKey);
 	if (node !=NULL) {
@@ -227,16 +277,27 @@ Pin::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_ownerKey = "is_owner";
+	node = json_object_get_member(pJsonObject, is_ownerKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_owner, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *mediaKey = "media";
 	node = json_object_get_member(pJsonObject, mediaKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Pin_media")) {
-			jsonToValue(&media, node, "Pin_media", "Pin_media");
+		if (isprimitive("SummaryPin_media")) {
+			jsonToValue(&media, node, "SummaryPin_media", "SummaryPin_media");
 		} else {
 			
-			Pin_media* obj = static_cast<Pin_media*> (&media);
+			SummaryPin_media* obj = static_cast<SummaryPin_media*> (&media);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -263,6 +324,53 @@ Pin::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&parent_pin_id, node, "std::string", "");
 		} else {
+			
+		}
+	}
+	const gchar *is_standardKey = "is_standard";
+	node = json_object_get_member(pJsonObject, is_standardKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_standard, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *has_been_promotedKey = "has_been_promoted";
+	node = json_object_get_member(pJsonObject, has_been_promotedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&has_been_promoted, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *noteKey = "note";
+	node = json_object_get_member(pJsonObject, noteKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&note, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *pin_metricsKey = "pin_metrics";
+	node = json_object_get_member(pJsonObject, pin_metricsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&pin_metrics, node, "std::string", "");
+		} else {
+			
+			std::string* obj = static_cast<std::string*> (&pin_metrics);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -341,6 +449,20 @@ Pin::toJson()
 	}
 	const gchar *alt_textKey = "alt_text";
 	json_object_set_member(pJsonObject, alt_textKey, node);
+	if (isprimitive("CreativeType")) {
+		CreativeType obj = getCreativeType();
+		node = converttoJson(&obj, "CreativeType", "");
+	}
+	else {
+		
+		CreativeType obj = static_cast<CreativeType> (getCreativeType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *creative_typeKey = "creative_type";
+	json_object_set_member(pJsonObject, creative_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getBoardId();
 		node = converttoJson(&obj, "std::string", "");
@@ -373,13 +495,22 @@ Pin::toJson()
 	}
 	const gchar *board_ownerKey = "board_owner";
 	json_object_set_member(pJsonObject, board_ownerKey, node);
-	if (isprimitive("Pin_media")) {
-		Pin_media obj = getMedia();
-		node = converttoJson(&obj, "Pin_media", "");
+	if (isprimitive("bool")) {
+		bool obj = getIsOwner();
+		node = converttoJson(&obj, "bool", "");
 	}
 	else {
 		
-		Pin_media obj = static_cast<Pin_media> (getMedia());
+	}
+	const gchar *is_ownerKey = "is_owner";
+	json_object_set_member(pJsonObject, is_ownerKey, node);
+	if (isprimitive("SummaryPin_media")) {
+		SummaryPin_media obj = getMedia();
+		node = converttoJson(&obj, "SummaryPin_media", "");
+	}
+	else {
+		
+		SummaryPin_media obj = static_cast<SummaryPin_media> (getMedia());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -410,6 +541,47 @@ Pin::toJson()
 	}
 	const gchar *parent_pin_idKey = "parent_pin_id";
 	json_object_set_member(pJsonObject, parent_pin_idKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsStandard();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_standardKey = "is_standard";
+	json_object_set_member(pJsonObject, is_standardKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getHasBeenPromoted();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *has_been_promotedKey = "has_been_promoted";
+	json_object_set_member(pJsonObject, has_been_promotedKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getNote();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *noteKey = "note";
+	json_object_set_member(pJsonObject, noteKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPinMetrics();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+		std::string obj = static_cast<std::string> (getPinMetrics());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *pin_metricsKey = "pin_metrics";
+	json_object_set_member(pJsonObject, pin_metricsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -502,6 +674,18 @@ Pin::setAltText(std::string  alt_text)
 	this->alt_text = alt_text;
 }
 
+CreativeType
+Pin::getCreativeType()
+{
+	return creative_type;
+}
+
+void
+Pin::setCreativeType(CreativeType  creative_type)
+{
+	this->creative_type = creative_type;
+}
+
 std::string
 Pin::getBoardId()
 {
@@ -538,14 +722,26 @@ Pin::setBoardOwner(Board_owner  board_owner)
 	this->board_owner = board_owner;
 }
 
-Pin_media
+bool
+Pin::getIsOwner()
+{
+	return is_owner;
+}
+
+void
+Pin::setIsOwner(bool  is_owner)
+{
+	this->is_owner = is_owner;
+}
+
+SummaryPin_media
 Pin::getMedia()
 {
 	return media;
 }
 
 void
-Pin::setMedia(Pin_media  media)
+Pin::setMedia(SummaryPin_media  media)
 {
 	this->media = media;
 }
@@ -572,6 +768,54 @@ void
 Pin::setParentPinId(std::string  parent_pin_id)
 {
 	this->parent_pin_id = parent_pin_id;
+}
+
+bool
+Pin::getIsStandard()
+{
+	return is_standard;
+}
+
+void
+Pin::setIsStandard(bool  is_standard)
+{
+	this->is_standard = is_standard;
+}
+
+bool
+Pin::getHasBeenPromoted()
+{
+	return has_been_promoted;
+}
+
+void
+Pin::setHasBeenPromoted(bool  has_been_promoted)
+{
+	this->has_been_promoted = has_been_promoted;
+}
+
+std::string
+Pin::getNote()
+{
+	return note;
+}
+
+void
+Pin::setNote(std::string  note)
+{
+	this->note = note;
+}
+
+std::string
+Pin::getPinMetrics()
+{
+	return pin_metrics;
+}
+
+void
+Pin::setPinMetrics(std::string  pin_metrics)
+{
+	this->pin_metrics = pin_metrics;
 }
 
 

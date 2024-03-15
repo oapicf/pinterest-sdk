@@ -30,6 +30,11 @@ module.exports = {
                 type: 'integer',
             },
             {
+                key: `${keyPrefix}DUPLICATE_PRODUCTS`,
+                label: `Some products are duplicated. - [${labelPrefix}DUPLICATE_PRODUCTS]`,
+                type: 'integer',
+            },
+            {
                 key: `${keyPrefix}IMAGE_LINK_INVALID`,
                 label: `Some image links are formatted incorrectly. - [${labelPrefix}IMAGE_LINK_INVALID]`,
                 type: 'integer',
@@ -174,6 +179,7 @@ module.exports = {
             'ENCODING_ERROR': bundle.inputData?.[`${keyPrefix}ENCODING_ERROR`],
             'DELIMITER_ERROR': bundle.inputData?.[`${keyPrefix}DELIMITER_ERROR`],
             'REQUIRED_COLUMNS_MISSING': bundle.inputData?.[`${keyPrefix}REQUIRED_COLUMNS_MISSING`],
+            'DUPLICATE_PRODUCTS': bundle.inputData?.[`${keyPrefix}DUPLICATE_PRODUCTS`],
             'IMAGE_LINK_INVALID': bundle.inputData?.[`${keyPrefix}IMAGE_LINK_INVALID`],
             'ITEMID_MISSING': bundle.inputData?.[`${keyPrefix}ITEMID_MISSING`],
             'TITLE_MISSING': bundle.inputData?.[`${keyPrefix}TITLE_MISSING`],

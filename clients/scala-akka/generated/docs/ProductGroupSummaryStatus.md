@@ -1,0 +1,9 @@
+
+
+# ProductGroupSummaryStatus
+
+## Enum
+
+
+
+

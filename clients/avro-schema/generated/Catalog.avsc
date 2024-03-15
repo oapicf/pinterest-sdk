@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Catalog entity",
+  "name": "Catalog",
+  "fields": [
+    {
+      "name": "created_at",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the catalog entity."
+    },
+    {
+      "name": "updated_at",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "A human-friendly name associated to a catalog entity."
+    },
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A hotel item to be created.",
+  "name": "CatalogsCreateHotelItem",
+  "fields": [
+    {
+      "name": "hotel_id",
+      "type": "string",
+      "doc": "The catalog hotel id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreateHotelItem_operation",
+        "symbols": [
+          "CREATE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": "model.CatalogsHotelAttributes",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,2 @@
+testCase,httpStatusCode,adAccountId,campaignIds,startDate,endDate,targetingTypes,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,attributionTypes,adAccountId,startDate,endDate,campaignIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,adAccountId,campaignCreateRequest,adAccountId,campaignId,adAccountId,campaignIds,entityStatuses,pageSize,order,bookmark,adAccountId,campaignUpdateRequest
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

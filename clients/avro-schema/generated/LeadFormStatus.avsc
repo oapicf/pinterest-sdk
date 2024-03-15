@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Status of the lead form",
+  "name": "LeadFormStatus",
+  "symbols": [
+    "DRAFT",
+    "ACTIVE"
+  ]
+}

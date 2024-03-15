@@ -1,0 +1,51 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin with video.",
+  "name": "PinMediaWithVideo",
+  "fields": [
+    {
+      "name": "media_type",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "images",
+      "type": ["null", "model.ImageMetadataImages"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "cover_image_url",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "video_url",
+      "type": ["null", "string"],
+      "doc": "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.",
+      "default": null
+    },
+    {
+      "name": "duration",
+      "type": ["null", "double"],
+      "doc": "Duration (in milliseconds)",
+      "default": null
+    },
+    {
+      "name": "height",
+      "type": ["null", "int"],
+      "doc": "Height (in pixels)",
+      "default": null
+    },
+    {
+      "name": "width",
+      "type": ["null", "int"],
+      "doc": "Width (in pixels)",
+      "default": null
+    }
+  ]
+
+}

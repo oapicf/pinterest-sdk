@@ -1,0 +1,3662 @@
+@startuml
+
+title Pinterest REST API Schemas Diagram
+
+entity Account {
+    account_type: String
+    id: String
+    profile_image: String
+    website_url: String
+    username: String
+    about: String
+    business_name: String
+    board_count: Integer
+    pin_count: Integer
+    follower_count: Integer
+    following_count: Integer
+    monthly_views: Integer
+}
+
+entity ActionType {
+}
+
+entity AdAccount {
+    id: String
+    name: String
+    owner: AdAccountOwner
+    country: Country
+    currency: Currency
+    permissions: List<BusinessAccessRole>
+    created_time: Integer
+    updated_time: Integer
+}
+
+entity AdAccountAnalyticsResponseInner {
+    * AD_ACCOUNT_ID: String
+    DATE: Date
+}
+
+entity AdAccountCreateRequest {
+    country: Country
+    name: String
+    owner_user_id: String
+}
+
+entity AdAccountCreateSubscriptionRequest {
+    * webhook_url: String
+    lead_form_id: String
+    partner_access_token: String
+    partner_refresh_token: String
+}
+
+entity AdAccountCreateSubscriptionResponse {
+    id: String
+    cryptographic_key: String
+    cryptographic_algorithm: String
+    created_time: Integer
+}
+
+entity AdAccountGetSubscriptionResponse {
+    lead_form_id: String
+    webhook_url: String
+    id: String
+    user_account_id: String
+    ad_account_id: String
+    api_version: String
+    cryptographic_key: String
+    cryptographic_algorithm: String
+    created_time: Integer
+}
+
+entity AdAccountOwner {
+    username: String
+    id: String
+}
+
+entity AdAccountsCatalogsProductGroupsList200Response {
+}
+
+entity AdAccountsCountryResponse {
+    items: List<AdAccountsCountryResponseData>
+}
+
+entity AdAccountsCountryResponseData {
+    code: AdCountry
+    currency: String
+    index: BigDecimal
+    name: String
+}
+
+entity AdAccountsList200Response {
+}
+
+entity AdAccountsSubscriptionsGetList200Response {
+}
+
+entity AdArrayResponse {
+    items: List<AdArrayResponseElement>
+}
+
+entity AdArrayResponseElement {
+    data: AdResponse
+    exceptions: Exception
+}
+
+entity AdCommon {
+    ad_group_id: String
+    android_deep_link: String
+    carousel_android_deep_links: List<String>
+    carousel_destination_urls: List<String>
+    carousel_ios_deep_links: List<String>
+    click_tracking_url: String
+    creative_type: CreativeType
+    destination_url: String
+    ios_deep_link: String
+    is_pin_deleted: Boolean
+    is_removable: Boolean
+    name: String
+    status: EntityStatus
+    tracking_urls: AdCommonTrackingUrls
+    view_tracking_url: String
+    lead_form_id: String
+    grid_click_type: GridClickType
+    customizable_cta_type: String
+    quiz_pin_data: AdCommonQuizPinData
+}
+
+entity AdCommonQuizPinData {
+}
+
+entity AdCommonTrackingUrls {
+}
+
+entity AdCountry {
+}
+
+entity AdCreateRequest {
+}
+
+entity AdGroupArrayResponse {
+    items: List<AdGroupArrayResponseElement>
+}
+
+entity AdGroupArrayResponseElement {
+    data: AdGroupResponse
+    exceptions: List<Exception>
+}
+
+entity AdGroupAudienceSizingRequest {
+    auto_targeting_enabled: Boolean
+    placement_group: PlacementGroupType
+    creative_types: List<String>
+    targeting_spec: TargetingSpec
+    product_group_ids: List<String>
+    keywords: List<AdGroupAudienceSizingRequestKeywordsInner>
+}
+
+entity AdGroupAudienceSizingRequestKeywordsInner {
+    * match_type: MatchTypeResponse
+    * value: String
+}
+
+entity AdGroupAudienceSizingResponse {
+    audience_size_lower_bound: BigDecimal
+    audience_size_upper_bound: BigDecimal
+}
+
+entity AdGroupCommon {
+    name: String
+    status: EntityStatus
+    budget_in_micro_currency: Integer
+    bid_in_micro_currency: Integer
+    optimization_goal_metadata: AdGroupCommonOptimizationGoalMetadata
+    budget_type: BudgetType
+    start_time: Integer
+    end_time: Integer
+    targeting_spec: TargetingSpec
+    lifetime_frequency_cap: Integer
+    tracking_urls: AdGroupCommonTrackingUrls
+    auto_targeting_enabled: Boolean
+    placement_group: PlacementGroupType
+    pacing_delivery_type: PacingDeliveryType
+    campaign_id: String
+    billable_event: ActionType
+    bid_strategy_type: String
+}
+
+entity AdGroupCommonOptimizationGoalMetadata {
+}
+
+entity AdGroupCommonTrackingUrls {
+}
+
+entity AdGroupCreateRequest {
+}
+
+entity AdGroupResponse {
+}
+
+entity AdGroupSummaryStatus {
+}
+
+entity AdGroupUpdateRequest {
+}
+
+entity AdGroupsAnalyticsResponseInner {
+    * AD_GROUP_ID: String
+    DATE: Date
+}
+
+entity AdGroupsList200Response {
+}
+
+entity AdPinId {
+    pin_id: String
+}
+
+entity AdPreviewCreateFromImage {
+    * image_url: String
+    * title: String
+}
+
+entity AdPreviewCreateFromPin {
+    * pin_id: String
+}
+
+entity AdPreviewRequest {
+    * image_url: String
+    * title: String
+    * pin_id: String
+}
+
+entity AdPreviewURLResponse {
+    url: String
+}
+
+entity AdResponse {
+}
+
+entity AdUpdateRequest {
+}
+
+entity AdsAnalyticsCreateAsyncRequest {
+    * start_date: String
+    * end_date: String
+    * granularity: Granularity
+    click_window_days: ConversionAttributionWindowDays
+    engagement_window_days: ConversionAttributionWindowDays
+    view_window_days: ConversionAttributionWindowDays
+    conversion_report_time: ConversionReportTimeType
+    attribution_types: List<ConversionReportAttributionType>
+    campaign_ids: List<String>
+    campaign_statuses: List<CampaignSummaryStatus>
+    campaign_objective_types: List<ObjectiveType>
+    ad_group_ids: List<String>
+    ad_group_statuses: List<AdGroupSummaryStatus>
+    ad_ids: List<String>
+    ad_statuses: List<PinPromotionSummaryStatus>
+    product_group_ids: List<String>
+    product_group_statuses: List<ProductGroupSummaryStatus>
+    product_item_ids: List<String>
+    targeting_types: List<AdsAnalyticsTargetingType>
+    metrics_filters: List<AdsAnalyticsMetricsFilter>
+    * columns: List<ReportingColumnAsync>
+    * level: MetricsReportingLevel
+    report_format: DataOutputFormat
+}
+
+entity AdsAnalyticsCreateAsyncResponse {
+    report_status: BulkReportingJobStatus
+    token: String
+    message: String
+}
+
+entity AdsAnalyticsFilterColumn {
+}
+
+entity AdsAnalyticsFilterOperator {
+}
+
+entity AdsAnalyticsGetAsyncResponse {
+    report_status: BulkReportingJobStatus
+    url: String
+    size: BigDecimal
+}
+
+entity AdsAnalyticsMetricsFilter {
+    * field: AdsAnalyticsFilterColumn
+    * operator: AdsAnalyticsFilterOperator
+    * values: List<BigDecimal>
+}
+
+entity AdsAnalyticsResponseInner {
+    * AD_ID: String
+    DATE: Date
+}
+
+entity AdsAnalyticsTargetingType {
+}
+
+entity AdsCreditDiscountsResponse {
+    active: Boolean
+    advertiser_id: String
+    discountType: String
+    discountInMicroCurrency: BigDecimal
+    discountCurrency: String
+    title: String
+    remainingDiscountInMicroCurrency: BigDecimal
+}
+
+entity AdsCreditRedeemRequest {
+    * offerCodeHash: String
+    * validateOnly: Boolean
+}
+
+entity AdsCreditRedeemResponse {
+    success: Boolean
+    errorCode: Integer
+    errorMessage: String
+}
+
+entity AdsCreditsDiscountsGet200Response {
+}
+
+entity AdsList200Response {
+}
+
+entity AnalyticsDailyMetrics {
+    data_status: DataStatus
+    date: String
+    metrics: Map
+}
+
+entity AnalyticsMetricsResponse {
+    summary_metrics: Map
+    daily_metrics: List<AnalyticsDailyMetrics>
+}
+
+entity Audience {
+    ad_account_id: String
+    id: String
+    name: String
+    audience_type: String
+    description: String
+    rule: AudienceRule
+    size: Integer
+    status: String
+    type: String
+    created_timestamp: Integer
+    updated_timestamp: Integer
+}
+
+entity AudienceCategory {
+    key: String
+    name: String
+    ratio: BigDecimal
+    index: BigDecimal
+    id: String
+    subcategories: List<AudienceSubcategory>
+}
+
+entity AudienceCommon {
+    ad_account_id: String
+    name: String
+    rule: AudienceRule
+}
+
+entity AudienceCreateCustomRequest {
+}
+
+entity AudienceCreateRequest {
+}
+
+entity AudienceCreateRequest1AudienceType {
+}
+
+entity AudienceDataParty {
+}
+
+entity AudienceDefinition {
+    date: String
+    type: String
+    scope: String
+}
+
+entity AudienceDefinitionResponse {
+    items: List<AudienceDefinition>
+}
+
+entity AudienceDemographicValue {
+    key: String
+    name: String
+    ratio: BigDecimal
+}
+
+entity AudienceDemographics {
+    ages: List<AudienceDemographicValue>
+    genders: List<AudienceDemographicValue>
+    devices: List<AudienceDemographicValue>
+    metros: List<AudienceDemographicValue>
+    countries: List<AudienceDemographicValue>
+}
+
+entity AudienceInsightCategoryArrayResponse {
+    items: List<AudienceInsightCategoryCommon>
+}
+
+entity AudienceInsightCategoryCommon {
+    key: String
+    name: String
+    ratio: BigDecimal
+    index: BigDecimal
+    id: String
+}
+
+entity AudienceInsightType {
+}
+
+entity AudienceInsightsResponse {
+    categories: List<AudienceCategory>
+    demographics: AudienceDemographics
+    type: AudienceInsightType
+    date: String
+    size: Integer
+    size_is_upper_bound: Boolean
+}
+
+entity AudienceRule {
+    country: String
+    customer_list_id: String
+    engagement_domain: List<String>
+    engagement_type: String
+    event: String
+    event_data: PinterestTagEventData
+    percentage: Integer
+    pin_id: List<String>
+    prefill: Boolean
+    retention_days: Integer
+    seed_id: List<String>
+    url: List<String>
+    visitor_source_id: String
+    event_source: Object
+    ingestion_source: Object
+    engager_type: Integer
+    campaign_id: List<String>
+    ad_id: List<String>
+    objective_type: List<ObjectiveType>
+    ad_account_id: String
+}
+
+entity AudienceSharingType {
+}
+
+entity AudienceSubcategory {
+    key: String
+    name: String
+    ratio: BigDecimal
+    index: BigDecimal
+    id: String
+}
+
+entity AudienceType {
+}
+
+entity AudienceUpdateOperationType {
+}
+
+entity AudienceUpdateRequest {
+}
+
+entity AudiencesList200Response {
+}
+
+entity AvailabilityFilter {
+    * AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity BatchOperation {
+}
+
+entity BatchOperationStatus {
+}
+
+entity BidFloor {
+    bid_floors: List<Integer>
+    type: String
+}
+
+entity BidFloorRequest {
+    * bid_floor_specs: List<BidFloorSpec>
+    targeting_spec: TargetingSpec
+}
+
+entity BidFloorSpec {
+    countries: List<Country>
+    * currency: Currency
+    objective_type: ObjectiveType
+    * billable_event: ActionType
+    optimization_goal_metadata: OptimizationGoalMetadata
+    creative_type: CreativeType
+}
+
+entity BillingProfilesGet200Response {
+}
+
+entity BillingProfilesResponse {
+    id: String
+    card_type: String
+    status: String
+    advertiser_id: String
+    payment_method_brand: String
+}
+
+entity Board {
+    id: String
+    created_at: Date
+    board_pins_modified_at: Date
+    * name: String
+    description: String
+    collaborator_count: Integer
+    pin_count: Integer
+    follower_count: Integer
+    media: BoardMedia
+    owner: BoardOwner
+    privacy: String
+}
+
+entity BoardMedia {
+    image_cover_url: String
+    pin_thumbnail_urls: List<String>
+}
+
+entity BoardOwner {
+}
+
+entity BoardSection {
+    id: String
+    * name: String
+}
+
+entity BoardSectionsList200Response {
+}
+
+entity BoardUpdate {
+    name: String
+    description: String
+    privacy: String
+}
+
+entity BoardsList200Response {
+}
+
+entity BoardsListPins200Response {
+}
+
+entity BoardsUserFollowsList200Response {
+}
+
+entity BookClosedResponse {
+    conversion_metrics_ready: Boolean
+    non_conversion_metrics_ready: Boolean
+}
+
+entity BrandFilter {
+    * BRAND: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity BudgetType {
+}
+
+entity BulkDownloadRequest {
+    entity_types: List<BulkEntityType>
+    entity_ids: List<String>
+    updated_since: String
+    campaign_filter: BulkDownloadRequestCampaignFilter
+    output_format: BulkOutputFormat
+}
+
+entity BulkDownloadRequestCampaignFilter {
+    start_time: String
+    end_time: String
+    name: String
+    campaign_status: List<CampaignSummaryStatus>
+    objective_type: List<ObjectiveType>
+}
+
+entity BulkDownloadResponse {
+    request_id: String
+}
+
+entity BulkEntityType {
+}
+
+entity BulkOutputFormat {
+}
+
+entity BulkReportingJobStatus {
+}
+
+entity BulkUpsertRequest {
+    create: BulkUpsertRequestCreate
+    update: BulkUpsertRequestUpdate
+}
+
+entity BulkUpsertRequestCreate {
+    campaigns: List<CampaignCreateRequest>
+    ad_groups: List<AdGroupCreateRequest>
+    ads: List<AdCreateRequest>
+    product_groups: List<ProductGroupPromotionCreateRequest>
+    keywords: List<KeywordsRequest>
+}
+
+entity BulkUpsertRequestUpdate {
+    campaigns: List<CampaignUpdateRequest>
+    ad_groups: List<AdGroupUpdateRequest>
+    ads: List<AdUpdateRequest>
+    product_groups: List<ProductGroupPromotionUpdateRequest>
+    keywords: List<KeywordUpdate>
+}
+
+entity BulkUpsertResponse {
+    request_id: String
+}
+
+entity BulkUpsertStatus {
+}
+
+entity BulkUpsertStatusResponse {
+    status: BulkUpsertStatus
+    result_url: String
+}
+
+entity BusinessAccessRole {
+}
+
+entity CampaignCommon {
+    ad_account_id: String
+    name: String
+    status: EntityStatus
+    lifetime_spend_cap: Integer
+    daily_spend_cap: Integer
+    order_line_id: String
+    tracking_urls: AdCommonTrackingUrls
+    start_time: Integer
+    end_time: Integer
+    summary_status: CampaignSummaryStatus
+}
+
+entity CampaignCreateCommon {
+}
+
+entity CampaignCreateRequest {
+}
+
+entity CampaignCreateResponse {
+    items: List<CampaignCreateResponseItem>
+}
+
+entity CampaignCreateResponseData {
+}
+
+entity CampaignCreateResponseItem {
+    data: CampaignCreateResponseData
+    exceptions: List<Exception>
+}
+
+entity CampaignId {
+    id: String
+}
+
+entity CampaignResponse {
+}
+
+entity CampaignSummaryStatus {
+}
+
+entity CampaignUpdateRequest {
+}
+
+entity CampaignUpdateResponse {
+}
+
+entity CampaignsAnalyticsResponseInner {
+    * CAMPAIGN_ID: String
+    DATE: Date
+}
+
+entity CampaignsList200Response {
+}
+
+entity Catalog {
+}
+
+entity CatalogProductGroup {
+    id: String
+    merchant_id: String
+    name: String
+    filters: Object
+    filter_v2: Object
+    type: Board
+    status: EntityStatus
+    feed_profile_id: String
+    created_at: Integer
+    last_update: Integer
+    product_count: Integer
+    featured_position: Integer
+}
+
+entity CatalogsCreateHotelItem {
+    * hotel_id: String
+    * operation: String
+    * attributes: CatalogsHotelAttributes
+}
+
+entity CatalogsCreateRetailItem {
+    * item_id: String
+    * operation: String
+    * attributes: ItemAttributes
+}
+
+entity CatalogsDbItem {
+    created_at: Date
+    id: String
+    updated_at: Date
+}
+
+entity CatalogsDeleteHotelItem {
+    * hotel_id: String
+    * operation: String
+}
+
+entity CatalogsDeleteRetailItem {
+    * item_id: String
+    * operation: String
+}
+
+entity CatalogsFeed {
+    created_at: Date
+    id: String
+    updated_at: Date
+    * name: String
+    * format: CatalogsFormat
+    * catalog_type: CatalogsType
+    * credentials: CatalogsFeedCredentials
+    * location: String
+    * preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    * status: CatalogsStatus
+    * default_currency: NullableCurrency
+    * default_locale: String
+    * default_country: Country
+    * default_availability: ProductAvailabilityType
+    * catalog_id: String
+}
+
+entity CatalogsFeedCredentials {
+    * password: String
+    * username: String
+}
+
+entity CatalogsFeedIngestionDetails {
+    * errors: CatalogsFeedIngestionErrors
+    * info: CatalogsFeedIngestionInfo
+    * warnings: CatalogsFeedIngestionWarnings
+}
+
+entity CatalogsFeedIngestionErrors {
+    LINE_LEVEL_INTERNAL_ERROR: Integer
+    LARGE_PRODUCT_COUNT_DECREASE: Integer
+    ACCOUNT_FLAGGED: Integer
+    IMAGE_LEVEL_INTERNAL_ERROR: Integer
+    IMAGE_FILE_NOT_ACCESSIBLE: Integer
+    IMAGE_MALFORMED_URL: Integer
+    IMAGE_FILE_NOT_FOUND: Integer
+    IMAGE_INVALID_FILE: Integer
+}
+
+entity CatalogsFeedIngestionInfo {
+    IN_STOCK: Integer
+    OUT_OF_STOCK: Integer
+    PREORDER: Integer
+}
+
+entity CatalogsFeedIngestionWarnings {
+    ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: Integer
+    ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE: Integer
+    ADDITIONAL_IMAGE_MALFORMED_URL: Integer
+    ADDITIONAL_IMAGE_FILE_NOT_FOUND: Integer
+    ADDITIONAL_IMAGE_INVALID_FILE: Integer
+    HOTEL_PRICE_HEADER_IS_PRESENT: Integer
+}
+
+entity CatalogsFeedProcessingResult {
+}
+
+entity CatalogsFeedProcessingSchedule {
+    * time: String
+    * timezone: String
+}
+
+entity CatalogsFeedProcessingStatus {
+}
+
+entity CatalogsFeedProductCounts {
+    original: Integer
+    ingested: Integer
+}
+
+entity CatalogsFeedValidationDetails {
+    * errors: CatalogsFeedValidationErrors
+    * warnings: CatalogsFeedValidationWarnings
+}
+
+entity CatalogsFeedValidationErrors {
+    FETCH_ERROR: Integer
+    FETCH_INACTIVE_FEED_ERROR: Integer
+    ENCODING_ERROR: Integer
+    DELIMITER_ERROR: Integer
+    REQUIRED_COLUMNS_MISSING: Integer
+    DUPLICATE_PRODUCTS: Integer
+    IMAGE_LINK_INVALID: Integer
+    ITEMID_MISSING: Integer
+    TITLE_MISSING: Integer
+    DESCRIPTION_MISSING: Integer
+    PRODUCT_LINK_MISSING: Integer
+    IMAGE_LINK_MISSING: Integer
+    AVAILABILITY_INVALID: Integer
+    PRODUCT_PRICE_INVALID: Integer
+    LINK_FORMAT_INVALID: Integer
+    PARSE_LINE_ERROR: Integer
+    ADWORDS_FORMAT_INVALID: Integer
+    INTERNAL_SERVICE_ERROR: Integer
+    NO_VERIFIED_DOMAIN: Integer
+    ADULT_INVALID: Integer
+    IMAGE_LINK_LENGTH_TOO_LONG: Integer
+    INVALID_DOMAIN: Integer
+    FEED_LENGTH_TOO_LONG: Integer
+    LINK_LENGTH_TOO_LONG: Integer
+    MALFORMED_XML: Integer
+    PRICE_MISSING: Integer
+    FEED_TOO_SMALL: Integer
+    MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED: Integer
+    ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: Integer
+    PINJOIN_CONTENT_UNSAFE: Integer
+    BLOCKLISTED_IMAGE_SIGNATURE: Integer
+    LIST_PRICE_INVALID: Integer
+    PRICE_CANNOT_BE_DETERMINED: Integer
+}
+
+entity CatalogsFeedValidationWarnings {
+    AD_LINK_FORMAT_WARNING: Integer
+    AD_LINK_SAME_AS_LINK: Integer
+    TITLE_LENGTH_TOO_LONG: Integer
+    DESCRIPTION_LENGTH_TOO_LONG: Integer
+    GENDER_INVALID: Integer
+    AGE_GROUP_INVALID: Integer
+    SIZE_TYPE_INVALID: Integer
+    SIZE_SYSTEM_INVALID: Integer
+    LINK_FORMAT_WARNING: Integer
+    SALES_PRICE_INVALID: Integer
+    PRODUCT_CATEGORY_DEPTH_WARNING: Integer
+    ADWORDS_FORMAT_WARNING: Integer
+    ADWORDS_SAME_AS_LINK: Integer
+    DUPLICATE_HEADERS: Integer
+    FETCH_SAME_SIGNATURE: Integer
+    ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG: Integer
+    ADDITIONAL_IMAGE_LINK_WARNING: Integer
+    IMAGE_LINK_WARNING: Integer
+    SHIPPING_INVALID: Integer
+    TAX_INVALID: Integer
+    SHIPPING_WEIGHT_INVALID: Integer
+    EXPIRATION_DATE_INVALID: Integer
+    AVAILABILITY_DATE_INVALID: Integer
+    SALE_DATE_INVALID: Integer
+    WEIGHT_UNIT_INVALID: Integer
+    IS_BUNDLE_INVALID: Integer
+    UPDATED_TIME_INVALID: Integer
+    CUSTOM_LABEL_LENGTH_TOO_LONG: Integer
+    PRODUCT_TYPE_LENGTH_TOO_LONG: Integer
+    TOO_MANY_ADDITIONAL_IMAGE_LINKS: Integer
+    MULTIPACK_INVALID: Integer
+    INDEXED_PRODUCT_COUNT_LARGE_DELTA: Integer
+    ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE: Integer
+    OPTIONAL_PRODUCT_CATEGORY_MISSING: Integer
+    OPTIONAL_PRODUCT_CATEGORY_INVALID: Integer
+    OPTIONAL_CONDITION_MISSING: Integer
+    OPTIONAL_CONDITION_INVALID: Integer
+    IOS_DEEP_LINK_INVALID: Integer
+    ANDROID_DEEP_LINK_INVALID: Integer
+    UTM_SOURCE_AUTO_CORRECTED: Integer
+    COUNTRY_DOES_NOT_MAP_TO_CURRENCY: Integer
+    MIN_AD_PRICE_INVALID: Integer
+    GTIN_INVALID: Integer
+    INCONSISTENT_CURRENCY_VALUES: Integer
+    SALES_PRICE_TOO_LOW: Integer
+    SHIPPING_WIDTH_INVALID: Integer
+    SHIPPING_HEIGHT_INVALID: Integer
+    SALES_PRICE_TOO_HIGH: Integer
+    MPN_INVALID: Integer
+}
+
+entity CatalogsFeedsCreateRequest {
+    default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    default_locale: CatalogsFeedsCreateRequestDefaultLocale
+    credentials: CatalogsFeedCredentials
+    * location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    default_country: Country
+    default_availability: ProductAvailabilityType
+}
+
+entity CatalogsFeedsCreateRequestDefaultLocale {
+}
+
+entity CatalogsFeedsUpdateRequest {
+    default_availability: ProductAvailabilityType
+    default_currency: NullableCurrency
+    name: String
+    format: CatalogsFormat
+    credentials: CatalogsFeedCredentials
+    location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    status: CatalogsStatus
+}
+
+entity CatalogsFormat {
+}
+
+entity CatalogsHotelAddress {
+    addr1: String
+    city: String
+    region: String
+    country: String
+    postal_code: String
+}
+
+entity CatalogsHotelAttributes {
+}
+
+entity CatalogsHotelAttributesAllOfMainImage {
+    link: String
+    tag: List<String>
+}
+
+entity CatalogsHotelBatchItem {
+    * hotel_id: String
+    * operation: String
+    * attributes: CatalogsUpdatableHotelAttributes
+}
+
+entity CatalogsHotelBatchRequest {
+    * catalog_type: CatalogsType
+    * country: Country
+    * language: Language
+    * items: List<CatalogsHotelBatchItem>
+    catalog_id: String
+}
+
+entity CatalogsHotelFeed {
+}
+
+entity CatalogsHotelFeedsCreateRequest {
+    default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    * default_locale: CatalogsFeedsCreateRequestDefaultLocale
+    credentials: CatalogsFeedCredentials
+    * location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    * catalog_type: CatalogsType
+    catalog_id: String
+}
+
+entity CatalogsHotelFeedsUpdateRequest {
+    default_currency: NullableCurrency
+    name: String
+    format: CatalogsFormat
+    credentials: CatalogsFeedCredentials
+    location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    status: CatalogsStatus
+    * catalog_type: CatalogsType
+}
+
+entity CatalogsHotelGuestRatings {
+    score: BigDecimal
+    number_of_reviewers: Integer
+    max_score: BigDecimal
+    rating_system: String
+}
+
+entity CatalogsHotelItemErrorResponse {
+    * catalog_type: CatalogsType
+    hotel_id: String
+    errors: List<ItemValidationEvent>
+}
+
+entity CatalogsHotelItemResponse {
+    * catalog_type: CatalogsType
+    hotel_id: String
+    pins: List<Pin>
+    attributes: CatalogsHotelAttributes
+}
+
+entity CatalogsHotelItemsBatch {
+    batch_id: String
+    created_time: Date
+    completed_time: Date
+    status: BatchOperationStatus
+    * catalog_type: CatalogsType
+    items: List<HotelProcessingRecord>
+}
+
+entity CatalogsHotelItemsFilter {
+    * catalog_type: String
+    * hotel_ids: List<String>
+    catalog_id: String
+}
+
+entity CatalogsHotelProductGroup {
+    * catalog_type: String
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsHotelProductGroupFilters
+    created_at: Integer
+    updated_at: Integer
+    * catalog_id: String
+}
+
+entity CatalogsHotelProductGroupCreateRequest {
+    * catalog_type: String
+    * name: String
+    description: String
+    * filters: CatalogsHotelProductGroupFilters
+    * catalog_id: String
+}
+
+entity CatalogsHotelProductGroupFilterKeys {
+    * PRICE: CatalogsProductGroupPricingCurrencyCriteria
+    * HOTEL_ID: CatalogsProductGroupMultipleStringCriteria
+    * BRAND: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
+    * COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
+}
+
+entity CatalogsHotelProductGroupFilters {
+    * any_of: List<CatalogsHotelProductGroupFilterKeys>
+    * all_of: List<CatalogsHotelProductGroupFilterKeys>
+}
+
+entity CatalogsHotelProductGroupFiltersAnyOf {
+    * any_of: List<CatalogsHotelProductGroupFilterKeys>
+}
+
+entity CatalogsHotelProductGroupUpdateRequest {
+    catalog_type: String
+    name: String
+    description: String
+    filters: CatalogsHotelProductGroupFilters
+}
+
+entity CatalogsItemValidationDetails {
+    * attribute_name: NullableCatalogsItemFieldType
+    * provided_value: String
+}
+
+entity CatalogsItemValidationErrors {
+    ADULT_INVALID: CatalogsItemValidationDetails
+    ADWORDS_FORMAT_INVALID: CatalogsItemValidationDetails
+    AVAILABILITY_INVALID: CatalogsItemValidationDetails
+    BLOCKLISTED_IMAGE_SIGNATURE: CatalogsItemValidationDetails
+    DESCRIPTION_MISSING: CatalogsItemValidationDetails
+    DUPLICATE_PRODUCTS: CatalogsItemValidationDetails
+    IMAGE_LINK_INVALID: CatalogsItemValidationDetails
+    IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails
+    IMAGE_LINK_MISSING: CatalogsItemValidationDetails
+    INVALID_DOMAIN: CatalogsItemValidationDetails
+    ITEMID_MISSING: CatalogsItemValidationDetails
+    ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails
+    LINK_FORMAT_INVALID: CatalogsItemValidationDetails
+    LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails
+    LIST_PRICE_INVALID: CatalogsItemValidationDetails
+    MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED: CatalogsItemValidationDetails
+    PARSE_LINE_ERROR: CatalogsItemValidationDetails
+    PINJOIN_CONTENT_UNSAFE: CatalogsItemValidationDetails
+    PRICE_CANNOT_BE_DETERMINED: CatalogsItemValidationDetails
+    PRICE_MISSING: CatalogsItemValidationDetails
+    PRODUCT_LINK_MISSING: CatalogsItemValidationDetails
+    PRODUCT_PRICE_INVALID: CatalogsItemValidationDetails
+    TITLE_MISSING: CatalogsItemValidationDetails
+}
+
+entity CatalogsItemValidationIssue {
+}
+
+entity CatalogsItemValidationIssues {
+    * item_number: Integer
+    * item_id: String
+    * errors: CatalogsItemValidationErrors
+    * warnings: CatalogsItemValidationWarnings
+}
+
+entity CatalogsItemValidationWarnings {
+    AD_LINK_FORMAT_WARNING: CatalogsItemValidationDetails
+    AD_LINK_SAME_AS_LINK: CatalogsItemValidationDetails
+    ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails
+    ADDITIONAL_IMAGE_LINK_WARNING: CatalogsItemValidationDetails
+    ADWORDS_FORMAT_WARNING: CatalogsItemValidationDetails
+    ADWORDS_SAME_AS_LINK: CatalogsItemValidationDetails
+    AGE_GROUP_INVALID: CatalogsItemValidationDetails
+    SIZE_SYSTEM_INVALID: CatalogsItemValidationDetails
+    ANDROID_DEEP_LINK_INVALID: CatalogsItemValidationDetails
+    AVAILABILITY_DATE_INVALID: CatalogsItemValidationDetails
+    COUNTRY_DOES_NOT_MAP_TO_CURRENCY: CatalogsItemValidationDetails
+    CUSTOM_LABEL_LENGTH_TOO_LONG: CatalogsItemValidationDetails
+    DESCRIPTION_LENGTH_TOO_LONG: CatalogsItemValidationDetails
+    EXPIRATION_DATE_INVALID: CatalogsItemValidationDetails
+    GENDER_INVALID: CatalogsItemValidationDetails
+    GTIN_INVALID: CatalogsItemValidationDetails
+    IMAGE_LINK_WARNING: CatalogsItemValidationDetails
+    IOS_DEEP_LINK_INVALID: CatalogsItemValidationDetails
+    IS_BUNDLE_INVALID: CatalogsItemValidationDetails
+    ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails
+    LINK_FORMAT_WARNING: CatalogsItemValidationDetails
+    MIN_AD_PRICE_INVALID: CatalogsItemValidationDetails
+    MPN_INVALID: CatalogsItemValidationDetails
+    MULTIPACK_INVALID: CatalogsItemValidationDetails
+    OPTIONAL_CONDITION_INVALID: CatalogsItemValidationDetails
+    OPTIONAL_CONDITION_MISSING: CatalogsItemValidationDetails
+    OPTIONAL_PRODUCT_CATEGORY_INVALID: CatalogsItemValidationDetails
+    OPTIONAL_PRODUCT_CATEGORY_MISSING: CatalogsItemValidationDetails
+    PRODUCT_CATEGORY_DEPTH_WARNING: CatalogsItemValidationDetails
+    PRODUCT_TYPE_LENGTH_TOO_LONG: CatalogsItemValidationDetails
+    SALES_PRICE_INVALID: CatalogsItemValidationDetails
+    SALES_PRICE_TOO_LOW: CatalogsItemValidationDetails
+    SALES_PRICE_TOO_HIGH: CatalogsItemValidationDetails
+    SALE_DATE_INVALID: CatalogsItemValidationDetails
+    SHIPPING_INVALID: CatalogsItemValidationDetails
+    SHIPPING_HEIGHT_INVALID: CatalogsItemValidationDetails
+    SHIPPING_WEIGHT_INVALID: CatalogsItemValidationDetails
+    SHIPPING_WIDTH_INVALID: CatalogsItemValidationDetails
+    SIZE_TYPE_INVALID: CatalogsItemValidationDetails
+    TAX_INVALID: CatalogsItemValidationDetails
+    TITLE_LENGTH_TOO_LONG: CatalogsItemValidationDetails
+    TOO_MANY_ADDITIONAL_IMAGE_LINKS: CatalogsItemValidationDetails
+    UTM_SOURCE_AUTO_CORRECTED: CatalogsItemValidationDetails
+    WEIGHT_UNIT_INVALID: CatalogsItemValidationDetails
+}
+
+entity CatalogsItems {
+    items: List<ItemResponse>
+}
+
+entity CatalogsItemsBatch {
+    * catalog_type: CatalogsType
+    batch_id: String
+    created_time: Date
+    completed_time: Date
+    status: BatchOperationStatus
+    items: List<HotelProcessingRecord>
+}
+
+entity CatalogsItemsBatchRequest {
+    * country: Country
+    * language: Language
+    * operation: BatchOperation
+    * items: List<ItemDeleteBatchRecord>
+}
+
+entity CatalogsItemsCreateBatchRequest {
+    * country: Country
+    * language: Language
+    * operation: BatchOperation
+    * items: List<ItemCreateBatchRecord>
+}
+
+entity CatalogsItemsDeleteBatchRequest {
+    * country: Country
+    * language: Language
+    * operation: BatchOperation
+    * items: List<ItemDeleteBatchRecord>
+}
+
+entity CatalogsItemsDeleteDiscontinuedBatchRequest {
+    * country: Country
+    * language: Language
+    * operation: BatchOperation
+    * items: List<ItemDeleteDiscontinuedBatchRecord>
+}
+
+entity CatalogsItemsFilters {
+    * catalog_type: CatalogsType
+    * item_ids: List<String>
+    catalog_id: String
+    * hotel_ids: List<String>
+}
+
+entity CatalogsItemsUpdateBatchRequest {
+    * country: Country
+    * language: Language
+    * operation: BatchOperation
+    * items: List<ItemUpdateBatchRecord>
+}
+
+entity CatalogsItemsUpsertBatchRequest {
+    * country: Country
+    * language: Language
+    * operation: BatchOperation
+    * items: List<ItemUpsertBatchRecord>
+}
+
+entity CatalogsList200Response {
+}
+
+entity CatalogsListProductsByFilterRequest {
+    * feed_id: String
+    * filters: CatalogsProductGroupFilters
+}
+
+entity CatalogsListProductsByFilterRequestOneOf {
+    * feed_id: String
+    * filters: CatalogsProductGroupFilters
+}
+
+entity CatalogsLocale {
+}
+
+entity CatalogsProduct {
+    * metadata: CatalogsProductMetadata
+    * pin: Pin
+}
+
+entity CatalogsProductGroup {
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+    is_featured: Boolean
+    type: CatalogsProductGroupType
+    status: CatalogsProductGroupStatus
+    created_at: Integer
+    updated_at: Integer
+    * feed_id: String
+    catalog_type: String
+}
+
+entity CatalogsProductGroupCreateRequest {
+    * name: String
+    description: String
+    is_featured: Boolean
+    * filters: CatalogsProductGroupFiltersRequest
+    * feed_id: String
+}
+
+entity CatalogsProductGroupCurrencyCriteria {
+    * values: NonNullableCatalogsCurrency
+    negated: Boolean
+}
+
+entity CatalogsProductGroupFilterKeys {
+    * MIN_PRICE: CatalogsProductGroupPricingCriteria
+    * MAX_PRICE: CatalogsProductGroupPricingCriteria
+    * CURRENCY: CatalogsProductGroupCurrencyCriteria
+    * ITEM_ID: CatalogsProductGroupMultipleStringCriteria
+    * AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
+    * BRAND: CatalogsProductGroupMultipleStringCriteria
+    * CONDITION: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
+    * ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
+    * GENDER: CatalogsProductGroupMultipleGenderCriteria
+    * PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_1: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity CatalogsProductGroupFilters {
+    * any_of: List<CatalogsProductGroupFilterKeys>
+    * all_of: List<CatalogsProductGroupFilterKeys>
+}
+
+entity CatalogsProductGroupFiltersAnyOf {
+    * any_of: List<CatalogsProductGroupFilterKeys>
+}
+
+entity CatalogsProductGroupFiltersRequest {
+    * any_of: List<CatalogsProductGroupFilterKeys>
+    * all_of: List<CatalogsProductGroupFilterKeys>
+}
+
+entity CatalogsProductGroupFiltersRequestAnyOf {
+    * any_of: List<CatalogsProductGroupFilterKeys>
+}
+
+entity CatalogsProductGroupFiltersRequestAnyOf1 {
+    * all_of: List<CatalogsProductGroupFilterKeys>
+}
+
+entity CatalogsProductGroupMultipleCountriesCriteria {
+    * values: List<Country>
+    negated: Boolean
+}
+
+entity CatalogsProductGroupMultipleGenderCriteria {
+    * values: List<Gender>
+    negated: Boolean
+}
+
+entity CatalogsProductGroupMultipleStringCriteria {
+    * values: List<String>
+    negated: Boolean
+}
+
+entity CatalogsProductGroupMultipleStringListCriteria {
+    * values: List<List>
+    negated: Boolean
+}
+
+entity CatalogsProductGroupPinsList200Response {
+}
+
+entity CatalogsProductGroupPricingCriteria {
+    inclusion: Boolean
+    * values: BigDecimal
+    negated: Boolean
+}
+
+entity CatalogsProductGroupPricingCurrencyCriteria {
+    * operator: String
+    * value: BigDecimal
+    * currency: NonNullableCatalogsCurrency
+    negated: Boolean
+}
+
+entity CatalogsProductGroupProductCounts {
+    * in_stock: BigDecimal
+    * out_of_stock: BigDecimal
+    * preorder: BigDecimal
+    * total: BigDecimal
+}
+
+entity CatalogsProductGroupStatus {
+}
+
+entity CatalogsProductGroupType {
+}
+
+entity CatalogsProductGroupUpdateRequest {
+    name: String
+    description: String
+    is_featured: Boolean
+    filters: CatalogsProductGroupFiltersRequest
+}
+
+entity CatalogsProductGroupsCreate201Response {
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+    is_featured: Boolean
+    type: CatalogsProductGroupType
+    status: CatalogsProductGroupStatus
+    created_at: Integer
+    updated_at: Integer
+    * feed_id: String
+    * catalog_type: String
+    * catalog_id: String
+}
+
+entity CatalogsProductGroupsCreateRequest {
+    * name: String
+    description: String
+    is_featured: Boolean
+    * filters: CatalogsHotelProductGroupFilters
+    * feed_id: String
+    * catalog_type: String
+    * catalog_id: String
+}
+
+entity CatalogsProductGroupsList200Response {
+}
+
+entity CatalogsProductGroupsList200ResponseAllOfItemsInner {
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+    is_featured: Boolean
+    type: CatalogsProductGroupType
+    status: CatalogsProductGroupStatus
+    created_at: Integer
+    updated_at: Integer
+    * feed_id: String
+    * catalog_type: String
+    * catalog_id: String
+}
+
+entity CatalogsProductGroupsUpdateRequest {
+    name: String
+    description: String
+    is_featured: Boolean
+    filters: CatalogsHotelProductGroupFilters
+    catalog_type: String
+}
+
+entity CatalogsProductMetadata {
+    * item_id: String
+    * item_group_id: String
+    * availability: NonNullableProductAvailabilityType
+    * price: BigDecimal
+    * sale_price: BigDecimal
+    * currency: NonNullableCatalogsCurrency
+}
+
+entity CatalogsRetailBatchRequest {
+    * catalog_type: CatalogsType
+    * country: Country
+    * language: Language
+    * items: List<CatalogsRetailBatchRequestItemsInner>
+}
+
+entity CatalogsRetailBatchRequestItemsInner {
+    * item_id: String
+    * operation: String
+    * attributes: ItemAttributes
+    update_mask: List<UpdateMaskFieldType>
+}
+
+entity CatalogsRetailFeed {
+}
+
+entity CatalogsRetailFeedsCreateRequest {
+    default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    * default_locale: CatalogsFeedsCreateRequestDefaultLocale
+    credentials: CatalogsFeedCredentials
+    * location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    * catalog_type: CatalogsType
+    * default_country: Country
+    default_availability: ProductAvailabilityType
+}
+
+entity CatalogsRetailFeedsUpdateRequest {
+    default_currency: NullableCurrency
+    name: String
+    format: CatalogsFormat
+    credentials: CatalogsFeedCredentials
+    location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    status: CatalogsStatus
+    * catalog_type: CatalogsType
+    default_availability: ProductAvailabilityType
+}
+
+entity CatalogsRetailItemErrorResponse {
+    * catalog_type: CatalogsType
+    item_id: String
+    errors: List<ItemValidationEvent>
+}
+
+entity CatalogsRetailItemResponse {
+    * catalog_type: CatalogsType
+    item_id: String
+    pins: List<Pin>
+    attributes: ItemAttributes
+}
+
+entity CatalogsRetailItemsBatch {
+    batch_id: String
+    created_time: Date
+    completed_time: Date
+    status: BatchOperationStatus
+    * catalog_type: CatalogsType
+    items: List<ItemProcessingRecord>
+}
+
+entity CatalogsRetailItemsFilter {
+    * catalog_type: String
+    * item_ids: List<String>
+    catalog_id: String
+}
+
+entity CatalogsRetailProductGroup {
+    * catalog_type: String
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+    is_featured: Boolean
+    type: CatalogsProductGroupType
+    status: CatalogsProductGroupStatus
+    created_at: Integer
+    updated_at: Integer
+    * feed_id: String
+}
+
+entity CatalogsStatus {
+}
+
+entity CatalogsType {
+}
+
+entity CatalogsUpdatableHotelAttributes {
+    name: String
+    link: String
+    description: String
+    brand: String
+    latitude: BigDecimal
+    longitude: BigDecimal
+    neighborhood: List<String>
+    address: CatalogsHotelAddress
+    custom_label_0: String
+    custom_label_1: String
+    custom_label_2: String
+    custom_label_3: String
+    custom_label_4: String
+    category: String
+    base_price: String
+    sale_price: String
+    guest_ratings: CatalogsHotelGuestRatings
+}
+
+entity CatalogsUpdateHotelItem {
+    * hotel_id: String
+    * operation: String
+    * attributes: CatalogsUpdatableHotelAttributes
+}
+
+entity CatalogsUpdateRetailItem {
+    * item_id: String
+    * operation: String
+    * attributes: UpdatableItemAttributes
+    update_mask: List<UpdateMaskFieldType>
+}
+
+entity CatalogsUpsertHotelItem {
+    * hotel_id: String
+    * operation: String
+    * attributes: CatalogsHotelAttributes
+}
+
+entity CatalogsUpsertRetailItem {
+    * item_id: String
+    * operation: String
+    * attributes: ItemAttributes
+}
+
+entity CatalogsVerticalBatchRequest {
+    * catalog_type: CatalogsType
+    * country: Country
+    * language: Language
+    * items: List<CatalogsHotelBatchItem>
+    catalog_id: String
+}
+
+entity CatalogsVerticalFeedsCreateRequest {
+    default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    * default_locale: CatalogsFeedsCreateRequestDefaultLocale
+    credentials: CatalogsFeedCredentials
+    * location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    * catalog_type: CatalogsType
+    * default_country: Country
+    default_availability: ProductAvailabilityType
+    catalog_id: String
+}
+
+entity CatalogsVerticalFeedsUpdateRequest {
+    default_currency: NullableCurrency
+    name: String
+    format: CatalogsFormat
+    credentials: CatalogsFeedCredentials
+    location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    status: CatalogsStatus
+    * catalog_type: CatalogsType
+    default_availability: ProductAvailabilityType
+}
+
+entity CatalogsVerticalProductGroup {
+    * catalog_type: String
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsProductGroupFilters
+    created_at: Integer
+    updated_at: Integer
+    * catalog_id: String
+    is_featured: Boolean
+    type: CatalogsProductGroupType
+    status: CatalogsProductGroupStatus
+    * feed_id: String
+}
+
+entity CatalogsVerticalProductGroupCreateRequest {
+    * catalog_type: String
+    * name: String
+    description: String
+    * filters: CatalogsHotelProductGroupFilters
+    * catalog_id: String
+}
+
+entity CatalogsVerticalProductGroupUpdateRequest {
+    catalog_type: String
+    name: String
+    description: String
+    filters: CatalogsHotelProductGroupFilters
+}
+
+entity ConditionFilter {
+    * CONDITION: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity ConversionApiResponse {
+    * num_events_received: Integer
+    * num_events_processed: Integer
+    * events: List<ConversionApiResponseEventsInner>
+}
+
+entity ConversionApiResponseEventsInner {
+    * status: String
+    error_message: String
+    warning_message: String
+}
+
+entity ConversionAttributionWindowDays {
+}
+
+entity ConversionEventResponse {
+    conversion_event: ConversionTagType
+    conversion_tag_id: String
+    ad_account_id: String
+    created_time: Integer
+}
+
+entity ConversionEvents {
+    * data: List<ConversionEventsDataInner>
+}
+
+entity ConversionEventsDataInner {
+    * event_name: String
+    * action_source: String
+    * event_time: Long
+    * event_id: String
+    event_source_url: String
+    opt_out: Boolean
+    partner_name: String
+    * user_data: ConversionEventsUserData
+    custom_data: ConversionEventsDataInnerCustomData
+    app_id: String
+    app_name: String
+    app_version: String
+    device_brand: String
+    device_carrier: String
+    device_model: String
+    device_type: String
+    os_version: String
+    wifi: Boolean
+    language: String
+}
+
+entity ConversionEventsDataInnerCustomData {
+    currency: String
+    value: String
+    content_ids: List<String>
+    content_name: String
+    content_category: String
+    content_brand: String
+    contents: List<ConversionEventsDataInnerCustomDataContentsInner>
+    num_items: Long
+    order_id: String
+    search_string: String
+    opt_out_type: String
+    np: String
+}
+
+entity ConversionEventsDataInnerCustomDataContentsInner {
+    id: String
+    item_price: String
+    quantity: Long
+    item_name: String
+    item_category: String
+    item_brand: String
+}
+
+entity ConversionEventsUserData {
+    ph: List<String>
+    ge: List<String>
+    db: List<String>
+    ln: List<String>
+    fn: List<String>
+    ct: List<String>
+    st: List<String>
+    zp: List<String>
+    country: List<String>
+    external_id: List<String>
+    click_id: String
+    partner_id: String
+}
+
+entity ConversionReportAttributionType {
+}
+
+entity ConversionReportTimeType {
+}
+
+entity ConversionTagCommon {
+    ad_account_id: String
+    code_snippet: String
+    enhanced_match_status: EnhancedMatchStatusType
+    id: String
+    last_fired_time_ms: BigDecimal
+    name: String
+    status: EntityStatus
+    version: String
+    configs: ConversionTagConfigs
+}
+
+entity ConversionTagConfigs {
+    aem_enabled: Boolean
+    md_frequency: BigDecimal
+    aem_fnln_enabled: Boolean
+    aem_ph_enabled: Boolean
+    aem_ge_enabled: Boolean
+    aem_db_enabled: Boolean
+    aem_loc_enabled: Boolean
+}
+
+entity ConversionTagCreate {
+}
+
+entity ConversionTagListResponse {
+    items: List<ConversionTagResponse>
+}
+
+entity ConversionTagResponse {
+}
+
+entity ConversionTagType {
+}
+
+entity Country {
+}
+
+entity CountryFilter {
+    * COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
+}
+
+entity CreateMMMReportRequest {
+    * report_name: String
+    * start_date: String
+    * end_date: String
+    * granularity: String
+    * level: String
+    * targeting_types: List<MMMReportingTargetingType>
+    * columns: List<MMMReportingColumn>
+    countries: List<TargetingAdvertiserCountry>
+}
+
+entity CreateMMMReportResponse {
+    code: BigDecimal
+    data: CreateMMMReportResponseData
+}
+
+entity CreateMMMReportResponseData {
+    report_status: BulkReportingJobStatus
+    token: String
+    message: String
+    status: String
+}
+
+entity CreativeType {
+}
+
+entity Currency {
+}
+
+entity CurrencyFilter {
+    * CURRENCY: CatalogsProductGroupCurrencyCriteria
+}
+
+entity CustomLabel0Filter {
+    * CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel1Filter {
+    * CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel2Filter {
+    * CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel3Filter {
+    * CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomLabel4Filter {
+    * CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CustomerList {
+    ad_account_id: String
+    created_time: BigDecimal
+    id: String
+    name: String
+    num_batches: BigDecimal
+    num_removed_user_records: BigDecimal
+    num_uploaded_user_records: BigDecimal
+    status: String
+    type: String
+    updated_time: BigDecimal
+    exceptions: Object
+}
+
+entity CustomerListRequest {
+    * name: String
+    * records: String
+    list_type: UserListType
+    exceptions: Object
+}
+
+entity CustomerListUpdateRequest {
+    * records: String
+    * operation_type: UserListOperationType
+    exceptions: Exception
+}
+
+entity CustomerListsList200Response {
+}
+
+entity DataOutputFormat {
+}
+
+entity DataStatus {
+}
+
+entity DeliveryMetricsResponse {
+    items: List<DeliveryMetricsResponseItemsInner>
+}
+
+entity DeliveryMetricsResponseItemsInner {
+    name: String
+    category: String
+    definition: String
+    display_name: String
+}
+
+entity DetailedError {
+    * code: Integer
+    * message: String
+    * details: Object
+}
+
+entity EnhancedMatchStatusType {
+}
+
+entity EntityStatus {
+}
+
+entity Error {
+    * code: Integer
+    * message: String
+}
+
+entity Exception {
+    code: Integer
+    message: String
+}
+
+entity FeedProcessingResultsList200Response {
+}
+
+entity FeedsCreateRequest {
+    default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    * default_locale: CatalogsFeedsCreateRequestDefaultLocale
+    credentials: CatalogsFeedCredentials
+    * location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    * catalog_type: CatalogsType
+    * default_country: Country
+    default_availability: ProductAvailabilityType
+    catalog_id: String
+}
+
+entity FeedsList200Response {
+}
+
+entity FeedsUpdateRequest {
+    default_currency: NullableCurrency
+    name: String
+    format: CatalogsFormat
+    credentials: CatalogsFeedCredentials
+    location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    status: CatalogsStatus
+    * catalog_type: CatalogsType
+    default_availability: ProductAvailabilityType
+}
+
+entity FollowUserRequest {
+    auto_follow: Boolean
+}
+
+entity FollowersList200Response {
+}
+
+entity Gender {
+}
+
+entity GenderFilter {
+    * GENDER: CatalogsProductGroupMultipleGenderCriteria
+}
+
+entity GetAudiencesOrderBy {
+}
+
+entity GetMMMReportResponse {
+    code: BigDecimal
+    data: GetMMMReportResponseData
+    message: String
+    status: String
+}
+
+entity GetMMMReportResponseData {
+    report_status: String
+    url: String
+    size: BigDecimal
+}
+
+entity GoogleProductCategory0Filter {
+    * GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory1Filter {
+    * GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory2Filter {
+    * GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory3Filter {
+    * GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory4Filter {
+    * GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory5Filter {
+    * GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity GoogleProductCategory6Filter {
+    * GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity Granularity {
+}
+
+entity GridClickType {
+}
+
+entity HotelIdFilter {
+    * HOTEL_ID: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity HotelProcessingRecord {
+    hotel_id: String
+    errors: List<ItemValidationEvent>
+    warnings: List<ItemValidationEvent>
+    status: ItemProcessingStatus
+}
+
+entity ImageDetails {
+    * width: Integer
+    * height: Integer
+    * url: String
+}
+
+entity ImageMetadata {
+    item_type: String
+    title: String
+    description: String
+    link: String
+    images: ImageMetadataImages
+}
+
+entity ImageMetadataImages {
+    150x150: ImageDetails
+    400x300: ImageDetails
+    600x: ImageDetails
+    1200x: ImageDetails
+}
+
+entity IntegrationLog {
+    * client_timestamp: Integer
+    * event_type: String
+    * log_level: String
+    external_business_id: String
+    advertiser_id: String
+    merchant_id: String
+    tag_id: String
+    feed_profile_id: String
+    message: String
+    app_version_number: String
+    platform_version_number: String
+    error: IntegrationLogClientError
+    request: IntegrationLogClientRequest
+}
+
+entity IntegrationLogClientError {
+    cause: String
+    column_number: Integer
+    file_name: String
+    line_number: Integer
+    message: String
+    message_detail: String
+    name: String
+    number: Integer
+    stack_trace: String
+}
+
+entity IntegrationLogClientRequest {
+    * method: String
+    * host: String
+    * path: String
+    request_headers: Map
+    response_headers: Map
+    response_status_code: Integer
+}
+
+entity IntegrationLogsInvalidLogResponse {
+    rejected_logs: List<IntegrationLogsInvalidLogResponseRejectedLogsInner>
+}
+
+entity IntegrationLogsInvalidLogResponseRejectedLogsInner {
+    log_index: Integer
+    * field: String
+    * value: String
+    * reason: String
+}
+
+entity IntegrationLogsRequest {
+    * logs: List<IntegrationLog>
+}
+
+entity IntegrationLogsSuccessResponse {
+    message: String
+}
+
+entity IntegrationMetadata {
+    id: String
+    external_business_id: String
+    connected_merchant_id: String
+    connected_user_id: String
+    connected_advertiser_id: String
+    connected_lba_id: String
+    connected_tag_id: String
+    partner_access_token_expiry: BigDecimal
+    partner_refresh_token_expiry: BigDecimal
+    scopes: String
+    created_timestamp: BigDecimal
+    updated_timestamp: BigDecimal
+    additional_id_1: String
+    partner_metadata: String
+}
+
+entity IntegrationRecord {
+    id: String
+    external_business_id: String
+    connected_merchant_id: String
+    connected_user_id: String
+    connected_advertiser_id: String
+    connected_lba_id: String
+    connected_tag_id: String
+    partner_access_token: String
+    partner_refresh_token: String
+    partner_primary_email: String
+    partner_access_token_expiry: Integer
+    partner_refresh_token_expiry: Integer
+    scopes: String
+    partner_metadata: String
+    additional_id_1: String
+    created_time: Integer
+    updated_time: Integer
+}
+
+entity IntegrationRequest {
+    external_business_id: String
+    connected_merchant_id: String
+    connected_advertiser_id: String
+    connected_lba_id: String
+    connected_tag_id: String
+    partner_access_token: String
+    partner_refresh_token: String
+    partner_primary_email: String
+    partner_access_token_expiry: Integer
+    partner_refresh_token_expiry: Integer
+    scopes: String
+    additional_id_1: String
+    partner_metadata: String
+}
+
+entity IntegrationRequestPatch {
+    connected_merchant_id: String
+    connected_advertiser_id: String
+    connected_lba_id: String
+    connected_tag_id: String
+    partner_access_token: String
+    partner_refresh_token: String
+    partner_primary_email: String
+    partner_access_token_expiry: BigDecimal
+    partner_refresh_token_expiry: BigDecimal
+    scopes: String
+    additional_id_1: String
+    partner_metadata: String
+}
+
+entity IntegrationsGetList200Response {
+}
+
+entity Interest {
+    canonical_url: String
+    id: String
+    key: String
+    name: String
+}
+
+entity ItemAttributes {
+}
+
+entity ItemBatchRecord {
+    item_id: String
+    attributes: ItemAttributes
+    update_mask: List<UpdateMaskFieldType>
+}
+
+entity ItemCreateBatchRecord {
+    item_id: String
+    attributes: ItemAttributes
+}
+
+entity ItemDeleteBatchRecord {
+    item_id: String
+}
+
+entity ItemDeleteDiscontinuedBatchRecord {
+    item_id: String
+}
+
+entity ItemGroupIdFilter {
+    * ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity ItemIdFilter {
+    * ITEM_ID: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity ItemProcessingRecord {
+    item_id: String
+    errors: List<ItemValidationEvent>
+    warnings: List<ItemValidationEvent>
+    status: ItemProcessingStatus
+}
+
+entity ItemProcessingStatus {
+}
+
+entity ItemResponse {
+    * catalog_type: CatalogsType
+    item_id: String
+    pins: List<Pin>
+    attributes: CatalogsHotelAttributes
+    hotel_id: String
+    errors: List<ItemValidationEvent>
+}
+
+entity ItemResponseAnyOf {
+    * catalog_type: CatalogsType
+    item_id: String
+    pins: List<Pin>
+    attributes: CatalogsHotelAttributes
+    hotel_id: String
+}
+
+entity ItemResponseAnyOf1 {
+    * catalog_type: CatalogsType
+    item_id: String
+    errors: List<ItemValidationEvent>
+    hotel_id: String
+}
+
+entity ItemUpdateBatchRecord {
+    item_id: String
+    attributes: UpdatableItemAttributes
+    update_mask: List<UpdateMaskFieldType>
+}
+
+entity ItemUpsertBatchRecord {
+    item_id: String
+    attributes: ItemAttributes
+}
+
+entity ItemValidationEvent {
+    attribute: String
+    code: Integer
+    message: String
+}
+
+entity ItemsBatchPostRequest {
+    * catalog_type: CatalogsType
+    * country: Country
+    * language: Language
+    * items: List<ItemDeleteBatchRecord>
+    catalog_id: String
+    * operation: BatchOperation
+}
+
+entity ItemsIssuesList200Response {
+}
+
+entity Keyword {
+}
+
+entity KeywordError {
+    data: Keyword
+    error_messages: List<String>
+}
+
+entity KeywordMetrics {
+    avg_cpc_in_micro_currency: BigDecimal
+    keyword_query_volume: String
+}
+
+entity KeywordMetricsResponse {
+    keyword: String
+    metrics: KeywordMetrics
+}
+
+entity KeywordUpdate {
+    * id: String
+    archived: Boolean
+    bid: Integer
+}
+
+entity KeywordUpdateBody {
+    * keywords: List<KeywordUpdate>
+}
+
+entity KeywordsCommon {
+    bid: Integer
+    * match_type: MatchTypeResponse
+    * value: String
+}
+
+entity KeywordsGet200Response {
+}
+
+entity KeywordsMetricsArrayResponse {
+    data: List<KeywordMetricsResponse>
+}
+
+entity KeywordsRequest {
+    * keywords: List<KeywordsCommon>
+    * parent_id: String
+}
+
+entity KeywordsResponse {
+    errors: List<KeywordError>
+    keywords: List<Keyword>
+}
+
+entity Language {
+}
+
+entity LeadFormCommon {
+    name: String
+    privacy_policy_link: String
+    has_accepted_terms: Boolean
+    completion_message: String
+    status: LeadFormStatus
+    disclosure_language: String
+    questions: List<LeadFormQuestion>
+}
+
+entity LeadFormQuestion {
+    question_type: LeadFormQuestionType
+    custom_question_field_type: LeadFormQuestionFieldType
+    custom_question_label: String
+    custom_question_options: List<String>
+}
+
+entity LeadFormQuestionFieldType {
+}
+
+entity LeadFormQuestionType {
+}
+
+entity LeadFormResponse {
+}
+
+entity LeadFormStatus {
+}
+
+entity LeadFormTestRequest {
+    * answers: List<String>
+}
+
+entity LeadFormTestResponse {
+    subscription_id: String
+}
+
+entity LeadFormsList200Response {
+}
+
+entity LineItem {
+    product_brand: String
+    product_category: String
+    product_id: Integer
+    product_name: String
+    product_price: String
+    product_quantity: Integer
+    product_variant: String
+    product_variant_id: String
+}
+
+entity LinkedBusiness {
+    username: String
+    image_small_url: String
+    image_medium_url: String
+    image_large_url: String
+    image_xlarge_url: String
+}
+
+entity MMMReportingColumn {
+}
+
+entity MMMReportingTargetingType {
+}
+
+entity MatchType {
+}
+
+entity MatchTypeResponse {
+}
+
+entity MaxPriceFilter {
+    * MAX_PRICE: CatalogsProductGroupPricingCriteria
+}
+
+entity MediaList200Response {
+}
+
+entity MediaUpload {
+    media_id: String
+    media_type: MediaUploadType
+    upload_url: String
+    upload_parameters: MediaUploadAllOfUploadParameters
+}
+
+entity MediaUploadAllOfUploadParameters {
+    x-amz-date: String
+    x-amz-signature: String
+    x-amz-security-token: String
+    x-amz-algorithm: String
+    key: String
+    policy: String
+    x-amz-credential: String
+    Content-Type: String
+}
+
+entity MediaUploadDetails {
+    media_id: String
+    media_type: MediaUploadType
+    status: MediaUploadStatus
+}
+
+entity MediaUploadRequest {
+    * media_type: MediaUploadType
+}
+
+entity MediaUploadStatus {
+}
+
+entity MediaUploadType {
+}
+
+entity MetricsReportingLevel {
+}
+
+entity MetricsResponse {
+    data: List<Object>
+}
+
+entity MinPriceFilter {
+    * MIN_PRICE: CatalogsProductGroupPricingCriteria
+}
+
+entity NonNullableCatalogsCurrency {
+}
+
+entity NonNullableProductAvailabilityType {
+}
+
+entity NullableCatalogsItemFieldType {
+}
+
+entity NullableCurrency {
+}
+
+entity OauthAccessTokenRequestCode {
+}
+
+entity OauthAccessTokenRequestRefresh {
+}
+
+entity OauthAccessTokenResponse {
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
+}
+
+entity OauthAccessTokenResponseCode {
+}
+
+entity OauthAccessTokenResponseEverlastingRefresh {
+}
+
+entity OauthAccessTokenResponseIntegrationRefresh {
+}
+
+entity OauthAccessTokenResponseRefresh {
+}
+
+entity ObjectiveType {
+}
+
+entity OptimizationGoalMetadata {
+    conversion_tag_v3_goal_metadata: OptimizationGoalMetadataConversionTagV3GoalMetadata
+    frequency_goal_metadata: OptimizationGoalMetadataFrequencyGoalMetadata
+    scrollup_goal_metadata: OptimizationGoalMetadataScrollupGoalMetadata
+}
+
+entity OptimizationGoalMetadataConversionTagV3GoalMetadata {
+    attribution_windows: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
+    conversion_event: String
+    conversion_tag_id: String
+    cpa_goal_value_in_micro_currency: String
+    is_roas_optimized: Boolean
+    learning_mode_type: String
+}
+
+entity OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
+    click_window_days: Integer
+    engagement_window_days: Integer
+    view_window_days: Integer
+}
+
+entity OptimizationGoalMetadataFrequencyGoalMetadata {
+    frequency: Integer
+    timerange: String
+}
+
+entity OptimizationGoalMetadataScrollupGoalMetadata {
+    scrollup_goal_value_in_micro_currency: String
+}
+
+entity OrderLine {
+}
+
+entity OrderLineError {
+    data: OrderLine
+    error_messages: List<String>
+}
+
+entity OrderLinePaidType {
+}
+
+entity OrderLineResponse {
+    errors: List<OrderLineError>
+    order_line: List<OrderLine>
+}
+
+entity OrderLineSingleResponse {
+    data: OrderLineResponse
+}
+
+entity OrderLineStatus {
+}
+
+entity OrderLines {
+    id: String
+    type: String
+    ad_account_id: String
+    purchase_order_id: String
+    start_time: BigDecimal
+    end_time: BigDecimal
+    budget: BigDecimal
+    paid_budget: BigDecimal
+    status: OrderLineStatus
+    name: String
+    paid_type: OrderLinePaidType
+}
+
+entity OrderLinesArrayResponse {
+    items: List<OrderLines>
+}
+
+entity OrderLinesList200Response {
+}
+
+entity PacingDeliveryType {
+}
+
+entity PageVisitConversionTagsGet200Response {
+}
+
+entity Paginated {
+    * items: List<Object>
+    bookmark: String
+}
+
+entity PartnerType {
+}
+
+entity Pin {
+    id: String
+    created_at: Date
+    link: String
+    title: String
+    description: String
+    dominant_color: String
+    alt_text: String
+    creative_type: CreativeType
+    board_id: String
+    board_section_id: String
+    board_owner: BoardOwner
+    is_owner: Boolean
+    media: SummaryPinMedia
+    media_source: PinMediaSource
+    parent_pin_id: String
+    is_standard: Boolean
+    has_been_promoted: Boolean
+    note: String
+    pin_metrics: Object
+}
+
+entity PinAnalyticsMetricsResponse {
+    lifetime_metrics: Map
+    daily_metrics: List<PinAnalyticsMetricsResponseDailyMetricsInner>
+    summary_metrics: Map
+}
+
+entity PinAnalyticsMetricsResponseDailyMetricsInner {
+    data_status: DataStatus
+    date: String
+    metrics: Map
+}
+
+entity PinCreate {
+    id: String
+    created_at: Date
+    link: String
+    title: String
+    description: String
+    dominant_color: String
+    alt_text: String
+    board_id: String
+    board_section_id: String
+    board_owner: BoardOwner
+    media: SummaryPinMedia
+    media_source: PinMediaSource
+    parent_pin_id: String
+    note: String
+}
+
+entity PinMedia {
+    media_type: String
+}
+
+entity PinMediaMetadata {
+    item_type: String
+    title: String
+    description: String
+    link: String
+    images: ImageMetadataImages
+    cover_image_url: String
+    video_url: String
+    duration: BigDecimal
+    height: Integer
+    width: Integer
+}
+
+entity PinMediaSource {
+    * source_type: String
+    * content_type: String
+    * data: String
+    is_standard: Boolean
+    * url: String
+    cover_image_url: String
+    cover_image_content_type: String
+    cover_image_data: String
+    * media_id: String
+    * items: List<PinMediaSourceImagesURLItemsInner>
+    index: Integer
+    is_affiliate_link: Boolean
+}
+
+entity PinMediaSourceImageBase64 {
+    * source_type: String
+    * content_type: String
+    * data: String
+    is_standard: Boolean
+}
+
+entity PinMediaSourceImageURL {
+    * source_type: String
+    * url: String
+    is_standard: Boolean
+}
+
+entity PinMediaSourceImagesBase64 {
+    source_type: String
+    * items: List<PinMediaSourceImagesBase64ItemsInner>
+    index: Integer
+}
+
+entity PinMediaSourceImagesBase64ItemsInner {
+    title: String
+    description: String
+    link: String
+    * content_type: String
+    * data: String
+}
+
+entity PinMediaSourceImagesURL {
+    source_type: String
+    * items: List<PinMediaSourceImagesURLItemsInner>
+    index: Integer
+}
+
+entity PinMediaSourceImagesURLItemsInner {
+    title: String
+    description: String
+    link: String
+    * url: String
+}
+
+entity PinMediaSourcePinURL {
+    * source_type: String
+    is_affiliate_link: Boolean
+}
+
+entity PinMediaSourceVideoID {
+    * source_type: String
+    cover_image_url: String
+    cover_image_content_type: String
+    cover_image_data: String
+    * media_id: String
+    is_standard: Boolean
+}
+
+entity PinMediaWithImage {
+}
+
+entity PinMediaWithImageAndVideo {
+}
+
+entity PinMediaWithImages {
+}
+
+entity PinMediaWithVideo {
+}
+
+entity PinMediaWithVideos {
+}
+
+entity PinPromotionSummaryStatus {
+}
+
+entity PinUpdate {
+    alt_text: String
+    board_id: String
+    board_section_id: String
+    description: String
+    link: String
+    title: String
+    carousel_slots: List<PinUpdateCarouselSlotsInner>
+    note: String
+}
+
+entity PinUpdateCarouselSlotsInner {
+    title: String
+    description: String
+    link: String
+}
+
+entity PinsAnalyticsMetricTypesParameterInner {
+}
+
+entity PinsList200Response {
+}
+
+entity PinsSaveRequest {
+    board_id: String
+    board_section_id: String
+}
+
+entity PinterestTagEventData {
+    currency: Currency
+    lead_type: String
+    line_items: LineItem
+    order_id: String
+    order_quantity: Integer
+    page_name: String
+    promo_code: String
+    property: String
+    search_query: String
+    value: String
+    video_title: String
+}
+
+entity PlacementGroupType {
+}
+
+entity PriceFilter {
+    * PRICE: CatalogsProductGroupPricingCurrencyCriteria
+}
+
+entity ProductAvailabilityType {
+}
+
+entity ProductGroupAnalyticsResponseInner {
+    * PRODUCT_GROUP_ID: String
+    DATE: Date
+}
+
+entity ProductGroupPromotion {
+    id: String
+    ad_group_id: String
+    bid_in_micro_currency: Integer
+    included: Boolean
+    definition: String
+    relative_definition: String
+    parent_id: String
+    slideshow_collections_title: String
+    slideshow_collections_description: String
+    is_mdl: Boolean
+    status: EntityStatus
+    tracking_url: String
+    catalog_product_group_id: String
+    catalog_product_group_name: String
+    creative_type: CreativeType
+    collections_hero_pin_id: String
+    collections_hero_destination_url: String
+    grid_click_type: GridClickType
+}
+
+entity ProductGroupPromotionCreateRequest {
+    * ad_group_id: String
+    * product_group_promotion: List<ProductGroupPromotion>
+}
+
+entity ProductGroupPromotionResponse {
+    items: List<ProductGroupPromotionResponseItem>
+}
+
+entity ProductGroupPromotionResponseItem {
+    data: ProductGroupPromotion
+    exceptions: List<Exception>
+}
+
+entity ProductGroupPromotionUpdateRequest {
+    * ad_group_id: String
+    * product_group_promotion: List<ProductGroupPromotion>
+}
+
+entity ProductGroupPromotionsList200Response {
+}
+
+entity ProductGroupSummaryStatus {
+}
+
+entity ProductType0Filter {
+    * PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType1Filter {
+    * PRODUCT_TYPE_1: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType2Filter {
+    * PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType3Filter {
+    * PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity ProductType4Filter {
+    * PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria
+}
+
+entity QuizPinData {
+    questions: List<QuizPinQuestion>
+    results: List<QuizPinResult>
+}
+
+entity QuizPinOption {
+    id: BigDecimal
+    text: String
+}
+
+entity QuizPinQuestion {
+    question_id: BigDecimal
+    question_text: String
+    options: List<QuizPinOption>
+}
+
+entity QuizPinResult {
+    organic_pin_id: String
+    android_deep_link: String
+    ios_deep_link: String
+    destination_url: String
+    result_id: BigDecimal
+}
+
+entity RelatedTerms {
+    id: String
+    related_term_count: Integer
+    related_terms_list: List<RelatedTermsRelatedTermsListInner>
+}
+
+entity RelatedTermsRelatedTermsListInner {
+    term: String
+    related_terms: List<String>
+}
+
+entity ReportingColumnAsync {
+}
+
+entity Role {
+}
+
+entity SSIOAccountAddress {
+    display: String
+    purpose: String
+    address_id: String
+    order_legal_entity: String
+}
+
+entity SSIOAccountItem {
+    id: String
+    io_terms_id: String
+    io_terms: String
+    us_terms_id: String
+    us_terms: String
+    row_terms_id: String
+    row_terms: String
+    io_type: String
+    addresses: List<SSIOAccountAddress>
+}
+
+entity SSIOAccountPMPName {
+    name: String
+    id: String
+}
+
+entity SSIOAccountResponse {
+    eligible: Boolean
+    can_edit: Boolean
+    billto_infos: List<SSIOAccountItem>
+    currency: String
+    pmp_names: List<SSIOAccountPMPName>
+    error: String
+}
+
+entity SSIOCreateInsertionOrderRequest {
+}
+
+entity SSIOCreateInsertionOrderResponse {
+    pin_order_id: String
+}
+
+entity SSIOEditInsertionOrderRequest {
+}
+
+entity SSIOEditInsertionOrderResponse {
+    pin_order_id: String
+}
+
+entity SSIOInsertionOrderCommon {
+    start_date: String
+    end_date: String
+    po_number: String
+    budget_amount: BigDecimal
+    billing_contact_firstname: String
+    billing_contact_lastname: String
+    billing_contact_email: String
+    media_contact_firstname: String
+    media_contact_lastname: String
+    media_contact_email: String
+    agency_link: String
+    user_email: String
+}
+
+entity SSIOInsertionOrderStatus {
+    pin_order_id: String
+    status: String
+    creation_time: String
+}
+
+entity SSIOInsertionOrderStatusResponse {
+}
+
+entity SSIOOrderLine {
+    salesforce_order_line_id: String
+    ads_manager_order_line_id: String
+    pin_order_id: String
+    last_modified_date_time: String
+    start_date: Date
+    end_date: Date
+    bill_to_company_name: String
+    billing_contact_firstname: String
+    billing_contact_lastname: String
+    billing_contact_email: String
+    media_contact_email: String
+    media_contact_firstname: String
+    media_contact_lastname: String
+    currency_info: Currency
+    agency_link: String
+    po_number: String
+    order_name: String
+    pmp_name: String
+    accepted_terms_id: String
+    accepted_terms_time: String
+    budget_amount: BigDecimal
+    estimated_monthly_spend: BigDecimal
+}
+
+entity SearchPartnerPins200Response {
+}
+
+entity SearchUserBoardsGet200Response {
+}
+
+entity SingleInterestTargetingOptionResponse {
+    id: String
+    name: String
+    child_interests: List<String>
+    level: Integer
+}
+
+entity SsioInsertionOrdersStatusGetByAdAccount200Response {
+}
+
+entity SsioOrderLinesGetByAdAccount200Response {
+}
+
+entity SummaryPin {
+    media: SummaryPinMedia
+    alt_text: String
+    link: String
+    title: String
+    description: String
+}
+
+entity SummaryPinMedia {
+}
+
+entity TargetingAdvertiserCountry {
+}
+
+entity TargetingSpec {
+    AGE_BUCKET: List<String>
+    APPTYPE: List<String>
+    AUDIENCE_EXCLUDE: List<String>
+    AUDIENCE_INCLUDE': List<String>
+    GENDER: List<String>
+    GEO: List<String>
+    INTEREST: List<String>
+    LOCALE: List<String>
+    LOCATION: List<String>
+    SHOPPING_RETARGETING: List<TargetingSpecSHOPPINGRETARGETING>
+    TARGETING_STRATEGY: List<String>
+}
+
+entity TargetingSpecSHOPPINGRETARGETING {
+    lookback_window: Integer
+    tag_types: List<Integer>
+    exclusion_window: Integer
+}
+
+entity TargetingTypeFilter {
+    targeting_types: List<AdsAnalyticsTargetingType>
+}
+
+entity TemplateResponse {
+    id: String
+    ad_account_id: String
+    ad_account_ids: List<String>
+    user_id: String
+    name: String
+    report_start_relative_days_in_past: BigDecimal
+    report_end_relative_days_in_past: BigDecimal
+    date_range: TemplateResponseDateRange
+    report_level: MetricsReportingLevel
+    report_format: DataOutputFormat
+    columns: List<String>
+    granularity: Granularity
+    view_window_days: BigDecimal
+    click_window_days: BigDecimal
+    engagement_window_days: BigDecimal
+    conversion_report_time_type: String
+    filters_json: String
+    is_owned_by_user: Boolean
+    is_scheduled: Boolean
+    creation_source: String
+    is_deleted: Boolean
+    updated_time: BigDecimal
+    custom_column_ids: List<String>
+    type: String
+    ingestion_sources: List<String>
+}
+
+entity TemplateResponseDateRange {
+    dynamic_date_range: TemplateResponseDateRangeDynamicDateRange
+    relative_date_range: TemplateResponseDateRangeRelativeDateRange
+    absolute_date_range: TemplateResponseDateRangeAbsoluteDateRange
+}
+
+entity TemplateResponseDateRangeAbsoluteDateRange {
+    type: String
+    start_date: BigDecimal
+    end_date: BigDecimal
+}
+
+entity TemplateResponseDateRangeDynamicDateRange {
+    type: String
+    range: String
+}
+
+entity TemplateResponseDateRangeRelativeDateRange {
+    type: String
+    start_days_in_past: BigDecimal
+    end_days_in_past: BigDecimal
+}
+
+entity TemplatesList200Response {
+}
+
+entity TermsOfService {
+    id: String
+    html: String
+    has_accepted: Boolean
+    ad_account_id: String
+}
+
+entity TopPinsAnalyticsResponse {
+    date_availability: TopPinsAnalyticsResponseDateAvailability
+    pins: List<TopPinsAnalyticsResponsePinsInner>
+    sort_by: String
+}
+
+entity TopPinsAnalyticsResponseDateAvailability {
+    latest_available_timestamp: BigDecimal
+    is_realtime: Boolean
+}
+
+entity TopPinsAnalyticsResponsePinsInner {
+    metrics: Map
+    data_status: Map
+    pin_id: String
+}
+
+entity TopVideoPinsAnalyticsResponse {
+    date_availability: TopPinsAnalyticsResponseDateAvailability
+    pins: List<TopVideoPinsAnalyticsResponsePinsInner>
+    sort_by: String
+}
+
+entity TopVideoPinsAnalyticsResponsePinsInner {
+    metrics: Map
+    data_status: Map
+    pin_id: String
+}
+
+entity TrackingUrls {
+    impression: List<String>
+    click: List<String>
+    engagement: List<String>
+    buyable_button: List<String>
+    audience_verification: List<String>
+}
+
+entity TrendType {
+}
+
+entity TrendingKeywordsResponse {
+    trends: List<TrendingKeywordsResponseTrendsInner>
+}
+
+entity TrendingKeywordsResponseTrendsInner {
+    keyword: String
+    pct_growth_wow: Integer
+    pct_growth_mom: Integer
+    pct_growth_yoy: Integer
+    time_series: TrendingKeywordsResponseTrendsInnerTimeSeries
+}
+
+entity TrendingKeywordsResponseTrendsInnerTimeSeries {
+    date: Date
+}
+
+entity TrendsSupportedRegion {
+}
+
+entity UpdatableItemAttributes {
+    ad_link: String
+    adult: Boolean
+    age_group: String
+    availability: String
+    average_review_rating: BigDecimal
+    brand: String
+    checkout_enabled: Boolean
+    color: String
+    condition: String
+    custom_label_0: String
+    custom_label_1: String
+    custom_label_2: String
+    custom_label_3: String
+    custom_label_4: String
+    description: String
+    free_shipping_label: Boolean
+    free_shipping_limit: String
+    gender: String
+    google_product_category: String
+    gtin: Integer
+    id: String
+    item_group_id: String
+    last_updated_time: Long
+    link: String
+    material: String
+    min_ad_price: String
+    mobile_link: String
+    mpn: String
+    number_of_ratings: Integer
+    number_of_reviews: Integer
+    pattern: String
+    price: String
+    product_type: String
+    sale_price: String
+    shipping: String
+    shipping_height: String
+    shipping_weight: String
+    shipping_width: String
+    size: String
+    size_system: String
+    size_type: String
+    tax: String
+    title: String
+    variant_names: List<String>
+    variant_values: List<String>
+}
+
+entity UpdateMaskFieldType {
+}
+
+entity UserAccountFollowedInterests200Response {
+}
+
+entity UserFollowingFeedType {
+}
+
+entity UserFollowingGet200Response {
+}
+
+entity UserListOperationType {
+}
+
+entity UserListType {
+}
+
+entity UserSummary {
+    username: String
+    type: String
+}
+
+entity UserWebsiteSummary {
+    website: String
+    status: String
+    verified_at: String
+}
+
+entity UserWebsiteVerificationCode {
+    verification_code: String
+    dns_txt_record: String
+    metatag: String
+    filename: String
+    file_content: String
+}
+
+entity UserWebsiteVerifyRequest {
+    website: String
+    verification_method: String
+}
+
+entity UserWebsitesGet200Response {
+}
+
+entity VideoMetadata {
+    item_type: String
+    cover_image_url: String
+    video_url: String
+    duration: BigDecimal
+    height: Integer
+    width: Integer
+}
+
+Paginated <|--- AdAccountsCatalogsProductGroupsList200Response
+Paginated <|--- AdAccountsList200Response
+Paginated <|--- AdAccountsSubscriptionsGetList200Response
+QuizPinData <|--- AdCommonQuizPinData
+TrackingUrls <|--- AdCommonTrackingUrls
+AdCommon <|--- AdCreateRequest
+AdPinId <|--- AdCreateRequest
+OptimizationGoalMetadata <|--- AdGroupCommonOptimizationGoalMetadata
+TrackingUrls <|--- AdGroupCommonTrackingUrls
+AdGroupCommon <|--- AdGroupCreateRequest
+AdGroupCommon <|--- AdGroupResponse
+AdGroupCommon <|--- AdGroupUpdateRequest
+Paginated <|--- AdGroupsList200Response
+AdCommon <|--- AdResponse
+AdPinId <|--- AdResponse
+AdCommon <|--- AdUpdateRequest
+Paginated <|--- AdsCreditsDiscountsGet200Response
+Paginated <|--- AdsList200Response
+AudienceCommon <|--- AudienceCreateCustomRequest
+AudienceCommon <|--- AudienceCreateRequest
+AudienceType <|--- AudienceCreateRequest1AudienceType
+AudienceCommon <|--- AudienceUpdateRequest
+Paginated <|--- AudiencesList200Response
+Paginated <|--- BillingProfilesGet200Response
+BoardOwner <|--- BoardOwner
+Paginated <|--- BoardSectionsList200Response
+Paginated <|--- BoardsList200Response
+Paginated <|--- BoardsListPins200Response
+Paginated <|--- BoardsUserFollowsList200Response
+CampaignCommon <|--- CampaignCreateCommon
+CampaignCreateCommon <|--- CampaignCreateRequest
+CampaignCreateCommon <|--- CampaignCreateResponseData
+CampaignResponse <|--- CampaignCreateResponseData
+CampaignId <|--- CampaignResponse
+CampaignCommon <|--- CampaignResponse
+CampaignId <|--- CampaignUpdateRequest
+CampaignCommon <|--- CampaignUpdateRequest
+CampaignCreateCommon <|--- CampaignUpdateRequest
+CampaignCreateResponse <|--- CampaignUpdateResponse
+Paginated <|--- CampaignsList200Response
+CatalogsDbItem <|--- Catalog
+CatalogsDbItem <|--- CatalogsFeedProcessingResult
+CatalogsUpdatableHotelAttributes <|--- CatalogsHotelAttributes
+CatalogsDbItem <|--- CatalogsHotelFeed
+Paginated <|--- CatalogsList200Response
+Paginated <|--- CatalogsProductGroupPinsList200Response
+Paginated <|--- CatalogsProductGroupsList200Response
+CatalogsDbItem <|--- CatalogsRetailFeed
+ConversionTagConfigs <|--- ConversionTagCreate
+ConversionTagCommon <|--- ConversionTagResponse
+Paginated <|--- CustomerListsList200Response
+Paginated <|--- FeedProcessingResultsList200Response
+Paginated <|--- FeedsList200Response
+Paginated <|--- FollowersList200Response
+Paginated <|--- IntegrationsGetList200Response
+UpdatableItemAttributes <|--- ItemAttributes
+Paginated <|--- ItemsIssuesList200Response
+KeywordsCommon <|--- Keyword
+Paginated <|--- KeywordsGet200Response
+LeadFormCommon <|--- LeadFormResponse
+Paginated <|--- LeadFormsList200Response
+Paginated <|--- MediaList200Response
+OauthAccessTokenRequest <|--- OauthAccessTokenRequestCode
+OauthAccessTokenRequest <|--- OauthAccessTokenRequestRefresh
+OauthAccessTokenResponse <|--- OauthAccessTokenResponseCode
+OauthAccessTokenResponse <|--- OauthAccessTokenResponseEverlastingRefresh
+OauthAccessTokenResponse <|--- OauthAccessTokenResponseIntegrationRefresh
+OauthAccessTokenResponse <|--- OauthAccessTokenResponseRefresh
+OrderLines <|--- OrderLine
+Paginated <|--- OrderLinesList200Response
+Paginated <|--- PageVisitConversionTagsGet200Response
+PinMedia <|--- PinMediaWithImage
+PinMedia <|--- PinMediaWithImageAndVideo
+PinMedia <|--- PinMediaWithImages
+PinMedia <|--- PinMediaWithVideo
+PinMedia <|--- PinMediaWithVideos
+Paginated <|--- PinsList200Response
+Paginated <|--- ProductGroupPromotionsList200Response
+SSIOInsertionOrderCommon <|--- SSIOCreateInsertionOrderRequest
+SSIOInsertionOrderCommon <|--- SSIOEditInsertionOrderRequest
+SSIOInsertionOrderStatus <|--- SSIOInsertionOrderStatusResponse
+Paginated <|--- SearchPartnerPins200Response
+Paginated <|--- SearchUserBoardsGet200Response
+Paginated <|--- SsioInsertionOrdersStatusGetByAdAccount200Response
+Paginated <|--- SsioOrderLinesGetByAdAccount200Response
+PinMedia <|--- SummaryPinMedia
+Paginated <|--- TemplatesList200Response
+Paginated <|--- UserAccountFollowedInterests200Response
+Paginated <|--- UserFollowingGet200Response
+Paginated <|--- UserWebsitesGet200Response
+
+AdsAnalyticsCreateAsyncRequest -- "0..*" AdsAnalyticsMetricsFilter : metrics_filters
+AudienceCategory -- "0..*" AudienceSubcategory : subcategories
+CatalogsHotelFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
+CatalogsHotelFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsRetailItemResponse -- "0..*" Pin : pins
+CatalogsRetailItemResponse -- ItemAttributes : attributes
+CatalogsHotelBatchItem -- CatalogsUpdatableHotelAttributes : attributes
+KeywordError -- Keyword : data
+Audience -- AudienceRule : rule
+AudienceInsightCategoryArrayResponse -- "0..*" AudienceInsightCategoryCommon : items
+SummaryPin -- SummaryPinMedia : media
+CatalogsHotelProductGroupFilters -- "0..*" CatalogsHotelProductGroupFilterKeys : any_of
+CatalogsHotelProductGroupFilters -- "0..*" CatalogsHotelProductGroupFilterKeys : all_of
+CatalogsCreateRetailItem -- ItemAttributes : attributes
+AudienceInsightsResponse -- "0..*" AudienceCategory : categories
+AudienceInsightsResponse -- AudienceDemographics : demographics
+SSIOAccountItem -- "0..*" SSIOAccountAddress : addresses
+OptimizationGoalMetadata -- OptimizationGoalMetadataConversionTagV3GoalMetadata : conversion_tag_v3_goal_metadata
+OptimizationGoalMetadata -- OptimizationGoalMetadataFrequencyGoalMetadata : frequency_goal_metadata
+OptimizationGoalMetadata -- OptimizationGoalMetadataScrollupGoalMetadata : scrollup_goal_metadata
+TrendingKeywordsResponse -- "0..*" TrendingKeywordsResponseTrendsInner : trends
+CatalogsUpdatableHotelAttributes -- CatalogsHotelAddress : address
+CatalogsUpdatableHotelAttributes -- CatalogsHotelGuestRatings : guest_ratings
+CatalogsVerticalProductGroup -- CatalogsProductGroupFilters : filters
+CatalogsProductGroupCreateRequest -- CatalogsProductGroupFiltersRequest : filters
+CatalogsVerticalProductGroupUpdateRequest -- CatalogsHotelProductGroupFilters : filters
+TemplateResponseDateRange -- TemplateResponseDateRangeDynamicDateRange : dynamic_date_range
+TemplateResponseDateRange -- TemplateResponseDateRangeRelativeDateRange : relative_date_range
+TemplateResponseDateRange -- TemplateResponseDateRangeAbsoluteDateRange : absolute_date_range
+CatalogsRetailProductGroup -- CatalogsProductGroupFilters : filters
+CatalogsItemsBatchRequest -- "0..*" ItemDeleteBatchRecord : items
+MediaUpload -- MediaUploadAllOfUploadParameters : upload_parameters
+FeedsUpdateRequest -- CatalogsFeedCredentials : credentials
+FeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsItemsUpsertBatchRequest -- "0..*" ItemUpsertBatchRecord : items
+CatalogsItemsBatch -- "0..*" HotelProcessingRecord : items
+AdGroupCommon -- AdGroupCommonOptimizationGoalMetadata : optimization_goal_metadata
+AdGroupCommon -- TargetingSpec : targeting_spec
+AdGroupCommon -- AdGroupCommonTrackingUrls : tracking_urls
+ItemsBatchPostRequest -- "0..*" ItemDeleteBatchRecord : items
+CatalogsListProductsByFilterRequestOneOf -- CatalogsProductGroupFilters : filters
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupPricingCriteria : MIN_PRICE
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupPricingCriteria : MAX_PRICE
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupCurrencyCriteria : CURRENCY
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : ITEM_ID
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : AVAILABILITY
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : BRAND
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CONDITION
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_0
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_1
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_2
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_3
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_4
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : ITEM_GROUP_ID
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleGenderCriteria : GENDER
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_4
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_3
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_2
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_1
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_0
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_6
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_5
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_4
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_3
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_2
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_1
+CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_0
+CatalogsProductGroupsCreate201Response -- CatalogsProductGroupFilters : filters
+CampaignCreateResponseItem -- CampaignCreateResponseData : data
+CampaignCreateResponseItem -- "0..*" Exception : exceptions
+CatalogsFeedIngestionDetails -- CatalogsFeedIngestionErrors : errors
+CatalogsFeedIngestionDetails -- CatalogsFeedIngestionInfo : info
+CatalogsFeedIngestionDetails -- CatalogsFeedIngestionWarnings : warnings
+BulkDownloadRequest -- BulkDownloadRequestCampaignFilter : campaign_filter
+Board -- BoardMedia : media
+Board -- BoardOwner : owner
+CatalogsProductGroupsList200ResponseAllOfItemsInner -- CatalogsProductGroupFilters : filters
+KeywordUpdateBody -- "0..*" KeywordUpdate : keywords
+CatalogsItemsCreateBatchRequest -- "0..*" ItemCreateBatchRecord : items
+ConversionApiResponse -- "0..*" ConversionApiResponseEventsInner : events
+CampaignCommon -- AdCommonTrackingUrls : tracking_urls
+CatalogsRetailFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
+CatalogsRetailFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+HotelProcessingRecord -- "0..*" ItemValidationEvent : errors
+HotelProcessingRecord -- "0..*" ItemValidationEvent : warnings
+CatalogsHotelProductGroupUpdateRequest -- CatalogsHotelProductGroupFilters : filters
+CatalogsVerticalProductGroupCreateRequest -- CatalogsHotelProductGroupFilters : filters
+AdGroupAudienceSizingRequest -- TargetingSpec : targeting_spec
+AdGroupAudienceSizingRequest -- "0..*" AdGroupAudienceSizingRequestKeywordsInner : keywords
+ConversionTagCommon -- ConversionTagConfigs : configs
+ProductGroupPromotionUpdateRequest -- "0..*" ProductGroupPromotion : product_group_promotion
+AudienceDefinitionResponse -- "0..*" AudienceDefinition : items
+AdArrayResponseElement -- AdResponse : data
+AdArrayResponseElement -- Exception : exceptions
+DeliveryMetricsResponse -- "0..*" DeliveryMetricsResponseItemsInner : items
+Pin -- BoardOwner : board_owner
+Pin -- SummaryPinMedia : media
+Pin -- PinMediaSource : media_source
+PinMediaMetadata -- ImageMetadataImages : images
+AudienceCommon -- AudienceRule : rule
+CatalogsHotelProductGroup -- CatalogsHotelProductGroupFilters : filters
+ProductGroupPromotionResponseItem -- ProductGroupPromotion : data
+ProductGroupPromotionResponseItem -- "0..*" Exception : exceptions
+LeadFormCommon -- "0..*" LeadFormQuestion : questions
+AudienceRule -- PinterestTagEventData : event_data
+PinUpdate -- "0..*" PinUpdateCarouselSlotsInner : carousel_slots
+IntegrationLog -- IntegrationLogClientError : error
+IntegrationLog -- IntegrationLogClientRequest : request
+ConversionTagListResponse -- "0..*" ConversionTagResponse : items
+BulkUpsertRequestCreate -- "0..*" CampaignCreateRequest : campaigns
+BulkUpsertRequestCreate -- "0..*" AdGroupCreateRequest : ad_groups
+BulkUpsertRequestCreate -- "0..*" AdCreateRequest : ads
+BulkUpsertRequestCreate -- "0..*" ProductGroupPromotionCreateRequest : product_groups
+BulkUpsertRequestCreate -- "0..*" KeywordsRequest : keywords
+OptimizationGoalMetadataConversionTagV3GoalMetadata -- OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows : attribution_windows
+CatalogsHotelItemsBatch -- "0..*" HotelProcessingRecord : items
+ProductGroupPromotionCreateRequest -- "0..*" ProductGroupPromotion : product_group_promotion
+CatalogsFeedValidationDetails -- CatalogsFeedValidationErrors : errors
+CatalogsFeedValidationDetails -- CatalogsFeedValidationWarnings : warnings
+CatalogsHotelBatchRequest -- "0..*" CatalogsHotelBatchItem : items
+CatalogsHotelItemErrorResponse -- "0..*" ItemValidationEvent : errors
+ItemProcessingRecord -- "0..*" ItemValidationEvent : errors
+ItemProcessingRecord -- "0..*" ItemValidationEvent : warnings
+FeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
+FeedsCreateRequest -- CatalogsFeedCredentials : credentials
+FeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CampaignCreateResponse -- "0..*" CampaignCreateResponseItem : items
+AdGroupArrayResponseElement -- AdGroupResponse : data
+AdGroupArrayResponseElement -- "0..*" Exception : exceptions
+CatalogsCreateHotelItem -- CatalogsHotelAttributes : attributes
+ItemUpsertBatchRecord -- ItemAttributes : attributes
+SSIOAccountResponse -- "0..*" SSIOAccountItem : billto_infos
+SSIOAccountResponse -- "0..*" SSIOAccountPMPName : pmp_names
+BulkUpsertRequest -- BulkUpsertRequestCreate : create
+BulkUpsertRequest -- BulkUpsertRequestUpdate : update
+CatalogsProductGroupUpdateRequest -- CatalogsProductGroupFiltersRequest : filters
+PinMediaSource -- "0..*" PinMediaSourceImagesURLItemsInner : items
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupPricingCurrencyCriteria : PRICE
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : HOTEL_ID
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : BRAND
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_0
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_1
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_2
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_3
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_4
+CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleCountriesCriteria : COUNTRY
+AdAccount -- AdAccountOwner : owner
+PinAnalyticsMetricsResponse -- "0..*" PinAnalyticsMetricsResponseDailyMetricsInner : daily_metrics
+PinMediaSourceImagesBase64 -- "0..*" PinMediaSourceImagesBase64ItemsInner : items
+CatalogsProduct -- CatalogsProductMetadata : metadata
+CatalogsProduct -- Pin : pin
+BidFloorSpec -- OptimizationGoalMetadata : optimization_goal_metadata
+CatalogsItemValidationIssues -- CatalogsItemValidationErrors : errors
+CatalogsItemValidationIssues -- CatalogsItemValidationWarnings : warnings
+CatalogsRetailFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
+CatalogsRetailFeedsCreateRequest -- CatalogsFeedCredentials : credentials
+CatalogsRetailFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
+CatalogsFeedsCreateRequest -- CatalogsFeedCredentials : credentials
+CatalogsFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+ProductGroupPromotionResponse -- "0..*" ProductGroupPromotionResponseItem : items
+QuizPinData -- "0..*" QuizPinQuestion : questions
+QuizPinData -- "0..*" QuizPinResult : results
+CatalogsFeed -- CatalogsFeedCredentials : credentials
+CatalogsFeed -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+ItemCreateBatchRecord -- ItemAttributes : attributes
+IntegrationLogsInvalidLogResponse -- "0..*" IntegrationLogsInvalidLogResponseRejectedLogsInner : rejected_logs
+PinterestTagEventData -- LineItem : line_items
+CatalogsItemsUpdateBatchRequest -- "0..*" ItemUpdateBatchRecord : items
+AdGroupArrayResponse -- "0..*" AdGroupArrayResponseElement : items
+TargetingSpec -- "0..*" TargetingSpecSHOPPINGRETARGETING : SHOPPING_RETARGETING
+RelatedTerms -- "0..*" RelatedTermsRelatedTermsListInner : related_terms_list
+ItemResponse -- "0..*" Pin : pins
+ItemResponse -- CatalogsHotelAttributes : attributes
+ItemResponse -- "0..*" ItemValidationEvent : errors
+ConversionEventsDataInner -- ConversionEventsUserData : user_data
+ConversionEventsDataInner -- ConversionEventsDataInnerCustomData : custom_data
+QuizPinQuestion -- "0..*" QuizPinOption : options
+KeywordMetricsResponse -- KeywordMetrics : metrics
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : ADULT_INVALID
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : ADWORDS_FORMAT_INVALID
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : AVAILABILITY_INVALID
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : BLOCKLISTED_IMAGE_SIGNATURE
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : DESCRIPTION_MISSING
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : DUPLICATE_PRODUCTS
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : IMAGE_LINK_INVALID
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : IMAGE_LINK_LENGTH_TOO_LONG
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : IMAGE_LINK_MISSING
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : INVALID_DOMAIN
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : ITEMID_MISSING
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : LINK_FORMAT_INVALID
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : LINK_LENGTH_TOO_LONG
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : LIST_PRICE_INVALID
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PARSE_LINE_ERROR
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PINJOIN_CONTENT_UNSAFE
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PRICE_CANNOT_BE_DETERMINED
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PRICE_MISSING
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PRODUCT_LINK_MISSING
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PRODUCT_PRICE_INVALID
+CatalogsItemValidationErrors -- CatalogsItemValidationDetails : TITLE_MISSING
+CatalogsHotelItemResponse -- "0..*" Pin : pins
+CatalogsHotelItemResponse -- CatalogsHotelAttributes : attributes
+PriceFilter -- CatalogsProductGroupPricingCurrencyCriteria : PRICE
+CatalogsProductGroup -- CatalogsProductGroupFilters : filters
+CatalogsVerticalFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
+CatalogsVerticalFeedsCreateRequest -- CatalogsFeedCredentials : credentials
+CatalogsVerticalFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsUpsertHotelItem -- CatalogsHotelAttributes : attributes
+PinCreate -- BoardOwner : board_owner
+PinCreate -- SummaryPinMedia : media
+PinCreate -- PinMediaSource : media_source
+CatalogsRetailBatchRequest -- "0..*" CatalogsRetailBatchRequestItemsInner : items
+AdCommon -- AdCommonTrackingUrls : tracking_urls
+AdCommon -- AdCommonQuizPinData : quiz_pin_data
+TopVideoPinsAnalyticsResponse -- TopPinsAnalyticsResponseDateAvailability : date_availability
+TopVideoPinsAnalyticsResponse -- "0..*" TopVideoPinsAnalyticsResponsePinsInner : pins
+KeywordsResponse -- "0..*" KeywordError : errors
+KeywordsResponse -- "0..*" Keyword : keywords
+CatalogsHotelProductGroupCreateRequest -- CatalogsHotelProductGroupFilters : filters
+CatalogsHotelFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
+CatalogsHotelFeedsCreateRequest -- CatalogsFeedCredentials : credentials
+CatalogsHotelFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsRetailBatchRequestItemsInner -- ItemAttributes : attributes
+CatalogsVerticalBatchRequest -- "0..*" CatalogsHotelBatchItem : items
+CatalogProductGroup -- Board : type
+CatalogsItems -- "0..*" ItemResponse : items
+CatalogsProductGroupFiltersRequest -- "0..*" CatalogsProductGroupFilterKeys : any_of
+CatalogsProductGroupFiltersRequest -- "0..*" CatalogsProductGroupFilterKeys : all_of
+AudienceDemographics -- "0..*" AudienceDemographicValue : ages
+AudienceDemographics -- "0..*" AudienceDemographicValue : genders
+AudienceDemographics -- "0..*" AudienceDemographicValue : devices
+AudienceDemographics -- "0..*" AudienceDemographicValue : metros
+AudienceDemographics -- "0..*" AudienceDemographicValue : countries
+CatalogsRetailItemsBatch -- "0..*" ItemProcessingRecord : items
+IntegrationLogsRequest -- "0..*" IntegrationLog : logs
+ConversionEvents -- "0..*" ConversionEventsDataInner : data
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : AD_LINK_FORMAT_WARNING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : AD_LINK_SAME_AS_LINK
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : ADDITIONAL_IMAGE_LINK_WARNING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : ADWORDS_FORMAT_WARNING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : ADWORDS_SAME_AS_LINK
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : AGE_GROUP_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SIZE_SYSTEM_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : ANDROID_DEEP_LINK_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : AVAILABILITY_DATE_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : COUNTRY_DOES_NOT_MAP_TO_CURRENCY
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : CUSTOM_LABEL_LENGTH_TOO_LONG
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : DESCRIPTION_LENGTH_TOO_LONG
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : EXPIRATION_DATE_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : GENDER_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : GTIN_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : IMAGE_LINK_WARNING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : IOS_DEEP_LINK_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : IS_BUNDLE_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : LINK_FORMAT_WARNING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : MIN_AD_PRICE_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : MPN_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : MULTIPACK_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : OPTIONAL_CONDITION_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : OPTIONAL_CONDITION_MISSING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : OPTIONAL_PRODUCT_CATEGORY_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : OPTIONAL_PRODUCT_CATEGORY_MISSING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : PRODUCT_CATEGORY_DEPTH_WARNING
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : PRODUCT_TYPE_LENGTH_TOO_LONG
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SALES_PRICE_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SALES_PRICE_TOO_LOW
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SALES_PRICE_TOO_HIGH
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SALE_DATE_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SHIPPING_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SHIPPING_HEIGHT_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SHIPPING_WEIGHT_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SHIPPING_WIDTH_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : SIZE_TYPE_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : TAX_INVALID
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : TITLE_LENGTH_TOO_LONG
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : TOO_MANY_ADDITIONAL_IMAGE_LINKS
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : UTM_SOURCE_AUTO_CORRECTED
+CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : WEIGHT_UNIT_INVALID
+CatalogsItemsDeleteDiscontinuedBatchRequest -- "0..*" ItemDeleteDiscontinuedBatchRecord : items
+TopPinsAnalyticsResponse -- TopPinsAnalyticsResponseDateAvailability : date_availability
+TopPinsAnalyticsResponse -- "0..*" TopPinsAnalyticsResponsePinsInner : pins
+CatalogsItemsDeleteBatchRequest -- "0..*" ItemDeleteBatchRecord : items
+GetMMMReportResponse -- GetMMMReportResponseData : data
+ConversionEventsDataInnerCustomData -- "0..*" ConversionEventsDataInnerCustomDataContentsInner : contents
+PinMediaSourceImagesURL -- "0..*" PinMediaSourceImagesURLItemsInner : items
+BulkUpsertRequestUpdate -- "0..*" CampaignUpdateRequest : campaigns
+BulkUpsertRequestUpdate -- "0..*" AdGroupUpdateRequest : ad_groups
+BulkUpsertRequestUpdate -- "0..*" AdUpdateRequest : ads
+BulkUpsertRequestUpdate -- "0..*" ProductGroupPromotionUpdateRequest : product_groups
+BulkUpsertRequestUpdate -- "0..*" KeywordUpdate : keywords
+TemplateResponse -- TemplateResponseDateRange : date_range
+CatalogsVerticalFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
+CatalogsVerticalFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+ItemUpdateBatchRecord -- UpdatableItemAttributes : attributes
+CatalogsProductGroupFilters -- "0..*" CatalogsProductGroupFilterKeys : any_of
+CatalogsProductGroupFilters -- "0..*" CatalogsProductGroupFilterKeys : all_of
+BidFloorRequest -- "0..*" BidFloorSpec : bid_floor_specs
+BidFloorRequest -- TargetingSpec : targeting_spec
+CatalogsProductGroupsCreateRequest -- CatalogsHotelProductGroupFilters : filters
+AdArrayResponse -- "0..*" AdArrayResponseElement : items
+CatalogsUpdateRetailItem -- UpdatableItemAttributes : attributes
+ItemBatchRecord -- ItemAttributes : attributes
+CatalogsFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
+CatalogsFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsUpsertRetailItem -- ItemAttributes : attributes
+KeywordsMetricsArrayResponse -- "0..*" KeywordMetricsResponse : data
+ImageMetadata -- ImageMetadataImages : images
+CatalogsUpdateHotelItem -- CatalogsUpdatableHotelAttributes : attributes
+CreateMMMReportResponse -- CreateMMMReportResponseData : data
+ItemResponseAnyOf -- "0..*" Pin : pins
+ItemResponseAnyOf -- CatalogsHotelAttributes : attributes
+CatalogsListProductsByFilterRequest -- CatalogsProductGroupFilters : filters
+CatalogsRetailItemErrorResponse -- "0..*" ItemValidationEvent : errors
+OrderLinesArrayResponse -- "0..*" OrderLines : items
+AdAccountsCountryResponse -- "0..*" AdAccountsCountryResponseData : items
+ItemResponseAnyOf1 -- "0..*" ItemValidationEvent : errors
+KeywordsRequest -- "0..*" KeywordsCommon : keywords
+AnalyticsMetricsResponse -- "0..*" AnalyticsDailyMetrics : daily_metrics
+CatalogsProductGroupsUpdateRequest -- CatalogsHotelProductGroupFilters : filters
+
+@enduml

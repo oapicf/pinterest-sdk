@@ -7,4 +7,6 @@ module.exports = {
         { data: {} },
     "KeywordsResponseSample": 
         { data: {} },
+    "TrendingKeywordsResponseSample": 
+        { data: {} },
 }

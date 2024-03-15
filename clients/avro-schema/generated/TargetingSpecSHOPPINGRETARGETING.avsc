@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecSHOPPINGRETARGETING",
+  "fields": [
+    {
+      "name": "lookback_window",
+      "type": ["null", "int"],
+      "doc": "Number of days ago to start lookback timeframe for dynamic retargeting",
+      "default": null
+    },
+    {
+      "name": "tag_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "int"
+      }],
+      "doc": "Event types to target for dynamic retargeting",
+      "default": null
+    },
+    {
+      "name": "exclusion_window",
+      "type": ["null", "int"],
+      "doc": "Number of days ago to stop lookback timeframe for dynamic retargeting",
+      "default": null
+    }
+  ]
+
+}

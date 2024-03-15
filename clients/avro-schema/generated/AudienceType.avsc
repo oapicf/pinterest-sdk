@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Audience type",
+  "name": "AudienceType",
+  "symbols": [
+    "CUSTOMER_LIST",
+    "VISITOR",
+    "ENGAGEMENT",
+    "ACTALIKE",
+    "PERSONA"
+  ]
+}

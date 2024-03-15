@@ -1,0 +1,48 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AudienceCategory",
+  "fields": [
+    {
+      "name": "key",
+      "type": ["null", "string"],
+      "doc": "Interest unique key (same as ID).",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Interest name.",
+      "default": null
+    },
+    {
+      "name": "ratio",
+      "type": ["null", "double"],
+      "doc": "Interest's percent of category's total audience.",
+      "default": null
+    },
+    {
+      "name": "index",
+      "type": ["null", "double"],
+      "doc": "Interest affinity index.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Interest ID.",
+      "default": null
+    },
+    {
+      "name": "subcategories",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AudienceSubcategory"
+      }],
+      "doc": "Subcategory interest distribution",
+      "default": null
+    }
+  ]
+
+}

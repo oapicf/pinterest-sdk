@@ -10,7 +10,10 @@
 
 #include <string>
 #include "BatchOperationStatus.h"
-#include "ItemProcessingRecord.h"
+#include "CatalogsHotelItemsBatch.h"
+#include "CatalogsRetailItemsBatch.h"
+#include "CatalogsType.h"
+#include "HotelProcessingRecord.h"
 #include <list>
 #include "Object.h"
 
@@ -48,13 +51,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Array with the catalogs items processing records part of the catalogs items batch
+	/*! \brief Get 
 	 */
-	std::list<ItemProcessingRecord> getItems();
+	CatalogsType getCatalogType();
 
-	/*! \brief Set Array with the catalogs items processing records part of the catalogs items batch
+	/*! \brief Set 
 	 */
-	void setItems(std::list <ItemProcessingRecord> items);
+	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get Id of the catalogs items batch
 	 */
 	std::string getBatchId();
@@ -83,13 +86,21 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(BatchOperationStatus  status);
+	/*! \brief Get Array with the catalogs items processing records part of the catalogs items batch
+	 */
+	std::list<HotelProcessingRecord> getItems();
+
+	/*! \brief Set Array with the catalogs items processing records part of the catalogs items batch
+	 */
+	void setItems(std::list <HotelProcessingRecord> items);
 
 private:
-	std::list <ItemProcessingRecord>items;
+	CatalogsType catalog_type;
 	std::string batch_id;
 	std::string created_time;
 	std::string completed_time;
 	BatchOperationStatus status;
+	std::list <HotelProcessingRecord>items;
 	void __init();
 	void __cleanup();
 

@@ -1,0 +1,252 @@
+
+<h2>CatalogsFeedValidationWarnings</h2>
+<ul class="parameter">
+  <li class="param-required-false">ADUnderscoreLINKUnderscoreFORMATUnderscoreWARNING : Integer
+    <br/>Some items have ad links that are formatted incorrectly.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ADUnderscoreLINKUnderscoreSAMEUnderscoreASUnderscoreLINK : Integer
+    <br/>Some items have ad link URLs that are duplicates of the link URLs for those items.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">TITLEUnderscoreLENGTHUnderscoreTOOUnderscoreLONG : Integer
+    <br/>The title for some items were truncated because they contain too many characters.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">DESCRIPTIONUnderscoreLENGTHUnderscoreTOOUnderscoreLONG : Integer
+    <br/>The description for some items were truncated because they contain too many characters.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">GENDERUnderscoreINVALID : Integer
+    <br/>Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">AGEUnderscoreGROUPUnderscoreINVALID : Integer
+    <br/>Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SIZEUnderscoreTYPEUnderscoreINVALID : Integer
+    <br/>Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SIZEUnderscoreSYSTEMUnderscoreINVALID : Integer
+    <br/>Some items have size system values which are not one of the supported size systems.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">LINKUnderscoreFORMATUnderscoreWARNING : Integer
+    <br/>Some items have an invalid product link which contains invalid UTM tracking paramaters.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SALESUnderscorePRICEUnderscoreINVALID : Integer
+    <br/>Some items have sale price values that are higher than the original price of the item.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">PRODUCTUnderscoreCATEGORYUnderscoreDEPTHUnderscoreWARNING : Integer
+    <br/>Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ADWORDSUnderscoreFORMATUnderscoreWARNING : Integer
+    <br/>Some items have adwords_redirect links that are formatted incorrectly.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ADWORDSUnderscoreSAMEUnderscoreASUnderscoreLINK : Integer
+    <br/>Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">DUPLICATEUnderscoreHEADERS : Integer
+    <br/>Your feed contains duplicate headers.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">FETCHUnderscoreSAMEUnderscoreSIGNATURE : Integer
+    <br/>Ingestion completed early because there are no changes to your feed since the last successful update.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>1</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ADDITIONALUnderscoreIMAGEUnderscoreLINKUnderscoreLENGTHUnderscoreTOOUnderscoreLONG : Integer
+    <br/>Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ADDITIONALUnderscoreIMAGEUnderscoreLINKUnderscoreWARNING : Integer
+    <br/>Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">IMAGEUnderscoreLINKUnderscoreWARNING : Integer
+    <br/>Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SHIPPINGUnderscoreINVALID : Integer
+    <br/>Some items have shipping values that are formatted incorrectly.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">TAXUnderscoreINVALID : Integer
+    <br/>Some items have tax values that are formatted incorrectly.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SHIPPINGUnderscoreWEIGHTUnderscoreINVALID : Integer
+    <br/>Some items have invalid shipping_weight values.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">EXPIRATIONUnderscoreDATEUnderscoreINVALID : Integer
+    <br/>Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">AVAILABILITYUnderscoreDATEUnderscoreINVALID : Integer
+    <br/>Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SALEUnderscoreDATEUnderscoreINVALID : Integer
+    <br/>Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">WEIGHTUnderscoreUNITUnderscoreINVALID : Integer
+    <br/>Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ISUnderscoreBUNDLEUnderscoreINVALID : Integer
+    <br/>Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">UPDATEDUnderscoreTIMEUnderscoreINVALID : Integer
+    <br/>Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">CUSTOMUnderscoreLABELUnderscoreLENGTHUnderscoreTOOUnderscoreLONG : Integer
+    <br/>Some items have custom_label values that are too long, those items will be published without that custom label.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">PRODUCTUnderscoreTYPEUnderscoreLENGTHUnderscoreTOOUnderscoreLONG : Integer
+    <br/>Some items have product_type values that are too long, those items will be published without that product type.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">TOOUnderscoreMANYUnderscoreADDITIONALUnderscoreIMAGEUnderscoreLINKS : Integer
+    <br/>Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">MULTIPACKUnderscoreINVALID : Integer
+    <br/>Some items have invalid multipack values.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">INDEXEDUnderscorePRODUCTUnderscoreCOUNTUnderscoreLARGEUnderscoreDELTA : Integer
+    <br/>The product count has increased or decreased significantly compared to the last successful ingestion.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ITEMUnderscoreADDITIONALUnderscoreIMAGEUnderscoreDOWNLOADUnderscoreFAILURE : Integer
+    <br/>Some items include additional_image_links that can&#39;t be found.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">OPTIONALUnderscorePRODUCTUnderscoreCATEGORYUnderscoreMISSING : Integer
+    <br/>Some items are missing a google_product_category.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">OPTIONALUnderscorePRODUCTUnderscoreCATEGORYUnderscoreINVALID : Integer
+    <br/>Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">OPTIONALUnderscoreCONDITIONUnderscoreMISSING : Integer
+    <br/>Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">OPTIONALUnderscoreCONDITIONUnderscoreINVALID : Integer
+    <br/>Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">IOSUnderscoreDEEPUnderscoreLINKUnderscoreINVALID : Integer
+    <br/>Some items include invalid ios_deep_link values.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">ANDROIDUnderscoreDEEPUnderscoreLINKUnderscoreINVALID : Integer
+    <br/>Some items include invalid android_deep_link.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">UTMUnderscoreSOURCEUnderscoreAUTOUnderscoreCORRECTED : Integer
+    <br/>Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">COUNTRYUnderscoreDOESUnderscoreNOTUnderscoreMAPUnderscoreTOUnderscoreCURRENCY : Integer
+    <br/>Some items include a currency that doesn&#39;t match the usual currency for the location where that product is sold or shipped.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">MINUnderscoreADUnderscorePRICEUnderscoreINVALID : Integer
+    <br/>Some items include min_ad_price values that are formatted incorrectly.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">GTINUnderscoreINVALID : Integer
+    <br/>Some items include incorrectly formatted GTINs.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">INCONSISTENTUnderscoreCURRENCYUnderscoreVALUES : Integer
+    <br/>Some items include inconsistent currencies in price fields.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SALESUnderscorePRICEUnderscoreTOOUnderscoreLOW : Integer
+    <br/>Some items include sales price that is much lower than the list price.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SHIPPINGUnderscoreWIDTHUnderscoreINVALID : Integer
+    <br/>Some items include incorrectly formatted shipping_width.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SHIPPINGUnderscoreHEIGHTUnderscoreINVALID : Integer
+    <br/>Some items include incorrectly formatted shipping_height.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">SALESUnderscorePRICEUnderscoreTOOUnderscoreHIGH : Integer
+    <br/>Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">MPNUnderscoreINVALID : Integer
+    <br/>Some items include incorrectly formatted MPNs.
+  </li>
+</ul>

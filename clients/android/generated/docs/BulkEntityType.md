@@ -1,0 +1,10 @@
+
+
+# BulkEntityType
+
+## Enum
+
+
+
+
+

@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "conversion tag type",
+  "name": "ConversionTagType",
+  "symbols": [
+    "PAGE_LOAD",
+    "UNKNOWN",
+    "INITIALIZED",
+    "PAGE_VISIT",
+    "SIGNUP",
+    "CHECKOUT",
+    "CUSTOM",
+    "VIEW_CATEGORY",
+    "SEARCH",
+    "ADD_TO_CART",
+    "WATCH_VIDEO",
+    "LEAD",
+    "APP_INSTALL",
+    "WEB_SESSION",
+    "EXTERNAL_MEASUREMENT"
+  ]
+}

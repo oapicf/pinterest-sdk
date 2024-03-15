@@ -1,0 +1,9 @@
+
+
+# MatchTypeResponse
+
+## Enum
+
+
+
+

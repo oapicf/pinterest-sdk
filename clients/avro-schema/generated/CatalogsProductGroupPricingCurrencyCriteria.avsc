@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupPricingCurrencyCriteria",
+  "fields": [
+    {
+      "name": "operator",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsProductGroupPricingCurrencyCriteria_operator",
+        "symbols": [
+          "GREATER_THAN",
+          "GREATER_THAN_OR_EQUALS",
+          "LESS_THAN",
+          "LESS_THAN_OR_EQUALS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "currency",
+      "type": "model.NonNullableCatalogsCurrency",
+      "doc": ""
+    },
+    {
+      "name": "negated",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

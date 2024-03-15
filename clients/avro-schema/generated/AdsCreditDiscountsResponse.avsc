@@ -1,0 +1,77 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdsCreditDiscountsResponse",
+  "fields": [
+    {
+      "name": "active",
+      "type": ["null", "boolean"],
+      "doc": "True if the offer code is currently active.",
+      "default": null
+    },
+    {
+      "name": "advertiser_id",
+      "type": ["null", "string"],
+      "doc": "Advertiser ID the offer was applied to.",
+      "default": null
+    },
+    {
+      "name": "discountType",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AdsCreditDiscountsResponse_discountType",
+        "symbols": [
+          "COUPON",
+          "CREDIT",
+          "COUPON_APPLIED",
+          "CREDIT_APPLIED",
+          "MARKETING_OFFER_CREDIT",
+          "MARKETING_OFFER_CREDIT_APPLIED",
+          "GOODWILL_CREDIT",
+          "GOODWILL_CREDIT_APPLIED",
+          "INTERNAL_CREDIT",
+          "INTERNAL_CREDIT_APPLIED",
+          "PREPAID_CREDIT",
+          "PREPAID_CREDIT_APPLIED",
+          "SALES_INCENTIVE_CREDIT",
+          "SALES_INCENTIVE_CREDIT_APPLIED",
+          "CREDIT_EXPIRED",
+          "FUTURE_CREDIT",
+          "REFERRAL_CREDIT",
+          "INVOICE_SALES_INCENTIVE_CREDIT",
+          "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED",
+          "PREPAID_CREDIT_REFUND",
+          "null"
+        ]
+      }],
+      "doc": "The type of discount of this credit",
+      "default": null
+    },
+    {
+      "name": "discountInMicroCurrency",
+      "type": ["null", "double"],
+      "doc": "The discount applied in the offer’s currency value.",
+      "default": null
+    },
+    {
+      "name": "discountCurrency",
+      "type": ["null", "string"],
+      "doc": "Currency value for the discount.",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "Human readable title of the offer code.",
+      "default": null
+    },
+    {
+      "name": "remainingDiscountInMicroCurrency",
+      "type": ["null", "double"],
+      "doc": "The credits left to spend.",
+      "default": null
+    }
+  ]
+
+}

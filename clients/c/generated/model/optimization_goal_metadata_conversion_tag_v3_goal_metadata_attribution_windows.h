@@ -1,0 +1,41 @@
+/*
+ * optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows.h
+ *
+ * 
+ */
+
+#ifndef _optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_H_
+#define _optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t;
+
+
+
+
+typedef struct optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t {
+    int click_window_days; //numeric
+    int engagement_window_days; //numeric
+    int view_window_days; //numeric
+
+} optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t;
+
+optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_create(
+    int click_window_days,
+    int engagement_window_days,
+    int view_window_days
+);
+
+void optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_free(optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows);
+
+optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_parseFromJSON(cJSON *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windowsJSON);
+
+cJSON *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_convertToJSON(optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t *optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows);
+
+#endif /* _optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_H_ */
+

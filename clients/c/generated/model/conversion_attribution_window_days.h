@@ -1,0 +1,32 @@
+/*
+ * conversion_attribution_window_days.h
+ *
+ * 
+ */
+
+#ifndef _conversion_attribution_window_days_H_
+#define _conversion_attribution_window_days_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct conversion_attribution_window_days_t conversion_attribution_window_days_t;
+
+
+// Enum  for conversion_attribution_window_days
+
+typedef enum { pinterest_rest_api_conversion_attribution_window_days__NULL = 0, pinterest_rest_api_conversion_attribution_window_days___0, pinterest_rest_api_conversion_attribution_window_days___1, pinterest_rest_api_conversion_attribution_window_days___7, pinterest_rest_api_conversion_attribution_window_days___14, pinterest_rest_api_conversion_attribution_window_days___30, pinterest_rest_api_conversion_attribution_window_days___60 } pinterest_rest_api_conversion_attribution_window_days__e;
+
+char* conversion_attribution_window_days_conversion_attribution_window_days_ToString(pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days);
+
+pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days_conversion_attribution_window_days_FromString(char* conversion_attribution_window_days);
+
+//cJSON *conversion_attribution_window_days_conversion_attribution_window_days_convertToJSON(pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days);
+
+//pinterest_rest_api_conversion_attribution_window_days__e conversion_attribution_window_days_conversion_attribution_window_days_parseFromJSON(cJSON *conversion_attribution_window_daysJSON);
+
+#endif /* _conversion_attribution_window_days_H_ */
+

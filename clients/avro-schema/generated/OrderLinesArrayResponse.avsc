@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "OrderLinesArrayResponse",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.OrderLines"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

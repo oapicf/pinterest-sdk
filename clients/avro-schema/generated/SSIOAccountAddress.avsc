@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SSIOAccountAddress",
+  "fields": [
+    {
+      "name": "display",
+      "type": ["null", "string"],
+      "doc": "Address display",
+      "default": null
+    },
+    {
+      "name": "purpose",
+      "type": ["null", "string"],
+      "doc": "Purpose for which the address is used, usually Billing or Businness",
+      "default": null
+    },
+    {
+      "name": "address_id",
+      "type": ["null", "string"],
+      "doc": "Salesforce id for address",
+      "default": null
+    },
+    {
+      "name": "order_legal_entity",
+      "type": ["null", "string"],
+      "doc": "Legal entity for this insertion order",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CountryFilter",
+  "fields": [
+    {
+      "name": "COUNTRY",
+      "type": "model.CatalogsProductGroupMultipleCountriesCriteria",
+      "doc": ""
+    }
+  ]
+
+}

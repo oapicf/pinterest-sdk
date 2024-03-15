@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "This field includes all quiz data including questions, options, and results.",
+  "name": "QuizPinData",
+  "fields": [
+    {
+      "name": "questions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.QuizPinQuestion"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "results",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.QuizPinResult"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

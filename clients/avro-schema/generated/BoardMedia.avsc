@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Board media.",
+  "name": "BoardMedia",
+  "fields": [
+    {
+      "name": "image_cover_url",
+      "type": ["null", "string"],
+      "doc": "Board cover image.",
+      "default": null
+    },
+    {
+      "name": "pin_thumbnail_urls",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Board pin thumbnail urls.",
+      "default": null
+    }
+  ]
+
+}

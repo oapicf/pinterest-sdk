@@ -19,7 +19,7 @@ module.exports = {
         noun: 'campaigns',
         display: {
             label: 'Get targeting analytics for campaigns',
-            description: 'Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.',
+            description: 'Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.',
             hidden: false,
         },
         operation: {
@@ -37,13 +37,13 @@ module.exports = {
                 }
                 {
                     key: 'start_date',
-                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'end_date',
-                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.',
                     type: 'string',
                     required: true,
                 },
@@ -63,8 +63,10 @@ module.exports = {
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
                     type: 'integer',
                     choices: [
+                        '0',
                         '1',
                         '7',
+                        '14',
                         '30',
                         '60',
                     ],
@@ -74,8 +76,10 @@ module.exports = {
                     label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
                     type: 'integer',
                     choices: [
+                        '0',
                         '1',
                         '7',
+                        '14',
                         '30',
                         '60',
                     ],
@@ -85,8 +89,10 @@ module.exports = {
                     label: 'Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.',
                     type: 'integer',
                     choices: [
+                        '0',
                         '1',
                         '7',
+                        '14',
                         '30',
                         '60',
                     ],
@@ -145,7 +151,7 @@ module.exports = {
         noun: 'campaigns',
         display: {
             label: 'Get campaign analytics',
-            description: 'Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.',
+            description: 'Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.',
             hidden: false,
         },
         operation: {
@@ -158,13 +164,13 @@ module.exports = {
                 },
                 {
                     key: 'start_date',
-                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'end_date',
-                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.',
                     type: 'string',
                     required: true,
                 },
@@ -184,8 +190,10 @@ module.exports = {
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
                     type: 'integer',
                     choices: [
+                        '0',
                         '1',
                         '7',
+                        '14',
                         '30',
                         '60',
                     ],
@@ -195,8 +203,10 @@ module.exports = {
                     label: 'Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
                     type: 'integer',
                     choices: [
+                        '0',
                         '1',
                         '7',
+                        '14',
                         '30',
                         '60',
                     ],
@@ -206,8 +216,10 @@ module.exports = {
                     label: 'Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.',
                     type: 'integer',
                     choices: [
+                        '0',
                         '1',
                         '7',
+                        '14',
                         '30',
                         '60',
                     ],

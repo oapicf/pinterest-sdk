@@ -1,0 +1,53 @@
+# catalogs_item_validation_warnings_t
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ad_link_format_warning** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**ad_link_same_as_link** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**additional_image_link_length_too_long** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**additional_image_link_warning** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**adwords_format_warning** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**adwords_same_as_link** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**age_group_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**size_system_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**android_deep_link_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**availability_date_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**country_does_not_map_to_currency** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**custom_label_length_too_long** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**description_length_too_long** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**expiration_date_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**gender_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**gtin_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**image_link_warning** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**ios_deep_link_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**is_bundle_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**item_additional_image_download_failure** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**link_format_warning** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**min_ad_price_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**mpn_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**multipack_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**optional_condition_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**optional_condition_missing** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**optional_product_category_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**optional_product_category_missing** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**product_category_depth_warning** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**product_type_length_too_long** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**sales_price_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**sales_price_too_low** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**sales_price_too_high** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**sale_date_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**shipping_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**shipping_height_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**shipping_weight_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**shipping_width_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**size_type_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**tax_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**title_length_too_long** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**too_many_additional_image_links** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**utm_source_auto_corrected** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+**weight_unit_invalid** | [**catalogs_item_validation_details_t**](catalogs_item_validation_details.md) \* |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

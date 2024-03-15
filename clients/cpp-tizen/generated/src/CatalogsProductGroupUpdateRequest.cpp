@@ -26,7 +26,7 @@ CatalogsProductGroupUpdateRequest::__init()
 	//name = std::string();
 	//description = std::string();
 	//is_featured = bool(false);
-	//filters = new CatalogsProductGroupFiltersAllOfRequest();
+	//filters = new CatalogsProductGroupFiltersRequest();
 }
 
 void
@@ -98,11 +98,11 @@ CatalogsProductGroupUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupFiltersAllOfRequest")) {
-			jsonToValue(&filters, node, "CatalogsProductGroupFiltersAllOfRequest", "CatalogsProductGroupFiltersAllOfRequest");
+		if (isprimitive("CatalogsProductGroupFiltersRequest")) {
+			jsonToValue(&filters, node, "CatalogsProductGroupFiltersRequest", "CatalogsProductGroupFiltersRequest");
 		} else {
 			
-			CatalogsProductGroupFiltersAllOfRequest* obj = static_cast<CatalogsProductGroupFiltersAllOfRequest*> (&filters);
+			CatalogsProductGroupFiltersRequest* obj = static_cast<CatalogsProductGroupFiltersRequest*> (&filters);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -146,13 +146,13 @@ CatalogsProductGroupUpdateRequest::toJson()
 	}
 	const gchar *is_featuredKey = "is_featured";
 	json_object_set_member(pJsonObject, is_featuredKey, node);
-	if (isprimitive("CatalogsProductGroupFiltersAllOfRequest")) {
-		CatalogsProductGroupFiltersAllOfRequest obj = getFilters();
-		node = converttoJson(&obj, "CatalogsProductGroupFiltersAllOfRequest", "");
+	if (isprimitive("CatalogsProductGroupFiltersRequest")) {
+		CatalogsProductGroupFiltersRequest obj = getFilters();
+		node = converttoJson(&obj, "CatalogsProductGroupFiltersRequest", "");
 	}
 	else {
 		
-		CatalogsProductGroupFiltersAllOfRequest obj = static_cast<CatalogsProductGroupFiltersAllOfRequest> (getFilters());
+		CatalogsProductGroupFiltersRequest obj = static_cast<CatalogsProductGroupFiltersRequest> (getFilters());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -204,14 +204,14 @@ CatalogsProductGroupUpdateRequest::setIsFeatured(bool  is_featured)
 	this->is_featured = is_featured;
 }
 
-CatalogsProductGroupFiltersAllOfRequest
+CatalogsProductGroupFiltersRequest
 CatalogsProductGroupUpdateRequest::getFilters()
 {
 	return filters;
 }
 
 void
-CatalogsProductGroupUpdateRequest::setFilters(CatalogsProductGroupFiltersAllOfRequest  filters)
+CatalogsProductGroupUpdateRequest::setFilters(CatalogsProductGroupFiltersRequest  filters)
 {
 	this->filters = filters;
 }

@@ -1,0 +1,62 @@
+#ifndef optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_TEST
+#define optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows.h"
+optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t* instantiate_optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows(int include_optional);
+
+
+
+optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t* instantiate_optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows(int include_optional) {
+  optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t* optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows = NULL;
+  if (include_optional) {
+    optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows = optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_create(
+      56,
+      56,
+      56
+    );
+  } else {
+    optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows = optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_create(
+      56,
+      56,
+      56
+    );
+  }
+
+  return optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows;
+}
+
+
+#ifdef optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_MAIN
+
+void test_optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows(int include_optional) {
+    optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t* optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_1 = instantiate_optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows(include_optional);
+
+	cJSON* jsonoptimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_1 = optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_convertToJSON(optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_1);
+	printf("optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows :\n%s\n", cJSON_Print(jsonoptimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_1));
+	optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_t* optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_2 = optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_parseFromJSON(jsonoptimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_1);
+	cJSON* jsonoptimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_2 = optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_convertToJSON(optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_2);
+	printf("repeating optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows:\n%s\n", cJSON_Print(jsonoptimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_2));
+}
+
+int main() {
+  test_optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows(1);
+  test_optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_MAIN
+#endif // optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows_TEST

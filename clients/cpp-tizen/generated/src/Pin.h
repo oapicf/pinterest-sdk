@@ -10,8 +10,9 @@
 
 #include <string>
 #include "Board_owner.h"
+#include "CreativeType.h"
 #include "PinMediaSource.h"
-#include "Pin_media.h"
+#include "SummaryPin_media.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -97,6 +98,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setAltText(std::string  alt_text);
+	/*! \brief Get 
+	 */
+	CreativeType getCreativeType();
+
+	/*! \brief Set 
+	 */
+	void setCreativeType(CreativeType  creative_type);
 	/*! \brief Get The board to which this Pin belongs.
 	 */
 	std::string getBoardId();
@@ -118,13 +126,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setBoardOwner(Board_owner  board_owner);
+	/*! \brief Get Whether the \"operation user_account\" is the Pin owner.
+	 */
+	bool getIsOwner();
+
+	/*! \brief Set Whether the \"operation user_account\" is the Pin owner.
+	 */
+	void setIsOwner(bool  is_owner);
 	/*! \brief Get 
 	 */
-	Pin_media getMedia();
+	SummaryPin_media getMedia();
 
 	/*! \brief Set 
 	 */
-	void setMedia(Pin_media  media);
+	void setMedia(SummaryPin_media  media);
 	/*! \brief Get 
 	 */
 	PinMediaSource getMediaSource();
@@ -139,6 +154,34 @@ public:
 	/*! \brief Set The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
 	 */
 	void setParentPinId(std::string  parent_pin_id);
+	/*! \brief Get Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+	 */
+	bool getIsStandard();
+
+	/*! \brief Set Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+	 */
+	void setIsStandard(bool  is_standard);
+	/*! \brief Get Whether the Pin has been promoted or not.
+	 */
+	bool getHasBeenPromoted();
+
+	/*! \brief Set Whether the Pin has been promoted or not.
+	 */
+	void setHasBeenPromoted(bool  has_been_promoted);
+	/*! \brief Get Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	 */
+	std::string getNote();
+
+	/*! \brief Set Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	 */
+	void setNote(std::string  note);
+	/*! \brief Get Pin metrics with associated time intervals if any.
+	 */
+	std::string getPinMetrics();
+
+	/*! \brief Set Pin metrics with associated time intervals if any.
+	 */
+	void setPinMetrics(std::string  pin_metrics);
 
 private:
 	std::string id;
@@ -148,12 +191,18 @@ private:
 	std::string description;
 	std::string dominant_color;
 	std::string alt_text;
+	CreativeType creative_type;
 	std::string board_id;
 	std::string board_section_id;
 	Board_owner board_owner;
-	Pin_media media;
+	bool is_owner;
+	SummaryPin_media media;
 	PinMediaSource media_source;
 	std::string parent_pin_id;
+	bool is_standard;
+	bool has_been_promoted;
+	std::string note;
+	std::string pin_metrics;
 	void __init();
 	void __cleanup();
 

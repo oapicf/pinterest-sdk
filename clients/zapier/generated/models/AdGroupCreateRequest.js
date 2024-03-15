@@ -1,5 +1,6 @@
 const utils = require('../utils/utils');
 const ActionType = require('../models/ActionType');
+const AdGroupCommon_optimization_goal_metadata = require('../models/AdGroupCommon_optimization_goal_metadata');
 const AdGroupCommon_tracking_urls = require('../models/AdGroupCommon_tracking_urls');
 const BudgetType = require('../models/BudgetType');
 const EntityStatus = require('../models/EntityStatus');
@@ -31,16 +32,7 @@ module.exports = {
                 label: `Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC. - [${labelPrefix}bid_in_micro_currency]`,
                 type: 'integer',
             },
-            {
-                key: `${keyPrefix}bid_strategy_type`,
-                label: `[${labelPrefix}bid_strategy_type]`,
-                type: 'string',
-                choices: [
-                    'AUTOMATIC_BID',
-                    'MAX_BID',
-                    'TARGET_AVG',
-                ],
-            },
+            ...AdGroupCommon_optimization_goal_metadata.fields(`${keyPrefix}optimization_goal_metadata`, isInput),
             {
                 key: `${keyPrefix}budget_type`,
                 ...BudgetType.fields(`${keyPrefix}budget_type`, isInput),
@@ -64,7 +56,7 @@ module.exports = {
             ...AdGroupCommon_tracking_urls.fields(`${keyPrefix}tracking_urls`, isInput),
             {
                 key: `${keyPrefix}auto_targeting_enabled`,
-                label: `Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. - [${labelPrefix}auto_targeting_enabled]`,
+                label: `Enable auto-targeting for ad group.Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. - [${labelPrefix}auto_targeting_enabled]`,
                 type: 'boolean',
             },
             {
@@ -85,6 +77,17 @@ module.exports = {
                 key: `${keyPrefix}billable_event`,
                 ...ActionType.fields(`${keyPrefix}billable_event`, isInput),
             },
+            {
+                key: `${keyPrefix}bid_strategy_type`,
+                label: `Bid strategy type - [${labelPrefix}bid_strategy_type]`,
+                type: 'string',
+                choices: [
+                    'AUTOMATIC_BID',
+                    'MAX_BID',
+                    'TARGET_AVG',
+                    'null',
+                ],
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -94,7 +97,7 @@ module.exports = {
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'budget_in_micro_currency': bundle.inputData?.[`${keyPrefix}budget_in_micro_currency`],
             'bid_in_micro_currency': bundle.inputData?.[`${keyPrefix}bid_in_micro_currency`],
-            'bid_strategy_type': bundle.inputData?.[`${keyPrefix}bid_strategy_type`],
+            'optimization_goal_metadata': utils.removeIfEmpty(AdGroupCommon_optimization_goal_metadata.mapping(bundle, `${keyPrefix}optimization_goal_metadata`)),
             'budget_type': bundle.inputData?.[`${keyPrefix}budget_type`],
             'start_time': bundle.inputData?.[`${keyPrefix}start_time`],
             'end_time': bundle.inputData?.[`${keyPrefix}end_time`],
@@ -106,6 +109,7 @@ module.exports = {
             'pacing_delivery_type': bundle.inputData?.[`${keyPrefix}pacing_delivery_type`],
             'campaign_id': bundle.inputData?.[`${keyPrefix}campaign_id`],
             'billable_event': bundle.inputData?.[`${keyPrefix}billable_event`],
+            'bid_strategy_type': bundle.inputData?.[`${keyPrefix}bid_strategy_type`],
         }
     },
 }

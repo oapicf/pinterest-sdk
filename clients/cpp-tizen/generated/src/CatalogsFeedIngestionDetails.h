@@ -11,6 +11,7 @@
 #include <string>
 #include "CatalogsFeedIngestionErrors.h"
 #include "CatalogsFeedIngestionInfo.h"
+#include "CatalogsFeedIngestionWarnings.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -61,10 +62,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setInfo(CatalogsFeedIngestionInfo  info);
+	/*! \brief Get 
+	 */
+	CatalogsFeedIngestionWarnings getWarnings();
+
+	/*! \brief Set 
+	 */
+	void setWarnings(CatalogsFeedIngestionWarnings  warnings);
 
 private:
 	CatalogsFeedIngestionErrors errors;
 	CatalogsFeedIngestionInfo info;
+	CatalogsFeedIngestionWarnings warnings;
 	void __init();
 	void __cleanup();
 

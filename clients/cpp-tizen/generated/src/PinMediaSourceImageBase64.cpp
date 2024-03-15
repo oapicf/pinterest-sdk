@@ -26,6 +26,7 @@ PinMediaSourceImageBase64::__init()
 	//source_type = std::string();
 	//content_type = std::string();
 	//data = std::string();
+	//is_standard = bool(false);
 }
 
 void
@@ -45,6 +46,11 @@ PinMediaSourceImageBase64::__cleanup()
 	//
 	//delete data;
 	//data = NULL;
+	//}
+	//if(is_standard != NULL) {
+	//
+	//delete is_standard;
+	//is_standard = NULL;
 	//}
 	//
 }
@@ -83,6 +89,17 @@ PinMediaSourceImageBase64::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&data, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *is_standardKey = "is_standard";
+	node = json_object_get_member(pJsonObject, is_standardKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_standard, node, "bool", "");
 		} else {
 			
 		}
@@ -126,6 +143,15 @@ PinMediaSourceImageBase64::toJson()
 	}
 	const gchar *dataKey = "data";
 	json_object_set_member(pJsonObject, dataKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsStandard();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_standardKey = "is_standard";
+	json_object_set_member(pJsonObject, is_standardKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -168,6 +194,18 @@ void
 PinMediaSourceImageBase64::setData(std::string  data)
 {
 	this->data = data;
+}
+
+bool
+PinMediaSourceImageBase64::getIsStandard()
+{
+	return is_standard;
+}
+
+void
+PinMediaSourceImageBase64::setIsStandard(bool  is_standard)
+{
+	this->is_standard = is_standard;
 }
 
 

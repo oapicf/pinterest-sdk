@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **report\_status** | **String** |  | [optional] [default to null] |
+| **report\_status** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] [default to null] |
 | **token** | **String** |  | [optional] [default to null] |
 | **message** | **String** |  | [optional] [default to null] |
 

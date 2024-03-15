@@ -46,11 +46,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros.
+	/*! \brief Get Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
 	 */
 	std::list<std::string> getPh();
 
-	/*! \brief Set Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros.
+	/*! \brief Set Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
 	 */
 	void setPh(std::list <std::string> ph);
 	/*! \brief Get Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender.
@@ -67,39 +67,39 @@ public:
 	/*! \brief Set Sha256 hashes of user's date of birthday, given as year, month, and day.
 	 */
 	void setDb(std::list <std::string> db);
-	/*! \brief Get Sha256 hashes of user's last name, in lowercase.
+	/*! \brief Get Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
 	 */
 	std::list<std::string> getLn();
 
-	/*! \brief Set Sha256 hashes of user's last name, in lowercase.
+	/*! \brief Set Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
 	 */
 	void setLn(std::list <std::string> ln);
-	/*! \brief Get Sha256 hashes of user's first name, in lowercase.
+	/*! \brief Get Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
 	 */
 	std::list<std::string> getFn();
 
-	/*! \brief Set Sha256 hashes of user's first name, in lowercase.
+	/*! \brief Set Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
 	 */
 	void setFn(std::list <std::string> fn);
-	/*! \brief Get Sha256 hashes of user's city, in lowercase, and without spaces or punctuation.
+	/*! \brief Get Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing).
 	 */
 	std::list<std::string> getCt();
 
-	/*! \brief Set Sha256 hashes of user's city, in lowercase, and without spaces or punctuation.
+	/*! \brief Set Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing).
 	 */
 	void setCt(std::list <std::string> ct);
-	/*! \brief Get Sha256 hashes of user's state, given as a two-letter code in lowercase.
+	/*! \brief Get Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing).
 	 */
 	std::list<std::string> getSt();
 
-	/*! \brief Set Sha256 hashes of user's state, given as a two-letter code in lowercase.
+	/*! \brief Set Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing).
 	 */
 	void setSt(std::list <std::string> st);
-	/*! \brief Get Sha256 hashes of user's zipcode, only digits.
+	/*! \brief Get Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing).
 	 */
 	std::list<std::string> getZp();
 
-	/*! \brief Set Sha256 hashes of user's zipcode, only digits.
+	/*! \brief Set Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing).
 	 */
 	void setZp(std::list <std::string> zp);
 	/*! \brief Get Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase.
@@ -109,13 +109,27 @@ public:
 	/*! \brief Set Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase.
 	 */
 	void setCountry(std::list <std::string> country);
-	/*! \brief Get Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc.
+	/*! \brief Get Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA.
 	 */
 	std::list<std::string> getExternalId();
 
-	/*! \brief Set Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc.
+	/*! \brief Set Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA.
 	 */
 	void setExternalId(std::list <std::string> external_id);
+	/*! \brief Get The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+	 */
+	std::string getClickId();
+
+	/*! \brief Set The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+	 */
+	void setClickId(std::string  click_id);
+	/*! \brief Get A unique identifier of visitors' information defined by third party partners. e.g RampID
+	 */
+	std::string getPartnerId();
+
+	/*! \brief Set A unique identifier of visitors' information defined by third party partners. e.g RampID
+	 */
+	void setPartnerId(std::string  partner_id);
 
 private:
 	std::list <std::string>ph;
@@ -128,6 +142,8 @@ private:
 	std::list <std::string>zp;
 	std::list <std::string>country;
 	std::list <std::string>external_id;
+	std::string click_id;
+	std::string partner_id;
 	void __init();
 	void __cleanup();
 

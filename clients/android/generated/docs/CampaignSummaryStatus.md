@@ -1,0 +1,10 @@
+
+
+# CampaignSummaryStatus
+
+## Enum
+
+
+
+
+

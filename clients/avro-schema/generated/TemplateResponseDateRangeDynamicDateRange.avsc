@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The dynamic date range of the template",
+  "name": "TemplateResponseDateRangeDynamicDateRange",
+  "fields": [
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "The date range type",
+      "default": null
+    },
+    {
+      "name": "range",
+      "type": ["null", {
+        "type": "enum",
+        "name": "TemplateResponseDateRangeDynamicDateRange_range",
+        "symbols": [
+          "YEAR_TO_DATE",
+          "QUARTER_TO_DATE",
+          "MONTH_TO_DATE",
+          "LAST_MONTH"
+        ]
+      }],
+      "doc": "The dynamic range type",
+      "default": null
+    }
+  ]
+
+}

@@ -24,6 +24,7 @@ void
 Ad_account_owner::__init()
 {
 	//username = std::string();
+	//id = std::string();
 }
 
 void
@@ -33,6 +34,11 @@ Ad_account_owner::__cleanup()
 	//
 	//delete username;
 	//username = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
 	//}
 	//
 }
@@ -49,6 +55,17 @@ Ad_account_owner::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&username, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
 		} else {
 			
 		}
@@ -74,6 +91,15 @@ Ad_account_owner::toJson()
 	}
 	const gchar *usernameKey = "username";
 	json_object_set_member(pJsonObject, usernameKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -92,6 +118,18 @@ void
 Ad_account_owner::setUsername(std::string  username)
 {
 	this->username = username;
+}
+
+std::string
+Ad_account_owner::getId()
+{
+	return id;
+}
+
+void
+Ad_account_owner::setId(std::string  id)
+{
+	this->id = id;
 }
 
 

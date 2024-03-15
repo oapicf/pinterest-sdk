@@ -1,0 +1,10 @@
+
+
+# CatalogsFeedProcessingStatus
+
+## Enum
+
+
+
+
+

@@ -1,7 +1,7 @@
 /*
  * CatalogsFeedProcessingSchedule.h
  *
- * Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).
+ * Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
  */
 
 #ifndef _CatalogsFeedProcessingSchedule_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Optional daily processing schedule. Use this to configure the preferred time for processing a feed (otherwise random).
+/*! \brief Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
  *
  *  \ingroup Models
  *

@@ -1,0 +1,132 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
+import 'package:test/test.dart';
+
+// tests for CampaignCreateResponseData
+void main() {
+  // final instance = CampaignCreateResponseData();
+
+  group('test CampaignCreateResponseData', () {
+    // Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
+    // String adAccountId
+    test('to test the property `adAccountId`', () async {
+      // TODO
+    });
+
+    // Campaign name.
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // EntityStatus status
+    test('to test the property `status`', () async {
+      // TODO
+    });
+
+    // Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+    // int lifetimeSpendCap
+    test('to test the property `lifetimeSpendCap`', () async {
+      // TODO
+    });
+
+    // Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+    // int dailySpendCap
+    test('to test the property `dailySpendCap`', () async {
+      // TODO
+    });
+
+    // Order line ID that appears on the invoice.
+    // String orderLineId
+    test('to test the property `orderLineId`', () async {
+      // TODO
+    });
+
+    // AdCommonTrackingUrls trackingUrls
+    test('to test the property `trackingUrls`', () async {
+      // TODO
+    });
+
+    // Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+    // int startTime
+    test('to test the property `startTime`', () async {
+      // TODO
+    });
+
+    // Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+    // int endTime
+    test('to test the property `endTime`', () async {
+      // TODO
+    });
+
+    // CampaignSummaryStatus summaryStatus
+    test('to test the property `summaryStatus`', () async {
+      // TODO
+    });
+
+    // Determines if a campaign has flexible daily budgets setup.
+    // bool isFlexibleDailyBudgets
+    test('to test the property `isFlexibleDailyBudgets`', () async {
+      // TODO
+    });
+
+    // When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+    // int defaultAdGroupBudgetInMicroCurrency
+    test('to test the property `defaultAdGroupBudgetInMicroCurrency`', () async {
+      // TODO
+    });
+
+    // Specifies whether the campaign was created in the automated campaign flow
+    // bool isAutomatedCampaign (default value: false)
+    test('to test the property `isAutomatedCampaign`', () async {
+      // TODO
+    });
+
+    // Campaign ID.
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // ObjectiveType objectiveType
+    test('to test the property `objectiveType`', () async {
+      // TODO
+    });
+
+    // Campaign creation time. Unix timestamp in seconds.
+    // int createdTime
+    test('to test the property `createdTime`', () async {
+      // TODO
+    });
+
+    // UTC timestamp. Last update time.
+    // int updatedTime
+    test('to test the property `updatedTime`', () async {
+      // TODO
+    });
+
+    // Always \"campaign\".
+    // String type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
+    // Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+    // bool isCampaignBudgetOptimization
+    test('to test the property `isCampaignBudgetOptimization`', () async {
+      // TODO
+    });
+
+
+  });
+
+}

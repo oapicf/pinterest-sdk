@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountCreateSubscriptionRequest",
+  "fields": [
+    {
+      "name": "webhook_url",
+      "type": "string",
+      "doc": "Standard HTTPS webhook URL."
+    },
+    {
+      "name": "lead_form_id",
+      "type": ["null", "string"],
+      "doc": "Lead form ID.",
+      "default": null
+    },
+    {
+      "name": "partner_access_token",
+      "type": ["null", "string"],
+      "doc": "Partner access token. Only for clients that requires authentication. We recommend to avoid this param.",
+      "default": null
+    },
+    {
+      "name": "partner_refresh_token",
+      "type": ["null", "string"],
+      "doc": "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.",
+      "default": null
+    }
+  ]
+
+}

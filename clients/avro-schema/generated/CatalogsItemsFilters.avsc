@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsItemsFilters",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "item_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog",
+      "default": null
+    },
+    {
+      "name": "hotel_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

@@ -9,10 +9,14 @@
 
 
 #include <string>
+#include "ItemAttributes.h"
 #include "ItemCreateBatchRecord.h"
+#include "ItemDeleteBatchRecord.h"
 #include "ItemDeleteDiscontinuedBatchRecord.h"
 #include "ItemUpdateBatchRecord.h"
-#include "UpdatableItemAttributes.h"
+#include "ItemUpsertBatchRecord.h"
+#include "UpdateMaskFieldType.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -58,15 +62,23 @@ public:
 	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
-	UpdatableItemAttributes getAttributes();
+	ItemAttributes getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(UpdatableItemAttributes  attributes);
+	void setAttributes(ItemAttributes  attributes);
+	/*! \brief Get The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+	 */
+	std::list<UpdateMaskFieldType> getUpdateMask();
+
+	/*! \brief Set The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+	 */
+	void setUpdateMask(std::list <UpdateMaskFieldType> update_mask);
 
 private:
 	std::string item_id;
-	UpdatableItemAttributes attributes;
+	ItemAttributes attributes;
+	std::list <UpdateMaskFieldType>update_mask;
 	void __init();
 	void __cleanup();
 

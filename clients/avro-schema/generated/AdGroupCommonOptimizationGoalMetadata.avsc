@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.",
+  "name": "AdGroupCommonOptimizationGoalMetadata",
+  "fields": [
+    {
+      "name": "conversion_tag_v3_goal_metadata",
+      "type": ["null", "model.OptimizationGoalMetadataConversionTagV3GoalMetadata"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "frequency_goal_metadata",
+      "type": ["null", "model.OptimizationGoalMetadataFrequencyGoalMetadata"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "scrollup_goal_metadata",
+      "type": ["null", "model.OptimizationGoalMetadataScrollupGoalMetadata"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

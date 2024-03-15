@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+  <script src="assets/js/main.js" type="text/javascript"></script>
+
+  <title>REST API Resources</title>
+</head>
+<body>
+  <div class="header">
+    <div class="top-bar">
+      <h1 id="logo"><a class="logo" href="/"><span>OpenAPI</span><span class="light">API Docs</span></a></h1>
+    </div>
+  </div>
+  <div class="model-container"></div>
+  <div class="content">
+    <div class="box clearfix">
+      <div class="sidebar">
+        <div class="section-box">
+          <div class="section-header">
+            Overview
+          </div>
+          <ul>
+            <li>Getting Started</li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/AdAccountsApi">AdAccountsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/AdAccountsApi#adAccount/analytics">adAccount/analytics</a></li>
+            <li><a href="#!/AdAccountsApi#adAccountTargetingAnalytics/get">adAccountTargetingAnalytics/get</a></li>
+            <li><a href="#!/AdAccountsApi#adAccounts/create">adAccounts/create</a></li>
+            <li><a href="#!/AdAccountsApi#adAccounts/get">adAccounts/get</a></li>
+            <li><a href="#!/AdAccountsApi#adAccounts/list">adAccounts/list</a></li>
+            <li><a href="#!/AdAccountsApi#analytics/createMmmReport">analytics/createMmmReport</a></li>
+            <li><a href="#!/AdAccountsApi#analytics/createReport">analytics/createReport</a></li>
+            <li><a href="#!/AdAccountsApi#analytics/createTemplateReport">analytics/createTemplateReport</a></li>
+            <li><a href="#!/AdAccountsApi#analytics/getMmmReport">analytics/getMmmReport</a></li>
+            <li><a href="#!/AdAccountsApi#analytics/getReport">analytics/getReport</a></li>
+            <li><a href="#!/AdAccountsApi#sandbox/delete">sandbox/delete</a></li>
+            <li><a href="#!/AdAccountsApi#templates/list">templates/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/AdGroupsApi">AdGroupsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/AdGroupsApi#adGroups/analytics">adGroups/analytics</a></li>
+            <li><a href="#!/AdGroupsApi#adGroups/audienceSizing">adGroups/audienceSizing</a></li>
+            <li><a href="#!/AdGroupsApi#adGroups/create">adGroups/create</a></li>
+            <li><a href="#!/AdGroupsApi#adGroups/get">adGroups/get</a></li>
+            <li><a href="#!/AdGroupsApi#adGroups/list">adGroups/list</a></li>
+            <li><a href="#!/AdGroupsApi#adGroups/update">adGroups/update</a></li>
+            <li><a href="#!/AdGroupsApi#adGroupsBidFloor/get">adGroupsBidFloor/get</a></li>
+            <li><a href="#!/AdGroupsApi#adGroupsTargetingAnalytics/get">adGroupsTargetingAnalytics/get</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/AdsApi">AdsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/AdsApi#adPreviews/create">adPreviews/create</a></li>
+            <li><a href="#!/AdsApi#adTargetingAnalytics/get">adTargetingAnalytics/get</a></li>
+            <li><a href="#!/AdsApi#ads/analytics">ads/analytics</a></li>
+            <li><a href="#!/AdsApi#ads/create">ads/create</a></li>
+            <li><a href="#!/AdsApi#ads/get">ads/get</a></li>
+            <li><a href="#!/AdsApi#ads/list">ads/list</a></li>
+            <li><a href="#!/AdsApi#ads/update">ads/update</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/AudienceInsightsApi">AudienceInsightsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/AudienceInsightsApi#audienceInsights/get">audienceInsights/get</a></li>
+            <li><a href="#!/AudienceInsightsApi#audienceInsightsScopeAndType/get">audienceInsightsScopeAndType/get</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/AudiencesApi">AudiencesApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/AudiencesApi#audiences/create">audiences/create</a></li>
+            <li><a href="#!/AudiencesApi#audiences/createCustom">audiences/createCustom</a></li>
+            <li><a href="#!/AudiencesApi#audiences/get">audiences/get</a></li>
+            <li><a href="#!/AudiencesApi#audiences/list">audiences/list</a></li>
+            <li><a href="#!/AudiencesApi#audiences/update">audiences/update</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/BillingApi">BillingApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/BillingApi#adsCredit/redeem">adsCredit/redeem</a></li>
+            <li><a href="#!/BillingApi#adsCreditsDiscounts/get">adsCreditsDiscounts/get</a></li>
+            <li><a href="#!/BillingApi#billingProfiles/get">billingProfiles/get</a></li>
+            <li><a href="#!/BillingApi#ssioAccounts/get">ssioAccounts/get</a></li>
+            <li><a href="#!/BillingApi#ssioInsertionOrder/create">ssioInsertionOrder/create</a></li>
+            <li><a href="#!/BillingApi#ssioInsertionOrder/edit">ssioInsertionOrder/edit</a></li>
+            <li><a href="#!/BillingApi#ssioInsertionOrdersStatus/getByAdAccount">ssioInsertionOrdersStatus/getByAdAccount</a></li>
+            <li><a href="#!/BillingApi#ssioInsertionOrdersStatus/getByPinOrderId">ssioInsertionOrdersStatus/getByPinOrderId</a></li>
+            <li><a href="#!/BillingApi#ssioOrderLines/getByAdAccount">ssioOrderLines/getByAdAccount</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/BoardsApi">BoardsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/BoardsApi#boardSections/create">boardSections/create</a></li>
+            <li><a href="#!/BoardsApi#boardSections/delete">boardSections/delete</a></li>
+            <li><a href="#!/BoardsApi#boardSections/list">boardSections/list</a></li>
+            <li><a href="#!/BoardsApi#boardSections/listPins">boardSections/listPins</a></li>
+            <li><a href="#!/BoardsApi#boardSections/update">boardSections/update</a></li>
+            <li><a href="#!/BoardsApi#boards/create">boards/create</a></li>
+            <li><a href="#!/BoardsApi#boards/delete">boards/delete</a></li>
+            <li><a href="#!/BoardsApi#boards/get">boards/get</a></li>
+            <li><a href="#!/BoardsApi#boards/list">boards/list</a></li>
+            <li><a href="#!/BoardsApi#boards/listPins">boards/listPins</a></li>
+            <li><a href="#!/BoardsApi#boards/update">boards/update</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/BulkApi">BulkApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/BulkApi#bulkDownload/create">bulkDownload/create</a></li>
+            <li><a href="#!/BulkApi#bulkRequest/get">bulkRequest/get</a></li>
+            <li><a href="#!/BulkApi#bulkUpsert/create">bulkUpsert/create</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/CampaignsApi">CampaignsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CampaignsApi#campaignTargetingAnalytics/get">campaignTargetingAnalytics/get</a></li>
+            <li><a href="#!/CampaignsApi#campaigns/analytics">campaigns/analytics</a></li>
+            <li><a href="#!/CampaignsApi#campaigns/create">campaigns/create</a></li>
+            <li><a href="#!/CampaignsApi#campaigns/get">campaigns/get</a></li>
+            <li><a href="#!/CampaignsApi#campaigns/list">campaigns/list</a></li>
+            <li><a href="#!/CampaignsApi#campaigns/update">campaigns/update</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/CatalogsApi">CatalogsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CatalogsApi#catalogs/list">catalogs/list</a></li>
+            <li><a href="#!/CatalogsApi#catalogsProductGroupPins/list">catalogsProductGroupPins/list</a></li>
+            <li><a href="#!/CatalogsApi#catalogsProductGroups/create">catalogsProductGroups/create</a></li>
+            <li><a href="#!/CatalogsApi#catalogsProductGroups/delete">catalogsProductGroups/delete</a></li>
+            <li><a href="#!/CatalogsApi#catalogsProductGroups/get">catalogsProductGroups/get</a></li>
+            <li><a href="#!/CatalogsApi#catalogsProductGroups/list">catalogsProductGroups/list</a></li>
+            <li><a href="#!/CatalogsApi#catalogsProductGroups/productCountsGet">catalogsProductGroups/productCountsGet</a></li>
+            <li><a href="#!/CatalogsApi#catalogsProductGroups/update">catalogsProductGroups/update</a></li>
+            <li><a href="#!/CatalogsApi#feedProcessingResults/list">feedProcessingResults/list</a></li>
+            <li><a href="#!/CatalogsApi#feeds/create">feeds/create</a></li>
+            <li><a href="#!/CatalogsApi#feeds/delete">feeds/delete</a></li>
+            <li><a href="#!/CatalogsApi#feeds/get">feeds/get</a></li>
+            <li><a href="#!/CatalogsApi#feeds/list">feeds/list</a></li>
+            <li><a href="#!/CatalogsApi#feeds/update">feeds/update</a></li>
+            <li><a href="#!/CatalogsApi#items/get">items/get</a></li>
+            <li><a href="#!/CatalogsApi#itemsBatch/get">itemsBatch/get</a></li>
+            <li><a href="#!/CatalogsApi#itemsBatch/post">itemsBatch/post</a></li>
+            <li><a href="#!/CatalogsApi#itemsIssues/list">itemsIssues/list</a></li>
+            <li><a href="#!/CatalogsApi#productsByProductGroupFilter/list">productsByProductGroupFilter/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ConversionEventsApi">ConversionEventsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ConversionEventsApi#events/create">events/create</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ConversionTagsApi">ConversionTagsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ConversionTagsApi#conversionTags/create">conversionTags/create</a></li>
+            <li><a href="#!/ConversionTagsApi#conversionTags/get">conversionTags/get</a></li>
+            <li><a href="#!/ConversionTagsApi#conversionTags/list">conversionTags/list</a></li>
+            <li><a href="#!/ConversionTagsApi#ocpmEligibleConversionTags/get">ocpmEligibleConversionTags/get</a></li>
+            <li><a href="#!/ConversionTagsApi#pageVisitConversionTags/get">pageVisitConversionTags/get</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/CustomerListsApi">CustomerListsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/CustomerListsApi#customerLists/create">customerLists/create</a></li>
+            <li><a href="#!/CustomerListsApi#customerLists/get">customerLists/get</a></li>
+            <li><a href="#!/CustomerListsApi#customerLists/list">customerLists/list</a></li>
+            <li><a href="#!/CustomerListsApi#customerLists/update">customerLists/update</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/IntegrationsApi">IntegrationsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/IntegrationsApi#integrations/getById">integrations/getById</a></li>
+            <li><a href="#!/IntegrationsApi#integrations/getList">integrations/getList</a></li>
+            <li><a href="#!/IntegrationsApi#integrationsCommerce/del">integrationsCommerce/del</a></li>
+            <li><a href="#!/IntegrationsApi#integrationsCommerce/get">integrationsCommerce/get</a></li>
+            <li><a href="#!/IntegrationsApi#integrationsCommerce/patch">integrationsCommerce/patch</a></li>
+            <li><a href="#!/IntegrationsApi#integrationsCommerce/post">integrationsCommerce/post</a></li>
+            <li><a href="#!/IntegrationsApi#integrationsLogs/post">integrationsLogs/post</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/KeywordsApi">KeywordsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/KeywordsApi#countryKeywordsMetrics/get">countryKeywordsMetrics/get</a></li>
+            <li><a href="#!/KeywordsApi#keywords/create">keywords/create</a></li>
+            <li><a href="#!/KeywordsApi#keywords/get">keywords/get</a></li>
+            <li><a href="#!/KeywordsApi#keywords/update">keywords/update</a></li>
+            <li><a href="#!/KeywordsApi#trendingKeywords/list">trendingKeywords/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/LeadAdsApi">LeadAdsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/LeadAdsApi#adAccountsSubscriptions/delById">adAccountsSubscriptions/delById</a></li>
+            <li><a href="#!/LeadAdsApi#adAccountsSubscriptions/getById">adAccountsSubscriptions/getById</a></li>
+            <li><a href="#!/LeadAdsApi#adAccountsSubscriptions/getList">adAccountsSubscriptions/getList</a></li>
+            <li><a href="#!/LeadAdsApi#adAccountsSubscriptions/post">adAccountsSubscriptions/post</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/LeadFormsApi">LeadFormsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/LeadFormsApi#leadForm/get">leadForm/get</a></li>
+            <li><a href="#!/LeadFormsApi#leadFormTest/create">leadFormTest/create</a></li>
+            <li><a href="#!/LeadFormsApi#leadForms/list">leadForms/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/MediaApi">MediaApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/MediaApi#media/create">media/create</a></li>
+            <li><a href="#!/MediaApi#media/get">media/get</a></li>
+            <li><a href="#!/MediaApi#media/list">media/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/OauthApi">OauthApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/OauthApi#oauth/token">oauth/token</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/OrderLinesApi">OrderLinesApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/OrderLinesApi#orderLines/get">orderLines/get</a></li>
+            <li><a href="#!/OrderLinesApi#orderLines/list">orderLines/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/PinsApi">PinsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/PinsApi#pins/analytics">pins/analytics</a></li>
+            <li><a href="#!/PinsApi#pins/create">pins/create</a></li>
+            <li><a href="#!/PinsApi#pins/delete">pins/delete</a></li>
+            <li><a href="#!/PinsApi#pins/get">pins/get</a></li>
+            <li><a href="#!/PinsApi#pins/list">pins/list</a></li>
+            <li><a href="#!/PinsApi#pins/save">pins/save</a></li>
+            <li><a href="#!/PinsApi#pins/update">pins/update</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ProductGroupPromotionsApi">ProductGroupPromotionsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ProductGroupPromotionsApi#productGroupPromotions/create">productGroupPromotions/create</a></li>
+            <li><a href="#!/ProductGroupPromotionsApi#productGroupPromotions/get">productGroupPromotions/get</a></li>
+            <li><a href="#!/ProductGroupPromotionsApi#productGroupPromotions/list">productGroupPromotions/list</a></li>
+            <li><a href="#!/ProductGroupPromotionsApi#productGroupPromotions/update">productGroupPromotions/update</a></li>
+            <li><a href="#!/ProductGroupPromotionsApi#productGroups/analytics">productGroups/analytics</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ProductGroupsApi">ProductGroupsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ProductGroupsApi#adAccountsCatalogsProductGroups/list">adAccountsCatalogsProductGroups/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/ResourcesApi">ResourcesApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/ResourcesApi#adAccountCountries/get">adAccountCountries/get</a></li>
+            <li><a href="#!/ResourcesApi#deliveryMetrics/get">deliveryMetrics/get</a></li>
+            <li><a href="#!/ResourcesApi#interestTargetingOptions/get">interestTargetingOptions/get</a></li>
+            <li><a href="#!/ResourcesApi#leadFormQuestions/get">leadFormQuestions/get</a></li>
+            <li><a href="#!/ResourcesApi#metricsReadyState/get">metricsReadyState/get</a></li>
+            <li><a href="#!/ResourcesApi#targetingOptions/get">targetingOptions/get</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/SearchApi">SearchApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/SearchApi#searchPartnerPins">searchPartnerPins</a></li>
+            <li><a href="#!/SearchApi#searchUserBoards/get">searchUserBoards/get</a></li>
+            <li><a href="#!/SearchApi#searchUserPins/list">searchUserPins/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/TermsApi">TermsApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/TermsApi#termsRelated/list">termsRelated/list</a></li>
+            <li><a href="#!/TermsApi#termsSuggested/list">termsSuggested/list</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/TermsOfServiceApi">TermsOfServiceApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/TermsOfServiceApi#termsOfService/get">termsOfService/get</a></li>
+          </ul>
+        </div>
+        <div class="section-box">
+          <div class="section-header">
+            <a href="#!/UserAccountApi">UserAccountApi</a>
+          </div>
+          <ul>
+            <li><a href="#!/UserAccountApi#boardsUserFollows/list">boardsUserFollows/list</a></li>
+            <li><a href="#!/UserAccountApi#followUser/update">followUser/update</a></li>
+            <li><a href="#!/UserAccountApi#followers/list">followers/list</a></li>
+            <li><a href="#!/UserAccountApi#linkedBusinessAccounts/get">linkedBusinessAccounts/get</a></li>
+            <li><a href="#!/UserAccountApi#unverifyWebsite/delete">unverifyWebsite/delete</a></li>
+            <li><a href="#!/UserAccountApi#userAccount/analytics">userAccount/analytics</a></li>
+            <li><a href="#!/UserAccountApi#userAccount/analytics/topPins">userAccount/analytics/topPins</a></li>
+            <li><a href="#!/UserAccountApi#userAccount/analytics/topVideoPins">userAccount/analytics/topVideoPins</a></li>
+            <li><a href="#!/UserAccountApi#userAccount/followedInterests">userAccount/followedInterests</a></li>
+            <li><a href="#!/UserAccountApi#userAccount/get">userAccount/get</a></li>
+            <li><a href="#!/UserAccountApi#userFollowing/get">userFollowing/get</a></li>
+            <li><a href="#!/UserAccountApi#userWebsites/get">userWebsites/get</a></li>
+            <li><a href="#!/UserAccountApi#verifyWebsite/update">verifyWebsite/update</a></li>
+            <li><a href="#!/UserAccountApi#websiteVerification/get">websiteVerification/get</a></li>
+          </ul>
+        </div>
+      </div>
+    <div class="non-sidebar">
+      <div class="main-content">
+        <h2>Getting Started</h2>
+        <p>To begin using your fancy HTTP API, follow the steps below.</p>
+        <p>You can add some helpful tips, here</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

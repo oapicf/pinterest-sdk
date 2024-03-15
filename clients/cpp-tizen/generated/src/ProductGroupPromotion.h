@@ -11,6 +11,7 @@
 #include <string>
 #include "CreativeType.h"
 #include "EntityStatus.h"
+#include "GridClickType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -61,13 +62,6 @@ public:
 	/*! \brief Set ID of the ad group the product group belongs to.
 	 */
 	void setAdGroupId(std::string  ad_group_id);
-	/*! \brief Get Product group promotion
-	 */
-	std::string getType();
-
-	/*! \brief Set Product group promotion
-	 */
-	void setType(std::string  type);
 	/*! \brief Get The bid in micro currency.
 	 */
 	int getBidInMicroCurrency();
@@ -117,6 +111,13 @@ public:
 	/*! \brief Set Slideshow Collections Description
 	 */
 	void setSlideshowCollectionsDescription(std::string  slideshow_collections_description);
+	/*! \brief Get If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+	 */
+	bool getIsMdl();
+
+	/*! \brief Set If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+	 */
+	void setIsMdl(bool  is_mdl);
 	/*! \brief Get 
 	 */
 	EntityStatus getStatus();
@@ -133,18 +134,18 @@ public:
 	void setTrackingUrl(std::string  tracking_url);
 	/*! \brief Get ID of the catalogs product group that this product group promotion references
 	 */
-	std::string getCatalogsProductGroupId();
+	std::string getCatalogProductGroupId();
 
 	/*! \brief Set ID of the catalogs product group that this product group promotion references
 	 */
-	void setCatalogsProductGroupId(std::string  catalogs_product_group_id);
-	/*! \brief Get Catalogs product group
+	void setCatalogProductGroupId(std::string  catalog_product_group_id);
+	/*! \brief Get Catalogs product group name
 	 */
-	std::string getCatalogsProductGroupName();
+	std::string getCatalogProductGroupName();
 
-	/*! \brief Set Catalogs product group
+	/*! \brief Set Catalogs product group name
 	 */
-	void setCatalogsProductGroupName(std::string  catalogs_product_group_name);
+	void setCatalogProductGroupName(std::string  catalog_product_group_name);
 	/*! \brief Get 
 	 */
 	CreativeType getCreativeType();
@@ -166,18 +167,17 @@ public:
 	/*! \brief Set Collections Hero Destination Url
 	 */
 	void setCollectionsHeroDestinationUrl(std::string  collections_hero_destination_url);
-	/*! \brief Get If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+	/*! \brief Get 
 	 */
-	bool getIsMdl();
+	GridClickType getGridClickType();
 
-	/*! \brief Set If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+	/*! \brief Set 
 	 */
-	void setIsMdl(bool  is_mdl);
+	void setGridClickType(GridClickType  grid_click_type);
 
 private:
 	std::string id;
 	std::string ad_group_id;
-	std::string type;
 	int bid_in_micro_currency;
 	bool included;
 	std::string definition;
@@ -185,14 +185,15 @@ private:
 	std::string parent_id;
 	std::string slideshow_collections_title;
 	std::string slideshow_collections_description;
+	bool is_mdl;
 	EntityStatus status;
 	std::string tracking_url;
-	std::string catalogs_product_group_id;
-	std::string catalogs_product_group_name;
+	std::string catalog_product_group_id;
+	std::string catalog_product_group_name;
 	CreativeType creative_type;
 	std::string collections_hero_pin_id;
 	std::string collections_hero_destination_url;
-	bool is_mdl;
+	GridClickType grid_click_type;
 	void __init();
 	void __cleanup();
 

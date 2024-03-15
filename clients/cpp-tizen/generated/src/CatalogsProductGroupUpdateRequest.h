@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "CatalogsProductGroupFiltersAllOfRequest.h"
+#include "CatalogsProductGroupFiltersRequest.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -69,17 +69,17 @@ public:
 	void setIsFeatured(bool  is_featured);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupFiltersAllOfRequest getFilters();
+	CatalogsProductGroupFiltersRequest getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFiltersAllOfRequest  filters);
+	void setFilters(CatalogsProductGroupFiltersRequest  filters);
 
 private:
 	std::string name;
 	std::string description;
 	bool is_featured;
-	CatalogsProductGroupFiltersAllOfRequest filters;
+	CatalogsProductGroupFiltersRequest filters;
 	void __init();
 	void __cleanup();
 

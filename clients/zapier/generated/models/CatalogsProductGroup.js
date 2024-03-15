@@ -2,8 +2,6 @@ const utils = require('../utils/utils');
 const CatalogsProductGroupFilters = require('../models/CatalogsProductGroupFilters');
 const CatalogsProductGroupStatus = require('../models/CatalogsProductGroupStatus');
 const CatalogsProductGroupType = require('../models/CatalogsProductGroupType');
-const catalogs_product_group_feed_based_case = require('../models/catalogs_product_group_feed_based_case');
-const catalogs_product_group_merchant_based_case = require('../models/catalogs_product_group_merchant_based_case');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -51,11 +49,16 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}feed_id`,
-                label: `[${labelPrefix}feed_id]`,
+                label: `id of the catalogs feed belonging to this catalog product group - [${labelPrefix}feed_id]`,
                 required: true,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}catalog_type`,
+                label: `[${labelPrefix}catalog_type]`,
+                type: 'string',
                 choices: [
-                    'null',
+                    'RETAIL',
                 ],
             },
         ]
@@ -73,6 +76,7 @@ module.exports = {
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
             'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
             'feed_id': bundle.inputData?.[`${keyPrefix}feed_id`],
+            'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
         }
     },
 }

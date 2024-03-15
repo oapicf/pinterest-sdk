@@ -1,19 +1,28 @@
 const AdAccountsApi = require('../apis/AdAccountsApi');
 const AdGroupsApi = require('../apis/AdGroupsApi');
 const AdsApi = require('../apis/AdsApi');
+const AudienceInsightsApi = require('../apis/AudienceInsightsApi');
 const AudiencesApi = require('../apis/AudiencesApi');
+const BillingApi = require('../apis/BillingApi');
 const BoardsApi = require('../apis/BoardsApi');
 const BulkApi = require('../apis/BulkApi');
 const CampaignsApi = require('../apis/CampaignsApi');
 const CatalogsApi = require('../apis/CatalogsApi');
 const ConversionEventsApi = require('../apis/ConversionEventsApi');
+const ConversionTagsApi = require('../apis/ConversionTagsApi');
 const CustomerListsApi = require('../apis/CustomerListsApi');
+const IntegrationsApi = require('../apis/IntegrationsApi');
 const KeywordsApi = require('../apis/KeywordsApi');
+const LeadAdsApi = require('../apis/LeadAdsApi');
+const LeadFormsApi = require('../apis/LeadFormsApi');
 const MediaApi = require('../apis/MediaApi');
 const OauthApi = require('../apis/OauthApi');
+const OrderLinesApi = require('../apis/OrderLinesApi');
 const PinsApi = require('../apis/PinsApi');
 const ProductGroupPromotionsApi = require('../apis/ProductGroupPromotionsApi');
+const ProductGroupsApi = require('../apis/ProductGroupsApi');
 const ResourcesApi = require('../apis/ResourcesApi');
+const SearchApi = require('../apis/SearchApi');
 const TermsApi = require('../apis/TermsApi');
 const TermsOfServiceApi = require('../apis/TermsOfServiceApi');
 const UserAccountApi = require('../apis/UserAccountApi');
@@ -25,9 +34,15 @@ const actions = {
     [AdAccountsApi.adAccounts/create.key]: AdAccountsApi.adAccounts/create,
     [AdAccountsApi.adAccounts/get.key]: AdAccountsApi.adAccounts/get,
     [AdAccountsApi.adAccounts/list.key]: AdAccountsApi.adAccounts/list,
+    [AdAccountsApi.analytics/createMmmReport.key]: AdAccountsApi.analytics/createMmmReport,
     [AdAccountsApi.analytics/createReport.key]: AdAccountsApi.analytics/createReport,
+    [AdAccountsApi.analytics/createTemplateReport.key]: AdAccountsApi.analytics/createTemplateReport,
+    [AdAccountsApi.analytics/getMmmReport.key]: AdAccountsApi.analytics/getMmmReport,
     [AdAccountsApi.analytics/getReport.key]: AdAccountsApi.analytics/getReport,
+    [AdAccountsApi.sandbox/delete.key]: AdAccountsApi.sandbox/delete,
+    [AdAccountsApi.templates/list.key]: AdAccountsApi.templates/list,
     [AdGroupsApi.adGroups/analytics.key]: AdGroupsApi.adGroups/analytics,
+    [AdGroupsApi.adGroups/audienceSizing.key]: AdGroupsApi.adGroups/audienceSizing,
     [AdGroupsApi.adGroups/create.key]: AdGroupsApi.adGroups/create,
     [AdGroupsApi.adGroups/get.key]: AdGroupsApi.adGroups/get,
     [AdGroupsApi.adGroups/list.key]: AdGroupsApi.adGroups/list,
@@ -41,10 +56,22 @@ const actions = {
     [AdsApi.ads/get.key]: AdsApi.ads/get,
     [AdsApi.ads/list.key]: AdsApi.ads/list,
     [AdsApi.ads/update.key]: AdsApi.ads/update,
+    [AudienceInsightsApi.audienceInsights/get.key]: AudienceInsightsApi.audienceInsights/get,
+    [AudienceInsightsApi.audienceInsightsScopeAndType/get.key]: AudienceInsightsApi.audienceInsightsScopeAndType/get,
     [AudiencesApi.audiences/create.key]: AudiencesApi.audiences/create,
+    [AudiencesApi.audiences/createCustom.key]: AudiencesApi.audiences/createCustom,
     [AudiencesApi.audiences/get.key]: AudiencesApi.audiences/get,
     [AudiencesApi.audiences/list.key]: AudiencesApi.audiences/list,
     [AudiencesApi.audiences/update.key]: AudiencesApi.audiences/update,
+    [BillingApi.adsCredit/redeem.key]: BillingApi.adsCredit/redeem,
+    [BillingApi.adsCreditsDiscounts/get.key]: BillingApi.adsCreditsDiscounts/get,
+    [BillingApi.billingProfiles/get.key]: BillingApi.billingProfiles/get,
+    [BillingApi.ssioAccounts/get.key]: BillingApi.ssioAccounts/get,
+    [BillingApi.ssioInsertionOrder/create.key]: BillingApi.ssioInsertionOrder/create,
+    [BillingApi.ssioInsertionOrder/edit.key]: BillingApi.ssioInsertionOrder/edit,
+    [BillingApi.ssioInsertionOrdersStatus/getByAdAccount.key]: BillingApi.ssioInsertionOrdersStatus/getByAdAccount,
+    [BillingApi.ssioInsertionOrdersStatus/getByPinOrderId.key]: BillingApi.ssioInsertionOrdersStatus/getByPinOrderId,
+    [BillingApi.ssioOrderLines/getByAdAccount.key]: BillingApi.ssioOrderLines/getByAdAccount,
     [BoardsApi.boardSections/create.key]: BoardsApi.boardSections/create,
     [BoardsApi.boardSections/delete.key]: BoardsApi.boardSections/delete,
     [BoardsApi.boardSections/list.key]: BoardsApi.boardSections/list,
@@ -65,6 +92,7 @@ const actions = {
     [CampaignsApi.campaigns/get.key]: CampaignsApi.campaigns/get,
     [CampaignsApi.campaigns/list.key]: CampaignsApi.campaigns/list,
     [CampaignsApi.campaigns/update.key]: CampaignsApi.campaigns/update,
+    [CatalogsApi.catalogs/list.key]: CatalogsApi.catalogs/list,
     [CatalogsApi.catalogsProductGroupPins/list.key]: CatalogsApi.catalogsProductGroupPins/list,
     [CatalogsApi.catalogsProductGroups/create.key]: CatalogsApi.catalogsProductGroups/create,
     [CatalogsApi.catalogsProductGroups/delete.key]: CatalogsApi.catalogsProductGroups/delete,
@@ -84,39 +112,79 @@ const actions = {
     [CatalogsApi.itemsIssues/list.key]: CatalogsApi.itemsIssues/list,
     [CatalogsApi.productsByProductGroupFilter/list.key]: CatalogsApi.productsByProductGroupFilter/list,
     [ConversionEventsApi.events/create.key]: ConversionEventsApi.events/create,
+    [ConversionTagsApi.conversionTags/create.key]: ConversionTagsApi.conversionTags/create,
+    [ConversionTagsApi.conversionTags/get.key]: ConversionTagsApi.conversionTags/get,
+    [ConversionTagsApi.conversionTags/list.key]: ConversionTagsApi.conversionTags/list,
+    [ConversionTagsApi.ocpmEligibleConversionTags/get.key]: ConversionTagsApi.ocpmEligibleConversionTags/get,
+    [ConversionTagsApi.pageVisitConversionTags/get.key]: ConversionTagsApi.pageVisitConversionTags/get,
     [CustomerListsApi.customerLists/create.key]: CustomerListsApi.customerLists/create,
     [CustomerListsApi.customerLists/get.key]: CustomerListsApi.customerLists/get,
     [CustomerListsApi.customerLists/list.key]: CustomerListsApi.customerLists/list,
     [CustomerListsApi.customerLists/update.key]: CustomerListsApi.customerLists/update,
+    [IntegrationsApi.integrations/getById.key]: IntegrationsApi.integrations/getById,
+    [IntegrationsApi.integrations/getList.key]: IntegrationsApi.integrations/getList,
+    [IntegrationsApi.integrationsCommerce/del.key]: IntegrationsApi.integrationsCommerce/del,
+    [IntegrationsApi.integrationsCommerce/get.key]: IntegrationsApi.integrationsCommerce/get,
+    [IntegrationsApi.integrationsCommerce/patch.key]: IntegrationsApi.integrationsCommerce/patch,
+    [IntegrationsApi.integrationsCommerce/post.key]: IntegrationsApi.integrationsCommerce/post,
+    [IntegrationsApi.integrationsLogs/post.key]: IntegrationsApi.integrationsLogs/post,
     [KeywordsApi.countryKeywordsMetrics/get.key]: KeywordsApi.countryKeywordsMetrics/get,
     [KeywordsApi.keywords/create.key]: KeywordsApi.keywords/create,
     [KeywordsApi.keywords/get.key]: KeywordsApi.keywords/get,
     [KeywordsApi.keywords/update.key]: KeywordsApi.keywords/update,
+    [KeywordsApi.trendingKeywords/list.key]: KeywordsApi.trendingKeywords/list,
+    [LeadAdsApi.adAccountsSubscriptions/delById.key]: LeadAdsApi.adAccountsSubscriptions/delById,
+    [LeadAdsApi.adAccountsSubscriptions/getById.key]: LeadAdsApi.adAccountsSubscriptions/getById,
+    [LeadAdsApi.adAccountsSubscriptions/getList.key]: LeadAdsApi.adAccountsSubscriptions/getList,
+    [LeadAdsApi.adAccountsSubscriptions/post.key]: LeadAdsApi.adAccountsSubscriptions/post,
+    [LeadFormsApi.leadForm/get.key]: LeadFormsApi.leadForm/get,
+    [LeadFormsApi.leadFormTest/create.key]: LeadFormsApi.leadFormTest/create,
+    [LeadFormsApi.leadForms/list.key]: LeadFormsApi.leadForms/list,
     [MediaApi.media/create.key]: MediaApi.media/create,
     [MediaApi.media/get.key]: MediaApi.media/get,
     [MediaApi.media/list.key]: MediaApi.media/list,
     [OauthApi.oauth/token.key]: OauthApi.oauth/token,
+    [OrderLinesApi.orderLines/get.key]: OrderLinesApi.orderLines/get,
+    [OrderLinesApi.orderLines/list.key]: OrderLinesApi.orderLines/list,
     [PinsApi.pins/analytics.key]: PinsApi.pins/analytics,
     [PinsApi.pins/create.key]: PinsApi.pins/create,
     [PinsApi.pins/delete.key]: PinsApi.pins/delete,
     [PinsApi.pins/get.key]: PinsApi.pins/get,
+    [PinsApi.pins/list.key]: PinsApi.pins/list,
     [PinsApi.pins/save.key]: PinsApi.pins/save,
-    [ProductGroupPromotionsApi.productGroupPromotion/get.key]: ProductGroupPromotionsApi.productGroupPromotion/get,
+    [PinsApi.pins/update.key]: PinsApi.pins/update,
     [ProductGroupPromotionsApi.productGroupPromotions/create.key]: ProductGroupPromotionsApi.productGroupPromotions/create,
+    [ProductGroupPromotionsApi.productGroupPromotions/get.key]: ProductGroupPromotionsApi.productGroupPromotions/get,
+    [ProductGroupPromotionsApi.productGroupPromotions/list.key]: ProductGroupPromotionsApi.productGroupPromotions/list,
     [ProductGroupPromotionsApi.productGroupPromotions/update.key]: ProductGroupPromotionsApi.productGroupPromotions/update,
     [ProductGroupPromotionsApi.productGroups/analytics.key]: ProductGroupPromotionsApi.productGroups/analytics,
+    [ProductGroupsApi.adAccountsCatalogsProductGroups/list.key]: ProductGroupsApi.adAccountsCatalogsProductGroups/list,
     [ResourcesApi.adAccountCountries/get.key]: ResourcesApi.adAccountCountries/get,
     [ResourcesApi.deliveryMetrics/get.key]: ResourcesApi.deliveryMetrics/get,
     [ResourcesApi.interestTargetingOptions/get.key]: ResourcesApi.interestTargetingOptions/get,
+    [ResourcesApi.leadFormQuestions/get.key]: ResourcesApi.leadFormQuestions/get,
     [ResourcesApi.metricsReadyState/get.key]: ResourcesApi.metricsReadyState/get,
     [ResourcesApi.targetingOptions/get.key]: ResourcesApi.targetingOptions/get,
+    [SearchApi.searchPartnerPins.key]: SearchApi.searchPartnerPins,
+    [SearchApi.searchUserBoards/get.key]: SearchApi.searchUserBoards/get,
+    [SearchApi.searchUserPins/list.key]: SearchApi.searchUserPins/list,
     [TermsApi.termsRelated/list.key]: TermsApi.termsRelated/list,
     [TermsApi.termsSuggested/list.key]: TermsApi.termsSuggested/list,
     [TermsOfServiceApi.termsOfService/get.key]: TermsOfServiceApi.termsOfService/get,
+    [UserAccountApi.boardsUserFollows/list.key]: UserAccountApi.boardsUserFollows/list,
+    [UserAccountApi.followUser/update.key]: UserAccountApi.followUser/update,
+    [UserAccountApi.followers/list.key]: UserAccountApi.followers/list,
+    [UserAccountApi.linkedBusinessAccounts/get.key]: UserAccountApi.linkedBusinessAccounts/get,
+    [UserAccountApi.unverifyWebsite/delete.key]: UserAccountApi.unverifyWebsite/delete,
     [UserAccountApi.userAccount/analytics.key]: UserAccountApi.userAccount/analytics,
     [UserAccountApi.userAccount/analytics/topPins.key]: UserAccountApi.userAccount/analytics/topPins,
     [UserAccountApi.userAccount/analytics/topVideoPins.key]: UserAccountApi.userAccount/analytics/topVideoPins,
+    [UserAccountApi.userAccount/followedInterests.key]: UserAccountApi.userAccount/followedInterests,
     [UserAccountApi.userAccount/get.key]: UserAccountApi.userAccount/get,
+    [UserAccountApi.userFollowing/get.key]: UserAccountApi.userFollowing/get,
+    [UserAccountApi.userWebsites/get.key]: UserAccountApi.userWebsites/get,
+    [UserAccountApi.verifyWebsite/update.key]: UserAccountApi.verifyWebsite/update,
+    [UserAccountApi.websiteVerification/get.key]: UserAccountApi.websiteVerification/get,
 }
 
 module.exports = {

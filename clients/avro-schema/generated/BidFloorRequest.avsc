@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BidFloorRequest",
+  "fields": [
+    {
+      "name": "bid_floor_specs",
+      "type": {
+        "type": "array",
+        "items": "model.BidFloorSpec"
+      },
+      "doc": ""
+    },
+    {
+      "name": "targeting_spec",
+      "type": ["null", "model.TargetingSpec"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

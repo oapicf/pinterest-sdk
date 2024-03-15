@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "KeywordsMetricsArrayResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.KeywordMetricsResponse"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

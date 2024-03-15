@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "AudienceInsightType",
+  "symbols": [
+    "YOUR_TOTAL_AUDIENCE",
+    "YOUR_ENGAGED_AUDIENCE",
+    "PINTEREST_TOTAL_AUDIENCE"
+  ]
+}

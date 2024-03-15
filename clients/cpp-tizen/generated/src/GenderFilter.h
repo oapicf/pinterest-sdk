@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "CatalogsProductGroupMultipleStringCriteria.h"
+#include "CatalogsProductGroupMultipleGenderCriteria.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -48,14 +48,14 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getGENDER();
+	CatalogsProductGroupMultipleGenderCriteria getGENDER();
 
 	/*! \brief Set 
 	 */
-	void setGENDER(CatalogsProductGroupMultipleStringCriteria  gENDER);
+	void setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER);
 
 private:
-	CatalogsProductGroupMultipleStringCriteria gENDER;
+	CatalogsProductGroupMultipleGenderCriteria gENDER;
 	void __init();
 	void __cleanup();
 

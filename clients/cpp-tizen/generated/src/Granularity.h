@@ -1,7 +1,7 @@
 /*
  * Granularity.h
  *
- * 
+ * Granularity
  */
 
 #ifndef _Granularity_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Granularity
  *
  *  \ingroup Models
  *

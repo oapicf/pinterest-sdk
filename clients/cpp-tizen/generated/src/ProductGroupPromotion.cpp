@@ -25,7 +25,6 @@ ProductGroupPromotion::__init()
 {
 	//id = std::string();
 	//ad_group_id = std::string();
-	//type = std::string();
 	//bid_in_micro_currency = int(0);
 	//included = bool(false);
 	//definition = std::string();
@@ -33,14 +32,15 @@ ProductGroupPromotion::__init()
 	//parent_id = std::string();
 	//slideshow_collections_title = std::string();
 	//slideshow_collections_description = std::string();
+	//is_mdl = bool(false);
 	//status = new EntityStatus();
 	//tracking_url = std::string();
-	//catalogs_product_group_id = std::string();
-	//catalogs_product_group_name = std::string();
+	//catalog_product_group_id = std::string();
+	//catalog_product_group_name = std::string();
 	//creative_type = new CreativeType();
 	//collections_hero_pin_id = std::string();
 	//collections_hero_destination_url = std::string();
-	//is_mdl = bool(false);
+	//grid_click_type = new GridClickType();
 }
 
 void
@@ -55,11 +55,6 @@ ProductGroupPromotion::__cleanup()
 	//
 	//delete ad_group_id;
 	//ad_group_id = NULL;
-	//}
-	//if(type != NULL) {
-	//
-	//delete type;
-	//type = NULL;
 	//}
 	//if(bid_in_micro_currency != NULL) {
 	//
@@ -96,6 +91,11 @@ ProductGroupPromotion::__cleanup()
 	//delete slideshow_collections_description;
 	//slideshow_collections_description = NULL;
 	//}
+	//if(is_mdl != NULL) {
+	//
+	//delete is_mdl;
+	//is_mdl = NULL;
+	//}
 	//if(status != NULL) {
 	//
 	//delete status;
@@ -106,15 +106,15 @@ ProductGroupPromotion::__cleanup()
 	//delete tracking_url;
 	//tracking_url = NULL;
 	//}
-	//if(catalogs_product_group_id != NULL) {
+	//if(catalog_product_group_id != NULL) {
 	//
-	//delete catalogs_product_group_id;
-	//catalogs_product_group_id = NULL;
+	//delete catalog_product_group_id;
+	//catalog_product_group_id = NULL;
 	//}
-	//if(catalogs_product_group_name != NULL) {
+	//if(catalog_product_group_name != NULL) {
 	//
-	//delete catalogs_product_group_name;
-	//catalogs_product_group_name = NULL;
+	//delete catalog_product_group_name;
+	//catalog_product_group_name = NULL;
 	//}
 	//if(creative_type != NULL) {
 	//
@@ -131,10 +131,10 @@ ProductGroupPromotion::__cleanup()
 	//delete collections_hero_destination_url;
 	//collections_hero_destination_url = NULL;
 	//}
-	//if(is_mdl != NULL) {
+	//if(grid_click_type != NULL) {
 	//
-	//delete is_mdl;
-	//is_mdl = NULL;
+	//delete grid_click_type;
+	//grid_click_type = NULL;
 	//}
 	//
 }
@@ -162,17 +162,6 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&ad_group_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *typeKey = "type";
-	node = json_object_get_member(pJsonObject, typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&type, node, "std::string", "");
 		} else {
 			
 		}
@@ -254,6 +243,17 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *is_mdlKey = "is_mdl";
+	node = json_object_get_member(pJsonObject, is_mdlKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_mdl, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *statusKey = "status";
 	node = json_object_get_member(pJsonObject, statusKey);
 	if (node !=NULL) {
@@ -279,24 +279,24 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *catalogs_product_group_idKey = "catalogs_product_group_id";
-	node = json_object_get_member(pJsonObject, catalogs_product_group_idKey);
+	const gchar *catalog_product_group_idKey = "catalog_product_group_id";
+	node = json_object_get_member(pJsonObject, catalog_product_group_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&catalogs_product_group_id, node, "std::string", "");
+			jsonToValue(&catalog_product_group_id, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *catalogs_product_group_nameKey = "catalogs_product_group_name";
-	node = json_object_get_member(pJsonObject, catalogs_product_group_nameKey);
+	const gchar *catalog_product_group_nameKey = "catalog_product_group_name";
+	node = json_object_get_member(pJsonObject, catalog_product_group_nameKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&catalogs_product_group_name, node, "std::string", "");
+			jsonToValue(&catalog_product_group_name, node, "std::string", "");
 		} else {
 			
 		}
@@ -337,14 +337,17 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *is_mdlKey = "is_mdl";
-	node = json_object_get_member(pJsonObject, is_mdlKey);
+	const gchar *grid_click_typeKey = "grid_click_type";
+	node = json_object_get_member(pJsonObject, grid_click_typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&is_mdl, node, "bool", "");
+		if (isprimitive("GridClickType")) {
+			jsonToValue(&grid_click_type, node, "GridClickType", "GridClickType");
 		} else {
+			
+			GridClickType* obj = static_cast<GridClickType*> (&grid_click_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -378,15 +381,6 @@ ProductGroupPromotion::toJson()
 	}
 	const gchar *ad_group_idKey = "ad_group_id";
 	json_object_set_member(pJsonObject, ad_group_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
 	if (isprimitive("int")) {
 		int obj = getBidInMicroCurrency();
 		node = converttoJson(&obj, "int", "");
@@ -450,6 +444,15 @@ ProductGroupPromotion::toJson()
 	}
 	const gchar *slideshow_collections_descriptionKey = "slideshow_collections_description";
 	json_object_set_member(pJsonObject, slideshow_collections_descriptionKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsMdl();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_mdlKey = "is_mdl";
+	json_object_set_member(pJsonObject, is_mdlKey, node);
 	if (isprimitive("EntityStatus")) {
 		EntityStatus obj = getStatus();
 		node = converttoJson(&obj, "EntityStatus", "");
@@ -474,23 +477,23 @@ ProductGroupPromotion::toJson()
 	const gchar *tracking_urlKey = "tracking_url";
 	json_object_set_member(pJsonObject, tracking_urlKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCatalogsProductGroupId();
+		std::string obj = getCatalogProductGroupId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *catalogs_product_group_idKey = "catalogs_product_group_id";
-	json_object_set_member(pJsonObject, catalogs_product_group_idKey, node);
+	const gchar *catalog_product_group_idKey = "catalog_product_group_id";
+	json_object_set_member(pJsonObject, catalog_product_group_idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCatalogsProductGroupName();
+		std::string obj = getCatalogProductGroupName();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *catalogs_product_group_nameKey = "catalogs_product_group_name";
-	json_object_set_member(pJsonObject, catalogs_product_group_nameKey, node);
+	const gchar *catalog_product_group_nameKey = "catalog_product_group_name";
+	json_object_set_member(pJsonObject, catalog_product_group_nameKey, node);
 	if (isprimitive("CreativeType")) {
 		CreativeType obj = getCreativeType();
 		node = converttoJson(&obj, "CreativeType", "");
@@ -523,15 +526,20 @@ ProductGroupPromotion::toJson()
 	}
 	const gchar *collections_hero_destination_urlKey = "collections_hero_destination_url";
 	json_object_set_member(pJsonObject, collections_hero_destination_urlKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getIsMdl();
-		node = converttoJson(&obj, "bool", "");
+	if (isprimitive("GridClickType")) {
+		GridClickType obj = getGridClickType();
+		node = converttoJson(&obj, "GridClickType", "");
 	}
 	else {
 		
+		GridClickType obj = static_cast<GridClickType> (getGridClickType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
-	const gchar *is_mdlKey = "is_mdl";
-	json_object_set_member(pJsonObject, is_mdlKey, node);
+	const gchar *grid_click_typeKey = "grid_click_type";
+	json_object_set_member(pJsonObject, grid_click_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -562,18 +570,6 @@ void
 ProductGroupPromotion::setAdGroupId(std::string  ad_group_id)
 {
 	this->ad_group_id = ad_group_id;
-}
-
-std::string
-ProductGroupPromotion::getType()
-{
-	return type;
-}
-
-void
-ProductGroupPromotion::setType(std::string  type)
-{
-	this->type = type;
 }
 
 int
@@ -660,6 +656,18 @@ ProductGroupPromotion::setSlideshowCollectionsDescription(std::string  slideshow
 	this->slideshow_collections_description = slideshow_collections_description;
 }
 
+bool
+ProductGroupPromotion::getIsMdl()
+{
+	return is_mdl;
+}
+
+void
+ProductGroupPromotion::setIsMdl(bool  is_mdl)
+{
+	this->is_mdl = is_mdl;
+}
+
 EntityStatus
 ProductGroupPromotion::getStatus()
 {
@@ -685,27 +693,27 @@ ProductGroupPromotion::setTrackingUrl(std::string  tracking_url)
 }
 
 std::string
-ProductGroupPromotion::getCatalogsProductGroupId()
+ProductGroupPromotion::getCatalogProductGroupId()
 {
-	return catalogs_product_group_id;
+	return catalog_product_group_id;
 }
 
 void
-ProductGroupPromotion::setCatalogsProductGroupId(std::string  catalogs_product_group_id)
+ProductGroupPromotion::setCatalogProductGroupId(std::string  catalog_product_group_id)
 {
-	this->catalogs_product_group_id = catalogs_product_group_id;
+	this->catalog_product_group_id = catalog_product_group_id;
 }
 
 std::string
-ProductGroupPromotion::getCatalogsProductGroupName()
+ProductGroupPromotion::getCatalogProductGroupName()
 {
-	return catalogs_product_group_name;
+	return catalog_product_group_name;
 }
 
 void
-ProductGroupPromotion::setCatalogsProductGroupName(std::string  catalogs_product_group_name)
+ProductGroupPromotion::setCatalogProductGroupName(std::string  catalog_product_group_name)
 {
-	this->catalogs_product_group_name = catalogs_product_group_name;
+	this->catalog_product_group_name = catalog_product_group_name;
 }
 
 CreativeType
@@ -744,16 +752,16 @@ ProductGroupPromotion::setCollectionsHeroDestinationUrl(std::string  collections
 	this->collections_hero_destination_url = collections_hero_destination_url;
 }
 
-bool
-ProductGroupPromotion::getIsMdl()
+GridClickType
+ProductGroupPromotion::getGridClickType()
 {
-	return is_mdl;
+	return grid_click_type;
 }
 
 void
-ProductGroupPromotion::setIsMdl(bool  is_mdl)
+ProductGroupPromotion::setGridClickType(GridClickType  grid_click_type)
 {
-	this->is_mdl = is_mdl;
+	this->grid_click_type = grid_click_type;
 }
 
 

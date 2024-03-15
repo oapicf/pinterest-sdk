@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsItemValidationDetails",
+  "fields": [
+    {
+      "name": "attribute_name",
+      "type": "model.NullableCatalogsItemFieldType",
+      "doc": ""
+    },
+    {
+      "name": "provided_value",
+      "type": "string",
+      "doc": "Provided value that caused the validation issue."
+    }
+  ]
+
+}

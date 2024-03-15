@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "KeywordsResponse",
+  "fields": [
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.KeywordError"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "keywords",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Keyword"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -25,7 +25,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}display_name`,
-                label: `Display name, when available. If unavaible it will not be returned. - [${labelPrefix}display_name]`,
+                label: `Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. - [${labelPrefix}display_name]`,
                 type: 'string',
             },
         ]

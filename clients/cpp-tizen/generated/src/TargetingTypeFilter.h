@@ -47,11 +47,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List of targeting types
+	/*! \brief Get List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
 	 */
 	std::list<AdsAnalyticsTargetingType> getTargetingTypes();
 
-	/*! \brief Set List of targeting types
+	/*! \brief Set List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
 	 */
 	void setTargetingTypes(std::list <AdsAnalyticsTargetingType> targeting_types);
 

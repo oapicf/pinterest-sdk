@@ -1,6 +1,7 @@
 const utils = require('../utils/utils');
 const CreativeType = require('../models/CreativeType');
 const EntityStatus = require('../models/EntityStatus');
+const GridClickType = require('../models/GridClickType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -14,11 +15,6 @@ module.exports = {
             {
                 key: `${keyPrefix}ad_group_id`,
                 label: `ID of the ad group the product group belongs to. - [${labelPrefix}ad_group_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}type`,
-                label: `Product group promotion - [${labelPrefix}type]`,
                 type: 'string',
             },
             {
@@ -57,6 +53,11 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}is_mdl`,
+                label: `If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog - [${labelPrefix}is_mdl]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}status`,
                 ...EntityStatus.fields(`${keyPrefix}status`, isInput),
             },
@@ -66,13 +67,13 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}catalogs_product_group_id`,
-                label: `ID of the catalogs product group that this product group promotion references - [${labelPrefix}catalogs_product_group_id]`,
+                key: `${keyPrefix}catalog_product_group_id`,
+                label: `ID of the catalogs product group that this product group promotion references - [${labelPrefix}catalog_product_group_id]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}catalogs_product_group_name`,
-                label: `Catalogs product group - [${labelPrefix}catalogs_product_group_name]`,
+                key: `${keyPrefix}catalog_product_group_name`,
+                label: `Catalogs product group name - [${labelPrefix}catalog_product_group_name]`,
                 type: 'string',
             },
             {
@@ -90,9 +91,8 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}is_mdl`,
-                label: `If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog - [${labelPrefix}is_mdl]`,
-                type: 'boolean',
+                key: `${keyPrefix}grid_click_type`,
+                ...GridClickType.fields(`${keyPrefix}grid_click_type`, isInput),
             },
         ]
     },
@@ -101,7 +101,6 @@ module.exports = {
         return {
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'ad_group_id': bundle.inputData?.[`${keyPrefix}ad_group_id`],
-            'type': bundle.inputData?.[`${keyPrefix}type`],
             'bid_in_micro_currency': bundle.inputData?.[`${keyPrefix}bid_in_micro_currency`],
             'included': bundle.inputData?.[`${keyPrefix}included`],
             'definition': bundle.inputData?.[`${keyPrefix}definition`],
@@ -109,14 +108,15 @@ module.exports = {
             'parent_id': bundle.inputData?.[`${keyPrefix}parent_id`],
             'slideshow_collections_title': bundle.inputData?.[`${keyPrefix}slideshow_collections_title`],
             'slideshow_collections_description': bundle.inputData?.[`${keyPrefix}slideshow_collections_description`],
+            'is_mdl': bundle.inputData?.[`${keyPrefix}is_mdl`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'tracking_url': bundle.inputData?.[`${keyPrefix}tracking_url`],
-            'catalogs_product_group_id': bundle.inputData?.[`${keyPrefix}catalogs_product_group_id`],
-            'catalogs_product_group_name': bundle.inputData?.[`${keyPrefix}catalogs_product_group_name`],
+            'catalog_product_group_id': bundle.inputData?.[`${keyPrefix}catalog_product_group_id`],
+            'catalog_product_group_name': bundle.inputData?.[`${keyPrefix}catalog_product_group_name`],
             'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
             'collections_hero_pin_id': bundle.inputData?.[`${keyPrefix}collections_hero_pin_id`],
             'collections_hero_destination_url': bundle.inputData?.[`${keyPrefix}collections_hero_destination_url`],
-            'is_mdl': bundle.inputData?.[`${keyPrefix}is_mdl`],
+            'grid_click_type': bundle.inputData?.[`${keyPrefix}grid_click_type`],
         }
     },
 }

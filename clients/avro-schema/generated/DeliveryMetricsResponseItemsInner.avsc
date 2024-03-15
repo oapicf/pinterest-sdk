@@ -1,0 +1,40 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeliveryMetricsResponseItemsInner",
+  "fields": [
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Metric's name.",
+      "default": null
+    },
+    {
+      "name": "category",
+      "type": ["null", {
+        "type": "enum",
+        "name": "DeliveryMetricsResponseItemsInner_category",
+        "symbols": [
+          "ADS",
+          "ORGANIC"
+        ]
+      }],
+      "doc": "Category name",
+      "default": null
+    },
+    {
+      "name": "definition",
+      "type": ["null", "string"],
+      "doc": "How the metric is defined.",
+      "default": null
+    },
+    {
+      "name": "display_name",
+      "type": ["null", "string"],
+      "doc": "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,9 @@
+
+
+# EntityStatus
+
+## Enum
+
+
+
+

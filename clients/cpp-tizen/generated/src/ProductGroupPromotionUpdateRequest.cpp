@@ -66,12 +66,12 @@ ProductGroupPromotionUpdateRequest::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<ProductGroupPromotionUpdateItem> new_list;
-			ProductGroupPromotionUpdateItem inst;
+			list<ProductGroupPromotion> new_list;
+			ProductGroupPromotion inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("ProductGroupPromotionUpdateItem")) {
-					jsonToValue(&inst, temp_json, "ProductGroupPromotionUpdateItem", "");
+				if (isprimitive("ProductGroupPromotion")) {
+					jsonToValue(&inst, temp_json, "ProductGroupPromotion", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ ProductGroupPromotionUpdateRequest::toJson()
 	}
 	const gchar *ad_group_idKey = "ad_group_id";
 	json_object_set_member(pJsonObject, ad_group_idKey, node);
-	if (isprimitive("ProductGroupPromotionUpdateItem")) {
-		list<ProductGroupPromotionUpdateItem> new_list = static_cast<list <ProductGroupPromotionUpdateItem> > (getProductGroupPromotion());
-		node = converttoJson(&new_list, "ProductGroupPromotionUpdateItem", "array");
+	if (isprimitive("ProductGroupPromotion")) {
+		list<ProductGroupPromotion> new_list = static_cast<list <ProductGroupPromotion> > (getProductGroupPromotion());
+		node = converttoJson(&new_list, "ProductGroupPromotion", "array");
 	} else {
 		node = json_node_alloc();
-		list<ProductGroupPromotionUpdateItem> new_list = static_cast<list <ProductGroupPromotionUpdateItem> > (getProductGroupPromotion());
+		list<ProductGroupPromotion> new_list = static_cast<list <ProductGroupPromotion> > (getProductGroupPromotion());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<ProductGroupPromotionUpdateItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<ProductGroupPromotion>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			ProductGroupPromotionUpdateItem obj = *it;
+			ProductGroupPromotion obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ ProductGroupPromotionUpdateRequest::setAdGroupId(std::string  ad_group_id)
 	this->ad_group_id = ad_group_id;
 }
 
-std::list<ProductGroupPromotionUpdateItem>
+std::list<ProductGroupPromotion>
 ProductGroupPromotionUpdateRequest::getProductGroupPromotion()
 {
 	return product_group_promotion;
 }
 
 void
-ProductGroupPromotionUpdateRequest::setProductGroupPromotion(std::list <ProductGroupPromotionUpdateItem> product_group_promotion)
+ProductGroupPromotionUpdateRequest::setProductGroupPromotion(std::list <ProductGroupPromotion> product_group_promotion)
 {
 	this->product_group_promotion = product_group_promotion;
 }

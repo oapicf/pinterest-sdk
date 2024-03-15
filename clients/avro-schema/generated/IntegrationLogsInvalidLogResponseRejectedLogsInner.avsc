@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "IntegrationLogsInvalidLogResponseRejectedLogsInner",
+  "fields": [
+    {
+      "name": "log_index",
+      "type": ["null", "int"],
+      "doc": "Index of the log in the batch.",
+      "default": null
+    },
+    {
+      "name": "field",
+      "type": "string",
+      "doc": "The field name containing an invalid value."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": "The value that is invalid."
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "doc": "The reason the value is invalid."
+    }
+  ]
+
+}

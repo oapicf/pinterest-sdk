@@ -4,6 +4,7 @@ const Country = require('../models/Country');
 const CreativeType = require('../models/CreativeType');
 const Currency = require('../models/Currency');
 const ObjectiveType = require('../models/ObjectiveType');
+const OptimizationGoalMetadata = require('../models/OptimizationGoalMetadata');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -27,11 +28,7 @@ module.exports = {
                 key: `${keyPrefix}billable_event`,
                 ...ActionType.fields(`${keyPrefix}billable_event`, isInput),
             },
-            {
-                key: `${keyPrefix}optimization_goal_metadata`,
-                label: `[${labelPrefix}optimization_goal_metadata]`,
-                dict: true,
-            },
+            ...OptimizationGoalMetadata.fields(`${keyPrefix}optimization_goal_metadata`, isInput),
             {
                 key: `${keyPrefix}creative_type`,
                 ...CreativeType.fields(`${keyPrefix}creative_type`, isInput),
@@ -45,7 +42,7 @@ module.exports = {
             'currency': bundle.inputData?.[`${keyPrefix}currency`],
             'objective_type': bundle.inputData?.[`${keyPrefix}objective_type`],
             'billable_event': bundle.inputData?.[`${keyPrefix}billable_event`],
-            'optimization_goal_metadata': bundle.inputData?.[`${keyPrefix}optimization_goal_metadata`],
+            'optimization_goal_metadata': utils.removeIfEmpty(OptimizationGoalMetadata.mapping(bundle, `${keyPrefix}optimization_goal_metadata`)),
             'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
         }
     },

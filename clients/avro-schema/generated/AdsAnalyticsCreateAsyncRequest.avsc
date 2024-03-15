@@ -1,0 +1,184 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdsAnalyticsCreateAsyncRequest",
+  "fields": [
+    {
+      "name": "start_date",
+      "type": "string",
+      "doc": "Metric report start date (UTC). Format: YYYY-MM-DD"
+    },
+    {
+      "name": "end_date",
+      "type": "string",
+      "doc": "Metric report end date (UTC). Format: YYYY-MM-DD"
+    },
+    {
+      "name": "granularity",
+      "type": "model.Granularity",
+      "doc": "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly"
+    },
+    {
+      "name": "click_window_days",
+      "type": ["null", "model.ConversionAttributionWindowDays"],
+      "doc": "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.",
+      "default": null
+    },
+    {
+      "name": "engagement_window_days",
+      "type": ["null", "model.ConversionAttributionWindowDays"],
+      "doc": "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.",
+      "default": null
+    },
+    {
+      "name": "view_window_days",
+      "type": ["null", "model.ConversionAttributionWindowDays"],
+      "doc": "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.",
+      "default": null
+    },
+    {
+      "name": "conversion_report_time",
+      "type": ["null", "model.ConversionReportTimeType"],
+      "doc": "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.",
+      "default": null
+    },
+    {
+      "name": "attribution_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ConversionReportAttributionType"
+      }],
+      "doc": "List of types of attribution for the conversion report",
+      "default": null
+    },
+    {
+      "name": "campaign_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of campaign ids",
+      "default": null
+    },
+    {
+      "name": "campaign_statuses",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignSummaryStatus"
+      }],
+      "doc": "List of status values for filtering",
+      "default": null
+    },
+    {
+      "name": "campaign_objective_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ObjectiveType"
+      }],
+      "doc": "List of values for filtering. [\"WEB_SESSIONS\"] in BETA.",
+      "default": null
+    },
+    {
+      "name": "ad_group_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of ad group ids",
+      "default": null
+    },
+    {
+      "name": "ad_group_statuses",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdGroupSummaryStatus"
+      }],
+      "doc": "List of values for filtering",
+      "default": null
+    },
+    {
+      "name": "ad_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of ad ids [This parameter is no supported for Product Item Level Reports]",
+      "default": null
+    },
+    {
+      "name": "ad_statuses",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.PinPromotionSummaryStatus"
+      }],
+      "doc": "List of values for filtering [This parameter is not supported for Product Item Level Reports]",
+      "default": null
+    },
+    {
+      "name": "product_group_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of product group ids",
+      "default": null
+    },
+    {
+      "name": "product_group_statuses",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ProductGroupSummaryStatus"
+      }],
+      "doc": "List of values for filtering",
+      "default": null
+    },
+    {
+      "name": "product_item_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of product item ids",
+      "default": null
+    },
+    {
+      "name": "targeting_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdsAnalyticsTargetingType"
+      }],
+      "doc": "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.",
+      "default": null
+    },
+    {
+      "name": "metrics_filters",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdsAnalyticsMetricsFilter"
+      }],
+      "doc": "List of metrics filters",
+      "default": null
+    },
+    {
+      "name": "columns",
+      "type": {
+        "type": "array",
+        "items": "model.ReportingColumnAsync"
+      },
+      "doc": "Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports."
+    },
+    {
+      "name": "level",
+      "type": "model.MetricsReportingLevel",
+      "doc": "Level of the report"
+    },
+    {
+      "name": "report_format",
+      "type": ["null", "model.DataOutputFormat"],
+      "doc": "Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.",
+      "default": null
+    }
+  ]
+
+}

@@ -749,3 +749,212 @@ bool KeywordsManager::keywordsUpdateSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool trendingKeywordsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(TrendingKeywordsResponse, Error, void* )
+	= reinterpret_cast<void(*)(TrendingKeywordsResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	TrendingKeywordsResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("TrendingKeywordsResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "TrendingKeywordsResponse", "TrendingKeywordsResponse");
+			json_node_free(pJson);
+
+			if ("TrendingKeywordsResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool trendingKeywordsListHelper(char * accessToken,
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, bool normalizeAgainstGroup, int limit, 
+	void(* handler)(TrendingKeywordsResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	for (std::list
+	<std::string>::iterator queryIter = interests.begin(); queryIter != interests.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("interests", itemAt));
+	}
+	
+	for (std::list
+	<std::string>::iterator queryIter = genders.begin(); queryIter != genders.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("genders", itemAt));
+	}
+	
+	for (std::list
+	<std::string>::iterator queryIter = ages.begin(); queryIter != ages.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("ages", itemAt));
+	}
+	
+
+	itemAtq = stringify(&normalizeAgainstGroup, "bool");
+	queryParams.insert(pair<string, string>("normalize_against_group", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("normalize_against_group");
+	}
+
+
+	itemAtq = stringify(&limit, "int");
+	queryParams.insert(pair<string, string>("limit", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("limit");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/trends/keywords/{region}/top/{trend_type}");
+	int pos;
+
+	string s_region("{");
+	s_region.append("region");
+	s_region.append("}");
+	pos = url.find(s_region);
+	url.erase(pos, s_region.length());
+	url.insert(pos, stringify(&region, "TrendsSupportedRegion"));
+	string s_trendType("{");
+	s_trendType.append("trend_type");
+	s_trendType.append("}");
+	pos = url.find(s_trendType);
+	url.erase(pos, s_trendType.length());
+	url.insert(pos, stringify(&trendType, "TrendType"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(KeywordsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = trendingKeywordsListProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (KeywordsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), trendingKeywordsListProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __KeywordsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool KeywordsManager::trendingKeywordsListAsync(char * accessToken,
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, bool normalizeAgainstGroup, int limit, 
+	void(* handler)(TrendingKeywordsResponse, Error, void* )
+	, void* userData)
+{
+	return trendingKeywordsListHelper(accessToken,
+	region, trendType, interests, genders, ages, normalizeAgainstGroup, limit, 
+	handler, userData, true);
+}
+
+bool KeywordsManager::trendingKeywordsListSync(char * accessToken,
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, bool normalizeAgainstGroup, int limit, 
+	void(* handler)(TrendingKeywordsResponse, Error, void* )
+	, void* userData)
+{
+	return trendingKeywordsListHelper(accessToken,
+	region, trendType, interests, genders, ages, normalizeAgainstGroup, limit, 
+	handler, userData, false);
+}
+

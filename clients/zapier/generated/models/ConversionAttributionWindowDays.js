@@ -5,8 +5,10 @@ module.exports = {
             {
                 label: `[${key.replaceAll('__', '.')}]`,
                 choices: [
+                    '0',
                     '1',
                     '7',
+                    '14',
                     '30',
                     '60',
                 ],

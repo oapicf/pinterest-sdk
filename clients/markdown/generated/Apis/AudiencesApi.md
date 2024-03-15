@@ -5,6 +5,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**audiences/create**](AudiencesApi.md#audiences/create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience |
+| [**audiences/createCustom**](AudiencesApi.md#audiences/createCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
 | [**audiences/get**](AudiencesApi.md#audiences/get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience |
 | [**audiences/list**](AudiencesApi.md#audiences/list) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences |
 | [**audiences/update**](AudiencesApi.md#audiences/update) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience |
@@ -24,6 +25,34 @@ Create audience
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **AudienceCreateRequest** | [**AudienceCreateRequest**](../Models/AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | |
+
+### Return type
+
+[**Audience**](../Models/Audience.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="audiences/createCustom"></a>
+# **audiences/createCustom**
+> Audience audiences/createCustom(ad\_account\_id, AudienceCreateCustomRequest)
+
+Create custom audience
+
+    Create a custom audience and find the audiences you want your ads to reach.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
+| **AudienceCreateCustomRequest** | [**AudienceCreateCustomRequest**](../Models/AudienceCreateCustomRequest.md)| Custom audience to create. | |
 
 ### Return type
 
@@ -68,7 +97,7 @@ Get audience
 
 <a name="audiences/list"></a>
 # **audiences/list**
-> audiences_list_200_response audiences/list(ad\_account\_id, bookmark, entity\_statuses, order, page\_size)
+> audiences_list_200_response audiences/list(ad\_account\_id, bookmark, order, page\_size, ownership\_type)
 
 List audiences
 
@@ -80,9 +109,9 @@ List audiences
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **entity\_statuses** | [**List**](../Models/String.md)| Entity status | [optional] [default to null] [enum: ACTIVE, PAUSED, ARCHIVED] |
-| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
+| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
 | **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **ownership\_type** | **String**| &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. | [optional] [default to OWNED] [enum: OWNED, RECEIVED] |
 
 ### Return type
 

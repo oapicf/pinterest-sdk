@@ -1,0 +1,141 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SSIOOrderLine",
+  "fields": [
+    {
+      "name": "salesforce_order_line_id",
+      "type": ["null", "string"],
+      "doc": "OrderLineId in SFDC",
+      "default": null
+    },
+    {
+      "name": "ads_manager_order_line_id",
+      "type": ["null", "string"],
+      "doc": "Ads manager OrderLineId",
+      "default": null
+    },
+    {
+      "name": "pin_order_id",
+      "type": ["null", "string"],
+      "doc": "The pin order id associated with the order line in SFDC",
+      "default": null
+    },
+    {
+      "name": "last_modified_date_time",
+      "type": ["null", "string"],
+      "doc": "Last modified date.",
+      "default": null
+    },
+    {
+      "name": "start_date",
+      "type": ["null", "string"],
+      "doc": "Start date of the order line.",
+      "default": null
+    },
+    {
+      "name": "end_date",
+      "type": ["null", "string"],
+      "doc": "End date of the order line.",
+      "default": null
+    },
+    {
+      "name": "bill_to_company_name",
+      "type": ["null", "string"],
+      "doc": "Bill To Company name",
+      "default": null
+    },
+    {
+      "name": "billing_contact_firstname",
+      "type": ["null", "string"],
+      "doc": "Billing contact first name",
+      "default": null
+    },
+    {
+      "name": "billing_contact_lastname",
+      "type": ["null", "string"],
+      "doc": "Billing contact last name",
+      "default": null
+    },
+    {
+      "name": "billing_contact_email",
+      "type": ["null", "string"],
+      "doc": "Billing contact email",
+      "default": null
+    },
+    {
+      "name": "media_contact_email",
+      "type": ["null", "string"],
+      "doc": "Billing media email",
+      "default": null
+    },
+    {
+      "name": "media_contact_firstname",
+      "type": ["null", "string"],
+      "doc": "Billing contact first name",
+      "default": null
+    },
+    {
+      "name": "media_contact_lastname",
+      "type": ["null", "string"],
+      "doc": "Billing contact first name",
+      "default": null
+    },
+    {
+      "name": "currency_info",
+      "type": ["null", "model.Currency"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "agency_link",
+      "type": ["null", "string"],
+      "doc": "Agency link",
+      "default": null
+    },
+    {
+      "name": "po_number",
+      "type": ["null", "string"],
+      "doc": "The po number",
+      "default": null
+    },
+    {
+      "name": "order_name",
+      "type": ["null", "string"],
+      "doc": "The order name",
+      "default": null
+    },
+    {
+      "name": "pmp_name",
+      "type": ["null", "string"],
+      "doc": "The Pinterest marketing partner name",
+      "default": null
+    },
+    {
+      "name": "accepted_terms_id",
+      "type": ["null", "string"],
+      "doc": "The SFDC id for the terms",
+      "default": null
+    },
+    {
+      "name": "accepted_terms_time",
+      "type": ["null", "string"],
+      "doc": "The UTC timestamp (to the nearest sec) of when terms were accepted",
+      "default": null
+    },
+    {
+      "name": "budget_amount",
+      "type": ["null", "double"],
+      "doc": "If Budget order line, the budget amount.",
+      "default": null
+    },
+    {
+      "name": "estimated_monthly_spend",
+      "type": ["null", "double"],
+      "doc": "If Ongoing (perpetual) order line, the estimated monthly spend",
+      "default": null
+    }
+  ]
+
+}

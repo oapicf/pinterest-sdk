@@ -1,0 +1,34 @@
+
+
+# CatalogsVerticalProductGroup
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**catalogType** | [**CatalogType**](#CatalogType) |  | 
+**id** | **String** | ID of the catalog product group. | 
+**name** | **String** | Name of catalog product group |  [optional]
+**description** | **String** |  |  [optional]
+**filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
+**createdAt** | **Int** | Unix timestamp in seconds of when catalog product group was created. |  [optional]
+**updatedAt** | **Int** | Unix timestamp in seconds of last time catalog product group was updated. |  [optional]
+**catalogId** | **String** |  | 
+**isFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not |  [optional]
+**`type`** | **CatalogsProductGroupType** |  |  [optional]
+**status** | **CatalogsProductGroupStatus** |  |  [optional]
+**feedId** | [**FeedId**](#FeedId) |  | 
+
+
+## Enum: CatalogType
+Allowed values: [RETAIL]
+
+
+
+## Enum: FeedId
+Allowed values: []
+
+
+
+

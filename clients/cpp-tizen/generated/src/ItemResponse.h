@@ -9,10 +9,12 @@
 
 
 #include <string>
-#include "ItemAttributes.h"
+#include "CatalogsHotelAttributes.h"
+#include "CatalogsType.h"
 #include "ItemResponse_anyOf.h"
 #include "ItemResponse_anyOf_1.h"
 #include "ItemValidationEvent.h"
+#include "Pin.h"
 #include <list>
 #include "Object.h"
 
@@ -50,6 +52,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	CatalogsType getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get The catalog item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -57,13 +66,27 @@ public:
 	/*! \brief Set The catalog item id in the merchant namespace
 	 */
 	void setItemId(std::string  item_id);
+	/*! \brief Get The pins mapped to the item
+	 */
+	std::list<Pin> getPins();
+
+	/*! \brief Set The pins mapped to the item
+	 */
+	void setPins(std::list <Pin> pins);
 	/*! \brief Get 
 	 */
-	ItemAttributes getAttributes();
+	CatalogsHotelAttributes getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(ItemAttributes  attributes);
+	void setAttributes(CatalogsHotelAttributes  attributes);
+	/*! \brief Get The catalog hotel id in the merchant namespace
+	 */
+	std::string getHotelId();
+
+	/*! \brief Set The catalog hotel id in the merchant namespace
+	 */
+	void setHotelId(std::string  hotel_id);
 	/*! \brief Get Array with the errors for the item id requested
 	 */
 	std::list<ItemValidationEvent> getErrors();
@@ -73,8 +96,11 @@ public:
 	void setErrors(std::list <ItemValidationEvent> errors);
 
 private:
+	CatalogsType catalog_type;
 	std::string item_id;
-	ItemAttributes attributes;
+	std::list <Pin>pins;
+	CatalogsHotelAttributes attributes;
+	std::string hotel_id;
 	std::list <ItemValidationEvent>errors;
 	void __init();
 	void __cleanup();

@@ -244,6 +244,186 @@ bool AdGroupsManager::adGroupsAnalyticsSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool adGroupsAudienceSizingProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(AdGroupAudienceSizingResponse, Error, void* )
+	= reinterpret_cast<void(*)(AdGroupAudienceSizingResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	AdGroupAudienceSizingResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("AdGroupAudienceSizingResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "AdGroupAudienceSizingResponse", "AdGroupAudienceSizingResponse");
+			json_node_free(pJson);
+
+			if ("AdGroupAudienceSizingResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool adGroupsAudienceSizingHelper(char * accessToken,
+	std::string adAccountId, std::shared_ptr<AdGroupAudienceSizingRequest> adGroupAudienceSizingRequest, 
+	void(* handler)(AdGroupAudienceSizingResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("AdGroupAudienceSizingRequest")) {
+		node = converttoJson(&adGroupAudienceSizingRequest, "AdGroupAudienceSizingRequest", "");
+	}
+	
+	char *jsonStr =  adGroupAudienceSizingRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts/{ad_account_id}/ad_groups/audience_sizing");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(AdGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = adGroupsAudienceSizingProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (AdGroupsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), adGroupsAudienceSizingProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __AdGroupsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool AdGroupsManager::adGroupsAudienceSizingAsync(char * accessToken,
+	std::string adAccountId, std::shared_ptr<AdGroupAudienceSizingRequest> adGroupAudienceSizingRequest, 
+	void(* handler)(AdGroupAudienceSizingResponse, Error, void* )
+	, void* userData)
+{
+	return adGroupsAudienceSizingHelper(accessToken,
+	adAccountId, adGroupAudienceSizingRequest, 
+	handler, userData, true);
+}
+
+bool AdGroupsManager::adGroupsAudienceSizingSync(char * accessToken,
+	std::string adAccountId, std::shared_ptr<AdGroupAudienceSizingRequest> adGroupAudienceSizingRequest, 
+	void(* handler)(AdGroupAudienceSizingResponse, Error, void* )
+	, void* userData)
+{
+	return adGroupsAudienceSizingHelper(accessToken,
+	adAccountId, adGroupAudienceSizingRequest, 
+	handler, userData, false);
+}
+
 static bool adGroupsBidFloorGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {

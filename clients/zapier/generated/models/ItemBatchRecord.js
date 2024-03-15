@@ -1,8 +1,11 @@
 const utils = require('../utils/utils');
+const ItemAttributes = require('../models/ItemAttributes');
 const ItemCreateBatchRecord = require('../models/ItemCreateBatchRecord');
+const ItemDeleteBatchRecord = require('../models/ItemDeleteBatchRecord');
 const ItemDeleteDiscontinuedBatchRecord = require('../models/ItemDeleteDiscontinuedBatchRecord');
 const ItemUpdateBatchRecord = require('../models/ItemUpdateBatchRecord');
-const UpdatableItemAttributes = require('../models/UpdatableItemAttributes');
+const ItemUpsertBatchRecord = require('../models/ItemUpsertBatchRecord');
+const UpdateMaskFieldType = require('../models/UpdateMaskFieldType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -13,14 +16,21 @@ module.exports = {
                 label: `The catalog item id in the merchant namespace - [${labelPrefix}item_id]`,
                 type: 'string',
             },
-            ...UpdatableItemAttributes.fields(`${keyPrefix}attributes`, isInput),
+            ...ItemAttributes.fields(`${keyPrefix}attributes`, isInput),
+            {
+                key: `${keyPrefix}update_mask`,
+                list: true,
+                type: 'string',
+                ...UpdateMaskFieldType.fields(`${keyPrefix}update_mask`, isInput),
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
-            'attributes': utils.removeIfEmpty(UpdatableItemAttributes.mapping(bundle, `${keyPrefix}attributes`)),
+            'attributes': utils.removeIfEmpty(ItemAttributes.mapping(bundle, `${keyPrefix}attributes`)),
+            'update_mask': utils.childMapping(bundle.inputData?.[`${keyPrefix}update_mask`], `${keyPrefix}update_mask`, UpdateMaskFieldType),
         }
     },
 }

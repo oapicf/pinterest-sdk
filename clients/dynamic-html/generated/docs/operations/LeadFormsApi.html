@@ -1,0 +1,143 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="leadForm/get"></a>leadForm/get</h2>
+  <hr>
+  <p></p>
+  <p>Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID. Retrieving an advertiser&#39;s lead form will only contain results if you&#39;re a part of the Lead ads beta. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="LeadFormResponse"><a href="">LeadFormResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">lead_form_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a lead form.</p>
+      </li>
+  </ul>
+  <h2><a name="leadFormTest/create"></a>leadFormTest/create</h2>
+  <hr>
+  <p></p>
+  <p>Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="LeadFormTestResponse"><a href="">LeadFormTestResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">lead_form_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a lead form.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">LeadFormTestRequest</span>
+      <span class="param-type">LeadFormTestRequest(LeadFormTestRequest)</span>
+      
+      <p class="param-description">Subscription to create.</p>
+      </li>
+  </ul>
+  <h2><a name="leadForms/list"></a>leadForms/list</h2>
+  <hr>
+  <p></p>
+  <p>Gets all Lead Forms associated with an ad account ID. Retrieving an advertiser&#39;s list of lead forms will only contain results if you&#39;re a part of the Lead ads beta.  If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/lead_forms</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="lead_forms_list_200_response"><a href="">lead_forms_list_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">order</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+  </ul>
+</div>

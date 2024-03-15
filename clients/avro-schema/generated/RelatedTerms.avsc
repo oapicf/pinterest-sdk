@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "RelatedTerms",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"",
+      "default": null
+    },
+    {
+      "name": "related_term_count",
+      "type": ["null", "int"],
+      "doc": "Total number of related terms returned",
+      "default": null
+    },
+    {
+      "name": "related_terms_list",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.RelatedTermsRelatedTermsListInner"
+      }],
+      "doc": "The id of the advertiser.",
+      "default": null
+    }
+  ]
+
+}

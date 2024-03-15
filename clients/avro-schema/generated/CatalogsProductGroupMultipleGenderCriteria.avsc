@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupMultipleGenderCriteria",
+  "fields": [
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "model.Gender"
+      },
+      "doc": ""
+    },
+    {
+      "name": "negated",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

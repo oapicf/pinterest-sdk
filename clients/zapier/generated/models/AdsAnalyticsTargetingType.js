@@ -14,7 +14,6 @@ module.exports = {
                     'TARGETED_INTEREST',
                     'PINNER_INTEREST',
                     'AUDIENCE_INCLUDE',
-                    'AUDIENCE_EXCLUDE',
                     'GEO',
                     'AGE_BUCKET',
                     'REGION',

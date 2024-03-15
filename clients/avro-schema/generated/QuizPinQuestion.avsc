@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A specific quiz inquiry.",
+  "name": "QuizPinQuestion",
+  "fields": [
+    {
+      "name": "question_id",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "question_text",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "options",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.QuizPinOption"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

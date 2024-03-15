@@ -1,0 +1,35 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Multiple images urls-based media source",
+  "name": "PinMediaSourceImagesURL",
+  "fields": [
+    {
+      "name": "source_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "PinMediaSourceImagesURL_sourceUnderscoretype",
+        "symbols": [
+          "multiple_image_urls"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.PinMediaSourceImagesURLItemsInner"
+      },
+      "doc": "Array with image objects."
+    },
+    {
+      "name": "index",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

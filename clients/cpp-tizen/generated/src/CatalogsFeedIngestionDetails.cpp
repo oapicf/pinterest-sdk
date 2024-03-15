@@ -25,6 +25,7 @@ CatalogsFeedIngestionDetails::__init()
 {
 	//errors = new CatalogsFeedIngestionErrors();
 	//info = new CatalogsFeedIngestionInfo();
+	//warnings = new CatalogsFeedIngestionWarnings();
 }
 
 void
@@ -39,6 +40,11 @@ CatalogsFeedIngestionDetails::__cleanup()
 	//
 	//delete info;
 	//info = NULL;
+	//}
+	//if(warnings != NULL) {
+	//
+	//delete warnings;
+	//warnings = NULL;
 	//}
 	//
 }
@@ -72,6 +78,20 @@ CatalogsFeedIngestionDetails::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsFeedIngestionInfo* obj = static_cast<CatalogsFeedIngestionInfo*> (&info);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *warningsKey = "warnings";
+	node = json_object_get_member(pJsonObject, warningsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsFeedIngestionWarnings")) {
+			jsonToValue(&warnings, node, "CatalogsFeedIngestionWarnings", "CatalogsFeedIngestionWarnings");
+		} else {
+			
+			CatalogsFeedIngestionWarnings* obj = static_cast<CatalogsFeedIngestionWarnings*> (&warnings);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -116,6 +136,20 @@ CatalogsFeedIngestionDetails::toJson()
 	}
 	const gchar *infoKey = "info";
 	json_object_set_member(pJsonObject, infoKey, node);
+	if (isprimitive("CatalogsFeedIngestionWarnings")) {
+		CatalogsFeedIngestionWarnings obj = getWarnings();
+		node = converttoJson(&obj, "CatalogsFeedIngestionWarnings", "");
+	}
+	else {
+		
+		CatalogsFeedIngestionWarnings obj = static_cast<CatalogsFeedIngestionWarnings> (getWarnings());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *warningsKey = "warnings";
+	json_object_set_member(pJsonObject, warningsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -146,6 +180,18 @@ void
 CatalogsFeedIngestionDetails::setInfo(CatalogsFeedIngestionInfo  info)
 {
 	this->info = info;
+}
+
+CatalogsFeedIngestionWarnings
+CatalogsFeedIngestionDetails::getWarnings()
+{
+	return warnings;
+}
+
+void
+CatalogsFeedIngestionDetails::setWarnings(CatalogsFeedIngestionWarnings  warnings)
+{
+	this->warnings = warnings;
 }
 
 

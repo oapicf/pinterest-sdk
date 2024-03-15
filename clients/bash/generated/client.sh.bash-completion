@@ -1,0 +1,624 @@
+#  completion                               -*- shell-script -*-
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !
+# ! Note:
+# !
+# ! THIS SCRIPT HAS BEEN AUTOMATICALLY GENERATED USING
+# ! openapi-generator (https://openapi-generator.tech)
+# ! FROM OPENAPI SPECIFICATION IN JSON.
+# !
+# ! Generator version: 7.4.0
+# !
+# !
+# ! System wide installation:
+# !
+# ! $ sudo cp .bash-completion /etc/bash-completion.d/
+# !
+# !
+# ! User home installation (add this line to .bash_profile):
+# !
+# ! [ -r ~/.bash-completion ] && source ~/.bash-completion
+# !
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+declare -A mime_type_abbreviations
+# text/*
+mime_type_abbreviations["text"]="text/plain"
+mime_type_abbreviations["html"]="text/html"
+mime_type_abbreviations["md"]="text/x-markdown"
+mime_type_abbreviations["csv"]="text/csv"
+mime_type_abbreviations["css"]="text/css"
+mime_type_abbreviations["rtf"]="text/rtf"
+# application/*
+mime_type_abbreviations["json"]="application/json"
+mime_type_abbreviations["xml"]="application/xml"
+mime_type_abbreviations["yaml"]="application/yaml"
+mime_type_abbreviations["js"]="application/javascript"
+mime_type_abbreviations["bin"]="application/octet-stream"
+mime_type_abbreviations["rdf"]="application/rdf+xml"
+# image/*
+mime_type_abbreviations["jpg"]="image/jpeg"
+mime_type_abbreviations["png"]="image/png"
+mime_type_abbreviations["gif"]="image/gif"
+mime_type_abbreviations["bmp"]="image/bmp"
+mime_type_abbreviations["tiff"]="image/tiff"
+
+
+#
+# Check if this is OSX, if so defined custom init_completion
+#
+if [[ `uname` =~ "Darwin" ]]; then
+    __osx_init_completion()
+    {
+        COMPREPLY=()
+        _get_comp_words_by_ref cur prev words cword
+    }
+fi
+
+_()
+{
+    local cur
+    local prev
+    local words
+    local cword
+
+    # The reference of currently selected REST operation
+    local operation=""
+
+    # The list of available operation in the REST service
+    # It's modelled as an associative array for efficient key lookup
+    declare -A operations
+    operations["adAccountAnalytics"]=1
+    operations["adAccountTargetingAnalyticsGet"]=1
+    operations["adAccountsCreate"]=1
+    operations["adAccountsGet"]=1
+    operations["adAccountsList"]=1
+    operations["analyticsCreateMmmReport"]=1
+    operations["analyticsCreateReport"]=1
+    operations["analyticsCreateTemplateReport"]=1
+    operations["analyticsGetMmmReport"]=1
+    operations["analyticsGetReport"]=1
+    operations["sandboxDelete"]=1
+    operations["templatesList"]=1
+    operations["adGroupsAnalytics"]=1
+    operations["adGroupsAudienceSizing"]=1
+    operations["adGroupsBidFloorGet"]=1
+    operations["adGroupsCreate"]=1
+    operations["adGroupsGet"]=1
+    operations["adGroupsList"]=1
+    operations["adGroupsTargetingAnalyticsGet"]=1
+    operations["adGroupsUpdate"]=1
+    operations["adPreviewsCreate"]=1
+    operations["adTargetingAnalyticsGet"]=1
+    operations["adsAnalytics"]=1
+    operations["adsCreate"]=1
+    operations["adsGet"]=1
+    operations["adsList"]=1
+    operations["adsUpdate"]=1
+    operations["audienceInsightsGet"]=1
+    operations["audienceInsightsScopeAndTypeGet"]=1
+    operations["audiencesCreate"]=1
+    operations["audiencesCreateCustom"]=1
+    operations["audiencesGet"]=1
+    operations["audiencesList"]=1
+    operations["audiencesUpdate"]=1
+    operations["adsCreditRedeem"]=1
+    operations["adsCreditsDiscountsGet"]=1
+    operations["billingProfilesGet"]=1
+    operations["ssioAccountsGet"]=1
+    operations["ssioInsertionOrderCreate"]=1
+    operations["ssioInsertionOrderEdit"]=1
+    operations["ssioInsertionOrdersStatusGetByAdAccount"]=1
+    operations["ssioInsertionOrdersStatusGetByPinOrderId"]=1
+    operations["ssioOrderLinesGetByAdAccount"]=1
+    operations["boardSectionsCreate"]=1
+    operations["boardSectionsDelete"]=1
+    operations["boardSectionsList"]=1
+    operations["boardSectionsListPins"]=1
+    operations["boardSectionsUpdate"]=1
+    operations["boardsCreate"]=1
+    operations["boardsDelete"]=1
+    operations["boardsGet"]=1
+    operations["boardsList"]=1
+    operations["boardsListPins"]=1
+    operations["boardsUpdate"]=1
+    operations["bulkDownloadCreate"]=1
+    operations["bulkRequestGet"]=1
+    operations["bulkUpsertCreate"]=1
+    operations["campaignTargetingAnalyticsGet"]=1
+    operations["campaignsAnalytics"]=1
+    operations["campaignsCreate"]=1
+    operations["campaignsGet"]=1
+    operations["campaignsList"]=1
+    operations["campaignsUpdate"]=1
+    operations["catalogsList"]=1
+    operations["catalogsProductGroupPinsList"]=1
+    operations["catalogsProductGroupsCreate"]=1
+    operations["catalogsProductGroupsDelete"]=1
+    operations["catalogsProductGroupsGet"]=1
+    operations["catalogsProductGroupsList"]=1
+    operations["catalogsProductGroupsProductCountsGet"]=1
+    operations["catalogsProductGroupsUpdate"]=1
+    operations["feedProcessingResultsList"]=1
+    operations["feedsCreate"]=1
+    operations["feedsDelete"]=1
+    operations["feedsGet"]=1
+    operations["feedsList"]=1
+    operations["feedsUpdate"]=1
+    operations["itemsBatchGet"]=1
+    operations["itemsBatchPost"]=1
+    operations["itemsGet"]=1
+    operations["itemsIssuesList"]=1
+    operations["productsByProductGroupFilterList"]=1
+    operations["eventsCreate"]=1
+    operations["conversionTagsCreate"]=1
+    operations["conversionTagsGet"]=1
+    operations["conversionTagsList"]=1
+    operations["ocpmEligibleConversionTagsGet"]=1
+    operations["pageVisitConversionTagsGet"]=1
+    operations["customerListsCreate"]=1
+    operations["customerListsGet"]=1
+    operations["customerListsList"]=1
+    operations["customerListsUpdate"]=1
+    operations["integrationsCommerceDel"]=1
+    operations["integrationsCommerceGet"]=1
+    operations["integrationsCommercePatch"]=1
+    operations["integrationsCommercePost"]=1
+    operations["integrationsGetById"]=1
+    operations["integrationsGetList"]=1
+    operations["integrationsLogsPost"]=1
+    operations["countryKeywordsMetricsGet"]=1
+    operations["keywordsCreate"]=1
+    operations["keywordsGet"]=1
+    operations["keywordsUpdate"]=1
+    operations["trendingKeywordsList"]=1
+    operations["adAccountsSubscriptionsDelById"]=1
+    operations["adAccountsSubscriptionsGetById"]=1
+    operations["adAccountsSubscriptionsGetList"]=1
+    operations["adAccountsSubscriptionsPost"]=1
+    operations["leadFormGet"]=1
+    operations["leadFormTestCreate"]=1
+    operations["leadFormsList"]=1
+    operations["mediaCreate"]=1
+    operations["mediaGet"]=1
+    operations["mediaList"]=1
+    operations["oauthToken"]=1
+    operations["orderLinesGet"]=1
+    operations["orderLinesList"]=1
+    operations["pinsAnalytics"]=1
+    operations["pinsCreate"]=1
+    operations["pinsDelete"]=1
+    operations["pinsGet"]=1
+    operations["pinsList"]=1
+    operations["pinsSave"]=1
+    operations["pinsUpdate"]=1
+    operations["productGroupPromotionsCreate"]=1
+    operations["productGroupPromotionsGet"]=1
+    operations["productGroupPromotionsList"]=1
+    operations["productGroupPromotionsUpdate"]=1
+    operations["productGroupsAnalytics"]=1
+    operations["adAccountsCatalogsProductGroupsList"]=1
+    operations["adAccountCountriesGet"]=1
+    operations["deliveryMetricsGet"]=1
+    operations["interestTargetingOptionsGet"]=1
+    operations["leadFormQuestionsGet"]=1
+    operations["metricsReadyStateGet"]=1
+    operations["targetingOptionsGet"]=1
+    operations["searchPartnerPins"]=1
+    operations["searchUserBoardsGet"]=1
+    operations["searchUserPinsList"]=1
+    operations["termsRelatedList"]=1
+    operations["termsSuggestedList"]=1
+    operations["termsOfServiceGet"]=1
+    operations["boardsUserFollowsList"]=1
+    operations["followUserUpdate"]=1
+    operations["followersList"]=1
+    operations["linkedBusinessAccountsGet"]=1
+    operations["unverifyWebsiteDelete"]=1
+    operations["userAccountAnalytics"]=1
+    operations["userAccountAnalyticsTopPins"]=1
+    operations["userAccountAnalyticsTopVideoPins"]=1
+    operations["userAccountFollowedInterests"]=1
+    operations["userAccountGet"]=1
+    operations["userFollowingGet"]=1
+    operations["userWebsitesGet"]=1
+    operations["verifyWebsiteUpdate"]=1
+    operations["websiteVerificationGet"]=1
+
+    # An associative array of operations to their parameters
+    # Only include path, query and header parameters
+    declare -A operation_parameters
+    operation_parameters["adAccountAnalytics"]="ad_account_id= start_date= end_date= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= "
+    operation_parameters["adAccountTargetingAnalyticsGet"]="ad_account_id= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= "
+    operation_parameters["adAccountsCreate"]=""
+    operation_parameters["adAccountsGet"]="ad_account_id= "
+    operation_parameters["adAccountsList"]="bookmark= page_size= include_shared_accounts= "
+    operation_parameters["analyticsCreateMmmReport"]="ad_account_id= "
+    operation_parameters["analyticsCreateReport"]="ad_account_id= "
+    operation_parameters["analyticsCreateTemplateReport"]="ad_account_id= template_id= start_date= end_date= granularity= "
+    operation_parameters["analyticsGetMmmReport"]="ad_account_id= token= "
+    operation_parameters["analyticsGetReport"]="ad_account_id= token= "
+    operation_parameters["sandboxDelete"]="ad_account_id= "
+    operation_parameters["templatesList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["adGroupsAnalytics"]="ad_account_id= start_date= end_date= ad_group_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= "
+    operation_parameters["adGroupsAudienceSizing"]="ad_account_id= "
+    operation_parameters["adGroupsBidFloorGet"]="ad_account_id= "
+    operation_parameters["adGroupsCreate"]="ad_account_id= "
+    operation_parameters["adGroupsGet"]="ad_account_id= ad_group_id= "
+    operation_parameters["adGroupsList"]="ad_account_id= campaign_ids= ad_group_ids= entity_statuses= page_size= order= bookmark= translate_interests_to_names= "
+    operation_parameters["adGroupsTargetingAnalyticsGet"]="ad_account_id= ad_group_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= "
+    operation_parameters["adGroupsUpdate"]="ad_account_id= "
+    operation_parameters["adPreviewsCreate"]="ad_account_id= "
+    operation_parameters["adTargetingAnalyticsGet"]="ad_account_id= ad_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= "
+    operation_parameters["adsAnalytics"]="ad_account_id= start_date= end_date= ad_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= "
+    operation_parameters["adsCreate"]="ad_account_id= "
+    operation_parameters["adsGet"]="ad_account_id= ad_id= "
+    operation_parameters["adsList"]="ad_account_id= campaign_ids= ad_group_ids= ad_ids= entity_statuses= page_size= order= bookmark= "
+    operation_parameters["adsUpdate"]="ad_account_id= "
+    operation_parameters["audienceInsightsGet"]="ad_account_id= audience_insight_type= "
+    operation_parameters["audienceInsightsScopeAndTypeGet"]="ad_account_id= "
+    operation_parameters["audiencesCreate"]="ad_account_id= "
+    operation_parameters["audiencesCreateCustom"]="ad_account_id= "
+    operation_parameters["audiencesGet"]="ad_account_id= audience_id= "
+    operation_parameters["audiencesList"]="ad_account_id= bookmark= order= page_size= ownership_type= "
+    operation_parameters["audiencesUpdate"]="ad_account_id= audience_id= "
+    operation_parameters["adsCreditRedeem"]="ad_account_id= "
+    operation_parameters["adsCreditsDiscountsGet"]="ad_account_id= bookmark= page_size= "
+    operation_parameters["billingProfilesGet"]="ad_account_id= is_active= bookmark= page_size= "
+    operation_parameters["ssioAccountsGet"]="ad_account_id= "
+    operation_parameters["ssioInsertionOrderCreate"]="ad_account_id= "
+    operation_parameters["ssioInsertionOrderEdit"]="ad_account_id= "
+    operation_parameters["ssioInsertionOrdersStatusGetByAdAccount"]="ad_account_id= bookmark= page_size= "
+    operation_parameters["ssioInsertionOrdersStatusGetByPinOrderId"]="ad_account_id= pin_order_id= "
+    operation_parameters["ssioOrderLinesGetByAdAccount"]="ad_account_id= bookmark= page_size= pin_order_id= "
+    operation_parameters["boardSectionsCreate"]="board_id= ad_account_id= "
+    operation_parameters["boardSectionsDelete"]="board_id= section_id= ad_account_id= "
+    operation_parameters["boardSectionsList"]="board_id= ad_account_id= bookmark= page_size= "
+    operation_parameters["boardSectionsListPins"]="board_id= section_id= ad_account_id= bookmark= page_size= "
+    operation_parameters["boardSectionsUpdate"]="board_id= section_id= ad_account_id= "
+    operation_parameters["boardsCreate"]="ad_account_id= "
+    operation_parameters["boardsDelete"]="board_id= ad_account_id= "
+    operation_parameters["boardsGet"]="board_id= ad_account_id= "
+    operation_parameters["boardsList"]="ad_account_id= bookmark= page_size= privacy= "
+    operation_parameters["boardsListPins"]="board_id= bookmark= page_size= creative_types= ad_account_id= pin_metrics= "
+    operation_parameters["boardsUpdate"]="board_id= ad_account_id= "
+    operation_parameters["bulkDownloadCreate"]="ad_account_id= "
+    operation_parameters["bulkRequestGet"]="ad_account_id= bulk_request_id= include_details= "
+    operation_parameters["bulkUpsertCreate"]="ad_account_id= "
+    operation_parameters["campaignTargetingAnalyticsGet"]="ad_account_id= campaign_ids= start_date= end_date= targeting_types= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= attribution_types= "
+    operation_parameters["campaignsAnalytics"]="ad_account_id= start_date= end_date= campaign_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= "
+    operation_parameters["campaignsCreate"]="ad_account_id= "
+    operation_parameters["campaignsGet"]="ad_account_id= campaign_id= "
+    operation_parameters["campaignsList"]="ad_account_id= campaign_ids= entity_statuses= page_size= order= bookmark= "
+    operation_parameters["campaignsUpdate"]="ad_account_id= "
+    operation_parameters["catalogsList"]="bookmark= page_size= ad_account_id= "
+    operation_parameters["catalogsProductGroupPinsList"]="product_group_id= bookmark= page_size= ad_account_id= "
+    operation_parameters["catalogsProductGroupsCreate"]="ad_account_id= "
+    operation_parameters["catalogsProductGroupsDelete"]="product_group_id= ad_account_id= "
+    operation_parameters["catalogsProductGroupsGet"]="product_group_id= ad_account_id= "
+    operation_parameters["catalogsProductGroupsList"]="feed_id= catalog_id= bookmark= page_size= ad_account_id= "
+    operation_parameters["catalogsProductGroupsProductCountsGet"]="product_group_id= ad_account_id= "
+    operation_parameters["catalogsProductGroupsUpdate"]="product_group_id= ad_account_id= "
+    operation_parameters["feedProcessingResultsList"]="feed_id= bookmark= page_size= ad_account_id= "
+    operation_parameters["feedsCreate"]="ad_account_id= "
+    operation_parameters["feedsDelete"]="feed_id= ad_account_id= "
+    operation_parameters["feedsGet"]="feed_id= ad_account_id= "
+    operation_parameters["feedsList"]="bookmark= page_size= catalog_id= ad_account_id= "
+    operation_parameters["feedsUpdate"]="feed_id= ad_account_id= "
+    operation_parameters["itemsBatchGet"]="batch_id= ad_account_id= "
+    operation_parameters["itemsBatchPost"]="ad_account_id= "
+    operation_parameters["itemsGet"]="ad_account_id= country= language= item_ids= filters= "
+    operation_parameters["itemsIssuesList"]="processing_result_id= bookmark= page_size= item_numbers= item_validation_issue= ad_account_id= "
+    operation_parameters["productsByProductGroupFilterList"]="bookmark= page_size= ad_account_id= "
+    operation_parameters["eventsCreate"]="ad_account_id= test= "
+    operation_parameters["conversionTagsCreate"]="ad_account_id= "
+    operation_parameters["conversionTagsGet"]="ad_account_id= conversion_tag_id= "
+    operation_parameters["conversionTagsList"]="ad_account_id= filter_deleted= "
+    operation_parameters["ocpmEligibleConversionTagsGet"]="ad_account_id= "
+    operation_parameters["pageVisitConversionTagsGet"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["customerListsCreate"]="ad_account_id= "
+    operation_parameters["customerListsGet"]="ad_account_id= customer_list_id= "
+    operation_parameters["customerListsList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["customerListsUpdate"]="ad_account_id= customer_list_id= "
+    operation_parameters["integrationsCommerceDel"]="external_business_id= "
+    operation_parameters["integrationsCommerceGet"]="external_business_id= "
+    operation_parameters["integrationsCommercePatch"]="external_business_id= "
+    operation_parameters["integrationsCommercePost"]=""
+    operation_parameters["integrationsGetById"]="id= "
+    operation_parameters["integrationsGetList"]="bookmark= page_size= "
+    operation_parameters["integrationsLogsPost"]=""
+    operation_parameters["countryKeywordsMetricsGet"]="ad_account_id= country_code= keywords= "
+    operation_parameters["keywordsCreate"]="ad_account_id= "
+    operation_parameters["keywordsGet"]="ad_account_id= campaign_id= ad_group_id= match_types= page_size= bookmark= "
+    operation_parameters["keywordsUpdate"]="ad_account_id= "
+    operation_parameters["trendingKeywordsList"]="region= trend_type= interests= genders= ages= normalize_against_group= limit= "
+    operation_parameters["adAccountsSubscriptionsDelById"]="ad_account_id= subscription_id= "
+    operation_parameters["adAccountsSubscriptionsGetById"]="ad_account_id= subscription_id= "
+    operation_parameters["adAccountsSubscriptionsGetList"]="ad_account_id= page_size= bookmark= "
+    operation_parameters["adAccountsSubscriptionsPost"]="ad_account_id= "
+    operation_parameters["leadFormGet"]="ad_account_id= lead_form_id= "
+    operation_parameters["leadFormTestCreate"]="ad_account_id= lead_form_id= "
+    operation_parameters["leadFormsList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["mediaCreate"]=""
+    operation_parameters["mediaGet"]="media_id= "
+    operation_parameters["mediaList"]="bookmark= page_size= "
+    operation_parameters["oauthToken"]=""
+    operation_parameters["orderLinesGet"]="ad_account_id= order_line_id= "
+    operation_parameters["orderLinesList"]="ad_account_id= page_size= order= bookmark= "
+    operation_parameters["pinsAnalytics"]="pin_id= start_date= end_date= app_types= metric_types= split_field= ad_account_id= "
+    operation_parameters["pinsCreate"]="ad_account_id= "
+    operation_parameters["pinsDelete"]="pin_id= ad_account_id= "
+    operation_parameters["pinsGet"]="pin_id= pin_metrics= ad_account_id= "
+    operation_parameters["pinsList"]="bookmark= page_size= pin_filter= include_protected_pins= pin_type= creative_types= ad_account_id= pin_metrics= "
+    operation_parameters["pinsSave"]="pin_id= ad_account_id= "
+    operation_parameters["pinsUpdate"]="pin_id= ad_account_id= "
+    operation_parameters["productGroupPromotionsCreate"]="ad_account_id= "
+    operation_parameters["productGroupPromotionsGet"]="ad_account_id= product_group_promotion_id= "
+    operation_parameters["productGroupPromotionsList"]="ad_account_id= product_group_promotion_ids= entity_statuses= ad_group_id= page_size= order= bookmark= "
+    operation_parameters["productGroupPromotionsUpdate"]="ad_account_id= "
+    operation_parameters["productGroupsAnalytics"]="ad_account_id= start_date= end_date= product_group_ids= columns= granularity= click_window_days= engagement_window_days= view_window_days= conversion_report_time= "
+    operation_parameters["adAccountsCatalogsProductGroupsList"]="ad_account_id= feed_profile_id= "
+    operation_parameters["adAccountCountriesGet"]=""
+    operation_parameters["deliveryMetricsGet"]="report_type= "
+    operation_parameters["interestTargetingOptionsGet"]="interest_id= "
+    operation_parameters["leadFormQuestionsGet"]=""
+    operation_parameters["metricsReadyStateGet"]="date= "
+    operation_parameters["targetingOptionsGet"]="targeting_type= client_id= oauth_signature= timestamp= "
+    operation_parameters["searchPartnerPins"]="term= country_code= bookmark= locale= limit= "
+    operation_parameters["searchUserBoardsGet"]="ad_account_id= bookmark= page_size= query= "
+    operation_parameters["searchUserPinsList"]="ad_account_id= query= bookmark= "
+    operation_parameters["termsRelatedList"]="terms= "
+    operation_parameters["termsSuggestedList"]="term= limit= "
+    operation_parameters["termsOfServiceGet"]="ad_account_id= include_html= tos_type= "
+    operation_parameters["boardsUserFollowsList"]="bookmark= page_size= explicit_following= ad_account_id= "
+    operation_parameters["followUserUpdate"]="username= "
+    operation_parameters["followersList"]="bookmark= page_size= "
+    operation_parameters["linkedBusinessAccountsGet"]=""
+    operation_parameters["unverifyWebsiteDelete"]="website= "
+    operation_parameters["userAccountAnalytics"]="start_date= end_date= from_claimed_content= pin_format= app_types= content_type= source= metric_types= split_field= ad_account_id= "
+    operation_parameters["userAccountAnalyticsTopPins"]="start_date= end_date= sort_by= from_claimed_content= pin_format= app_types= content_type= source= metric_types= num_of_pins= created_in_last_n_days= ad_account_id= "
+    operation_parameters["userAccountAnalyticsTopVideoPins"]="start_date= end_date= sort_by= from_claimed_content= pin_format= app_types= content_type= source= metric_types= num_of_pins= created_in_last_n_days= ad_account_id= "
+    operation_parameters["userAccountFollowedInterests"]="username= bookmark= page_size= "
+    operation_parameters["userAccountGet"]="ad_account_id= "
+    operation_parameters["userFollowingGet"]="bookmark= page_size= feed_type= explicit_following= ad_account_id= "
+    operation_parameters["userWebsitesGet"]="bookmark= page_size= "
+    operation_parameters["verifyWebsiteUpdate"]=""
+    operation_parameters["websiteVerificationGet"]=""
+
+    # An associative array of possible values for enum parameters
+    declare -A operation_parameters_enum_values
+    operation_parameters_enum_values["adAccountsList::include_shared_accounts"]="true false"
+    operation_parameters_enum_values["adAccountsList::include_shared_accounts"]="true false"
+    operation_parameters_enum_values["adAccountsList::include_shared_accounts"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["adGroupsList::translate_interests_to_names"]="true false"
+    operation_parameters_enum_values["billingProfilesGet::is_active"]="true false"
+    operation_parameters_enum_values["billingProfilesGet::is_active"]="true false"
+    operation_parameters_enum_values["billingProfilesGet::is_active"]="true false"
+    operation_parameters_enum_values["billingProfilesGet::is_active"]="true false"
+    operation_parameters_enum_values["boardsListPins::pin_metrics"]="true false"
+    operation_parameters_enum_values["boardsListPins::pin_metrics"]="true false"
+    operation_parameters_enum_values["boardsListPins::pin_metrics"]="true false"
+    operation_parameters_enum_values["boardsListPins::pin_metrics"]="true false"
+    operation_parameters_enum_values["boardsListPins::pin_metrics"]="true false"
+    operation_parameters_enum_values["boardsListPins::pin_metrics"]="true false"
+    operation_parameters_enum_values["bulkRequestGet::include_details"]="true false"
+    operation_parameters_enum_values["bulkRequestGet::include_details"]="true false"
+    operation_parameters_enum_values["bulkRequestGet::include_details"]="true false"
+    operation_parameters_enum_values["eventsCreate::test"]="true false"
+    operation_parameters_enum_values["eventsCreate::test"]="true false"
+    operation_parameters_enum_values["eventsCreate::test"]="true false"
+    operation_parameters_enum_values["conversionTagsList::filter_deleted"]="true false"
+    operation_parameters_enum_values["conversionTagsList::filter_deleted"]="true false"
+    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
+    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
+    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
+    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
+    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
+    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
+    operation_parameters_enum_values["trendingKeywordsList::normalize_against_group"]="true false"
+    operation_parameters_enum_values["pinsGet::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsGet::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsGet::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["pinsList::include_protected_pins"]="true false"
+    operation_parameters_enum_values["pinsList::pin_metrics"]="true false"
+    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
+    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
+    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
+    operation_parameters_enum_values["targetingOptionsGet::targeting_type"]=""
+    operation_parameters_enum_values["termsOfServiceGet::include_html"]="true false"
+    operation_parameters_enum_values["termsOfServiceGet::include_html"]="true false"
+    operation_parameters_enum_values["termsOfServiceGet::include_html"]="true false"
+    operation_parameters_enum_values["boardsUserFollowsList::explicit_following"]="true false"
+    operation_parameters_enum_values["boardsUserFollowsList::explicit_following"]="true false"
+    operation_parameters_enum_values["boardsUserFollowsList::explicit_following"]="true false"
+    operation_parameters_enum_values["boardsUserFollowsList::explicit_following"]="true false"
+    operation_parameters_enum_values["userFollowingGet::explicit_following"]="true false"
+    operation_parameters_enum_values["userFollowingGet::explicit_following"]="true false"
+    operation_parameters_enum_values["userFollowingGet::explicit_following"]="true false"
+    operation_parameters_enum_values["userFollowingGet::explicit_following"]="true false"
+    operation_parameters_enum_values["userFollowingGet::explicit_following"]="true false"
+
+    #
+    # Check if this is OSX and use special __osx_init_completion function
+    #
+    if [[ `uname` =~ "Darwin" ]]; then
+        __osx_init_completion || return
+    else
+        _init_completion -s || return
+    fi
+
+
+    # Check if operation is already in the command line provided
+    for word in "${words[@]}"; do
+        if [[ -n $word && ${operations[$word]} ]]; then
+            operation="${word}"
+        fi
+    done
+
+    if [[ -z $operation ]]; then
+        case $prev in
+            --ciphers|--connect-timeout|-C|--continue-at|-F|--form|--form-string|\
+            --ftp-account|--ftp-alternative-to-user|-P|--ftp-port|-H|--header|-h|\
+            --help|--hostpubmd5|--keepalive-time|--krb|--limit-rate|--local-port|\
+            --mail-from|--mail-rcpt|--max-filesize|--max-redirs|-m|--max-time|\
+            --pass|--proto|--proto-redir|--proxy-user|--proxy1.0|-Q|--quote|-r|\
+            --range|-X|--request|--retry|--retry-delay|--retry-max-time|\
+            --socks5-gssapi-service|-t|--telnet-option|--tftp-blksize|-z|\
+            --time-cond|--url|-u|--user|-A|--user-agent|-V|--version|-w|\
+            --write-out|--resolve|--tlsuser|--tlspassword|--about)
+                return
+                ;;
+            -K|--config|-b|--cookie|-c|--cookie-jar|-D|--dump-header|--egd-file|\
+            --key|--libcurl|-o|--output|--random-file|-T|--upload-file|--trace|\
+            --trace-ascii|--netrc-file)
+                _filedir
+                return
+                ;;
+            --cacert|-E|--cert)
+                _filedir '@(c?(e)rt|cer|pem|der)'
+                return
+                ;;
+            --capath)
+                _filedir -d
+                return
+                ;;
+            --cert-type|--key-type)
+                COMPREPLY=( $( compgen -W 'DER PEM ENG' -- "$cur" ) )
+                return
+                ;;
+            --crlfile)
+                _filedir crl
+                return
+                ;;
+            -d|--data|--data-ascii|--data-binary|--data-urlencode)
+                if [[ $cur == \@* ]]; then
+                    cur=${cur:1}
+                    _filedir
+                    COMPREPLY=( "${COMPREPLY[@]/#/@}" )
+                fi
+                return
+                ;;
+            --delegation)
+                COMPREPLY=( $( compgen -W 'none policy always' -- "$cur" ) )
+                return
+                ;;
+            --engine)
+                COMPREPLY=( $( compgen -W 'list' -- "$cur" ) )
+                return
+                ;;
+            --ftp-method)
+                COMPREPLY=( $( compgen -W 'multicwd nocwd singlecwd' -- "$cur" ) )
+                return
+                ;;
+            --ftp-ssl-ccc-mode)
+                COMPREPLY=( $( compgen -W 'active passive' -- "$cur" ) )
+                return
+                ;;
+            --interface)
+                _available_interfaces -a
+                return
+                ;;
+            -x|--proxy|--socks4|--socks4a|--socks5|--socks5-hostname)
+                _known_hosts_real
+                return
+                ;;
+            --pubkey)
+                _filedir pub
+                return
+                ;;
+            --stderr)
+                COMPREPLY=( $( compgen -W '-' -- "$cur" ) )
+                _filedir
+                return
+                ;;
+            --tlsauthtype)
+                COMPREPLY=( $( compgen -W 'SRP' -- "$cur" ) )
+                return
+                ;;
+            --host)
+                COMPREPLY=( $( compgen -W 'http:// https://' -- "$cur" ) )
+                return
+                ;;
+            -ct|--content-type|-ac|--accept)
+                COMPREPLY=( $( compgen -W '${!mime_type_abbreviations[*]}' -- "$cur" ) )
+                return
+                ;;
+        esac
+    fi
+
+    #
+    # Complete the server address based on ~/.ssh/known_hosts
+    # and ~/.ssh/config
+    #
+    local prefix=${COMP_WORDS[COMP_CWORD-2]}
+    local colon=${COMP_WORDS[COMP_CWORD-1]}
+    if [[ "$colon" == ":" && ( $prefix == "https" || $prefix == "http" ) ]]; then
+        COMPREPLY=()
+        local comp_ssh_hosts=`[[ -f ~/.ssh/known_hosts ]] && \
+                              ( cat ~/.ssh/known_hosts | \
+                              grep '^[a-zA-Z0-9]' | \
+                              cut -f 1 -d ' ' | \
+                              sed -e s/,.*//g | \
+                              grep -v ^# | \
+                              uniq | \
+                              grep -v "\[" ) ;
+                              [[ -f ~/.ssh/config ]] && \
+                              ( cat ~/.ssh/config | \
+                              grep "^Host " | \
+                              awk '{print $2}' )`
+        COMPREPLY=( $( compgen -P '//' -W '${comp_ssh_hosts}' -- "${cur:2}") )
+        return
+    fi
+
+    #
+    # Complete the  and cURL's arguments
+    #
+    if [[ $cur == -* ]]; then
+        COMPREPLY=( $( compgen -W '$(_parse_help curl) $(_parse_help $1)' -- "$cur" ) )
+        return
+    fi
+
+    #
+    # If the argument starts with a letter this could be either an operation
+    # or an operation parameter
+    # When $cur is empty, suggest the list of operations by default
+    #
+    if [[ $cur =~ ^[A-Za-z_0-9]* ]]; then
+        # If operation has not been yet selected, suggest the list of operations
+        # otherwise suggest arguments of this operation as declared in the
+        # OpenAPI specification
+        if [[ -z $operation ]]; then
+            COMPREPLY=( $(compgen -W '${!operations[*]}' -- ${cur}) )
+        else
+            COMPREPLY=( $(compgen -W '${operation_parameters[$operation]}' -- ${cur}) )
+            compopt -o nospace
+        fi
+        return
+    fi
+
+} &&
+complete -F _ 
+
+# ex: ts=4 sw=4 et filetype=sh

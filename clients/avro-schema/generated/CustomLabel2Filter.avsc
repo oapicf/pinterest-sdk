@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomLabel2Filter",
+  "fields": [
+    {
+      "name": "CUSTOM_LABEL_2",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    }
+  ]
+
+}

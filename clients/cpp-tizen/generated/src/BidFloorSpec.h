@@ -14,6 +14,7 @@
 #include "CreativeType.h"
 #include "Currency.h"
 #include "ObjectiveType.h"
+#include "OptimizationGoalMetadata.h"
 #include <list>
 #include "Object.h"
 
@@ -81,11 +82,11 @@ public:
 	void setBillableEvent(ActionType  billable_event);
 	/*! \brief Get 
 	 */
-	std::string getOptimizationGoalMetadata();
+	OptimizationGoalMetadata getOptimizationGoalMetadata();
 
 	/*! \brief Set 
 	 */
-	void setOptimizationGoalMetadata(std::string  optimization_goal_metadata);
+	void setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata);
 	/*! \brief Get 
 	 */
 	CreativeType getCreativeType();
@@ -99,7 +100,7 @@ private:
 	Currency currency;
 	ObjectiveType objective_type;
 	ActionType billable_event;
-	std::string optimization_goal_metadata;
+	OptimizationGoalMetadata optimization_goal_metadata;
 	CreativeType creative_type;
 	void __init();
 	void __cleanup();

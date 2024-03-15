@@ -1,5 +1,6 @@
 const utils = require('../utils/utils');
 const Ad_account_owner = require('../models/Ad_account_owner');
+const BusinessAccessRole = require('../models/BusinessAccessRole');
 const Country = require('../models/Country');
 const Currency = require('../models/Currency');
 
@@ -28,9 +29,19 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}permissions`,
-                label: `[${labelPrefix}permissions]`,
                 list: true,
                 type: 'string',
+                ...BusinessAccessRole.fields(`${keyPrefix}permissions`, isInput),
+            },
+            {
+                key: `${keyPrefix}created_time`,
+                label: `Creation time. Unix timestamp in seconds. - [${labelPrefix}created_time]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}updated_time`,
+                label: `Last update time. Unix timestamp in seconds. - [${labelPrefix}updated_time]`,
+                type: 'integer',
             },
         ]
     },
@@ -42,7 +53,9 @@ module.exports = {
             'owner': utils.removeIfEmpty(Ad_account_owner.mapping(bundle, `${keyPrefix}owner`)),
             'country': bundle.inputData?.[`${keyPrefix}country`],
             'currency': bundle.inputData?.[`${keyPrefix}currency`],
-            'permissions': bundle.inputData?.[`${keyPrefix}permissions`],
+            'permissions': utils.childMapping(bundle.inputData?.[`${keyPrefix}permissions`], `${keyPrefix}permissions`, BusinessAccessRole),
+            'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
+            'updated_time': bundle.inputData?.[`${keyPrefix}updated_time`],
         }
     },
 }

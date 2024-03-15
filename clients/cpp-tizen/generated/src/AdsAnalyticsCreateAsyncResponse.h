@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "BulkReportingJobStatus.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -47,11 +48,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getReportStatus();
+	BulkReportingJobStatus getReportStatus();
 
 	/*! \brief Set 
 	 */
-	void setReportStatus(std::string  report_status);
+	void setReportStatus(BulkReportingJobStatus  report_status);
 	/*! \brief Get 
 	 */
 	std::string getToken();
@@ -68,7 +69,7 @@ public:
 	void setMessage(std::string  message);
 
 private:
-	std::string report_status;
+	BulkReportingJobStatus report_status;
 	std::string token;
 	std::string message;
 	void __init();

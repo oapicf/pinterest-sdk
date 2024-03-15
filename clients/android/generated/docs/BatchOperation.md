@@ -1,0 +1,10 @@
+
+
+# BatchOperation
+
+## Enum
+
+
+
+
+

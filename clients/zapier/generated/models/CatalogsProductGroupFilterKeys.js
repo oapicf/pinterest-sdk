@@ -2,6 +2,7 @@ const utils = require('../utils/utils');
 const AvailabilityFilter = require('../models/AvailabilityFilter');
 const BrandFilter = require('../models/BrandFilter');
 const CatalogsProductGroupCurrencyCriteria = require('../models/CatalogsProductGroupCurrencyCriteria');
+const CatalogsProductGroupMultipleGenderCriteria = require('../models/CatalogsProductGroupMultipleGenderCriteria');
 const CatalogsProductGroupMultipleStringCriteria = require('../models/CatalogsProductGroupMultipleStringCriteria');
 const CatalogsProductGroupMultipleStringListCriteria = require('../models/CatalogsProductGroupMultipleStringListCriteria');
 const CatalogsProductGroupPricingCriteria = require('../models/CatalogsProductGroupPricingCriteria');
@@ -47,7 +48,7 @@ module.exports = {
             ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CUSTOM_LABEL_3`, isInput),
             ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CUSTOM_LABEL_4`, isInput),
             ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}ITEM_GROUP_ID`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}GENDER`, isInput),
+            ...CatalogsProductGroupMultipleGenderCriteria.fields(`${keyPrefix}GENDER`, isInput),
             ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}PRODUCT_TYPE_4`, isInput),
             ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}PRODUCT_TYPE_3`, isInput),
             ...CatalogsProductGroupMultipleStringListCriteria.fields(`${keyPrefix}PRODUCT_TYPE_2`, isInput),
@@ -78,7 +79,7 @@ module.exports = {
             'CUSTOM_LABEL_3': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_3`)),
             'CUSTOM_LABEL_4': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_4`)),
             'ITEM_GROUP_ID': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}ITEM_GROUP_ID`)),
-            'GENDER': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}GENDER`)),
+            'GENDER': utils.removeIfEmpty(CatalogsProductGroupMultipleGenderCriteria.mapping(bundle, `${keyPrefix}GENDER`)),
             'PRODUCT_TYPE_4': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}PRODUCT_TYPE_4`)),
             'PRODUCT_TYPE_3': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}PRODUCT_TYPE_3`)),
             'PRODUCT_TYPE_2': utils.removeIfEmpty(CatalogsProductGroupMultipleStringListCriteria.mapping(bundle, `${keyPrefix}PRODUCT_TYPE_2`)),

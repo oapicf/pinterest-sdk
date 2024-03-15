@@ -1,6 +1,8 @@
 module.exports = {
     "AdGroupsAnalyticsResponse_innerSample": 
         { data: {} },
+    "AdGroupAudienceSizingResponseSample": 
+        { data: {} },
     "AdGroupArrayResponseSample": 
         { data: {} },
     "AdGroupResponseSample": 

@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ItemGroupIdFilter",
+  "fields": [
+    {
+      "name": "ITEM_GROUP_ID",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsFeedIngestionInfo",
+  "fields": [
+    {
+      "name": "IN_STOCK",
+      "type": ["null", "int"],
+      "doc": "The number of ingested products that are in stock.",
+      "default": null
+    },
+    {
+      "name": "OUT_OF_STOCK",
+      "type": ["null", "int"],
+      "doc": "The number of ingested products that are in out of stock.",
+      "default": null
+    },
+    {
+      "name": "PREORDER",
+      "type": ["null", "int"],
+      "doc": "The number of ingested products that are in preorder.",
+      "default": null
+    }
+  ]
+
+}

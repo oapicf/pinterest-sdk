@@ -1,0 +1,156 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="adAccountsSubscriptions/delById"></a>adAccountsSubscriptions/delById</h2>
+  <hr>
+  <p></p>
+  <p>Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">subscription_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a subscription.</p>
+      </li>
+  </ul>
+  <h2><a name="adAccountsSubscriptions/getById"></a>adAccountsSubscriptions/getById</h2>
+  <hr>
+  <p></p>
+  <p>Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="AdAccountGetSubscriptionResponse"><a href="">AdAccountGetSubscriptionResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">subscription_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of a subscription.</p>
+      </li>
+  </ul>
+  <h2><a name="adAccountsSubscriptions/getList"></a>adAccountsSubscriptions/getList</h2>
+  <hr>
+  <p></p>
+  <p>Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/leads/subscriptions</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="ad_accounts_subscriptions_get_list_200_response"><a href="">ad_accounts_subscriptions_get_list_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+  </ul>
+  <h2><a name="adAccountsSubscriptions/post"></a>adAccountsSubscriptions/post</h2>
+  <hr>
+  <p></p>
+  <p>Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/leads/subscriptions</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="AdAccountCreateSubscriptionResponse"><a href="">AdAccountCreateSubscriptionResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">AdAccountCreateSubscriptionRequest</span>
+      <span class="param-type">AdAccountCreateSubscriptionRequest(AdAccountCreateSubscriptionRequest)</span>
+      
+      <p class="param-description">Subscription to create.</p>
+      </li>
+  </ul>
+</div>

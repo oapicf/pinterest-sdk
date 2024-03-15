@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object to delete catalogs items",
+  "name": "CatalogsItemsDeleteBatchRequest",
+  "fields": [
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.Language",
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.BatchOperation",
+      "doc": ""
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.ItemDeleteBatchRecord"
+      },
+      "doc": "Array with catalogs items"
+    }
+  ]
+
+}

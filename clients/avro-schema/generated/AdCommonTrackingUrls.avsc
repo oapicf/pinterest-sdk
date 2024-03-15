@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdCommonTrackingUrls",
+  "fields": [
+    {
+      "name": "impression",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "click",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "engagement",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "buyable_button",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "audience_verification",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

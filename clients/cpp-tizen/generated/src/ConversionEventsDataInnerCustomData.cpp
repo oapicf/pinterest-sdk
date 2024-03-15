@@ -26,6 +26,9 @@ ConversionEvents_data_inner_custom_data::__init()
 	//currency = std::string();
 	//value = std::string();
 	//new std::list()std::list> content_ids;
+	//content_name = std::string();
+	//content_category = std::string();
+	//content_brand = std::string();
 	//new std::list()std::list> contents;
 	//num_items = long(0);
 	//order_id = std::string();
@@ -51,6 +54,21 @@ ConversionEvents_data_inner_custom_data::__cleanup()
 	//content_ids.RemoveAll(true);
 	//delete content_ids;
 	//content_ids = NULL;
+	//}
+	//if(content_name != NULL) {
+	//
+	//delete content_name;
+	//content_name = NULL;
+	//}
+	//if(content_category != NULL) {
+	//
+	//delete content_category;
+	//content_category = NULL;
+	//}
+	//if(content_brand != NULL) {
+	//
+	//delete content_brand;
+	//content_brand = NULL;
 	//}
 	//if(contents != NULL) {
 	//contents.RemoveAll(true);
@@ -133,6 +151,39 @@ ConversionEvents_data_inner_custom_data::fromJson(char* jsonStr)
 			content_ids = new_list;
 		}
 		
+	}
+	const gchar *content_nameKey = "content_name";
+	node = json_object_get_member(pJsonObject, content_nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&content_name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *content_categoryKey = "content_category";
+	node = json_object_get_member(pJsonObject, content_categoryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&content_category, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *content_brandKey = "content_brand";
+	node = json_object_get_member(pJsonObject, content_brandKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&content_brand, node, "std::string", "");
+		} else {
+			
+		}
 	}
 	const gchar *contentsKey = "contents";
 	node = json_object_get_member(pJsonObject, contentsKey);
@@ -258,6 +309,33 @@ ConversionEvents_data_inner_custom_data::toJson()
 	
 	const gchar *content_idsKey = "content_ids";
 	json_object_set_member(pJsonObject, content_idsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getContentName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *content_nameKey = "content_name";
+	json_object_set_member(pJsonObject, content_nameKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getContentCategory();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *content_categoryKey = "content_category";
+	json_object_set_member(pJsonObject, content_categoryKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getContentBrand();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *content_brandKey = "content_brand";
+	json_object_set_member(pJsonObject, content_brandKey, node);
 	if (isprimitive("ConversionEvents_data_inner_custom_data_contents_inner")) {
 		list<ConversionEvents_data_inner_custom_data_contents_inner> new_list = static_cast<list <ConversionEvents_data_inner_custom_data_contents_inner> > (getContents());
 		node = converttoJson(&new_list, "ConversionEvents_data_inner_custom_data_contents_inner", "array");
@@ -370,6 +448,42 @@ void
 ConversionEvents_data_inner_custom_data::setContentIds(std::list <std::string> content_ids)
 {
 	this->content_ids = content_ids;
+}
+
+std::string
+ConversionEvents_data_inner_custom_data::getContentName()
+{
+	return content_name;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setContentName(std::string  content_name)
+{
+	this->content_name = content_name;
+}
+
+std::string
+ConversionEvents_data_inner_custom_data::getContentCategory()
+{
+	return content_category;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setContentCategory(std::string  content_category)
+{
+	this->content_category = content_category;
+}
+
+std::string
+ConversionEvents_data_inner_custom_data::getContentBrand()
+{
+	return content_brand;
+}
+
+void
+ConversionEvents_data_inner_custom_data::setContentBrand(std::string  content_brand)
+{
+	this->content_brand = content_brand;
 }
 
 std::list<ConversionEvents_data_inner_custom_data_contents_inner>

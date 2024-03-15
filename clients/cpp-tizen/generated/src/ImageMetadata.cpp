@@ -24,7 +24,10 @@ void
 ImageMetadata::__init()
 {
 	//item_type = std::string();
-	//new std::map()std::map> images;
+	//title = std::string();
+	//description = std::string();
+	//link = std::string();
+	//images = new ImageMetadata_images();
 }
 
 void
@@ -35,8 +38,23 @@ ImageMetadata::__cleanup()
 	//delete item_type;
 	//item_type = NULL;
 	//}
+	//if(title != NULL) {
+	//
+	//delete title;
+	//title = NULL;
+	//}
+	//if(description != NULL) {
+	//
+	//delete description;
+	//description = NULL;
+	//}
+	//if(link != NULL) {
+	//
+	//delete link;
+	//link = NULL;
+	//}
 	//if(images != NULL) {
-	//images.RemoveAll(true);
+	//
 	//delete images;
 	//images = NULL;
 	//}
@@ -59,17 +77,52 @@ ImageMetadata::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *titleKey = "title";
+	node = json_object_get_member(pJsonObject, titleKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&title, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *linkKey = "link";
+	node = json_object_get_member(pJsonObject, linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&link, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *imagesKey = "images";
 	node = json_object_get_member(pJsonObject, imagesKey);
 	if (node !=NULL) {
 	
-		{
-			JsonObject* json_obj = json_node_get_object(node);
-			map<string,string> new_map;
-			json_object_foreach_member(json_obj,helper_func,&new_map);
-			images = new_map;
+
+		if (isprimitive("ImageMetadata_images")) {
+			jsonToValue(&images, node, "ImageMetadata_images", "ImageMetadata_images");
+		} else {
+			
+			ImageMetadata_images* obj = static_cast<ImageMetadata_images*> (&images);
+			obj->fromJson(json_to_string(node, false));
+			
 		}
-		
 	}
 }
 
@@ -92,23 +145,45 @@ ImageMetadata::toJson()
 	}
 	const gchar *item_typeKey = "item_type";
 	json_object_set_member(pJsonObject, item_typeKey, node);
-
-
-	{
-		JsonObject* json_obj;
-		map<string, string> new_list = static_cast<map <string, string> > (getImages());
-		json_obj = json_object_new();
-		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			string obj = (*it).first;
-			string obj2 = (*it).second;
-			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
-			json_object_set_member(json_obj, obj.c_str(), tempnode);
-		}
-	node = json_node_alloc();
-	json_node_init_object(node, json_obj);
-	json_object_unref(json_obj);
+	if (isprimitive("std::string")) {
+		std::string obj = getTitle();
+		node = converttoJson(&obj, "std::string", "");
 	}
-
+	else {
+		
+	}
+	const gchar *titleKey = "title";
+	json_object_set_member(pJsonObject, titleKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDescription();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *linkKey = "link";
+	json_object_set_member(pJsonObject, linkKey, node);
+	if (isprimitive("ImageMetadata_images")) {
+		ImageMetadata_images obj = getImages();
+		node = converttoJson(&obj, "ImageMetadata_images", "");
+	}
+	else {
+		
+		ImageMetadata_images obj = static_cast<ImageMetadata_images> (getImages());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
 	const gchar *imagesKey = "images";
 	json_object_set_member(pJsonObject, imagesKey, node);
 	node = json_node_alloc();
@@ -131,14 +206,50 @@ ImageMetadata::setItemType(std::string  item_type)
 	this->item_type = item_type;
 }
 
-std::map<string, string>
+std::string
+ImageMetadata::getTitle()
+{
+	return title;
+}
+
+void
+ImageMetadata::setTitle(std::string  title)
+{
+	this->title = title;
+}
+
+std::string
+ImageMetadata::getDescription()
+{
+	return description;
+}
+
+void
+ImageMetadata::setDescription(std::string  description)
+{
+	this->description = description;
+}
+
+std::string
+ImageMetadata::getLink()
+{
+	return link;
+}
+
+void
+ImageMetadata::setLink(std::string  link)
+{
+	this->link = link;
+}
+
+ImageMetadata_images
 ImageMetadata::getImages()
 {
 	return images;
 }
 
 void
-ImageMetadata::setImages(std::map <string, string> images)
+ImageMetadata::setImages(ImageMetadata_images  images)
 {
 	this->images = images;
 }

@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing an item processing record",
+  "name": "ItemProcessingRecord",
+  "fields": [
+    {
+      "name": "item_id",
+      "type": ["null", "string"],
+      "doc": "The catalog item id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ItemValidationEvent"
+      }],
+      "doc": "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.",
+      "default": null
+    },
+    {
+      "name": "warnings",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ItemValidationEvent"
+      }],
+      "doc": "Array with the validation warnings for the item processing record",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.ItemProcessingStatus"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

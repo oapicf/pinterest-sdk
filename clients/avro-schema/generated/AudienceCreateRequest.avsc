@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AudienceCreateRequest",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Ad account ID.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Audience name."
+    },
+    {
+      "name": "rule",
+      "type": "model.AudienceRule",
+      "doc": ""
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Audience description.",
+      "default": null
+    },
+    {
+      "name": "audience_type",
+      "type": "model.AudienceCreateRequest1AudienceType",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Audience operation type (update or remove).",
+  "name": "AudienceUpdateOperationType",
+  "symbols": [
+    "UPDATE",
+    "REMOVE"
+  ]
+}

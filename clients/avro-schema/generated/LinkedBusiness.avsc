@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LinkedBusiness",
+  "fields": [
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "Username",
+      "default": null
+    },
+    {
+      "name": "image_small_url",
+      "type": ["null", "string"],
+      "doc": "image_small_url",
+      "default": null
+    },
+    {
+      "name": "image_medium_url",
+      "type": ["null", "string"],
+      "doc": "image_medium_url",
+      "default": null
+    },
+    {
+      "name": "image_large_url",
+      "type": ["null", "string"],
+      "doc": "image_large_url",
+      "default": null
+    },
+    {
+      "name": "image_xlarge_url",
+      "type": ["null", "string"],
+      "doc": "image_xlarge_url",
+      "default": null
+    }
+  ]
+
+}

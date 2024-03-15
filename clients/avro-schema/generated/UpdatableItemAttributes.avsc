@@ -1,0 +1,285 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdatableItemAttributes",
+  "fields": [
+    {
+      "name": "ad_link",
+      "type": ["null", "string"],
+      "doc": "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.",
+      "default": null
+    },
+    {
+      "name": "adult",
+      "type": ["null", "boolean"],
+      "doc": "Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.",
+      "default": null
+    },
+    {
+      "name": "age_group",
+      "type": ["null", "string"],
+      "doc": "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.",
+      "default": null
+    },
+    {
+      "name": "availability",
+      "type": ["null", "string"],
+      "doc": "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.",
+      "default": null
+    },
+    {
+      "name": "average_review_rating",
+      "type": ["null", "double"],
+      "doc": "Average reviews for the item. Can be a number from 1-5.",
+      "default": null
+    },
+    {
+      "name": "brand",
+      "type": ["null", "string"],
+      "doc": "The brand of the product.",
+      "default": null
+    },
+    {
+      "name": "checkout_enabled",
+      "type": ["null", "boolean"],
+      "doc": "This attribute is not supported anymore.",
+      "default": null
+    },
+    {
+      "name": "color",
+      "type": ["null", "string"],
+      "doc": "The primary color of the product.",
+      "default": null
+    },
+    {
+      "name": "condition",
+      "type": ["null", "string"],
+      "doc": "The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.",
+      "default": null
+    },
+    {
+      "name": "custom_label_0",
+      "type": ["null", "string"],
+      "doc": "<p><= 1000 characters</p> <p>Custom grouping of products.</p>",
+      "default": null
+    },
+    {
+      "name": "custom_label_1",
+      "type": ["null", "string"],
+      "doc": "<p><= 1000 characters</p> <p>Custom grouping of products.</p>",
+      "default": null
+    },
+    {
+      "name": "custom_label_2",
+      "type": ["null", "string"],
+      "doc": "<p><= 1000 characters</p> <p>Custom grouping of products.</p>",
+      "default": null
+    },
+    {
+      "name": "custom_label_3",
+      "type": ["null", "string"],
+      "doc": "<p><= 1000 characters</p> <p>Custom grouping of products.</p>",
+      "default": null
+    },
+    {
+      "name": "custom_label_4",
+      "type": ["null", "string"],
+      "doc": "<p><= 1000 characters</p> <p>Custom grouping of products.</p>",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "<p><= 10000 characters</p> <p>The description of the product.</p>",
+      "default": null
+    },
+    {
+      "name": "free_shipping_label",
+      "type": ["null", "boolean"],
+      "doc": "The item is free to ship.",
+      "default": null
+    },
+    {
+      "name": "free_shipping_limit",
+      "type": ["null", "string"],
+      "doc": "The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.",
+      "default": null
+    },
+    {
+      "name": "gender",
+      "type": ["null", "string"],
+      "doc": "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.",
+      "default": null
+    },
+    {
+      "name": "google_product_category",
+      "type": ["null", "string"],
+      "doc": "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.",
+      "default": null
+    },
+    {
+      "name": "gtin",
+      "type": ["null", "int"],
+      "doc": "The unique universal product identifier.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "<p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>",
+      "default": null
+    },
+    {
+      "name": "item_group_id",
+      "type": ["null", "string"],
+      "doc": "<p><= 127 characters</p> <p>The parent ID of the product.</p>",
+      "default": null
+    },
+    {
+      "name": "last_updated_time",
+      "type": ["null", "long"],
+      "doc": "The millisecond timestamp when the item was lastly modified by the merchant.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "<p><= 511 characters</p> <p>The landing page for the product.</p>",
+      "default": null
+    },
+    {
+      "name": "material",
+      "type": ["null", "string"],
+      "doc": "The material used to make the product.",
+      "default": null
+    },
+    {
+      "name": "min_ad_price",
+      "type": ["null", "string"],
+      "doc": "The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.",
+      "default": null
+    },
+    {
+      "name": "mobile_link",
+      "type": ["null", "string"],
+      "doc": "The mobile-optimized version of your landing page. Must begin with http:// or https://.",
+      "default": null
+    },
+    {
+      "name": "mpn",
+      "type": ["null", "string"],
+      "doc": "Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.",
+      "default": null
+    },
+    {
+      "name": "number_of_ratings",
+      "type": ["null", "int"],
+      "doc": "The number of ratings for the item.",
+      "default": null
+    },
+    {
+      "name": "number_of_reviews",
+      "type": ["null", "int"],
+      "doc": "The number of reviews available for the item.",
+      "default": null
+    },
+    {
+      "name": "pattern",
+      "type": ["null", "string"],
+      "doc": "The description of the pattern used for the product.",
+      "default": null
+    },
+    {
+      "name": "price",
+      "type": ["null", "string"],
+      "doc": "The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.",
+      "default": null
+    },
+    {
+      "name": "product_type",
+      "type": ["null", "string"],
+      "doc": "<p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>",
+      "default": null
+    },
+    {
+      "name": "sale_price",
+      "type": ["null", "string"],
+      "doc": "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.",
+      "default": null
+    },
+    {
+      "name": "shipping",
+      "type": ["null", "string"],
+      "doc": "Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.",
+      "default": null
+    },
+    {
+      "name": "shipping_height",
+      "type": ["null", "string"],
+      "doc": "The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.",
+      "default": null
+    },
+    {
+      "name": "shipping_weight",
+      "type": ["null", "string"],
+      "doc": "The weight of the product. Ensure there is a space between the numeric string and the metric.",
+      "default": null
+    },
+    {
+      "name": "shipping_width",
+      "type": ["null", "string"],
+      "doc": "The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.",
+      "default": null
+    },
+    {
+      "name": "size",
+      "type": ["null", "string"],
+      "doc": "The size of the product.",
+      "default": null
+    },
+    {
+      "name": "size_system",
+      "type": ["null", "string"],
+      "doc": "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.",
+      "default": null
+    },
+    {
+      "name": "size_type",
+      "type": ["null", "string"],
+      "doc": "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.",
+      "default": null
+    },
+    {
+      "name": "tax",
+      "type": ["null", "string"],
+      "doc": "Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "<p><= 500 characters</p> <p>The name of the product.</p>",
+      "default": null
+    },
+    {
+      "name": "variant_names",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.",
+      "default": null
+    },
+    {
+      "name": "variant_values",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.",
+      "default": null
+    }
+  ]
+
+}

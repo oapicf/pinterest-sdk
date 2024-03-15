@@ -8,6 +8,7 @@
 | **AVAILABILITY\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **BLOCKLISTED\_IMAGE\_SIGNATURE** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **DESCRIPTION\_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
+| **DUPLICATE\_PRODUCTS** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **IMAGE\_LINK\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **IMAGE\_LINK\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **IMAGE\_LINK\_MISSING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |

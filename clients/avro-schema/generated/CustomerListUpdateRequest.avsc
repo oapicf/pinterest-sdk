@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomerListUpdateRequest",
+  "fields": [
+    {
+      "name": "records",
+      "type": "string",
+      "doc": "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5."
+    },
+    {
+      "name": "operation_type",
+      "type": "model.UserListOperationType",
+      "doc": ""
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", "model.Exception"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdsCreditRedeemResponse",
+  "fields": [
+    {
+      "name": "success",
+      "type": ["null", "boolean"],
+      "doc": "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).",
+      "default": null
+    },
+    {
+      "name": "errorCode",
+      "type": ["null", "int"],
+      "doc": "Error code type if error occurs",
+      "default": null
+    },
+    {
+      "name": "errorMessage",
+      "type": ["null", "string"],
+      "doc": "Reason for failure",
+      "default": null
+    }
+  ]
+
+}

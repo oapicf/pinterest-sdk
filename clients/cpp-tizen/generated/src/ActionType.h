@@ -1,7 +1,7 @@
 /*
  * ActionType.h
  *
- * Ad group billable event type.
+ * Ad group billable event type. For update, only draft ad groups may update billable event.
  */
 
 #ifndef _ActionType_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Ad group billable event type.
+/*! \brief Ad group billable event type. For update, only draft ad groups may update billable event.
  *
  *  \ingroup Models
  *

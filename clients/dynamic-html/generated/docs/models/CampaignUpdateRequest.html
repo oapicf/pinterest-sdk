@@ -1,0 +1,82 @@
+
+<h2>CampaignUpdateRequest</h2>
+<ul class="parameter">
+  <li class="param-required-true">id : String
+    <br/>Campaign ID.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">adUnderscoreaccountUnderscoreid : String
+    <br/>Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Campaign name.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : EntityStatus
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">lifetimeUnderscorespendUnderscorecap : Integer
+    <br/>Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">dailyUnderscorespendUnderscorecap : Integer
+    <br/>Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">orderUnderscorelineUnderscoreid : String
+    <br/>Order line ID that appears on the invoice.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">trackingUnderscoreurls : AdCommon_tracking_urls
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">startUnderscoretime : Integer
+    <br/>Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">endUnderscoretime : Integer
+    <br/>Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">summaryUnderscorestatus : CampaignSummaryStatus
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscoreflexibleUnderscoredailyUnderscorebudgets : Boolean
+    <br/>Determine if a campaign has flexible daily budgets setup.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">defaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency : Integer
+    <br/>When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscoreautomatedUnderscorecampaign : Boolean
+    <br/>Specifies whether the campaign was created in the automated campaign flow
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscorecampaignUnderscorebudgetUnderscoreoptimization : Boolean
+    <br/>Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">objectiveUnderscoretype : ObjectiveType
+    <br/>
+  </li>
+</ul>

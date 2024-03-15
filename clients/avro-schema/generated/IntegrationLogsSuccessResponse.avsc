@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Response when logs are successfully processed.",
+  "name": "IntegrationLogsSuccessResponse",
+  "fields": [
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

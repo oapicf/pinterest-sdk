@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Order Line Status",
+  "name": "OrderLineStatus",
+  "symbols": [
+    "ACTIVE",
+    "PAUSED",
+    "DELETED"
+  ]
+}

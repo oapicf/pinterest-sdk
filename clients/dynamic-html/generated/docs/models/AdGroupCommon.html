@@ -1,0 +1,95 @@
+
+<h2>AdGroupCommon</h2>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Ad group name.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : EntityStatus
+    <br/>Ad group/entity status.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">budgetUnderscoreinUnderscoremicroUnderscorecurrency : Integer
+    <br/>Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">bidUnderscoreinUnderscoremicroUnderscorecurrency : Integer
+    <br/>Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">optimizationUnderscoregoalUnderscoremetadata : AdGroupCommon_optimization_goal_metadata
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">budgetUnderscoretype : BudgetType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">startUnderscoretime : Integer
+    <br/>Ad group start time. Unix timestamp in seconds. Defaults to current time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">endUnderscoretime : Integer
+    <br/>Ad group end time. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">targetingUnderscorespec : TargetingSpec
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">lifetimeUnderscorefrequencyUnderscorecap : Integer
+    <br/>Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">trackingUnderscoreurls : AdGroupCommon_tracking_urls
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">autoUnderscoretargetingUnderscoreenabled : Boolean
+    <br/>Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">placementUnderscoregroup : PlacementGroupType
+    <br/>&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">pacingUnderscoredeliveryUnderscoretype : PacingDeliveryType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">campaignUnderscoreid : String
+    <br/>Campaign ID of the ad group.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">billableUnderscoreevent : ActionType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">bidUnderscorestrategyUnderscoretype : String
+    <br/>Bid strategy type
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>AUTOMATIC_BID</dd>
+            <dd>MAX_BID</dd>
+            <dd>TARGET_AVG</dd>
+            <dd>null</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>

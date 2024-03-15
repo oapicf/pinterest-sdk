@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreateMMMReportResponse",
+  "fields": [
+    {
+      "name": "code",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "data",
+      "type": ["null", "model.CreateMMMReportResponseData"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

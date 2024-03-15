@@ -27,7 +27,7 @@ BidFloorSpec::__init()
 	//currency = new Currency();
 	//objective_type = new ObjectiveType();
 	//billable_event = new ActionType();
-	//optimization_goal_metadata = null;
+	//optimization_goal_metadata = new OptimizationGoalMetadata();
 	//creative_type = new CreativeType();
 }
 
@@ -143,11 +143,11 @@ BidFloorSpec::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&optimization_goal_metadata, node, "std::string", "");
+		if (isprimitive("OptimizationGoalMetadata")) {
+			jsonToValue(&optimization_goal_metadata, node, "OptimizationGoalMetadata", "OptimizationGoalMetadata");
 		} else {
 			
-			std::string* obj = static_cast<std::string*> (&optimization_goal_metadata);
+			OptimizationGoalMetadata* obj = static_cast<OptimizationGoalMetadata*> (&optimization_goal_metadata);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -245,13 +245,13 @@ BidFloorSpec::toJson()
 	}
 	const gchar *billable_eventKey = "billable_event";
 	json_object_set_member(pJsonObject, billable_eventKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getOptimizationGoalMetadata();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("OptimizationGoalMetadata")) {
+		OptimizationGoalMetadata obj = getOptimizationGoalMetadata();
+		node = converttoJson(&obj, "OptimizationGoalMetadata", "");
 	}
 	else {
 		
-		std::string obj = static_cast<std::string> (getOptimizationGoalMetadata());
+		OptimizationGoalMetadata obj = static_cast<OptimizationGoalMetadata> (getOptimizationGoalMetadata());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -329,14 +329,14 @@ BidFloorSpec::setBillableEvent(ActionType  billable_event)
 	this->billable_event = billable_event;
 }
 
-std::string
+OptimizationGoalMetadata
 BidFloorSpec::getOptimizationGoalMetadata()
 {
 	return optimization_goal_metadata;
 }
 
 void
-BidFloorSpec::setOptimizationGoalMetadata(std::string  optimization_goal_metadata)
+BidFloorSpec::setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata)
 {
 	this->optimization_goal_metadata = optimization_goal_metadata;
 }

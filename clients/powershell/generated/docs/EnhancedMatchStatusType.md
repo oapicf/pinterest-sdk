@@ -1,0 +1,20 @@
+# EnhancedMatchStatusType
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+
+## Examples
+
+- Prepare the resource
+```powershell
+$EnhancedMatchStatusType = Initialize-PSOpenAPIToolsEnhancedMatchStatusType 
+```
+
+- Convert the resource to JSON
+```powershell
+$EnhancedMatchStatusType | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

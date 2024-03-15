@@ -1,0 +1,11 @@
+# # RelatedTerms
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** | First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot; | [optional]
+**related_term_count** | **int** | Total number of related terms returned | [optional]
+**related_terms_list** | [**\OpenAPI\Client\Model\RelatedTermsRelatedTermsListInner[]**](RelatedTermsRelatedTermsListInner.md) | The id of the advertiser. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

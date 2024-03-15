@@ -1,0 +1,2 @@
+testCase,httpStatusCode,adAccountId,productGroupPromotionCreateRequest,adAccountId,productGroupPromotionId,adAccountId,productGroupPromotionIds,entityStatuses,adGroupId,pageSize,order,bookmark,adAccountId,productGroupPromotionUpdateRequest,adAccountId,startDate,endDate,productGroupIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

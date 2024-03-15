@@ -1,0 +1,10 @@
+
+
+# TrendType
+
+## Enum
+
+
+
+
+

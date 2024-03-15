@@ -22,7 +22,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}audience_type`,
-                label: `<a href=\"/docs/redoc/#section/Pinner-(audience)-list-type\">Audience type</a> - [${labelPrefix}audience_type]`,
+                label: `<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR - [${labelPrefix}audience_type]`,
                 type: 'string',
             },
             {
@@ -38,7 +38,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}status`,
-                label: `Audience status. TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. - [${labelPrefix}status]`,
+                label: `Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. - [${labelPrefix}status]`,
                 type: 'string',
             },
             {

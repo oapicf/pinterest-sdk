@@ -1,0 +1,66 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SSIOAccountItem",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Salesforce id for billto_info",
+      "default": null
+    },
+    {
+      "name": "io_terms_id",
+      "type": ["null", "string"],
+      "doc": "Salesforce id for IO Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "io_terms",
+      "type": ["null", "string"],
+      "doc": "Salesforce text for IO Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "us_terms_id",
+      "type": ["null", "string"],
+      "doc": "Salesforce id for US Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "us_terms",
+      "type": ["null", "string"],
+      "doc": "Salesforce text for US Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "row_terms_id",
+      "type": ["null", "string"],
+      "doc": "Salesforce id for Rest of the World Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "row_terms",
+      "type": ["null", "string"],
+      "doc": "Salesforce text for Rest of the World Terms and Conditions",
+      "default": null
+    },
+    {
+      "name": "io_type",
+      "type": ["null", "string"],
+      "doc": "Insertion Order Type - Pinterest Paper or Agency Paper",
+      "default": null
+    },
+    {
+      "name": "addresses",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.SSIOAccountAddress"
+      }],
+      "doc": "Address information that is associated with this account.",
+      "default": null
+    }
+  ]
+
+}

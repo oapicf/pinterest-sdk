@@ -1,0 +1,47 @@
+/*
+ * template_response_date_range_dynamic_date_range.h
+ *
+ * The dynamic date range of the template
+ */
+
+#ifndef _template_response_date_range_dynamic_date_range_H_
+#define _template_response_date_range_dynamic_date_range_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct template_response_date_range_dynamic_date_range_t template_response_date_range_dynamic_date_range_t;
+
+
+// Enum RANGE for template_response_date_range_dynamic_date_range
+
+typedef enum  { pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_NULL = 0, pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_YEAR_TO_DATE, pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_QUARTER_TO_DATE, pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_MONTH_TO_DATE, pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_LAST_MONTH } pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e;
+
+char* template_response_date_range_dynamic_date_range_range_ToString(pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e range);
+
+pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e template_response_date_range_dynamic_date_range_range_FromString(char* range);
+
+
+
+typedef struct template_response_date_range_dynamic_date_range_t {
+    char *type; // string
+    pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e range; //enum
+
+} template_response_date_range_dynamic_date_range_t;
+
+template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range_create(
+    char *type,
+    pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_e range
+);
+
+void template_response_date_range_dynamic_date_range_free(template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range);
+
+template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range_parseFromJSON(cJSON *template_response_date_range_dynamic_date_rangeJSON);
+
+cJSON *template_response_date_range_dynamic_date_range_convertToJSON(template_response_date_range_dynamic_date_range_t *template_response_date_range_dynamic_date_range);
+
+#endif /* _template_response_date_range_dynamic_date_range_H_ */
+

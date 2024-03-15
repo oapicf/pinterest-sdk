@@ -1,0 +1,68 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "OptimizationGoalMetadataConversionTagV3GoalMetadata",
+  "fields": [
+    {
+      "name": "attribution_windows",
+      "type": ["null", "model.OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "conversion_event",
+      "type": ["null", {
+        "type": "enum",
+        "name": "OptimizationGoalMetadataConversionTagV3GoalMetadata_conversionUnderscoreevent",
+        "symbols": [
+          "PAGE_VISIT",
+          "SIGNUP",
+          "CHECKOUT",
+          "CUSTOM",
+          "VIEW_CATEGORY",
+          "SEARCH",
+          "ADD_TO_CART",
+          "WATCH_VIDEO",
+          "LEAD",
+          "APP_INSTALL"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "conversion_tag_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "cpa_goal_value_in_micro_currency",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_roas_optimized",
+      "type": ["null", "boolean"],
+      "doc": "Ad group is ROAS optimized",
+      "default": null
+    },
+    {
+      "name": "learning_mode_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "OptimizationGoalMetadataConversionTagV3GoalMetadata_learningUnderscoremodeUnderscoretype",
+        "symbols": [
+          "NOT_ACTIVE",
+          "ACTIVE",
+          "null"
+        ]
+      }],
+      "doc": "Conversion learning model type",
+      "default": null
+    }
+  ]
+
+}

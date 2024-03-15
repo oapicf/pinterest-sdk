@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdPreviewCreateFromPin",
+  "fields": [
+    {
+      "name": "pin_id",
+      "type": "string",
+      "doc": "Pin ID."
+    }
+  ]
+
+}

@@ -1,0 +1,51 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SSIOAccountResponse",
+  "fields": [
+    {
+      "name": "eligible",
+      "type": ["null", "boolean"],
+      "doc": "Advertiser eligible to create order lines",
+      "default": null
+    },
+    {
+      "name": "can_edit",
+      "type": ["null", "boolean"],
+      "doc": "Advertiser eligible to update order lines",
+      "default": null
+    },
+    {
+      "name": "billto_infos",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.SSIOAccountItem"
+      }],
+      "doc": "An array of Salesforce account information that includes address, io terms, etc.",
+      "default": null
+    },
+    {
+      "name": "currency",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "pmp_names",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.SSIOAccountPMPName"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "error",
+      "type": ["null", "string"],
+      "doc": "Error indicator from Salesforce which could be \"No Error\"",
+      "default": null
+    }
+  ]
+
+}

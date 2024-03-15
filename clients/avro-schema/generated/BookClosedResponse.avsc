@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Creation fields",
+  "name": "BookClosedResponse",
+  "fields": [
+    {
+      "name": "conversion_metrics_ready",
+      "type": ["null", "boolean"],
+      "doc": "Are conversion metrics ready?",
+      "default": null
+    },
+    {
+      "name": "non_conversion_metrics_ready",
+      "type": ["null", "boolean"],
+      "doc": "Are non-conversion metrics ready?",
+      "default": null
+    }
+  ]
+
+}

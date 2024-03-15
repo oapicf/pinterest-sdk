@@ -1,0 +1,84 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomerList",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Associated ad account ID.",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "double"],
+      "doc": "Creation time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Customer list ID.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Customer list name.",
+      "default": null
+    },
+    {
+      "name": "num_batches",
+      "type": ["null", "double"],
+      "doc": "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.",
+      "default": null
+    },
+    {
+      "name": "num_removed_user_records",
+      "type": ["null", "double"],
+      "doc": "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.",
+      "default": null
+    },
+    {
+      "name": "num_uploaded_user_records",
+      "type": ["null", "double"],
+      "doc": "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CustomerList_status",
+        "symbols": [
+          "PROCESSING",
+          "READY",
+          "TOO_SMALL",
+          "UPLOADING"
+        ]
+      }],
+      "doc": "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "Always \"customerlist\".",
+      "default": null
+    },
+    {
+      "name": "updated_time",
+      "type": ["null", "double"],
+      "doc": "Last update time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", "model.object"],
+      "doc": "Customer list errors",
+      "default": null
+    }
+  ]
+
+}

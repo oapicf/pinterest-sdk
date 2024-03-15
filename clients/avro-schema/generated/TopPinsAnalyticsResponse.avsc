@@ -1,0 +1,40 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TopPinsAnalyticsResponse",
+  "fields": [
+    {
+      "name": "date_availability",
+      "type": ["null", "model.TopPinsAnalyticsResponseDateAvailability"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "pins",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.TopPinsAnalyticsResponsePinsInner"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "sort_by",
+      "type": ["null", {
+        "type": "enum",
+        "name": "TopPinsAnalyticsResponse_sortUnderscoreby",
+        "symbols": [
+          "ENGAGEMENT",
+          "SAVE",
+          "IMPRESSION",
+          "OUTBOUND_CLICK",
+          "PIN_CLICK"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

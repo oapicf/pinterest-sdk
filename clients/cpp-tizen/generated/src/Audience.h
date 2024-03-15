@@ -67,11 +67,11 @@ public:
 	/*! \brief Set Audience name.
 	 */
 	void setName(std::string  name);
-	/*! \brief Get <a href=\"/docs/redoc/#section/Pinner-(audience)-list-type\">Audience type</a>
+	/*! \brief Get <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
 	 */
 	std::string getAudienceType();
 
-	/*! \brief Set <a href=\"/docs/redoc/#section/Pinner-(audience)-list-type\">Audience type</a>
+	/*! \brief Set <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
 	 */
 	void setAudienceType(std::string  audience_type);
 	/*! \brief Get Audience description.
@@ -95,11 +95,11 @@ public:
 	/*! \brief Set Audience size.
 	 */
 	void setSize(int  size);
-	/*! \brief Get Audience status. TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
+	/*! \brief Get Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
 	 */
 	std::string getStatus();
 
-	/*! \brief Set Audience status. TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
+	/*! \brief Set Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
 	 */
 	void setStatus(std::string  status);
 	/*! \brief Get Always \"audience\".

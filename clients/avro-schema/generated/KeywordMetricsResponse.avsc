@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "KeywordMetricsResponse",
+  "fields": [
+    {
+      "name": "keyword",
+      "type": ["null", "string"],
+      "doc": "Keyword name, e.g., \"keyword\":\"fashion outfits\"",
+      "default": null
+    },
+    {
+      "name": "metrics",
+      "type": ["null", "model.KeywordMetrics"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

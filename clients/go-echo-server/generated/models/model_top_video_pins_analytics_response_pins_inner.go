@@ -1,0 +1,13 @@
+package models
+
+// TopVideoPinsAnalyticsResponsePinsInner - Array with metrics, status, and pin id for the requested metric
+type TopVideoPinsAnalyticsResponsePinsInner struct {
+
+	// The metric name and daily value for each requested metric
+	Metrics map[string]float32 `json:"metrics,omitempty"`
+
+	DataStatus map[string]DataStatus `json:"data_status,omitempty"`
+
+	// The pin id
+	PinId string `json:"pin_id,omitempty"`
+}

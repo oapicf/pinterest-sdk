@@ -1,0 +1,9 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The locale used within a feed for product descriptions.",
+  "name": "CatalogsFeedsCreateRequestDefaultLocale",
+  "fields": [
+  ]
+
+}

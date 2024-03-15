@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The relative date range of the template",
+  "name": "TemplateResponseDateRangeRelativeDateRange",
+  "fields": [
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "The date range type",
+      "default": null
+    },
+    {
+      "name": "start_days_in_past",
+      "type": ["null", "double"],
+      "doc": "The start date of the date range",
+      "default": null
+    },
+    {
+      "name": "end_days_in_past",
+      "type": ["null", "double"],
+      "doc": "The end date of the date range",
+      "default": null
+    }
+  ]
+
+}

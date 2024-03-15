@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "FollowUserRequest",
+  "fields": [
+    {
+      "name": "auto_follow",
+      "type": ["null", "boolean"],
+      "doc": "Whether this request comes as result of auto-follow after clicking on a link. Follow links can be used by partners on their site or in emails. Only selected partners can be followed this way. We verify that partner can be auto-followed.",
+      "default": null
+    }
+  ]
+
+}

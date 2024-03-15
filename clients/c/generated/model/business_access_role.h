@@ -1,0 +1,32 @@
+/*
+ * business_access_role.h
+ *
+ * Permission role for business access.
+ */
+
+#ifndef _business_access_role_H_
+#define _business_access_role_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct business_access_role_t business_access_role_t;
+
+
+// Enum  for business_access_role
+
+typedef enum { pinterest_rest_api_business_access_role__NULL = 0, pinterest_rest_api_business_access_role__OWNER, pinterest_rest_api_business_access_role__ADMIN, pinterest_rest_api_business_access_role__ANALYST, pinterest_rest_api_business_access_role__SOS_READER, pinterest_rest_api_business_access_role__FINANCE_MANAGER, pinterest_rest_api_business_access_role__AUDIENCE_MANAGER, pinterest_rest_api_business_access_role__CAMPAIGN_MANAGER, pinterest_rest_api_business_access_role__CATALOGS_MANAGER, pinterest_rest_api_business_access_role__RESTRICTED_OWNER, pinterest_rest_api_business_access_role__PROFILE_MANAGER, pinterest_rest_api_business_access_role__PROFILE_PUBLISHER, pinterest_rest_api_business_access_role__RESOURCE_PINNER_LIST_OWNER, pinterest_rest_api_business_access_role__RESOURCE_PINNER_LIST_READER, pinterest_rest_api_business_access_role__BIZ_PINNER_LIST_SHARER, pinterest_rest_api_business_access_role__RESOURCE_CONVERSION_TAGS_READER } pinterest_rest_api_business_access_role__e;
+
+char* business_access_role_business_access_role_ToString(pinterest_rest_api_business_access_role__e business_access_role);
+
+pinterest_rest_api_business_access_role__e business_access_role_business_access_role_FromString(char* business_access_role);
+
+//cJSON *business_access_role_business_access_role_convertToJSON(pinterest_rest_api_business_access_role__e business_access_role);
+
+//pinterest_rest_api_business_access_role__e business_access_role_business_access_role_parseFromJSON(cJSON *business_access_roleJSON);
+
+#endif /* _business_access_role_H_ */
+

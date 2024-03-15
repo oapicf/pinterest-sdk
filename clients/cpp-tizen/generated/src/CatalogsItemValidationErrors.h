@@ -83,6 +83,13 @@ public:
 	void setDESCRIPTIONMISSING(CatalogsItemValidationDetails  dESCRIPTION_MISSING);
 	/*! \brief Get 
 	 */
+	CatalogsItemValidationDetails getDUPLICATEPRODUCTS();
+
+	/*! \brief Set 
+	 */
+	void setDUPLICATEPRODUCTS(CatalogsItemValidationDetails  dUPLICATE_PRODUCTS);
+	/*! \brief Get 
+	 */
 	CatalogsItemValidationDetails getIMAGELINKINVALID();
 
 	/*! \brief Set 
@@ -207,6 +214,7 @@ private:
 	CatalogsItemValidationDetails aVAILABILITY_INVALID;
 	CatalogsItemValidationDetails bLOCKLISTED_IMAGE_SIGNATURE;
 	CatalogsItemValidationDetails dESCRIPTION_MISSING;
+	CatalogsItemValidationDetails dUPLICATE_PRODUCTS;
 	CatalogsItemValidationDetails iMAGE_LINK_INVALID;
 	CatalogsItemValidationDetails iMAGE_LINK_LENGTH_TOO_LONG;
 	CatalogsItemValidationDetails iMAGE_LINK_MISSING;

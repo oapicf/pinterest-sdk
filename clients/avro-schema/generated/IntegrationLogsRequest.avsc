@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Batch of logs sent from an integration application.",
+  "name": "IntegrationLogsRequest",
+  "fields": [
+    {
+      "name": "logs",
+      "type": {
+        "type": "array",
+        "items": "model.IntegrationLog"
+      },
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,7 +1,7 @@
 /*
  * CatalogsFeedCredentials.h
  *
- * Use this if your feed file requires username and password.
+ * This field is **OPTIONAL**. Use this if your feed file requires username and password.
  */
 
 #ifndef _CatalogsFeedCredentials_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Use this if your feed file requires username and password.
+/*! \brief This field is **OPTIONAL**. Use this if your feed file requires username and password.
  *
  *  \ingroup Models
  *

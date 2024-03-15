@@ -1,10 +1,12 @@
 const utils = require('../utils/utils');
 const BatchOperation = require('../models/BatchOperation');
 const CatalogsItemsCreateBatchRequest = require('../models/CatalogsItemsCreateBatchRequest');
+const CatalogsItemsDeleteBatchRequest = require('../models/CatalogsItemsDeleteBatchRequest');
 const CatalogsItemsDeleteDiscontinuedBatchRequest = require('../models/CatalogsItemsDeleteDiscontinuedBatchRequest');
 const CatalogsItemsUpdateBatchRequest = require('../models/CatalogsItemsUpdateBatchRequest');
+const CatalogsItemsUpsertBatchRequest = require('../models/CatalogsItemsUpsertBatchRequest');
 const Country = require('../models/Country');
-const ItemDeleteDiscontinuedBatchRecord = require('../models/ItemDeleteDiscontinuedBatchRecord');
+const ItemDeleteBatchRecord = require('../models/ItemDeleteBatchRecord');
 const Language = require('../models/Language');
 
 module.exports = {
@@ -26,7 +28,7 @@ module.exports = {
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
-                children: ItemDeleteDiscontinuedBatchRecord.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+                children: ItemDeleteBatchRecord.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
@@ -36,7 +38,7 @@ module.exports = {
             'country': bundle.inputData?.[`${keyPrefix}country`],
             'language': bundle.inputData?.[`${keyPrefix}language`],
             'operation': bundle.inputData?.[`${keyPrefix}operation`],
-            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, ItemDeleteDiscontinuedBatchRecord),
+            'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, ItemDeleteBatchRecord),
         }
     },
 }

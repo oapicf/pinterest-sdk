@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "OrderLineResponse",
+  "fields": [
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.OrderLineError"
+      }],
+      "doc": "Error list if update(s) fail.",
+      "default": null
+    },
+    {
+      "name": "order_line",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.OrderLine"
+      }],
+      "doc": "Order Line object array.",
+      "default": null
+    }
+  ]
+
+}

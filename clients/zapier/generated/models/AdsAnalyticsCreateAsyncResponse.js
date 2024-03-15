@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const BulkReportingJobStatus = require('../models/BulkReportingJobStatus');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -6,8 +7,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}report_status`,
-                label: `[${labelPrefix}report_status]`,
-                type: 'string',
+                ...BulkReportingJobStatus.fields(`${keyPrefix}report_status`, isInput),
             },
             {
                 key: `${keyPrefix}token`,

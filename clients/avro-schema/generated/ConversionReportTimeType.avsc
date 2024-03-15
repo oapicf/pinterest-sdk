@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Conversion report time type",
+  "name": "ConversionReportTimeType",
+  "symbols": [
+    "TIME_OF_AD_ACTION",
+    "TIME_OF_CONVERSION"
+  ]
+}

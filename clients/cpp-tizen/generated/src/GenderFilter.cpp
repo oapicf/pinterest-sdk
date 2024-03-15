@@ -23,7 +23,7 @@ GenderFilter::~GenderFilter()
 void
 GenderFilter::__init()
 {
-	//gENDER = new CatalogsProductGroupMultipleStringCriteria();
+	//gENDER = new CatalogsProductGroupMultipleGenderCriteria();
 }
 
 void
@@ -47,11 +47,11 @@ GenderFilter::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&gENDER, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupMultipleGenderCriteria")) {
+			jsonToValue(&gENDER, node, "CatalogsProductGroupMultipleGenderCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&gENDER);
+			CatalogsProductGroupMultipleGenderCriteria* obj = static_cast<CatalogsProductGroupMultipleGenderCriteria*> (&gENDER);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -68,13 +68,13 @@ GenderFilter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getGENDER();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupMultipleGenderCriteria")) {
+		CatalogsProductGroupMultipleGenderCriteria obj = getGENDER();
+		node = converttoJson(&obj, "CatalogsProductGroupMultipleGenderCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getGENDER());
+		CatalogsProductGroupMultipleGenderCriteria obj = static_cast<CatalogsProductGroupMultipleGenderCriteria> (getGENDER());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -90,14 +90,14 @@ GenderFilter::toJson()
 	return ret;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupMultipleGenderCriteria
 GenderFilter::getGENDER()
 {
 	return gENDER;
 }
 
 void
-GenderFilter::setGENDER(CatalogsProductGroupMultipleStringCriteria  gENDER)
+GenderFilter::setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER)
 {
 	this->gENDER = gENDER;
 }

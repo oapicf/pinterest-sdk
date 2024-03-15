@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>OpenAPI.Tests</AssemblyName>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.*" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.2.*" />
+    <PackageReference Include="xunit" Version="2.4.*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.*" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenAPI\src\OpenAPI.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="TestHelper.fs"/>
+    <Compile Include="AdAccountsApiTestsHelper.fs" />
+    <Compile Include="AdAccountsApiTests.fs" />
+    <Compile Include="AdGroupsApiTestsHelper.fs" />
+    <Compile Include="AdGroupsApiTests.fs" />
+    <Compile Include="AdsApiTestsHelper.fs" />
+    <Compile Include="AdsApiTests.fs" />
+    <Compile Include="AudienceInsightsApiTestsHelper.fs" />
+    <Compile Include="AudienceInsightsApiTests.fs" />
+    <Compile Include="AudiencesApiTestsHelper.fs" />
+    <Compile Include="AudiencesApiTests.fs" />
+    <Compile Include="BillingApiTestsHelper.fs" />
+    <Compile Include="BillingApiTests.fs" />
+    <Compile Include="BoardsApiTestsHelper.fs" />
+    <Compile Include="BoardsApiTests.fs" />
+    <Compile Include="BulkApiTestsHelper.fs" />
+    <Compile Include="BulkApiTests.fs" />
+    <Compile Include="CampaignsApiTestsHelper.fs" />
+    <Compile Include="CampaignsApiTests.fs" />
+    <Compile Include="CatalogsApiTestsHelper.fs" />
+    <Compile Include="CatalogsApiTests.fs" />
+    <Compile Include="ConversionEventsApiTestsHelper.fs" />
+    <Compile Include="ConversionEventsApiTests.fs" />
+    <Compile Include="ConversionTagsApiTestsHelper.fs" />
+    <Compile Include="ConversionTagsApiTests.fs" />
+    <Compile Include="CustomerListsApiTestsHelper.fs" />
+    <Compile Include="CustomerListsApiTests.fs" />
+    <Compile Include="IntegrationsApiTestsHelper.fs" />
+    <Compile Include="IntegrationsApiTests.fs" />
+    <Compile Include="KeywordsApiTestsHelper.fs" />
+    <Compile Include="KeywordsApiTests.fs" />
+    <Compile Include="LeadAdsApiTestsHelper.fs" />
+    <Compile Include="LeadAdsApiTests.fs" />
+    <Compile Include="LeadFormsApiTestsHelper.fs" />
+    <Compile Include="LeadFormsApiTests.fs" />
+    <Compile Include="MediaApiTestsHelper.fs" />
+    <Compile Include="MediaApiTests.fs" />
+    <Compile Include="OauthApiTestsHelper.fs" />
+    <Compile Include="OauthApiTests.fs" />
+    <Compile Include="OrderLinesApiTestsHelper.fs" />
+    <Compile Include="OrderLinesApiTests.fs" />
+    <Compile Include="PinsApiTestsHelper.fs" />
+    <Compile Include="PinsApiTests.fs" />
+    <Compile Include="ProductGroupPromotionsApiTestsHelper.fs" />
+    <Compile Include="ProductGroupPromotionsApiTests.fs" />
+    <Compile Include="ProductGroupsApiTestsHelper.fs" />
+    <Compile Include="ProductGroupsApiTests.fs" />
+    <Compile Include="ResourcesApiTestsHelper.fs" />
+    <Compile Include="ResourcesApiTests.fs" />
+    <Compile Include="SearchApiTestsHelper.fs" />
+    <Compile Include="SearchApiTests.fs" />
+    <Compile Include="TermsApiTestsHelper.fs" />
+    <Compile Include="TermsApiTests.fs" />
+    <Compile Include="TermsOfServiceApiTestsHelper.fs" />
+    <Compile Include="TermsOfServiceApiTests.fs" />
+    <Compile Include="UserAccountApiTestsHelper.fs" />
+    <Compile Include="UserAccountApiTests.fs" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,60 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin fields for updates",
+  "name": "PinUpdate",
+  "fields": [
+    {
+      "name": "alt_text",
+      "type": ["null", "string"],
+      "doc": "Pin's alternative text.",
+      "default": null
+    },
+    {
+      "name": "board_id",
+      "type": ["null", "string"],
+      "doc": "The id of the board to move the Pin onto.",
+      "default": null
+    },
+    {
+      "name": "board_section_id",
+      "type": ["null", "string"],
+      "doc": "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Pin description - 800 characters maximum.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "URL viewer is taken to when they click pin.",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "The native pin title that creators explicitly prefer to display.",
+      "default": null
+    },
+    {
+      "name": "carousel_slots",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.PinUpdateCarouselSlotsInner"
+      }],
+      "doc": "Carousel Pin slots data.",
+      "default": null
+    },
+    {
+      "name": "note",
+      "type": ["null", "string"],
+      "doc": "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.",
+      "default": null
+    }
+  ]
+
+}

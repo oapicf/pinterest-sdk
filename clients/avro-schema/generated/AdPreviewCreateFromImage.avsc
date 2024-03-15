@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdPreviewCreateFromImage",
+  "fields": [
+    {
+      "name": "image_url",
+      "type": "string",
+      "doc": "Image URL."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "doc": "Title displayed below ad."
+    }
+  ]
+
+}

@@ -151,18 +151,18 @@ public:
 	/*! \brief Set List of values for filtering
 	 */
 	void setAdGroupStatuses(std::list <AdGroupSummaryStatus> ad_group_statuses);
-	/*! \brief Get List of ad ids
+	/*! \brief Get List of ad ids [This parameter is no supported for Product Item Level Reports]
 	 */
 	std::list<std::string> getAdIds();
 
-	/*! \brief Set List of ad ids
+	/*! \brief Set List of ad ids [This parameter is no supported for Product Item Level Reports]
 	 */
 	void setAdIds(std::list <std::string> ad_ids);
-	/*! \brief Get List of values for filtering
+	/*! \brief Get List of values for filtering [This parameter is not supported for Product Item Level Reports]
 	 */
 	std::list<PinPromotionSummaryStatus> getAdStatuses();
 
-	/*! \brief Set List of values for filtering
+	/*! \brief Set List of values for filtering [This parameter is not supported for Product Item Level Reports]
 	 */
 	void setAdStatuses(std::list <PinPromotionSummaryStatus> ad_statuses);
 	/*! \brief Get List of product group ids
@@ -186,11 +186,11 @@ public:
 	/*! \brief Set List of product item ids
 	 */
 	void setProductItemIds(std::list <std::string> product_item_ids);
-	/*! \brief Get List of targeting types
+	/*! \brief Get List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
 	 */
 	std::list<AdsAnalyticsTargetingType> getTargetingTypes();
 
-	/*! \brief Set List of targeting types
+	/*! \brief Set List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
 	 */
 	void setTargetingTypes(std::list <AdsAnalyticsTargetingType> targeting_types);
 	/*! \brief Get List of metrics filters
@@ -200,11 +200,11 @@ public:
 	/*! \brief Set List of metrics filters
 	 */
 	void setMetricsFilters(std::list <AdsAnalyticsMetricsFilter> metrics_filters);
-	/*! \brief Get Metric and entity columns
+	/*! \brief Get Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
 	 */
 	std::list<ReportingColumnAsync> getColumns();
 
-	/*! \brief Set Metric and entity columns
+	/*! \brief Set Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
 	 */
 	void setColumns(std::list <ReportingColumnAsync> columns);
 	/*! \brief Get Level of the report
@@ -214,11 +214,11 @@ public:
 	/*! \brief Set Level of the report
 	 */
 	void setLevel(MetricsReportingLevel  level);
-	/*! \brief Get Specification for formatting report data
+	/*! \brief Get Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
 	 */
 	DataOutputFormat getReportFormat();
 
-	/*! \brief Set Specification for formatting report data
+	/*! \brief Set Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
 	 */
 	void setReportFormat(DataOutputFormat  report_format);
 

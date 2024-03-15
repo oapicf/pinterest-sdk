@@ -52,9 +52,17 @@ public:
 	/*! \brief Set Public username for the user account
 	 */
 	void setUsername(std::string  username);
+	/*! \brief Get The owning account's user ID.
+	 */
+	std::string getId();
+
+	/*! \brief Set The owning account's user ID.
+	 */
+	void setId(std::string  id);
 
 private:
 	std::string username;
+	std::string id;
 	void __init();
 	void __cleanup();
 

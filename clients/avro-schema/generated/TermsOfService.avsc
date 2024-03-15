@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TermsOfService",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "The ID of the terms of service",
+      "default": null
+    },
+    {
+      "name": "html",
+      "type": ["null", "string"],
+      "doc": "The terms of service content",
+      "default": null
+    },
+    {
+      "name": "has_accepted",
+      "type": ["null", "boolean"],
+      "doc": "Whether the ad account has accepted terms of service.",
+      "default": null
+    },
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "The ID of the ad account.",
+      "default": null
+    }
+  ]
+
+}

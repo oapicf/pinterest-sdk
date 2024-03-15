@@ -23,6 +23,8 @@ CatalogsFeedValidationWarnings::~CatalogsFeedValidationWarnings()
 void
 CatalogsFeedValidationWarnings::__init()
 {
+	//aD_LINK_FORMAT_WARNING = int(0);
+	//aD_LINK_SAME_AS_LINK = int(0);
 	//tITLE_LENGTH_TOO_LONG = int(0);
 	//dESCRIPTION_LENGTH_TOO_LONG = int(0);
 	//gENDER_INVALID = int(0);
@@ -30,13 +32,12 @@ CatalogsFeedValidationWarnings::__init()
 	//sIZE_TYPE_INVALID = int(0);
 	//sIZE_SYSTEM_INVALID = int(0);
 	//lINK_FORMAT_WARNING = int(0);
-	//dUPLICATE_PRODUCTS = int(0);
 	//sALES_PRICE_INVALID = int(0);
 	//pRODUCT_CATEGORY_DEPTH_WARNING = int(0);
+	//aDWORDS_FORMAT_WARNING = int(0);
 	//aDWORDS_SAME_AS_LINK = int(0);
 	//dUPLICATE_HEADERS = int(0);
 	//fETCH_SAME_SIGNATURE = int(0);
-	//aDWORDS_FORMAT_WARNING = int(0);
 	//aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = int(0);
 	//aDDITIONAL_IMAGE_LINK_WARNING = int(0);
 	//iMAGE_LINK_WARNING = int(0);
@@ -61,11 +62,6 @@ CatalogsFeedValidationWarnings::__init()
 	//oPTIONAL_CONDITION_INVALID = int(0);
 	//iOS_DEEP_LINK_INVALID = int(0);
 	//aNDROID_DEEP_LINK_INVALID = int(0);
-	//aVAILABILITY_NORMALIZED = int(0);
-	//cONDITION_NORMALIZED = int(0);
-	//gENDER_NORMALIZED = int(0);
-	//sIZE_TYPE_NORMALIZED = int(0);
-	//aGE_GROUP_NORMALIZED = int(0);
 	//uTM_SOURCE_AUTO_CORRECTED = int(0);
 	//cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = int(0);
 	//mIN_AD_PRICE_INVALID = int(0);
@@ -81,6 +77,16 @@ CatalogsFeedValidationWarnings::__init()
 void
 CatalogsFeedValidationWarnings::__cleanup()
 {
+	//if(aD_LINK_FORMAT_WARNING != NULL) {
+	//
+	//delete aD_LINK_FORMAT_WARNING;
+	//aD_LINK_FORMAT_WARNING = NULL;
+	//}
+	//if(aD_LINK_SAME_AS_LINK != NULL) {
+	//
+	//delete aD_LINK_SAME_AS_LINK;
+	//aD_LINK_SAME_AS_LINK = NULL;
+	//}
 	//if(tITLE_LENGTH_TOO_LONG != NULL) {
 	//
 	//delete tITLE_LENGTH_TOO_LONG;
@@ -116,11 +122,6 @@ CatalogsFeedValidationWarnings::__cleanup()
 	//delete lINK_FORMAT_WARNING;
 	//lINK_FORMAT_WARNING = NULL;
 	//}
-	//if(dUPLICATE_PRODUCTS != NULL) {
-	//
-	//delete dUPLICATE_PRODUCTS;
-	//dUPLICATE_PRODUCTS = NULL;
-	//}
 	//if(sALES_PRICE_INVALID != NULL) {
 	//
 	//delete sALES_PRICE_INVALID;
@@ -130,6 +131,11 @@ CatalogsFeedValidationWarnings::__cleanup()
 	//
 	//delete pRODUCT_CATEGORY_DEPTH_WARNING;
 	//pRODUCT_CATEGORY_DEPTH_WARNING = NULL;
+	//}
+	//if(aDWORDS_FORMAT_WARNING != NULL) {
+	//
+	//delete aDWORDS_FORMAT_WARNING;
+	//aDWORDS_FORMAT_WARNING = NULL;
 	//}
 	//if(aDWORDS_SAME_AS_LINK != NULL) {
 	//
@@ -145,11 +151,6 @@ CatalogsFeedValidationWarnings::__cleanup()
 	//
 	//delete fETCH_SAME_SIGNATURE;
 	//fETCH_SAME_SIGNATURE = NULL;
-	//}
-	//if(aDWORDS_FORMAT_WARNING != NULL) {
-	//
-	//delete aDWORDS_FORMAT_WARNING;
-	//aDWORDS_FORMAT_WARNING = NULL;
 	//}
 	//if(aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG != NULL) {
 	//
@@ -271,31 +272,6 @@ CatalogsFeedValidationWarnings::__cleanup()
 	//delete aNDROID_DEEP_LINK_INVALID;
 	//aNDROID_DEEP_LINK_INVALID = NULL;
 	//}
-	//if(aVAILABILITY_NORMALIZED != NULL) {
-	//
-	//delete aVAILABILITY_NORMALIZED;
-	//aVAILABILITY_NORMALIZED = NULL;
-	//}
-	//if(cONDITION_NORMALIZED != NULL) {
-	//
-	//delete cONDITION_NORMALIZED;
-	//cONDITION_NORMALIZED = NULL;
-	//}
-	//if(gENDER_NORMALIZED != NULL) {
-	//
-	//delete gENDER_NORMALIZED;
-	//gENDER_NORMALIZED = NULL;
-	//}
-	//if(sIZE_TYPE_NORMALIZED != NULL) {
-	//
-	//delete sIZE_TYPE_NORMALIZED;
-	//sIZE_TYPE_NORMALIZED = NULL;
-	//}
-	//if(aGE_GROUP_NORMALIZED != NULL) {
-	//
-	//delete aGE_GROUP_NORMALIZED;
-	//aGE_GROUP_NORMALIZED = NULL;
-	//}
 	//if(uTM_SOURCE_AUTO_CORRECTED != NULL) {
 	//
 	//delete uTM_SOURCE_AUTO_CORRECTED;
@@ -354,6 +330,28 @@ CatalogsFeedValidationWarnings::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *aD_LINK_FORMAT_WARNINGKey = "AD_LINK_FORMAT_WARNING";
+	node = json_object_get_member(pJsonObject, aD_LINK_FORMAT_WARNINGKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&aD_LINK_FORMAT_WARNING, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *aD_LINK_SAME_AS_LINKKey = "AD_LINK_SAME_AS_LINK";
+	node = json_object_get_member(pJsonObject, aD_LINK_SAME_AS_LINKKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&aD_LINK_SAME_AS_LINK, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *tITLE_LENGTH_TOO_LONGKey = "TITLE_LENGTH_TOO_LONG";
 	node = json_object_get_member(pJsonObject, tITLE_LENGTH_TOO_LONGKey);
 	if (node !=NULL) {
@@ -431,17 +429,6 @@ CatalogsFeedValidationWarnings::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
-	node = json_object_get_member(pJsonObject, dUPLICATE_PRODUCTSKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&dUPLICATE_PRODUCTS, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *sALES_PRICE_INVALIDKey = "SALES_PRICE_INVALID";
 	node = json_object_get_member(pJsonObject, sALES_PRICE_INVALIDKey);
 	if (node !=NULL) {
@@ -460,6 +447,17 @@ CatalogsFeedValidationWarnings::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&pRODUCT_CATEGORY_DEPTH_WARNING, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *aDWORDS_FORMAT_WARNINGKey = "ADWORDS_FORMAT_WARNING";
+	node = json_object_get_member(pJsonObject, aDWORDS_FORMAT_WARNINGKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&aDWORDS_FORMAT_WARNING, node, "int", "");
 		} else {
 			
 		}
@@ -493,17 +491,6 @@ CatalogsFeedValidationWarnings::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&fETCH_SAME_SIGNATURE, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *aDWORDS_FORMAT_WARNINGKey = "ADWORDS_FORMAT_WARNING";
-	node = json_object_get_member(pJsonObject, aDWORDS_FORMAT_WARNINGKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&aDWORDS_FORMAT_WARNING, node, "int", "");
 		} else {
 			
 		}
@@ -772,61 +759,6 @@ CatalogsFeedValidationWarnings::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *aVAILABILITY_NORMALIZEDKey = "AVAILABILITY_NORMALIZED";
-	node = json_object_get_member(pJsonObject, aVAILABILITY_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&aVAILABILITY_NORMALIZED, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *cONDITION_NORMALIZEDKey = "CONDITION_NORMALIZED";
-	node = json_object_get_member(pJsonObject, cONDITION_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&cONDITION_NORMALIZED, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *gENDER_NORMALIZEDKey = "GENDER_NORMALIZED";
-	node = json_object_get_member(pJsonObject, gENDER_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&gENDER_NORMALIZED, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *sIZE_TYPE_NORMALIZEDKey = "SIZE_TYPE_NORMALIZED";
-	node = json_object_get_member(pJsonObject, sIZE_TYPE_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&sIZE_TYPE_NORMALIZED, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *aGE_GROUP_NORMALIZEDKey = "AGE_GROUP_NORMALIZED";
-	node = json_object_get_member(pJsonObject, aGE_GROUP_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&aGE_GROUP_NORMALIZED, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *uTM_SOURCE_AUTO_CORRECTEDKey = "UTM_SOURCE_AUTO_CORRECTED";
 	node = json_object_get_member(pJsonObject, uTM_SOURCE_AUTO_CORRECTEDKey);
 	if (node !=NULL) {
@@ -950,6 +882,24 @@ CatalogsFeedValidationWarnings::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("int")) {
+		int obj = getADLINKFORMATWARNING();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *aD_LINK_FORMAT_WARNINGKey = "AD_LINK_FORMAT_WARNING";
+	json_object_set_member(pJsonObject, aD_LINK_FORMAT_WARNINGKey, node);
+	if (isprimitive("int")) {
+		int obj = getADLINKSAMEASLINK();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *aD_LINK_SAME_AS_LINKKey = "AD_LINK_SAME_AS_LINK";
+	json_object_set_member(pJsonObject, aD_LINK_SAME_AS_LINKKey, node);
+	if (isprimitive("int")) {
 		int obj = getTITLELENGTHTOOLONG();
 		node = converttoJson(&obj, "int", "");
 	}
@@ -1013,15 +963,6 @@ CatalogsFeedValidationWarnings::toJson()
 	const gchar *lINK_FORMAT_WARNINGKey = "LINK_FORMAT_WARNING";
 	json_object_set_member(pJsonObject, lINK_FORMAT_WARNINGKey, node);
 	if (isprimitive("int")) {
-		int obj = getDUPLICATEPRODUCTS();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
-	json_object_set_member(pJsonObject, dUPLICATE_PRODUCTSKey, node);
-	if (isprimitive("int")) {
 		int obj = getSALESPRICEINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
@@ -1039,6 +980,15 @@ CatalogsFeedValidationWarnings::toJson()
 	}
 	const gchar *pRODUCT_CATEGORY_DEPTH_WARNINGKey = "PRODUCT_CATEGORY_DEPTH_WARNING";
 	json_object_set_member(pJsonObject, pRODUCT_CATEGORY_DEPTH_WARNINGKey, node);
+	if (isprimitive("int")) {
+		int obj = getADWORDSFORMATWARNING();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *aDWORDS_FORMAT_WARNINGKey = "ADWORDS_FORMAT_WARNING";
+	json_object_set_member(pJsonObject, aDWORDS_FORMAT_WARNINGKey, node);
 	if (isprimitive("int")) {
 		int obj = getADWORDSSAMEASLINK();
 		node = converttoJson(&obj, "int", "");
@@ -1066,15 +1016,6 @@ CatalogsFeedValidationWarnings::toJson()
 	}
 	const gchar *fETCH_SAME_SIGNATUREKey = "FETCH_SAME_SIGNATURE";
 	json_object_set_member(pJsonObject, fETCH_SAME_SIGNATUREKey, node);
-	if (isprimitive("int")) {
-		int obj = getADWORDSFORMATWARNING();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *aDWORDS_FORMAT_WARNINGKey = "ADWORDS_FORMAT_WARNING";
-	json_object_set_member(pJsonObject, aDWORDS_FORMAT_WARNINGKey, node);
 	if (isprimitive("int")) {
 		int obj = getADDITIONALIMAGELINKLENGTHTOOLONG();
 		node = converttoJson(&obj, "int", "");
@@ -1292,51 +1233,6 @@ CatalogsFeedValidationWarnings::toJson()
 	const gchar *aNDROID_DEEP_LINK_INVALIDKey = "ANDROID_DEEP_LINK_INVALID";
 	json_object_set_member(pJsonObject, aNDROID_DEEP_LINK_INVALIDKey, node);
 	if (isprimitive("int")) {
-		int obj = getAVAILABILITYNORMALIZED();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *aVAILABILITY_NORMALIZEDKey = "AVAILABILITY_NORMALIZED";
-	json_object_set_member(pJsonObject, aVAILABILITY_NORMALIZEDKey, node);
-	if (isprimitive("int")) {
-		int obj = getCONDITIONNORMALIZED();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *cONDITION_NORMALIZEDKey = "CONDITION_NORMALIZED";
-	json_object_set_member(pJsonObject, cONDITION_NORMALIZEDKey, node);
-	if (isprimitive("int")) {
-		int obj = getGENDERNORMALIZED();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *gENDER_NORMALIZEDKey = "GENDER_NORMALIZED";
-	json_object_set_member(pJsonObject, gENDER_NORMALIZEDKey, node);
-	if (isprimitive("int")) {
-		int obj = getSIZETYPENORMALIZED();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *sIZE_TYPE_NORMALIZEDKey = "SIZE_TYPE_NORMALIZED";
-	json_object_set_member(pJsonObject, sIZE_TYPE_NORMALIZEDKey, node);
-	if (isprimitive("int")) {
-		int obj = getAGEGROUPNORMALIZED();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *aGE_GROUP_NORMALIZEDKey = "AGE_GROUP_NORMALIZED";
-	json_object_set_member(pJsonObject, aGE_GROUP_NORMALIZEDKey, node);
-	if (isprimitive("int")) {
 		int obj = getUTMSOURCEAUTOCORRECTED();
 		node = converttoJson(&obj, "int", "");
 	}
@@ -1435,6 +1331,30 @@ CatalogsFeedValidationWarnings::toJson()
 }
 
 int
+CatalogsFeedValidationWarnings::getADLINKFORMATWARNING()
+{
+	return aD_LINK_FORMAT_WARNING;
+}
+
+void
+CatalogsFeedValidationWarnings::setADLINKFORMATWARNING(int  aD_LINK_FORMAT_WARNING)
+{
+	this->aD_LINK_FORMAT_WARNING = aD_LINK_FORMAT_WARNING;
+}
+
+int
+CatalogsFeedValidationWarnings::getADLINKSAMEASLINK()
+{
+	return aD_LINK_SAME_AS_LINK;
+}
+
+void
+CatalogsFeedValidationWarnings::setADLINKSAMEASLINK(int  aD_LINK_SAME_AS_LINK)
+{
+	this->aD_LINK_SAME_AS_LINK = aD_LINK_SAME_AS_LINK;
+}
+
+int
 CatalogsFeedValidationWarnings::getTITLELENGTHTOOLONG()
 {
 	return tITLE_LENGTH_TOO_LONG;
@@ -1519,18 +1439,6 @@ CatalogsFeedValidationWarnings::setLINKFORMATWARNING(int  lINK_FORMAT_WARNING)
 }
 
 int
-CatalogsFeedValidationWarnings::getDUPLICATEPRODUCTS()
-{
-	return dUPLICATE_PRODUCTS;
-}
-
-void
-CatalogsFeedValidationWarnings::setDUPLICATEPRODUCTS(int  dUPLICATE_PRODUCTS)
-{
-	this->dUPLICATE_PRODUCTS = dUPLICATE_PRODUCTS;
-}
-
-int
 CatalogsFeedValidationWarnings::getSALESPRICEINVALID()
 {
 	return sALES_PRICE_INVALID;
@@ -1552,6 +1460,18 @@ void
 CatalogsFeedValidationWarnings::setPRODUCTCATEGORYDEPTHWARNING(int  pRODUCT_CATEGORY_DEPTH_WARNING)
 {
 	this->pRODUCT_CATEGORY_DEPTH_WARNING = pRODUCT_CATEGORY_DEPTH_WARNING;
+}
+
+int
+CatalogsFeedValidationWarnings::getADWORDSFORMATWARNING()
+{
+	return aDWORDS_FORMAT_WARNING;
+}
+
+void
+CatalogsFeedValidationWarnings::setADWORDSFORMATWARNING(int  aDWORDS_FORMAT_WARNING)
+{
+	this->aDWORDS_FORMAT_WARNING = aDWORDS_FORMAT_WARNING;
 }
 
 int
@@ -1588,18 +1508,6 @@ void
 CatalogsFeedValidationWarnings::setFETCHSAMESIGNATURE(int  fETCH_SAME_SIGNATURE)
 {
 	this->fETCH_SAME_SIGNATURE = fETCH_SAME_SIGNATURE;
-}
-
-int
-CatalogsFeedValidationWarnings::getADWORDSFORMATWARNING()
-{
-	return aDWORDS_FORMAT_WARNING;
-}
-
-void
-CatalogsFeedValidationWarnings::setADWORDSFORMATWARNING(int  aDWORDS_FORMAT_WARNING)
-{
-	this->aDWORDS_FORMAT_WARNING = aDWORDS_FORMAT_WARNING;
 }
 
 int
@@ -1888,66 +1796,6 @@ void
 CatalogsFeedValidationWarnings::setANDROIDDEEPLINKINVALID(int  aNDROID_DEEP_LINK_INVALID)
 {
 	this->aNDROID_DEEP_LINK_INVALID = aNDROID_DEEP_LINK_INVALID;
-}
-
-int
-CatalogsFeedValidationWarnings::getAVAILABILITYNORMALIZED()
-{
-	return aVAILABILITY_NORMALIZED;
-}
-
-void
-CatalogsFeedValidationWarnings::setAVAILABILITYNORMALIZED(int  aVAILABILITY_NORMALIZED)
-{
-	this->aVAILABILITY_NORMALIZED = aVAILABILITY_NORMALIZED;
-}
-
-int
-CatalogsFeedValidationWarnings::getCONDITIONNORMALIZED()
-{
-	return cONDITION_NORMALIZED;
-}
-
-void
-CatalogsFeedValidationWarnings::setCONDITIONNORMALIZED(int  cONDITION_NORMALIZED)
-{
-	this->cONDITION_NORMALIZED = cONDITION_NORMALIZED;
-}
-
-int
-CatalogsFeedValidationWarnings::getGENDERNORMALIZED()
-{
-	return gENDER_NORMALIZED;
-}
-
-void
-CatalogsFeedValidationWarnings::setGENDERNORMALIZED(int  gENDER_NORMALIZED)
-{
-	this->gENDER_NORMALIZED = gENDER_NORMALIZED;
-}
-
-int
-CatalogsFeedValidationWarnings::getSIZETYPENORMALIZED()
-{
-	return sIZE_TYPE_NORMALIZED;
-}
-
-void
-CatalogsFeedValidationWarnings::setSIZETYPENORMALIZED(int  sIZE_TYPE_NORMALIZED)
-{
-	this->sIZE_TYPE_NORMALIZED = sIZE_TYPE_NORMALIZED;
-}
-
-int
-CatalogsFeedValidationWarnings::getAGEGROUPNORMALIZED()
-{
-	return aGE_GROUP_NORMALIZED;
-}
-
-void
-CatalogsFeedValidationWarnings::setAGEGROUPNORMALIZED(int  aGE_GROUP_NORMALIZED)
-{
-	this->aGE_GROUP_NORMALIZED = aGE_GROUP_NORMALIZED;
 }
 
 int

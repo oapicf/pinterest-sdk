@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Bulk file output format",
+  "name": "BulkOutputFormat",
+  "symbols": [
+    "CSV",
+    "JSON"
+  ]
+}

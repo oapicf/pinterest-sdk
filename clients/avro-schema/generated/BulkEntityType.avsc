@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Refers ads entity type",
+  "name": "BulkEntityType",
+  "symbols": [
+    "CAMPAIGN",
+    "AD_GROUP",
+    "PRODUCT_GROUP",
+    "AD",
+    "KEYWORD"
+  ]
+}

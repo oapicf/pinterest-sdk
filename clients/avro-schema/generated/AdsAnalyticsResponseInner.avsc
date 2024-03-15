@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdsAnalyticsResponseInner",
+  "fields": [
+    {
+      "name": "AD_ID",
+      "type": "string",
+      "doc": "The ID of the ad that this metrics belongs to."
+    },
+    {
+      "name": "DATE",
+      "type": ["null", "string"],
+      "doc": "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)",
+      "default": null
+    }
+  ]
+
+}

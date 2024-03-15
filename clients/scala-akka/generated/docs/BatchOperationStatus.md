@@ -1,0 +1,9 @@
+
+
+# BatchOperationStatus
+
+## Enum
+
+
+
+

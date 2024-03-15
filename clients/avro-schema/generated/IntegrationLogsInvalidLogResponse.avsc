@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Schema describing the response when a log has invalid fields.",
+  "name": "IntegrationLogsInvalidLogResponse",
+  "fields": [
+    {
+      "name": "rejected_logs",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.IntegrationLogsInvalidLogResponseRejectedLogsInner"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

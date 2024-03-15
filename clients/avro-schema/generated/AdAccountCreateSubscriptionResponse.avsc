@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountCreateSubscriptionResponse",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Subscription ID.",
+      "default": null
+    },
+    {
+      "name": "cryptographic_key",
+      "type": ["null", "string"],
+      "doc": "Base64 encoded key for client to decrypt lead data.",
+      "default": null
+    },
+    {
+      "name": "cryptographic_algorithm",
+      "type": ["null", "string"],
+      "doc": "Lead data encryption algorithm.",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "Subscription creation time. Unix timestamp in milliseconds.",
+      "default": null
+    }
+  ]
+
+}

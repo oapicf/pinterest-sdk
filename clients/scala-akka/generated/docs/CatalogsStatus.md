@@ -1,0 +1,9 @@
+
+
+# CatalogsStatus
+
+## Enum
+
+
+
+

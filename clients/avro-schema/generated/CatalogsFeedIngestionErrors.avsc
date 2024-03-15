@@ -1,0 +1,63 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsFeedIngestionErrors",
+  "fields": [
+    {
+      "name": "LINE_LEVEL_INTERNAL_ERROR",
+      "type": ["null", "int"],
+      "doc": "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.",
+      "default": null
+    },
+    {
+      "name": "LARGE_PRODUCT_COUNT_DECREASE",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsFeedIngestionErrors_LARGEUnderscorePRODUCTUnderscoreCOUNTUnderscoreDECREASE",
+        "symbols": [
+          "1"
+        ]
+      }],
+      "doc": "The product count has decreased by more than 99% compared to the last successful ingestion.",
+      "default": null
+    },
+    {
+      "name": "ACCOUNT_FLAGGED",
+      "type": ["null", "int"],
+      "doc": "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_LEVEL_INTERNAL_ERROR",
+      "type": ["null", "int"],
+      "doc": "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_FILE_NOT_ACCESSIBLE",
+      "type": ["null", "int"],
+      "doc": "Image files are unreadable. Please upload new files to continue.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_MALFORMED_URL",
+      "type": ["null", "int"],
+      "doc": "Image files are unreadable. Please check your link and upload new files to continue.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_FILE_NOT_FOUND",
+      "type": ["null", "int"],
+      "doc": "Image files are unreadable. Please upload new files to continue.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_INVALID_FILE",
+      "type": ["null", "int"],
+      "doc": "Image files are unreadable. Please upload new files to continue.",
+      "default": null
+    }
+  ]
+
+}

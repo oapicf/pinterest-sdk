@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object to discontinue catalogs items",
+  "name": "CatalogsItemsDeleteDiscontinuedBatchRequest",
+  "fields": [
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.Language",
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.BatchOperation",
+      "doc": ""
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.ItemDeleteDiscontinuedBatchRecord"
+      },
+      "doc": "Array with catalogs items"
+    }
+  ]
+
+}

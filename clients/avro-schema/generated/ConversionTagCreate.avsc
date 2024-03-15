@@ -1,0 +1,56 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ConversionTagCreate",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Conversion tag name."
+    },
+    {
+      "name": "aem_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
+      "default": null
+    },
+    {
+      "name": "md_frequency",
+      "type": ["null", "double"],
+      "doc": "Metadata ingestion frequency.",
+      "default": null
+    },
+    {
+      "name": "aem_fnln_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
+      "default": null
+    },
+    {
+      "name": "aem_ph_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
+      "default": null
+    },
+    {
+      "name": "aem_ge_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
+      "default": null
+    },
+    {
+      "name": "aem_db_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
+      "default": null
+    },
+    {
+      "name": "aem_loc_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
+      "default": null
+    }
+  ]
+
+}

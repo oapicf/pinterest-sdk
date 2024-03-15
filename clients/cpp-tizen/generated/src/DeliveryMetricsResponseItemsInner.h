@@ -66,11 +66,11 @@ public:
 	/*! \brief Set How the metric is defined.
 	 */
 	void setDefinition(std::string  definition);
-	/*! \brief Get Display name, when available. If unavaible it will not be returned.
+	/*! \brief Get Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
 	 */
 	std::string getDisplayName();
 
-	/*! \brief Set Display name, when available. If unavaible it will not be returned.
+	/*! \brief Set Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
 	 */
 	void setDisplayName(std::string  display_name);
 

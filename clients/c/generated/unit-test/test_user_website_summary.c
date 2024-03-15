@@ -1,0 +1,62 @@
+#ifndef user_website_summary_TEST
+#define user_website_summary_TEST
+
+// the following is to include only the main from the first c file
+#ifndef TEST_MAIN
+#define TEST_MAIN
+#define user_website_summary_MAIN
+#endif // TEST_MAIN
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include "../external/cJSON.h"
+
+#include "../model/user_website_summary.h"
+user_website_summary_t* instantiate_user_website_summary(int include_optional);
+
+
+
+user_website_summary_t* instantiate_user_website_summary(int include_optional) {
+  user_website_summary_t* user_website_summary = NULL;
+  if (include_optional) {
+    user_website_summary = user_website_summary_create(
+      "mysite.test",
+      "success",
+      "2022-12-14T21:03:01.602000"
+    );
+  } else {
+    user_website_summary = user_website_summary_create(
+      "mysite.test",
+      "success",
+      "2022-12-14T21:03:01.602000"
+    );
+  }
+
+  return user_website_summary;
+}
+
+
+#ifdef user_website_summary_MAIN
+
+void test_user_website_summary(int include_optional) {
+    user_website_summary_t* user_website_summary_1 = instantiate_user_website_summary(include_optional);
+
+	cJSON* jsonuser_website_summary_1 = user_website_summary_convertToJSON(user_website_summary_1);
+	printf("user_website_summary :\n%s\n", cJSON_Print(jsonuser_website_summary_1));
+	user_website_summary_t* user_website_summary_2 = user_website_summary_parseFromJSON(jsonuser_website_summary_1);
+	cJSON* jsonuser_website_summary_2 = user_website_summary_convertToJSON(user_website_summary_2);
+	printf("repeating user_website_summary:\n%s\n", cJSON_Print(jsonuser_website_summary_2));
+}
+
+int main() {
+  test_user_website_summary(1);
+  test_user_website_summary(0);
+
+  printf("Hello world \n");
+  return 0;
+}
+
+#endif // user_website_summary_MAIN
+#endif // user_website_summary_TEST

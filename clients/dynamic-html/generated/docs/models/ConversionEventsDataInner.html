@@ -1,0 +1,97 @@
+
+<h2>ConversionEventsDataInner</h2>
+<ul class="parameter">
+  <li class="param-required-true">eventUnderscorename : String
+    <br/>The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt; &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt; &lt;li&gt;&lt;code&gt;custom&lt;/code&gt; &lt;li&gt;&lt;code&gt;lead&lt;/code&gt; &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt; &lt;li&gt;&lt;code&gt;search&lt;/code&gt; &lt;li&gt;&lt;code&gt;signup&lt;/code&gt; &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt; &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">actionUnderscoresource : String
+    <br/>The source indicating where the conversion event occurred. &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt; &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt; &lt;li&gt;&lt;code&gt;web&lt;/code&gt; &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">eventUnderscoretime : Long
+    <br/>The time when the event happened. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">eventUnderscoreid : String
+    <br/>A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">eventUnderscoresourceUnderscoreurl : String
+    <br/>URL of the web conversion event.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">optUnderscoreout : Boolean
+    <br/>When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">partnerUnderscorename : String
+    <br/>The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \&quot;ss-partnername\&quot; lowercase. E.g ‘ss-shopify’
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">userUnderscoredata : ConversionEventsUserData
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">customUnderscoredata : ConversionEvents_data_inner_custom_data
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">appUnderscoreid : String
+    <br/>The app store app ID.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">appUnderscorename : String
+    <br/>Name of the app.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">appUnderscoreversion : String
+    <br/>Version of the app.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">deviceUnderscorebrand : String
+    <br/>Brand of the user device.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">deviceUnderscorecarrier : String
+    <br/>User device&#39;s mobile carrier.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">deviceUnderscoremodel : String
+    <br/>Model of the user device.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">deviceUnderscoretype : String
+    <br/>Type of the user device.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">osUnderscoreversion : String
+    <br/>Version of the device operating system.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">wifi : Boolean
+    <br/>Whether the event occurred when the user device was connected to wifi.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">language : String
+    <br/>Two-character ISO-639-1 language code indicating the user&#39;s language.
+  </li>
+</ul>

@@ -1,0 +1,38 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "GetMMMReportResponseData",
+  "fields": [
+    {
+      "name": "report_status",
+      "type": ["null", {
+        "type": "enum",
+        "name": "GetMMMReportResponseData_reportUnderscorestatus",
+        "symbols": [
+          "DOES_NOT_EXIST",
+          "FINISHED",
+          "IN_PROGRESS",
+          "EXPIRED",
+          "FAILED",
+          "CANCELLED"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "url",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "size",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

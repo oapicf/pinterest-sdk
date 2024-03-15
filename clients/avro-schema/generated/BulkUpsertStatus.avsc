@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "BulkUpsertStatus",
+  "symbols": [
+    "RUNNING",
+    "SUCCEEDED",
+    "FAILED"
+  ]
+}

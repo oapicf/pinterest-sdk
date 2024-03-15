@@ -2,11 +2,262 @@ const samples = require('../samples/UserAccountApi');
 const Account = require('../models/Account');
 const AnalyticsMetricsResponse = require('../models/AnalyticsMetricsResponse');
 const Error = require('../models/Error');
+const FollowUserRequest = require('../models/FollowUserRequest');
+const LinkedBusiness = require('../models/LinkedBusiness');
 const TopPinsAnalyticsResponse = require('../models/TopPinsAnalyticsResponse');
 const TopVideoPinsAnalyticsResponse = require('../models/TopVideoPinsAnalyticsResponse');
+const UserFollowingFeedType = require('../models/UserFollowingFeedType');
+const UserSummary = require('../models/UserSummary');
+const UserWebsiteSummary = require('../models/UserWebsiteSummary');
+const UserWebsiteVerificationCode = require('../models/UserWebsiteVerificationCode');
+const UserWebsiteVerifyRequest = require('../models/UserWebsiteVerifyRequest');
+const boards_user_follows_list_200_response = require('../models/boards_user_follows_list_200_response');
+const followers_list_200_response = require('../models/followers_list_200_response');
+const user_account_followed_interests_200_response = require('../models/user_account_followed_interests_200_response');
+const user_following_get_200_response = require('../models/user_following_get_200_response');
+const user_websites_get_200_response = require('../models/user_websites_get_200_response');
 const utils = require('../utils/utils');
 
 module.exports = {
+    boardsUserFollows/list: {
+        key: 'boardsUserFollows/list',
+        noun: 'user_account',
+        display: {
+            label: 'List following boards',
+            description: 'Get a list of the boards a user follows. The request returns a board summary object array.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    type: 'integer',
+                },
+                {
+                    key: 'explicit_following',
+                    label: 'Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.',
+                    type: 'boolean',
+                },
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                },
+            ],
+            outputFields: [
+                ...boards_user_follows_list_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/following/boards'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                        'explicit_following': bundle.inputData?.['explicit_following'],
+                        'ad_account_id': bundle.inputData?.['ad_account_id'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['boards_user_follows_list_200_responseSample']
+        }
+    },
+    followUser/update: {
+        key: 'followUser/update',
+        noun: 'user_account',
+        display: {
+            label: 'Follow user',
+            description: '&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'username',
+                    label: 'A valid username',
+                    type: 'string',
+                    required: true,
+                },
+                ...FollowUserRequest.fields(),
+            ],
+            outputFields: [
+                ...UserSummary.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/following/{username}'),
+                    method: 'POST',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                        ...FollowUserRequest.mapping(bundle),
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['UserSummarySample']
+        }
+    },
+    followers/list: {
+        key: 'followers/list',
+        noun: 'user_account',
+        display: {
+            label: 'List followers',
+            description: 'Get a list of your followers.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    type: 'integer',
+                },
+            ],
+            outputFields: [
+                ...followers_list_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/followers'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['followers_list_200_responseSample']
+        }
+    },
+    linkedBusinessAccounts/get: {
+        key: 'linkedBusinessAccounts/get',
+        noun: 'user_account',
+        display: {
+            label: 'List linked businesses',
+            description: 'Get a list of your linked business accounts.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+            ],
+            outputFields: [
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/businesses'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['LinkedBusinessSample']
+        }
+    },
+    unverifyWebsite/delete: {
+        key: 'unverifyWebsite/delete',
+        noun: 'user_account',
+        display: {
+            label: 'Unverify website',
+            description: 'Unverifu a website verified by the signed-in user.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'website',
+                    label: 'Website with path or domain only',
+                    type: 'string',
+                    required: true,
+                },
+            ],
+            outputFields: [
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/websites'),
+                    method: 'DELETE',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'website': bundle.inputData?.['website'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: { data: {} }
+        }
+    },
     userAccount/analytics: {
         key: 'userAccount/analytics',
         noun: 'user_account',
@@ -19,13 +270,13 @@ module.exports = {
             inputFields: [
                 {
                     key: 'start_date',
-                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'end_date',
-                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.',
                     type: 'string',
                     required: true,
                 },
@@ -45,6 +296,13 @@ module.exports = {
                     type: 'string',
                     choices: [
                         'ALL',
+                        'ORGANIC_IMAGE',
+                        'ORGANIC_PRODUCT',
+                        'ORGANIC_VIDEO',
+                        'ADS_STANDARD',
+                        'ADS_PRODUCT',
+                        'ADS_VIDEO',
+                        'ADS_IDEA',
                         'PRODUCT',
                         'REGULAR',
                         'VIDEO',
@@ -62,6 +320,26 @@ module.exports = {
                     ],
                 },
                 {
+                    key: 'content_type',
+                    label: 'Filter to paid or organic data. Default is all.',
+                    type: 'string',
+                    choices: [
+                        'ALL',
+                        'PAID',
+                        'ORGANIC',
+                    ],
+                },
+                {
+                    key: 'source',
+                    label: 'Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts',
+                    type: 'string',
+                    choices: [
+                        'ALL',
+                        'YOUR_PINS',
+                        'OTHER_PINS',
+                    ],
+                },
+                {
                     key: 'metric_types',
                     label: 'Metric types to get data for, default is all. ',
                     type: 'string',
@@ -74,6 +352,7 @@ module.exports = {
                         'NO_SPLIT',
                         'APP_TYPE',
                         'OWNED_CONTENT',
+                        'SOURCE',
                         'PIN_FORMAT',
                     ],
                 },
@@ -102,6 +381,8 @@ module.exports = {
                         'from_claimed_content': bundle.inputData?.['from_claimed_content'],
                         'pin_format': bundle.inputData?.['pin_format'],
                         'app_types': bundle.inputData?.['app_types'],
+                        'content_type': bundle.inputData?.['content_type'],
+                        'source': bundle.inputData?.['source'],
                         'metric_types': bundle.inputData?.['metric_types'],
                         'split_field': bundle.inputData?.['split_field'],
                         'ad_account_id': bundle.inputData?.['ad_account_id'],
@@ -130,13 +411,13 @@ module.exports = {
             inputFields: [
                 {
                     key: 'start_date',
-                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'end_date',
-                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.',
                     type: 'string',
                     required: true,
                 },
@@ -169,6 +450,13 @@ module.exports = {
                     type: 'string',
                     choices: [
                         'ALL',
+                        'ORGANIC_IMAGE',
+                        'ORGANIC_PRODUCT',
+                        'ORGANIC_VIDEO',
+                        'ADS_STANDARD',
+                        'ADS_PRODUCT',
+                        'ADS_VIDEO',
+                        'ADS_IDEA',
                         'PRODUCT',
                         'REGULAR',
                         'VIDEO',
@@ -183,6 +471,26 @@ module.exports = {
                         'MOBILE',
                         'TABLET',
                         'WEB',
+                    ],
+                },
+                {
+                    key: 'content_type',
+                    label: 'Filter to paid or organic data. Default is all.',
+                    type: 'string',
+                    choices: [
+                        'ALL',
+                        'PAID',
+                        'ORGANIC',
+                    ],
+                },
+                {
+                    key: 'source',
+                    label: 'Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts',
+                    type: 'string',
+                    choices: [
+                        'ALL',
+                        'YOUR_PINS',
+                        'OTHER_PINS',
                     ],
                 },
                 {
@@ -229,6 +537,8 @@ module.exports = {
                         'from_claimed_content': bundle.inputData?.['from_claimed_content'],
                         'pin_format': bundle.inputData?.['pin_format'],
                         'app_types': bundle.inputData?.['app_types'],
+                        'content_type': bundle.inputData?.['content_type'],
+                        'source': bundle.inputData?.['source'],
                         'metric_types': bundle.inputData?.['metric_types'],
                         'num_of_pins': bundle.inputData?.['num_of_pins'],
                         'created_in_last_n_days': bundle.inputData?.['created_in_last_n_days'],
@@ -258,13 +568,13 @@ module.exports = {
             inputFields: [
                 {
                     key: 'start_date',
-                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.',
                     type: 'string',
                     required: true,
                 },
                 {
                     key: 'end_date',
-                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD',
+                    label: 'Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.',
                     type: 'string',
                     required: true,
                 },
@@ -301,6 +611,13 @@ module.exports = {
                     type: 'string',
                     choices: [
                         'ALL',
+                        'ORGANIC_IMAGE',
+                        'ORGANIC_PRODUCT',
+                        'ORGANIC_VIDEO',
+                        'ADS_STANDARD',
+                        'ADS_PRODUCT',
+                        'ADS_VIDEO',
+                        'ADS_IDEA',
                         'PRODUCT',
                         'REGULAR',
                         'VIDEO',
@@ -315,6 +632,26 @@ module.exports = {
                         'MOBILE',
                         'TABLET',
                         'WEB',
+                    ],
+                },
+                {
+                    key: 'content_type',
+                    label: 'Filter to paid or organic data. Default is all.',
+                    type: 'string',
+                    choices: [
+                        'ALL',
+                        'PAID',
+                        'ORGANIC',
+                    ],
+                },
+                {
+                    key: 'source',
+                    label: 'Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts',
+                    type: 'string',
+                    choices: [
+                        'ALL',
+                        'YOUR_PINS',
+                        'OTHER_PINS',
                     ],
                 },
                 {
@@ -361,6 +698,8 @@ module.exports = {
                         'from_claimed_content': bundle.inputData?.['from_claimed_content'],
                         'pin_format': bundle.inputData?.['pin_format'],
                         'app_types': bundle.inputData?.['app_types'],
+                        'content_type': bundle.inputData?.['content_type'],
+                        'source': bundle.inputData?.['source'],
                         'metric_types': bundle.inputData?.['metric_types'],
                         'num_of_pins': bundle.inputData?.['num_of_pins'],
                         'created_in_last_n_days': bundle.inputData?.['created_in_last_n_days'],
@@ -376,6 +715,62 @@ module.exports = {
                 })
             },
             sample: samples['TopVideoPinsAnalyticsResponseSample']
+        }
+    },
+    userAccount/followedInterests: {
+        key: 'userAccount/followedInterests',
+        noun: 'user_account',
+        display: {
+            label: 'List following interests',
+            description: 'Get a list of a user&#39;s following interests in one place.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'username',
+                    label: 'A valid username',
+                    type: 'string',
+                    required: true,
+                },
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    type: 'integer',
+                },
+            ],
+            outputFields: [
+                ...user_account_followed_interests_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/users/{username}/interests/follow'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['user_account_followed_interests_200_responseSample']
         }
     },
     userAccount/get: {
@@ -420,6 +815,202 @@ module.exports = {
                 })
             },
             sample: samples['AccountSample']
+        }
+    },
+    userFollowing/get: {
+        key: 'userFollowing/get',
+        noun: 'user_account',
+        display: {
+            label: 'List following',
+            description: 'Get a list of who a certain user follows.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    type: 'integer',
+                },
+                {
+                    key: 'feed_type',
+                    label: 'Thrift param specifying what type of followees will be kept. Default to include all followees.',
+                    type: 'UserFollowingFeedType',
+                },
+                {
+                    key: 'explicit_following',
+                    label: 'Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.',
+                    type: 'boolean',
+                },
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                },
+            ],
+            outputFields: [
+                ...user_following_get_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/following'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                        'feed_type': bundle.inputData?.['feed_type'],
+                        'explicit_following': bundle.inputData?.['explicit_following'],
+                        'ad_account_id': bundle.inputData?.['ad_account_id'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['user_following_get_200_responseSample']
+        }
+    },
+    userWebsites/get: {
+        key: 'userWebsites/get',
+        noun: 'user_account',
+        display: {
+            label: 'Get user websites',
+            description: 'Get user websites, claimed or not',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'bookmark',
+                    label: 'Cursor used to fetch the next page of items',
+                    type: 'string',
+                },
+                {
+                    key: 'page_size',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    type: 'integer',
+                },
+            ],
+            outputFields: [
+                ...user_websites_get_200_response.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/websites'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                        'bookmark': bundle.inputData?.['bookmark'],
+                        'page_size': bundle.inputData?.['page_size'],
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['user_websites_get_200_responseSample']
+        }
+    },
+    verifyWebsite/update: {
+        key: 'verifyWebsite/update',
+        noun: 'user_account',
+        display: {
+            label: 'Verify website',
+            description: 'Verify a website as a signed-in user.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                ...UserWebsiteVerifyRequest.fields(),
+            ],
+            outputFields: [
+                ...UserWebsiteSummary.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/websites'),
+                    method: 'POST',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                        ...UserWebsiteVerifyRequest.mapping(bundle),
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['UserWebsiteSummarySample']
+        }
+    },
+    websiteVerification/get: {
+        key: 'websiteVerification/get',
+        noun: 'user_account',
+        display: {
+            label: 'Get user verification code for website claiming',
+            description: 'Get verification code for user to install on the website to claim it.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+            ],
+            outputFields: [
+                ...UserWebsiteVerificationCode.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/user_account/websites/verification'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['UserWebsiteVerificationCodeSample']
         }
     },
 }

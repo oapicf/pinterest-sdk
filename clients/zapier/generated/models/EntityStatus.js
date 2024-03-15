@@ -8,6 +8,8 @@ module.exports = {
                     'ACTIVE',
                     'PAUSED',
                     'ARCHIVED',
+                    'DRAFT',
+                    'DELETED_DRAFT',
                 ],
             }
         )

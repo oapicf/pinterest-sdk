@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PriceFilter",
+  "fields": [
+    {
+      "name": "PRICE",
+      "type": "model.CatalogsProductGroupPricingCurrencyCriteria",
+      "doc": ""
+    }
+  ]
+
+}

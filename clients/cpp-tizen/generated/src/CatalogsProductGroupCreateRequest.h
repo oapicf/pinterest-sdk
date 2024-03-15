@@ -9,8 +9,7 @@
 
 
 #include <string>
-#include "CatalogsProductGroupFiltersAllOfRequest.h"
-#include "Product_groups_create_request_feed_base_case.h"
+#include "CatalogsProductGroupFiltersRequest.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -70,11 +69,11 @@ public:
 	void setIsFeatured(bool  is_featured);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupFiltersAllOfRequest getFilters();
+	CatalogsProductGroupFiltersRequest getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFiltersAllOfRequest  filters);
+	void setFilters(CatalogsProductGroupFiltersRequest  filters);
 	/*! \brief Get Catalog Feed id pertaining to the catalog product group.
 	 */
 	std::string getFeedId();
@@ -87,7 +86,7 @@ private:
 	std::string name;
 	std::string description;
 	bool is_featured;
-	CatalogsProductGroupFiltersAllOfRequest filters;
+	CatalogsProductGroupFiltersRequest filters;
 	std::string feed_id;
 	void __init();
 	void __cleanup();

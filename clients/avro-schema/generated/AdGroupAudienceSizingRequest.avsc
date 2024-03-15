@@ -1,0 +1,64 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroupAudienceSizingRequest",
+  "fields": [
+    {
+      "name": "auto_targeting_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.",
+      "default": null
+    },
+    {
+      "name": "placement_group",
+      "type": ["null", "model.PlacementGroupType"],
+      "doc": "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.",
+      "default": null
+    },
+    {
+      "name": "creative_types",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AdGroupAudienceSizingRequest_creativeUnderscoretypes",
+        "symbols": [
+          "REGULAR",
+          "VIDEO",
+          "SHOPPING",
+          "CAROUSEL",
+          "MAX_VIDEO",
+          "SHOP_THE_PIN",
+          "COLLECTION",
+          "IDEA"
+        ]
+      }],
+      "doc": "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.",
+      "default": null
+    },
+    {
+      "name": "targeting_spec",
+      "type": ["null", "model.TargetingSpec"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "product_group_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.",
+      "default": null
+    },
+    {
+      "name": "keywords",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdGroupAudienceSizingRequestKeywordsInner"
+      }],
+      "doc": "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.",
+      "default": null
+    }
+  ]
+
+}

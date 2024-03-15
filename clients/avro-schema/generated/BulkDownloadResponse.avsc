@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BulkDownloadResponse",
+  "fields": [
+    {
+      "name": "request_id",
+      "type": ["null", "string"],
+      "doc": "ID of the bulk request.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Response for lead data test API.",
+  "name": "LeadFormTestResponse",
+  "fields": [
+    {
+      "name": "subscription_id",
+      "type": ["null", "string"],
+      "doc": "Subscription ID.",
+      "default": null
+    }
+  ]
+
+}

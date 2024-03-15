@@ -1,0 +1,10 @@
+# # Exception
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**code** | **int** | Exception error code. | [optional]
+**message** | **string** | Exception message. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -9,11 +9,10 @@
 #include "Error.h"
 #include "Granularity.h"
 #include "ProductGroupAnalyticsResponse_inner.h"
-#include "ProductGroupPromotion.h"
-#include "ProductGroupPromotionArrayElement.h"
 #include "ProductGroupPromotionCreateRequest.h"
+#include "ProductGroupPromotionResponse.h"
 #include "ProductGroupPromotionUpdateRequest.h"
-#include "ProductGroupPromotionUpdateResponseItem.h"
+#include "Product_group_promotions_list_200_response.h"
 #include <list>
 #include "Error.h"
 
@@ -33,35 +32,6 @@ public:
 	ProductGroupPromotionsManager();
 	virtual ~ProductGroupPromotionsManager();
 
-/*! \brief Get a product group promotion by id. *Synchronous*
- *
- * Get a product group promotion by id
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param productGroupPromotionId Unique identifier of a product group promotion *Required*
- * \param handler The callback function to be invoked on completion. *Required*
- * \param accessToken The Authorization token. *Required*
- * \param userData The user data to be passed to the callback function.
- */
-bool productGroupPromotionGetSync(char * accessToken,
-	std::string adAccountId, std::string productGroupPromotionId, 
-	void(* handler)(ProductGroupPromotion, Error, void* )
-	, void* userData);
-
-/*! \brief Get a product group promotion by id. *Asynchronous*
- *
- * Get a product group promotion by id
- * \param adAccountId Unique identifier of an ad account. *Required*
- * \param productGroupPromotionId Unique identifier of a product group promotion *Required*
- * \param handler The callback function to be invoked on completion. *Required*
- * \param accessToken The Authorization token. *Required*
- * \param userData The user data to be passed to the callback function.
- */
-bool productGroupPromotionGetAsync(char * accessToken,
-	std::string adAccountId, std::string productGroupPromotionId, 
-	void(* handler)(ProductGroupPromotion, Error, void* )
-	, void* userData);
-
-
 /*! \brief Create product group promotions. *Synchronous*
  *
  * Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a 'product group promotion.')
@@ -73,7 +43,7 @@ bool productGroupPromotionGetAsync(char * accessToken,
  */
 bool productGroupPromotionsCreateSync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<ProductGroupPromotionCreateRequest> productGroupPromotionCreateRequest, 
-	void(* handler)(std::list<ProductGroupPromotionArrayElement>, Error, void* )
+	void(* handler)(ProductGroupPromotionResponse, Error, void* )
 	, void* userData);
 
 /*! \brief Create product group promotions. *Asynchronous*
@@ -87,7 +57,75 @@ bool productGroupPromotionsCreateSync(char * accessToken,
  */
 bool productGroupPromotionsCreateAsync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<ProductGroupPromotionCreateRequest> productGroupPromotionCreateRequest, 
-	void(* handler)(std::list<ProductGroupPromotionArrayElement>, Error, void* )
+	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	, void* userData);
+
+
+/*! \brief Get a product group promotion by id. *Synchronous*
+ *
+ * Get a product group promotion by id
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param productGroupPromotionId Unique identifier of a product group promotion *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool productGroupPromotionsGetSync(char * accessToken,
+	std::string adAccountId, std::string productGroupPromotionId, 
+	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	, void* userData);
+
+/*! \brief Get a product group promotion by id. *Asynchronous*
+ *
+ * Get a product group promotion by id
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param productGroupPromotionId Unique identifier of a product group promotion *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool productGroupPromotionsGetAsync(char * accessToken,
+	std::string adAccountId, std::string productGroupPromotionId, 
+	void(* handler)(ProductGroupPromotionResponse, Error, void* )
+	, void* userData);
+
+
+/*! \brief Get product group promotions. *Synchronous*
+ *
+ * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param productGroupPromotionIds List of Product group promotion Ids.
+ * \param entityStatuses Entity status
+ * \param adGroupId Ad group Id.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool productGroupPromotionsListSync(char * accessToken,
+	std::string adAccountId, std::list<std::string> productGroupPromotionIds, std::list<std::string> entityStatuses, std::string adGroupId, int pageSize, std::string order, std::string bookmark, 
+	void(* handler)(Product_group_promotions_list_200_response, Error, void* )
+	, void* userData);
+
+/*! \brief Get product group promotions. *Asynchronous*
+ *
+ * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param productGroupPromotionIds List of Product group promotion Ids.
+ * \param entityStatuses Entity status
+ * \param adGroupId Ad group Id.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param bookmark Cursor used to fetch the next page of items
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool productGroupPromotionsListAsync(char * accessToken,
+	std::string adAccountId, std::list<std::string> productGroupPromotionIds, std::list<std::string> entityStatuses, std::string adGroupId, int pageSize, std::string order, std::string bookmark, 
+	void(* handler)(Product_group_promotions_list_200_response, Error, void* )
 	, void* userData);
 
 
@@ -102,7 +140,7 @@ bool productGroupPromotionsCreateAsync(char * accessToken,
  */
 bool productGroupPromotionsUpdateSync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<ProductGroupPromotionUpdateRequest> productGroupPromotionUpdateRequest, 
-	void(* handler)(std::list<ProductGroupPromotionUpdateResponseItem>, Error, void* )
+	void(* handler)(ProductGroupPromotionResponse, Error, void* )
 	, void* userData);
 
 /*! \brief Update product group promotions. *Asynchronous*
@@ -116,16 +154,16 @@ bool productGroupPromotionsUpdateSync(char * accessToken,
  */
 bool productGroupPromotionsUpdateAsync(char * accessToken,
 	std::string adAccountId, std::shared_ptr<ProductGroupPromotionUpdateRequest> productGroupPromotionUpdateRequest, 
-	void(* handler)(std::list<ProductGroupPromotionUpdateResponseItem>, Error, void* )
+	void(* handler)(ProductGroupPromotionResponse, Error, void* )
 	, void* userData);
 
 
 /*! \brief Get product group analytics. *Synchronous*
  *
- * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+ * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param startDate Metric report start date (UTC). Format: YYYY-MM-DD *Required*
- * \param endDate Metric report end date (UTC). Format: YYYY-MM-DD *Required*
+ * \param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. *Required*
+ * \param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. *Required*
  * \param productGroupIds List of Product group Ids to use to filter the results. *Required*
  * \param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned *Required*
  * \param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly *Required*
@@ -144,10 +182,10 @@ bool productGroupsAnalyticsSync(char * accessToken,
 
 /*! \brief Get product group analytics. *Asynchronous*
  *
- * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+ * Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param startDate Metric report start date (UTC). Format: YYYY-MM-DD *Required*
- * \param endDate Metric report end date (UTC). Format: YYYY-MM-DD *Required*
+ * \param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. *Required*
+ * \param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. *Required*
  * \param productGroupIds List of Product group Ids to use to filter the results. *Required*
  * \param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned *Required*
  * \param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly *Required*

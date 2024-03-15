@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **code** | [**Country**](Country.md) |  | [optional] [default to null] |
+| **code** | [**AdCountry**](AdCountry.md) |  | [optional] [default to null] |
 | **currency** | **String** | Country currency. | [optional] [default to null] |
 | **index** | **BigDecimal** | Country index | [optional] [default to null] |
 | **name** | **String** | Country name | [optional] [default to null] |

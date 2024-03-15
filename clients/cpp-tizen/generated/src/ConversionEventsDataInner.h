@@ -47,18 +47,18 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The type of the user event.
+	/*! \brief Get The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
 	 */
 	std::string getEventName();
 
-	/*! \brief Set The type of the user event.
+	/*! \brief Set The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
 	 */
 	void setEventName(std::string  event_name);
-	/*! \brief Get The source indicating where the conversion event occurred.
+	/*! \brief Get The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
 	 */
 	std::string getActionSource();
 
-	/*! \brief Set The source indicating where the conversion event occurred.
+	/*! \brief Set The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
 	 */
 	void setActionSource(std::string  action_source);
 	/*! \brief Get The time when the event happened. Unix timestamp in seconds.
@@ -68,11 +68,11 @@ public:
 	/*! \brief Set The time when the event happened. Unix timestamp in seconds.
 	 */
 	void setEventTime(long long  event_time);
-	/*! \brief Get A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking.
+	/*! \brief Get A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
 	 */
 	std::string getEventId();
 
-	/*! \brief Set A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking.
+	/*! \brief Set A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
 	 */
 	void setEventId(std::string  event_id);
 	/*! \brief Get URL of the web conversion event.
@@ -89,11 +89,11 @@ public:
 	/*! \brief Set When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
 	 */
 	void setOptOut(bool  opt_out);
-	/*! \brief Get The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. Only send this field if Pinterest has worked directly with you to define a value for partner_name.
+	/*! \brief Get The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
 	 */
 	std::string getPartnerName();
 
-	/*! \brief Set The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. Only send this field if Pinterest has worked directly with you to define a value for partner_name.
+	/*! \brief Set The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
 	 */
 	void setPartnerName(std::string  partner_name);
 	/*! \brief Get 

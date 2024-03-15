@@ -1,0 +1,44 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PinMediaSourceImagesBase64ItemsInner",
+  "fields": [
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Destination link for the image.",
+      "default": null
+    },
+    {
+      "name": "content_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSourceImagesBase64ItemsInner_contentUnderscoretype",
+        "symbols": [
+          "image/jpeg",
+          "image/png"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "data",
+      "type": "string",
+      "doc": "Image to upload as base64 string."
+    }
+  ]
+
+}

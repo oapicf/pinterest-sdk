@@ -36,7 +36,7 @@ CatalogsProductGroupFilterKeys::__init()
 	//cUSTOM_LABEL_3 = new CatalogsProductGroupMultipleStringCriteria();
 	//cUSTOM_LABEL_4 = new CatalogsProductGroupMultipleStringCriteria();
 	//iTEM_GROUP_ID = new CatalogsProductGroupMultipleStringCriteria();
-	//gENDER = new CatalogsProductGroupMultipleStringCriteria();
+	//gENDER = new CatalogsProductGroupMultipleGenderCriteria();
 	//pRODUCT_TYPE_4 = new CatalogsProductGroupMultipleStringListCriteria();
 	//pRODUCT_TYPE_3 = new CatalogsProductGroupMultipleStringListCriteria();
 	//pRODUCT_TYPE_2 = new CatalogsProductGroupMultipleStringListCriteria();
@@ -379,11 +379,11 @@ CatalogsProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&gENDER, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+		if (isprimitive("CatalogsProductGroupMultipleGenderCriteria")) {
+			jsonToValue(&gENDER, node, "CatalogsProductGroupMultipleGenderCriteria", "CatalogsProductGroupMultipleGenderCriteria");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&gENDER);
+			CatalogsProductGroupMultipleGenderCriteria* obj = static_cast<CatalogsProductGroupMultipleGenderCriteria*> (&gENDER);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -750,13 +750,13 @@ CatalogsProductGroupFilterKeys::toJson()
 	}
 	const gchar *iTEM_GROUP_IDKey = "ITEM_GROUP_ID";
 	json_object_set_member(pJsonObject, iTEM_GROUP_IDKey, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getGENDER();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupMultipleGenderCriteria")) {
+		CatalogsProductGroupMultipleGenderCriteria obj = getGENDER();
+		node = converttoJson(&obj, "CatalogsProductGroupMultipleGenderCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getGENDER());
+		CatalogsProductGroupMultipleGenderCriteria obj = static_cast<CatalogsProductGroupMultipleGenderCriteria> (getGENDER());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -1096,14 +1096,14 @@ CatalogsProductGroupFilterKeys::setITEMGROUPID(CatalogsProductGroupMultipleStrin
 	this->iTEM_GROUP_ID = iTEM_GROUP_ID;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupMultipleGenderCriteria
 CatalogsProductGroupFilterKeys::getGENDER()
 {
 	return gENDER;
 }
 
 void
-CatalogsProductGroupFilterKeys::setGENDER(CatalogsProductGroupMultipleStringCriteria  gENDER)
+CatalogsProductGroupFilterKeys::setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER)
 {
 	this->gENDER = gENDER;
 }

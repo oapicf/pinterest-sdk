@@ -1,0 +1,87 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Schema used for creating the integration metadata.",
+  "name": "IntegrationRequest",
+  "fields": [
+    {
+      "name": "external_business_id",
+      "type": ["null", "string"],
+      "doc": "External business ID for the integration.",
+      "default": null
+    },
+    {
+      "name": "connected_merchant_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_advertiser_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_lba_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_tag_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_access_token",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_refresh_token",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_primary_email",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_access_token_expiry",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_refresh_token_expiry",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "scopes",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "additional_id_1",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_metadata",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

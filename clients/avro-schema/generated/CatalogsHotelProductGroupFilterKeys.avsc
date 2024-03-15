@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsHotelProductGroupFilterKeys",
+  "fields": [
+    {
+      "name": "PRICE",
+      "type": "model.CatalogsProductGroupPricingCurrencyCriteria",
+      "doc": ""
+    },
+    {
+      "name": "HOTEL_ID",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "BRAND",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_0",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_1",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_2",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_3",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_LABEL_4",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "COUNTRY",
+      "type": "model.CatalogsProductGroupMultipleCountriesCriteria",
+      "doc": ""
+    }
+  ]
+
+}

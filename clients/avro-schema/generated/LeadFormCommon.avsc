@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Creation fields",
+  "name": "LeadFormCommon",
+  "fields": [
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Internal name of the lead form.",
+      "default": null
+    },
+    {
+      "name": "privacy_policy_link",
+      "type": ["null", "string"],
+      "doc": "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.",
+      "default": null
+    },
+    {
+      "name": "has_accepted_terms",
+      "type": ["null", "boolean"],
+      "doc": "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.",
+      "default": null
+    },
+    {
+      "name": "completion_message",
+      "type": ["null", "string"],
+      "doc": "A message for people who complete the form to let them know what happens next.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.LeadFormStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "disclosure_language",
+      "type": ["null", "string"],
+      "doc": "Additional disclosure language to be included in the lead form.",
+      "default": null
+    },
+    {
+      "name": "questions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.LeadFormQuestion"
+      }],
+      "doc": "List of questions to be displayed on the lead form.",
+      "default": null
+    }
+  ]
+
+}

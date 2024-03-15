@@ -1,0 +1,12 @@
+@isTest
+private class OASCatalogsTypeTest {
+    @isTest
+    private static void allowableValues() {
+        Set<OASCatalogsType> expected = new Set<OASCatalogsType>{
+            OASCatalogsType.RETAIL,
+            OASCatalogsType.HOTEL
+        };
+        Set<OASCatalogsType> actual  = new Set<OASCatalogsType>(OASCatalogsType.values());
+        System.assertEquals(expected, actual);
+    }
+}

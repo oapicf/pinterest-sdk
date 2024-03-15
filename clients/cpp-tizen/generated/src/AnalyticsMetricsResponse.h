@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "AnalyticsMetricsResponse_daily_metrics_inner.h"
+#include "AnalyticsDailyMetrics.h"
 #include <list>
 #include <map>
 #include "Object.h"
@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Array with the requested daily metric records
-	 */
-	std::list<AnalyticsMetricsResponse_daily_metrics_inner> getDailyMetrics();
-
-	/*! \brief Set Array with the requested daily metric records
-	 */
-	void setDailyMetrics(std::list <AnalyticsMetricsResponse_daily_metrics_inner> daily_metrics);
 	/*! \brief Get The metric name and value over the requested period for each requested metric
 	 */
 	std::map<std::string, std::string> getSummaryMetrics();
@@ -62,10 +55,17 @@ public:
 	/*! \brief Set The metric name and value over the requested period for each requested metric
 	 */
 	void setSummaryMetrics(std::map <std::string, std::string> summary_metrics);
+	/*! \brief Get Array with the requested daily metric records
+	 */
+	std::list<AnalyticsDailyMetrics> getDailyMetrics();
+
+	/*! \brief Set Array with the requested daily metric records
+	 */
+	void setDailyMetrics(std::list <AnalyticsDailyMetrics> daily_metrics);
 
 private:
-	std::list <AnalyticsMetricsResponse_daily_metrics_inner>daily_metrics;
 	std::map <std::string, std::string>summary_metrics;
+	std::list <AnalyticsDailyMetrics>daily_metrics;
 	void __init();
 	void __cleanup();
 

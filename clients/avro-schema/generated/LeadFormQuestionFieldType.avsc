@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Lead form question field type",
+  "name": "LeadFormQuestionFieldType",
+  "symbols": [
+    "TEXT_FIELD",
+    "TEXT_AREA",
+    "RADIO_LIST",
+    "CHECKBOX",
+    "null"
+  ]
+}

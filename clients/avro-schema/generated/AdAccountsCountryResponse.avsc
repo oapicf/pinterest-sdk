@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountsCountryResponse",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdAccountsCountryResponseData"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

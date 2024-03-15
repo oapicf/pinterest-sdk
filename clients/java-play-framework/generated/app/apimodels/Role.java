@@ -1,0 +1,67 @@
+package apimodels;
+
+import com.fasterxml.jackson.annotation.*;
+import java.util.Set;
+import javax.validation.*;
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+/**
+ * An internal role type used on business access, EMPLOYEE, ADMIN.
+ */
+public enum Role {
+  
+  UNKNOWN("UNKNOWN"),
+  
+  OWNER("OWNER"),
+  
+  ADMIN("ADMIN"),
+  
+  ANALYST("ANALYST"),
+  
+  SOS_READER("SOS_READER"),
+  
+  FINANCE_MANAGER("FINANCE_MANAGER"),
+  
+  AUDIENCE_MANAGER("AUDIENCE_MANAGER"),
+  
+  CAMPAIGN_MANAGER("CAMPAIGN_MANAGER"),
+  
+  CATALOGS_MANAGER("CATALOGS_MANAGER"),
+  
+  RESTRICTED_OWNER("RESTRICTED_OWNER"),
+  
+  PROFILE_MANAGER("PROFILE_MANAGER"),
+  
+  PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
+  
+  RESOURCE_PINNER_LIST_OWNER("RESOURCE_PINNER_LIST_OWNER"),
+  
+  RESOURCE_PINNER_LIST_READER("RESOURCE_PINNER_LIST_READER"),
+  
+  BIZ_PINNER_LIST_SHARER("BIZ_PINNER_LIST_SHARER"),
+  
+  RESOURCE_CONVERSION_TAGS_READER("RESOURCE_CONVERSION_TAGS_READER");
+
+  private final String value;
+
+  Role(String value) {
+    this.value = value;
+  }
+
+  @Override
+  @JsonValue
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static Role fromValue(String value) {
+    for (Role b : Role.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
+    }
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+  }
+}
+

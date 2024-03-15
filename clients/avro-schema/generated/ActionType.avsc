@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Ad group billable event type. For update, only draft ad groups may update billable event.",
+  "name": "ActionType",
+  "symbols": [
+    "CLICKTHROUGH",
+    "IMPRESSION",
+    "VIDEO_V_50_MRC"
+  ]
+}

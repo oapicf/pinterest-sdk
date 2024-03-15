@@ -23,24 +23,21 @@ CatalogsItemValidationWarnings::~CatalogsItemValidationWarnings()
 void
 CatalogsItemValidationWarnings::__init()
 {
+	//aD_LINK_FORMAT_WARNING = new CatalogsItemValidationDetails();
+	//aD_LINK_SAME_AS_LINK = new CatalogsItemValidationDetails();
 	//aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
 	//aDDITIONAL_IMAGE_LINK_WARNING = new CatalogsItemValidationDetails();
 	//aDWORDS_FORMAT_WARNING = new CatalogsItemValidationDetails();
 	//aDWORDS_SAME_AS_LINK = new CatalogsItemValidationDetails();
 	//aGE_GROUP_INVALID = new CatalogsItemValidationDetails();
 	//sIZE_SYSTEM_INVALID = new CatalogsItemValidationDetails();
-	//aGE_GROUP_NORMALIZED = new CatalogsItemValidationDetails();
 	//aNDROID_DEEP_LINK_INVALID = new CatalogsItemValidationDetails();
 	//aVAILABILITY_DATE_INVALID = new CatalogsItemValidationDetails();
-	//aVAILABILITY_NORMALIZED = new CatalogsItemValidationDetails();
-	//cONDITION_NORMALIZED = new CatalogsItemValidationDetails();
 	//cOUNTRY_DOES_NOT_MAP_TO_CURRENCY = new CatalogsItemValidationDetails();
 	//cUSTOM_LABEL_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
 	//dESCRIPTION_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
-	//dUPLICATE_PRODUCTS = new CatalogsItemValidationDetails();
 	//eXPIRATION_DATE_INVALID = new CatalogsItemValidationDetails();
 	//gENDER_INVALID = new CatalogsItemValidationDetails();
-	//gENDER_NORMALIZED = new CatalogsItemValidationDetails();
 	//gTIN_INVALID = new CatalogsItemValidationDetails();
 	//iMAGE_LINK_WARNING = new CatalogsItemValidationDetails();
 	//iOS_DEEP_LINK_INVALID = new CatalogsItemValidationDetails();
@@ -65,7 +62,6 @@ CatalogsItemValidationWarnings::__init()
 	//sHIPPING_WEIGHT_INVALID = new CatalogsItemValidationDetails();
 	//sHIPPING_WIDTH_INVALID = new CatalogsItemValidationDetails();
 	//sIZE_TYPE_INVALID = new CatalogsItemValidationDetails();
-	//sIZE_TYPE_NORMALIZED = new CatalogsItemValidationDetails();
 	//tAX_INVALID = new CatalogsItemValidationDetails();
 	//tITLE_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
 	//tOO_MANY_ADDITIONAL_IMAGE_LINKS = new CatalogsItemValidationDetails();
@@ -76,6 +72,16 @@ CatalogsItemValidationWarnings::__init()
 void
 CatalogsItemValidationWarnings::__cleanup()
 {
+	//if(aD_LINK_FORMAT_WARNING != NULL) {
+	//
+	//delete aD_LINK_FORMAT_WARNING;
+	//aD_LINK_FORMAT_WARNING = NULL;
+	//}
+	//if(aD_LINK_SAME_AS_LINK != NULL) {
+	//
+	//delete aD_LINK_SAME_AS_LINK;
+	//aD_LINK_SAME_AS_LINK = NULL;
+	//}
 	//if(aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG != NULL) {
 	//
 	//delete aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
@@ -106,11 +112,6 @@ CatalogsItemValidationWarnings::__cleanup()
 	//delete sIZE_SYSTEM_INVALID;
 	//sIZE_SYSTEM_INVALID = NULL;
 	//}
-	//if(aGE_GROUP_NORMALIZED != NULL) {
-	//
-	//delete aGE_GROUP_NORMALIZED;
-	//aGE_GROUP_NORMALIZED = NULL;
-	//}
 	//if(aNDROID_DEEP_LINK_INVALID != NULL) {
 	//
 	//delete aNDROID_DEEP_LINK_INVALID;
@@ -120,16 +121,6 @@ CatalogsItemValidationWarnings::__cleanup()
 	//
 	//delete aVAILABILITY_DATE_INVALID;
 	//aVAILABILITY_DATE_INVALID = NULL;
-	//}
-	//if(aVAILABILITY_NORMALIZED != NULL) {
-	//
-	//delete aVAILABILITY_NORMALIZED;
-	//aVAILABILITY_NORMALIZED = NULL;
-	//}
-	//if(cONDITION_NORMALIZED != NULL) {
-	//
-	//delete cONDITION_NORMALIZED;
-	//cONDITION_NORMALIZED = NULL;
 	//}
 	//if(cOUNTRY_DOES_NOT_MAP_TO_CURRENCY != NULL) {
 	//
@@ -146,11 +137,6 @@ CatalogsItemValidationWarnings::__cleanup()
 	//delete dESCRIPTION_LENGTH_TOO_LONG;
 	//dESCRIPTION_LENGTH_TOO_LONG = NULL;
 	//}
-	//if(dUPLICATE_PRODUCTS != NULL) {
-	//
-	//delete dUPLICATE_PRODUCTS;
-	//dUPLICATE_PRODUCTS = NULL;
-	//}
 	//if(eXPIRATION_DATE_INVALID != NULL) {
 	//
 	//delete eXPIRATION_DATE_INVALID;
@@ -160,11 +146,6 @@ CatalogsItemValidationWarnings::__cleanup()
 	//
 	//delete gENDER_INVALID;
 	//gENDER_INVALID = NULL;
-	//}
-	//if(gENDER_NORMALIZED != NULL) {
-	//
-	//delete gENDER_NORMALIZED;
-	//gENDER_NORMALIZED = NULL;
 	//}
 	//if(gTIN_INVALID != NULL) {
 	//
@@ -286,11 +267,6 @@ CatalogsItemValidationWarnings::__cleanup()
 	//delete sIZE_TYPE_INVALID;
 	//sIZE_TYPE_INVALID = NULL;
 	//}
-	//if(sIZE_TYPE_NORMALIZED != NULL) {
-	//
-	//delete sIZE_TYPE_NORMALIZED;
-	//sIZE_TYPE_NORMALIZED = NULL;
-	//}
 	//if(tAX_INVALID != NULL) {
 	//
 	//delete tAX_INVALID;
@@ -324,6 +300,34 @@ CatalogsItemValidationWarnings::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *aD_LINK_FORMAT_WARNINGKey = "AD_LINK_FORMAT_WARNING";
+	node = json_object_get_member(pJsonObject, aD_LINK_FORMAT_WARNINGKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsItemValidationDetails")) {
+			jsonToValue(&aD_LINK_FORMAT_WARNING, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
+		} else {
+			
+			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&aD_LINK_FORMAT_WARNING);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *aD_LINK_SAME_AS_LINKKey = "AD_LINK_SAME_AS_LINK";
+	node = json_object_get_member(pJsonObject, aD_LINK_SAME_AS_LINKKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsItemValidationDetails")) {
+			jsonToValue(&aD_LINK_SAME_AS_LINK, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
+		} else {
+			
+			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&aD_LINK_SAME_AS_LINK);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONGKey = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG";
 	node = json_object_get_member(pJsonObject, aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONGKey);
 	if (node !=NULL) {
@@ -408,20 +412,6 @@ CatalogsItemValidationWarnings::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *aGE_GROUP_NORMALIZEDKey = "AGE_GROUP_NORMALIZED";
-	node = json_object_get_member(pJsonObject, aGE_GROUP_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsItemValidationDetails")) {
-			jsonToValue(&aGE_GROUP_NORMALIZED, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
-		} else {
-			
-			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&aGE_GROUP_NORMALIZED);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *aNDROID_DEEP_LINK_INVALIDKey = "ANDROID_DEEP_LINK_INVALID";
 	node = json_object_get_member(pJsonObject, aNDROID_DEEP_LINK_INVALIDKey);
 	if (node !=NULL) {
@@ -446,34 +436,6 @@ CatalogsItemValidationWarnings::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&aVAILABILITY_DATE_INVALID);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *aVAILABILITY_NORMALIZEDKey = "AVAILABILITY_NORMALIZED";
-	node = json_object_get_member(pJsonObject, aVAILABILITY_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsItemValidationDetails")) {
-			jsonToValue(&aVAILABILITY_NORMALIZED, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
-		} else {
-			
-			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&aVAILABILITY_NORMALIZED);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *cONDITION_NORMALIZEDKey = "CONDITION_NORMALIZED";
-	node = json_object_get_member(pJsonObject, cONDITION_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsItemValidationDetails")) {
-			jsonToValue(&cONDITION_NORMALIZED, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
-		} else {
-			
-			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&cONDITION_NORMALIZED);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -520,20 +482,6 @@ CatalogsItemValidationWarnings::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
-	node = json_object_get_member(pJsonObject, dUPLICATE_PRODUCTSKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsItemValidationDetails")) {
-			jsonToValue(&dUPLICATE_PRODUCTS, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
-		} else {
-			
-			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&dUPLICATE_PRODUCTS);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *eXPIRATION_DATE_INVALIDKey = "EXPIRATION_DATE_INVALID";
 	node = json_object_get_member(pJsonObject, eXPIRATION_DATE_INVALIDKey);
 	if (node !=NULL) {
@@ -558,20 +506,6 @@ CatalogsItemValidationWarnings::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&gENDER_INVALID);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *gENDER_NORMALIZEDKey = "GENDER_NORMALIZED";
-	node = json_object_get_member(pJsonObject, gENDER_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsItemValidationDetails")) {
-			jsonToValue(&gENDER_NORMALIZED, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
-		} else {
-			
-			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&gENDER_NORMALIZED);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -912,20 +846,6 @@ CatalogsItemValidationWarnings::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *sIZE_TYPE_NORMALIZEDKey = "SIZE_TYPE_NORMALIZED";
-	node = json_object_get_member(pJsonObject, sIZE_TYPE_NORMALIZEDKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsItemValidationDetails")) {
-			jsonToValue(&sIZE_TYPE_NORMALIZED, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
-		} else {
-			
-			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&sIZE_TYPE_NORMALIZED);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *tAX_INVALIDKey = "TAX_INVALID";
 	node = json_object_get_member(pJsonObject, tAX_INVALIDKey);
 	if (node !=NULL) {
@@ -1008,6 +928,34 @@ CatalogsItemValidationWarnings::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("CatalogsItemValidationDetails")) {
+		CatalogsItemValidationDetails obj = getADLINKFORMATWARNING();
+		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
+	}
+	else {
+		
+		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getADLINKFORMATWARNING());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *aD_LINK_FORMAT_WARNINGKey = "AD_LINK_FORMAT_WARNING";
+	json_object_set_member(pJsonObject, aD_LINK_FORMAT_WARNINGKey, node);
+	if (isprimitive("CatalogsItemValidationDetails")) {
+		CatalogsItemValidationDetails obj = getADLINKSAMEASLINK();
+		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
+	}
+	else {
+		
+		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getADLINKSAMEASLINK());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *aD_LINK_SAME_AS_LINKKey = "AD_LINK_SAME_AS_LINK";
+	json_object_set_member(pJsonObject, aD_LINK_SAME_AS_LINKKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getADDITIONALIMAGELINKLENGTHTOOLONG();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
@@ -1093,20 +1041,6 @@ CatalogsItemValidationWarnings::toJson()
 	const gchar *sIZE_SYSTEM_INVALIDKey = "SIZE_SYSTEM_INVALID";
 	json_object_set_member(pJsonObject, sIZE_SYSTEM_INVALIDKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
-		CatalogsItemValidationDetails obj = getAGEGROUPNORMALIZED();
-		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
-	}
-	else {
-		
-		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getAGEGROUPNORMALIZED());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *aGE_GROUP_NORMALIZEDKey = "AGE_GROUP_NORMALIZED";
-	json_object_set_member(pJsonObject, aGE_GROUP_NORMALIZEDKey, node);
-	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getANDROIDDEEPLINKINVALID();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
 	}
@@ -1134,34 +1068,6 @@ CatalogsItemValidationWarnings::toJson()
 	}
 	const gchar *aVAILABILITY_DATE_INVALIDKey = "AVAILABILITY_DATE_INVALID";
 	json_object_set_member(pJsonObject, aVAILABILITY_DATE_INVALIDKey, node);
-	if (isprimitive("CatalogsItemValidationDetails")) {
-		CatalogsItemValidationDetails obj = getAVAILABILITYNORMALIZED();
-		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
-	}
-	else {
-		
-		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getAVAILABILITYNORMALIZED());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *aVAILABILITY_NORMALIZEDKey = "AVAILABILITY_NORMALIZED";
-	json_object_set_member(pJsonObject, aVAILABILITY_NORMALIZEDKey, node);
-	if (isprimitive("CatalogsItemValidationDetails")) {
-		CatalogsItemValidationDetails obj = getCONDITIONNORMALIZED();
-		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
-	}
-	else {
-		
-		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getCONDITIONNORMALIZED());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *cONDITION_NORMALIZEDKey = "CONDITION_NORMALIZED";
-	json_object_set_member(pJsonObject, cONDITION_NORMALIZEDKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getCOUNTRYDOESNOTMAPTOCURRENCY();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
@@ -1205,20 +1111,6 @@ CatalogsItemValidationWarnings::toJson()
 	const gchar *dESCRIPTION_LENGTH_TOO_LONGKey = "DESCRIPTION_LENGTH_TOO_LONG";
 	json_object_set_member(pJsonObject, dESCRIPTION_LENGTH_TOO_LONGKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
-		CatalogsItemValidationDetails obj = getDUPLICATEPRODUCTS();
-		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
-	}
-	else {
-		
-		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getDUPLICATEPRODUCTS());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
-	json_object_set_member(pJsonObject, dUPLICATE_PRODUCTSKey, node);
-	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getEXPIRATIONDATEINVALID();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
 	}
@@ -1246,20 +1138,6 @@ CatalogsItemValidationWarnings::toJson()
 	}
 	const gchar *gENDER_INVALIDKey = "GENDER_INVALID";
 	json_object_set_member(pJsonObject, gENDER_INVALIDKey, node);
-	if (isprimitive("CatalogsItemValidationDetails")) {
-		CatalogsItemValidationDetails obj = getGENDERNORMALIZED();
-		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
-	}
-	else {
-		
-		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getGENDERNORMALIZED());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *gENDER_NORMALIZEDKey = "GENDER_NORMALIZED";
-	json_object_set_member(pJsonObject, gENDER_NORMALIZEDKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getGTININVALID();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
@@ -1597,20 +1475,6 @@ CatalogsItemValidationWarnings::toJson()
 	const gchar *sIZE_TYPE_INVALIDKey = "SIZE_TYPE_INVALID";
 	json_object_set_member(pJsonObject, sIZE_TYPE_INVALIDKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
-		CatalogsItemValidationDetails obj = getSIZETYPENORMALIZED();
-		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
-	}
-	else {
-		
-		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getSIZETYPENORMALIZED());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *sIZE_TYPE_NORMALIZEDKey = "SIZE_TYPE_NORMALIZED";
-	json_object_set_member(pJsonObject, sIZE_TYPE_NORMALIZEDKey, node);
-	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getTAXINVALID();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
 	}
@@ -1689,6 +1553,30 @@ CatalogsItemValidationWarnings::toJson()
 }
 
 CatalogsItemValidationDetails
+CatalogsItemValidationWarnings::getADLINKFORMATWARNING()
+{
+	return aD_LINK_FORMAT_WARNING;
+}
+
+void
+CatalogsItemValidationWarnings::setADLINKFORMATWARNING(CatalogsItemValidationDetails  aD_LINK_FORMAT_WARNING)
+{
+	this->aD_LINK_FORMAT_WARNING = aD_LINK_FORMAT_WARNING;
+}
+
+CatalogsItemValidationDetails
+CatalogsItemValidationWarnings::getADLINKSAMEASLINK()
+{
+	return aD_LINK_SAME_AS_LINK;
+}
+
+void
+CatalogsItemValidationWarnings::setADLINKSAMEASLINK(CatalogsItemValidationDetails  aD_LINK_SAME_AS_LINK)
+{
+	this->aD_LINK_SAME_AS_LINK = aD_LINK_SAME_AS_LINK;
+}
+
+CatalogsItemValidationDetails
 CatalogsItemValidationWarnings::getADDITIONALIMAGELINKLENGTHTOOLONG()
 {
 	return aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
@@ -1761,18 +1649,6 @@ CatalogsItemValidationWarnings::setSIZESYSTEMINVALID(CatalogsItemValidationDetai
 }
 
 CatalogsItemValidationDetails
-CatalogsItemValidationWarnings::getAGEGROUPNORMALIZED()
-{
-	return aGE_GROUP_NORMALIZED;
-}
-
-void
-CatalogsItemValidationWarnings::setAGEGROUPNORMALIZED(CatalogsItemValidationDetails  aGE_GROUP_NORMALIZED)
-{
-	this->aGE_GROUP_NORMALIZED = aGE_GROUP_NORMALIZED;
-}
-
-CatalogsItemValidationDetails
 CatalogsItemValidationWarnings::getANDROIDDEEPLINKINVALID()
 {
 	return aNDROID_DEEP_LINK_INVALID;
@@ -1794,30 +1670,6 @@ void
 CatalogsItemValidationWarnings::setAVAILABILITYDATEINVALID(CatalogsItemValidationDetails  aVAILABILITY_DATE_INVALID)
 {
 	this->aVAILABILITY_DATE_INVALID = aVAILABILITY_DATE_INVALID;
-}
-
-CatalogsItemValidationDetails
-CatalogsItemValidationWarnings::getAVAILABILITYNORMALIZED()
-{
-	return aVAILABILITY_NORMALIZED;
-}
-
-void
-CatalogsItemValidationWarnings::setAVAILABILITYNORMALIZED(CatalogsItemValidationDetails  aVAILABILITY_NORMALIZED)
-{
-	this->aVAILABILITY_NORMALIZED = aVAILABILITY_NORMALIZED;
-}
-
-CatalogsItemValidationDetails
-CatalogsItemValidationWarnings::getCONDITIONNORMALIZED()
-{
-	return cONDITION_NORMALIZED;
-}
-
-void
-CatalogsItemValidationWarnings::setCONDITIONNORMALIZED(CatalogsItemValidationDetails  cONDITION_NORMALIZED)
-{
-	this->cONDITION_NORMALIZED = cONDITION_NORMALIZED;
 }
 
 CatalogsItemValidationDetails
@@ -1857,18 +1709,6 @@ CatalogsItemValidationWarnings::setDESCRIPTIONLENGTHTOOLONG(CatalogsItemValidati
 }
 
 CatalogsItemValidationDetails
-CatalogsItemValidationWarnings::getDUPLICATEPRODUCTS()
-{
-	return dUPLICATE_PRODUCTS;
-}
-
-void
-CatalogsItemValidationWarnings::setDUPLICATEPRODUCTS(CatalogsItemValidationDetails  dUPLICATE_PRODUCTS)
-{
-	this->dUPLICATE_PRODUCTS = dUPLICATE_PRODUCTS;
-}
-
-CatalogsItemValidationDetails
 CatalogsItemValidationWarnings::getEXPIRATIONDATEINVALID()
 {
 	return eXPIRATION_DATE_INVALID;
@@ -1890,18 +1730,6 @@ void
 CatalogsItemValidationWarnings::setGENDERINVALID(CatalogsItemValidationDetails  gENDER_INVALID)
 {
 	this->gENDER_INVALID = gENDER_INVALID;
-}
-
-CatalogsItemValidationDetails
-CatalogsItemValidationWarnings::getGENDERNORMALIZED()
-{
-	return gENDER_NORMALIZED;
-}
-
-void
-CatalogsItemValidationWarnings::setGENDERNORMALIZED(CatalogsItemValidationDetails  gENDER_NORMALIZED)
-{
-	this->gENDER_NORMALIZED = gENDER_NORMALIZED;
 }
 
 CatalogsItemValidationDetails
@@ -2190,18 +2018,6 @@ void
 CatalogsItemValidationWarnings::setSIZETYPEINVALID(CatalogsItemValidationDetails  sIZE_TYPE_INVALID)
 {
 	this->sIZE_TYPE_INVALID = sIZE_TYPE_INVALID;
-}
-
-CatalogsItemValidationDetails
-CatalogsItemValidationWarnings::getSIZETYPENORMALIZED()
-{
-	return sIZE_TYPE_NORMALIZED;
-}
-
-void
-CatalogsItemValidationWarnings::setSIZETYPENORMALIZED(CatalogsItemValidationDetails  sIZE_TYPE_NORMALIZED)
-{
-	this->sIZE_TYPE_NORMALIZED = sIZE_TYPE_NORMALIZED;
 }
 
 CatalogsItemValidationDetails

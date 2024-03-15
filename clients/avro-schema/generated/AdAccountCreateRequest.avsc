@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountCreateRequest",
+  "fields": [
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Ad Account name.",
+      "default": null
+    },
+    {
+      "name": "owner_user_id",
+      "type": ["null", "string"],
+      "doc": "Advertiser's owning user ID.",
+      "default": null
+    }
+  ]
+
+}

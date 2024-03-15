@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupFiltersRequestAnyOf1",
+  "fields": [
+    {
+      "name": "all_of",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsProductGroupFilterKeys"
+      },
+      "doc": ""
+    }
+  ]
+
+}

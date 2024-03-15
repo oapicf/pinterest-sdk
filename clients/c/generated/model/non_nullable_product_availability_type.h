@@ -1,0 +1,32 @@
+/*
+ * non_nullable_product_availability_type.h
+ *
+ * Product availability.
+ */
+
+#ifndef _non_nullable_product_availability_type_H_
+#define _non_nullable_product_availability_type_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct non_nullable_product_availability_type_t non_nullable_product_availability_type_t;
+
+
+// Enum  for non_nullable_product_availability_type
+
+typedef enum { pinterest_rest_api_non_nullable_product_availability_type__NULL = 0, pinterest_rest_api_non_nullable_product_availability_type__IN_STOCK, pinterest_rest_api_non_nullable_product_availability_type__OUT_OF_STOCK, pinterest_rest_api_non_nullable_product_availability_type__PREORDER } pinterest_rest_api_non_nullable_product_availability_type__e;
+
+char* non_nullable_product_availability_type_non_nullable_product_availability_type_ToString(pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type);
+
+pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type_non_nullable_product_availability_type_FromString(char* non_nullable_product_availability_type);
+
+//cJSON *non_nullable_product_availability_type_non_nullable_product_availability_type_convertToJSON(pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type);
+
+//pinterest_rest_api_non_nullable_product_availability_type__e non_nullable_product_availability_type_non_nullable_product_availability_type_parseFromJSON(cJSON *non_nullable_product_availability_typeJSON);
+
+#endif /* _non_nullable_product_availability_type_H_ */
+

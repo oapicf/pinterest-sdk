@@ -1,0 +1,44 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TopVideoPinsAnalyticsResponse",
+  "fields": [
+    {
+      "name": "date_availability",
+      "type": ["null", "model.TopPinsAnalyticsResponseDateAvailability"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "pins",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.TopVideoPinsAnalyticsResponsePinsInner"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "sort_by",
+      "type": ["null", {
+        "type": "enum",
+        "name": "TopVideoPinsAnalyticsResponse_sortUnderscoreby",
+        "symbols": [
+          "SAVE",
+          "IMPRESSION",
+          "OUTBOUND_CLICK",
+          "VIDEO_MRC_VIEW",
+          "VIDEO_AVG_WATCH_TIME",
+          "VIDEO_V50_WATCH_TIME",
+          "QUARTILE_95_PERCENT_VIEW",
+          "VIDEO_10S_VIEW",
+          "VIDEO_START"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

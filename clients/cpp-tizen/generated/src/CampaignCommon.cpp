@@ -32,6 +32,7 @@ CampaignCommon::__init()
 	//tracking_urls = new AdCommon_tracking_urls();
 	//start_time = int(0);
 	//end_time = int(0);
+	//summary_status = std::string();
 }
 
 void
@@ -81,6 +82,11 @@ CampaignCommon::__cleanup()
 	//
 	//delete end_time;
 	//end_time = NULL;
+	//}
+	//if(summary_status != NULL) {
+	//
+	//delete summary_status;
+	//summary_status = NULL;
 	//}
 	//
 }
@@ -195,6 +201,20 @@ CampaignCommon::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *summary_statusKey = "summary_status";
+	node = json_object_get_member(pJsonObject, summary_statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CampaignSummaryStatus")) {
+			jsonToValue(&summary_status, node, "CampaignSummaryStatus", "CampaignSummaryStatus");
+		} else {
+			
+			CampaignSummaryStatus* obj = static_cast<CampaignSummaryStatus*> (&summary_status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 CampaignCommon::CampaignCommon(char* json)
@@ -298,6 +318,20 @@ CampaignCommon::toJson()
 	}
 	const gchar *end_timeKey = "end_time";
 	json_object_set_member(pJsonObject, end_timeKey, node);
+	if (isprimitive("CampaignSummaryStatus")) {
+		CampaignSummaryStatus obj = getSummaryStatus();
+		node = converttoJson(&obj, "CampaignSummaryStatus", "");
+	}
+	else {
+		
+		CampaignSummaryStatus obj = static_cast<CampaignSummaryStatus> (getSummaryStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *summary_statusKey = "summary_status";
+	json_object_set_member(pJsonObject, summary_statusKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -412,6 +446,18 @@ void
 CampaignCommon::setEndTime(int  end_time)
 {
 	this->end_time = end_time;
+}
+
+CampaignSummaryStatus
+CampaignCommon::getSummaryStatus()
+{
+	return summary_status;
+}
+
+void
+CampaignCommon::setSummaryStatus(CampaignSummaryStatus  summary_status)
+{
+	this->summary_status = summary_status;
 }
 
 

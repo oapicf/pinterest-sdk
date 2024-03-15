@@ -59,9 +59,12 @@ AdsAnalyticsCreateAsyncResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&report_status, node, "std::string", "");
+		if (isprimitive("BulkReportingJobStatus")) {
+			jsonToValue(&report_status, node, "BulkReportingJobStatus", "BulkReportingJobStatus");
 		} else {
+			
+			BulkReportingJobStatus* obj = static_cast<BulkReportingJobStatus*> (&report_status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -99,11 +102,16 @@ AdsAnalyticsCreateAsyncResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getReportStatus();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("BulkReportingJobStatus")) {
+		BulkReportingJobStatus obj = getReportStatus();
+		node = converttoJson(&obj, "BulkReportingJobStatus", "");
 	}
 	else {
+		
+		BulkReportingJobStatus obj = static_cast<BulkReportingJobStatus> (getReportStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *report_statusKey = "report_status";
@@ -134,14 +142,14 @@ AdsAnalyticsCreateAsyncResponse::toJson()
 	return ret;
 }
 
-std::string
+BulkReportingJobStatus
 AdsAnalyticsCreateAsyncResponse::getReportStatus()
 {
 	return report_status;
 }
 
 void
-AdsAnalyticsCreateAsyncResponse::setReportStatus(std::string  report_status)
+AdsAnalyticsCreateAsyncResponse::setReportStatus(BulkReportingJobStatus  report_status)
 {
 	this->report_status = report_status;
 }

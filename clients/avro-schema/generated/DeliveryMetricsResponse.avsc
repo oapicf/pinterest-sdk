@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeliveryMetricsResponse",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.DeliveryMetricsResponseItemsInner"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

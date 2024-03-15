@@ -1,7 +1,9 @@
 const utils = require('../utils/utils');
+const AdCommon_quiz_pin_data = require('../models/AdCommon_quiz_pin_data');
 const AdCommon_tracking_urls = require('../models/AdCommon_tracking_urls');
 const CreativeType = require('../models/CreativeType');
 const EntityStatus = require('../models/EntityStatus');
+const GridClickType = require('../models/GridClickType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -70,11 +72,6 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}pin_id`,
-                label: `Pin ID. - [${labelPrefix}pin_id]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}status`,
                 ...EntityStatus.fields(`${keyPrefix}status`, isInput),
             },
@@ -84,6 +81,42 @@ module.exports = {
                 label: `Tracking URL for ad impressions. - [${labelPrefix}view_tracking_url]`,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}lead_form_id`,
+                label: `Lead form ID for lead ad generation. - [${labelPrefix}lead_form_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}grid_click_type`,
+                ...GridClickType.fields(`${keyPrefix}grid_click_type`, isInput),
+            },
+            {
+                key: `${keyPrefix}customizable_cta_type`,
+                label: `Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) - [${labelPrefix}customizable_cta_type]`,
+                type: 'string',
+                choices: [
+                    'GET_OFFER',
+                    'LEARN_MORE',
+                    'ORDER_NOW',
+                    'SHOP_NOW',
+                    'SIGN_UP',
+                    'SUBSCRIBE',
+                    'BUY_NOW',
+                    'CONTACT_US',
+                    'GET_QUOTE',
+                    'VISIT_WEBSITE',
+                    'APPLY_NOW',
+                    'BOOK_NOW',
+                    'REQUEST_DEMO',
+                    'REGISTER_NOW',
+                    'FIND_A_DEALER',
+                    'ADD_TO_CART',
+                    'WATCH_NOW',
+                    'READ_MORE',
+                    'null',
+                ],
+            },
+            ...AdCommon_quiz_pin_data.fields(`${keyPrefix}quiz_pin_data`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -101,10 +134,13 @@ module.exports = {
             'is_pin_deleted': bundle.inputData?.[`${keyPrefix}is_pin_deleted`],
             'is_removable': bundle.inputData?.[`${keyPrefix}is_removable`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
-            'pin_id': bundle.inputData?.[`${keyPrefix}pin_id`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'tracking_urls': utils.removeIfEmpty(AdCommon_tracking_urls.mapping(bundle, `${keyPrefix}tracking_urls`)),
             'view_tracking_url': bundle.inputData?.[`${keyPrefix}view_tracking_url`],
+            'lead_form_id': bundle.inputData?.[`${keyPrefix}lead_form_id`],
+            'grid_click_type': bundle.inputData?.[`${keyPrefix}grid_click_type`],
+            'customizable_cta_type': bundle.inputData?.[`${keyPrefix}customizable_cta_type`],
+            'quiz_pin_data': utils.removeIfEmpty(AdCommon_quiz_pin_data.mapping(bundle, `${keyPrefix}quiz_pin_data`)),
         }
     },
 }

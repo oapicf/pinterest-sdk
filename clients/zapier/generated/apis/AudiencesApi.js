@@ -1,5 +1,6 @@
 const samples = require('../samples/AudiencesApi');
 const Audience = require('../models/Audience');
+const AudienceCreateCustomRequest = require('../models/AudienceCreateCustomRequest');
 const AudienceCreateRequest = require('../models/AudienceCreateRequest');
 const AudienceUpdateRequest = require('../models/AudienceUpdateRequest');
 const Error = require('../models/Error');
@@ -42,6 +43,52 @@ module.exports = {
                     },
                     body: {
                         ...AudienceCreateRequest.mapping(bundle),
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: samples['AudienceSample']
+        }
+    },
+    audiences/createCustom: {
+        key: 'audiences/createCustom',
+        noun: 'audiences',
+        display: {
+            label: 'Create custom audience',
+            description: 'Create a custom audience and find the audiences you want your ads to reach.',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                    required: true,
+                },
+                ...AudienceCreateCustomRequest.fields(),
+            ],
+            outputFields: [
+                ...Audience.fields('', false),
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/audiences/custom'),
+                    method: 'POST',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                        ...AudienceCreateCustomRequest.mapping(bundle),
                     },
                 }
                 return z.request(options).then((response) => {
@@ -125,13 +172,8 @@ module.exports = {
                     type: 'string',
                 },
                 {
-                    key: 'entity_statuses',
-                    label: 'Entity status',
-                    type: 'string',
-                }
-                {
                     key: 'order',
-                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.',
+                    label: 'The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.',
                     type: 'string',
                     choices: [
                         'ASCENDING',
@@ -142,6 +184,15 @@ module.exports = {
                     key: 'page_size',
                     label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
+                },
+                {
+                    key: 'ownership_type',
+                    label: '&lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type.',
+                    type: 'string',
+                    choices: [
+                        'OWNED',
+                        'RECEIVED',
+                    ],
                 },
             ],
             outputFields: [
@@ -159,9 +210,9 @@ module.exports = {
                     },
                     params: {
                         'bookmark': bundle.inputData?.['bookmark'],
-                        'entity_statuses': bundle.inputData?.['entity_statuses'],
                         'order': bundle.inputData?.['order'],
                         'page_size': bundle.inputData?.['page_size'],
+                        'ownership_type': bundle.inputData?.['ownership_type'],
                     },
                     body: {
                     },

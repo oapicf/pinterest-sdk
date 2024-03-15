@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request for creation of entities in bulk.",
+  "name": "BulkUpsertRequestUpdate",
+  "fields": [
+    {
+      "name": "campaigns",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignUpdateRequest"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ad_groups",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdGroupUpdateRequest"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ads",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdUpdateRequest"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "product_groups",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ProductGroupPromotionUpdateRequest"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "keywords",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.KeywordUpdate"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

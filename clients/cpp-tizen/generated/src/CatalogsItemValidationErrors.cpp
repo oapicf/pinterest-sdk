@@ -28,6 +28,7 @@ CatalogsItemValidationErrors::__init()
 	//aVAILABILITY_INVALID = new CatalogsItemValidationDetails();
 	//bLOCKLISTED_IMAGE_SIGNATURE = new CatalogsItemValidationDetails();
 	//dESCRIPTION_MISSING = new CatalogsItemValidationDetails();
+	//dUPLICATE_PRODUCTS = new CatalogsItemValidationDetails();
 	//iMAGE_LINK_INVALID = new CatalogsItemValidationDetails();
 	//iMAGE_LINK_LENGTH_TOO_LONG = new CatalogsItemValidationDetails();
 	//iMAGE_LINK_MISSING = new CatalogsItemValidationDetails();
@@ -74,6 +75,11 @@ CatalogsItemValidationErrors::__cleanup()
 	//
 	//delete dESCRIPTION_MISSING;
 	//dESCRIPTION_MISSING = NULL;
+	//}
+	//if(dUPLICATE_PRODUCTS != NULL) {
+	//
+	//delete dUPLICATE_PRODUCTS;
+	//dUPLICATE_PRODUCTS = NULL;
 	//}
 	//if(iMAGE_LINK_INVALID != NULL) {
 	//
@@ -234,6 +240,20 @@ CatalogsItemValidationErrors::fromJson(char* jsonStr)
 		} else {
 			
 			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&dESCRIPTION_MISSING);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
+	node = json_object_get_member(pJsonObject, dUPLICATE_PRODUCTSKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsItemValidationDetails")) {
+			jsonToValue(&dUPLICATE_PRODUCTS, node, "CatalogsItemValidationDetails", "CatalogsItemValidationDetails");
+		} else {
+			
+			CatalogsItemValidationDetails* obj = static_cast<CatalogsItemValidationDetails*> (&dUPLICATE_PRODUCTS);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -559,6 +579,20 @@ CatalogsItemValidationErrors::toJson()
 	const gchar *dESCRIPTION_MISSINGKey = "DESCRIPTION_MISSING";
 	json_object_set_member(pJsonObject, dESCRIPTION_MISSINGKey, node);
 	if (isprimitive("CatalogsItemValidationDetails")) {
+		CatalogsItemValidationDetails obj = getDUPLICATEPRODUCTS();
+		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
+	}
+	else {
+		
+		CatalogsItemValidationDetails obj = static_cast<CatalogsItemValidationDetails> (getDUPLICATEPRODUCTS());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
+	json_object_set_member(pJsonObject, dUPLICATE_PRODUCTSKey, node);
+	if (isprimitive("CatalogsItemValidationDetails")) {
 		CatalogsItemValidationDetails obj = getIMAGELINKINVALID();
 		node = converttoJson(&obj, "CatalogsItemValidationDetails", "");
 	}
@@ -862,6 +896,18 @@ void
 CatalogsItemValidationErrors::setDESCRIPTIONMISSING(CatalogsItemValidationDetails  dESCRIPTION_MISSING)
 {
 	this->dESCRIPTION_MISSING = dESCRIPTION_MISSING;
+}
+
+CatalogsItemValidationDetails
+CatalogsItemValidationErrors::getDUPLICATEPRODUCTS()
+{
+	return dUPLICATE_PRODUCTS;
+}
+
+void
+CatalogsItemValidationErrors::setDUPLICATEPRODUCTS(CatalogsItemValidationDetails  dUPLICATE_PRODUCTS)
+{
+	this->dUPLICATE_PRODUCTS = dUPLICATE_PRODUCTS;
 }
 
 CatalogsItemValidationDetails

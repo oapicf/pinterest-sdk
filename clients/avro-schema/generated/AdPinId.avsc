@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdPinId",
+  "fields": [
+    {
+      "name": "pin_id",
+      "type": ["null", "string"],
+      "doc": "Pin ID.",
+      "default": null
+    }
+  ]
+
+}

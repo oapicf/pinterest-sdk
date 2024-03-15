@@ -10,7 +10,7 @@
 
 #include <string>
 #include "BidFloorSpec.h"
-#include "TargetingSpec_1.h"
+#include "TargetingSpec.h"
 #include <list>
 #include "Object.h"
 
@@ -57,15 +57,15 @@ public:
 	void setBidFloorSpecs(std::list <BidFloorSpec> bid_floor_specs);
 	/*! \brief Get 
 	 */
-	TargetingSpec_1 getTargetingSpec();
+	TargetingSpec getTargetingSpec();
 
 	/*! \brief Set 
 	 */
-	void setTargetingSpec(TargetingSpec_1  targeting_spec);
+	void setTargetingSpec(TargetingSpec  targeting_spec);
 
 private:
 	std::list <BidFloorSpec>bid_floor_specs;
-	TargetingSpec_1 targeting_spec;
+	TargetingSpec targeting_spec;
 	void __init();
 	void __cleanup();
 

@@ -1,0 +1,25 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows._
+
+case class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows (
+  clickWindowDays: Option[Integer],
+engagementWindowDays: Option[Integer],
+viewWindowDays: Option[Integer])
+
+object OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
+  import DateTimeCodecs._
+
+  implicit val OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsCodecJson: CodecJson[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows] = CodecJson.derive[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows]
+  implicit val OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsDecoder: EntityDecoder[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows] = jsonOf[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows]
+  implicit val OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindowsEncoder: EntityEncoder[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows] = jsonEncoderOf[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows]
+}

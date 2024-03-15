@@ -1,0 +1,99 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Schema for log sent from an integration application.",
+  "name": "IntegrationLog",
+  "fields": [
+    {
+      "name": "client_timestamp",
+      "type": "int",
+      "doc": "Timestamp in milliseconds of when the log was executed at the client."
+    },
+    {
+      "name": "event_type",
+      "type": {
+        "type": "enum",
+        "name": "IntegrationLog_eventUnderscoretype",
+        "symbols": [
+          "APP",
+          "API"
+        ]
+      },
+      "doc": "Log event type"
+    },
+    {
+      "name": "log_level",
+      "type": {
+        "type": "enum",
+        "name": "IntegrationLog_logUnderscorelevel",
+        "symbols": [
+          "INFO",
+          "WARN",
+          "ERROR"
+        ]
+      },
+      "doc": "Log level type"
+    },
+    {
+      "name": "external_business_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "advertiser_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "merchant_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "tag_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "feed_profile_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Explanation of the event that occured.",
+      "default": null
+    },
+    {
+      "name": "app_version_number",
+      "type": ["null", "string"],
+      "doc": "Version number of the integration application.",
+      "default": null
+    },
+    {
+      "name": "platform_version_number",
+      "type": ["null", "string"],
+      "doc": "Version number of the platform the integration application is running on.",
+      "default": null
+    },
+    {
+      "name": "error",
+      "type": ["null", "model.IntegrationLogClientError"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "request",
+      "type": ["null", "model.IntegrationLogClientRequest"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

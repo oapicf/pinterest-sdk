@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ProductGroupPromotionResponse",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ProductGroupPromotionResponseItem"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

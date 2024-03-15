@@ -1,0 +1,32 @@
+/*
+ * metrics_reporting_level.h
+ *
+ * Level of the reporting request
+ */
+
+#ifndef _metrics_reporting_level_H_
+#define _metrics_reporting_level_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct metrics_reporting_level_t metrics_reporting_level_t;
+
+
+// Enum  for metrics_reporting_level
+
+typedef enum { pinterest_rest_api_metrics_reporting_level__NULL = 0, pinterest_rest_api_metrics_reporting_level__ADVERTISER, pinterest_rest_api_metrics_reporting_level__ADVERTISER_TARGETING, pinterest_rest_api_metrics_reporting_level__CAMPAIGN, pinterest_rest_api_metrics_reporting_level__CAMPAIGN_TARGETING, pinterest_rest_api_metrics_reporting_level__AD_GROUP, pinterest_rest_api_metrics_reporting_level__AD_GROUP_TARGETING, pinterest_rest_api_metrics_reporting_level__PIN_PROMOTION, pinterest_rest_api_metrics_reporting_level__PIN_PROMOTION_TARGETING, pinterest_rest_api_metrics_reporting_level__KEYWORD, pinterest_rest_api_metrics_reporting_level__PRODUCT_GROUP, pinterest_rest_api_metrics_reporting_level__PRODUCT_GROUP_TARGETING, pinterest_rest_api_metrics_reporting_level__PRODUCT_ITEM } pinterest_rest_api_metrics_reporting_level__e;
+
+char* metrics_reporting_level_metrics_reporting_level_ToString(pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level);
+
+pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level_metrics_reporting_level_FromString(char* metrics_reporting_level);
+
+//cJSON *metrics_reporting_level_metrics_reporting_level_convertToJSON(pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level);
+
+//pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level_metrics_reporting_level_parseFromJSON(cJSON *metrics_reporting_levelJSON);
+
+#endif /* _metrics_reporting_level_H_ */
+

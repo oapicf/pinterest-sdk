@@ -26,16 +26,18 @@ CatalogsFeed::__init()
 	//created_at = null;
 	//id = std::string();
 	//updated_at = null;
-	//default_country = new Country();
-	//default_availability = new ProductAvailabilityType();
-	//default_currency = new NullableCurrency();
 	//name = std::string();
 	//format = new CatalogsFormat();
-	//default_locale = std::string();
+	//catalog_type = new CatalogsType();
 	//credentials = new CatalogsFeedCredentials();
 	//location = std::string();
 	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
 	//status = new CatalogsStatus();
+	//default_currency = new NullableCurrency();
+	//default_locale = std::string();
+	//default_country = new Country();
+	//default_availability = new ProductAvailabilityType();
+	//catalog_id = std::string();
 }
 
 void
@@ -56,21 +58,6 @@ CatalogsFeed::__cleanup()
 	//delete updated_at;
 	//updated_at = NULL;
 	//}
-	//if(default_country != NULL) {
-	//
-	//delete default_country;
-	//default_country = NULL;
-	//}
-	//if(default_availability != NULL) {
-	//
-	//delete default_availability;
-	//default_availability = NULL;
-	//}
-	//if(default_currency != NULL) {
-	//
-	//delete default_currency;
-	//default_currency = NULL;
-	//}
 	//if(name != NULL) {
 	//
 	//delete name;
@@ -81,10 +68,10 @@ CatalogsFeed::__cleanup()
 	//delete format;
 	//format = NULL;
 	//}
-	//if(default_locale != NULL) {
+	//if(catalog_type != NULL) {
 	//
-	//delete default_locale;
-	//default_locale = NULL;
+	//delete catalog_type;
+	//catalog_type = NULL;
 	//}
 	//if(credentials != NULL) {
 	//
@@ -105,6 +92,31 @@ CatalogsFeed::__cleanup()
 	//
 	//delete status;
 	//status = NULL;
+	//}
+	//if(default_currency != NULL) {
+	//
+	//delete default_currency;
+	//default_currency = NULL;
+	//}
+	//if(default_locale != NULL) {
+	//
+	//delete default_locale;
+	//default_locale = NULL;
+	//}
+	//if(default_country != NULL) {
+	//
+	//delete default_country;
+	//default_country = NULL;
+	//}
+	//if(default_availability != NULL) {
+	//
+	//delete default_availability;
+	//default_availability = NULL;
+	//}
+	//if(catalog_id != NULL) {
+	//
+	//delete catalog_id;
+	//catalog_id = NULL;
 	//}
 	//
 }
@@ -147,48 +159,6 @@ CatalogsFeed::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *default_countryKey = "default_country";
-	node = json_object_get_member(pJsonObject, default_countryKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("Country")) {
-			jsonToValue(&default_country, node, "Country", "Country");
-		} else {
-			
-			Country* obj = static_cast<Country*> (&default_country);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *default_availabilityKey = "default_availability";
-	node = json_object_get_member(pJsonObject, default_availabilityKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ProductAvailabilityType")) {
-			jsonToValue(&default_availability, node, "ProductAvailabilityType", "ProductAvailabilityType");
-		} else {
-			
-			ProductAvailabilityType* obj = static_cast<ProductAvailabilityType*> (&default_availability);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *default_currencyKey = "default_currency";
-	node = json_object_get_member(pJsonObject, default_currencyKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("NullableCurrency")) {
-			jsonToValue(&default_currency, node, "NullableCurrency", "NullableCurrency");
-		} else {
-			
-			NullableCurrency* obj = static_cast<NullableCurrency*> (&default_currency);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *nameKey = "name";
 	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
@@ -214,14 +184,17 @@ CatalogsFeed::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *default_localeKey = "default_locale";
-	node = json_object_get_member(pJsonObject, default_localeKey);
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&default_locale, node, "std::string", "");
+		if (isprimitive("CatalogsType")) {
+			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
 		} else {
+			
+			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -278,6 +251,70 @@ CatalogsFeed::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *default_currencyKey = "default_currency";
+	node = json_object_get_member(pJsonObject, default_currencyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("NullableCurrency")) {
+			jsonToValue(&default_currency, node, "NullableCurrency", "NullableCurrency");
+		} else {
+			
+			NullableCurrency* obj = static_cast<NullableCurrency*> (&default_currency);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *default_localeKey = "default_locale";
+	node = json_object_get_member(pJsonObject, default_localeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&default_locale, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *default_countryKey = "default_country";
+	node = json_object_get_member(pJsonObject, default_countryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Country")) {
+			jsonToValue(&default_country, node, "Country", "Country");
+		} else {
+			
+			Country* obj = static_cast<Country*> (&default_country);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *default_availabilityKey = "default_availability";
+	node = json_object_get_member(pJsonObject, default_availabilityKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ProductAvailabilityType")) {
+			jsonToValue(&default_availability, node, "ProductAvailabilityType", "ProductAvailabilityType");
+		} else {
+			
+			ProductAvailabilityType* obj = static_cast<ProductAvailabilityType*> (&default_availability);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsFeed::CatalogsFeed(char* json)
@@ -317,48 +354,6 @@ CatalogsFeed::toJson()
 	}
 	const gchar *updated_atKey = "updated_at";
 	json_object_set_member(pJsonObject, updated_atKey, node);
-	if (isprimitive("Country")) {
-		Country obj = getDefaultCountry();
-		node = converttoJson(&obj, "Country", "");
-	}
-	else {
-		
-		Country obj = static_cast<Country> (getDefaultCountry());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *default_countryKey = "default_country";
-	json_object_set_member(pJsonObject, default_countryKey, node);
-	if (isprimitive("ProductAvailabilityType")) {
-		ProductAvailabilityType obj = getDefaultAvailability();
-		node = converttoJson(&obj, "ProductAvailabilityType", "");
-	}
-	else {
-		
-		ProductAvailabilityType obj = static_cast<ProductAvailabilityType> (getDefaultAvailability());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *default_availabilityKey = "default_availability";
-	json_object_set_member(pJsonObject, default_availabilityKey, node);
-	if (isprimitive("NullableCurrency")) {
-		NullableCurrency obj = getDefaultCurrency();
-		node = converttoJson(&obj, "NullableCurrency", "");
-	}
-	else {
-		
-		NullableCurrency obj = static_cast<NullableCurrency> (getDefaultCurrency());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *default_currencyKey = "default_currency";
-	json_object_set_member(pJsonObject, default_currencyKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
@@ -382,15 +377,20 @@ CatalogsFeed::toJson()
 	}
 	const gchar *formatKey = "format";
 	json_object_set_member(pJsonObject, formatKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDefaultLocale();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("CatalogsType")) {
+		CatalogsType obj = getCatalogType();
+		node = converttoJson(&obj, "CatalogsType", "");
 	}
 	else {
 		
+		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
-	const gchar *default_localeKey = "default_locale";
-	json_object_set_member(pJsonObject, default_localeKey, node);
+	const gchar *catalog_typeKey = "catalog_type";
+	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("CatalogsFeedCredentials")) {
 		CatalogsFeedCredentials obj = getCredentials();
 		node = converttoJson(&obj, "CatalogsFeedCredentials", "");
@@ -442,6 +442,66 @@ CatalogsFeed::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("NullableCurrency")) {
+		NullableCurrency obj = getDefaultCurrency();
+		node = converttoJson(&obj, "NullableCurrency", "");
+	}
+	else {
+		
+		NullableCurrency obj = static_cast<NullableCurrency> (getDefaultCurrency());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *default_currencyKey = "default_currency";
+	json_object_set_member(pJsonObject, default_currencyKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDefaultLocale();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *default_localeKey = "default_locale";
+	json_object_set_member(pJsonObject, default_localeKey, node);
+	if (isprimitive("Country")) {
+		Country obj = getDefaultCountry();
+		node = converttoJson(&obj, "Country", "");
+	}
+	else {
+		
+		Country obj = static_cast<Country> (getDefaultCountry());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *default_countryKey = "default_country";
+	json_object_set_member(pJsonObject, default_countryKey, node);
+	if (isprimitive("ProductAvailabilityType")) {
+		ProductAvailabilityType obj = getDefaultAvailability();
+		node = converttoJson(&obj, "ProductAvailabilityType", "");
+	}
+	else {
+		
+		ProductAvailabilityType obj = static_cast<ProductAvailabilityType> (getDefaultAvailability());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *default_availabilityKey = "default_availability";
+	json_object_set_member(pJsonObject, default_availabilityKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -486,42 +546,6 @@ CatalogsFeed::setUpdatedAt(std::string  updated_at)
 	this->updated_at = updated_at;
 }
 
-Country
-CatalogsFeed::getDefaultCountry()
-{
-	return default_country;
-}
-
-void
-CatalogsFeed::setDefaultCountry(Country  default_country)
-{
-	this->default_country = default_country;
-}
-
-ProductAvailabilityType
-CatalogsFeed::getDefaultAvailability()
-{
-	return default_availability;
-}
-
-void
-CatalogsFeed::setDefaultAvailability(ProductAvailabilityType  default_availability)
-{
-	this->default_availability = default_availability;
-}
-
-NullableCurrency
-CatalogsFeed::getDefaultCurrency()
-{
-	return default_currency;
-}
-
-void
-CatalogsFeed::setDefaultCurrency(NullableCurrency  default_currency)
-{
-	this->default_currency = default_currency;
-}
-
 std::string
 CatalogsFeed::getName()
 {
@@ -546,16 +570,16 @@ CatalogsFeed::setFormat(CatalogsFormat  format)
 	this->format = format;
 }
 
-std::string
-CatalogsFeed::getDefaultLocale()
+CatalogsType
+CatalogsFeed::getCatalogType()
 {
-	return default_locale;
+	return catalog_type;
 }
 
 void
-CatalogsFeed::setDefaultLocale(std::string  default_locale)
+CatalogsFeed::setCatalogType(CatalogsType  catalog_type)
 {
-	this->default_locale = default_locale;
+	this->catalog_type = catalog_type;
 }
 
 CatalogsFeedCredentials
@@ -604,6 +628,66 @@ void
 CatalogsFeed::setStatus(CatalogsStatus  status)
 {
 	this->status = status;
+}
+
+NullableCurrency
+CatalogsFeed::getDefaultCurrency()
+{
+	return default_currency;
+}
+
+void
+CatalogsFeed::setDefaultCurrency(NullableCurrency  default_currency)
+{
+	this->default_currency = default_currency;
+}
+
+std::string
+CatalogsFeed::getDefaultLocale()
+{
+	return default_locale;
+}
+
+void
+CatalogsFeed::setDefaultLocale(std::string  default_locale)
+{
+	this->default_locale = default_locale;
+}
+
+Country
+CatalogsFeed::getDefaultCountry()
+{
+	return default_country;
+}
+
+void
+CatalogsFeed::setDefaultCountry(Country  default_country)
+{
+	this->default_country = default_country;
+}
+
+ProductAvailabilityType
+CatalogsFeed::getDefaultAvailability()
+{
+	return default_availability;
+}
+
+void
+CatalogsFeed::setDefaultAvailability(ProductAvailabilityType  default_availability)
+{
+	this->default_availability = default_availability;
+}
+
+std::string
+CatalogsFeed::getCatalogId()
+{
+	return catalog_id;
+}
+
+void
+CatalogsFeed::setCatalogId(std::string  catalog_id)
+{
+	this->catalog_id = catalog_id;
 }
 
 

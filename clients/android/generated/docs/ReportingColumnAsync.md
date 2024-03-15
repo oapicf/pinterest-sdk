@@ -1,0 +1,10 @@
+
+
+# ReportingColumnAsync
+
+## Enum
+
+
+
+
+

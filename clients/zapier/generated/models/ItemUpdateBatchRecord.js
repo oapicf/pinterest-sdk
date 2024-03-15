@@ -1,5 +1,6 @@
 const utils = require('../utils/utils');
 const UpdatableItemAttributes = require('../models/UpdatableItemAttributes');
+const UpdateMaskFieldType = require('../models/UpdateMaskFieldType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,6 +12,12 @@ module.exports = {
                 type: 'string',
             },
             ...UpdatableItemAttributes.fields(`${keyPrefix}attributes`, isInput),
+            {
+                key: `${keyPrefix}update_mask`,
+                list: true,
+                type: 'string',
+                ...UpdateMaskFieldType.fields(`${keyPrefix}update_mask`, isInput),
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -18,6 +25,7 @@ module.exports = {
         return {
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'attributes': utils.removeIfEmpty(UpdatableItemAttributes.mapping(bundle, `${keyPrefix}attributes`)),
+            'update_mask': utils.childMapping(bundle.inputData?.[`${keyPrefix}update_mask`], `${keyPrefix}update_mask`, UpdateMaskFieldType),
         }
     },
 }

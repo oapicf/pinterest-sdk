@@ -1,0 +1,117 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroupCreateRequest",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Ad group name."
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.EntityStatus"],
+      "doc": "Ad group/entity status.",
+      "default": null
+    },
+    {
+      "name": "budget_in_micro_currency",
+      "type": ["null", "int"],
+      "doc": "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.",
+      "default": null
+    },
+    {
+      "name": "bid_in_micro_currency",
+      "type": ["null", "int"],
+      "doc": "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.",
+      "default": null
+    },
+    {
+      "name": "optimization_goal_metadata",
+      "type": ["null", "model.AdGroupCommonOptimizationGoalMetadata"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "budget_type",
+      "type": ["null", "model.BudgetType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "start_time",
+      "type": ["null", "int"],
+      "doc": "Ad group start time. Unix timestamp in seconds. Defaults to current time.",
+      "default": null
+    },
+    {
+      "name": "end_time",
+      "type": ["null", "int"],
+      "doc": "Ad group end time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "targeting_spec",
+      "type": ["null", "model.TargetingSpec"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "lifetime_frequency_cap",
+      "type": ["null", "int"],
+      "doc": "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.",
+      "default": null
+    },
+    {
+      "name": "tracking_urls",
+      "type": ["null", "model.AdGroupCommonTrackingUrls"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "auto_targeting_enabled",
+      "type": ["null", "boolean"],
+      "doc": "Enable auto-targeting for ad group.Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.",
+      "default": null
+    },
+    {
+      "name": "placement_group",
+      "type": ["null", "model.PlacementGroupType"],
+      "doc": "<a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.",
+      "default": null
+    },
+    {
+      "name": "pacing_delivery_type",
+      "type": ["null", "model.PacingDeliveryType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "campaign_id",
+      "type": "string",
+      "doc": "Campaign ID of the ad group."
+    },
+    {
+      "name": "billable_event",
+      "type": "model.ActionType",
+      "doc": ""
+    },
+    {
+      "name": "bid_strategy_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AdGroupCreateRequest_bidUnderscorestrategyUnderscoretype",
+        "symbols": [
+          "AUTOMATIC_BID",
+          "MAX_BID",
+          "TARGET_AVG",
+          "null"
+        ]
+      }],
+      "doc": "Bid strategy type",
+      "default": null
+    }
+  ]
+
+}

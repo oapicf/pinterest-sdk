@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const ProductGroupPromotionCommon = require('../models/ProductGroupPromotionCommon');
+const ProductGroupPromotion = require('../models/ProductGroupPromotion');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -14,7 +14,7 @@ module.exports = {
             {
                 key: `${keyPrefix}product_group_promotion`,
                 label: `[${labelPrefix}product_group_promotion]`,
-                children: ProductGroupPromotionCommon.fields(`${keyPrefix}product_group_promotion${!isInput ? '[]' : ''}`, isInput, true), 
+                children: ProductGroupPromotion.fields(`${keyPrefix}product_group_promotion${!isInput ? '[]' : ''}`, isInput, true), 
             },
         ]
     },
@@ -22,7 +22,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'ad_group_id': bundle.inputData?.[`${keyPrefix}ad_group_id`],
-            'product_group_promotion': utils.childMapping(bundle.inputData?.[`${keyPrefix}product_group_promotion`], `${keyPrefix}product_group_promotion`, ProductGroupPromotionCommon),
+            'product_group_promotion': utils.childMapping(bundle.inputData?.[`${keyPrefix}product_group_promotion`], `${keyPrefix}product_group_promotion`, ProductGroupPromotion),
         }
     },
 }

@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Country.h"
+#include "AdCountry.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -48,11 +48,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	Country getCode();
+	AdCountry getCode();
 
 	/*! \brief Set 
 	 */
-	void setCode(Country  code);
+	void setCode(AdCountry  code);
 	/*! \brief Get Country currency.
 	 */
 	std::string getCurrency();
@@ -76,7 +76,7 @@ public:
 	void setName(std::string  name);
 
 private:
-	Country code;
+	AdCountry code;
 	std::string currency;
 	long long index;
 	std::string name;

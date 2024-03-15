@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TopPinsAnalyticsResponseDateAvailability",
+  "fields": [
+    {
+      "name": "latest_available_timestamp",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_realtime",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

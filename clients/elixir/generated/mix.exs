@@ -4,7 +4,7 @@ defmodule PinterestRESTAPI.Mixfile do
   def project do
     [
       app: :pinterest_restapi,
-      version: "5.6.0",
+      version: "5.12.0",
       elixir: "~> 1.10",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,

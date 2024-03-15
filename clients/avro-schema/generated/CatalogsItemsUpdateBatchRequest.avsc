@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object to update catalogs items",
+  "name": "CatalogsItemsUpdateBatchRequest",
+  "fields": [
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.Language",
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": "model.BatchOperation",
+      "doc": ""
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.ItemUpdateBatchRecord"
+      },
+      "doc": "Array with catalogs items"
+    }
+  ]
+
+}

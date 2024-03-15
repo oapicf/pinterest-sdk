@@ -1,0 +1,63 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "System error details included in the log sent by the client.",
+  "name": "IntegrationLogClientError",
+  "fields": [
+    {
+      "name": "cause",
+      "type": ["null", "string"],
+      "doc": "Original cause of the error.",
+      "default": null
+    },
+    {
+      "name": "column_number",
+      "type": ["null", "int"],
+      "doc": "Column number in the line of the file that raised the error.",
+      "default": null
+    },
+    {
+      "name": "file_name",
+      "type": ["null", "string"],
+      "doc": "Filename where the error happened.",
+      "default": null
+    },
+    {
+      "name": "line_number",
+      "type": ["null", "int"],
+      "doc": "Line number where the error happened.",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Human-readable description of the error.",
+      "default": null
+    },
+    {
+      "name": "message_detail",
+      "type": ["null", "string"],
+      "doc": "More detail about the message.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Filename where the error happened.",
+      "default": null
+    },
+    {
+      "name": "number",
+      "type": ["null", "int"],
+      "doc": "Integer that specifies the error code.",
+      "default": null
+    },
+    {
+      "name": "stack_trace",
+      "type": ["null", "string"],
+      "doc": "Stack trace of where the error happened.",
+      "default": null
+    }
+  ]
+
+}

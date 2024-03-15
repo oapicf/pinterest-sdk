@@ -1,0 +1,10 @@
+
+
+# BulkReportingJobStatus
+
+## Enum
+
+
+
+
+

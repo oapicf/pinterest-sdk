@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Schema describing the object in the response, which contains information about the events that were received and processed.",
+  "name": "ConversionApiResponse",
+  "fields": [
+    {
+      "name": "num_events_received",
+      "type": "int",
+      "doc": "Total number of events received in the request."
+    },
+    {
+      "name": "num_events_processed",
+      "type": "int",
+      "doc": "Number of events that were successfully processed from the events."
+    },
+    {
+      "name": "events",
+      "type": {
+        "type": "array",
+        "items": "model.ConversionApiResponseEventsInner"
+      },
+      "doc": "Specific messages for each event received. The order will match the order in which the events were received in the request."
+    }
+  ]
+
+}

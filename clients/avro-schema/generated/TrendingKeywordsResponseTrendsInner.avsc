@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TrendingKeywordsResponseTrendsInner",
+  "fields": [
+    {
+      "name": "keyword",
+      "type": ["null", "string"],
+      "doc": "The keyword that is trending.",
+      "default": null
+    },
+    {
+      "name": "pct_growth_wow",
+      "type": ["null", "int"],
+      "doc": "The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.",
+      "default": null
+    },
+    {
+      "name": "pct_growth_mom",
+      "type": ["null", "int"],
+      "doc": "The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.",
+      "default": null
+    },
+    {
+      "name": "pct_growth_yoy",
+      "type": ["null", "int"],
+      "doc": "The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.",
+      "default": null
+    },
+    {
+      "name": "time_series",
+      "type": ["null", "model.TrendingKeywordsResponseTrendsInnerTimeSeries"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

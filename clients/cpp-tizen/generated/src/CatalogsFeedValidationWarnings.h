@@ -45,6 +45,20 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Some items have ad links that are formatted incorrectly.
+	 */
+	int getADLINKFORMATWARNING();
+
+	/*! \brief Set Some items have ad links that are formatted incorrectly.
+	 */
+	void setADLINKFORMATWARNING(int  aD_LINK_FORMAT_WARNING);
+	/*! \brief Get Some items have ad link URLs that are duplicates of the link URLs for those items.
+	 */
+	int getADLINKSAMEASLINK();
+
+	/*! \brief Set Some items have ad link URLs that are duplicates of the link URLs for those items.
+	 */
+	void setADLINKSAMEASLINK(int  aD_LINK_SAME_AS_LINK);
 	/*! \brief Get The title for some items were truncated because they contain too many characters.
 	 */
 	int getTITLELENGTHTOOLONG();
@@ -94,13 +108,6 @@ public:
 	/*! \brief Set Some items have an invalid product link which contains invalid UTM tracking paramaters.
 	 */
 	void setLINKFORMATWARNING(int  lINK_FORMAT_WARNING);
-	/*! \brief Get Some products are duplicated.
-	 */
-	int getDUPLICATEPRODUCTS();
-
-	/*! \brief Set Some products are duplicated.
-	 */
-	void setDUPLICATEPRODUCTS(int  dUPLICATE_PRODUCTS);
 	/*! \brief Get Some items have sale price values that are higher than the original price of the item.
 	 */
 	int getSALESPRICEINVALID();
@@ -115,6 +122,13 @@ public:
 	/*! \brief Set Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
 	 */
 	void setPRODUCTCATEGORYDEPTHWARNING(int  pRODUCT_CATEGORY_DEPTH_WARNING);
+	/*! \brief Get Some items have adwords_redirect links that are formatted incorrectly.
+	 */
+	int getADWORDSFORMATWARNING();
+
+	/*! \brief Set Some items have adwords_redirect links that are formatted incorrectly.
+	 */
+	void setADWORDSFORMATWARNING(int  aDWORDS_FORMAT_WARNING);
 	/*! \brief Get Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
 	 */
 	int getADWORDSSAMEASLINK();
@@ -136,13 +150,6 @@ public:
 	/*! \brief Set Ingestion completed early because there are no changes to your feed since the last successful update.
 	 */
 	void setFETCHSAMESIGNATURE(int  fETCH_SAME_SIGNATURE);
-	/*! \brief Get Some items have adwords_redirect links that are formatted incorrectly.
-	 */
-	int getADWORDSFORMATWARNING();
-
-	/*! \brief Set Some items have adwords_redirect links that are formatted incorrectly.
-	 */
-	void setADWORDSFORMATWARNING(int  aDWORDS_FORMAT_WARNING);
 	/*! \brief Get Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
 	 */
 	int getADDITIONALIMAGELINKLENGTHTOOLONG();
@@ -311,41 +318,6 @@ public:
 	/*! \brief Set Some items include invalid android_deep_link.
 	 */
 	void setANDROIDDEEPLINKINVALID(int  aNDROID_DEEP_LINK_INVALID);
-	/*! \brief Get Some items include availability values that are formatted incorrectly and have been automatically corrected.
-	 */
-	int getAVAILABILITYNORMALIZED();
-
-	/*! \brief Set Some items include availability values that are formatted incorrectly and have been automatically corrected.
-	 */
-	void setAVAILABILITYNORMALIZED(int  aVAILABILITY_NORMALIZED);
-	/*! \brief Get Some items include condition values that are formatted incorrectly and have been automatically corrected.
-	 */
-	int getCONDITIONNORMALIZED();
-
-	/*! \brief Set Some items include condition values that are formatted incorrectly and have been automatically corrected.
-	 */
-	void setCONDITIONNORMALIZED(int  cONDITION_NORMALIZED);
-	/*! \brief Get Some items include gender values that are formatted incorrectly and have been automatically corrected.
-	 */
-	int getGENDERNORMALIZED();
-
-	/*! \brief Set Some items include gender values that are formatted incorrectly and have been automatically corrected.
-	 */
-	void setGENDERNORMALIZED(int  gENDER_NORMALIZED);
-	/*! \brief Get Some items include size_type values that are formatted incorrectly and have been automatically corrected.
-	 */
-	int getSIZETYPENORMALIZED();
-
-	/*! \brief Set Some items include size_type values that are formatted incorrectly and have been automatically corrected.
-	 */
-	void setSIZETYPENORMALIZED(int  sIZE_TYPE_NORMALIZED);
-	/*! \brief Get Some items include age_group values that are formatted incorrectly and have been automatically corrected.
-	 */
-	int getAGEGROUPNORMALIZED();
-
-	/*! \brief Set Some items include age_group values that are formatted incorrectly and have been automatically corrected.
-	 */
-	void setAGEGROUPNORMALIZED(int  aGE_GROUP_NORMALIZED);
 	/*! \brief Get Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
 	 */
 	int getUTMSOURCEAUTOCORRECTED();
@@ -418,6 +390,8 @@ public:
 	void setMPNINVALID(int  mPN_INVALID);
 
 private:
+	int aD_LINK_FORMAT_WARNING;
+	int aD_LINK_SAME_AS_LINK;
 	int tITLE_LENGTH_TOO_LONG;
 	int dESCRIPTION_LENGTH_TOO_LONG;
 	int gENDER_INVALID;
@@ -425,13 +399,12 @@ private:
 	int sIZE_TYPE_INVALID;
 	int sIZE_SYSTEM_INVALID;
 	int lINK_FORMAT_WARNING;
-	int dUPLICATE_PRODUCTS;
 	int sALES_PRICE_INVALID;
 	int pRODUCT_CATEGORY_DEPTH_WARNING;
+	int aDWORDS_FORMAT_WARNING;
 	int aDWORDS_SAME_AS_LINK;
 	int dUPLICATE_HEADERS;
 	int fETCH_SAME_SIGNATURE;
-	int aDWORDS_FORMAT_WARNING;
 	int aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 	int aDDITIONAL_IMAGE_LINK_WARNING;
 	int iMAGE_LINK_WARNING;
@@ -456,11 +429,6 @@ private:
 	int oPTIONAL_CONDITION_INVALID;
 	int iOS_DEEP_LINK_INVALID;
 	int aNDROID_DEEP_LINK_INVALID;
-	int aVAILABILITY_NORMALIZED;
-	int cONDITION_NORMALIZED;
-	int gENDER_NORMALIZED;
-	int sIZE_TYPE_NORMALIZED;
-	int aGE_GROUP_NORMALIZED;
 	int uTM_SOURCE_AUTO_CORRECTED;
 	int cOUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 	int mIN_AD_PRICE_INVALID;

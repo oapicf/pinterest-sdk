@@ -1,0 +1,792 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="boardsUserFollows/list"></a>boardsUserFollows/list</h2>
+  <hr>
+  <p></p>
+  <p>Get a list of the boards a user follows. The request returns a board summary object array.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/following/boards</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="boards_user_follows_list_200_response"><a href="">boards_user_follows_list_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">explicit_following</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description">Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+  </ul>
+  <h2><a name="followUser/update"></a>followUser/update</h2>
+  <hr>
+  <p></p>
+  <p>&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/following/{username}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="UserSummary"><a href="">UserSummary</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">username</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">A valid username</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">FollowUserRequest</span>
+      <span class="param-type">FollowUserRequest(FollowUserRequest)</span>
+      
+      <p class="param-description">Follow a user.</p>
+      </li>
+  </ul>
+  <h2><a name="followers/list"></a>followers/list</h2>
+  <hr>
+  <p></p>
+  <p>Get a list of your followers.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/followers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="followers_list_200_response"><a href="">followers_list_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+  </ul>
+  <h2><a name="linkedBusinessAccounts/get"></a>linkedBusinessAccounts/get</h2>
+  <hr>
+  <p></p>
+  <p>Get a list of your linked business accounts.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/businesses</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="LinkedBusiness"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="unverifyWebsite/delete"></a>unverifyWebsite/delete</h2>
+  <hr>
+  <p></p>
+  <p>Unverifu a website verified by the signed-in user.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/websites</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">website</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Website with path or domain only</p>
+      </li>
+  </ul>
+  <h2><a name="userAccount/analytics"></a>userAccount/analytics</h2>
+  <hr>
+  <p></p>
+  <p>Get analytics for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/analytics</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="AnalyticsMetricsResponse"><a href="">Map</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">start_date</span>
+      <span class="param-type">date</span>
+      
+      <p class="param-description">Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">end_date</span>
+      <span class="param-type">date</span>
+      
+      <p class="param-description">Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">from_claimed_content</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter on Pins that match your claimed domain.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">pin_format</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Pin formats to get data for, default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">app_types</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Apps or devices to get data for, default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">content_type</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter to paid or organic data. Default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">source</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">metric_types</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">Metric types to get data for, default is all. </p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">split_field</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">How to split the data into groups. Not including this param means data won&#39;t be split.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+  </ul>
+  <h2><a name="userAccount/analytics/topPins"></a>userAccount/analytics/topPins</h2>
+  <hr>
+  <p></p>
+  <p>Gets analytics data about a user&#39;s top pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/analytics/top_pins</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TopPinsAnalyticsResponse"><a href="">TopPinsAnalyticsResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">start_date</span>
+      <span class="param-type">date</span>
+      
+      <p class="param-description">Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">end_date</span>
+      <span class="param-type">date</span>
+      
+      <p class="param-description">Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">sort_by</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Specify sorting order for metrics</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">from_claimed_content</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter on Pins that match your claimed domain.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">pin_format</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Pin formats to get data for, default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">app_types</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Apps or devices to get data for, default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">content_type</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter to paid or organic data. Default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">source</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">metric_types</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">Metric types to get data for, default is all. </p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">num_of_pins</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Number of pins to include, default is 10. Max is 50.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">created_in_last_n_days</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Get metrics for pins created in the last \&quot;n\&quot; days.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+  </ul>
+  <h2><a name="userAccount/analytics/topVideoPins"></a>userAccount/analytics/topVideoPins</h2>
+  <hr>
+  <p></p>
+  <p>Gets analytics data about a user&#39;s top video pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/analytics/top_video_pins</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="TopVideoPinsAnalyticsResponse"><a href="">TopVideoPinsAnalyticsResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">start_date</span>
+      <span class="param-type">date</span>
+      
+      <p class="param-description">Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">end_date</span>
+      <span class="param-type">date</span>
+      
+      <p class="param-description">Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">sort_by</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Specify sorting order for video metrics</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">from_claimed_content</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter on Pins that match your claimed domain.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">pin_format</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Pin formats to get data for, default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">app_types</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Apps or devices to get data for, default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">content_type</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter to paid or organic data. Default is all.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">source</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">metric_types</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">Metric types to get video data for, default is all. </p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">num_of_pins</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Number of pins to include, default is 10. Max is 50.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">created_in_last_n_days</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Get metrics for pins created in the last \&quot;n\&quot; days.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+  </ul>
+  <h2><a name="userAccount/followedInterests"></a>userAccount/followedInterests</h2>
+  <hr>
+  <p></p>
+  <p>Get a list of a user&#39;s following interests in one place.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/users/{username}/interests/follow</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="user_account_followed_interests_200_response"><a href="">user_account_followed_interests_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">username</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">A valid username</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+  </ul>
+  <h2><a name="userAccount/get"></a>userAccount/get</h2>
+  <hr>
+  <p></p>
+  <p>Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Account"><a href="">Account</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+  </ul>
+  <h2><a name="userFollowing/get"></a>userFollowing/get</h2>
+  <hr>
+  <p></p>
+  <p>Get a list of who a certain user follows.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/following</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="user_following_get_200_response"><a href="">user_following_get_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">feed_type</span>
+      <span class="param-type">UserFollowingFeedType</span>
+      
+      <p class="param-description">Thrift param specifying what type of followees will be kept. Default to include all followees.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">explicit_following</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description">Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+  </ul>
+  <h2><a name="userWebsites/get"></a>userWebsites/get</h2>
+  <hr>
+  <p></p>
+  <p>Get user websites, claimed or not</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/websites</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="user_websites_get_200_response"><a href="">user_websites_get_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+  </ul>
+  <h2><a name="verifyWebsite/update"></a>verifyWebsite/update</h2>
+  <hr>
+  <p></p>
+  <p>Verify a website as a signed-in user.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/websites</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="UserWebsiteSummary"><a href="">UserWebsiteSummary</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">UserWebsiteVerifyRequest</span>
+      <span class="param-type">UserWebsiteVerifyRequest(UserWebsiteVerifyRequest)</span>
+      
+      <p class="param-description">Verify a website.</p>
+      </li>
+  </ul>
+  <h2><a name="websiteVerification/get"></a>websiteVerification/get</h2>
+  <hr>
+  <p></p>
+  <p>Get verification code for user to install on the website to claim it.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/user_account/websites/verification</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="UserWebsiteVerificationCode"><a href="">UserWebsiteVerificationCode</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+</div>

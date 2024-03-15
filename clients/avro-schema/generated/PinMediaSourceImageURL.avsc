@@ -1,0 +1,31 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Image URL-based media source",
+  "name": "PinMediaSourceImageURL",
+  "fields": [
+    {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSourceImageURL_sourceUnderscoretype",
+        "symbols": [
+          "image_url"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "is_standard",
+      "type": ["null", "boolean"],
+      "doc": "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.",
+      "default": null
+    }
+  ]
+
+}

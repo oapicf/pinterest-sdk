@@ -1,0 +1,14 @@
+-module(openapi_product_availability_type).
+
+-export([encode/1]).
+
+-export_type([openapi_product_availability_type/0]).
+
+-type openapi_product_availability_type() ::
+    #{ 
+     }.
+
+encode(#{ 
+        }) ->
+    #{ 
+     }.

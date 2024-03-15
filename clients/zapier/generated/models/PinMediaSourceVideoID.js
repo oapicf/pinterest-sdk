@@ -15,8 +15,21 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}cover_image_url`,
-                label: `[${labelPrefix}cover_image_url]`,
-                required: true,
+                label: `Cover image url. - [${labelPrefix}cover_image_url]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}cover_image_content_type`,
+                label: `Content type for cover image Base64. - [${labelPrefix}cover_image_content_type]`,
+                type: 'string',
+                choices: [
+                    'image/jpeg',
+                    'image/png',
+                ],
+            },
+            {
+                key: `${keyPrefix}cover_image_data`,
+                label: `Cover image Base64. - [${labelPrefix}cover_image_data]`,
                 type: 'string',
             },
             {
@@ -25,6 +38,11 @@ module.exports = {
                 required: true,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}is_standard`,
+                label: `Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. - [${labelPrefix}is_standard]`,
+                type: 'boolean',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -32,7 +50,10 @@ module.exports = {
         return {
             'source_type': bundle.inputData?.[`${keyPrefix}source_type`],
             'cover_image_url': bundle.inputData?.[`${keyPrefix}cover_image_url`],
+            'cover_image_content_type': bundle.inputData?.[`${keyPrefix}cover_image_content_type`],
+            'cover_image_data': bundle.inputData?.[`${keyPrefix}cover_image_data`],
             'media_id': bundle.inputData?.[`${keyPrefix}media_id`],
+            'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],
         }
     },
 }

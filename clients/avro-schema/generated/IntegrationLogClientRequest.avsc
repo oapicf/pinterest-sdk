@@ -1,0 +1,62 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "HTTP request details included in the log sent by the client.",
+  "name": "IntegrationLogClientRequest",
+  "fields": [
+    {
+      "name": "method",
+      "type": {
+        "type": "enum",
+        "name": "IntegrationLogClientRequest_method",
+        "symbols": [
+          "GET",
+          "HEAD",
+          "POST",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "OPTIONS",
+          "TRACE",
+          "PATCH"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "host",
+      "type": "string",
+      "doc": "HTTP request host from host header."
+    },
+    {
+      "name": "path",
+      "type": "string",
+      "doc": "HTTP request path."
+    },
+    {
+      "name": "request_headers",
+      "type": ["null", {
+        "type": "map",
+        "items": "string"
+      }],
+      "doc": "HTTP request headers as key-value pairs.",
+      "default": null
+    },
+    {
+      "name": "response_headers",
+      "type": ["null", {
+        "type": "map",
+        "items": "string"
+      }],
+      "doc": "HTTP response headers as key-value pairs.",
+      "default": null
+    },
+    {
+      "name": "response_status_code",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

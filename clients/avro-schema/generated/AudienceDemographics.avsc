@@ -1,0 +1,54 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Audience demographics",
+  "name": "AudienceDemographics",
+  "fields": [
+    {
+      "name": "ages",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AudienceDemographicValue"
+      }],
+      "doc": "Ages distribution.",
+      "default": null
+    },
+    {
+      "name": "genders",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AudienceDemographicValue"
+      }],
+      "doc": "Gender distribution.",
+      "default": null
+    },
+    {
+      "name": "devices",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AudienceDemographicValue"
+      }],
+      "doc": "Device usage distribution.",
+      "default": null
+    },
+    {
+      "name": "metros",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AudienceDemographicValue"
+      }],
+      "doc": "Geographic metro area distribution.",
+      "default": null
+    },
+    {
+      "name": "countries",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AudienceDemographicValue"
+      }],
+      "doc": "Country area distribution.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingTypeFilter",
+  "fields": [
+    {
+      "name": "targeting_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdsAnalyticsTargetingType"
+      }],
+      "doc": "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.",
+      "default": null
+    }
+  ]
+
+}

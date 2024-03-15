@@ -9,6 +9,12 @@
 
 #include "AdAccountCreateRequestTest.cpp"
 
+#include "AdAccountCreateSubscriptionRequestTest.cpp"
+
+#include "AdAccountCreateSubscriptionResponseTest.cpp"
+
+#include "AdAccountGetSubscriptionResponseTest.cpp"
+
 #include "AdAccountsCountryResponseTest.cpp"
 
 #include "AdAccountsCountryResponseDataTest.cpp"
@@ -19,7 +25,11 @@
 
 #include "AdCommonTest.cpp"
 
+#include "AdCommon_quiz_pin_dataTest.cpp"
+
 #include "AdCommon_tracking_urlsTest.cpp"
+
+#include "AdCountryTest.cpp"
 
 #include "AdCreateRequestTest.cpp"
 
@@ -27,7 +37,15 @@
 
 #include "AdGroupArrayResponseElementTest.cpp"
 
+#include "AdGroupAudienceSizingRequestTest.cpp"
+
+#include "AdGroupAudienceSizingRequest_keywords_innerTest.cpp"
+
+#include "AdGroupAudienceSizingResponseTest.cpp"
+
 #include "AdGroupCommonTest.cpp"
+
+#include "AdGroupCommon_optimization_goal_metadataTest.cpp"
 
 #include "AdGroupCommon_tracking_urlsTest.cpp"
 
@@ -40,6 +58,8 @@
 #include "AdGroupUpdateRequestTest.cpp"
 
 #include "AdGroupsAnalyticsResponse_innerTest.cpp"
+
+#include "AdPinIdTest.cpp"
 
 #include "AdPreviewCreateFromImageTest.cpp"
 
@@ -55,7 +75,11 @@
 
 #include "Ad_account_ownerTest.cpp"
 
+#include "Ad_accounts_catalogs_product_groups_list_200_responseTest.cpp"
+
 #include "Ad_accounts_list_200_responseTest.cpp"
+
+#include "Ad_accounts_subscriptions_get_list_200_responseTest.cpp"
 
 #include "Ad_groups_list_200_responseTest.cpp"
 
@@ -75,23 +99,55 @@
 
 #include "AdsAnalyticsTargetingTypeTest.cpp"
 
+#include "AdsCreditDiscountsResponseTest.cpp"
+
+#include "AdsCreditRedeemRequestTest.cpp"
+
+#include "AdsCreditRedeemResponseTest.cpp"
+
+#include "Ads_credits_discounts_get_200_responseTest.cpp"
+
 #include "Ads_list_200_responseTest.cpp"
+
+#include "AnalyticsDailyMetricsTest.cpp"
 
 #include "AnalyticsMetricsResponseTest.cpp"
 
-#include "AnalyticsMetricsResponse_daily_metrics_innerTest.cpp"
-
 #include "AudienceTest.cpp"
 
+#include "AudienceCategoryTest.cpp"
+
 #include "AudienceCommonTest.cpp"
+
+#include "AudienceCreateCustomRequestTest.cpp"
 
 #include "AudienceCreateRequestTest.cpp"
 
 #include "AudienceCreateRequest_1_audience_typeTest.cpp"
 
+#include "AudienceDataPartyTest.cpp"
+
+#include "AudienceDefinitionTest.cpp"
+
+#include "AudienceDefinitionResponseTest.cpp"
+
+#include "AudienceDemographicValueTest.cpp"
+
+#include "AudienceDemographicsTest.cpp"
+
+#include "AudienceInsightCategoryArrayResponseTest.cpp"
+
 #include "AudienceInsightCategoryCommonTest.cpp"
 
+#include "AudienceInsightTypeTest.cpp"
+
+#include "AudienceInsightsResponseTest.cpp"
+
 #include "AudienceRuleTest.cpp"
+
+#include "AudienceSharingTypeTest.cpp"
+
+#include "AudienceSubcategoryTest.cpp"
 
 #include "AudienceTypeTest.cpp"
 
@@ -113,6 +169,10 @@
 
 #include "BidFloorSpecTest.cpp"
 
+#include "BillingProfilesResponseTest.cpp"
+
+#include "Billing_profiles_get_200_responseTest.cpp"
+
 #include "BoardTest.cpp"
 
 #include "BoardOwnerTest.cpp"
@@ -121,13 +181,17 @@
 
 #include "BoardUpdateTest.cpp"
 
+#include "Board_mediaTest.cpp"
+
 #include "Board_ownerTest.cpp"
 
 #include "Board_sections_list_200_responseTest.cpp"
 
-#include "Board_sections_list_pins_200_responseTest.cpp"
-
 #include "Boards_list_200_responseTest.cpp"
+
+#include "Boards_list_pins_200_responseTest.cpp"
+
+#include "Boards_user_follows_list_200_responseTest.cpp"
 
 #include "BookClosedResponseTest.cpp"
 
@@ -145,6 +209,8 @@
 
 #include "BulkOutputFormatTest.cpp"
 
+#include "BulkReportingJobStatusTest.cpp"
+
 #include "BulkUpsertRequestTest.cpp"
 
 #include "BulkUpsertRequestCreateTest.cpp"
@@ -156,6 +222,8 @@
 #include "BulkUpsertStatusTest.cpp"
 
 #include "BulkUpsertStatusResponseTest.cpp"
+
+#include "BusinessAccessRoleTest.cpp"
 
 #include "CampaignCommonTest.cpp"
 
@@ -183,7 +251,19 @@
 
 #include "Campaigns_list_200_responseTest.cpp"
 
+#include "CatalogTest.cpp"
+
+#include "CatalogProductGroupTest.cpp"
+
+#include "CatalogsCreateHotelItemTest.cpp"
+
+#include "CatalogsCreateRetailItemTest.cpp"
+
 #include "CatalogsDbItemTest.cpp"
+
+#include "CatalogsDeleteHotelItemTest.cpp"
+
+#include "CatalogsDeleteRetailItemTest.cpp"
 
 #include "CatalogsFeedTest.cpp"
 
@@ -194,6 +274,8 @@
 #include "CatalogsFeedIngestionErrorsTest.cpp"
 
 #include "CatalogsFeedIngestionInfoTest.cpp"
+
+#include "CatalogsFeedIngestionWarningsTest.cpp"
 
 #include "CatalogsFeedProcessingResultTest.cpp"
 
@@ -211,9 +293,51 @@
 
 #include "CatalogsFeedsCreateRequestTest.cpp"
 
+#include "CatalogsFeedsCreateRequest_default_localeTest.cpp"
+
 #include "CatalogsFeedsUpdateRequestTest.cpp"
 
 #include "CatalogsFormatTest.cpp"
+
+#include "CatalogsHotelAddressTest.cpp"
+
+#include "CatalogsHotelAttributesTest.cpp"
+
+#include "CatalogsHotelAttributes_allOf_main_imageTest.cpp"
+
+#include "CatalogsHotelBatchItemTest.cpp"
+
+#include "CatalogsHotelBatchRequestTest.cpp"
+
+#include "CatalogsHotelFeedTest.cpp"
+
+#include "CatalogsHotelFeedsCreateRequestTest.cpp"
+
+#include "CatalogsHotelFeedsUpdateRequestTest.cpp"
+
+#include "CatalogsHotelGuestRatingsTest.cpp"
+
+#include "CatalogsHotelItemErrorResponseTest.cpp"
+
+#include "CatalogsHotelItemResponseTest.cpp"
+
+#include "CatalogsHotelItemsBatchTest.cpp"
+
+#include "CatalogsHotelItemsFilterTest.cpp"
+
+#include "CatalogsHotelProductGroupTest.cpp"
+
+#include "CatalogsHotelProductGroupCreateRequestTest.cpp"
+
+#include "CatalogsHotelProductGroupFilterKeysTest.cpp"
+
+#include "CatalogsHotelProductGroupFiltersTest.cpp"
+
+#include "CatalogsHotelProductGroupFiltersAllOfTest.cpp"
+
+#include "CatalogsHotelProductGroupFiltersAnyOfTest.cpp"
+
+#include "CatalogsHotelProductGroupUpdateRequestTest.cpp"
 
 #include "CatalogsItemValidationDetailsTest.cpp"
 
@@ -233,13 +357,21 @@
 
 #include "CatalogsItemsCreateBatchRequestTest.cpp"
 
+#include "CatalogsItemsDeleteBatchRequestTest.cpp"
+
 #include "CatalogsItemsDeleteDiscontinuedBatchRequestTest.cpp"
 
+#include "CatalogsItemsFiltersTest.cpp"
+
 #include "CatalogsItemsUpdateBatchRequestTest.cpp"
+
+#include "CatalogsItemsUpsertBatchRequestTest.cpp"
 
 #include "CatalogsListProductsByFilterRequestTest.cpp"
 
 #include "CatalogsListProductsByFilterRequest_oneOfTest.cpp"
+
+#include "CatalogsLocaleTest.cpp"
 
 #include "CatalogsProductTest.cpp"
 
@@ -255,13 +387,17 @@
 
 #include "CatalogsProductGroupFiltersAllOfTest.cpp"
 
-#include "CatalogsProductGroupFiltersAllOfRequestTest.cpp"
-
-#include "CatalogsProductGroupFiltersAllOfRequest_anyOfTest.cpp"
-
-#include "CatalogsProductGroupFiltersAllOfRequest_anyOf_1Test.cpp"
-
 #include "CatalogsProductGroupFiltersAnyOfTest.cpp"
+
+#include "CatalogsProductGroupFiltersRequestTest.cpp"
+
+#include "CatalogsProductGroupFiltersRequest_anyOfTest.cpp"
+
+#include "CatalogsProductGroupFiltersRequest_anyOf_1Test.cpp"
+
+#include "CatalogsProductGroupMultipleCountriesCriteriaTest.cpp"
+
+#include "CatalogsProductGroupMultipleGenderCriteriaTest.cpp"
 
 #include "CatalogsProductGroupMultipleStringCriteriaTest.cpp"
 
@@ -279,13 +415,67 @@
 
 #include "CatalogsProductMetadataTest.cpp"
 
+#include "CatalogsRetailBatchRequestTest.cpp"
+
+#include "CatalogsRetailBatchRequest_items_innerTest.cpp"
+
+#include "CatalogsRetailFeedTest.cpp"
+
+#include "CatalogsRetailFeedsCreateRequestTest.cpp"
+
+#include "CatalogsRetailFeedsUpdateRequestTest.cpp"
+
+#include "CatalogsRetailItemErrorResponseTest.cpp"
+
+#include "CatalogsRetailItemResponseTest.cpp"
+
+#include "CatalogsRetailItemsBatchTest.cpp"
+
+#include "CatalogsRetailItemsFilterTest.cpp"
+
+#include "CatalogsRetailProductGroupTest.cpp"
+
 #include "CatalogsStatusTest.cpp"
 
-#include "Catalogs_product_group_feed_based_caseTest.cpp"
+#include "CatalogsTypeTest.cpp"
 
-#include "Catalogs_product_group_merchant_based_caseTest.cpp"
+#include "CatalogsUpdatableHotelAttributesTest.cpp"
+
+#include "CatalogsUpdateHotelItemTest.cpp"
+
+#include "CatalogsUpdateRetailItemTest.cpp"
+
+#include "CatalogsUpsertHotelItemTest.cpp"
+
+#include "CatalogsUpsertRetailItemTest.cpp"
+
+#include "CatalogsVerticalBatchRequestTest.cpp"
+
+#include "CatalogsVerticalFeedsCreateRequestTest.cpp"
+
+#include "CatalogsVerticalFeedsUpdateRequestTest.cpp"
+
+#include "CatalogsVerticalProductGroupTest.cpp"
+
+#include "CatalogsVerticalProductGroupCreateRequestTest.cpp"
+
+#include "CatalogsVerticalProductGroupUpdateRequestTest.cpp"
+
+#include "Catalogs_list_200_responseTest.cpp"
+
+#include "Catalogs_product_group_pins_list_200_responseTest.cpp"
+
+#include "Catalogs_product_group_pricing_currency_criteriaTest.cpp"
+
+#include "Catalogs_product_groups_create_201_responseTest.cpp"
+
+#include "Catalogs_product_groups_create_requestTest.cpp"
 
 #include "Catalogs_product_groups_list_200_responseTest.cpp"
+
+#include "Catalogs_product_groups_list_200_response_allOf_items_innerTest.cpp"
+
+#include "Catalogs_product_groups_update_requestTest.cpp"
 
 #include "ConditionFilterTest.cpp"
 
@@ -294,6 +484,8 @@
 #include "ConversionApiResponse_events_innerTest.cpp"
 
 #include "ConversionAttributionWindowDaysTest.cpp"
+
+#include "ConversionEventResponseTest.cpp"
 
 #include "ConversionEventsTest.cpp"
 
@@ -309,7 +501,27 @@
 
 #include "ConversionReportTimeTypeTest.cpp"
 
+#include "ConversionTagCommonTest.cpp"
+
+#include "ConversionTagConfigsTest.cpp"
+
+#include "ConversionTagCreateTest.cpp"
+
+#include "ConversionTagListResponseTest.cpp"
+
+#include "ConversionTagResponseTest.cpp"
+
+#include "ConversionTagTypeTest.cpp"
+
 #include "CountryTest.cpp"
+
+#include "CountryFilterTest.cpp"
+
+#include "CreateMMMReportRequestTest.cpp"
+
+#include "CreateMMMReportResponseTest.cpp"
+
+#include "CreateMMMReportResponseDataTest.cpp"
 
 #include "CreativeTypeTest.cpp"
 
@@ -343,6 +555,10 @@
 
 #include "DeliveryMetricsResponse_items_innerTest.cpp"
 
+#include "DetailedErrorTest.cpp"
+
+#include "EnhancedMatchStatusTypeTest.cpp"
+
 #include "EntityStatusTest.cpp"
 
 #include "ErrorTest.cpp"
@@ -351,11 +567,25 @@
 
 #include "Feed_processing_results_list_200_responseTest.cpp"
 
+#include "Feeds_create_requestTest.cpp"
+
 #include "Feeds_list_200_responseTest.cpp"
+
+#include "Feeds_update_requestTest.cpp"
+
+#include "FollowUserRequestTest.cpp"
+
+#include "Followers_list_200_responseTest.cpp"
+
+#include "GenderTest.cpp"
 
 #include "GenderFilterTest.cpp"
 
 #include "GetAudiencesOrderByTest.cpp"
+
+#include "GetMMMReportResponseTest.cpp"
+
+#include "GetMMMReportResponseDataTest.cpp"
 
 #include "GoogleProductCategory0FilterTest.cpp"
 
@@ -373,15 +603,51 @@
 
 #include "GranularityTest.cpp"
 
+#include "GridClickTypeTest.cpp"
+
+#include "HotelIdFilterTest.cpp"
+
+#include "HotelProcessingRecordTest.cpp"
+
 #include "ImageDetailsTest.cpp"
 
 #include "ImageMetadataTest.cpp"
+
+#include "ImageMetadata_imagesTest.cpp"
+
+#include "IntegrationLogTest.cpp"
+
+#include "IntegrationLogClientErrorTest.cpp"
+
+#include "IntegrationLogClientRequestTest.cpp"
+
+#include "IntegrationLogsInvalidLogResponseTest.cpp"
+
+#include "IntegrationLogsInvalidLogResponse_rejected_logs_innerTest.cpp"
+
+#include "IntegrationLogsRequestTest.cpp"
+
+#include "IntegrationLogsSuccessResponseTest.cpp"
+
+#include "IntegrationMetadataTest.cpp"
+
+#include "IntegrationRecordTest.cpp"
+
+#include "IntegrationRequestTest.cpp"
+
+#include "IntegrationRequestPatchTest.cpp"
+
+#include "Integrations_get_list_200_responseTest.cpp"
+
+#include "InterestTest.cpp"
 
 #include "ItemAttributesTest.cpp"
 
 #include "ItemBatchRecordTest.cpp"
 
 #include "ItemCreateBatchRecordTest.cpp"
+
+#include "ItemDeleteBatchRecordTest.cpp"
 
 #include "ItemDeleteDiscontinuedBatchRecordTest.cpp"
 
@@ -401,7 +667,11 @@
 
 #include "ItemUpdateBatchRecordTest.cpp"
 
+#include "ItemUpsertBatchRecordTest.cpp"
+
 #include "ItemValidationEventTest.cpp"
+
+#include "Items_batch_post_requestTest.cpp"
 
 #include "Items_issues_list_200_responseTest.cpp"
 
@@ -429,7 +699,31 @@
 
 #include "LanguageTest.cpp"
 
+#include "LeadFormCommonTest.cpp"
+
+#include "LeadFormQuestionTest.cpp"
+
+#include "LeadFormQuestionFieldTypeTest.cpp"
+
+#include "LeadFormQuestionTypeTest.cpp"
+
+#include "LeadFormResponseTest.cpp"
+
+#include "LeadFormStatusTest.cpp"
+
+#include "LeadFormTestRequestTest.cpp"
+
+#include "LeadFormTestResponseTest.cpp"
+
+#include "Lead_forms_list_200_responseTest.cpp"
+
 #include "LineItemTest.cpp"
+
+#include "LinkedBusinessTest.cpp"
+
+#include "MMMReportingColumnTest.cpp"
+
+#include "MMMReportingTargetingTypeTest.cpp"
 
 #include "MatchTypeTest.cpp"
 
@@ -473,15 +767,57 @@
 
 #include "OauthAccessTokenResponseCodeTest.cpp"
 
+#include "OauthAccessTokenResponseEverlastingRefreshTest.cpp"
+
+#include "OauthAccessTokenResponseIntegrationRefreshTest.cpp"
+
 #include "OauthAccessTokenResponseRefreshTest.cpp"
 
 #include "ObjectiveTypeTest.cpp"
 
+#include "OptimizationGoalMetadataTest.cpp"
+
+#include "OptimizationGoalMetadata_conversion_tag_v3_goal_metadataTest.cpp"
+
+#include "OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windowsTest.cpp"
+
+#include "OptimizationGoalMetadata_frequency_goal_metadataTest.cpp"
+
+#include "OptimizationGoalMetadata_scrollup_goal_metadataTest.cpp"
+
+#include "OrderLineTest.cpp"
+
+#include "OrderLineErrorTest.cpp"
+
+#include "OrderLinePaidTypeTest.cpp"
+
+#include "OrderLineResponseTest.cpp"
+
+#include "OrderLineSingleResponseTest.cpp"
+
+#include "OrderLineStatusTest.cpp"
+
+#include "OrderLinesTest.cpp"
+
+#include "OrderLinesArrayResponseTest.cpp"
+
+#include "Order_lines_list_200_responseTest.cpp"
+
 #include "PacingDeliveryTypeTest.cpp"
+
+#include "Page_visit_conversion_tags_get_200_responseTest.cpp"
 
 #include "PaginatedTest.cpp"
 
+#include "PartnerTypeTest.cpp"
+
 #include "PinTest.cpp"
+
+#include "PinAnalyticsMetricsResponseTest.cpp"
+
+#include "PinAnalyticsMetricsResponse_daily_metrics_innerTest.cpp"
+
+#include "PinCreateTest.cpp"
 
 #include "PinMediaTest.cpp"
 
@@ -492,6 +828,16 @@
 #include "PinMediaSourceImageBase64Test.cpp"
 
 #include "PinMediaSourceImageURLTest.cpp"
+
+#include "PinMediaSourceImagesBase64Test.cpp"
+
+#include "PinMediaSourceImagesBase64_items_innerTest.cpp"
+
+#include "PinMediaSourceImagesURLTest.cpp"
+
+#include "PinMediaSourceImagesURL_items_innerTest.cpp"
+
+#include "PinMediaSourcePinURLTest.cpp"
 
 #include "PinMediaSourceVideoIDTest.cpp"
 
@@ -507,7 +853,13 @@
 
 #include "PinPromotionSummaryStatusTest.cpp"
 
-#include "Pin_mediaTest.cpp"
+#include "PinUpdateTest.cpp"
+
+#include "PinUpdate_carousel_slots_innerTest.cpp"
+
+#include "Pins_analytics_metric_types_parameter_innerTest.cpp"
+
+#include "Pins_list_200_responseTest.cpp"
 
 #include "Pins_save_requestTest.cpp"
 
@@ -515,23 +867,21 @@
 
 #include "PlacementGroupTypeTest.cpp"
 
+#include "PriceFilterTest.cpp"
+
 #include "ProductAvailabilityTypeTest.cpp"
 
 #include "ProductGroupAnalyticsResponse_innerTest.cpp"
 
 #include "ProductGroupPromotionTest.cpp"
 
-#include "ProductGroupPromotionArrayElementTest.cpp"
-
-#include "ProductGroupPromotionCommonTest.cpp"
-
 #include "ProductGroupPromotionCreateRequestTest.cpp"
 
-#include "ProductGroupPromotionUpdateItemTest.cpp"
+#include "ProductGroupPromotionResponseTest.cpp"
+
+#include "ProductGroupPromotionResponseItemTest.cpp"
 
 #include "ProductGroupPromotionUpdateRequestTest.cpp"
-
-#include "ProductGroupPromotionUpdateResponseItemTest.cpp"
 
 #include "ProductGroupSummaryStatusTest.cpp"
 
@@ -545,9 +895,15 @@
 
 #include "ProductType4FilterTest.cpp"
 
-#include "Product_groups_create_request_feed_base_caseTest.cpp"
+#include "Product_group_promotions_list_200_responseTest.cpp"
 
-#include "Products_by_product_group_filter_list_200_responseTest.cpp"
+#include "QuizPinDataTest.cpp"
+
+#include "QuizPinOptionTest.cpp"
+
+#include "QuizPinQuestionTest.cpp"
+
+#include "QuizPinResultTest.cpp"
 
 #include "RelatedTermsTest.cpp"
 
@@ -555,17 +911,65 @@
 
 #include "ReportingColumnAsyncTest.cpp"
 
+#include "RoleTest.cpp"
+
+#include "SSIOAccountAddressTest.cpp"
+
+#include "SSIOAccountItemTest.cpp"
+
+#include "SSIOAccountPMPNameTest.cpp"
+
+#include "SSIOAccountResponseTest.cpp"
+
+#include "SSIOCreateInsertionOrderRequestTest.cpp"
+
+#include "SSIOCreateInsertionOrderResponseTest.cpp"
+
+#include "SSIOEditInsertionOrderRequestTest.cpp"
+
+#include "SSIOEditInsertionOrderResponseTest.cpp"
+
+#include "SSIOInsertionOrderCommonTest.cpp"
+
+#include "SSIOInsertionOrderStatusTest.cpp"
+
+#include "SSIOInsertionOrderStatusResponseTest.cpp"
+
+#include "SSIOOrderLineTest.cpp"
+
+#include "Search_partner_pins_200_responseTest.cpp"
+
+#include "Search_user_boards_get_200_responseTest.cpp"
+
 #include "SingleInterestTargetingOptionResponseTest.cpp"
+
+#include "Ssio_insertion_orders_status_get_by_ad_account_200_responseTest.cpp"
+
+#include "Ssio_order_lines_get_by_ad_account_200_responseTest.cpp"
+
+#include "SummaryPinTest.cpp"
+
+#include "SummaryPin_mediaTest.cpp"
+
+#include "TargetingAdvertiserCountryTest.cpp"
 
 #include "TargetingSpecTest.cpp"
 
-#include "TargetingSpec_1Test.cpp"
-
 #include "TargetingSpec_SHOPPING_RETARGETINGTest.cpp"
 
-#include "TargetingSpec_SHOPPING_RETARGETING_1_innerTest.cpp"
-
 #include "TargetingTypeFilterTest.cpp"
+
+#include "TemplateResponseTest.cpp"
+
+#include "TemplateResponse_date_rangeTest.cpp"
+
+#include "TemplateResponse_date_range_absolute_date_rangeTest.cpp"
+
+#include "TemplateResponse_date_range_dynamic_date_rangeTest.cpp"
+
+#include "TemplateResponse_date_range_relative_date_rangeTest.cpp"
+
+#include "Templates_list_200_responseTest.cpp"
 
 #include "TermsOfServiceTest.cpp"
 
@@ -581,11 +985,39 @@
 
 #include "TrackingUrlsTest.cpp"
 
+#include "TrendTypeTest.cpp"
+
+#include "TrendingKeywordsResponseTest.cpp"
+
+#include "TrendingKeywordsResponse_trends_innerTest.cpp"
+
+#include "TrendingKeywordsResponse_trends_inner_time_seriesTest.cpp"
+
+#include "TrendsSupportedRegionTest.cpp"
+
 #include "UpdatableItemAttributesTest.cpp"
+
+#include "UpdateMaskFieldTypeTest.cpp"
+
+#include "UserFollowingFeedTypeTest.cpp"
 
 #include "UserListOperationTypeTest.cpp"
 
 #include "UserListTypeTest.cpp"
+
+#include "UserSummaryTest.cpp"
+
+#include "UserWebsiteSummaryTest.cpp"
+
+#include "UserWebsiteVerificationCodeTest.cpp"
+
+#include "UserWebsiteVerifyRequestTest.cpp"
+
+#include "User_account_followed_interests_200_responseTest.cpp"
+
+#include "User_following_get_200_responseTest.cpp"
+
+#include "User_websites_get_200_responseTest.cpp"
 
 #include "VideoMetadataTest.cpp"
 
@@ -601,6 +1033,9 @@ void runTests(){
     RUN_TEST(test_Account_account_type_is_assigned_from_json);
     
     
+    RUN_TEST(test_Account_id_is_assigned_from_json);
+    
+    
     RUN_TEST(test_Account_profile_image_is_assigned_from_json);
     
     
@@ -608,6 +1043,27 @@ void runTests(){
     
     
     RUN_TEST(test_Account_username_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Account_about_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Account_business_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Account_board_count_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Account_pin_count_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Account_follower_count_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Account_following_count_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Account_monthly_views_is_assigned_from_json);
     
     
     
@@ -622,6 +1078,12 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdAccount_created_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccount_updated_time_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_AdAccountAnalyticsResponse_inner_aD_ACCOUNT_ID_is_assigned_from_json);
     
@@ -633,6 +1095,60 @@ void runTests(){
     
     
     RUN_TEST(test_AdAccountCreateRequest_owner_user_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_webhook_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_lead_form_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_partner_access_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_partner_refresh_token_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_cryptographic_key_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_cryptographic_algorithm_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_created_time_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_lead_form_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_webhook_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_user_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_api_version_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_cryptographic_key_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_cryptographic_algorithm_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_created_time_is_assigned_from_json);
     
     
     
@@ -682,12 +1198,21 @@ void runTests(){
     RUN_TEST(test_AdCommon_name_is_assigned_from_json);
     
     
-    RUN_TEST(test_AdCommon_pin_id_is_assigned_from_json);
-    
-    
     
     
     RUN_TEST(test_AdCommon_view_tracking_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdCommon_lead_form_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdCommon_customizable_cta_type_is_assigned_from_json);
+    
+    
+    
+    
+    
     
     
     
@@ -725,17 +1250,46 @@ void runTests(){
     RUN_TEST(test_AdCreateRequest_name_is_assigned_from_json);
     
     
-    RUN_TEST(test_AdCreateRequest_pin_id_is_assigned_from_json);
-    
-    
     
     
     RUN_TEST(test_AdCreateRequest_view_tracking_url_is_assigned_from_json);
     
     
+    RUN_TEST(test_AdCreateRequest_lead_form_id_is_assigned_from_json);
     
     
     
+    RUN_TEST(test_AdCreateRequest_customizable_cta_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdCreateRequest_pin_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingRequest_auto_targeting_enabled_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingRequest_keywords_inner_value_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingResponse_audience_size_lower_bound_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingResponse_audience_size_upper_bound_is_assigned_from_json);
     
     
     
@@ -748,8 +1302,6 @@ void runTests(){
     
     RUN_TEST(test_AdGroupCommon_bid_in_micro_currency_is_assigned_from_json);
     
-    
-    RUN_TEST(test_AdGroupCommon_bid_strategy_type_is_assigned_from_json);
     
     
     
@@ -773,6 +1325,13 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdGroupCommon_bid_strategy_type_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
     
     
     
@@ -789,8 +1348,6 @@ void runTests(){
     
     RUN_TEST(test_AdGroupCreateRequest_bid_in_micro_currency_is_assigned_from_json);
     
-    
-    RUN_TEST(test_AdGroupCreateRequest_bid_strategy_type_is_assigned_from_json);
     
     
     
@@ -814,6 +1371,9 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdGroupCreateRequest_bid_strategy_type_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_AdGroupResponse_name_is_assigned_from_json);
     
@@ -824,8 +1384,6 @@ void runTests(){
     
     RUN_TEST(test_AdGroupResponse_bid_in_micro_currency_is_assigned_from_json);
     
-    
-    RUN_TEST(test_AdGroupResponse_bid_strategy_type_is_assigned_from_json);
     
     
     
@@ -847,6 +1405,9 @@ void runTests(){
     
     RUN_TEST(test_AdGroupResponse_campaign_id_is_assigned_from_json);
     
+    
+    
+    RUN_TEST(test_AdGroupResponse_bid_strategy_type_is_assigned_from_json);
     
     
     RUN_TEST(test_AdGroupResponse_id_is_assigned_from_json);
@@ -884,8 +1445,6 @@ void runTests(){
     RUN_TEST(test_AdGroupUpdateRequest_bid_in_micro_currency_is_assigned_from_json);
     
     
-    RUN_TEST(test_AdGroupUpdateRequest_bid_strategy_type_is_assigned_from_json);
-    
     
     
     RUN_TEST(test_AdGroupUpdateRequest_start_time_is_assigned_from_json);
@@ -908,12 +1467,19 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdGroupUpdateRequest_bid_strategy_type_is_assigned_from_json);
+    
+    
     RUN_TEST(test_AdGroupUpdateRequest_id_is_assigned_from_json);
     
     
     
     RUN_TEST(test_AdGroupsAnalyticsResponse_inner_aD_GROUP_ID_is_assigned_from_json);
     
+    
+    
+    
+    RUN_TEST(test_AdPinId_pin_id_is_assigned_from_json);
     
     
     
@@ -970,12 +1536,20 @@ void runTests(){
     RUN_TEST(test_AdResponse_name_is_assigned_from_json);
     
     
-    RUN_TEST(test_AdResponse_pin_id_is_assigned_from_json);
-    
-    
     
     
     RUN_TEST(test_AdResponse_view_tracking_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdResponse_lead_form_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdResponse_customizable_cta_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdResponse_pin_id_is_assigned_from_json);
     
     
     RUN_TEST(test_AdResponse_ad_account_id_is_assigned_from_json);
@@ -1034,24 +1608,45 @@ void runTests(){
     RUN_TEST(test_AdUpdateRequest_name_is_assigned_from_json);
     
     
-    RUN_TEST(test_AdUpdateRequest_pin_id_is_assigned_from_json);
-    
-    
     
     
     RUN_TEST(test_AdUpdateRequest_view_tracking_url_is_assigned_from_json);
     
     
+    RUN_TEST(test_AdUpdateRequest_lead_form_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdUpdateRequest_customizable_cta_type_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_AdUpdateRequest_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdUpdateRequest_pin_id_is_assigned_from_json);
     
     
     
     RUN_TEST(test_Ad_account_owner_username_is_assigned_from_json);
     
     
+    RUN_TEST(test_Ad_account_owner_id_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Ad_accounts_catalogs_product_groups_list_200_response_bookmark_is_assigned_from_json);
+    
+    
     
     
     RUN_TEST(test_Ad_accounts_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Ad_accounts_subscriptions_get_list_200_response_bookmark_is_assigned_from_json);
     
     
     
@@ -1088,8 +1683,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_AdsAnalyticsCreateAsyncResponse_report_status_is_assigned_from_json);
-    
     
     RUN_TEST(test_AdsAnalyticsCreateAsyncResponse_token_is_assigned_from_json);
     
@@ -1099,8 +1692,6 @@ void runTests(){
     
     
     
-    
-    RUN_TEST(test_AdsAnalyticsGetAsyncResponse_report_status_is_assigned_from_json);
     
     
     RUN_TEST(test_AdsAnalyticsGetAsyncResponse_url_is_assigned_from_json);
@@ -1120,21 +1711,65 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdsCreditDiscountsResponse_active_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_advertiser_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_discountType_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_discountInMicroCurrency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_discountCurrency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_remainingDiscountInMicroCurrency_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdsCreditRedeemRequest_offerCodeHash_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditRedeemRequest_validateOnly_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AdsCreditRedeemResponse_success_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditRedeemResponse_errorCode_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AdsCreditRedeemResponse_errorMessage_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Ads_credits_discounts_get_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
     
     RUN_TEST(test_Ads_list_200_response_bookmark_is_assigned_from_json);
     
     
     
     
+    RUN_TEST(test_AnalyticsDailyMetrics_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AnalyticsDailyMetrics_metrics_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_AnalyticsMetricsResponse_summary_metrics_is_assigned_from_json);
     
-    
-    
-    
-    RUN_TEST(test_AnalyticsMetricsResponse_daily_metrics_inner_date_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_AnalyticsMetricsResponse_daily_metrics_inner_metrics_is_assigned_from_json);
     
     
     
@@ -1170,11 +1805,41 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AudienceCategory_key_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_ratio_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_index_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_id_is_assigned_from_json);
+    
+    
+    
+    
     RUN_TEST(test_AudienceCommon_ad_account_id_is_assigned_from_json);
     
     
     RUN_TEST(test_AudienceCommon_name_is_assigned_from_json);
     
+    
+    
+    
+    RUN_TEST(test_AudienceCreateCustomRequest_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceCreateCustomRequest_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceCreateCustomRequest_category_is_assigned_from_json);
     
     
     
@@ -1186,6 +1851,37 @@ void runTests(){
     
     
     RUN_TEST(test_AudienceCreateRequest_description_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceDefinition_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceDefinition_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceDefinition_scope_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceDemographicValue_key_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceDemographicValue_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceDemographicValue_ratio_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1204,6 +1900,20 @@ void runTests(){
     
     
     RUN_TEST(test_AudienceInsightCategoryCommon_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceInsightsResponse_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceInsightsResponse_size_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceInsightsResponse_size_is_upper_bound_is_assigned_from_json);
     
     
     
@@ -1249,6 +1959,23 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AudienceSubcategory_key_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_ratio_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_index_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_id_is_assigned_from_json);
+    
+    
+    
+    
     
     RUN_TEST(test_AudienceUpdateRequest_ad_account_id_is_assigned_from_json);
     
@@ -1286,13 +2013,50 @@ void runTests(){
     
     
     
+    RUN_TEST(test_BillingProfilesResponse_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_card_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_status_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_advertiser_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_payment_method_brand_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Billing_profiles_get_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_Board_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Board_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Board_board_pins_modified_at_is_assigned_from_json);
     
     
     RUN_TEST(test_Board_name_is_assigned_from_json);
     
     
     RUN_TEST(test_Board_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Board_collaborator_count_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Board_pin_count_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Board_follower_count_is_assigned_from_json);
+    
     
     
     
@@ -1321,6 +2085,11 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Board_media_image_cover_url_is_assigned_from_json);
+    
+    
+    
+    
     RUN_TEST(test_Board_owner_username_is_assigned_from_json);
     
     
@@ -1331,12 +2100,17 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Board_sections_list_pins_200_response_bookmark_is_assigned_from_json);
-    
-    
-    
-    
     RUN_TEST(test_Boards_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Boards_list_pins_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Boards_user_follows_list_200_response_bookmark_is_assigned_from_json);
     
     
     
@@ -1391,6 +2165,7 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_BulkUpsertResponse_request_id_is_assigned_from_json);
     
     
@@ -1398,6 +2173,7 @@ void runTests(){
     
     
     RUN_TEST(test_BulkUpsertStatusResponse_result_url_is_assigned_from_json);
+    
     
     
     
@@ -1425,6 +2201,7 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_CampaignCreateCommon_ad_account_id_is_assigned_from_json);
     
     
@@ -1447,8 +2224,6 @@ void runTests(){
     
     RUN_TEST(test_CampaignCreateCommon_end_time_is_assigned_from_json);
     
-    
-    RUN_TEST(test_CampaignCreateCommon_is_campaign_budget_optimization_is_assigned_from_json);
     
     
     RUN_TEST(test_CampaignCreateCommon_is_flexible_daily_budgets_is_assigned_from_json);
@@ -1483,8 +2258,6 @@ void runTests(){
     
     RUN_TEST(test_CampaignCreateRequest_end_time_is_assigned_from_json);
     
-    
-    RUN_TEST(test_CampaignCreateRequest_is_campaign_budget_optimization_is_assigned_from_json);
     
     
     RUN_TEST(test_CampaignCreateRequest_is_flexible_daily_budgets_is_assigned_from_json);
@@ -1523,8 +2296,6 @@ void runTests(){
     RUN_TEST(test_CampaignCreateResponseData_end_time_is_assigned_from_json);
     
     
-    RUN_TEST(test_CampaignCreateResponseData_is_campaign_budget_optimization_is_assigned_from_json);
-    
     
     RUN_TEST(test_CampaignCreateResponseData_is_flexible_daily_budgets_is_assigned_from_json);
     
@@ -1546,6 +2317,9 @@ void runTests(){
     
     
     RUN_TEST(test_CampaignCreateResponseData_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CampaignCreateResponseData_is_campaign_budget_optimization_is_assigned_from_json);
     
     
     
@@ -1580,6 +2354,7 @@ void runTests(){
     
     
     RUN_TEST(test_CampaignResponse_end_time_is_assigned_from_json);
+    
     
     
     
@@ -1626,8 +2401,6 @@ void runTests(){
     RUN_TEST(test_CampaignUpdateRequest_end_time_is_assigned_from_json);
     
     
-    RUN_TEST(test_CampaignUpdateRequest_is_campaign_budget_optimization_is_assigned_from_json);
-    
     
     RUN_TEST(test_CampaignUpdateRequest_is_flexible_daily_budgets_is_assigned_from_json);
     
@@ -1636,6 +2409,10 @@ void runTests(){
     
     
     RUN_TEST(test_CampaignUpdateRequest_is_automated_campaign_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CampaignUpdateRequest_is_campaign_budget_optimization_is_assigned_from_json);
+    
     
     
     
@@ -1651,6 +2428,65 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Catalog_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalog_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalog_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalog_name_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogProductGroup_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_merchant_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogProductGroup_feed_profile_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_last_update_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_product_count_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_featured_position_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsCreateHotelItem_hotel_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsCreateHotelItem_operation_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsCreateRetailItem_item_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsCreateRetailItem_operation_is_assigned_from_json);
+    
+    
+    
+    
     RUN_TEST(test_CatalogsDbItem_created_at_is_assigned_from_json);
     
     
@@ -1658,6 +2494,20 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsDbItem_updated_at_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsDeleteHotelItem_hotel_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsDeleteHotelItem_operation_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsDeleteRetailItem_item_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsDeleteRetailItem_operation_is_assigned_from_json);
     
     
     
@@ -1670,10 +2520,15 @@ void runTests(){
     RUN_TEST(test_CatalogsFeed_updated_at_is_assigned_from_json);
     
     
-    
-    
-    
     RUN_TEST(test_CatalogsFeed_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsFeed_location_is_assigned_from_json);
+    
+    
     
     
     
@@ -1681,9 +2536,8 @@ void runTests(){
     
     
     
-    RUN_TEST(test_CatalogsFeed_location_is_assigned_from_json);
     
-    
+    RUN_TEST(test_CatalogsFeed_catalog_id_is_assigned_from_json);
     
     
     
@@ -1697,8 +2551,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_DOWNLOAD_ERROR_is_assigned_from_json);
-    
     
     RUN_TEST(test_CatalogsFeedIngestionErrors_lINE_LEVEL_INTERNAL_ERROR_is_assigned_from_json);
     
@@ -1709,6 +2561,21 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedIngestionErrors_aCCOUNT_FLAGGED_is_assigned_from_json);
     
     
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_LEVEL_INTERNAL_ERROR_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_FILE_NOT_ACCESSIBLE_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_MALFORMED_URL_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_FILE_NOT_FOUND_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_INVALID_FILE_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_CatalogsFeedIngestionInfo_iN_STOCK_is_assigned_from_json);
     
@@ -1717,6 +2584,25 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsFeedIngestionInfo_pREORDER_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_MALFORMED_URL_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_FILE_NOT_FOUND_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_INVALID_FILE_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_hOTEL_PRICE_HEADER_IS_PRESENT_is_assigned_from_json);
     
     
     
@@ -1745,6 +2631,9 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedProductCounts_original_is_assigned_from_json);
     
     
+    RUN_TEST(test_CatalogsFeedProductCounts_ingested_is_assigned_from_json);
+    
+    
     
     
     
@@ -1762,6 +2651,9 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsFeedValidationErrors_rEQUIRED_COLUMNS_MISSING_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedValidationErrors_dUPLICATE_PRODUCTS_is_assigned_from_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationErrors_iMAGE_LINK_INVALID_is_assigned_from_json);
@@ -1846,6 +2738,12 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsFeedValidationWarnings_aD_LINK_FORMAT_WARNING_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedValidationWarnings_aD_LINK_SAME_AS_LINK_is_assigned_from_json);
+    
+    
     RUN_TEST(test_CatalogsFeedValidationWarnings_tITLE_LENGTH_TOO_LONG_is_assigned_from_json);
     
     
@@ -1867,13 +2765,13 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedValidationWarnings_lINK_FORMAT_WARNING_is_assigned_from_json);
     
     
-    RUN_TEST(test_CatalogsFeedValidationWarnings_dUPLICATE_PRODUCTS_is_assigned_from_json);
-    
-    
     RUN_TEST(test_CatalogsFeedValidationWarnings_sALES_PRICE_INVALID_is_assigned_from_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_pRODUCT_CATEGORY_DEPTH_WARNING_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedValidationWarnings_aDWORDS_FORMAT_WARNING_is_assigned_from_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_aDWORDS_SAME_AS_LINK_is_assigned_from_json);
@@ -1883,9 +2781,6 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_fETCH_SAME_SIGNATURE_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_aDWORDS_FORMAT_WARNING_is_assigned_from_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG_is_assigned_from_json);
@@ -1960,21 +2855,6 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedValidationWarnings_aNDROID_DEEP_LINK_INVALID_is_assigned_from_json);
     
     
-    RUN_TEST(test_CatalogsFeedValidationWarnings_aVAILABILITY_NORMALIZED_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_cONDITION_NORMALIZED_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_gENDER_NORMALIZED_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_sIZE_TYPE_NORMALIZED_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_aGE_GROUP_NORMALIZED_is_assigned_from_json);
-    
-    
     RUN_TEST(test_CatalogsFeedValidationWarnings_uTM_SOURCE_AUTO_CORRECTED_is_assigned_from_json);
     
     
@@ -2007,17 +2887,16 @@ void runTests(){
     
     
     
-    
-    
     RUN_TEST(test_CatalogsFeedsCreateRequest_name_is_assigned_from_json);
     
     
     
-    RUN_TEST(test_CatalogsFeedsCreateRequest_default_locale_is_assigned_from_json);
-    
     
     
     RUN_TEST(test_CatalogsFeedsCreateRequest_location_is_assigned_from_json);
+    
+    
+    
     
     
     
@@ -2036,8 +2915,263 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsHotelAddress_addr1_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_city_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_region_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_country_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_postal_code_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_brand_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_latitude_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_longitude_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_0_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_1_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_2_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_3_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_4_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_category_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_base_price_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_sale_price_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_allOf_main_image_link_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelBatchItem_hotel_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelBatchItem_operation_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelBatchRequest_catalog_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_default_locale_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_catalog_id_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsCreateRequest_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsCreateRequest_location_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsCreateRequest_catalog_id_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsUpdateRequest_name_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsUpdateRequest_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_score_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_number_of_reviewers_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_max_score_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_rating_system_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemErrorResponse_hotel_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemResponse_hotel_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsBatch_batch_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsBatch_created_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsBatch_completed_time_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsFilter_catalog_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsFilter_catalog_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_catalog_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_catalog_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupUpdateRequest_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupUpdateRequest_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupUpdateRequest_description_is_assigned_from_json);
+    
+    
+    
+    
     
     RUN_TEST(test_CatalogsItemValidationDetails_provided_value_is_assigned_from_json);
+    
     
     
     
@@ -2122,10 +3256,6 @@ void runTests(){
     
     
     
-    
-    
-    
-    
     RUN_TEST(test_CatalogsItemsBatch_batch_id_is_assigned_from_json);
     
     
@@ -2157,12 +3287,31 @@ void runTests(){
     
     
     
+    
+    
+    
+    RUN_TEST(test_CatalogsItemsFilters_catalog_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     RUN_TEST(test_CatalogsListProductsByFilterRequest_feed_id_is_assigned_from_json);
     
     
     
     
     RUN_TEST(test_CatalogsListProductsByFilterRequest_oneOf_feed_id_is_assigned_from_json);
+    
     
     
     
@@ -2192,6 +3341,9 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsProductGroup_feed_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsProductGroup_catalog_type_is_assigned_from_json);
     
     
     
@@ -2252,6 +3404,16 @@ void runTests(){
     
     
     
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsProductGroupMultipleCountriesCriteria_negated_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsProductGroupMultipleGenderCriteria_negated_is_assigned_from_json);
     
     
     
@@ -2317,58 +3479,433 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_name_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_description_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_is_featured_is_assigned_from_json);
     
     
     
     
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_created_at_is_assigned_from_json);
+    RUN_TEST(test_CatalogsRetailBatchRequest_items_inner_item_id_is_assigned_from_json);
     
     
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_updated_at_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_feed_id_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_name_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_description_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_is_featured_is_assigned_from_json);
+    RUN_TEST(test_CatalogsRetailBatchRequest_items_inner_operation_is_assigned_from_json);
     
     
     
     
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_created_at_is_assigned_from_json);
+    
+    RUN_TEST(test_CatalogsRetailFeed_created_at_is_assigned_from_json);
     
     
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_updated_at_is_assigned_from_json);
+    RUN_TEST(test_CatalogsRetailFeed_id_is_assigned_from_json);
     
     
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_feed_id_is_assigned_from_json);
+    RUN_TEST(test_CatalogsRetailFeed_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailFeed_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeed_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeed_default_locale_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsCreateRequest_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsCreateRequest_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsUpdateRequest_name_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsUpdateRequest_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemErrorResponse_item_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemResponse_item_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsBatch_batch_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsBatch_created_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsBatch_completed_time_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsFilter_catalog_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsFilter_catalog_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_is_featured_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_feed_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_brand_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_latitude_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_longitude_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_0_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_1_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_2_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_3_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_4_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_category_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_base_price_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_sale_price_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdateHotelItem_hotel_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdateHotelItem_operation_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdateRetailItem_item_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdateRetailItem_operation_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpsertHotelItem_hotel_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpsertHotelItem_operation_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpsertRetailItem_item_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsUpsertRetailItem_operation_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalBatchRequest_catalog_id_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsCreateRequest_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsCreateRequest_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsCreateRequest_catalog_id_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsUpdateRequest_name_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsUpdateRequest_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_catalog_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_is_featured_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_feed_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_catalog_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupUpdateRequest_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupUpdateRequest_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupUpdateRequest_description_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pins_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pricing_currency_criteria_r_operator_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pricing_currency_criteria_value_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pricing_currency_criteria_negated_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_is_featured_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_feed_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_catalog_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_is_featured_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_feed_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_catalog_id_is_assigned_from_json);
     
     
     
     
     RUN_TEST(test_Catalogs_product_groups_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_is_featured_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_updated_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_feed_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_catalog_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_catalog_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_is_featured_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_catalog_type_is_assigned_from_json);
     
     
     
@@ -2394,6 +3931,13 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ConversionEventResponse_conversion_tag_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionEventResponse_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionEventResponse_created_time_is_assigned_from_json);
     
     
     
@@ -2403,6 +3947,16 @@ void runTests(){
     
     
     
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_ConversionEventsUserData_click_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionEventsUserData_partner_id_is_assigned_from_json);
     
     
     
@@ -2467,6 +4021,15 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_content_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_content_category_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_content_brand_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_ConversionEvents_data_inner_custom_data_num_items_is_assigned_from_json);
     
@@ -2484,13 +4047,156 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_id_is_assigned_from_json);
+    
+    
     RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_price_is_assigned_from_json);
     
     
     RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_quantity_is_assigned_from_json);
     
     
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_name_is_assigned_from_json);
     
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_category_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_brand_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_ConversionTagCommon_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCommon_code_snippet_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagCommon_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCommon_last_fired_time_ms_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCommon_name_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagCommon_version_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_md_frequency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_fnln_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_ph_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_ge_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_db_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_loc_enabled_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagCreate_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_md_frequency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_fnln_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_ph_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_ge_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_db_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_loc_enabled_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_ConversionTagResponse_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagResponse_code_snippet_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagResponse_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagResponse_last_fired_time_ms_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagResponse_name_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagResponse_version_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_report_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_start_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_end_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_granularity_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_level_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CreateMMMReportResponse_code_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CreateMMMReportResponseData_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportResponseData_message_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportResponseData_status_is_assigned_from_json);
     
     
     
@@ -2577,6 +4283,15 @@ void runTests(){
     
     
     
+    RUN_TEST(test_DetailedError_code_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_DetailedError_message_is_assigned_from_json);
+    
+    
+    
+    
+    
     
     RUN_TEST(test_Error_code_is_assigned_from_json);
     
@@ -2598,11 +4313,73 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Feeds_create_request_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Feeds_create_request_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_Feeds_create_request_catalog_id_is_assigned_from_json);
+    
+    
+    
+    
     RUN_TEST(test_Feeds_list_200_response_bookmark_is_assigned_from_json);
     
     
     
     
+    RUN_TEST(test_Feeds_update_request_name_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Feeds_update_request_location_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_FollowUserRequest_auto_follow_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Followers_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_GetMMMReportResponse_code_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_GetMMMReportResponse_message_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_GetMMMReportResponse_status_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_GetMMMReportResponseData_report_status_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_GetMMMReportResponseData_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_GetMMMReportResponseData_size_is_assigned_from_json);
     
     
     
@@ -2614,6 +4391,17 @@ void runTests(){
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_HotelProcessingRecord_hotel_id_is_assigned_from_json);
     
     
     
@@ -2632,6 +4420,314 @@ void runTests(){
     
     RUN_TEST(test_ImageMetadata_item_type_is_assigned_from_json);
     
+    
+    RUN_TEST(test_ImageMetadata_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ImageMetadata_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ImageMetadata_link_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLog_client_timestamp_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_event_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_log_level_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_external_business_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_advertiser_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_merchant_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_tag_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_feed_profile_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_message_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_app_version_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_platform_version_number_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_cause_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_column_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_file_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_line_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_message_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_message_detail_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_stack_trace_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_method_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_host_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_path_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_request_headers_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_response_headers_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_response_status_code_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_log_index_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_field_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_value_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_reason_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLogsSuccessResponse_message_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationMetadata_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_external_business_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_merchant_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_user_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_advertiser_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_lba_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_tag_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_partner_access_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_partner_refresh_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_scopes_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_created_timestamp_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_updated_timestamp_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_additional_id_1_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_partner_metadata_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationRecord_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_external_business_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_merchant_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_user_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_advertiser_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_lba_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_tag_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_access_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_refresh_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_primary_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_access_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_refresh_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_scopes_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_metadata_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_additional_id_1_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_created_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_updated_time_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationRequest_external_business_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_merchant_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_advertiser_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_lba_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_tag_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_access_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_refresh_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_primary_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_access_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_refresh_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_scopes_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_additional_id_1_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_metadata_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_merchant_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_advertiser_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_lba_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_tag_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_access_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_refresh_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_primary_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_access_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_refresh_token_expiry_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_scopes_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_additional_id_1_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_metadata_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Integrations_get_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_Interest_canonical_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Interest_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Interest_key_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Interest_name_is_assigned_from_json);
     
     
     
@@ -2774,8 +4870,13 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_ItemCreateBatchRecord_item_id_is_assigned_from_json);
     
+    
+    
+    
+    RUN_TEST(test_ItemDeleteBatchRecord_item_id_is_assigned_from_json);
     
     
     
@@ -2795,7 +4896,13 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_ItemResponse_item_id_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_ItemResponse_hotel_id_is_assigned_from_json);
     
     
     
@@ -2806,12 +4913,26 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ItemResponse_anyOf_hotel_id_is_assigned_from_json);
+    
+    
+    
+    
     RUN_TEST(test_ItemResponse_anyOf_1_item_id_is_assigned_from_json);
     
     
     
+    RUN_TEST(test_ItemResponse_anyOf_1_hotel_id_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_ItemUpdateBatchRecord_item_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_ItemUpsertBatchRecord_item_id_is_assigned_from_json);
     
     
     
@@ -2823,6 +4944,15 @@ void runTests(){
     
     
     RUN_TEST(test_ItemValidationEvent_message_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_Items_batch_post_request_catalog_id_is_assigned_from_json);
+    
     
     
     
@@ -2905,6 +5035,75 @@ void runTests(){
     
     
     
+    RUN_TEST(test_LeadFormCommon_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormCommon_privacy_policy_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormCommon_has_accepted_terms_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormCommon_completion_message_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_LeadFormCommon_disclosure_language_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_LeadFormQuestion_custom_question_label_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_LeadFormResponse_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_privacy_policy_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_has_accepted_terms_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_completion_message_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_LeadFormResponse_disclosure_language_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_LeadFormResponse_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_created_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_updated_time_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_LeadFormTestResponse_subscription_id_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Lead_forms_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_LineItem_product_brand_is_assigned_from_json);
     
     
@@ -2927,6 +5126,24 @@ void runTests(){
     
     
     RUN_TEST(test_LineItem_product_variant_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_LinkedBusiness_username_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_small_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_medium_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_large_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_xlarge_url_is_assigned_from_json);
+    
+    
     
     
     
@@ -3011,6 +5228,9 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenRequestRefresh_scope_is_assigned_from_json);
     
     
+    RUN_TEST(test_OauthAccessTokenRequestRefresh_refresh_on_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_OauthAccessTokenResponse_response_type_is_assigned_from_json);
     
@@ -3050,6 +5270,53 @@ void runTests(){
     
     
     
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_response_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_access_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_token_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_expires_in_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_scope_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_in_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_at_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_response_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_access_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_token_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_expires_in_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_scope_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_expires_in_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_OauthAccessTokenResponseRefresh_response_type_is_assigned_from_json);
     
     
@@ -3069,7 +5336,133 @@ void runTests(){
     
     
     
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_conversion_event_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_conversion_tag_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_cpa_goal_value_in_micro_currency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_is_roas_optimized_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_learning_mode_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows_click_window_days_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows_engagement_window_days_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows_view_window_days_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_frequency_goal_metadata_frequency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_frequency_goal_metadata_timerange_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_scrollup_goal_metadata_scrollup_goal_value_in_micro_currency_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_OrderLine_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLine_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLine_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLine_purchase_order_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLine_start_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLine_end_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLine_budget_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLine_paid_budget_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_OrderLine_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_OrderLines_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLines_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLines_ad_account_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLines_purchase_order_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLines_start_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLines_end_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLines_budget_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OrderLines_paid_budget_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_OrderLines_name_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_Order_lines_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Page_visit_conversion_tags_get_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
     RUN_TEST(test_Paginated_bookmark_is_assigned_from_json);
+    
     
     
     
@@ -3094,6 +5487,7 @@ void runTests(){
     RUN_TEST(test_Pin_alt_text_is_assigned_from_json);
     
     
+    
     RUN_TEST(test_Pin_board_id_is_assigned_from_json);
     
     
@@ -3101,9 +5495,75 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Pin_is_owner_is_assigned_from_json);
+    
+    
     
     
     RUN_TEST(test_Pin_parent_pin_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Pin_is_standard_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Pin_has_been_promoted_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_Pin_note_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_lifetime_metrics_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_summary_metrics_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_daily_metrics_inner_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_daily_metrics_inner_metrics_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinCreate_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_created_at_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_dominant_color_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_alt_text_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_board_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_board_section_id_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_PinCreate_parent_pin_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinCreate_note_is_assigned_from_json);
     
     
     
@@ -3114,8 +5574,20 @@ void runTests(){
     RUN_TEST(test_PinMediaMetadata_item_type_is_assigned_from_json);
     
     
+    RUN_TEST(test_PinMediaMetadata_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaMetadata_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaMetadata_link_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_PinMediaMetadata_cover_image_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaMetadata_video_url_is_assigned_from_json);
     
     
     RUN_TEST(test_PinMediaMetadata_duration_is_assigned_from_json);
@@ -3137,13 +5609,29 @@ void runTests(){
     RUN_TEST(test_PinMediaSource_data_is_assigned_from_json);
     
     
+    RUN_TEST(test_PinMediaSource_is_standard_is_assigned_from_json);
+    
+    
     RUN_TEST(test_PinMediaSource_url_is_assigned_from_json);
     
     
     RUN_TEST(test_PinMediaSource_cover_image_url_is_assigned_from_json);
     
     
+    RUN_TEST(test_PinMediaSource_cover_image_content_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSource_cover_image_data_is_assigned_from_json);
+    
+    
     RUN_TEST(test_PinMediaSource_media_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSource_index_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSource_is_affiliate_link_is_assigned_from_json);
     
     
     
@@ -3156,11 +5644,69 @@ void runTests(){
     RUN_TEST(test_PinMediaSourceImageBase64_data_is_assigned_from_json);
     
     
+    RUN_TEST(test_PinMediaSourceImageBase64_is_standard_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_PinMediaSourceImageURL_source_type_is_assigned_from_json);
     
     
     RUN_TEST(test_PinMediaSourceImageURL_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImageURL_is_standard_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_source_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_index_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_content_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_data_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_source_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_index_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_url_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourcePinURL_source_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourcePinURL_is_affiliate_link_is_assigned_from_json);
     
     
     
@@ -3170,7 +5716,16 @@ void runTests(){
     RUN_TEST(test_PinMediaSourceVideoID_cover_image_url_is_assigned_from_json);
     
     
+    RUN_TEST(test_PinMediaSourceVideoID_cover_image_content_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceVideoID_cover_image_data_is_assigned_from_json);
+    
+    
     RUN_TEST(test_PinMediaSourceVideoID_media_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceVideoID_is_standard_is_assigned_from_json);
     
     
     
@@ -3196,6 +5751,9 @@ void runTests(){
     RUN_TEST(test_PinMediaWithVideo_cover_image_url_is_assigned_from_json);
     
     
+    RUN_TEST(test_PinMediaWithVideo_video_url_is_assigned_from_json);
+    
+    
     RUN_TEST(test_PinMediaWithVideo_duration_is_assigned_from_json);
     
     
@@ -3212,7 +5770,42 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Pin_media_media_type_is_assigned_from_json);
+    RUN_TEST(test_PinUpdate_alt_text_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinUpdate_board_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinUpdate_board_section_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinUpdate_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinUpdate_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinUpdate_title_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinUpdate_note_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PinUpdate_carousel_slots_inner_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinUpdate_carousel_slots_inner_description_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PinUpdate_carousel_slots_inner_link_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Pins_list_200_response_bookmark_is_assigned_from_json);
     
     
     
@@ -3255,6 +5848,8 @@ void runTests(){
     
     
     
+    
+    
     RUN_TEST(test_ProductGroupAnalyticsResponse_inner_pRODUCT_GROUP_ID_is_assigned_from_json);
     
     
@@ -3264,9 +5859,6 @@ void runTests(){
     
     
     RUN_TEST(test_ProductGroupPromotion_ad_group_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotion_type_is_assigned_from_json);
     
     
     RUN_TEST(test_ProductGroupPromotion_bid_in_micro_currency_is_assigned_from_json);
@@ -3290,14 +5882,17 @@ void runTests(){
     RUN_TEST(test_ProductGroupPromotion_slideshow_collections_description_is_assigned_from_json);
     
     
+    RUN_TEST(test_ProductGroupPromotion_is_mdl_is_assigned_from_json);
+    
+    
     
     RUN_TEST(test_ProductGroupPromotion_tracking_url_is_assigned_from_json);
     
     
-    RUN_TEST(test_ProductGroupPromotion_catalogs_product_group_id_is_assigned_from_json);
+    RUN_TEST(test_ProductGroupPromotion_catalog_product_group_id_is_assigned_from_json);
     
     
-    RUN_TEST(test_ProductGroupPromotion_catalogs_product_group_name_is_assigned_from_json);
+    RUN_TEST(test_ProductGroupPromotion_catalog_product_group_name_is_assigned_from_json);
     
     
     
@@ -3307,38 +5902,6 @@ void runTests(){
     RUN_TEST(test_ProductGroupPromotion_collections_hero_destination_url_is_assigned_from_json);
     
     
-    RUN_TEST(test_ProductGroupPromotion_is_mdl_is_assigned_from_json);
-    
-    
-    
-    
-    
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_tracking_url_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_catalogs_product_group_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_catalogs_product_group_name_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_collections_hero_pin_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_collections_hero_destination_url_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_slideshow_collections_title_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_slideshow_collections_description_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_is_mdl_is_assigned_from_json);
-    
     
     
     RUN_TEST(test_ProductGroupPromotionCreateRequest_ad_group_id_is_assigned_from_json);
@@ -3346,7 +5909,8 @@ void runTests(){
     
     
     
-    RUN_TEST(test_ProductGroupPromotionUpdateItem_id_is_assigned_from_json);
+    
+    
     
     
     
@@ -3367,24 +5931,41 @@ void runTests(){
     
     
     
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_name_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_description_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_is_featured_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_feed_id_is_assigned_from_json);
+    RUN_TEST(test_Product_group_promotions_list_200_response_bookmark_is_assigned_from_json);
     
     
     
     
-    RUN_TEST(test_Products_by_product_group_filter_list_200_response_bookmark_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuizPinOption_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuizPinOption_text_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_QuizPinQuestion_question_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuizPinQuestion_question_text_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_QuizPinResult_organic_pin_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_android_deep_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_ios_deep_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_destination_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_result_id_is_assigned_from_json);
     
     
     
@@ -3402,6 +5983,318 @@ void runTests(){
     
     
     
+    
+    RUN_TEST(test_SSIOAccountAddress_display_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountAddress_purpose_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountAddress_address_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountAddress_order_legal_entity_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountItem_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_io_terms_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_io_terms_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_us_terms_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_us_terms_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_row_terms_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_row_terms_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_io_type_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_SSIOAccountPMPName_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountPMPName_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_eligible_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_can_edit_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_currency_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_error_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_start_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_end_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_po_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_budget_amount_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billing_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billing_contact_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billing_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_media_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_media_contact_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_media_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_agency_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_user_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_accepted_terms_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_pmp_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_order_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_order_line_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_accepted_terms_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billto_company_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billto_business_address_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billto_billing_address_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_estimated_monthly_spend_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderResponse_pin_order_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_start_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_end_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_po_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_budget_amount_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_billing_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_billing_contact_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_billing_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_media_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_media_contact_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_media_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_agency_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_user_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_oracle_line_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_salesforce_order_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_salesforce_order_line_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_ads_manager_order_line_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderResponse_pin_order_id_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_start_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_end_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_po_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_budget_amount_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_billing_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_billing_contact_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_billing_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_media_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_media_contact_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_media_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_agency_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_user_email_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatus_pin_order_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatus_status_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatus_creation_time_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatusResponse_pin_order_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatusResponse_status_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatusResponse_creation_time_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOOrderLine_salesforce_order_line_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_ads_manager_order_line_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_pin_order_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_last_modified_date_time_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_SSIOOrderLine_bill_to_company_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_billing_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_billing_contact_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_billing_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_media_contact_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_media_contact_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_media_contact_lastname_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SSIOOrderLine_agency_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_po_number_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_order_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_pmp_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_accepted_terms_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_accepted_terms_time_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_budget_amount_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_estimated_monthly_spend_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Search_partner_pins_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Search_user_boards_get_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_SingleInterestTargetingOptionResponse_id_is_assigned_from_json);
     
     
@@ -3414,13 +6307,30 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Ssio_insertion_orders_status_get_by_ad_account_200_response_bookmark_is_assigned_from_json);
     
     
     
     
+    RUN_TEST(test_Ssio_order_lines_get_by_ad_account_200_response_bookmark_is_assigned_from_json);
     
     
     
+    
+    RUN_TEST(test_SummaryPin_alt_text_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SummaryPin_link_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SummaryPin_title_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SummaryPin_description_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SummaryPin_media_media_type_is_assigned_from_json);
     
     
     
@@ -3445,13 +6355,101 @@ void runTests(){
     
     
     
-    RUN_TEST(test_TargetingSpec_SHOPPING_RETARGETING_1_inner_lookback_window_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_ad_account_id_is_assigned_from_json);
     
     
     
-    RUN_TEST(test_TargetingSpec_SHOPPING_RETARGETING_1_inner_exclusion_window_is_assigned_from_json);
+    RUN_TEST(test_TemplateResponse_user_id_is_assigned_from_json);
     
     
+    RUN_TEST(test_TemplateResponse_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_report_start_relative_days_in_past_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_report_end_relative_days_in_past_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_view_window_days_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_click_window_days_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_engagement_window_days_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_conversion_report_time_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_filters_json_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_is_owned_by_user_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_is_scheduled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_creation_source_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_is_deleted_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_updated_time_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_type_is_assigned_from_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_absolute_date_range_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_absolute_date_range_start_date_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_absolute_date_range_end_date_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_dynamic_date_range_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_dynamic_date_range_range_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_relative_date_range_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_relative_date_range_start_days_in_past_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_relative_date_range_end_days_in_past_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_Templates_list_200_response_bookmark_is_assigned_from_json);
     
     
     
@@ -3502,6 +6500,26 @@ void runTests(){
     RUN_TEST(test_TopVideoPinsAnalyticsResponse_pins_inner_pin_id_is_assigned_from_json);
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_keyword_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_pct_growth_wow_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_pct_growth_mom_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_pct_growth_yoy_is_assigned_from_json);
     
     
     
@@ -3643,10 +6661,70 @@ void runTests(){
     
     
     
+    
+    
+    RUN_TEST(test_UserSummary_username_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserSummary_type_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_UserWebsiteSummary_website_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserWebsiteSummary_status_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserWebsiteSummary_verified_at_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_verification_code_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_dns_txt_record_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_metatag_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_filename_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_file_content_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_UserWebsiteVerifyRequest_website_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerifyRequest_verification_method_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_User_account_followed_interests_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_User_following_get_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_User_websites_get_200_response_bookmark_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_VideoMetadata_item_type_is_assigned_from_json);
     
     
     RUN_TEST(test_VideoMetadata_cover_image_url_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_VideoMetadata_video_url_is_assigned_from_json);
     
     
     RUN_TEST(test_VideoMetadata_duration_is_assigned_from_json);
@@ -3664,6 +6742,9 @@ void runTests(){
     RUN_TEST(test_Account_account_type_is_converted_to_json);
     
     
+    RUN_TEST(test_Account_id_is_converted_to_json);
+    
+    
     RUN_TEST(test_Account_profile_image_is_converted_to_json);
     
     
@@ -3671,6 +6752,27 @@ void runTests(){
     
     
     RUN_TEST(test_Account_username_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Account_about_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Account_business_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Account_board_count_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Account_pin_count_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Account_follower_count_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Account_following_count_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Account_monthly_views_is_converted_to_json);
     
     
     
@@ -3685,6 +6787,12 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdAccount_created_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccount_updated_time_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_AdAccountAnalyticsResponse_inner_aD_ACCOUNT_ID_is_converted_to_json);
     
@@ -3696,6 +6804,60 @@ void runTests(){
     
     
     RUN_TEST(test_AdAccountCreateRequest_owner_user_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_webhook_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_lead_form_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_partner_access_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionRequest_partner_refresh_token_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_cryptographic_key_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_cryptographic_algorithm_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountCreateSubscriptionResponse_created_time_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_lead_form_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_webhook_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_user_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_api_version_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_cryptographic_key_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_cryptographic_algorithm_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdAccountGetSubscriptionResponse_created_time_is_converted_to_json);
     
     
     
@@ -3745,12 +6907,21 @@ void runTests(){
     RUN_TEST(test_AdCommon_name_is_converted_to_json);
     
     
-    RUN_TEST(test_AdCommon_pin_id_is_converted_to_json);
-    
-    
     
     
     RUN_TEST(test_AdCommon_view_tracking_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdCommon_lead_form_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdCommon_customizable_cta_type_is_converted_to_json);
+    
+    
+    
+    
+    
     
     
     
@@ -3788,17 +6959,46 @@ void runTests(){
     RUN_TEST(test_AdCreateRequest_name_is_converted_to_json);
     
     
-    RUN_TEST(test_AdCreateRequest_pin_id_is_converted_to_json);
-    
-    
     
     
     RUN_TEST(test_AdCreateRequest_view_tracking_url_is_converted_to_json);
     
     
+    RUN_TEST(test_AdCreateRequest_lead_form_id_is_converted_to_json);
     
     
     
+    RUN_TEST(test_AdCreateRequest_customizable_cta_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdCreateRequest_pin_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingRequest_auto_targeting_enabled_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingRequest_keywords_inner_value_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingResponse_audience_size_lower_bound_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdGroupAudienceSizingResponse_audience_size_upper_bound_is_converted_to_json);
     
     
     
@@ -3811,8 +7011,6 @@ void runTests(){
     
     RUN_TEST(test_AdGroupCommon_bid_in_micro_currency_is_converted_to_json);
     
-    
-    RUN_TEST(test_AdGroupCommon_bid_strategy_type_is_converted_to_json);
     
     
     
@@ -3836,6 +7034,13 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdGroupCommon_bid_strategy_type_is_converted_to_json);
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3852,8 +7057,6 @@ void runTests(){
     
     RUN_TEST(test_AdGroupCreateRequest_bid_in_micro_currency_is_converted_to_json);
     
-    
-    RUN_TEST(test_AdGroupCreateRequest_bid_strategy_type_is_converted_to_json);
     
     
     
@@ -3877,6 +7080,9 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdGroupCreateRequest_bid_strategy_type_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_AdGroupResponse_name_is_converted_to_json);
     
@@ -3887,8 +7093,6 @@ void runTests(){
     
     RUN_TEST(test_AdGroupResponse_bid_in_micro_currency_is_converted_to_json);
     
-    
-    RUN_TEST(test_AdGroupResponse_bid_strategy_type_is_converted_to_json);
     
     
     
@@ -3910,6 +7114,9 @@ void runTests(){
     
     RUN_TEST(test_AdGroupResponse_campaign_id_is_converted_to_json);
     
+    
+    
+    RUN_TEST(test_AdGroupResponse_bid_strategy_type_is_converted_to_json);
     
     
     RUN_TEST(test_AdGroupResponse_id_is_converted_to_json);
@@ -3947,8 +7154,6 @@ void runTests(){
     RUN_TEST(test_AdGroupUpdateRequest_bid_in_micro_currency_is_converted_to_json);
     
     
-    RUN_TEST(test_AdGroupUpdateRequest_bid_strategy_type_is_converted_to_json);
-    
     
     
     RUN_TEST(test_AdGroupUpdateRequest_start_time_is_converted_to_json);
@@ -3971,12 +7176,19 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdGroupUpdateRequest_bid_strategy_type_is_converted_to_json);
+    
+    
     RUN_TEST(test_AdGroupUpdateRequest_id_is_converted_to_json);
     
     
     
     RUN_TEST(test_AdGroupsAnalyticsResponse_inner_aD_GROUP_ID_is_converted_to_json);
     
+    
+    
+    
+    RUN_TEST(test_AdPinId_pin_id_is_converted_to_json);
     
     
     
@@ -4033,12 +7245,20 @@ void runTests(){
     RUN_TEST(test_AdResponse_name_is_converted_to_json);
     
     
-    RUN_TEST(test_AdResponse_pin_id_is_converted_to_json);
-    
-    
     
     
     RUN_TEST(test_AdResponse_view_tracking_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdResponse_lead_form_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdResponse_customizable_cta_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdResponse_pin_id_is_converted_to_json);
     
     
     RUN_TEST(test_AdResponse_ad_account_id_is_converted_to_json);
@@ -4097,24 +7317,45 @@ void runTests(){
     RUN_TEST(test_AdUpdateRequest_name_is_converted_to_json);
     
     
-    RUN_TEST(test_AdUpdateRequest_pin_id_is_converted_to_json);
-    
-    
     
     
     RUN_TEST(test_AdUpdateRequest_view_tracking_url_is_converted_to_json);
     
     
+    RUN_TEST(test_AdUpdateRequest_lead_form_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdUpdateRequest_customizable_cta_type_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_AdUpdateRequest_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdUpdateRequest_pin_id_is_converted_to_json);
     
     
     
     RUN_TEST(test_Ad_account_owner_username_is_converted_to_json);
     
     
+    RUN_TEST(test_Ad_account_owner_id_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Ad_accounts_catalogs_product_groups_list_200_response_bookmark_is_converted_to_json);
+    
+    
     
     
     RUN_TEST(test_Ad_accounts_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Ad_accounts_subscriptions_get_list_200_response_bookmark_is_converted_to_json);
     
     
     
@@ -4151,8 +7392,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_AdsAnalyticsCreateAsyncResponse_report_status_is_converted_to_json);
-    
     
     RUN_TEST(test_AdsAnalyticsCreateAsyncResponse_token_is_converted_to_json);
     
@@ -4162,8 +7401,6 @@ void runTests(){
     
     
     
-    
-    RUN_TEST(test_AdsAnalyticsGetAsyncResponse_report_status_is_converted_to_json);
     
     
     RUN_TEST(test_AdsAnalyticsGetAsyncResponse_url_is_converted_to_json);
@@ -4183,21 +7420,65 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AdsCreditDiscountsResponse_active_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_advertiser_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_discountType_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_discountInMicroCurrency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_discountCurrency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditDiscountsResponse_remainingDiscountInMicroCurrency_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdsCreditRedeemRequest_offerCodeHash_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditRedeemRequest_validateOnly_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AdsCreditRedeemResponse_success_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditRedeemResponse_errorCode_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AdsCreditRedeemResponse_errorMessage_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Ads_credits_discounts_get_200_response_bookmark_is_converted_to_json);
+    
+    
+    
     
     RUN_TEST(test_Ads_list_200_response_bookmark_is_converted_to_json);
     
     
     
     
+    RUN_TEST(test_AnalyticsDailyMetrics_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AnalyticsDailyMetrics_metrics_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_AnalyticsMetricsResponse_summary_metrics_is_converted_to_json);
     
-    
-    
-    
-    RUN_TEST(test_AnalyticsMetricsResponse_daily_metrics_inner_date_is_converted_to_json);
-    
-    
-    RUN_TEST(test_AnalyticsMetricsResponse_daily_metrics_inner_metrics_is_converted_to_json);
     
     
     
@@ -4233,11 +7514,41 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AudienceCategory_key_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_ratio_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_index_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceCategory_id_is_converted_to_json);
+    
+    
+    
+    
     RUN_TEST(test_AudienceCommon_ad_account_id_is_converted_to_json);
     
     
     RUN_TEST(test_AudienceCommon_name_is_converted_to_json);
     
+    
+    
+    
+    RUN_TEST(test_AudienceCreateCustomRequest_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceCreateCustomRequest_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceCreateCustomRequest_category_is_converted_to_json);
     
     
     
@@ -4249,6 +7560,37 @@ void runTests(){
     
     
     RUN_TEST(test_AudienceCreateRequest_description_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceDefinition_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceDefinition_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceDefinition_scope_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceDemographicValue_key_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceDemographicValue_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceDemographicValue_ratio_is_converted_to_json);
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4267,6 +7609,20 @@ void runTests(){
     
     
     RUN_TEST(test_AudienceInsightCategoryCommon_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_AudienceInsightsResponse_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceInsightsResponse_size_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceInsightsResponse_size_is_upper_bound_is_converted_to_json);
     
     
     
@@ -4312,6 +7668,23 @@ void runTests(){
     
     
     
+    RUN_TEST(test_AudienceSubcategory_key_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_ratio_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_index_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AudienceSubcategory_id_is_converted_to_json);
+    
+    
+    
+    
     
     RUN_TEST(test_AudienceUpdateRequest_ad_account_id_is_converted_to_json);
     
@@ -4349,13 +7722,50 @@ void runTests(){
     
     
     
+    RUN_TEST(test_BillingProfilesResponse_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_card_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_status_is_converted_to_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_advertiser_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_BillingProfilesResponse_payment_method_brand_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Billing_profiles_get_200_response_bookmark_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_Board_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Board_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Board_board_pins_modified_at_is_converted_to_json);
     
     
     RUN_TEST(test_Board_name_is_converted_to_json);
     
     
     RUN_TEST(test_Board_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Board_collaborator_count_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Board_pin_count_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Board_follower_count_is_converted_to_json);
+    
     
     
     
@@ -4384,6 +7794,11 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Board_media_image_cover_url_is_converted_to_json);
+    
+    
+    
+    
     RUN_TEST(test_Board_owner_username_is_converted_to_json);
     
     
@@ -4394,12 +7809,17 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Board_sections_list_pins_200_response_bookmark_is_converted_to_json);
-    
-    
-    
-    
     RUN_TEST(test_Boards_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Boards_list_pins_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Boards_user_follows_list_200_response_bookmark_is_converted_to_json);
     
     
     
@@ -4454,6 +7874,7 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_BulkUpsertResponse_request_id_is_converted_to_json);
     
     
@@ -4461,6 +7882,7 @@ void runTests(){
     
     
     RUN_TEST(test_BulkUpsertStatusResponse_result_url_is_converted_to_json);
+    
     
     
     
@@ -4488,6 +7910,7 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_CampaignCreateCommon_ad_account_id_is_converted_to_json);
     
     
@@ -4510,8 +7933,6 @@ void runTests(){
     
     RUN_TEST(test_CampaignCreateCommon_end_time_is_converted_to_json);
     
-    
-    RUN_TEST(test_CampaignCreateCommon_is_campaign_budget_optimization_is_converted_to_json);
     
     
     RUN_TEST(test_CampaignCreateCommon_is_flexible_daily_budgets_is_converted_to_json);
@@ -4546,8 +7967,6 @@ void runTests(){
     
     RUN_TEST(test_CampaignCreateRequest_end_time_is_converted_to_json);
     
-    
-    RUN_TEST(test_CampaignCreateRequest_is_campaign_budget_optimization_is_converted_to_json);
     
     
     RUN_TEST(test_CampaignCreateRequest_is_flexible_daily_budgets_is_converted_to_json);
@@ -4586,8 +8005,6 @@ void runTests(){
     RUN_TEST(test_CampaignCreateResponseData_end_time_is_converted_to_json);
     
     
-    RUN_TEST(test_CampaignCreateResponseData_is_campaign_budget_optimization_is_converted_to_json);
-    
     
     RUN_TEST(test_CampaignCreateResponseData_is_flexible_daily_budgets_is_converted_to_json);
     
@@ -4609,6 +8026,9 @@ void runTests(){
     
     
     RUN_TEST(test_CampaignCreateResponseData_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CampaignCreateResponseData_is_campaign_budget_optimization_is_converted_to_json);
     
     
     
@@ -4643,6 +8063,7 @@ void runTests(){
     
     
     RUN_TEST(test_CampaignResponse_end_time_is_converted_to_json);
+    
     
     
     
@@ -4689,8 +8110,6 @@ void runTests(){
     RUN_TEST(test_CampaignUpdateRequest_end_time_is_converted_to_json);
     
     
-    RUN_TEST(test_CampaignUpdateRequest_is_campaign_budget_optimization_is_converted_to_json);
-    
     
     RUN_TEST(test_CampaignUpdateRequest_is_flexible_daily_budgets_is_converted_to_json);
     
@@ -4699,6 +8118,10 @@ void runTests(){
     
     
     RUN_TEST(test_CampaignUpdateRequest_is_automated_campaign_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CampaignUpdateRequest_is_campaign_budget_optimization_is_converted_to_json);
+    
     
     
     
@@ -4714,6 +8137,65 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Catalog_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalog_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalog_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalog_name_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogProductGroup_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_merchant_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogProductGroup_feed_profile_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_last_update_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_product_count_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogProductGroup_featured_position_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsCreateHotelItem_hotel_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsCreateHotelItem_operation_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsCreateRetailItem_item_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsCreateRetailItem_operation_is_converted_to_json);
+    
+    
+    
+    
     RUN_TEST(test_CatalogsDbItem_created_at_is_converted_to_json);
     
     
@@ -4721,6 +8203,20 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsDbItem_updated_at_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsDeleteHotelItem_hotel_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsDeleteHotelItem_operation_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsDeleteRetailItem_item_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsDeleteRetailItem_operation_is_converted_to_json);
     
     
     
@@ -4733,10 +8229,15 @@ void runTests(){
     RUN_TEST(test_CatalogsFeed_updated_at_is_converted_to_json);
     
     
-    
-    
-    
     RUN_TEST(test_CatalogsFeed_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsFeed_location_is_converted_to_json);
+    
+    
     
     
     
@@ -4744,9 +8245,8 @@ void runTests(){
     
     
     
-    RUN_TEST(test_CatalogsFeed_location_is_converted_to_json);
     
-    
+    RUN_TEST(test_CatalogsFeed_catalog_id_is_converted_to_json);
     
     
     
@@ -4760,8 +8260,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_DOWNLOAD_ERROR_is_converted_to_json);
-    
     
     RUN_TEST(test_CatalogsFeedIngestionErrors_lINE_LEVEL_INTERNAL_ERROR_is_converted_to_json);
     
@@ -4772,6 +8270,21 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedIngestionErrors_aCCOUNT_FLAGGED_is_converted_to_json);
     
     
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_LEVEL_INTERNAL_ERROR_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_FILE_NOT_ACCESSIBLE_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_MALFORMED_URL_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_FILE_NOT_FOUND_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionErrors_iMAGE_INVALID_FILE_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_CatalogsFeedIngestionInfo_iN_STOCK_is_converted_to_json);
     
@@ -4780,6 +8293,25 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsFeedIngestionInfo_pREORDER_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_MALFORMED_URL_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_FILE_NOT_FOUND_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_aDDITIONAL_IMAGE_INVALID_FILE_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedIngestionWarnings_hOTEL_PRICE_HEADER_IS_PRESENT_is_converted_to_json);
     
     
     
@@ -4808,6 +8340,9 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedProductCounts_original_is_converted_to_json);
     
     
+    RUN_TEST(test_CatalogsFeedProductCounts_ingested_is_converted_to_json);
+    
+    
     
     
     
@@ -4825,6 +8360,9 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsFeedValidationErrors_rEQUIRED_COLUMNS_MISSING_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedValidationErrors_dUPLICATE_PRODUCTS_is_converted_to_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationErrors_iMAGE_LINK_INVALID_is_converted_to_json);
@@ -4909,6 +8447,12 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsFeedValidationWarnings_aD_LINK_FORMAT_WARNING_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedValidationWarnings_aD_LINK_SAME_AS_LINK_is_converted_to_json);
+    
+    
     RUN_TEST(test_CatalogsFeedValidationWarnings_tITLE_LENGTH_TOO_LONG_is_converted_to_json);
     
     
@@ -4930,13 +8474,13 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedValidationWarnings_lINK_FORMAT_WARNING_is_converted_to_json);
     
     
-    RUN_TEST(test_CatalogsFeedValidationWarnings_dUPLICATE_PRODUCTS_is_converted_to_json);
-    
-    
     RUN_TEST(test_CatalogsFeedValidationWarnings_sALES_PRICE_INVALID_is_converted_to_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_pRODUCT_CATEGORY_DEPTH_WARNING_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsFeedValidationWarnings_aDWORDS_FORMAT_WARNING_is_converted_to_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_aDWORDS_SAME_AS_LINK_is_converted_to_json);
@@ -4946,9 +8490,6 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_fETCH_SAME_SIGNATURE_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_aDWORDS_FORMAT_WARNING_is_converted_to_json);
     
     
     RUN_TEST(test_CatalogsFeedValidationWarnings_aDDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG_is_converted_to_json);
@@ -5023,21 +8564,6 @@ void runTests(){
     RUN_TEST(test_CatalogsFeedValidationWarnings_aNDROID_DEEP_LINK_INVALID_is_converted_to_json);
     
     
-    RUN_TEST(test_CatalogsFeedValidationWarnings_aVAILABILITY_NORMALIZED_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_cONDITION_NORMALIZED_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_gENDER_NORMALIZED_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_sIZE_TYPE_NORMALIZED_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CatalogsFeedValidationWarnings_aGE_GROUP_NORMALIZED_is_converted_to_json);
-    
-    
     RUN_TEST(test_CatalogsFeedValidationWarnings_uTM_SOURCE_AUTO_CORRECTED_is_converted_to_json);
     
     
@@ -5070,17 +8596,16 @@ void runTests(){
     
     
     
-    
-    
     RUN_TEST(test_CatalogsFeedsCreateRequest_name_is_converted_to_json);
     
     
     
-    RUN_TEST(test_CatalogsFeedsCreateRequest_default_locale_is_converted_to_json);
-    
     
     
     RUN_TEST(test_CatalogsFeedsCreateRequest_location_is_converted_to_json);
+    
+    
+    
     
     
     
@@ -5099,8 +8624,263 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsHotelAddress_addr1_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_city_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_region_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_country_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAddress_postal_code_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_brand_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_latitude_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_longitude_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_0_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_1_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_2_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_3_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_custom_label_4_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_category_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_base_price_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_sale_price_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelAttributes_allOf_main_image_link_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelBatchItem_hotel_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelBatchItem_operation_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelBatchRequest_catalog_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_default_locale_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelFeed_catalog_id_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsCreateRequest_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsCreateRequest_location_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsCreateRequest_catalog_id_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsUpdateRequest_name_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelFeedsUpdateRequest_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_score_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_number_of_reviewers_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_max_score_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelGuestRatings_rating_system_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemErrorResponse_hotel_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemResponse_hotel_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsBatch_batch_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsBatch_created_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsBatch_completed_time_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsFilter_catalog_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelItemsFilter_catalog_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroup_catalog_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupCreateRequest_catalog_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupUpdateRequest_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupUpdateRequest_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsHotelProductGroupUpdateRequest_description_is_converted_to_json);
+    
+    
+    
+    
     
     RUN_TEST(test_CatalogsItemValidationDetails_provided_value_is_converted_to_json);
+    
     
     
     
@@ -5185,10 +8965,6 @@ void runTests(){
     
     
     
-    
-    
-    
-    
     RUN_TEST(test_CatalogsItemsBatch_batch_id_is_converted_to_json);
     
     
@@ -5220,12 +8996,31 @@ void runTests(){
     
     
     
+    
+    
+    
+    RUN_TEST(test_CatalogsItemsFilters_catalog_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     RUN_TEST(test_CatalogsListProductsByFilterRequest_feed_id_is_converted_to_json);
     
     
     
     
     RUN_TEST(test_CatalogsListProductsByFilterRequest_oneOf_feed_id_is_converted_to_json);
+    
     
     
     
@@ -5255,6 +9050,9 @@ void runTests(){
     
     
     RUN_TEST(test_CatalogsProductGroup_feed_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsProductGroup_catalog_type_is_converted_to_json);
     
     
     
@@ -5315,6 +9113,16 @@ void runTests(){
     
     
     
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsProductGroupMultipleCountriesCriteria_negated_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsProductGroupMultipleGenderCriteria_negated_is_converted_to_json);
     
     
     
@@ -5380,58 +9188,433 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_name_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_description_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_is_featured_is_converted_to_json);
     
     
     
     
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_created_at_is_converted_to_json);
+    RUN_TEST(test_CatalogsRetailBatchRequest_items_inner_item_id_is_converted_to_json);
     
     
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_updated_at_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_feed_based_case_feed_id_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_name_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_description_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_is_featured_is_converted_to_json);
+    RUN_TEST(test_CatalogsRetailBatchRequest_items_inner_operation_is_converted_to_json);
     
     
     
     
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_created_at_is_converted_to_json);
+    
+    RUN_TEST(test_CatalogsRetailFeed_created_at_is_converted_to_json);
     
     
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_updated_at_is_converted_to_json);
+    RUN_TEST(test_CatalogsRetailFeed_id_is_converted_to_json);
     
     
-    RUN_TEST(test_Catalogs_product_group_merchant_based_case_feed_id_is_converted_to_json);
+    RUN_TEST(test_CatalogsRetailFeed_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailFeed_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeed_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeed_default_locale_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsCreateRequest_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsCreateRequest_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsUpdateRequest_name_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailFeedsUpdateRequest_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemErrorResponse_item_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemResponse_item_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsBatch_batch_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsBatch_created_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsBatch_completed_time_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsFilter_catalog_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailItemsFilter_catalog_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_is_featured_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsRetailProductGroup_feed_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_brand_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_latitude_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_longitude_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_0_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_1_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_2_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_3_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_custom_label_4_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_category_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_base_price_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdatableHotelAttributes_sale_price_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdateHotelItem_hotel_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdateHotelItem_operation_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpdateRetailItem_item_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpdateRetailItem_operation_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpsertHotelItem_hotel_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpsertHotelItem_operation_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsUpsertRetailItem_item_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsUpsertRetailItem_operation_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalBatchRequest_catalog_id_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsCreateRequest_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsCreateRequest_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsCreateRequest_catalog_id_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsUpdateRequest_name_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalFeedsUpdateRequest_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_catalog_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_is_featured_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroup_feed_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupCreateRequest_catalog_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupUpdateRequest_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupUpdateRequest_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CatalogsVerticalProductGroupUpdateRequest_description_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pins_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pricing_currency_criteria_r_operator_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pricing_currency_criteria_value_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_group_pricing_currency_criteria_negated_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_is_featured_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_feed_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_201_response_catalog_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_is_featured_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_feed_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_create_request_catalog_id_is_converted_to_json);
     
     
     
     
     RUN_TEST(test_Catalogs_product_groups_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_is_featured_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_updated_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_feed_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_catalog_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_list_200_response_allOf_items_inner_catalog_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_is_featured_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Catalogs_product_groups_update_request_catalog_type_is_converted_to_json);
     
     
     
@@ -5457,6 +9640,13 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ConversionEventResponse_conversion_tag_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionEventResponse_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionEventResponse_created_time_is_converted_to_json);
     
     
     
@@ -5466,6 +9656,16 @@ void runTests(){
     
     
     
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_ConversionEventsUserData_click_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionEventsUserData_partner_id_is_converted_to_json);
     
     
     
@@ -5530,6 +9730,15 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_content_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_content_category_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_content_brand_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_ConversionEvents_data_inner_custom_data_num_items_is_converted_to_json);
     
@@ -5547,13 +9756,156 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_id_is_converted_to_json);
+    
+    
     RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_price_is_converted_to_json);
     
     
     RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_quantity_is_converted_to_json);
     
     
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_name_is_converted_to_json);
     
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_category_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionEvents_data_inner_custom_data_contents_inner_item_brand_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_ConversionTagCommon_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCommon_code_snippet_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagCommon_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCommon_last_fired_time_ms_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCommon_name_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagCommon_version_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_md_frequency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_fnln_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_ph_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_ge_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_db_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagConfigs_aem_loc_enabled_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagCreate_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_md_frequency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_fnln_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_ph_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_ge_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_db_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_aem_loc_enabled_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_ConversionTagResponse_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagResponse_code_snippet_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagResponse_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagResponse_last_fired_time_ms_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagResponse_name_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ConversionTagResponse_version_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_report_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_start_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_end_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_granularity_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportRequest_level_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_CreateMMMReportResponse_code_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CreateMMMReportResponseData_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportResponseData_message_is_converted_to_json);
+    
+    
+    RUN_TEST(test_CreateMMMReportResponseData_status_is_converted_to_json);
     
     
     
@@ -5640,6 +9992,15 @@ void runTests(){
     
     
     
+    RUN_TEST(test_DetailedError_code_is_converted_to_json);
+    
+    
+    RUN_TEST(test_DetailedError_message_is_converted_to_json);
+    
+    
+    
+    
+    
     
     RUN_TEST(test_Error_code_is_converted_to_json);
     
@@ -5661,11 +10022,73 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Feeds_create_request_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Feeds_create_request_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_Feeds_create_request_catalog_id_is_converted_to_json);
+    
+    
+    
+    
     RUN_TEST(test_Feeds_list_200_response_bookmark_is_converted_to_json);
     
     
     
     
+    RUN_TEST(test_Feeds_update_request_name_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Feeds_update_request_location_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_FollowUserRequest_auto_follow_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Followers_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_GetMMMReportResponse_code_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_GetMMMReportResponse_message_is_converted_to_json);
+    
+    
+    RUN_TEST(test_GetMMMReportResponse_status_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_GetMMMReportResponseData_report_status_is_converted_to_json);
+    
+    
+    RUN_TEST(test_GetMMMReportResponseData_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_GetMMMReportResponseData_size_is_converted_to_json);
     
     
     
@@ -5677,6 +10100,17 @@ void runTests(){
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_HotelProcessingRecord_hotel_id_is_converted_to_json);
     
     
     
@@ -5695,6 +10129,314 @@ void runTests(){
     
     RUN_TEST(test_ImageMetadata_item_type_is_converted_to_json);
     
+    
+    RUN_TEST(test_ImageMetadata_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ImageMetadata_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ImageMetadata_link_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLog_client_timestamp_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_event_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_log_level_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_external_business_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_advertiser_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_merchant_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_tag_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_feed_profile_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_message_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_app_version_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLog_platform_version_number_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_cause_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_column_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_file_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_line_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_message_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_message_detail_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientError_stack_trace_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_method_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_host_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_path_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_request_headers_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_response_headers_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogClientRequest_response_status_code_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_log_index_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_field_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_value_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationLogsInvalidLogResponse_rejected_logs_inner_reason_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_IntegrationLogsSuccessResponse_message_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationMetadata_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_external_business_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_merchant_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_user_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_advertiser_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_lba_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_connected_tag_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_partner_access_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_partner_refresh_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_scopes_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_created_timestamp_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_updated_timestamp_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_additional_id_1_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationMetadata_partner_metadata_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationRecord_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_external_business_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_merchant_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_user_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_advertiser_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_lba_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_connected_tag_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_access_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_refresh_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_primary_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_access_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_refresh_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_scopes_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_partner_metadata_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_additional_id_1_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_created_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRecord_updated_time_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationRequest_external_business_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_merchant_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_advertiser_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_lba_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_connected_tag_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_access_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_refresh_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_primary_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_access_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_refresh_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_scopes_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_additional_id_1_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequest_partner_metadata_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_merchant_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_advertiser_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_lba_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_connected_tag_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_access_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_refresh_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_primary_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_access_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_refresh_token_expiry_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_scopes_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_additional_id_1_is_converted_to_json);
+    
+    
+    RUN_TEST(test_IntegrationRequestPatch_partner_metadata_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Integrations_get_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_Interest_canonical_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Interest_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Interest_key_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Interest_name_is_converted_to_json);
     
     
     
@@ -5837,8 +10579,13 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_ItemCreateBatchRecord_item_id_is_converted_to_json);
     
+    
+    
+    
+    RUN_TEST(test_ItemDeleteBatchRecord_item_id_is_converted_to_json);
     
     
     
@@ -5858,7 +10605,13 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_ItemResponse_item_id_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_ItemResponse_hotel_id_is_converted_to_json);
     
     
     
@@ -5869,12 +10622,26 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ItemResponse_anyOf_hotel_id_is_converted_to_json);
+    
+    
+    
+    
     RUN_TEST(test_ItemResponse_anyOf_1_item_id_is_converted_to_json);
     
     
     
+    RUN_TEST(test_ItemResponse_anyOf_1_hotel_id_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_ItemUpdateBatchRecord_item_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_ItemUpsertBatchRecord_item_id_is_converted_to_json);
     
     
     
@@ -5886,6 +10653,15 @@ void runTests(){
     
     
     RUN_TEST(test_ItemValidationEvent_message_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_Items_batch_post_request_catalog_id_is_converted_to_json);
+    
     
     
     
@@ -5968,6 +10744,75 @@ void runTests(){
     
     
     
+    RUN_TEST(test_LeadFormCommon_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormCommon_privacy_policy_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormCommon_has_accepted_terms_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormCommon_completion_message_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_LeadFormCommon_disclosure_language_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_LeadFormQuestion_custom_question_label_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_LeadFormResponse_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_privacy_policy_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_has_accepted_terms_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_completion_message_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_LeadFormResponse_disclosure_language_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_LeadFormResponse_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_created_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LeadFormResponse_updated_time_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_LeadFormTestResponse_subscription_id_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Lead_forms_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_LineItem_product_brand_is_converted_to_json);
     
     
@@ -5990,6 +10835,24 @@ void runTests(){
     
     
     RUN_TEST(test_LineItem_product_variant_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_LinkedBusiness_username_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_small_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_medium_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_large_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LinkedBusiness_image_xlarge_url_is_converted_to_json);
+    
+    
     
     
     
@@ -6074,6 +10937,9 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenRequestRefresh_scope_is_converted_to_json);
     
     
+    RUN_TEST(test_OauthAccessTokenRequestRefresh_refresh_on_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_OauthAccessTokenResponse_response_type_is_converted_to_json);
     
@@ -6113,6 +10979,53 @@ void runTests(){
     
     
     
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_response_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_access_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_token_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_expires_in_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_scope_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_in_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_at_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_response_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_access_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_token_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_expires_in_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_scope_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_expires_in_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_OauthAccessTokenResponseRefresh_response_type_is_converted_to_json);
     
     
@@ -6132,7 +11045,133 @@ void runTests(){
     
     
     
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_conversion_event_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_conversion_tag_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_cpa_goal_value_in_micro_currency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_is_roas_optimized_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_learning_mode_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows_click_window_days_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows_engagement_window_days_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows_view_window_days_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_frequency_goal_metadata_frequency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_frequency_goal_metadata_timerange_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_OptimizationGoalMetadata_scrollup_goal_metadata_scrollup_goal_value_in_micro_currency_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_OrderLine_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLine_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLine_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLine_purchase_order_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLine_start_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLine_end_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLine_budget_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLine_paid_budget_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_OrderLine_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_OrderLines_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLines_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLines_ad_account_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLines_purchase_order_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLines_start_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLines_end_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLines_budget_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OrderLines_paid_budget_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_OrderLines_name_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_Order_lines_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Page_visit_conversion_tags_get_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
     RUN_TEST(test_Paginated_bookmark_is_converted_to_json);
+    
     
     
     
@@ -6157,6 +11196,7 @@ void runTests(){
     RUN_TEST(test_Pin_alt_text_is_converted_to_json);
     
     
+    
     RUN_TEST(test_Pin_board_id_is_converted_to_json);
     
     
@@ -6164,9 +11204,75 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Pin_is_owner_is_converted_to_json);
+    
+    
     
     
     RUN_TEST(test_Pin_parent_pin_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Pin_is_standard_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Pin_has_been_promoted_is_converted_to_json);
+    
+    
+    RUN_TEST(test_Pin_note_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_lifetime_metrics_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_summary_metrics_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_daily_metrics_inner_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinAnalyticsMetricsResponse_daily_metrics_inner_metrics_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinCreate_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_created_at_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_dominant_color_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_alt_text_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_board_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_board_section_id_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_PinCreate_parent_pin_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinCreate_note_is_converted_to_json);
     
     
     
@@ -6177,8 +11283,20 @@ void runTests(){
     RUN_TEST(test_PinMediaMetadata_item_type_is_converted_to_json);
     
     
+    RUN_TEST(test_PinMediaMetadata_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaMetadata_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaMetadata_link_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_PinMediaMetadata_cover_image_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaMetadata_video_url_is_converted_to_json);
     
     
     RUN_TEST(test_PinMediaMetadata_duration_is_converted_to_json);
@@ -6200,13 +11318,29 @@ void runTests(){
     RUN_TEST(test_PinMediaSource_data_is_converted_to_json);
     
     
+    RUN_TEST(test_PinMediaSource_is_standard_is_converted_to_json);
+    
+    
     RUN_TEST(test_PinMediaSource_url_is_converted_to_json);
     
     
     RUN_TEST(test_PinMediaSource_cover_image_url_is_converted_to_json);
     
     
+    RUN_TEST(test_PinMediaSource_cover_image_content_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSource_cover_image_data_is_converted_to_json);
+    
+    
     RUN_TEST(test_PinMediaSource_media_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSource_index_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSource_is_affiliate_link_is_converted_to_json);
     
     
     
@@ -6219,11 +11353,69 @@ void runTests(){
     RUN_TEST(test_PinMediaSourceImageBase64_data_is_converted_to_json);
     
     
+    RUN_TEST(test_PinMediaSourceImageBase64_is_standard_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_PinMediaSourceImageURL_source_type_is_converted_to_json);
     
     
     RUN_TEST(test_PinMediaSourceImageURL_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImageURL_is_standard_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_source_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_index_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_content_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesBase64_items_inner_data_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_source_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_index_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceImagesURL_items_inner_url_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinMediaSourcePinURL_source_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourcePinURL_is_affiliate_link_is_converted_to_json);
     
     
     
@@ -6233,7 +11425,16 @@ void runTests(){
     RUN_TEST(test_PinMediaSourceVideoID_cover_image_url_is_converted_to_json);
     
     
+    RUN_TEST(test_PinMediaSourceVideoID_cover_image_content_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceVideoID_cover_image_data_is_converted_to_json);
+    
+    
     RUN_TEST(test_PinMediaSourceVideoID_media_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinMediaSourceVideoID_is_standard_is_converted_to_json);
     
     
     
@@ -6259,6 +11460,9 @@ void runTests(){
     RUN_TEST(test_PinMediaWithVideo_cover_image_url_is_converted_to_json);
     
     
+    RUN_TEST(test_PinMediaWithVideo_video_url_is_converted_to_json);
+    
+    
     RUN_TEST(test_PinMediaWithVideo_duration_is_converted_to_json);
     
     
@@ -6275,7 +11479,42 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Pin_media_media_type_is_converted_to_json);
+    RUN_TEST(test_PinUpdate_alt_text_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinUpdate_board_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinUpdate_board_section_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinUpdate_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinUpdate_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinUpdate_title_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinUpdate_note_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PinUpdate_carousel_slots_inner_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinUpdate_carousel_slots_inner_description_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PinUpdate_carousel_slots_inner_link_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_Pins_list_200_response_bookmark_is_converted_to_json);
     
     
     
@@ -6318,6 +11557,8 @@ void runTests(){
     
     
     
+    
+    
     RUN_TEST(test_ProductGroupAnalyticsResponse_inner_pRODUCT_GROUP_ID_is_converted_to_json);
     
     
@@ -6327,9 +11568,6 @@ void runTests(){
     
     
     RUN_TEST(test_ProductGroupPromotion_ad_group_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotion_type_is_converted_to_json);
     
     
     RUN_TEST(test_ProductGroupPromotion_bid_in_micro_currency_is_converted_to_json);
@@ -6353,14 +11591,17 @@ void runTests(){
     RUN_TEST(test_ProductGroupPromotion_slideshow_collections_description_is_converted_to_json);
     
     
+    RUN_TEST(test_ProductGroupPromotion_is_mdl_is_converted_to_json);
+    
+    
     
     RUN_TEST(test_ProductGroupPromotion_tracking_url_is_converted_to_json);
     
     
-    RUN_TEST(test_ProductGroupPromotion_catalogs_product_group_id_is_converted_to_json);
+    RUN_TEST(test_ProductGroupPromotion_catalog_product_group_id_is_converted_to_json);
     
     
-    RUN_TEST(test_ProductGroupPromotion_catalogs_product_group_name_is_converted_to_json);
+    RUN_TEST(test_ProductGroupPromotion_catalog_product_group_name_is_converted_to_json);
     
     
     
@@ -6370,38 +11611,6 @@ void runTests(){
     RUN_TEST(test_ProductGroupPromotion_collections_hero_destination_url_is_converted_to_json);
     
     
-    RUN_TEST(test_ProductGroupPromotion_is_mdl_is_converted_to_json);
-    
-    
-    
-    
-    
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_tracking_url_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_catalogs_product_group_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_catalogs_product_group_name_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_collections_hero_pin_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_collections_hero_destination_url_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_slideshow_collections_title_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_slideshow_collections_description_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ProductGroupPromotionCommon_is_mdl_is_converted_to_json);
-    
     
     
     RUN_TEST(test_ProductGroupPromotionCreateRequest_ad_group_id_is_converted_to_json);
@@ -6409,7 +11618,8 @@ void runTests(){
     
     
     
-    RUN_TEST(test_ProductGroupPromotionUpdateItem_id_is_converted_to_json);
+    
+    
     
     
     
@@ -6430,24 +11640,41 @@ void runTests(){
     
     
     
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_name_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_description_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_is_featured_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_Product_groups_create_request_feed_base_case_feed_id_is_converted_to_json);
+    RUN_TEST(test_Product_group_promotions_list_200_response_bookmark_is_converted_to_json);
     
     
     
     
-    RUN_TEST(test_Products_by_product_group_filter_list_200_response_bookmark_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuizPinOption_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuizPinOption_text_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_QuizPinQuestion_question_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuizPinQuestion_question_text_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_QuizPinResult_organic_pin_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_android_deep_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_ios_deep_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_destination_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QuizPinResult_result_id_is_converted_to_json);
     
     
     
@@ -6465,6 +11692,318 @@ void runTests(){
     
     
     
+    
+    RUN_TEST(test_SSIOAccountAddress_display_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountAddress_purpose_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountAddress_address_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountAddress_order_legal_entity_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountItem_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_io_terms_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_io_terms_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_us_terms_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_us_terms_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_row_terms_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_row_terms_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountItem_io_type_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_SSIOAccountPMPName_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountPMPName_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_eligible_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_can_edit_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_currency_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOAccountResponse_error_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_start_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_end_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_po_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_budget_amount_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billing_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billing_contact_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billing_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_media_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_media_contact_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_media_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_agency_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_user_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_accepted_terms_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_pmp_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_order_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_order_line_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_accepted_terms_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billto_company_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billto_business_address_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_billto_billing_address_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderRequest_estimated_monthly_spend_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_SSIOCreateInsertionOrderResponse_pin_order_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_start_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_end_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_po_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_budget_amount_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_billing_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_billing_contact_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_billing_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_media_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_media_contact_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_media_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_agency_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_user_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_oracle_line_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_salesforce_order_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_salesforce_order_line_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderRequest_ads_manager_order_line_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOEditInsertionOrderResponse_pin_order_id_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_start_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_end_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_po_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_budget_amount_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_billing_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_billing_contact_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_billing_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_media_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_media_contact_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_media_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_agency_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderCommon_user_email_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatus_pin_order_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatus_status_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatus_creation_time_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatusResponse_pin_order_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatusResponse_status_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOInsertionOrderStatusResponse_creation_time_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOOrderLine_salesforce_order_line_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_ads_manager_order_line_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_pin_order_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_last_modified_date_time_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_SSIOOrderLine_bill_to_company_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_billing_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_billing_contact_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_billing_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_media_contact_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_media_contact_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_media_contact_lastname_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SSIOOrderLine_agency_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_po_number_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_order_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_pmp_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_accepted_terms_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_accepted_terms_time_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_budget_amount_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SSIOOrderLine_estimated_monthly_spend_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Search_partner_pins_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Search_user_boards_get_200_response_bookmark_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_SingleInterestTargetingOptionResponse_id_is_converted_to_json);
     
     
@@ -6477,13 +12016,30 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Ssio_insertion_orders_status_get_by_ad_account_200_response_bookmark_is_converted_to_json);
     
     
     
     
+    RUN_TEST(test_Ssio_order_lines_get_by_ad_account_200_response_bookmark_is_converted_to_json);
     
     
     
+    
+    RUN_TEST(test_SummaryPin_alt_text_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SummaryPin_link_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SummaryPin_title_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SummaryPin_description_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SummaryPin_media_media_type_is_converted_to_json);
     
     
     
@@ -6508,13 +12064,101 @@ void runTests(){
     
     
     
-    RUN_TEST(test_TargetingSpec_SHOPPING_RETARGETING_1_inner_lookback_window_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_ad_account_id_is_converted_to_json);
     
     
     
-    RUN_TEST(test_TargetingSpec_SHOPPING_RETARGETING_1_inner_exclusion_window_is_converted_to_json);
+    RUN_TEST(test_TemplateResponse_user_id_is_converted_to_json);
     
     
+    RUN_TEST(test_TemplateResponse_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_report_start_relative_days_in_past_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_report_end_relative_days_in_past_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_view_window_days_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_click_window_days_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_engagement_window_days_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_conversion_report_time_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_filters_json_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_is_owned_by_user_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_is_scheduled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_creation_source_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_is_deleted_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_updated_time_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_type_is_converted_to_json);
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_absolute_date_range_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_absolute_date_range_start_date_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_absolute_date_range_end_date_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_dynamic_date_range_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_dynamic_date_range_range_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_relative_date_range_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_relative_date_range_start_days_in_past_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TemplateResponse_date_range_relative_date_range_end_days_in_past_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_Templates_list_200_response_bookmark_is_converted_to_json);
     
     
     
@@ -6565,6 +12209,26 @@ void runTests(){
     RUN_TEST(test_TopVideoPinsAnalyticsResponse_pins_inner_pin_id_is_converted_to_json);
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_keyword_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_pct_growth_wow_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_pct_growth_mom_is_converted_to_json);
+    
+    
+    RUN_TEST(test_TrendingKeywordsResponse_trends_inner_pct_growth_yoy_is_converted_to_json);
     
     
     
@@ -6706,10 +12370,70 @@ void runTests(){
     
     
     
+    
+    
+    RUN_TEST(test_UserSummary_username_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserSummary_type_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_UserWebsiteSummary_website_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserWebsiteSummary_status_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserWebsiteSummary_verified_at_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_verification_code_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_dns_txt_record_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_metatag_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_filename_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerificationCode_file_content_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_UserWebsiteVerifyRequest_website_is_converted_to_json);
+    
+    
+    RUN_TEST(test_UserWebsiteVerifyRequest_verification_method_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_User_account_followed_interests_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_User_following_get_200_response_bookmark_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_User_websites_get_200_response_bookmark_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_VideoMetadata_item_type_is_converted_to_json);
     
     
     RUN_TEST(test_VideoMetadata_cover_image_url_is_converted_to_json);
+    
+    
+    RUN_TEST(test_VideoMetadata_video_url_is_converted_to_json);
     
     
     RUN_TEST(test_VideoMetadata_duration_is_converted_to_json);

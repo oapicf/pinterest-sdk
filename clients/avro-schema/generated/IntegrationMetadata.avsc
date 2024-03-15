@@ -1,0 +1,93 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Integration metadata",
+  "name": "IntegrationMetadata",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "external_business_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_merchant_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_user_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_advertiser_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_lba_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "connected_tag_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_access_token_expiry",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_refresh_token_expiry",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "scopes",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "created_timestamp",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "updated_timestamp",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "additional_id_1",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "partner_metadata",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

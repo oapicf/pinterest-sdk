@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ProductGroupPromotionResponseItem",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.ProductGroupPromotion"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Exception"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

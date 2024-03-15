@@ -11,6 +11,8 @@ module.exports = {
                     'REJECTED',
                     'ADVERTISER_DISABLED',
                     'ARCHIVED',
+                    'DRAFT',
+                    'DELETED_DRAFT',
                 ],
             }
         )

@@ -1,0 +1,41 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AudienceCreateCustomRequest",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Ad account ID.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Audience name."
+    },
+    {
+      "name": "rule",
+      "type": "model.AudienceRule",
+      "doc": ""
+    },
+    {
+      "name": "sharing_type",
+      "type": "model.AudienceSharingType",
+      "doc": ""
+    },
+    {
+      "name": "data_party",
+      "type": "model.AudienceDataParty",
+      "doc": ""
+    },
+    {
+      "name": "category",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CampaignCreateResponse",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CampaignCreateResponseItem"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

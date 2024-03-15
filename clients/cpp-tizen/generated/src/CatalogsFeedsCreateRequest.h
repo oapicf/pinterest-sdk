@@ -11,6 +11,7 @@
 #include <string>
 #include "CatalogsFeedCredentials.h"
 #include "CatalogsFeedProcessingSchedule.h"
+#include "CatalogsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFormat.h"
 #include "Country.h"
 #include "NullableCurrency.h"
@@ -53,20 +54,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	Country getDefaultCountry();
-
-	/*! \brief Set 
-	 */
-	void setDefaultCountry(Country  default_country);
-	/*! \brief Get 
-	 */
-	ProductAvailabilityType getDefaultAvailability();
-
-	/*! \brief Set 
-	 */
-	void setDefaultAvailability(ProductAvailabilityType  default_availability);
-	/*! \brief Get 
-	 */
 	NullableCurrency getDefaultCurrency();
 
 	/*! \brief Set 
@@ -86,13 +73,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setFormat(CatalogsFormat  format);
-	/*! \brief Get The locale used within a feed for product descriptions.
+	/*! \brief Get 
 	 */
-	std::string getDefaultLocale();
+	CatalogsFeedsCreateRequest_default_locale getDefaultLocale();
 
-	/*! \brief Set The locale used within a feed for product descriptions.
+	/*! \brief Set 
 	 */
-	void setDefaultLocale(std::string  default_locale);
+	void setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale);
 	/*! \brief Get 
 	 */
 	CatalogsFeedCredentials getCredentials();
@@ -114,17 +101,31 @@ public:
 	/*! \brief Set 
 	 */
 	void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule);
+	/*! \brief Get 
+	 */
+	Country getDefaultCountry();
+
+	/*! \brief Set 
+	 */
+	void setDefaultCountry(Country  default_country);
+	/*! \brief Get 
+	 */
+	ProductAvailabilityType getDefaultAvailability();
+
+	/*! \brief Set 
+	 */
+	void setDefaultAvailability(ProductAvailabilityType  default_availability);
 
 private:
-	Country default_country;
-	ProductAvailabilityType default_availability;
 	NullableCurrency default_currency;
 	std::string name;
 	CatalogsFormat format;
-	std::string default_locale;
+	CatalogsFeedsCreateRequest_default_locale default_locale;
 	CatalogsFeedCredentials credentials;
 	std::string location;
 	CatalogsFeedProcessingSchedule preferred_processing_schedule;
+	Country default_country;
+	ProductAvailabilityType default_availability;
 	void __init();
 	void __cleanup();
 

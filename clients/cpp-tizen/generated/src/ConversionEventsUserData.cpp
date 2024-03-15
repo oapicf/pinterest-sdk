@@ -33,6 +33,8 @@ ConversionEventsUserData::__init()
 	//new std::list()std::list> zp;
 	//new std::list()std::list> country;
 	//new std::list()std::list> external_id;
+	//click_id = std::string();
+	//partner_id = std::string();
 }
 
 void
@@ -87,6 +89,16 @@ ConversionEventsUserData::__cleanup()
 	//external_id.RemoveAll(true);
 	//delete external_id;
 	//external_id = NULL;
+	//}
+	//if(click_id != NULL) {
+	//
+	//delete click_id;
+	//click_id = NULL;
+	//}
+	//if(partner_id != NULL) {
+	//
+	//delete partner_id;
+	//partner_id = NULL;
 	//}
 	//
 }
@@ -316,6 +328,28 @@ ConversionEventsUserData::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *click_idKey = "click_id";
+	node = json_object_get_member(pJsonObject, click_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&click_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *partner_idKey = "partner_id";
+	node = json_object_get_member(pJsonObject, partner_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&partner_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 ConversionEventsUserData::ConversionEventsUserData(char* json)
@@ -478,6 +512,24 @@ ConversionEventsUserData::toJson()
 	
 	const gchar *external_idKey = "external_id";
 	json_object_set_member(pJsonObject, external_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getClickId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *click_idKey = "click_id";
+	json_object_set_member(pJsonObject, click_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPartnerId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *partner_idKey = "partner_id";
+	json_object_set_member(pJsonObject, partner_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -604,6 +656,30 @@ void
 ConversionEventsUserData::setExternalId(std::list <std::string> external_id)
 {
 	this->external_id = external_id;
+}
+
+std::string
+ConversionEventsUserData::getClickId()
+{
+	return click_id;
+}
+
+void
+ConversionEventsUserData::setClickId(std::string  click_id)
+{
+	this->click_id = click_id;
+}
+
+std::string
+ConversionEventsUserData::getPartnerId()
+{
+	return partner_id;
+}
+
+void
+ConversionEventsUserData::setPartnerId(std::string  partner_id)
+{
+	this->partner_id = partner_id;
 }
 
 

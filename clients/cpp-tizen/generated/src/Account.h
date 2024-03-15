@@ -52,6 +52,13 @@ public:
 	/*! \brief Set Type of account
 	 */
 	void setAccountType(std::string  account_type);
+	/*! \brief Get User account ID.
+	 */
+	std::string getId();
+
+	/*! \brief Set User account ID.
+	 */
+	void setId(std::string  id);
 	/*! \brief Get 
 	 */
 	std::string getProfileImage();
@@ -73,12 +80,69 @@ public:
 	/*! \brief Set 
 	 */
 	void setUsername(std::string  username);
+	/*! \brief Get Profile about description.
+	 */
+	std::string getAbout();
+
+	/*! \brief Set Profile about description.
+	 */
+	void setAbout(std::string  about);
+	/*! \brief Get 
+	 */
+	std::string getBusinessName();
+
+	/*! \brief Set 
+	 */
+	void setBusinessName(std::string  business_name);
+	/*! \brief Get User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+	 */
+	int getBoardCount();
+
+	/*! \brief Set User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+	 */
+	void setBoardCount(int  board_count);
+	/*! \brief Get User account pin count. This includes both created and saved pins.
+	 */
+	int getPinCount();
+
+	/*! \brief Set User account pin count. This includes both created and saved pins.
+	 */
+	void setPinCount(int  pin_count);
+	/*! \brief Get User account follower count.
+	 */
+	int getFollowerCount();
+
+	/*! \brief Set User account follower count.
+	 */
+	void setFollowerCount(int  follower_count);
+	/*! \brief Get User account following count.
+	 */
+	int getFollowingCount();
+
+	/*! \brief Set User account following count.
+	 */
+	void setFollowingCount(int  following_count);
+	/*! \brief Get User account monthly views.
+	 */
+	int getMonthlyViews();
+
+	/*! \brief Set User account monthly views.
+	 */
+	void setMonthlyViews(int  monthly_views);
 
 private:
 	std::string account_type;
+	std::string id;
 	std::string profile_image;
 	std::string website_url;
 	std::string username;
+	std::string about;
+	std::string business_name;
+	int board_count;
+	int pin_count;
+	int follower_count;
+	int following_count;
+	int monthly_views;
 	void __init();
 	void __cleanup();
 

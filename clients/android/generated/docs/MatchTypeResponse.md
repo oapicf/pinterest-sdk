@@ -1,0 +1,10 @@
+
+
+# MatchTypeResponse
+
+## Enum
+
+
+
+
+

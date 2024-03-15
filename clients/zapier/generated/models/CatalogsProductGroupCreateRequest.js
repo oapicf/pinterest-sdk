@@ -1,6 +1,5 @@
 const utils = require('../utils/utils');
-const CatalogsProductGroupFiltersAllOfRequest = require('../models/CatalogsProductGroupFiltersAllOfRequest');
-const product_groups_create_request_feed_base_case = require('../models/product_groups_create_request_feed_base_case');
+const CatalogsProductGroupFiltersRequest = require('../models/CatalogsProductGroupFiltersRequest');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -22,7 +21,7 @@ module.exports = {
                 label: `boolean indicator of whether the product group is being featured or not - [${labelPrefix}is_featured]`,
                 type: 'boolean',
             },
-            ...CatalogsProductGroupFiltersAllOfRequest.fields(`${keyPrefix}filters`, isInput),
+            ...CatalogsProductGroupFiltersRequest.fields(`${keyPrefix}filters`, isInput),
             {
                 key: `${keyPrefix}feed_id`,
                 label: `Catalog Feed id pertaining to the catalog product group. - [${labelPrefix}feed_id]`,
@@ -37,7 +36,7 @@ module.exports = {
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'is_featured': bundle.inputData?.[`${keyPrefix}is_featured`],
-            'filters': utils.removeIfEmpty(CatalogsProductGroupFiltersAllOfRequest.mapping(bundle, `${keyPrefix}filters`)),
+            'filters': utils.removeIfEmpty(CatalogsProductGroupFiltersRequest.mapping(bundle, `${keyPrefix}filters`)),
             'feed_id': bundle.inputData?.[`${keyPrefix}feed_id`],
         }
     },

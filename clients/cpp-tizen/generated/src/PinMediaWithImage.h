@@ -9,9 +9,8 @@
 
 
 #include <string>
-#include "ImageDetails.h"
+#include "ImageMetadata_images.h"
 #include "PinMedia.h"
-#include <map>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -57,15 +56,15 @@ public:
 	void setMediaType(std::string  media_type);
 	/*! \brief Get 
 	 */
-	std::map<std::string, std::string> getImages();
+	ImageMetadata_images getImages();
 
 	/*! \brief Set 
 	 */
-	void setImages(std::map <std::string, std::string> images);
+	void setImages(ImageMetadata_images  images);
 
 private:
 	std::string media_type;
-	std::map <std::string, std::string>images;
+	ImageMetadata_images images;
 	void __init();
 	void __cleanup();
 

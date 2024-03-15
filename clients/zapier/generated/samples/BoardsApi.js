@@ -3,7 +3,7 @@ module.exports = {
         { data: {} },
     "board_sections_list_200_responseSample": 
         { data: {} },
-    "board_sections_list_pins_200_responseSample": 
+    "boards_list_pins_200_responseSample": 
         { data: {} },
     "BoardSectionSample": 
         { data: {} },
@@ -13,7 +13,7 @@ module.exports = {
         { data: {} },
     "boards_list_200_responseSample": 
         { data: {} },
-    "board_sections_list_pins_200_responseSample": 
+    "boards_list_pins_200_responseSample": 
         { data: {} },
     "BoardSample": 
         { data: {} },

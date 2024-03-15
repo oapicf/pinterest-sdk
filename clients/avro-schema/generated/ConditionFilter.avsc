@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ConditionFilter",
+  "fields": [
+    {
+      "name": "CONDITION",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object for updating a hotel product group.",
+  "name": "CatalogsVerticalProductGroupUpdateRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsVerticalProductGroupUpdateRequest_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": ["null", "model.CatalogsHotelProductGroupFilters"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

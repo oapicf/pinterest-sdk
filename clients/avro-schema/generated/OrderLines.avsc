@@ -1,0 +1,75 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Order Line",
+  "name": "OrderLines",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Order line ID.",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "Always \"orderline\".",
+      "default": null
+    },
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Ad account ID.",
+      "default": null
+    },
+    {
+      "name": "purchase_order_id",
+      "type": ["null", "string"],
+      "doc": "Purchase order ID.",
+      "default": null
+    },
+    {
+      "name": "start_time",
+      "type": ["null", "double"],
+      "doc": "Start time. Unix timestamp.",
+      "default": null
+    },
+    {
+      "name": "end_time",
+      "type": ["null", "double"],
+      "doc": "End time. Unix timestamp.",
+      "default": null
+    },
+    {
+      "name": "budget",
+      "type": ["null", "double"],
+      "doc": "Order line budget in micro currency.",
+      "default": null
+    },
+    {
+      "name": "paid_budget",
+      "type": ["null", "double"],
+      "doc": "Order line paid budget in micro currency.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.OrderLineStatus"],
+      "doc": "Order line status.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Order line name.",
+      "default": null
+    },
+    {
+      "name": "paid_type",
+      "type": ["null", "model.OrderLinePaidType"],
+      "doc": "Order line paid type.",
+      "default": null
+    }
+  ]
+
+}

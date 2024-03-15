@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PinsSaveRequest",
+  "fields": [
+    {
+      "name": "board_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the board to which the pin will be saved.",
+      "default": null
+    },
+    {
+      "name": "board_section_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the board section to which the pin will be saved.",
+      "default": null
+    }
+  ]
+
+}

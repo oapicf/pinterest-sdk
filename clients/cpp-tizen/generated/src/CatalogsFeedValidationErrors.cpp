@@ -28,6 +28,7 @@ CatalogsFeedValidationErrors::__init()
 	//eNCODING_ERROR = int(0);
 	//dELIMITER_ERROR = int(0);
 	//rEQUIRED_COLUMNS_MISSING = int(0);
+	//dUPLICATE_PRODUCTS = int(0);
 	//iMAGE_LINK_INVALID = int(0);
 	//iTEMID_MISSING = int(0);
 	//tITLE_MISSING = int(0);
@@ -84,6 +85,11 @@ CatalogsFeedValidationErrors::__cleanup()
 	//
 	//delete rEQUIRED_COLUMNS_MISSING;
 	//rEQUIRED_COLUMNS_MISSING = NULL;
+	//}
+	//if(dUPLICATE_PRODUCTS != NULL) {
+	//
+	//delete dUPLICATE_PRODUCTS;
+	//dUPLICATE_PRODUCTS = NULL;
 	//}
 	//if(iMAGE_LINK_INVALID != NULL) {
 	//
@@ -279,6 +285,17 @@ CatalogsFeedValidationErrors::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&rEQUIRED_COLUMNS_MISSING, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
+	node = json_object_get_member(pJsonObject, dUPLICATE_PRODUCTSKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&dUPLICATE_PRODUCTS, node, "int", "");
 		} else {
 			
 		}
@@ -638,6 +655,15 @@ CatalogsFeedValidationErrors::toJson()
 	const gchar *rEQUIRED_COLUMNS_MISSINGKey = "REQUIRED_COLUMNS_MISSING";
 	json_object_set_member(pJsonObject, rEQUIRED_COLUMNS_MISSINGKey, node);
 	if (isprimitive("int")) {
+		int obj = getDUPLICATEPRODUCTS();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *dUPLICATE_PRODUCTSKey = "DUPLICATE_PRODUCTS";
+	json_object_set_member(pJsonObject, dUPLICATE_PRODUCTSKey, node);
+	if (isprimitive("int")) {
 		int obj = getIMAGELINKINVALID();
 		node = converttoJson(&obj, "int", "");
 	}
@@ -946,6 +972,18 @@ void
 CatalogsFeedValidationErrors::setREQUIREDCOLUMNSMISSING(int  rEQUIRED_COLUMNS_MISSING)
 {
 	this->rEQUIRED_COLUMNS_MISSING = rEQUIRED_COLUMNS_MISSING;
+}
+
+int
+CatalogsFeedValidationErrors::getDUPLICATEPRODUCTS()
+{
+	return dUPLICATE_PRODUCTS;
+}
+
+void
+CatalogsFeedValidationErrors::setDUPLICATEPRODUCTS(int  dUPLICATE_PRODUCTS)
+{
+	this->dUPLICATE_PRODUCTS = dUPLICATE_PRODUCTS;
 }
 
 int

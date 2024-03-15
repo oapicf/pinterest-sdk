@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The result, and link out, based on the user’s choice.",
+  "name": "QuizPinResult",
+  "fields": [
+    {
+      "name": "organic_pin_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "android_deep_link",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ios_deep_link",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "destination_url",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "result_id",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

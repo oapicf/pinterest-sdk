@@ -23,7 +23,7 @@ AdAccountsCountryResponseData::~AdAccountsCountryResponseData()
 void
 AdAccountsCountryResponseData::__init()
 {
-	//code = new Country();
+	//code = new AdCountry();
 	//currency = std::string();
 	//index = double(0);
 	//name = std::string();
@@ -65,8 +65,8 @@ AdAccountsCountryResponseData::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Country")) {
-			jsonToValue(&code, node, "Country", "Country");
+		if (isprimitive("AdCountry")) {
+			jsonToValue(&code, node, "AdCountry", "AdCountry");
 		} else {
 			
 		}
@@ -119,9 +119,9 @@ AdAccountsCountryResponseData::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("Country")) {
-		Country obj = getCode();
-		node = converttoJson(&obj, "Country", "");
+	if (isprimitive("AdCountry")) {
+		AdCountry obj = getCode();
+		node = converttoJson(&obj, "AdCountry", "");
 	}
 	else {
 		
@@ -168,14 +168,14 @@ AdAccountsCountryResponseData::toJson()
 	return ret;
 }
 
-Country
+AdCountry
 AdAccountsCountryResponseData::getCode()
 {
 	return code;
 }
 
 void
-AdAccountsCountryResponseData::setCode(Country  code)
+AdAccountsCountryResponseData::setCode(AdCountry  code)
 {
 	this->code = code;
 }

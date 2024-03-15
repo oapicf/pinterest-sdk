@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Order Line Paid Type",
+  "name": "OrderLinePaidType",
+  "symbols": [
+    "PAID",
+    "BONUS",
+    "MAKE_GOOD",
+    "TEST",
+    "null"
+  ]
+}

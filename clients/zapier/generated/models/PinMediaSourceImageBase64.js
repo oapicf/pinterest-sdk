@@ -29,6 +29,11 @@ module.exports = {
                 required: true,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}is_standard`,
+                label: `Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. - [${labelPrefix}is_standard]`,
+                type: 'boolean',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -37,6 +42,7 @@ module.exports = {
             'source_type': bundle.inputData?.[`${keyPrefix}source_type`],
             'content_type': bundle.inputData?.[`${keyPrefix}content_type`],
             'data': bundle.inputData?.[`${keyPrefix}data`],
+            'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],
         }
     },
 }

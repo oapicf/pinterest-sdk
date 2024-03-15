@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsItemValidationIssues",
+  "fields": [
+    {
+      "name": "item_number",
+      "type": "int",
+      "doc": "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation."
+    },
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "The merchant-created unique ID that represents the product."
+    },
+    {
+      "name": "errors",
+      "type": "model.CatalogsItemValidationErrors",
+      "doc": ""
+    },
+    {
+      "name": "warnings",
+      "type": "model.CatalogsItemValidationWarnings",
+      "doc": ""
+    }
+  ]
+
+}

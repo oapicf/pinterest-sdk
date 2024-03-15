@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Product counts for a CatalogsProductGroup",
+  "name": "CatalogsProductGroupProductCounts",
+  "fields": [
+    {
+      "name": "in_stock",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "out_of_stock",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "preorder",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "total",
+      "type": "double",
+      "doc": ""
+    }
+  ]
+
+}

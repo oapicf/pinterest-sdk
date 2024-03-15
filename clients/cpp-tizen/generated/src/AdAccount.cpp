@@ -29,6 +29,8 @@ AdAccount::__init()
 	//country = new Country();
 	//currency = new Currency();
 	//new std::list()std::list> permissions;
+	//created_time = int(0);
+	//updated_time = int(0);
 }
 
 void
@@ -63,6 +65,16 @@ AdAccount::__cleanup()
 	//permissions.RemoveAll(true);
 	//delete permissions;
 	//permissions = NULL;
+	//}
+	//if(created_time != NULL) {
+	//
+	//delete created_time;
+	//created_time = NULL;
+	//}
+	//if(updated_time != NULL) {
+	//
+	//delete updated_time;
+	//updated_time = NULL;
 	//}
 	//
 }
@@ -143,13 +155,15 @@ AdAccount::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
+			list<BusinessAccessRole> new_list;
+			BusinessAccessRole inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
+				if (isprimitive("BusinessAccessRole")) {
+					jsonToValue(&inst, temp_json, "BusinessAccessRole", "");
 				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
 					
 				}
 				new_list.push_back(inst);
@@ -157,6 +171,28 @@ AdAccount::fromJson(char* jsonStr)
 			permissions = new_list;
 		}
 		
+	}
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&created_time, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *updated_timeKey = "updated_time";
+	node = json_object_get_member(pJsonObject, updated_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&updated_time, node, "int", "");
+		} else {
+			
+		}
 	}
 }
 
@@ -230,14 +266,24 @@ AdAccount::toJson()
 	}
 	const gchar *currencyKey = "currency";
 	json_object_set_member(pJsonObject, currencyKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
-		node = converttoJson(&new_list, "std::string", "array");
+	if (isprimitive("BusinessAccessRole")) {
+		list<BusinessAccessRole> new_list = static_cast<list <BusinessAccessRole> > (getPermissions());
+		node = converttoJson(&new_list, "BusinessAccessRole", "array");
 	} else {
 		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getPermissions());
+		list<BusinessAccessRole> new_list = static_cast<list <BusinessAccessRole> > (getPermissions());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
+		
+		for (list<BusinessAccessRole>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			BusinessAccessRole obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
 		
 	}
 
@@ -245,6 +291,24 @@ AdAccount::toJson()
 	
 	const gchar *permissionsKey = "permissions";
 	json_object_set_member(pJsonObject, permissionsKey, node);
+	if (isprimitive("int")) {
+		int obj = getCreatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
+	if (isprimitive("int")) {
+		int obj = getUpdatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_timeKey = "updated_time";
+	json_object_set_member(pJsonObject, updated_timeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -313,16 +377,40 @@ AdAccount::setCurrency(Currency  currency)
 	this->currency = currency;
 }
 
-std::list<std::string>
+std::list<BusinessAccessRole>
 AdAccount::getPermissions()
 {
 	return permissions;
 }
 
 void
-AdAccount::setPermissions(std::list <std::string> permissions)
+AdAccount::setPermissions(std::list <BusinessAccessRole> permissions)
 {
 	this->permissions = permissions;
+}
+
+int
+AdAccount::getCreatedTime()
+{
+	return created_time;
+}
+
+void
+AdAccount::setCreatedTime(int  created_time)
+{
+	this->created_time = created_time;
+}
+
+int
+AdAccount::getUpdatedTime()
+{
+	return updated_time;
+}
+
+void
+AdAccount::setUpdatedTime(int  updated_time)
+{
+	this->updated_time = updated_time;
 }
 
 

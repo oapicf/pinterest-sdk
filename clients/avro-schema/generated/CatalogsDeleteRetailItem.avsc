@@ -1,0 +1,28 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An item to be deleted",
+  "name": "CatalogsDeleteRetailItem",
+  "fields": [
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "The catalog item id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsDeleteRetailItem_operation",
+        "symbols": [
+          "CREATE",
+          "UPDATE",
+          "UPSERT",
+          "DELETE"
+        ]
+      },
+      "doc": ""
+    }
+  ]
+
+}

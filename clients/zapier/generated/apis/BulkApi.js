@@ -76,6 +76,11 @@ module.exports = {
                     type: 'string',
                     required: true,
                 },
+                {
+                    key: 'include_details',
+                    label: 'if set to True then attach the errors/details to all the requests',
+                    type: 'boolean',
+                },
             ],
             outputFields: [
                 ...BulkUpsertStatusResponse.fields('', false),
@@ -91,6 +96,7 @@ module.exports = {
                         'Accept': 'application/json',
                     },
                     params: {
+                        'include_details': bundle.inputData?.['include_details'],
                     },
                     body: {
                     },

@@ -307,12 +307,12 @@ TargetingSpec::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<TargetingSpec_SHOPPING_RETARGETING_1_inner> new_list;
-			TargetingSpec_SHOPPING_RETARGETING_1_inner inst;
+			list<TargetingSpec_SHOPPING_RETARGETING> new_list;
+			TargetingSpec_SHOPPING_RETARGETING inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("TargetingSpec_SHOPPING_RETARGETING_1_inner")) {
-					jsonToValue(&inst, temp_json, "TargetingSpec_SHOPPING_RETARGETING_1_inner", "");
+				if (isprimitive("TargetingSpec_SHOPPING_RETARGETING")) {
+					jsonToValue(&inst, temp_json, "TargetingSpec_SHOPPING_RETARGETING", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -493,18 +493,18 @@ TargetingSpec::toJson()
 	
 	const gchar *lOCATIONKey = "LOCATION";
 	json_object_set_member(pJsonObject, lOCATIONKey, node);
-	if (isprimitive("TargetingSpec_SHOPPING_RETARGETING_1_inner")) {
-		list<TargetingSpec_SHOPPING_RETARGETING_1_inner> new_list = static_cast<list <TargetingSpec_SHOPPING_RETARGETING_1_inner> > (getSHOPPINGRETARGETING());
-		node = converttoJson(&new_list, "TargetingSpec_SHOPPING_RETARGETING_1_inner", "array");
+	if (isprimitive("TargetingSpec_SHOPPING_RETARGETING")) {
+		list<TargetingSpec_SHOPPING_RETARGETING> new_list = static_cast<list <TargetingSpec_SHOPPING_RETARGETING> > (getSHOPPINGRETARGETING());
+		node = converttoJson(&new_list, "TargetingSpec_SHOPPING_RETARGETING", "array");
 	} else {
 		node = json_node_alloc();
-		list<TargetingSpec_SHOPPING_RETARGETING_1_inner> new_list = static_cast<list <TargetingSpec_SHOPPING_RETARGETING_1_inner> > (getSHOPPINGRETARGETING());
+		list<TargetingSpec_SHOPPING_RETARGETING> new_list = static_cast<list <TargetingSpec_SHOPPING_RETARGETING> > (getSHOPPINGRETARGETING());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<TargetingSpec_SHOPPING_RETARGETING_1_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<TargetingSpec_SHOPPING_RETARGETING>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			TargetingSpec_SHOPPING_RETARGETING_1_inner obj = *it;
+			TargetingSpec_SHOPPING_RETARGETING obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -649,14 +649,14 @@ TargetingSpec::setLOCATION(std::list <std::string> lOCATION)
 	this->lOCATION = lOCATION;
 }
 
-std::list<TargetingSpec_SHOPPING_RETARGETING_1_inner>
+std::list<TargetingSpec_SHOPPING_RETARGETING>
 TargetingSpec::getSHOPPINGRETARGETING()
 {
 	return sHOPPING_RETARGETING;
 }
 
 void
-TargetingSpec::setSHOPPINGRETARGETING(std::list <TargetingSpec_SHOPPING_RETARGETING_1_inner> sHOPPING_RETARGETING)
+TargetingSpec::setSHOPPINGRETARGETING(std::list <TargetingSpec_SHOPPING_RETARGETING> sHOPPING_RETARGETING)
 {
 	this->sHOPPING_RETARGETING = sHOPPING_RETARGETING;
 }

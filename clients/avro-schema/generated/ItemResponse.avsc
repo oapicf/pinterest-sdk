@@ -1,0 +1,50 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing an item record",
+  "name": "ItemResponse",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "item_id",
+      "type": ["null", "string"],
+      "doc": "The catalog item id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "pins",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Pin"
+      }],
+      "doc": "The pins mapped to the item",
+      "default": null
+    },
+    {
+      "name": "attributes",
+      "type": ["null", "model.CatalogsHotelAttributes"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "hotel_id",
+      "type": ["null", "string"],
+      "doc": "The catalog hotel id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ItemValidationEvent"
+      }],
+      "doc": "Array with the errors for the item id requested",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AnalyticsDailyMetrics",
+  "fields": [
+    {
+      "name": "data_status",
+      "type": ["null", "model.DataStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "date",
+      "type": ["null", "string"],
+      "doc": "Metrics date (UTC): YYYY-MM-DD.",
+      "default": null
+    },
+    {
+      "name": "metrics",
+      "type": ["null", {
+        "type": "map",
+        "items": "double"
+      }],
+      "doc": "The metric name and daily value for each requested metric",
+      "default": null
+    }
+  ]
+
+}

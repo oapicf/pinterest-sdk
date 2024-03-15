@@ -1,0 +1,23 @@
+
+<h2>ConversionApiResponseEventsInner</h2>
+<ul class="parameter">
+  <li class="param-required-true">status : String
+    <br/>Whether the event was processed successfully.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>failed</dd>
+            <dd>processed</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">errorUnderscoremessage : String
+    <br/>Error message containing more information about why the event failed to be processed.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">warningUnderscoremessage : String
+    <br/>Warning messages about any fields in the event which are not standard. These are not critical to event processing.
+  </li>
+</ul>

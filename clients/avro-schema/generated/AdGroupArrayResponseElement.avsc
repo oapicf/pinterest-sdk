@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdGroupArrayResponseElement",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.AdGroupResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Exception"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

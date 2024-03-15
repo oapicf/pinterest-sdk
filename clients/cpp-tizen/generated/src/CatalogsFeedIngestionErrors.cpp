@@ -23,20 +23,19 @@ CatalogsFeedIngestionErrors::~CatalogsFeedIngestionErrors()
 void
 CatalogsFeedIngestionErrors::__init()
 {
-	//iMAGE_DOWNLOAD_ERROR = int(0);
 	//lINE_LEVEL_INTERNAL_ERROR = int(0);
 	//lARGE_PRODUCT_COUNT_DECREASE = int(0);
 	//aCCOUNT_FLAGGED = int(0);
+	//iMAGE_LEVEL_INTERNAL_ERROR = int(0);
+	//iMAGE_FILE_NOT_ACCESSIBLE = int(0);
+	//iMAGE_MALFORMED_URL = int(0);
+	//iMAGE_FILE_NOT_FOUND = int(0);
+	//iMAGE_INVALID_FILE = int(0);
 }
 
 void
 CatalogsFeedIngestionErrors::__cleanup()
 {
-	//if(iMAGE_DOWNLOAD_ERROR != NULL) {
-	//
-	//delete iMAGE_DOWNLOAD_ERROR;
-	//iMAGE_DOWNLOAD_ERROR = NULL;
-	//}
 	//if(lINE_LEVEL_INTERNAL_ERROR != NULL) {
 	//
 	//delete lINE_LEVEL_INTERNAL_ERROR;
@@ -52,6 +51,31 @@ CatalogsFeedIngestionErrors::__cleanup()
 	//delete aCCOUNT_FLAGGED;
 	//aCCOUNT_FLAGGED = NULL;
 	//}
+	//if(iMAGE_LEVEL_INTERNAL_ERROR != NULL) {
+	//
+	//delete iMAGE_LEVEL_INTERNAL_ERROR;
+	//iMAGE_LEVEL_INTERNAL_ERROR = NULL;
+	//}
+	//if(iMAGE_FILE_NOT_ACCESSIBLE != NULL) {
+	//
+	//delete iMAGE_FILE_NOT_ACCESSIBLE;
+	//iMAGE_FILE_NOT_ACCESSIBLE = NULL;
+	//}
+	//if(iMAGE_MALFORMED_URL != NULL) {
+	//
+	//delete iMAGE_MALFORMED_URL;
+	//iMAGE_MALFORMED_URL = NULL;
+	//}
+	//if(iMAGE_FILE_NOT_FOUND != NULL) {
+	//
+	//delete iMAGE_FILE_NOT_FOUND;
+	//iMAGE_FILE_NOT_FOUND = NULL;
+	//}
+	//if(iMAGE_INVALID_FILE != NULL) {
+	//
+	//delete iMAGE_INVALID_FILE;
+	//iMAGE_INVALID_FILE = NULL;
+	//}
 	//
 }
 
@@ -60,17 +84,6 @@ CatalogsFeedIngestionErrors::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *iMAGE_DOWNLOAD_ERRORKey = "IMAGE_DOWNLOAD_ERROR";
-	node = json_object_get_member(pJsonObject, iMAGE_DOWNLOAD_ERRORKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&iMAGE_DOWNLOAD_ERROR, node, "int", "");
-		} else {
-			
-		}
-	}
 	const gchar *lINE_LEVEL_INTERNAL_ERRORKey = "LINE_LEVEL_INTERNAL_ERROR";
 	node = json_object_get_member(pJsonObject, lINE_LEVEL_INTERNAL_ERRORKey);
 	if (node !=NULL) {
@@ -104,6 +117,61 @@ CatalogsFeedIngestionErrors::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *iMAGE_LEVEL_INTERNAL_ERRORKey = "IMAGE_LEVEL_INTERNAL_ERROR";
+	node = json_object_get_member(pJsonObject, iMAGE_LEVEL_INTERNAL_ERRORKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&iMAGE_LEVEL_INTERNAL_ERROR, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *iMAGE_FILE_NOT_ACCESSIBLEKey = "IMAGE_FILE_NOT_ACCESSIBLE";
+	node = json_object_get_member(pJsonObject, iMAGE_FILE_NOT_ACCESSIBLEKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&iMAGE_FILE_NOT_ACCESSIBLE, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *iMAGE_MALFORMED_URLKey = "IMAGE_MALFORMED_URL";
+	node = json_object_get_member(pJsonObject, iMAGE_MALFORMED_URLKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&iMAGE_MALFORMED_URL, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *iMAGE_FILE_NOT_FOUNDKey = "IMAGE_FILE_NOT_FOUND";
+	node = json_object_get_member(pJsonObject, iMAGE_FILE_NOT_FOUNDKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&iMAGE_FILE_NOT_FOUND, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *iMAGE_INVALID_FILEKey = "IMAGE_INVALID_FILE";
+	node = json_object_get_member(pJsonObject, iMAGE_INVALID_FILEKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&iMAGE_INVALID_FILE, node, "int", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsFeedIngestionErrors::CatalogsFeedIngestionErrors(char* json)
@@ -116,15 +184,6 @@ CatalogsFeedIngestionErrors::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("int")) {
-		int obj = getIMAGEDOWNLOADERROR();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *iMAGE_DOWNLOAD_ERRORKey = "IMAGE_DOWNLOAD_ERROR";
-	json_object_set_member(pJsonObject, iMAGE_DOWNLOAD_ERRORKey, node);
 	if (isprimitive("int")) {
 		int obj = getLINELEVELINTERNALERROR();
 		node = converttoJson(&obj, "int", "");
@@ -152,24 +211,57 @@ CatalogsFeedIngestionErrors::toJson()
 	}
 	const gchar *aCCOUNT_FLAGGEDKey = "ACCOUNT_FLAGGED";
 	json_object_set_member(pJsonObject, aCCOUNT_FLAGGEDKey, node);
+	if (isprimitive("int")) {
+		int obj = getIMAGELEVELINTERNALERROR();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *iMAGE_LEVEL_INTERNAL_ERRORKey = "IMAGE_LEVEL_INTERNAL_ERROR";
+	json_object_set_member(pJsonObject, iMAGE_LEVEL_INTERNAL_ERRORKey, node);
+	if (isprimitive("int")) {
+		int obj = getIMAGEFILENOTACCESSIBLE();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *iMAGE_FILE_NOT_ACCESSIBLEKey = "IMAGE_FILE_NOT_ACCESSIBLE";
+	json_object_set_member(pJsonObject, iMAGE_FILE_NOT_ACCESSIBLEKey, node);
+	if (isprimitive("int")) {
+		int obj = getIMAGEMALFORMEDURL();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *iMAGE_MALFORMED_URLKey = "IMAGE_MALFORMED_URL";
+	json_object_set_member(pJsonObject, iMAGE_MALFORMED_URLKey, node);
+	if (isprimitive("int")) {
+		int obj = getIMAGEFILENOTFOUND();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *iMAGE_FILE_NOT_FOUNDKey = "IMAGE_FILE_NOT_FOUND";
+	json_object_set_member(pJsonObject, iMAGE_FILE_NOT_FOUNDKey, node);
+	if (isprimitive("int")) {
+		int obj = getIMAGEINVALIDFILE();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *iMAGE_INVALID_FILEKey = "IMAGE_INVALID_FILE";
+	json_object_set_member(pJsonObject, iMAGE_INVALID_FILEKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-int
-CatalogsFeedIngestionErrors::getIMAGEDOWNLOADERROR()
-{
-	return iMAGE_DOWNLOAD_ERROR;
-}
-
-void
-CatalogsFeedIngestionErrors::setIMAGEDOWNLOADERROR(int  iMAGE_DOWNLOAD_ERROR)
-{
-	this->iMAGE_DOWNLOAD_ERROR = iMAGE_DOWNLOAD_ERROR;
 }
 
 int
@@ -206,6 +298,66 @@ void
 CatalogsFeedIngestionErrors::setACCOUNTFLAGGED(int  aCCOUNT_FLAGGED)
 {
 	this->aCCOUNT_FLAGGED = aCCOUNT_FLAGGED;
+}
+
+int
+CatalogsFeedIngestionErrors::getIMAGELEVELINTERNALERROR()
+{
+	return iMAGE_LEVEL_INTERNAL_ERROR;
+}
+
+void
+CatalogsFeedIngestionErrors::setIMAGELEVELINTERNALERROR(int  iMAGE_LEVEL_INTERNAL_ERROR)
+{
+	this->iMAGE_LEVEL_INTERNAL_ERROR = iMAGE_LEVEL_INTERNAL_ERROR;
+}
+
+int
+CatalogsFeedIngestionErrors::getIMAGEFILENOTACCESSIBLE()
+{
+	return iMAGE_FILE_NOT_ACCESSIBLE;
+}
+
+void
+CatalogsFeedIngestionErrors::setIMAGEFILENOTACCESSIBLE(int  iMAGE_FILE_NOT_ACCESSIBLE)
+{
+	this->iMAGE_FILE_NOT_ACCESSIBLE = iMAGE_FILE_NOT_ACCESSIBLE;
+}
+
+int
+CatalogsFeedIngestionErrors::getIMAGEMALFORMEDURL()
+{
+	return iMAGE_MALFORMED_URL;
+}
+
+void
+CatalogsFeedIngestionErrors::setIMAGEMALFORMEDURL(int  iMAGE_MALFORMED_URL)
+{
+	this->iMAGE_MALFORMED_URL = iMAGE_MALFORMED_URL;
+}
+
+int
+CatalogsFeedIngestionErrors::getIMAGEFILENOTFOUND()
+{
+	return iMAGE_FILE_NOT_FOUND;
+}
+
+void
+CatalogsFeedIngestionErrors::setIMAGEFILENOTFOUND(int  iMAGE_FILE_NOT_FOUND)
+{
+	this->iMAGE_FILE_NOT_FOUND = iMAGE_FILE_NOT_FOUND;
+}
+
+int
+CatalogsFeedIngestionErrors::getIMAGEINVALIDFILE()
+{
+	return iMAGE_INVALID_FILE;
+}
+
+void
+CatalogsFeedIngestionErrors::setIMAGEINVALIDFILE(int  iMAGE_INVALID_FILE)
+{
+	this->iMAGE_INVALID_FILE = iMAGE_INVALID_FILE;
 }
 
 

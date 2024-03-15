@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ConversionApiResponseEventsInner",
+  "fields": [
+    {
+      "name": "status",
+      "type": {
+        "type": "enum",
+        "name": "ConversionApiResponseEventsInner_status",
+        "symbols": [
+          "failed",
+          "processed"
+        ]
+      },
+      "doc": "Whether the event was processed successfully."
+    },
+    {
+      "name": "error_message",
+      "type": ["null", "string"],
+      "doc": "Error message containing more information about why the event failed to be processed.",
+      "default": null
+    },
+    {
+      "name": "warning_message",
+      "type": ["null", "string"],
+      "doc": "Warning messages about any fields in the event which are not standard. These are not critical to event processing.",
+      "default": null
+    }
+  ]
+
+}

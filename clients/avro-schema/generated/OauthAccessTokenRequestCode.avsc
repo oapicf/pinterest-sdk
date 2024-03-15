@@ -1,0 +1,31 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A request to exchange an authorization code for an access token.",
+  "name": "OauthAccessTokenRequestCode",
+  "fields": [
+    {
+      "name": "grant_type",
+      "type": {
+        "type": "enum",
+        "name": "OauthAccessTokenRequestCode_grantUnderscoretype",
+        "symbols": [
+          "authorization_code",
+          "refresh_token"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "code",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "redirect_uri",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

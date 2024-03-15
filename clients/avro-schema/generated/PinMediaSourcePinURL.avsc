@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.",
+  "name": "PinMediaSourcePinURL",
+  "fields": [
+    {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSourcePinURL_sourceUnderscoretype",
+        "symbols": [
+          "pin_url"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "is_affiliate_link",
+      "type": ["null", "boolean"],
+      "doc": "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.",
+      "default": null
+    }
+  ]
+
+}

@@ -32,7 +32,7 @@ CampaignCreateRequest::__init()
 	//tracking_urls = new AdCommon_tracking_urls();
 	//start_time = int(0);
 	//end_time = int(0);
-	//is_campaign_budget_optimization = bool(false);
+	//summary_status = std::string();
 	//is_flexible_daily_budgets = bool(false);
 	//default_ad_group_budget_in_micro_currency = int(0);
 	//is_automated_campaign = bool(false);
@@ -87,10 +87,10 @@ CampaignCreateRequest::__cleanup()
 	//delete end_time;
 	//end_time = NULL;
 	//}
-	//if(is_campaign_budget_optimization != NULL) {
+	//if(summary_status != NULL) {
 	//
-	//delete is_campaign_budget_optimization;
-	//is_campaign_budget_optimization = NULL;
+	//delete summary_status;
+	//summary_status = NULL;
 	//}
 	//if(is_flexible_daily_budgets != NULL) {
 	//
@@ -225,14 +225,17 @@ CampaignCreateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
-	node = json_object_get_member(pJsonObject, is_campaign_budget_optimizationKey);
+	const gchar *summary_statusKey = "summary_status";
+	node = json_object_get_member(pJsonObject, summary_statusKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&is_campaign_budget_optimization, node, "bool", "");
+		if (isprimitive("CampaignSummaryStatus")) {
+			jsonToValue(&summary_status, node, "CampaignSummaryStatus", "CampaignSummaryStatus");
 		} else {
+			
+			CampaignSummaryStatus* obj = static_cast<CampaignSummaryStatus*> (&summary_status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -386,15 +389,20 @@ CampaignCreateRequest::toJson()
 	}
 	const gchar *end_timeKey = "end_time";
 	json_object_set_member(pJsonObject, end_timeKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getIsCampaignBudgetOptimization();
-		node = converttoJson(&obj, "bool", "");
+	if (isprimitive("CampaignSummaryStatus")) {
+		CampaignSummaryStatus obj = getSummaryStatus();
+		node = converttoJson(&obj, "CampaignSummaryStatus", "");
 	}
 	else {
 		
+		CampaignSummaryStatus obj = static_cast<CampaignSummaryStatus> (getSummaryStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
-	const gchar *is_campaign_budget_optimizationKey = "is_campaign_budget_optimization";
-	json_object_set_member(pJsonObject, is_campaign_budget_optimizationKey, node);
+	const gchar *summary_statusKey = "summary_status";
+	json_object_set_member(pJsonObject, summary_statusKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getIsFlexibleDailyBudgets();
 		node = converttoJson(&obj, "bool", "");
@@ -552,16 +560,16 @@ CampaignCreateRequest::setEndTime(int  end_time)
 	this->end_time = end_time;
 }
 
-bool
-CampaignCreateRequest::getIsCampaignBudgetOptimization()
+CampaignSummaryStatus
+CampaignCreateRequest::getSummaryStatus()
 {
-	return is_campaign_budget_optimization;
+	return summary_status;
 }
 
 void
-CampaignCreateRequest::setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization)
+CampaignCreateRequest::setSummaryStatus(CampaignSummaryStatus  summary_status)
 {
-	this->is_campaign_budget_optimization = is_campaign_budget_optimization;
+	this->summary_status = summary_status;
 }
 
 bool

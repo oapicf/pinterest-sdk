@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UserWebsiteSummary",
+  "fields": [
+    {
+      "name": "website",
+      "type": ["null", "string"],
+      "doc": "Website with path or domain only",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "string"],
+      "doc": "Status of the verification process",
+      "default": null
+    },
+    {
+      "name": "verified_at",
+      "type": ["null", "string"],
+      "doc": "UTC timestamp when the verification happened - sometimes missing",
+      "default": null
+    }
+  ]
+
+}

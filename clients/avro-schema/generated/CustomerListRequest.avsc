@@ -1,0 +1,31 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomerListRequest",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Customer list name."
+    },
+    {
+      "name": "records",
+      "type": "string",
+      "doc": "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5."
+    },
+    {
+      "name": "list_type",
+      "type": ["null", "model.UserListType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", "model.object"],
+      "doc": "Customer list errors.",
+      "default": null
+    }
+  ]
+
+}

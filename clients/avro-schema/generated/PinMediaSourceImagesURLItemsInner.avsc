@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PinMediaSourceImagesURLItemsInner",
+  "fields": [
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Destination link for the image.",
+      "default": null
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": "URL of image to upload."
+    }
+  ]
+
+}

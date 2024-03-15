@@ -1,0 +1,47 @@
+/*
+ * optimization_goal_metadata_frequency_goal_metadata.h
+ *
+ * 
+ */
+
+#ifndef _optimization_goal_metadata_frequency_goal_metadata_H_
+#define _optimization_goal_metadata_frequency_goal_metadata_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct optimization_goal_metadata_frequency_goal_metadata_t optimization_goal_metadata_frequency_goal_metadata_t;
+
+
+// Enum TIMERANGE for optimization_goal_metadata_frequency_goal_metadata
+
+typedef enum  { pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_NULL = 0, pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_THIRTY_DAY, pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_DAY, pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_SEVEN_DAY, pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_TWENTY_MINUTE, pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_TEN_MINUTE, pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_TWENTY_FOUR_HOUR } pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e;
+
+char* optimization_goal_metadata_frequency_goal_metadata_timerange_ToString(pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerange);
+
+pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e optimization_goal_metadata_frequency_goal_metadata_timerange_FromString(char* timerange);
+
+
+
+typedef struct optimization_goal_metadata_frequency_goal_metadata_t {
+    int frequency; //numeric
+    pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerange; //enum
+
+} optimization_goal_metadata_frequency_goal_metadata_t;
+
+optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata_create(
+    int frequency,
+    pinterest_rest_api_optimization_goal_metadata_frequency_goal_metadata_TIMERANGE_e timerange
+);
+
+void optimization_goal_metadata_frequency_goal_metadata_free(optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata);
+
+optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata_parseFromJSON(cJSON *optimization_goal_metadata_frequency_goal_metadataJSON);
+
+cJSON *optimization_goal_metadata_frequency_goal_metadata_convertToJSON(optimization_goal_metadata_frequency_goal_metadata_t *optimization_goal_metadata_frequency_goal_metadata);
+
+#endif /* _optimization_goal_metadata_frequency_goal_metadata_H_ */
+

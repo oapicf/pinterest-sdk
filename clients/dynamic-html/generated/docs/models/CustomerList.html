@@ -1,0 +1,65 @@
+
+<h2>CustomerList</h2>
+<ul class="parameter">
+  <li class="param-required-false">adUnderscoreaccountUnderscoreid : String
+    <br/>Associated ad account ID.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscoretime : BigDecimal
+    <br/>Creation time. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">id : String
+    <br/>Customer list ID.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Customer list name.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">numUnderscorebatches : BigDecimal
+    <br/>Total number of list updates.  List creation counts as one batch. Each &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">numUnderscoreremovedUnderscoreuserUnderscorerecords : BigDecimal
+    <br/>Number of removed user records. In a &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\&quot;&gt;Remove API&lt;/a&gt; call, this counter increases even if the user is not found in the list.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">numUnderscoreuploadedUnderscoreuserUnderscorerecords : BigDecimal
+    <br/>Number of uploaded user records. In an &lt;a href&#x3D;\&quot;/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\&quot;&gt;Append API&lt;/a&gt; call, this counter increases even if the uploaded user is already in the list.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : String
+    <br/>Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>PROCESSING</dd>
+            <dd>READY</dd>
+            <dd>TOO_SMALL</dd>
+            <dd>UPLOADING</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">type : String
+    <br/>Always \&quot;customerlist\&quot;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">updatedUnderscoretime : BigDecimal
+    <br/>Last update time. Unix timestamp in seconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">exceptions : Object
+    <br/>Customer list errors
+  </li>
+</ul>

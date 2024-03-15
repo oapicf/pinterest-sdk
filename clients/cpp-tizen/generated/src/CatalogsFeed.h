@@ -12,7 +12,10 @@
 #include "CatalogsFeedCredentials.h"
 #include "CatalogsFeedProcessingSchedule.h"
 #include "CatalogsFormat.h"
+#include "CatalogsHotelFeed.h"
+#include "CatalogsRetailFeed.h"
 #include "CatalogsStatus.h"
+#include "CatalogsType.h"
 #include "Country.h"
 #include "NullableCurrency.h"
 #include "ProductAvailabilityType.h"
@@ -73,27 +76,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setUpdatedAt(std::string  updated_at);
-	/*! \brief Get 
-	 */
-	Country getDefaultCountry();
-
-	/*! \brief Set 
-	 */
-	void setDefaultCountry(Country  default_country);
-	/*! \brief Get 
-	 */
-	ProductAvailabilityType getDefaultAvailability();
-
-	/*! \brief Set 
-	 */
-	void setDefaultAvailability(ProductAvailabilityType  default_availability);
-	/*! \brief Get 
-	 */
-	NullableCurrency getDefaultCurrency();
-
-	/*! \brief Set 
-	 */
-	void setDefaultCurrency(NullableCurrency  default_currency);
 	/*! \brief Get A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
 	 */
 	std::string getName();
@@ -108,13 +90,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setFormat(CatalogsFormat  format);
-	/*! \brief Get The locale used within a feed for product descriptions.
+	/*! \brief Get 
 	 */
-	std::string getDefaultLocale();
+	CatalogsType getCatalogType();
 
-	/*! \brief Set The locale used within a feed for product descriptions.
+	/*! \brief Set 
 	 */
-	void setDefaultLocale(std::string  default_locale);
+	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get 
 	 */
 	CatalogsFeedCredentials getCredentials();
@@ -143,21 +125,58 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(CatalogsStatus  status);
+	/*! \brief Get 
+	 */
+	NullableCurrency getDefaultCurrency();
+
+	/*! \brief Set 
+	 */
+	void setDefaultCurrency(NullableCurrency  default_currency);
+	/*! \brief Get The locale used within a feed for product descriptions.
+	 */
+	std::string getDefaultLocale();
+
+	/*! \brief Set The locale used within a feed for product descriptions.
+	 */
+	void setDefaultLocale(std::string  default_locale);
+	/*! \brief Get 
+	 */
+	Country getDefaultCountry();
+
+	/*! \brief Set 
+	 */
+	void setDefaultCountry(Country  default_country);
+	/*! \brief Get 
+	 */
+	ProductAvailabilityType getDefaultAvailability();
+
+	/*! \brief Set 
+	 */
+	void setDefaultAvailability(ProductAvailabilityType  default_availability);
+	/*! \brief Get Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+	 */
+	void setCatalogId(std::string  catalog_id);
 
 private:
 	std::string created_at;
 	std::string id;
 	std::string updated_at;
-	Country default_country;
-	ProductAvailabilityType default_availability;
-	NullableCurrency default_currency;
 	std::string name;
 	CatalogsFormat format;
-	std::string default_locale;
+	CatalogsType catalog_type;
 	CatalogsFeedCredentials credentials;
 	std::string location;
 	CatalogsFeedProcessingSchedule preferred_processing_schedule;
 	CatalogsStatus status;
+	NullableCurrency default_currency;
+	std::string default_locale;
+	Country default_country;
+	ProductAvailabilityType default_availability;
+	std::string catalog_id;
 	void __init();
 	void __cleanup();
 

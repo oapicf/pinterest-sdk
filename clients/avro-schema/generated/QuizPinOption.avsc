@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": " This field contains multiple options to a quiz question.",
+  "name": "QuizPinOption",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "text",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

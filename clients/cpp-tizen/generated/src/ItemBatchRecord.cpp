@@ -24,7 +24,8 @@ void
 ItemBatchRecord::__init()
 {
 	//item_id = std::string();
-	//attributes = new UpdatableItemAttributes();
+	//attributes = new ItemAttributes();
+	//new std::list()std::list> update_mask;
 }
 
 void
@@ -39,6 +40,11 @@ ItemBatchRecord::__cleanup()
 	//
 	//delete attributes;
 	//attributes = NULL;
+	//}
+	//if(update_mask != NULL) {
+	//update_mask.RemoveAll(true);
+	//delete update_mask;
+	//update_mask = NULL;
 	//}
 	//
 }
@@ -64,14 +70,38 @@ ItemBatchRecord::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("UpdatableItemAttributes")) {
-			jsonToValue(&attributes, node, "UpdatableItemAttributes", "UpdatableItemAttributes");
+		if (isprimitive("ItemAttributes")) {
+			jsonToValue(&attributes, node, "ItemAttributes", "ItemAttributes");
 		} else {
 			
-			UpdatableItemAttributes* obj = static_cast<UpdatableItemAttributes*> (&attributes);
+			ItemAttributes* obj = static_cast<ItemAttributes*> (&attributes);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
+	}
+	const gchar *update_maskKey = "update_mask";
+	node = json_object_get_member(pJsonObject, update_maskKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<UpdateMaskFieldType> new_list;
+			UpdateMaskFieldType inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("UpdateMaskFieldType")) {
+					jsonToValue(&inst, temp_json, "UpdateMaskFieldType", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			update_mask = new_list;
+		}
+		
 	}
 }
 
@@ -94,13 +124,13 @@ ItemBatchRecord::toJson()
 	}
 	const gchar *item_idKey = "item_id";
 	json_object_set_member(pJsonObject, item_idKey, node);
-	if (isprimitive("UpdatableItemAttributes")) {
-		UpdatableItemAttributes obj = getAttributes();
-		node = converttoJson(&obj, "UpdatableItemAttributes", "");
+	if (isprimitive("ItemAttributes")) {
+		ItemAttributes obj = getAttributes();
+		node = converttoJson(&obj, "ItemAttributes", "");
 	}
 	else {
 		
-		UpdatableItemAttributes obj = static_cast<UpdatableItemAttributes> (getAttributes());
+		ItemAttributes obj = static_cast<ItemAttributes> (getAttributes());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -108,6 +138,31 @@ ItemBatchRecord::toJson()
 	}
 	const gchar *attributesKey = "attributes";
 	json_object_set_member(pJsonObject, attributesKey, node);
+	if (isprimitive("UpdateMaskFieldType")) {
+		list<UpdateMaskFieldType> new_list = static_cast<list <UpdateMaskFieldType> > (getUpdateMask());
+		node = converttoJson(&new_list, "UpdateMaskFieldType", "array");
+	} else {
+		node = json_node_alloc();
+		list<UpdateMaskFieldType> new_list = static_cast<list <UpdateMaskFieldType> > (getUpdateMask());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<UpdateMaskFieldType>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			UpdateMaskFieldType obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *update_maskKey = "update_mask";
+	json_object_set_member(pJsonObject, update_maskKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -128,16 +183,28 @@ ItemBatchRecord::setItemId(std::string  item_id)
 	this->item_id = item_id;
 }
 
-UpdatableItemAttributes
+ItemAttributes
 ItemBatchRecord::getAttributes()
 {
 	return attributes;
 }
 
 void
-ItemBatchRecord::setAttributes(UpdatableItemAttributes  attributes)
+ItemBatchRecord::setAttributes(ItemAttributes  attributes)
 {
 	this->attributes = attributes;
+}
+
+std::list<UpdateMaskFieldType>
+ItemBatchRecord::getUpdateMask()
+{
+	return update_mask;
+}
+
+void
+ItemBatchRecord::setUpdateMask(std::list <UpdateMaskFieldType> update_mask)
+{
+	this->update_mask = update_mask;
 }
 
 

@@ -1,0 +1,98 @@
+package org.openapitools.model;
+
+import io.swagger.annotations.ApiModel;
+import org.openapitools.model.MediaUploadStatus;
+import org.openapitools.model.MediaUploadType;
+
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+  * Media upload details
+ **/
+@ApiModel(description="Media upload details")
+
+public class MediaUploadDetails  {
+  
+  @ApiModelProperty(value = "")
+  private String mediaId;
+
+  @ApiModelProperty(value = "")
+  private MediaUploadType mediaType;
+
+  @ApiModelProperty(value = "")
+  private MediaUploadStatus status;
+ /**
+   * Get mediaId
+   * @return mediaId
+  **/
+  @JsonProperty("media_id")
+  public String getMediaId() {
+    return mediaId;
+  }
+
+
+ /**
+   * Get mediaType
+   * @return mediaType
+  **/
+  @JsonProperty("media_type")
+  public MediaUploadType getMediaType() {
+    return mediaType;
+  }
+
+
+ /**
+   * Get status
+   * @return status
+  **/
+  @JsonProperty("status")
+  public MediaUploadStatus getStatus() {
+    return status;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    MediaUploadDetails mediaUploadDetails = (MediaUploadDetails) o;
+    return Objects.equals(this.mediaId, mediaUploadDetails.mediaId) &&
+        Objects.equals(this.mediaType, mediaUploadDetails.mediaType) &&
+        Objects.equals(this.status, mediaUploadDetails.status);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(mediaId, mediaType, status);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class MediaUploadDetails {\n");
+    
+    sb.append("    mediaId: ").append(toIndentedString(mediaId)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

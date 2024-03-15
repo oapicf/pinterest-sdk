@@ -45,24 +45,56 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The price of a product. Accepted as a string in the request; it will be parsed into a double. For example, if there are two products in a checkout event, the value should be the total price
+	/*! \brief Get The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+	 */
+	std::string getId();
+
+	/*! \brief Set The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+	 */
+	void setId(std::string  id);
+	/*! \brief Get The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
 	 */
 	std::string getItemPrice();
 
-	/*! \brief Set The price of a product. Accepted as a string in the request; it will be parsed into a double. For example, if there are two products in a checkout event, the value should be the total price
+	/*! \brief Set The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
 	 */
 	void setItemPrice(std::string  item_price);
-	/*! \brief Get The amount of a product.
+	/*! \brief Get The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
 	 */
 	long long getQuantity();
 
-	/*! \brief Set The amount of a product.
+	/*! \brief Set The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
 	 */
 	void setQuantity(long long  quantity);
+	/*! \brief Get The name of a product.
+	 */
+	std::string getItemName();
+
+	/*! \brief Set The name of a product.
+	 */
+	void setItemName(std::string  item_name);
+	/*! \brief Get The category of a product.
+	 */
+	std::string getItemCategory();
+
+	/*! \brief Set The category of a product.
+	 */
+	void setItemCategory(std::string  item_category);
+	/*! \brief Get The brand of a product.
+	 */
+	std::string getItemBrand();
+
+	/*! \brief Set The brand of a product.
+	 */
+	void setItemBrand(std::string  item_brand);
 
 private:
+	std::string id;
 	std::string item_price;
 	long long quantity;
+	std::string item_name;
+	std::string item_category;
+	std::string item_brand;
 	void __init();
 	void __cleanup();
 

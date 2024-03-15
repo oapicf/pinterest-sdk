@@ -1,0 +1,2 @@
+testCase,httpStatusCode,adAccountId,countryCode,keywords,adAccountId,keywordsRequest,adAccountId,campaignId,adGroupId,matchTypes,pageSize,bookmark,adAccountId,keywordUpdateBody,region,trendType,interests,genders,ages,normalizeAgainstGroup,limit
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

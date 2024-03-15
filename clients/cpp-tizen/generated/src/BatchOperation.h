@@ -1,7 +1,7 @@
 /*
  * BatchOperation.h
  *
- * The operation performed by the batch
+ * The operation performed by the batch. The DELETE_DISCONTINUED operation only updates availablity to \&quot;Out of Stock\&quot;.
  */
 
 #ifndef _BatchOperation_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief The operation performed by the batch
+/*! \brief The operation performed by the batch. The DELETE_DISCONTINUED operation only updates availablity to \"Out of Stock\".
  *
  *  \ingroup Models
  *

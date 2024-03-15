@@ -1,0 +1,32 @@
+/*
+ * lead_form_question_type.h
+ *
+ * Lead form question type
+ */
+
+#ifndef _lead_form_question_type_H_
+#define _lead_form_question_type_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct lead_form_question_type_t lead_form_question_type_t;
+
+
+// Enum  for lead_form_question_type
+
+typedef enum { pinterest_rest_api_lead_form_question_type__NULL = 0, pinterest_rest_api_lead_form_question_type__CUSTOM, pinterest_rest_api_lead_form_question_type__FULL_NAME, pinterest_rest_api_lead_form_question_type__FIRST_NAME, pinterest_rest_api_lead_form_question_type__LAST_NAME, pinterest_rest_api_lead_form_question_type__EMAIL, pinterest_rest_api_lead_form_question_type__PHONE_NUMBER, pinterest_rest_api_lead_form_question_type__ZIP_CODE, pinterest_rest_api_lead_form_question_type__AGE, pinterest_rest_api_lead_form_question_type__GENDER, pinterest_rest_api_lead_form_question_type__CITY, pinterest_rest_api_lead_form_question_type__COUNTRY, pinterest_rest_api_lead_form_question_type__PREFERRED_CONTACT_METHOD, pinterest_rest_api_lead_form_question_type__STATE_PROVINCE, pinterest_rest_api_lead_form_question_type__ADDRESS, pinterest_rest_api_lead_form_question_type__DATE_OF_BIRTH } pinterest_rest_api_lead_form_question_type__e;
+
+char* lead_form_question_type_lead_form_question_type_ToString(pinterest_rest_api_lead_form_question_type__e lead_form_question_type);
+
+pinterest_rest_api_lead_form_question_type__e lead_form_question_type_lead_form_question_type_FromString(char* lead_form_question_type);
+
+//cJSON *lead_form_question_type_lead_form_question_type_convertToJSON(pinterest_rest_api_lead_form_question_type__e lead_form_question_type);
+
+//pinterest_rest_api_lead_form_question_type__e lead_form_question_type_lead_form_question_type_parseFromJSON(cJSON *lead_form_question_typeJSON);
+
+#endif /* _lead_form_question_type_H_ */
+

@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The operation performed by the batch. The DELETE_DISCONTINUED operation only updates availablity to \"Out of Stock\".",
+  "name": "BatchOperation",
+  "symbols": [
+    "UPDATE",
+    "UPSERT",
+    "CREATE",
+    "DELETE_DISCONTINUED",
+    "DELETE"
+  ]
+}

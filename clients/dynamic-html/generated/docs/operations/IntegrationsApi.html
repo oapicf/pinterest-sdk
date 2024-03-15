@@ -1,0 +1,195 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="integrations/getById"></a>integrations/getById</h2>
+  <hr>
+  <p></p>
+  <p>Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/integrations/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="IntegrationRecord"><a href="">IntegrationRecord</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Integration ID.</p>
+      </li>
+  </ul>
+  <h2><a name="integrations/getList"></a>integrations/getList</h2>
+  <hr>
+  <p></p>
+  <p>Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/integrations</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="integrations_get_list_200_response"><a href="">integrations_get_list_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+  </ul>
+  <h2><a name="integrationsCommerce/del"></a>integrationsCommerce/del</h2>
+  <hr>
+  <p></p>
+  <p>Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/integrations/commerce/{external_business_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">external_business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">External business ID for the integration.</p>
+      </li>
+  </ul>
+  <h2><a name="integrationsCommerce/get"></a>integrationsCommerce/get</h2>
+  <hr>
+  <p></p>
+  <p>Get commerce integration metadata associated with the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/integrations/commerce/{external_business_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="IntegrationMetadata"><a href="">IntegrationMetadata</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">external_business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">External business ID for the integration.</p>
+      </li>
+  </ul>
+  <h2><a name="integrationsCommerce/patch"></a>integrationsCommerce/patch</h2>
+  <hr>
+  <p></p>
+  <p>Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/integrations/commerce/{external_business_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="IntegrationMetadata"><a href="">IntegrationMetadata</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">external_business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">External business ID for the integration.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">IntegrationRequestPatch</span>
+      <span class="param-type">IntegrationRequestPatch(IntegrationRequestPatch)</span>
+      
+      <p class="param-description">Parameters to get create/update the Integration Metadata</p>
+      </li>
+  </ul>
+  <h2><a name="integrationsCommerce/post"></a>integrationsCommerce/post</h2>
+  <hr>
+  <p></p>
+  <p>Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/integrations/commerce</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="IntegrationMetadata"><a href="">IntegrationMetadata</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">IntegrationRequest</span>
+      <span class="param-type">IntegrationRequest(IntegrationRequest)</span>
+      
+      <p class="param-description">Parameters to get create/update the Integration Metadata</p>
+      </li>
+  </ul>
+  <h2><a name="integrationsLogs/post"></a>integrationsLogs/post</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/integrations/logs</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="IntegrationLogsSuccessResponse"><a href="">IntegrationLogsSuccessResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">IntegrationLogsRequest</span>
+      <span class="param-type">IntegrationLogsRequest(IntegrationLogsRequest)</span>
+      
+      <p class="param-description">Ingest log information from external integration application.</p>
+      </li>
+  </ul>
+</div>

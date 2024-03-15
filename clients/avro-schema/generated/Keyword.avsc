@@ -1,0 +1,55 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Keyword",
+  "fields": [
+    {
+      "name": "archived",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Keyword ID .",
+      "default": null
+    },
+    {
+      "name": "parent_id",
+      "type": ["null", "string"],
+      "doc": "Keyword parent entity ID (advertiser, campaign, ad group).",
+      "default": null
+    },
+    {
+      "name": "parent_type",
+      "type": ["null", "string"],
+      "doc": "Parent entity type",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "Always keyword",
+      "default": null
+    },
+    {
+      "name": "bid",
+      "type": ["null", "int"],
+      "doc": "Keyword custom bid in microcurrency - null if inherited from parent ad group.",
+      "default": null
+    },
+    {
+      "name": "match_type",
+      "type": "model.MatchTypeResponse",
+      "doc": ""
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": "Keyword value (120 chars max)."
+    }
+  ]
+
+}

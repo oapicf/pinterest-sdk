@@ -1,0 +1,114 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsUpdatableHotelAttributes",
+  "fields": [
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "The hotel's name.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Link to the product page",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Brief description of the hotel.",
+      "default": null
+    },
+    {
+      "name": "brand",
+      "type": ["null", "string"],
+      "doc": "The brand to which this hotel belongs to.",
+      "default": null
+    },
+    {
+      "name": "latitude",
+      "type": ["null", "double"],
+      "doc": "Latitude of the hotel.",
+      "default": null
+    },
+    {
+      "name": "longitude",
+      "type": ["null", "double"],
+      "doc": "Longitude of the hotel.",
+      "default": null
+    },
+    {
+      "name": "neighborhood",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of neighborhoods where the hotel is located",
+      "default": null
+    },
+    {
+      "name": "address",
+      "type": ["null", "model.CatalogsHotelAddress"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "custom_label_0",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of hotels",
+      "default": null
+    },
+    {
+      "name": "custom_label_1",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of hotels",
+      "default": null
+    },
+    {
+      "name": "custom_label_2",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of hotels",
+      "default": null
+    },
+    {
+      "name": "custom_label_3",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of hotels",
+      "default": null
+    },
+    {
+      "name": "custom_label_4",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of hotels",
+      "default": null
+    },
+    {
+      "name": "category",
+      "type": ["null", "string"],
+      "doc": "The type of property. The category can be any type of internal description desired.",
+      "default": null
+    },
+    {
+      "name": "base_price",
+      "type": ["null", "string"],
+      "doc": "Base price of the hotel room per night followed by the ISO currency code",
+      "default": null
+    },
+    {
+      "name": "sale_price",
+      "type": ["null", "string"],
+      "doc": "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.",
+      "default": null
+    },
+    {
+      "name": "guest_ratings",
+      "type": ["null", "model.CatalogsHotelGuestRatings"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

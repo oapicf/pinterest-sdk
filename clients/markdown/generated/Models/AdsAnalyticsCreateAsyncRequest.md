@@ -16,16 +16,16 @@
 | **campaign\_objective\_types** | [**List**](ObjectiveType.md) | List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] in BETA. | [optional] [default to null] |
 | **ad\_group\_ids** | **List** | List of ad group ids | [optional] [default to null] |
 | **ad\_group\_statuses** | [**List**](AdGroupSummaryStatus.md) | List of values for filtering | [optional] [default to null] |
-| **ad\_ids** | **List** | List of ad ids | [optional] [default to null] |
-| **ad\_statuses** | [**List**](PinPromotionSummaryStatus.md) | List of values for filtering | [optional] [default to null] |
+| **ad\_ids** | **List** | List of ad ids [This parameter is no supported for Product Item Level Reports] | [optional] [default to null] |
+| **ad\_statuses** | [**List**](PinPromotionSummaryStatus.md) | List of values for filtering [This parameter is not supported for Product Item Level Reports] | [optional] [default to null] |
 | **product\_group\_ids** | **List** | List of product group ids | [optional] [default to null] |
 | **product\_group\_statuses** | [**List**](ProductGroupSummaryStatus.md) | List of values for filtering | [optional] [default to null] |
 | **product\_item\_ids** | **List** | List of product item ids | [optional] [default to null] |
-| **targeting\_types** | [**List**](AdsAnalyticsTargetingType.md) | List of targeting types | [optional] [default to null] |
+| **targeting\_types** | [**List**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. | [optional] [default to null] |
 | **metrics\_filters** | [**List**](AdsAnalyticsMetricsFilter.md) | List of metrics filters | [optional] [default to null] |
-| **columns** | [**List**](ReportingColumnAsync.md) | Metric and entity columns | [default to null] |
+| **columns** | [**List**](ReportingColumnAsync.md) | Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. | [default to null] |
 | **level** | [**MetricsReportingLevel**](MetricsReportingLevel.md) | Level of the report | [default to null] |
-| **report\_format** | [**DataOutputFormat**](DataOutputFormat.md) | Specification for formatting report data | [optional] [default to JSON] |
+| **report\_format** | [**DataOutputFormat**](DataOutputFormat.md) | Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. | [optional] [default to JSON] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

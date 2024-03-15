@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Demographic detail for a single audience demographic",
+  "name": "AudienceDemographicValue",
+  "fields": [
+    {
+      "name": "key",
+      "type": ["null", "string"],
+      "doc": "Unique key for demographic item",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Display name for demographic",
+      "default": null
+    },
+    {
+      "name": "ratio",
+      "type": ["null", "double"],
+      "doc": "Value of demographic item as a percent of total audience",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing an item batch record to update items",
+  "name": "ItemUpdateBatchRecord",
+  "fields": [
+    {
+      "name": "item_id",
+      "type": ["null", "string"],
+      "doc": "The catalog item id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "attributes",
+      "type": ["null", "model.UpdatableItemAttributes"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "update_mask",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.UpdateMaskFieldType"
+      }],
+      "doc": "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.",
+      "default": null
+    }
+  ]
+
+}

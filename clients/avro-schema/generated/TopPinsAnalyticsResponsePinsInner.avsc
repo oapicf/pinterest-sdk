@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Array with metrics, status, and pin id for the requested metric",
+  "name": "TopPinsAnalyticsResponsePinsInner",
+  "fields": [
+    {
+      "name": "metrics",
+      "type": ["null", {
+        "type": "map",
+        "items": "double"
+      }],
+      "doc": "The metric name and daily value for each requested metric",
+      "default": null
+    },
+    {
+      "name": "data_status",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.DataStatus"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "pin_id",
+      "type": ["null", "string"],
+      "doc": "The pin id",
+      "default": null
+    }
+  ]
+
+}

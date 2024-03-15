@@ -4,7 +4,7 @@
 
 Pinterest REST API
 
-- API version: 5.6.0
+- API version: 5.12.0
 - Generator version: 7.4.0
 
 Pinterest's REST API
@@ -109,7 +109,7 @@ void Example::exampleFunction1(){
           loop.quit();
       });
 
-      QDate start_date = create(); // QDate | Metric report start date (UTC). Format: YYYY-MM-DD
+      QDate start_date = create(); // QDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 
       QEventLoop loop;
       connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
@@ -120,7 +120,7 @@ void Example::exampleFunction1(){
           loop.quit();
       });
 
-      QDate end_date = create(); // QDate | Metric report end date (UTC). Format: YYYY-MM-DD
+      QDate end_date = create(); // QDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 
       QEventLoop loop;
       connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
@@ -279,6 +279,10 @@ Authentication schemes defined for the API:
 - **Scopes**: 
   - ads:read: See all of your advertising data, including ads, ad groups, campaigns etc.
   - ads:write: Create, update, or delete ads, ad groups, campaigns etc.
+  - billing:read: See all of your billing data, billing profile, etc.
+  - billing:write: Create, update, or delete billing data, billing profiles, etc.
+  - biz_access:read: See business access data
+  - biz_access:write: Create, update, or delete business access data
   - boards:read: See your public boards, including group boards you join
   - boards:read_secret: See your secret boards
   - boards:write: Create, update, or delete your public boards

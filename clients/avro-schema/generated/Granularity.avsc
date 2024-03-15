@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Granularity",
+  "name": "Granularity",
+  "symbols": [
+    "TOTAL",
+    "DAY",
+    "HOUR",
+    "WEEK",
+    "MONTH"
+  ]
+}

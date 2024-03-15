@@ -55,12 +55,12 @@ Catalogs_product_groups_list_200_response::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<CatalogsProductGroup> new_list;
-			CatalogsProductGroup inst;
+			list<Catalogs_product_groups_list_200_response_allOf_items_inner> new_list;
+			Catalogs_product_groups_list_200_response_allOf_items_inner inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("CatalogsProductGroup")) {
-					jsonToValue(&inst, temp_json, "CatalogsProductGroup", "");
+				if (isprimitive("Catalogs_product_groups_list_200_response_allOf_items_inner")) {
+					jsonToValue(&inst, temp_json, "Catalogs_product_groups_list_200_response_allOf_items_inner", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -95,18 +95,18 @@ Catalogs_product_groups_list_200_response::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsProductGroup")) {
-		list<CatalogsProductGroup> new_list = static_cast<list <CatalogsProductGroup> > (getItems());
-		node = converttoJson(&new_list, "CatalogsProductGroup", "array");
+	if (isprimitive("Catalogs_product_groups_list_200_response_allOf_items_inner")) {
+		list<Catalogs_product_groups_list_200_response_allOf_items_inner> new_list = static_cast<list <Catalogs_product_groups_list_200_response_allOf_items_inner> > (getItems());
+		node = converttoJson(&new_list, "Catalogs_product_groups_list_200_response_allOf_items_inner", "array");
 	} else {
 		node = json_node_alloc();
-		list<CatalogsProductGroup> new_list = static_cast<list <CatalogsProductGroup> > (getItems());
+		list<Catalogs_product_groups_list_200_response_allOf_items_inner> new_list = static_cast<list <Catalogs_product_groups_list_200_response_allOf_items_inner> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<CatalogsProductGroup>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<Catalogs_product_groups_list_200_response_allOf_items_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			CatalogsProductGroup obj = *it;
+			Catalogs_product_groups_list_200_response_allOf_items_inner obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -137,14 +137,14 @@ Catalogs_product_groups_list_200_response::toJson()
 	return ret;
 }
 
-std::list<CatalogsProductGroup>
+std::list<Catalogs_product_groups_list_200_response_allOf_items_inner>
 Catalogs_product_groups_list_200_response::getItems()
 {
 	return items;
 }
 
 void
-Catalogs_product_groups_list_200_response::setItems(std::list <CatalogsProductGroup> items)
+Catalogs_product_groups_list_200_response::setItems(std::list <Catalogs_product_groups_list_200_response_allOf_items_inner> items)
 {
 	this->items = items;
 }

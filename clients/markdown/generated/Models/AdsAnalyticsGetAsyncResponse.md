@@ -3,7 +3,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **report\_status** | **String** |  | [optional] [default to null] |
+| **report\_status** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] [default to null] |
 | **url** | **String** |  | [optional] [default to null] |
 | **size** | **BigDecimal** |  | [optional] [default to null] |
 

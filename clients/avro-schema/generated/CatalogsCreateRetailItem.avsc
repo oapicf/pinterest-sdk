@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An item to be created",
+  "name": "CatalogsCreateRetailItem",
+  "fields": [
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "The catalog item id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreateRetailItem_operation",
+        "symbols": [
+          "CREATE",
+          "UPDATE",
+          "UPSERT",
+          "DELETE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": "model.ItemAttributes",
+      "doc": ""
+    }
+  ]
+
+}

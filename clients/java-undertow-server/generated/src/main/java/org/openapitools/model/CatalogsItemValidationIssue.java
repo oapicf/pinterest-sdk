@@ -1,0 +1,181 @@
+/*
+ * Pinterest REST API
+ *
+ * Pinterest's REST API
+ *
+ * OpenAPI document version: 5.12.0
+ * Maintained by: blah+oapicf@cliffano.com
+ *
+ * AUTO-GENERATED FILE, DO NOT MODIFY!
+ */
+package org.openapitools.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+
+
+
+/**
+ * Gets or Sets CatalogsItemValidationIssue
+ */
+public enum CatalogsItemValidationIssue {
+    
+        AD_LINK_FORMAT_WARNING("AD_LINK_FORMAT_WARNING"),
+        
+        AD_LINK_SAME_AS_LINK("AD_LINK_SAME_AS_LINK"),
+        
+        ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"),
+        
+        ADDITIONAL_IMAGE_LINK_WARNING("ADDITIONAL_IMAGE_LINK_WARNING"),
+        
+        ADULT_INVALID("ADULT_INVALID"),
+        
+        ADWORDS_FORMAT_INVALID("ADWORDS_FORMAT_INVALID"),
+        
+        ADWORDS_FORMAT_WARNING("ADWORDS_FORMAT_WARNING"),
+        
+        ADWORDS_SAME_AS_LINK("ADWORDS_SAME_AS_LINK"),
+        
+        AGE_GROUP_INVALID("AGE_GROUP_INVALID"),
+        
+        ANDROID_DEEP_LINK_INVALID("ANDROID_DEEP_LINK_INVALID"),
+        
+        AVAILABILITY_DATE_INVALID("AVAILABILITY_DATE_INVALID"),
+        
+        AVAILABILITY_INVALID("AVAILABILITY_INVALID"),
+        
+        BLOCKLISTED_IMAGE_SIGNATURE("BLOCKLISTED_IMAGE_SIGNATURE"),
+        
+        COUNTRY_DOES_NOT_MAP_TO_CURRENCY("COUNTRY_DOES_NOT_MAP_TO_CURRENCY"),
+        
+        CUSTOM_LABEL_LENGTH_TOO_LONG("CUSTOM_LABEL_LENGTH_TOO_LONG"),
+        
+        DESCRIPTION_LENGTH_TOO_LONG("DESCRIPTION_LENGTH_TOO_LONG"),
+        
+        DESCRIPTION_MISSING("DESCRIPTION_MISSING"),
+        
+        DUPLICATE_PRODUCTS("DUPLICATE_PRODUCTS"),
+        
+        EXPIRATION_DATE_INVALID("EXPIRATION_DATE_INVALID"),
+        
+        GENDER_INVALID("GENDER_INVALID"),
+        
+        GTIN_INVALID("GTIN_INVALID"),
+        
+        IMAGE_LINK_INVALID("IMAGE_LINK_INVALID"),
+        
+        IMAGE_LINK_LENGTH_TOO_LONG("IMAGE_LINK_LENGTH_TOO_LONG"),
+        
+        IMAGE_LINK_MISSING("IMAGE_LINK_MISSING"),
+        
+        IMAGE_LINK_WARNING("IMAGE_LINK_WARNING"),
+        
+        INVALID_DOMAIN("INVALID_DOMAIN"),
+        
+        IOS_DEEP_LINK_INVALID("IOS_DEEP_LINK_INVALID"),
+        
+        IS_BUNDLE_INVALID("IS_BUNDLE_INVALID"),
+        
+        ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"),
+        
+        ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"),
+        
+        ITEMID_MISSING("ITEMID_MISSING"),
+        
+        LINK_FORMAT_INVALID("LINK_FORMAT_INVALID"),
+        
+        LINK_FORMAT_WARNING("LINK_FORMAT_WARNING"),
+        
+        LINK_LENGTH_TOO_LONG("LINK_LENGTH_TOO_LONG"),
+        
+        LIST_PRICE_INVALID("LIST_PRICE_INVALID"),
+        
+        MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"),
+        
+        MIN_AD_PRICE_INVALID("MIN_AD_PRICE_INVALID"),
+        
+        MPN_INVALID("MPN_INVALID"),
+        
+        MULTIPACK_INVALID("MULTIPACK_INVALID"),
+        
+        OPTIONAL_CONDITION_INVALID("OPTIONAL_CONDITION_INVALID"),
+        
+        OPTIONAL_CONDITION_MISSING("OPTIONAL_CONDITION_MISSING"),
+        
+        OPTIONAL_PRODUCT_CATEGORY_INVALID("OPTIONAL_PRODUCT_CATEGORY_INVALID"),
+        
+        OPTIONAL_PRODUCT_CATEGORY_MISSING("OPTIONAL_PRODUCT_CATEGORY_MISSING"),
+        
+        PARSE_LINE_ERROR("PARSE_LINE_ERROR"),
+        
+        PINJOIN_CONTENT_UNSAFE("PINJOIN_CONTENT_UNSAFE"),
+        
+        PRICE_CANNOT_BE_DETERMINED("PRICE_CANNOT_BE_DETERMINED"),
+        
+        PRICE_MISSING("PRICE_MISSING"),
+        
+        PRODUCT_CATEGORY_DEPTH_WARNING("PRODUCT_CATEGORY_DEPTH_WARNING"),
+        
+        PRODUCT_LINK_MISSING("PRODUCT_LINK_MISSING"),
+        
+        PRODUCT_PRICE_INVALID("PRODUCT_PRICE_INVALID"),
+        
+        PRODUCT_TYPE_LENGTH_TOO_LONG("PRODUCT_TYPE_LENGTH_TOO_LONG"),
+        
+        SALE_DATE_INVALID("SALE_DATE_INVALID"),
+        
+        SALES_PRICE_INVALID("SALES_PRICE_INVALID"),
+        
+        SALES_PRICE_TOO_HIGH("SALES_PRICE_TOO_HIGH"),
+        
+        SALES_PRICE_TOO_LOW("SALES_PRICE_TOO_LOW"),
+        
+        SHIPPING_INVALID("SHIPPING_INVALID"),
+        
+        SHIPPING_HEIGHT_INVALID("SHIPPING_HEIGHT_INVALID"),
+        
+        SHIPPING_WEIGHT_INVALID("SHIPPING_WEIGHT_INVALID"),
+        
+        SHIPPING_WIDTH_INVALID("SHIPPING_WIDTH_INVALID"),
+        
+        SIZE_SYSTEM_INVALID("SIZE_SYSTEM_INVALID"),
+        
+        SIZE_TYPE_INVALID("SIZE_TYPE_INVALID"),
+        
+        TAX_INVALID("TAX_INVALID"),
+        
+        TITLE_LENGTH_TOO_LONG("TITLE_LENGTH_TOO_LONG"),
+        
+        TITLE_MISSING("TITLE_MISSING"),
+        
+        TOO_MANY_ADDITIONAL_IMAGE_LINKS("TOO_MANY_ADDITIONAL_IMAGE_LINKS"),
+        
+        UTM_SOURCE_AUTO_CORRECTED("UTM_SOURCE_AUTO_CORRECTED"),
+        
+        WEIGHT_UNIT_INVALID("WEIGHT_UNIT_INVALID");
+
+private String value;
+
+CatalogsItemValidationIssue(String value) {
+this.value = value;
+}
+
+@Override
+@JsonValue
+public String toString() {
+return String.valueOf(value);
+}
+
+@JsonCreator
+public static CatalogsItemValidationIssue fromValue(String text) {
+for (CatalogsItemValidationIssue b : CatalogsItemValidationIssue.values()) {
+if (String.valueOf(b.value).equals(text)) {
+return b;
+}
+}
+throw new IllegalArgumentException("Unexpected value '" + text + "'");
+}
+}
+
+

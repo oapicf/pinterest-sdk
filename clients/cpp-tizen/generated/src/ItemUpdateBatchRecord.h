@@ -10,6 +10,8 @@
 
 #include <string>
 #include "UpdatableItemAttributes.h"
+#include "UpdateMaskFieldType.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -60,10 +62,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setAttributes(UpdatableItemAttributes  attributes);
+	/*! \brief Get The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+	 */
+	std::list<UpdateMaskFieldType> getUpdateMask();
+
+	/*! \brief Set The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+	 */
+	void setUpdateMask(std::list <UpdateMaskFieldType> update_mask);
 
 private:
 	std::string item_id;
 	UpdatableItemAttributes attributes;
+	std::list <UpdateMaskFieldType>update_mask;
 	void __init();
 	void __cleanup();
 

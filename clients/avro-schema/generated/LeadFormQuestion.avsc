@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LeadFormQuestion",
+  "fields": [
+    {
+      "name": "question_type",
+      "type": ["null", "model.LeadFormQuestionType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "custom_question_field_type",
+      "type": ["null", "model.LeadFormQuestionFieldType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "custom_question_label",
+      "type": ["null", "string"],
+      "doc": "Question label for a custom question.",
+      "default": null
+    },
+    {
+      "name": "custom_question_options",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Question options for a custom question.",
+      "default": null
+    }
+  ]
+
+}

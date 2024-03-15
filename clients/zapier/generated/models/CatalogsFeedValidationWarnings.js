@@ -5,6 +5,16 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}AD_LINK_FORMAT_WARNING`,
+                label: `Some items have ad links that are formatted incorrectly. - [${labelPrefix}AD_LINK_FORMAT_WARNING]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}AD_LINK_SAME_AS_LINK`,
+                label: `Some items have ad link URLs that are duplicates of the link URLs for those items. - [${labelPrefix}AD_LINK_SAME_AS_LINK]`,
+                type: 'integer',
+            },
+            {
                 key: `${keyPrefix}TITLE_LENGTH_TOO_LONG`,
                 label: `The title for some items were truncated because they contain too many characters. - [${labelPrefix}TITLE_LENGTH_TOO_LONG]`,
                 type: 'integer',
@@ -40,11 +50,6 @@ module.exports = {
                 type: 'integer',
             },
             {
-                key: `${keyPrefix}DUPLICATE_PRODUCTS`,
-                label: `Some products are duplicated. - [${labelPrefix}DUPLICATE_PRODUCTS]`,
-                type: 'integer',
-            },
-            {
                 key: `${keyPrefix}SALES_PRICE_INVALID`,
                 label: `Some items have sale price values that are higher than the original price of the item. - [${labelPrefix}SALES_PRICE_INVALID]`,
                 type: 'integer',
@@ -52,6 +57,11 @@ module.exports = {
             {
                 key: `${keyPrefix}PRODUCT_CATEGORY_DEPTH_WARNING`,
                 label: `Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences. - [${labelPrefix}PRODUCT_CATEGORY_DEPTH_WARNING]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}ADWORDS_FORMAT_WARNING`,
+                label: `Some items have adwords_redirect links that are formatted incorrectly. - [${labelPrefix}ADWORDS_FORMAT_WARNING]`,
                 type: 'integer',
             },
             {
@@ -71,11 +81,6 @@ module.exports = {
                 choices: [
                     '1',
                 ],
-            },
-            {
-                key: `${keyPrefix}ADWORDS_FORMAT_WARNING`,
-                label: `Some items have adwords_redirect links that are formatted incorrectly. - [${labelPrefix}ADWORDS_FORMAT_WARNING]`,
-                type: 'integer',
             },
             {
                 key: `${keyPrefix}ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`,
@@ -198,31 +203,6 @@ module.exports = {
                 type: 'integer',
             },
             {
-                key: `${keyPrefix}AVAILABILITY_NORMALIZED`,
-                label: `Some items include availability values that are formatted incorrectly and have been automatically corrected. - [${labelPrefix}AVAILABILITY_NORMALIZED]`,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}CONDITION_NORMALIZED`,
-                label: `Some items include condition values that are formatted incorrectly and have been automatically corrected. - [${labelPrefix}CONDITION_NORMALIZED]`,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}GENDER_NORMALIZED`,
-                label: `Some items include gender values that are formatted incorrectly and have been automatically corrected. - [${labelPrefix}GENDER_NORMALIZED]`,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}SIZE_TYPE_NORMALIZED`,
-                label: `Some items include size_type values that are formatted incorrectly and have been automatically corrected. - [${labelPrefix}SIZE_TYPE_NORMALIZED]`,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}AGE_GROUP_NORMALIZED`,
-                label: `Some items include age_group values that are formatted incorrectly and have been automatically corrected. - [${labelPrefix}AGE_GROUP_NORMALIZED]`,
-                type: 'integer',
-            },
-            {
                 key: `${keyPrefix}UTM_SOURCE_AUTO_CORRECTED`,
                 label: `Some items include utm_source values that are formatted incorrectly and have been automatically corrected. - [${labelPrefix}UTM_SOURCE_AUTO_CORRECTED]`,
                 type: 'integer',
@@ -277,6 +257,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'AD_LINK_FORMAT_WARNING': bundle.inputData?.[`${keyPrefix}AD_LINK_FORMAT_WARNING`],
+            'AD_LINK_SAME_AS_LINK': bundle.inputData?.[`${keyPrefix}AD_LINK_SAME_AS_LINK`],
             'TITLE_LENGTH_TOO_LONG': bundle.inputData?.[`${keyPrefix}TITLE_LENGTH_TOO_LONG`],
             'DESCRIPTION_LENGTH_TOO_LONG': bundle.inputData?.[`${keyPrefix}DESCRIPTION_LENGTH_TOO_LONG`],
             'GENDER_INVALID': bundle.inputData?.[`${keyPrefix}GENDER_INVALID`],
@@ -284,13 +266,12 @@ module.exports = {
             'SIZE_TYPE_INVALID': bundle.inputData?.[`${keyPrefix}SIZE_TYPE_INVALID`],
             'SIZE_SYSTEM_INVALID': bundle.inputData?.[`${keyPrefix}SIZE_SYSTEM_INVALID`],
             'LINK_FORMAT_WARNING': bundle.inputData?.[`${keyPrefix}LINK_FORMAT_WARNING`],
-            'DUPLICATE_PRODUCTS': bundle.inputData?.[`${keyPrefix}DUPLICATE_PRODUCTS`],
             'SALES_PRICE_INVALID': bundle.inputData?.[`${keyPrefix}SALES_PRICE_INVALID`],
             'PRODUCT_CATEGORY_DEPTH_WARNING': bundle.inputData?.[`${keyPrefix}PRODUCT_CATEGORY_DEPTH_WARNING`],
+            'ADWORDS_FORMAT_WARNING': bundle.inputData?.[`${keyPrefix}ADWORDS_FORMAT_WARNING`],
             'ADWORDS_SAME_AS_LINK': bundle.inputData?.[`${keyPrefix}ADWORDS_SAME_AS_LINK`],
             'DUPLICATE_HEADERS': bundle.inputData?.[`${keyPrefix}DUPLICATE_HEADERS`],
             'FETCH_SAME_SIGNATURE': bundle.inputData?.[`${keyPrefix}FETCH_SAME_SIGNATURE`],
-            'ADWORDS_FORMAT_WARNING': bundle.inputData?.[`${keyPrefix}ADWORDS_FORMAT_WARNING`],
             'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG': bundle.inputData?.[`${keyPrefix}ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG`],
             'ADDITIONAL_IMAGE_LINK_WARNING': bundle.inputData?.[`${keyPrefix}ADDITIONAL_IMAGE_LINK_WARNING`],
             'IMAGE_LINK_WARNING': bundle.inputData?.[`${keyPrefix}IMAGE_LINK_WARNING`],
@@ -315,11 +296,6 @@ module.exports = {
             'OPTIONAL_CONDITION_INVALID': bundle.inputData?.[`${keyPrefix}OPTIONAL_CONDITION_INVALID`],
             'IOS_DEEP_LINK_INVALID': bundle.inputData?.[`${keyPrefix}IOS_DEEP_LINK_INVALID`],
             'ANDROID_DEEP_LINK_INVALID': bundle.inputData?.[`${keyPrefix}ANDROID_DEEP_LINK_INVALID`],
-            'AVAILABILITY_NORMALIZED': bundle.inputData?.[`${keyPrefix}AVAILABILITY_NORMALIZED`],
-            'CONDITION_NORMALIZED': bundle.inputData?.[`${keyPrefix}CONDITION_NORMALIZED`],
-            'GENDER_NORMALIZED': bundle.inputData?.[`${keyPrefix}GENDER_NORMALIZED`],
-            'SIZE_TYPE_NORMALIZED': bundle.inputData?.[`${keyPrefix}SIZE_TYPE_NORMALIZED`],
-            'AGE_GROUP_NORMALIZED': bundle.inputData?.[`${keyPrefix}AGE_GROUP_NORMALIZED`],
             'UTM_SOURCE_AUTO_CORRECTED': bundle.inputData?.[`${keyPrefix}UTM_SOURCE_AUTO_CORRECTED`],
             'COUNTRY_DOES_NOT_MAP_TO_CURRENCY': bundle.inputData?.[`${keyPrefix}COUNTRY_DOES_NOT_MAP_TO_CURRENCY`],
             'MIN_AD_PRICE_INVALID': bundle.inputData?.[`${keyPrefix}MIN_AD_PRICE_INVALID`],

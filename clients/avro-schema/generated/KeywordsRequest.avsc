@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "KeywordsRequest",
+  "fields": [
+    {
+      "name": "keywords",
+      "type": {
+        "type": "array",
+        "items": "model.KeywordsCommon"
+      },
+      "doc": "Keyword JSON array. Each array element has 3 fields"
+    },
+    {
+      "name": "parent_id",
+      "type": "string",
+      "doc": "Keyword parent entity ID (advertiser, campaign, ad group)."
+    }
+  ]
+
+}

@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AudienceSubcategory",
+  "fields": [
+    {
+      "name": "key",
+      "type": ["null", "string"],
+      "doc": "Interest unique key (same as ID).",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Subinterest name.",
+      "default": null
+    },
+    {
+      "name": "ratio",
+      "type": ["null", "double"],
+      "doc": "Subinterest's percent of category's total audience.",
+      "default": null
+    },
+    {
+      "name": "index",
+      "type": ["null", "double"],
+      "doc": "Subinterest affinity index.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Subinterest ID.",
+      "default": null
+    }
+  ]
+
+}

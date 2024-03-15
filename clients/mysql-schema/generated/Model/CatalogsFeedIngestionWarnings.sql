@@ -1,0 +1,26 @@
+--
+-- Pinterest REST API.
+-- Prepared SQL queries for 'CatalogsFeedIngestionWarnings' definition.
+--
+
+
+--
+-- SELECT template for table `CatalogsFeedIngestionWarnings`
+--
+SELECT `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`, `ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE`, `ADDITIONAL_IMAGE_MALFORMED_URL`, `ADDITIONAL_IMAGE_FILE_NOT_FOUND`, `ADDITIONAL_IMAGE_INVALID_FILE`, `HOTEL_PRICE_HEADER_IS_PRESENT` FROM `CatalogsFeedIngestionWarnings` WHERE 1;
+
+--
+-- INSERT template for table `CatalogsFeedIngestionWarnings`
+--
+INSERT INTO `CatalogsFeedIngestionWarnings`(`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`, `ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE`, `ADDITIONAL_IMAGE_MALFORMED_URL`, `ADDITIONAL_IMAGE_FILE_NOT_FOUND`, `ADDITIONAL_IMAGE_INVALID_FILE`, `HOTEL_PRICE_HEADER_IS_PRESENT`) VALUES (?, ?, ?, ?, ?, ?);
+
+--
+-- UPDATE template for table `CatalogsFeedIngestionWarnings`
+--
+UPDATE `CatalogsFeedIngestionWarnings` SET `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` = ?, `ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE` = ?, `ADDITIONAL_IMAGE_MALFORMED_URL` = ?, `ADDITIONAL_IMAGE_FILE_NOT_FOUND` = ?, `ADDITIONAL_IMAGE_INVALID_FILE` = ?, `HOTEL_PRICE_HEADER_IS_PRESENT` = ? WHERE 1;
+
+--
+-- DELETE template for table `CatalogsFeedIngestionWarnings`
+--
+DELETE FROM `CatalogsFeedIngestionWarnings` WHERE 0;
+

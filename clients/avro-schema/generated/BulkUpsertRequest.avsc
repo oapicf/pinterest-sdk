@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.",
+  "name": "BulkUpsertRequest",
+  "fields": [
+    {
+      "name": "create",
+      "type": ["null", "model.BulkUpsertRequestCreate"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "update",
+      "type": ["null", "model.BulkUpsertRequestUpdate"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

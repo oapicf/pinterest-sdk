@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "KeywordUpdate",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Keyword ID."
+    },
+    {
+      "name": "archived",
+      "type": ["null", "boolean"],
+      "doc": "Is keyword archived?",
+      "default": null
+    },
+    {
+      "name": "bid",
+      "type": ["null", "int"],
+      "doc": "Keyword custom bid in microcurrency - null if inherited from parent ad group.",
+      "default": null
+    }
+  ]
+
+}

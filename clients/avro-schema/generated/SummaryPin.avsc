@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Summarized pin information",
+  "name": "SummaryPin",
+  "fields": [
+    {
+      "name": "media",
+      "type": ["null", "model.SummaryPinMedia"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "alt_text",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

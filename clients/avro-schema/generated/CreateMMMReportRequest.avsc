@@ -1,0 +1,73 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreateMMMReportRequest",
+  "fields": [
+    {
+      "name": "report_name",
+      "type": "string",
+      "doc": "Name of the Marketing Mix Modeling (MMM) report"
+    },
+    {
+      "name": "start_date",
+      "type": "string",
+      "doc": "Metric report start date (UTC). Format: YYYY-MM-DD"
+    },
+    {
+      "name": "end_date",
+      "type": "string",
+      "doc": "Metric report end date (UTC). Format: YYYY-MM-DD"
+    },
+    {
+      "name": "granularity",
+      "type": {
+        "type": "enum",
+        "name": "CreateMMMReportRequest_granularity",
+        "symbols": [
+          "DAY",
+          "WEEK"
+        ]
+      },
+      "doc": "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly."
+    },
+    {
+      "name": "level",
+      "type": {
+        "type": "enum",
+        "name": "CreateMMMReportRequest_level",
+        "symbols": [
+          "CAMPAIGN_TARGETING",
+          "AD_GROUP_TARGETING"
+        ]
+      },
+      "doc": "Level of the report"
+    },
+    {
+      "name": "targeting_types",
+      "type": {
+        "type": "array",
+        "items": "model.MMMReportingTargetingType"
+      },
+      "doc": "List of targeting types"
+    },
+    {
+      "name": "columns",
+      "type": {
+        "type": "array",
+        "items": "model.MMMReportingColumn"
+      },
+      "doc": "Metric and entity columns"
+    },
+    {
+      "name": "countries",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.TargetingAdvertiserCountry"
+      }],
+      "doc": "A List of countries for filtering",
+      "default": null
+    }
+  ]
+
+}

@@ -23,20 +23,21 @@ CatalogsItemsBatch::~CatalogsItemsBatch()
 void
 CatalogsItemsBatch::__init()
 {
-	//new std::list()std::list> items;
+	//catalog_type = new CatalogsType();
 	//batch_id = std::string();
 	//created_time = null;
 	//completed_time = null;
 	//status = new BatchOperationStatus();
+	//new std::list()std::list> items;
 }
 
 void
 CatalogsItemsBatch::__cleanup()
 {
-	//if(items != NULL) {
-	//items.RemoveAll(true);
-	//delete items;
-	//items = NULL;
+	//if(catalog_type != NULL) {
+	//
+	//delete catalog_type;
+	//catalog_type = NULL;
 	//}
 	//if(batch_id != NULL) {
 	//
@@ -58,6 +59,11 @@ CatalogsItemsBatch::__cleanup()
 	//delete status;
 	//status = NULL;
 	//}
+	//if(items != NULL) {
+	//items.RemoveAll(true);
+	//delete items;
+	//items = NULL;
+	//}
 	//
 }
 
@@ -66,29 +72,19 @@ CatalogsItemsBatch::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *itemsKey = "items";
-	node = json_object_get_member(pJsonObject, itemsKey);
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
 	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<ItemProcessingRecord> new_list;
-			ItemProcessingRecord inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("ItemProcessingRecord")) {
-					jsonToValue(&inst, temp_json, "ItemProcessingRecord", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			items = new_list;
+
+		if (isprimitive("CatalogsType")) {
+			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		} else {
+			
+			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
+			obj->fromJson(json_to_string(node, false));
+			
 		}
-		
 	}
 	const gchar *batch_idKey = "batch_id";
 	node = json_object_get_member(pJsonObject, batch_idKey);
@@ -137,6 +133,30 @@ CatalogsItemsBatch::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *itemsKey = "items";
+	node = json_object_get_member(pJsonObject, itemsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<HotelProcessingRecord> new_list;
+			HotelProcessingRecord inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("HotelProcessingRecord")) {
+					jsonToValue(&inst, temp_json, "HotelProcessingRecord", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			items = new_list;
+		}
+		
+	}
 }
 
 CatalogsItemsBatch::CatalogsItemsBatch(char* json)
@@ -149,31 +169,20 @@ CatalogsItemsBatch::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("ItemProcessingRecord")) {
-		list<ItemProcessingRecord> new_list = static_cast<list <ItemProcessingRecord> > (getItems());
-		node = converttoJson(&new_list, "ItemProcessingRecord", "array");
-	} else {
-		node = json_node_alloc();
-		list<ItemProcessingRecord> new_list = static_cast<list <ItemProcessingRecord> > (getItems());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
+	if (isprimitive("CatalogsType")) {
+		CatalogsType obj = getCatalogType();
+		node = converttoJson(&obj, "CatalogsType", "");
+	}
+	else {
 		
-		for (list<ItemProcessingRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			ItemProcessingRecord obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
+		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
-
-
-	
-	const gchar *itemsKey = "items";
-	json_object_set_member(pJsonObject, itemsKey, node);
+	const gchar *catalog_typeKey = "catalog_type";
+	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getBatchId();
 		node = converttoJson(&obj, "std::string", "");
@@ -215,6 +224,31 @@ CatalogsItemsBatch::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("HotelProcessingRecord")) {
+		list<HotelProcessingRecord> new_list = static_cast<list <HotelProcessingRecord> > (getItems());
+		node = converttoJson(&new_list, "HotelProcessingRecord", "array");
+	} else {
+		node = json_node_alloc();
+		list<HotelProcessingRecord> new_list = static_cast<list <HotelProcessingRecord> > (getItems());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<HotelProcessingRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			HotelProcessingRecord obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *itemsKey = "items";
+	json_object_set_member(pJsonObject, itemsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -223,16 +257,16 @@ CatalogsItemsBatch::toJson()
 	return ret;
 }
 
-std::list<ItemProcessingRecord>
-CatalogsItemsBatch::getItems()
+CatalogsType
+CatalogsItemsBatch::getCatalogType()
 {
-	return items;
+	return catalog_type;
 }
 
 void
-CatalogsItemsBatch::setItems(std::list <ItemProcessingRecord> items)
+CatalogsItemsBatch::setCatalogType(CatalogsType  catalog_type)
 {
-	this->items = items;
+	this->catalog_type = catalog_type;
 }
 
 std::string
@@ -281,6 +315,18 @@ void
 CatalogsItemsBatch::setStatus(BatchOperationStatus  status)
 {
 	this->status = status;
+}
+
+std::list<HotelProcessingRecord>
+CatalogsItemsBatch::getItems()
+{
+	return items;
+}
+
+void
+CatalogsItemsBatch::setItems(std::list <HotelProcessingRecord> items)
+{
+	this->items = items;
 }
 
 

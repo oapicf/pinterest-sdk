@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Whether the data is owned by the partner (1p) or by the data provider (3p)",
+  "name": "AudienceDataParty",
+  "symbols": [
+    "1p",
+    "3p"
+  ]
+}

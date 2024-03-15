@@ -279,7 +279,7 @@ static bool bulkRequestGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool bulkRequestGetHelper(char * accessToken,
-	std::string adAccountId, std::string bulkRequestId, 
+	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
 	void(* handler)(BulkUpsertStatusResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -296,6 +296,13 @@ static bool bulkRequestGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&includeDetails, "bool");
+	queryParams.insert(pair<string, string>("include_details", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("include_details");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -362,22 +369,22 @@ static bool bulkRequestGetHelper(char * accessToken,
 
 
 bool BulkManager::bulkRequestGetAsync(char * accessToken,
-	std::string adAccountId, std::string bulkRequestId, 
+	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
 	void(* handler)(BulkUpsertStatusResponse, Error, void* )
 	, void* userData)
 {
 	return bulkRequestGetHelper(accessToken,
-	adAccountId, bulkRequestId, 
+	adAccountId, bulkRequestId, includeDetails, 
 	handler, userData, true);
 }
 
 bool BulkManager::bulkRequestGetSync(char * accessToken,
-	std::string adAccountId, std::string bulkRequestId, 
+	std::string adAccountId, std::string bulkRequestId, bool includeDetails, 
 	void(* handler)(BulkUpsertStatusResponse, Error, void* )
 	, void* userData)
 {
 	return bulkRequestGetHelper(accessToken,
-	adAccountId, bulkRequestId, 
+	adAccountId, bulkRequestId, includeDetails, 
 	handler, userData, false);
 }
 

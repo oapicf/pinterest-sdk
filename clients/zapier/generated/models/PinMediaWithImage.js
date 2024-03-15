@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const ImageDetails = require('../models/ImageDetails');
+const ImageMetadata_images = require('../models/ImageMetadata_images');
 const PinMedia = require('../models/PinMedia');
 
 module.exports = {
@@ -11,14 +11,14 @@ module.exports = {
                 label: `[${labelPrefix}media_type]`,
                 type: 'string',
             },
-            ...ImageDetails.fields(`${keyPrefix}images`, isInput),
+            ...ImageMetadata_images.fields(`${keyPrefix}images`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'media_type': bundle.inputData?.[`${keyPrefix}media_type`],
-            'images': utils.removeIfEmpty(ImageDetails.mapping(bundle, `${keyPrefix}images`)),
+            'images': utils.removeIfEmpty(ImageMetadata_images.mapping(bundle, `${keyPrefix}images`)),
         }
     },
 }

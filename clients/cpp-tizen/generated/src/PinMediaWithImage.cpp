@@ -24,7 +24,7 @@ void
 PinMediaWithImage::__init()
 {
 	//media_type = std::string();
-	//new std::map()std::map> images;
+	//images = new ImageMetadata_images();
 }
 
 void
@@ -36,7 +36,7 @@ PinMediaWithImage::__cleanup()
 	//media_type = NULL;
 	//}
 	//if(images != NULL) {
-	//images.RemoveAll(true);
+	//
 	//delete images;
 	//images = NULL;
 	//}
@@ -63,13 +63,15 @@ PinMediaWithImage::fromJson(char* jsonStr)
 	node = json_object_get_member(pJsonObject, imagesKey);
 	if (node !=NULL) {
 	
-		{
-			JsonObject* json_obj = json_node_get_object(node);
-			map<string,string> new_map;
-			json_object_foreach_member(json_obj,helper_func,&new_map);
-			images = new_map;
+
+		if (isprimitive("ImageMetadata_images")) {
+			jsonToValue(&images, node, "ImageMetadata_images", "ImageMetadata_images");
+		} else {
+			
+			ImageMetadata_images* obj = static_cast<ImageMetadata_images*> (&images);
+			obj->fromJson(json_to_string(node, false));
+			
 		}
-		
 	}
 }
 
@@ -92,23 +94,18 @@ PinMediaWithImage::toJson()
 	}
 	const gchar *media_typeKey = "media_type";
 	json_object_set_member(pJsonObject, media_typeKey, node);
-
-
-	{
-		JsonObject* json_obj;
-		map<string, string> new_list = static_cast<map <string, string> > (getImages());
-		json_obj = json_object_new();
-		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			string obj = (*it).first;
-			string obj2 = (*it).second;
-			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
-			json_object_set_member(json_obj, obj.c_str(), tempnode);
-		}
-	node = json_node_alloc();
-	json_node_init_object(node, json_obj);
-	json_object_unref(json_obj);
+	if (isprimitive("ImageMetadata_images")) {
+		ImageMetadata_images obj = getImages();
+		node = converttoJson(&obj, "ImageMetadata_images", "");
 	}
-
+	else {
+		
+		ImageMetadata_images obj = static_cast<ImageMetadata_images> (getImages());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
 	const gchar *imagesKey = "images";
 	json_object_set_member(pJsonObject, imagesKey, node);
 	node = json_node_alloc();
@@ -131,14 +128,14 @@ PinMediaWithImage::setMediaType(std::string  media_type)
 	this->media_type = media_type;
 }
 
-std::map<string, string>
+ImageMetadata_images
 PinMediaWithImage::getImages()
 {
 	return images;
 }
 
 void
-PinMediaWithImage::setImages(std::map <string, string> images)
+PinMediaWithImage::setImages(ImageMetadata_images  images)
 {
 	this->images = images;
 }

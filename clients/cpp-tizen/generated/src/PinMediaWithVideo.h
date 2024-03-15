@@ -9,9 +9,8 @@
 
 
 #include <string>
-#include "ImageDetails.h"
+#include "ImageMetadata_images.h"
 #include "PinMedia.h"
-#include <map>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -57,11 +56,11 @@ public:
 	void setMediaType(std::string  media_type);
 	/*! \brief Get 
 	 */
-	std::map<std::string, std::string> getImages();
+	ImageMetadata_images getImages();
 
 	/*! \brief Set 
 	 */
-	void setImages(std::map <std::string, std::string> images);
+	void setImages(ImageMetadata_images  images);
 	/*! \brief Get 
 	 */
 	std::string getCoverImageUrl();
@@ -69,6 +68,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCoverImageUrl(std::string  cover_image_url);
+	/*! \brief Get Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+	 */
+	std::string getVideoUrl();
+
+	/*! \brief Set Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+	 */
+	void setVideoUrl(std::string  video_url);
 	/*! \brief Get Duration (in milliseconds)
 	 */
 	long long getDuration();
@@ -93,8 +99,9 @@ public:
 
 private:
 	std::string media_type;
-	std::map <std::string, std::string>images;
+	ImageMetadata_images images;
 	std::string cover_image_url;
+	std::string video_url;
 	long long duration;
 	int height;
 	int width;

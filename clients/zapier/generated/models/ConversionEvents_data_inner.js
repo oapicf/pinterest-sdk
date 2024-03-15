@@ -8,32 +8,15 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}event_name`,
-                label: `The type of the user event. - [${labelPrefix}event_name]`,
+                label: `The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code> - [${labelPrefix}event_name]`,
                 required: true,
                 type: 'string',
-                choices: [
-                    'add_to_cart',
-                    'checkout',
-                    'custom',
-                    'lead',
-                    'page_visit',
-                    'search',
-                    'signup',
-                    'view_category',
-                    'watch_video',
-                ],
             },
             {
                 key: `${keyPrefix}action_source`,
-                label: `The source indicating where the conversion event occurred. - [${labelPrefix}action_source]`,
+                label: `The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code> - [${labelPrefix}action_source]`,
                 required: true,
                 type: 'string',
-                choices: [
-                    'app_android',
-                    'app_ios',
-                    'web',
-                    'offline',
-                ],
             },
             {
                 key: `${keyPrefix}event_time`,
@@ -43,7 +26,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}event_id`,
-                label: `A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. - [${labelPrefix}event_id]`,
+                label: `A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. - [${labelPrefix}event_id]`,
                 required: true,
                 type: 'string',
             },
@@ -59,7 +42,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}partner_name`,
-                label: `The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. Only send this field if Pinterest has worked directly with you to define a value for partner_name. - [${labelPrefix}partner_name]`,
+                label: `The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’ - [${labelPrefix}partner_name]`,
                 type: 'string',
             },
             ...ConversionEventsUserData.fields(`${keyPrefix}user_data`, isInput),

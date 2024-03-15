@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Ad entities to get in bulk request.",
+  "name": "BulkDownloadRequest",
+  "fields": [
+    {
+      "name": "entity_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.BulkEntityType"
+      }],
+      "doc": "All entity types specified will be downloaded. Fewer types result in faster downloads.",
+      "default": null
+    },
+    {
+      "name": "entity_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.",
+      "default": null
+    },
+    {
+      "name": "updated_since",
+      "type": ["null", "string"],
+      "doc": "Unix UTC timestamp to retrieve all entities that have changed since this time.",
+      "default": null
+    },
+    {
+      "name": "campaign_filter",
+      "type": ["null", "model.BulkDownloadRequestCampaignFilter"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "output_format",
+      "type": ["null", "model.BulkOutputFormat"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

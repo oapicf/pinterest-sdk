@@ -1,0 +1,16 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "GetAudiencesOrderBy",
+  "symbols": [
+    "NONE",
+    "ID",
+    "SIZE",
+    "CREATION_DATE",
+    "UPDATED_TIME",
+    "NAME",
+    "STATUS",
+    "TYPE"
+  ]
+}

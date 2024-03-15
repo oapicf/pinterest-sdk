@@ -66,11 +66,19 @@ public:
 	/*! \brief Set 
 	 */
 	void setData(std::string  data);
+	/*! \brief Get Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+	 */
+	bool getIsStandard();
+
+	/*! \brief Set Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+	 */
+	void setIsStandard(bool  is_standard);
 
 private:
 	std::string source_type;
 	std::string content_type;
 	std::string data;
+	bool is_standard;
 	void __init();
 	void __cleanup();
 

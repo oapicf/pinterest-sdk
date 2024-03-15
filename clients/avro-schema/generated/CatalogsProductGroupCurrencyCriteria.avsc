@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A currency filter. This filter cannot be negated",
+  "name": "CatalogsProductGroupCurrencyCriteria",
+  "fields": [
+    {
+      "name": "values",
+      "type": "model.NonNullableCatalogsCurrency",
+      "doc": ""
+    },
+    {
+      "name": "negated",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

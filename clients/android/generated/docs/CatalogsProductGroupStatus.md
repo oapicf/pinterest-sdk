@@ -1,0 +1,10 @@
+
+
+# CatalogsProductGroupStatus
+
+## Enum
+
+
+
+
+

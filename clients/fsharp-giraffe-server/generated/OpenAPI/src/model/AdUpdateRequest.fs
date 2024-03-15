@@ -1,0 +1,43 @@
+namespace OpenAPI.Model
+
+open System
+open System.Collections.Generic
+open OpenAPI.Model.AdCommonQuizPinData
+open OpenAPI.Model.AdCommonTrackingUrls
+open OpenAPI.Model.CreativeType
+open OpenAPI.Model.EntityStatus
+open OpenAPI.Model.GridClickType
+open OpenAPI.Model.string option
+
+module AdUpdateRequest =
+
+  //#region AdUpdateRequest
+
+  //#region enums
+  type CustomizableCtaTypeEnum = GETOFFEREnum of string option  |  LEARNMOREEnum of string option  |  ORDERNOWEnum of string option  |  SHOPNOWEnum of string option  |  SIGNUPEnum of string option  |  SUBSCRIBEEnum of string option  |  BUYNOWEnum of string option  |  CONTACTUSEnum of string option  |  GETQUOTEEnum of string option  |  VISITWEBSITEEnum of string option  |  APPLYNOWEnum of string option  |  BOOKNOWEnum of string option  |  REQUESTDEMOEnum of string option  |  REGISTERNOWEnum of string option  |  FINDADEALEREnum of string option  |  ADDTOCARTEnum of string option  |  WATCHNOWEnum of string option  |  READMOREEnum of string option  |  NullEnum of string option  
+  //#endregion
+
+  type AdUpdateRequest = {
+    AdGroupId : string;
+    AndroidDeepLink : string option;
+    CarouselAndroidDeepLinks : string[];
+    CarouselDestinationUrls : string[];
+    CarouselIosDeepLinks : string[];
+    ClickTrackingUrl : string option;
+    CreativeType : CreativeType;
+    DestinationUrl : string option;
+    IosDeepLink : string option;
+    IsPinDeleted : bool;
+    IsRemovable : bool;
+    Name : string option;
+    Status : EntityStatus;
+    TrackingUrls : AdCommonTrackingUrls;
+    ViewTrackingUrl : string option;
+    LeadFormId : string option;
+    GridClickType : GridClickType;
+    CustomizableCtaType : CustomizableCtaTypeEnum;
+    QuizPinData : AdCommonQuizPinData;
+    Id : string;
+    PinId : string option;
+  }
+  //#endregion

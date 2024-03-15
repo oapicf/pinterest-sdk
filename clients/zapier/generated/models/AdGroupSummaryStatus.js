@@ -11,6 +11,8 @@ module.exports = {
                     'COMPLETED',
                     'ADVERTISER_DISABLED',
                     'ARCHIVED',
+                    'DRAFT',
+                    'DELETED_DRAFT',
                 ],
             }
         )

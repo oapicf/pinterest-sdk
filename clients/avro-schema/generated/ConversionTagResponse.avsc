@@ -1,0 +1,63 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ConversionTagResponse",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Ad account ID.",
+      "default": null
+    },
+    {
+      "name": "code_snippet",
+      "type": ["null", "string"],
+      "doc": "Tag code snippet.",
+      "default": null
+    },
+    {
+      "name": "enhanced_match_status",
+      "type": ["null", "model.EnhancedMatchStatusType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Tag ID.",
+      "default": null
+    },
+    {
+      "name": "last_fired_time_ms",
+      "type": ["null", "double"],
+      "doc": "Time for the last event fired.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Conversion tag name.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.EntityStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "version",
+      "type": ["null", "string"],
+      "doc": "Version number.",
+      "default": null
+    },
+    {
+      "name": "configs",
+      "type": ["null", "model.ConversionTagConfigs"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

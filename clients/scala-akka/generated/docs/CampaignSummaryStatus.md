@@ -1,0 +1,9 @@
+
+
+# CampaignSummaryStatus
+
+## Enum
+
+
+
+

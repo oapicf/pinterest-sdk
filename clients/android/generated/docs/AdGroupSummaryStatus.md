@@ -1,0 +1,10 @@
+
+
+# AdGroupSummaryStatus
+
+## Enum
+
+
+
+
+

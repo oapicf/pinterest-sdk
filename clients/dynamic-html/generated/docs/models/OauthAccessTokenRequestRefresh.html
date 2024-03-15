@@ -1,0 +1,28 @@
+
+<h2>OauthAccessTokenRequestRefresh</h2>
+<ul class="parameter">
+  <li class="param-required-true">grantUnderscoretype : String
+    <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>authorization_code</dd>
+            <dd>refresh_token</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">refreshUnderscoretoken : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">scope : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">refreshUnderscoreon : Boolean
+    <br/>Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.
+  </li>
+</ul>

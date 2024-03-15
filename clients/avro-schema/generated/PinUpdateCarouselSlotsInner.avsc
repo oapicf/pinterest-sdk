@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PinUpdateCarouselSlotsInner",
+  "fields": [
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "Carousel Pin slot title.",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Carousel Pin slot description.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Carousel Pin slot link.",
+      "default": null
+    }
+  ]
+
+}

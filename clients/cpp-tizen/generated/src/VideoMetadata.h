@@ -59,6 +59,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCoverImageUrl(std::string  cover_image_url);
+	/*! \brief Get Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+	 */
+	std::string getVideoUrl();
+
+	/*! \brief Set Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+	 */
+	void setVideoUrl(std::string  video_url);
 	/*! \brief Get Duration (in milliseconds)
 	 */
 	long long getDuration();
@@ -84,6 +91,7 @@ public:
 private:
 	std::string item_type;
 	std::string cover_image_url;
+	std::string video_url;
 	long long duration;
 	int height;
 	int width;

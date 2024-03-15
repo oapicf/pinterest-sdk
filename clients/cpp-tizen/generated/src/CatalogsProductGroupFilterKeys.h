@@ -12,6 +12,7 @@
 #include "AvailabilityFilter.h"
 #include "BrandFilter.h"
 #include "CatalogsProductGroupCurrencyCriteria.h"
+#include "CatalogsProductGroupMultipleGenderCriteria.h"
 #include "CatalogsProductGroupMultipleStringCriteria.h"
 #include "CatalogsProductGroupMultipleStringListCriteria.h"
 #include "CatalogsProductGroupPricingCriteria.h"
@@ -168,11 +169,11 @@ public:
 	void setITEMGROUPID(CatalogsProductGroupMultipleStringCriteria  iTEM_GROUP_ID);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getGENDER();
+	CatalogsProductGroupMultipleGenderCriteria getGENDER();
 
 	/*! \brief Set 
 	 */
-	void setGENDER(CatalogsProductGroupMultipleStringCriteria  gENDER);
+	void setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE4();
@@ -272,7 +273,7 @@ private:
 	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_3;
 	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_4;
 	CatalogsProductGroupMultipleStringCriteria iTEM_GROUP_ID;
-	CatalogsProductGroupMultipleStringCriteria gENDER;
+	CatalogsProductGroupMultipleGenderCriteria gENDER;
 	CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_4;
 	CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_3;
 	CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_2;

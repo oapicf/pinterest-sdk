@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin with multiple videos.",
+  "name": "PinMediaWithVideos",
+  "fields": [
+    {
+      "name": "media_type",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.VideoMetadata"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

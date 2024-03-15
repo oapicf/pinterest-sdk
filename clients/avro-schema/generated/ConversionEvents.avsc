@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A list of events (one or more) encapsulated by a data object.",
+  "name": "ConversionEvents",
+  "fields": [
+    {
+      "name": "data",
+      "type": {
+        "type": "array",
+        "items": "model.ConversionEventsDataInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

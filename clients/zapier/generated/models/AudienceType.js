@@ -9,6 +9,7 @@ module.exports = {
                     'VISITOR',
                     'ENGAGEMENT',
                     'ACTALIKE',
+                    'PERSONA',
                 ],
             }
         )

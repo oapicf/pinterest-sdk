@@ -1,0 +1,59 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsHotelProductGroup",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelProductGroup_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the hotel product group."
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of hotel product group",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsHotelProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "created_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of when catalog product group was created.",
+      "default": null
+    },
+    {
+      "name": "updated_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
+      "default": null
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": ""
+    }
+  ]
+
+}

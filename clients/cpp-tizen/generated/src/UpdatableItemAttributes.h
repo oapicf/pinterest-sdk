@@ -88,11 +88,11 @@ public:
 	/*! \brief Set The brand of the product.
 	 */
 	void setBrand(std::string  brand);
-	/*! \brief Get Set this attribute to FALSE to indicate items that should be excluded from the Pinterest Checkout program. Note, this product is currently being tested and your account must be enrolled. Please contact your Account Manager or contact us for more information.
+	/*! \brief Get This attribute is not supported anymore.
 	 */
 	bool getCheckoutEnabled();
 
-	/*! \brief Set Set this attribute to FALSE to indicate items that should be excluded from the Pinterest Checkout program. Note, this product is currently being tested and your account must be enrolled. Please contact your Account Manager or contact us for more information.
+	/*! \brief Set This attribute is not supported anymore.
 	 */
 	void setCheckoutEnabled(bool  checkout_enabled);
 	/*! \brief Get The primary color of the product.

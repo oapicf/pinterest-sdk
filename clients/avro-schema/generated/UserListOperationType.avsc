@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "User list operation type (add or remove)",
+  "name": "UserListOperationType",
+  "symbols": [
+    "ADD",
+    "REMOVE"
+  ]
+}

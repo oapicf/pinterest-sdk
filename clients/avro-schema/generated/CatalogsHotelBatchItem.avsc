@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Hotel batch item",
+  "name": "CatalogsHotelBatchItem",
+  "fields": [
+    {
+      "name": "hotel_id",
+      "type": "string",
+      "doc": "The catalog hotel id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelBatchItem_operation",
+        "symbols": [
+          "DELETE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": "model.CatalogsUpdatableHotelAttributes",
+      "doc": ""
+    }
+  ]
+
+}

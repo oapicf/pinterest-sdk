@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsHotelAddress",
+  "fields": [
+    {
+      "name": "addr1",
+      "type": ["null", "string"],
+      "doc": "Primary street address of hotel.",
+      "default": null
+    },
+    {
+      "name": "city",
+      "type": ["null", "string"],
+      "doc": "City where the hotel is located.",
+      "default": null
+    },
+    {
+      "name": "region",
+      "type": ["null", "string"],
+      "doc": "State, county, province, where the hotel is located.",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": ["null", "string"],
+      "doc": "Country where the hotel is located.",
+      "default": null
+    },
+    {
+      "name": "postal_code",
+      "type": ["null", "string"],
+      "doc": "Required for countries with a postal code system. Postal or zip code of the hotel.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "OrderLineSingleResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.OrderLineResponse"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

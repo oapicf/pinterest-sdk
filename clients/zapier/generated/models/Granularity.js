@@ -3,7 +3,7 @@ const utils = require('../utils/utils');
 module.exports = {
         fields: (key) => (
             {
-                label: `[${key.replaceAll('__', '.')}]`,
+                label: `Granularity - [${key.replaceAll('__', '.')}]`,
                 choices: [
                     'TOTAL',
                     'DAY',

@@ -1,0 +1,207 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsFeedValidationErrors",
+  "fields": [
+    {
+      "name": "FETCH_ERROR",
+      "type": ["null", "int"],
+      "doc": "Pinterest couldn't download your feed.",
+      "default": null
+    },
+    {
+      "name": "FETCH_INACTIVE_FEED_ERROR",
+      "type": ["null", "int"],
+      "doc": "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.",
+      "default": null
+    },
+    {
+      "name": "ENCODING_ERROR",
+      "type": ["null", "int"],
+      "doc": "Your feed includes data with an unsupported encoding format.",
+      "default": null
+    },
+    {
+      "name": "DELIMITER_ERROR",
+      "type": ["null", "int"],
+      "doc": "Your feed includes data with formatting errors.",
+      "default": null
+    },
+    {
+      "name": "REQUIRED_COLUMNS_MISSING",
+      "type": ["null", "int"],
+      "doc": "Your feed is missing some required column headers.",
+      "default": null
+    },
+    {
+      "name": "DUPLICATE_PRODUCTS",
+      "type": ["null", "int"],
+      "doc": "Some products are duplicated.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_LINK_INVALID",
+      "type": ["null", "int"],
+      "doc": "Some image links are formatted incorrectly.",
+      "default": null
+    },
+    {
+      "name": "ITEMID_MISSING",
+      "type": ["null", "int"],
+      "doc": "Some items are missing an item id in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "TITLE_MISSING",
+      "type": ["null", "int"],
+      "doc": "Some items are missing a title in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "DESCRIPTION_MISSING",
+      "type": ["null", "int"],
+      "doc": "Some items are missing a description in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "PRODUCT_LINK_MISSING",
+      "type": ["null", "int"],
+      "doc": "Some items are missing a link URL in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_LINK_MISSING",
+      "type": ["null", "int"],
+      "doc": "Some items are missing an image link URL in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "AVAILABILITY_INVALID",
+      "type": ["null", "int"],
+      "doc": "Some items are missing an availability value in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "PRODUCT_PRICE_INVALID",
+      "type": ["null", "int"],
+      "doc": "Some items have price formatting errors in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "LINK_FORMAT_INVALID",
+      "type": ["null", "int"],
+      "doc": "Some link values are formatted incorrectly.",
+      "default": null
+    },
+    {
+      "name": "PARSE_LINE_ERROR",
+      "type": ["null", "int"],
+      "doc": "Your feed contains formatting errors for some items.",
+      "default": null
+    },
+    {
+      "name": "ADWORDS_FORMAT_INVALID",
+      "type": ["null", "int"],
+      "doc": "Some adwords links contain too many characters.",
+      "default": null
+    },
+    {
+      "name": "INTERNAL_SERVICE_ERROR",
+      "type": ["null", "int"],
+      "doc": "We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.",
+      "default": null
+    },
+    {
+      "name": "NO_VERIFIED_DOMAIN",
+      "type": ["null", "int"],
+      "doc": "Your merchant domain needs to be claimed.",
+      "default": null
+    },
+    {
+      "name": "ADULT_INVALID",
+      "type": ["null", "int"],
+      "doc": "Some items have invalid adult values.",
+      "default": null
+    },
+    {
+      "name": "IMAGE_LINK_LENGTH_TOO_LONG",
+      "type": ["null", "int"],
+      "doc": "Some items have image_link URLs that contain too many characters, so those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "INVALID_DOMAIN",
+      "type": ["null", "int"],
+      "doc": "Some of your product link values don't match the verified domain associated with this account.",
+      "default": null
+    },
+    {
+      "name": "FEED_LENGTH_TOO_LONG",
+      "type": ["null", "int"],
+      "doc": "Your feed contains too many items, some items will not be published.",
+      "default": null
+    },
+    {
+      "name": "LINK_LENGTH_TOO_LONG",
+      "type": ["null", "int"],
+      "doc": "Some product links contain too many characters, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "MALFORMED_XML",
+      "type": ["null", "int"],
+      "doc": "Your feed couldn't be validated because the xml file is formatted incorrectly.",
+      "default": null
+    },
+    {
+      "name": "PRICE_MISSING",
+      "type": ["null", "int"],
+      "doc": "Some products are missing a price, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "FEED_TOO_SMALL",
+      "type": ["null", "int"],
+      "doc": "Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.",
+      "default": null
+    },
+    {
+      "name": "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED",
+      "type": ["null", "int"],
+      "doc": "Some items exceed the maximum number of items per item group, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE",
+      "type": ["null", "int"],
+      "doc": "Some items' main images can't be found.",
+      "default": null
+    },
+    {
+      "name": "PINJOIN_CONTENT_UNSAFE",
+      "type": ["null", "int"],
+      "doc": "Some items were not published because they don't meet Pinterest's Merchant Guidelines.",
+      "default": null
+    },
+    {
+      "name": "BLOCKLISTED_IMAGE_SIGNATURE",
+      "type": ["null", "int"],
+      "doc": "Some items were not published because they don't meet Pinterest's Merchant Guidelines.",
+      "default": null
+    },
+    {
+      "name": "LIST_PRICE_INVALID",
+      "type": ["null", "int"],
+      "doc": "Some items have list price formatting errors in their product metadata, those items will not be published.",
+      "default": null
+    },
+    {
+      "name": "PRICE_CANNOT_BE_DETERMINED",
+      "type": ["null", "int"],
+      "doc": "Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.",
+      "default": null
+    }
+  ]
+
+}

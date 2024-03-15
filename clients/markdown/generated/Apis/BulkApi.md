@@ -39,7 +39,7 @@ Get advertiser entities in bulk
 
 <a name="bulkRequest/get"></a>
 # **bulkRequest/get**
-> BulkUpsertStatusResponse bulkRequest/get(ad\_account\_id, bulk\_request\_id)
+> BulkUpsertStatusResponse bulkRequest/get(ad\_account\_id, bulk\_request\_id, include\_details)
 
 Download advertiser entities in bulk
 
@@ -51,6 +51,7 @@ Download advertiser entities in bulk
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **bulk\_request\_id** | **String**| Unique identifier of a bulk upsert request. | [default to null] |
+| **include\_details** | **Boolean**| if set to True then attach the errors/details to all the requests | [optional] [default to false] |
 
 ### Return type
 

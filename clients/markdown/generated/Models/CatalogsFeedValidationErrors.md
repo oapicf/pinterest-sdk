@@ -8,6 +8,7 @@
 | **ENCODING\_ERROR** | **Integer** | Your feed includes data with an unsupported encoding format. | [optional] [default to null] |
 | **DELIMITER\_ERROR** | **Integer** | Your feed includes data with formatting errors. | [optional] [default to null] |
 | **REQUIRED\_COLUMNS\_MISSING** | **Integer** | Your feed is missing some required column headers. | [optional] [default to null] |
+| **DUPLICATE\_PRODUCTS** | **Integer** | Some products are duplicated. | [optional] [default to null] |
 | **IMAGE\_LINK\_INVALID** | **Integer** | Some image links are formatted incorrectly. | [optional] [default to null] |
 | **ITEMID\_MISSING** | **Integer** | Some items are missing an item id in their product metadata, those items will not be published. | [optional] [default to null] |
 | **TITLE\_MISSING** | **Integer** | Some items are missing a title in their product metadata, those items will not be published. | [optional] [default to null] |

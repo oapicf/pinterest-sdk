@@ -3,24 +3,21 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **AD\_LINK\_FORMAT\_WARNING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
+| **AD\_LINK\_SAME\_AS\_LINK** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **ADDITIONAL\_IMAGE\_LINK\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **ADDITIONAL\_IMAGE\_LINK\_WARNING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **ADWORDS\_FORMAT\_WARNING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **ADWORDS\_SAME\_AS\_LINK** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **AGE\_GROUP\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **SIZE\_SYSTEM\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
-| **AGE\_GROUP\_NORMALIZED** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **ANDROID\_DEEP\_LINK\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **AVAILABILITY\_DATE\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
-| **AVAILABILITY\_NORMALIZED** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
-| **CONDITION\_NORMALIZED** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **COUNTRY\_DOES\_NOT\_MAP\_TO\_CURRENCY** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **CUSTOM\_LABEL\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **DESCRIPTION\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
-| **DUPLICATE\_PRODUCTS** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **EXPIRATION\_DATE\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **GENDER\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
-| **GENDER\_NORMALIZED** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **GTIN\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **IMAGE\_LINK\_WARNING** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **IOS\_DEEP\_LINK\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
@@ -45,7 +42,6 @@
 | **SHIPPING\_WEIGHT\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **SHIPPING\_WIDTH\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **SIZE\_TYPE\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
-| **SIZE\_TYPE\_NORMALIZED** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **TAX\_INVALID** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **TITLE\_LENGTH\_TOO\_LONG** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |
 | **TOO\_MANY\_ADDITIONAL\_IMAGE\_LINKS** | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null] |

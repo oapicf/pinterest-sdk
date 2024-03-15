@@ -52,9 +52,17 @@ public:
 	/*! \brief Set The number of products in the feed file.
 	 */
 	void setOriginal(int  original);
+	/*! \brief Get The number of products successfully ingested from the feed file.
+	 */
+	int getIngested();
+
+	/*! \brief Set The number of products successfully ingested from the feed file.
+	 */
+	void setIngested(int  ingested);
 
 private:
 	int original;
+	int ingested;
 	void __init();
 	void __cleanup();
 

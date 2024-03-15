@@ -24,6 +24,7 @@ void
 CatalogsFeedProductCounts::__init()
 {
 	//original = int(0);
+	//ingested = int(0);
 }
 
 void
@@ -33,6 +34,11 @@ CatalogsFeedProductCounts::__cleanup()
 	//
 	//delete original;
 	//original = NULL;
+	//}
+	//if(ingested != NULL) {
+	//
+	//delete ingested;
+	//ingested = NULL;
 	//}
 	//
 }
@@ -49,6 +55,17 @@ CatalogsFeedProductCounts::fromJson(char* jsonStr)
 
 		if (isprimitive("int")) {
 			jsonToValue(&original, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *ingestedKey = "ingested";
+	node = json_object_get_member(pJsonObject, ingestedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&ingested, node, "int", "");
 		} else {
 			
 		}
@@ -74,6 +91,15 @@ CatalogsFeedProductCounts::toJson()
 	}
 	const gchar *originalKey = "original";
 	json_object_set_member(pJsonObject, originalKey, node);
+	if (isprimitive("int")) {
+		int obj = getIngested();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *ingestedKey = "ingested";
+	json_object_set_member(pJsonObject, ingestedKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -92,6 +118,18 @@ void
 CatalogsFeedProductCounts::setOriginal(int  original)
 {
 	this->original = original;
+}
+
+int
+CatalogsFeedProductCounts::getIngested()
+{
+	return ingested;
+}
+
+void
+CatalogsFeedProductCounts::setIngested(int  ingested)
+{
+	this->ingested = ingested;
 }
 
 

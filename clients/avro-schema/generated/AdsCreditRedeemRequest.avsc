@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdsCreditRedeemRequest",
+  "fields": [
+    {
+      "name": "offerCodeHash",
+      "type": "string",
+      "doc": "Takes in a SHA256 hash of the offerCode."
+    },
+    {
+      "name": "validateOnly",
+      "type": "boolean",
+      "doc": "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account"
+    }
+  ]
+
+}

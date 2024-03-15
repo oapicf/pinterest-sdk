@@ -1,0 +1,32 @@
+/*
+ * data_status.h
+ *
+ * Metrics availablity, e.g., \&quot;READY\&quot;.
+ */
+
+#ifndef _data_status_H_
+#define _data_status_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct data_status_t data_status_t;
+
+
+// Enum  for data_status
+
+typedef enum { pinterest_rest_api_data_status__NULL = 0, pinterest_rest_api_data_status__PROCESSING, pinterest_rest_api_data_status__READY, pinterest_rest_api_data_status__ESTIMATE, pinterest_rest_api_data_status__BEFORE_BUSINESS_CREATED, pinterest_rest_api_data_status__BEFORE_DATA_RETENTION_PERIOD, pinterest_rest_api_data_status__BEFORE_PIN_DATA_RETENTION_PERIOD, pinterest_rest_api_data_status__BEFORE_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_CORE_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_PIN_FORMAT_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_AUDIENCE_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_VIDEO_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_CONVERSION_METRIC_START_DATE, pinterest_rest_api_data_status__PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD, pinterest_rest_api_data_status__IN_BAD_TAG_DATE, pinterest_rest_api_data_status__BEFORE_PUBLISHED_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_ASSIST_METRIC_START_DATE, pinterest_rest_api_data_status__BEFORE_PIN_CREATED, pinterest_rest_api_data_status__BEFORE_ACCOUNT_CLAIMED, pinterest_rest_api_data_status__BEFORE_DEMOGRAPHIC_FILTERS_START_DATE, pinterest_rest_api_data_status__AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD, pinterest_rest_api_data_status__AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD, pinterest_rest_api_data_status__BEFORE_PRODUCT_GROUP_FILTER_START_DATE } pinterest_rest_api_data_status__e;
+
+char* data_status_data_status_ToString(pinterest_rest_api_data_status__e data_status);
+
+pinterest_rest_api_data_status__e data_status_data_status_FromString(char* data_status);
+
+//cJSON *data_status_data_status_convertToJSON(pinterest_rest_api_data_status__e data_status);
+
+//pinterest_rest_api_data_status__e data_status_data_status_parseFromJSON(cJSON *data_statusJSON);
+
+#endif /* _data_status_H_ */
+

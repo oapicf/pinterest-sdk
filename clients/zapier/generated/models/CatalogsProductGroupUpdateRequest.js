@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CatalogsProductGroupFiltersAllOfRequest = require('../models/CatalogsProductGroupFiltersAllOfRequest');
+const CatalogsProductGroupFiltersRequest = require('../models/CatalogsProductGroupFiltersRequest');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -20,7 +20,7 @@ module.exports = {
                 label: `boolean indicator of whether the product group is being featured or not - [${labelPrefix}is_featured]`,
                 type: 'boolean',
             },
-            ...CatalogsProductGroupFiltersAllOfRequest.fields(`${keyPrefix}filters`, isInput),
+            ...CatalogsProductGroupFiltersRequest.fields(`${keyPrefix}filters`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -29,7 +29,7 @@ module.exports = {
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'is_featured': bundle.inputData?.[`${keyPrefix}is_featured`],
-            'filters': utils.removeIfEmpty(CatalogsProductGroupFiltersAllOfRequest.mapping(bundle, `${keyPrefix}filters`)),
+            'filters': utils.removeIfEmpty(CatalogsProductGroupFiltersRequest.mapping(bundle, `${keyPrefix}filters`)),
         }
     },
 }

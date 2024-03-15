@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "Board_media.h"
 #include "Board_owner.h"
 #include "Object.h"
 
@@ -53,6 +54,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setId(std::string  id);
+	/*! \brief Get Date and time of board creation.
+	 */
+	std::string getCreatedAt();
+
+	/*! \brief Set Date and time of board creation.
+	 */
+	void setCreatedAt(std::string  created_at);
+	/*! \brief Get Date and time of last board pins modified.
+	 */
+	std::string getBoardPinsModifiedAt();
+
+	/*! \brief Set Date and time of last board pins modified.
+	 */
+	void setBoardPinsModifiedAt(std::string  board_pins_modified_at);
 	/*! \brief Get 
 	 */
 	std::string getName();
@@ -67,6 +82,34 @@ public:
 	/*! \brief Set 
 	 */
 	void setDescription(std::string  description);
+	/*! \brief Get Count of collaborators on the board.
+	 */
+	int getCollaboratorCount();
+
+	/*! \brief Set Count of collaborators on the board.
+	 */
+	void setCollaboratorCount(int  collaborator_count);
+	/*! \brief Get Count of pins on the board.
+	 */
+	int getPinCount();
+
+	/*! \brief Set Count of pins on the board.
+	 */
+	void setPinCount(int  pin_count);
+	/*! \brief Get Board follower count.
+	 */
+	int getFollowerCount();
+
+	/*! \brief Set Board follower count.
+	 */
+	void setFollowerCount(int  follower_count);
+	/*! \brief Get 
+	 */
+	Board_media getMedia();
+
+	/*! \brief Set 
+	 */
+	void setMedia(Board_media  media);
 	/*! \brief Get 
 	 */
 	Board_owner getOwner();
@@ -84,8 +127,14 @@ public:
 
 private:
 	std::string id;
+	std::string created_at;
+	std::string board_pins_modified_at;
 	std::string name;
 	std::string description;
+	int collaborator_count;
+	int pin_count;
+	int follower_count;
+	Board_media media;
 	Board_owner owner;
 	std::string privacy;
 	void __init();

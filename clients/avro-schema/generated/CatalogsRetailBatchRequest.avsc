@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A request object that can have multiple operations on a single retail batch",
+  "name": "CatalogsRetailBatchRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.Language",
+      "doc": ""
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsRetailBatchRequestItemsInner"
+      },
+      "doc": "Array with catalogs item operations"
+    }
+  ]
+
+}

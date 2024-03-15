@@ -36,7 +36,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}checkout_enabled`,
-                label: `Set this attribute to FALSE to indicate items that should be excluded from the Pinterest Checkout program. Note, this product is currently being tested and your account must be enrolled. Please contact your Account Manager or contact us for more information. - [${labelPrefix}checkout_enabled]`,
+                label: `This attribute is not supported anymore. - [${labelPrefix}checkout_enabled]`,
                 type: 'boolean',
             },
             {

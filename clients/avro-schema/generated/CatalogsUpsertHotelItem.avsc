@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A hotel item to be upserted.",
+  "name": "CatalogsUpsertHotelItem",
+  "fields": [
+    {
+      "name": "hotel_id",
+      "type": "string",
+      "doc": "The catalog hotel id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsUpsertHotelItem_operation",
+        "symbols": [
+          "UPSERT"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": "model.CatalogsHotelAttributes",
+      "doc": ""
+    }
+  ]
+
+}

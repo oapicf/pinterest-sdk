@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const Country = require('../models/Country');
+const AdCountry = require('../models/AdCountry');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -7,7 +7,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}code`,
-                ...Country.fields(`${keyPrefix}code`, isInput),
+                ...AdCountry.fields(`${keyPrefix}code`, isInput),
             },
             {
                 key: `${keyPrefix}currency`,

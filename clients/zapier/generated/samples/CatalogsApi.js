@@ -1,15 +1,17 @@
 module.exports = {
-    "products_by_product_group_filter_list_200_responseSample": 
+    "catalogs_list_200_responseSample": 
         { data: {} },
-    "CatalogsProductGroupSample": 
+    "catalogs_product_group_pins_list_200_responseSample": 
         { data: {} },
-    "CatalogsProductGroupSample": 
+    "catalogs_product_groups_create_201_responseSample": 
+        { data: {} },
+    "catalogs_product_groups_create_201_responseSample": 
         { data: {} },
     "catalogs_product_groups_list_200_responseSample": 
         { data: {} },
     "CatalogsProductGroupProductCountsSample": 
         { data: {} },
-    "CatalogsProductGroupSample": 
+    "catalogs_product_groups_create_201_responseSample": 
         { data: {} },
     "feed_processing_results_list_200_responseSample": 
         { data: {} },
@@ -29,6 +31,6 @@ module.exports = {
         { data: {} },
     "items_issues_list_200_responseSample": 
         { data: {} },
-    "products_by_product_group_filter_list_200_responseSample": 
+    "catalogs_product_group_pins_list_200_responseSample": 
         { data: {} },
 }

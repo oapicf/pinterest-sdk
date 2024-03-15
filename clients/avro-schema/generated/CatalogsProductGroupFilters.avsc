@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object holding a group of filters for a catalog product group",
+  "name": "CatalogsProductGroupFilters",
+  "fields": [
+    {
+      "name": "any_of",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsProductGroupFilterKeys"
+      },
+      "doc": ""
+    },
+    {
+      "name": "all_of",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsProductGroupFilterKeys"
+      },
+      "doc": ""
+    }
+  ]
+
+}

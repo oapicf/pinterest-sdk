@@ -9,7 +9,12 @@
 
 
 #include <string>
-#include "ItemAttributes.h"
+#include "CatalogsHotelAttributes.h"
+#include "CatalogsHotelItemResponse.h"
+#include "CatalogsRetailItemResponse.h"
+#include "CatalogsType.h"
+#include "Pin.h"
+#include <list>
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -46,24 +51,48 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The catalog item id in the merchant namespace
-	 */
-	std::string getItemId();
-
-	/*! \brief Set The catalog item id in the merchant namespace
-	 */
-	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
-	ItemAttributes getAttributes();
+	CatalogsType getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(ItemAttributes  attributes);
+	void setCatalogType(CatalogsType  catalog_type);
+	/*! \brief Get The catalog retail item id in the merchant namespace
+	 */
+	std::string getItemId();
+
+	/*! \brief Set The catalog retail item id in the merchant namespace
+	 */
+	void setItemId(std::string  item_id);
+	/*! \brief Get The pins mapped to the item
+	 */
+	std::list<Pin> getPins();
+
+	/*! \brief Set The pins mapped to the item
+	 */
+	void setPins(std::list <Pin> pins);
+	/*! \brief Get 
+	 */
+	CatalogsHotelAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(CatalogsHotelAttributes  attributes);
+	/*! \brief Get The catalog hotel id in the merchant namespace
+	 */
+	std::string getHotelId();
+
+	/*! \brief Set The catalog hotel id in the merchant namespace
+	 */
+	void setHotelId(std::string  hotel_id);
 
 private:
+	CatalogsType catalog_type;
 	std::string item_id;
-	ItemAttributes attributes;
+	std::list <Pin>pins;
+	CatalogsHotelAttributes attributes;
+	std::string hotel_id;
 	void __init();
 	void __cleanup();
 

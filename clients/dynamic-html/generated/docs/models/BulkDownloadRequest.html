@@ -1,0 +1,27 @@
+
+<h2>BulkDownloadRequest</h2>
+<ul class="parameter">
+  <li class="param-required-false">entityUnderscoretypes : List
+    <br/>All entity types specified will be downloaded. Fewer types result in faster downloads.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">entityUnderscoreids : List
+    <br/>All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">updatedUnderscoresince : String
+    <br/>Unix UTC timestamp to retrieve all entities that have changed since this time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">campaignUnderscorefilter : BulkDownloadRequest_campaign_filter
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">outputUnderscoreformat : BulkOutputFormat
+    <br/>
+  </li>
+</ul>

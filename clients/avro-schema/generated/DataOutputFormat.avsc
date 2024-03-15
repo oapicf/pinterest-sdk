@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Format of generated report",
+  "name": "DataOutputFormat",
+  "symbols": [
+    "JSON",
+    "CSV"
+  ]
+}

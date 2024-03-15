@@ -1,0 +1,9 @@
+
+
+# CatalogsProductGroupType
+
+## Enum
+
+
+
+

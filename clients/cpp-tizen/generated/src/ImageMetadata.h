@@ -9,8 +9,7 @@
 
 
 #include <string>
-#include "ImageDetails.h"
-#include <map>
+#include "ImageMetadata_images.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -56,15 +55,39 @@ public:
 	void setItemType(std::string  item_type);
 	/*! \brief Get 
 	 */
-	std::map<std::string, std::string> getImages();
+	std::string getTitle();
 
 	/*! \brief Set 
 	 */
-	void setImages(std::map <std::string, std::string> images);
+	void setTitle(std::string  title);
+	/*! \brief Get 
+	 */
+	std::string getDescription();
+
+	/*! \brief Set 
+	 */
+	void setDescription(std::string  description);
+	/*! \brief Get 
+	 */
+	std::string getLink();
+
+	/*! \brief Set 
+	 */
+	void setLink(std::string  link);
+	/*! \brief Get 
+	 */
+	ImageMetadata_images getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(ImageMetadata_images  images);
 
 private:
 	std::string item_type;
-	std::map <std::string, std::string>images;
+	std::string title;
+	std::string description;
+	std::string link;
+	ImageMetadata_images images;
 	void __init();
 	void __cleanup();
 

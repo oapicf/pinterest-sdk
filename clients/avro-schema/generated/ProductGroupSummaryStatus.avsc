@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Summary status for product group",
+  "name": "ProductGroupSummaryStatus",
+  "symbols": [
+    "RUNNING",
+    "PAUSED",
+    "EXCLUDED",
+    "ARCHIVED"
+  ]
+}

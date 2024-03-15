@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Keyword match type",
+  "name": "MatchTypeResponse",
+  "symbols": [
+    "BROAD",
+    "PHRASE",
+    "EXACT",
+    "EXACT_NEGATIVE",
+    "PHRASE_NEGATIVE",
+    "null"
+  ]
+}

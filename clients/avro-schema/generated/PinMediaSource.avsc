@@ -1,0 +1,98 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin media source.",
+  "name": "PinMediaSource",
+  "fields": [
+    {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSource_sourceUnderscoretype",
+        "symbols": [
+          "pin_url"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "content_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSource_contentUnderscoretype",
+        "symbols": [
+          "image/jpeg",
+          "image/png"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "data",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "is_standard",
+      "type": ["null", "boolean"],
+      "doc": "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.",
+      "default": null
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "cover_image_url",
+      "type": ["null", "string"],
+      "doc": "Cover image url.",
+      "default": null
+    },
+    {
+      "name": "cover_image_content_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "PinMediaSource_coverUnderscoreimageUnderscorecontentUnderscoretype",
+        "symbols": [
+          "image/jpeg",
+          "image/png"
+        ]
+      }],
+      "doc": "Content type for cover image Base64.",
+      "default": null
+    },
+    {
+      "name": "cover_image_data",
+      "type": ["null", "string"],
+      "doc": "Cover image Base64.",
+      "default": null
+    },
+    {
+      "name": "media_id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.PinMediaSourceImagesURLItemsInner"
+      },
+      "doc": "Array with image objects."
+    },
+    {
+      "name": "index",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_affiliate_link",
+      "type": ["null", "boolean"],
+      "doc": "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.",
+      "default": null
+    }
+  ]
+
+}

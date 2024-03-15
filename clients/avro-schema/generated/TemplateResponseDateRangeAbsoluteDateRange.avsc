@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The absolute date range of the template",
+  "name": "TemplateResponseDateRangeAbsoluteDateRange",
+  "fields": [
+    {
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "The date range type",
+      "default": null
+    },
+    {
+      "name": "start_date",
+      "type": ["null", "double"],
+      "doc": "The start date of the date range",
+      "default": null
+    },
+    {
+      "name": "end_date",
+      "type": ["null", "double"],
+      "doc": "The end date of the date range",
+      "default": null
+    }
+  ]
+
+}

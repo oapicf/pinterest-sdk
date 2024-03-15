@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Exception",
+  "fields": [
+    {
+      "name": "code",
+      "type": ["null", "int"],
+      "doc": "Exception error code.",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Exception message.",
+      "default": null
+    }
+  ]
+
+}

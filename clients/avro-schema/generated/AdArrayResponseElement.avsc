@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdArrayResponseElement",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", "model.AdResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", "model.Exception"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

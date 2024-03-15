@@ -11,10 +11,12 @@
 #include <string>
 #include "BatchOperation.h"
 #include "CatalogsItemsCreateBatchRequest.h"
+#include "CatalogsItemsDeleteBatchRequest.h"
 #include "CatalogsItemsDeleteDiscontinuedBatchRequest.h"
 #include "CatalogsItemsUpdateBatchRequest.h"
+#include "CatalogsItemsUpsertBatchRequest.h"
 #include "Country.h"
-#include "ItemDeleteDiscontinuedBatchRecord.h"
+#include "ItemDeleteBatchRecord.h"
 #include "Language.h"
 #include <list>
 #include "Object.h"
@@ -76,17 +78,17 @@ public:
 	void setOperation(BatchOperation  operation);
 	/*! \brief Get Array with catalogs items
 	 */
-	std::list<ItemDeleteDiscontinuedBatchRecord> getItems();
+	std::list<ItemDeleteBatchRecord> getItems();
 
 	/*! \brief Set Array with catalogs items
 	 */
-	void setItems(std::list <ItemDeleteDiscontinuedBatchRecord> items);
+	void setItems(std::list <ItemDeleteBatchRecord> items);
 
 private:
 	Country country;
 	Language language;
 	BatchOperation operation;
-	std::list <ItemDeleteDiscontinuedBatchRecord>items;
+	std::list <ItemDeleteBatchRecord>items;
 	void __init();
 	void __cleanup();
 

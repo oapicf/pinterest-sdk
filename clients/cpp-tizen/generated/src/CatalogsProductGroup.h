@@ -12,8 +12,6 @@
 #include "CatalogsProductGroupFilters.h"
 #include "CatalogsProductGroupStatus.h"
 #include "CatalogsProductGroupType.h"
-#include "Catalogs_product_group_feed_based_case.h"
-#include "Catalogs_product_group_merchant_based_case.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -113,13 +111,20 @@ public:
 	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	void setUpdatedAt(int  updated_at);
-	/*! \brief Get 
+	/*! \brief Get id of the catalogs feed belonging to this catalog product group
 	 */
 	std::string getFeedId();
 
-	/*! \brief Set 
+	/*! \brief Set id of the catalogs feed belonging to this catalog product group
 	 */
 	void setFeedId(std::string  feed_id);
+	/*! \brief Get 
+	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
 
 private:
 	std::string id;
@@ -132,6 +137,7 @@ private:
 	int created_at;
 	int updated_at;
 	std::string feed_id;
+	std::string catalog_type;
 	void __init();
 	void __cleanup();
 

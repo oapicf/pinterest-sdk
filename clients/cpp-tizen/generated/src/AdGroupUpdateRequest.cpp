@@ -27,11 +27,11 @@ AdGroupUpdateRequest::__init()
 	//status = std::string();
 	//budget_in_micro_currency = int(0);
 	//bid_in_micro_currency = int(0);
-	//bid_strategy_type = std::string();
-	//budget_type = new BudgetType();
+	//optimization_goal_metadata = new AdGroupCommon_optimization_goal_metadata();
+	//budget_type = std::string();
 	//start_time = int(0);
 	//end_time = int(0);
-	//new std::map()std::map> targeting_spec;
+	//targeting_spec = new TargetingSpec();
 	//lifetime_frequency_cap = int(0);
 	//tracking_urls = new AdGroupCommon_tracking_urls();
 	//auto_targeting_enabled = bool(false);
@@ -39,6 +39,7 @@ AdGroupUpdateRequest::__init()
 	//pacing_delivery_type = std::string();
 	//campaign_id = std::string();
 	//billable_event = new ActionType();
+	//bid_strategy_type = std::string();
 	//id = std::string();
 }
 
@@ -65,10 +66,10 @@ AdGroupUpdateRequest::__cleanup()
 	//delete bid_in_micro_currency;
 	//bid_in_micro_currency = NULL;
 	//}
-	//if(bid_strategy_type != NULL) {
+	//if(optimization_goal_metadata != NULL) {
 	//
-	//delete bid_strategy_type;
-	//bid_strategy_type = NULL;
+	//delete optimization_goal_metadata;
+	//optimization_goal_metadata = NULL;
 	//}
 	//if(budget_type != NULL) {
 	//
@@ -86,7 +87,7 @@ AdGroupUpdateRequest::__cleanup()
 	//end_time = NULL;
 	//}
 	//if(targeting_spec != NULL) {
-	//targeting_spec.RemoveAll(true);
+	//
 	//delete targeting_spec;
 	//targeting_spec = NULL;
 	//}
@@ -124,6 +125,11 @@ AdGroupUpdateRequest::__cleanup()
 	//
 	//delete billable_event;
 	//billable_event = NULL;
+	//}
+	//if(bid_strategy_type != NULL) {
+	//
+	//delete bid_strategy_type;
+	//bid_strategy_type = NULL;
 	//}
 	//if(id != NULL) {
 	//
@@ -185,14 +191,17 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *bid_strategy_typeKey = "bid_strategy_type";
-	node = json_object_get_member(pJsonObject, bid_strategy_typeKey);
+	const gchar *optimization_goal_metadataKey = "optimization_goal_metadata";
+	node = json_object_get_member(pJsonObject, optimization_goal_metadataKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&bid_strategy_type, node, "std::string", "");
+		if (isprimitive("AdGroupCommon_optimization_goal_metadata")) {
+			jsonToValue(&optimization_goal_metadata, node, "AdGroupCommon_optimization_goal_metadata", "AdGroupCommon_optimization_goal_metadata");
 		} else {
+			
+			AdGroupCommon_optimization_goal_metadata* obj = static_cast<AdGroupCommon_optimization_goal_metadata*> (&optimization_goal_metadata);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -236,13 +245,15 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 	node = json_object_get_member(pJsonObject, targeting_specKey);
 	if (node !=NULL) {
 	
-		{
-			JsonObject* json_obj = json_node_get_object(node);
-			map<string,string> new_map;
-			json_object_foreach_member(json_obj,helper_func,&new_map);
-			targeting_spec = new_map;
+
+		if (isprimitive("TargetingSpec")) {
+			jsonToValue(&targeting_spec, node, "TargetingSpec", "TargetingSpec");
+		} else {
+			
+			TargetingSpec* obj = static_cast<TargetingSpec*> (&targeting_spec);
+			obj->fromJson(json_to_string(node, false));
+			
 		}
-		
 	}
 	const gchar *lifetime_frequency_capKey = "lifetime_frequency_cap";
 	node = json_object_get_member(pJsonObject, lifetime_frequency_capKey);
@@ -333,6 +344,17 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *bid_strategy_typeKey = "bid_strategy_type";
+	node = json_object_get_member(pJsonObject, bid_strategy_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&bid_strategy_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *idKey = "id";
 	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
@@ -397,15 +419,20 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
 	json_object_set_member(pJsonObject, bid_in_micro_currencyKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBidStrategyType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("AdGroupCommon_optimization_goal_metadata")) {
+		AdGroupCommon_optimization_goal_metadata obj = getOptimizationGoalMetadata();
+		node = converttoJson(&obj, "AdGroupCommon_optimization_goal_metadata", "");
 	}
 	else {
 		
+		AdGroupCommon_optimization_goal_metadata obj = static_cast<AdGroupCommon_optimization_goal_metadata> (getOptimizationGoalMetadata());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
 	}
-	const gchar *bid_strategy_typeKey = "bid_strategy_type";
-	json_object_set_member(pJsonObject, bid_strategy_typeKey, node);
+	const gchar *optimization_goal_metadataKey = "optimization_goal_metadata";
+	json_object_set_member(pJsonObject, optimization_goal_metadataKey, node);
 	if (isprimitive("BudgetType")) {
 		BudgetType obj = getBudgetType();
 		node = converttoJson(&obj, "BudgetType", "");
@@ -438,23 +465,18 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *end_timeKey = "end_time";
 	json_object_set_member(pJsonObject, end_timeKey, node);
-
-
-	{
-		JsonObject* json_obj;
-		map<string, string> new_list = static_cast<map <string, string> > (getTargetingSpec());
-		json_obj = json_object_new();
-		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			string obj = (*it).first;
-			string obj2 = (*it).second;
-			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
-			json_object_set_member(json_obj, obj.c_str(), tempnode);
-		}
-	node = json_node_alloc();
-	json_node_init_object(node, json_obj);
-	json_object_unref(json_obj);
+	if (isprimitive("TargetingSpec")) {
+		TargetingSpec obj = getTargetingSpec();
+		node = converttoJson(&obj, "TargetingSpec", "");
 	}
-
+	else {
+		
+		TargetingSpec obj = static_cast<TargetingSpec> (getTargetingSpec());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
 	const gchar *targeting_specKey = "targeting_spec";
 	json_object_set_member(pJsonObject, targeting_specKey, node);
 	if (isprimitive("int")) {
@@ -541,6 +563,15 @@ AdGroupUpdateRequest::toJson()
 	const gchar *billable_eventKey = "billable_event";
 	json_object_set_member(pJsonObject, billable_eventKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getBidStrategyType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *bid_strategy_typeKey = "bid_strategy_type";
+	json_object_set_member(pJsonObject, bid_strategy_typeKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -605,16 +636,16 @@ AdGroupUpdateRequest::setBidInMicroCurrency(int  bid_in_micro_currency)
 	this->bid_in_micro_currency = bid_in_micro_currency;
 }
 
-std::string
-AdGroupUpdateRequest::getBidStrategyType()
+AdGroupCommon_optimization_goal_metadata
+AdGroupUpdateRequest::getOptimizationGoalMetadata()
 {
-	return bid_strategy_type;
+	return optimization_goal_metadata;
 }
 
 void
-AdGroupUpdateRequest::setBidStrategyType(std::string  bid_strategy_type)
+AdGroupUpdateRequest::setOptimizationGoalMetadata(AdGroupCommon_optimization_goal_metadata  optimization_goal_metadata)
 {
-	this->bid_strategy_type = bid_strategy_type;
+	this->optimization_goal_metadata = optimization_goal_metadata;
 }
 
 BudgetType
@@ -653,14 +684,14 @@ AdGroupUpdateRequest::setEndTime(int  end_time)
 	this->end_time = end_time;
 }
 
-std::map<string, string>
+TargetingSpec
 AdGroupUpdateRequest::getTargetingSpec()
 {
 	return targeting_spec;
 }
 
 void
-AdGroupUpdateRequest::setTargetingSpec(std::map <string, string> targeting_spec)
+AdGroupUpdateRequest::setTargetingSpec(TargetingSpec  targeting_spec)
 {
 	this->targeting_spec = targeting_spec;
 }
@@ -747,6 +778,18 @@ void
 AdGroupUpdateRequest::setBillableEvent(ActionType  billable_event)
 {
 	this->billable_event = billable_event;
+}
+
+std::string
+AdGroupUpdateRequest::getBidStrategyType()
+{
+	return bid_strategy_type;
+}
+
+void
+AdGroupUpdateRequest::setBidStrategyType(std::string  bid_strategy_type)
+{
+	this->bid_strategy_type = bid_strategy_type;
 }
 
 std::string

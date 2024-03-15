@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AudienceCommon",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": ["null", "string"],
+      "doc": "Ad account ID.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Audience name.",
+      "default": null
+    },
+    {
+      "name": "rule",
+      "type": ["null", "model.AudienceRule"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

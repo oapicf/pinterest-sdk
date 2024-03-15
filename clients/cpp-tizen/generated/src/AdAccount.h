@@ -10,6 +10,7 @@
 
 #include <string>
 #include "Ad_account_owner.h"
+#include "BusinessAccessRole.h"
 #include "Country.h"
 #include "Currency.h"
 #include <list>
@@ -86,11 +87,25 @@ public:
 	void setCurrency(Currency  currency);
 	/*! \brief Get 
 	 */
-	std::list<std::string> getPermissions();
+	std::list<BusinessAccessRole> getPermissions();
 
 	/*! \brief Set 
 	 */
-	void setPermissions(std::list <std::string> permissions);
+	void setPermissions(std::list <BusinessAccessRole> permissions);
+	/*! \brief Get Creation time. Unix timestamp in seconds.
+	 */
+	int getCreatedTime();
+
+	/*! \brief Set Creation time. Unix timestamp in seconds.
+	 */
+	void setCreatedTime(int  created_time);
+	/*! \brief Get Last update time. Unix timestamp in seconds.
+	 */
+	int getUpdatedTime();
+
+	/*! \brief Set Last update time. Unix timestamp in seconds.
+	 */
+	void setUpdatedTime(int  updated_time);
 
 private:
 	std::string id;
@@ -98,7 +113,9 @@ private:
 	Ad_account_owner owner;
 	Country country;
 	Currency currency;
-	std::list <std::string>permissions;
+	std::list <BusinessAccessRole>permissions;
+	int created_time;
+	int updated_time;
 	void __init();
 	void __cleanup();
 

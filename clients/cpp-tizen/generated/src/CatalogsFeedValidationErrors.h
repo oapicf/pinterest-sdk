@@ -80,6 +80,13 @@ public:
 	/*! \brief Set Your feed is missing some required column headers.
 	 */
 	void setREQUIREDCOLUMNSMISSING(int  rEQUIRED_COLUMNS_MISSING);
+	/*! \brief Get Some products are duplicated.
+	 */
+	int getDUPLICATEPRODUCTS();
+
+	/*! \brief Set Some products are duplicated.
+	 */
+	void setDUPLICATEPRODUCTS(int  dUPLICATE_PRODUCTS);
 	/*! \brief Get Some image links are formatted incorrectly.
 	 */
 	int getIMAGELINKINVALID();
@@ -276,6 +283,7 @@ private:
 	int eNCODING_ERROR;
 	int dELIMITER_ERROR;
 	int rEQUIRED_COLUMNS_MISSING;
+	int dUPLICATE_PRODUCTS;
 	int iMAGE_LINK_INVALID;
 	int iTEMID_MISSING;
 	int tITLE_MISSING;

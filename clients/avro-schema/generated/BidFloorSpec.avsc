@@ -1,0 +1,46 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BidFloorSpec",
+  "fields": [
+    {
+      "name": "countries",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Country"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "currency",
+      "type": "model.Currency",
+      "doc": ""
+    },
+    {
+      "name": "objective_type",
+      "type": ["null", "model.ObjectiveType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "billable_event",
+      "type": "model.ActionType",
+      "doc": ""
+    },
+    {
+      "name": "optimization_goal_metadata",
+      "type": ["null", "model.OptimizationGoalMetadata"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "creative_type",
+      "type": ["null", "model.CreativeType"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

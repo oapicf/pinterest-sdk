@@ -24,7 +24,7 @@ void
 BidFloorRequest::__init()
 {
 	//new std::list()std::list> bid_floor_specs;
-	//targeting_spec = new TargetingSpec_1();
+	//targeting_spec = new TargetingSpec();
 }
 
 void
@@ -77,11 +77,11 @@ BidFloorRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("TargetingSpec_1")) {
-			jsonToValue(&targeting_spec, node, "TargetingSpec_1", "TargetingSpec_1");
+		if (isprimitive("TargetingSpec")) {
+			jsonToValue(&targeting_spec, node, "TargetingSpec", "TargetingSpec");
 		} else {
 			
-			TargetingSpec_1* obj = static_cast<TargetingSpec_1*> (&targeting_spec);
+			TargetingSpec* obj = static_cast<TargetingSpec*> (&targeting_spec);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -123,13 +123,13 @@ BidFloorRequest::toJson()
 	
 	const gchar *bid_floor_specsKey = "bid_floor_specs";
 	json_object_set_member(pJsonObject, bid_floor_specsKey, node);
-	if (isprimitive("TargetingSpec_1")) {
-		TargetingSpec_1 obj = getTargetingSpec();
-		node = converttoJson(&obj, "TargetingSpec_1", "");
+	if (isprimitive("TargetingSpec")) {
+		TargetingSpec obj = getTargetingSpec();
+		node = converttoJson(&obj, "TargetingSpec", "");
 	}
 	else {
 		
-		TargetingSpec_1 obj = static_cast<TargetingSpec_1> (getTargetingSpec());
+		TargetingSpec obj = static_cast<TargetingSpec> (getTargetingSpec());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -157,14 +157,14 @@ BidFloorRequest::setBidFloorSpecs(std::list <BidFloorSpec> bid_floor_specs)
 	this->bid_floor_specs = bid_floor_specs;
 }
 
-TargetingSpec_1
+TargetingSpec
 BidFloorRequest::getTargetingSpec()
 {
 	return targeting_spec;
 }
 
 void
-BidFloorRequest::setTargetingSpec(TargetingSpec_1  targeting_spec)
+BidFloorRequest::setTargetingSpec(TargetingSpec  targeting_spec)
 {
 	this->targeting_spec = targeting_spec;
 }

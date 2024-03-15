@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A hotel item to be deleted",
+  "name": "CatalogsDeleteHotelItem",
+  "fields": [
+    {
+      "name": "hotel_id",
+      "type": "string",
+      "doc": "The catalog hotel id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsDeleteHotelItem_operation",
+        "symbols": [
+          "DELETE"
+        ]
+      },
+      "doc": ""
+    }
+  ]
+
+}

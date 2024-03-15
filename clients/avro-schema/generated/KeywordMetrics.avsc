@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Keyword metrics JSON",
+  "name": "KeywordMetrics",
+  "fields": [
+    {
+      "name": "avg_cpc_in_micro_currency",
+      "type": ["null", "double"],
+      "doc": "Average cost per click",
+      "default": null
+    },
+    {
+      "name": "keyword_query_volume",
+      "type": ["null", "string"],
+      "doc": "Keyword's search frequency. This value is based on keyword frequency in pepsi client response",
+      "default": null
+    }
+  ]
+
+}

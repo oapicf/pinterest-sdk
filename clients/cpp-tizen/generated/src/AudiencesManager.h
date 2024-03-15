@@ -6,11 +6,11 @@
 #include <list>
 #include <glib.h>
 #include "Audience.h"
+#include "AudienceCreateCustomRequest.h"
 #include "AudienceCreateRequest.h"
 #include "AudienceUpdateRequest.h"
 #include "Audiences_list_200_response.h"
 #include "Error.h"
-#include <list>
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -58,6 +58,35 @@ bool audiencesCreateAsync(char * accessToken,
 	, void* userData);
 
 
+/*! \brief Create custom audience. *Synchronous*
+ *
+ * Create a custom audience and find the audiences you want your ads to reach.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param audienceCreateCustomRequest Custom audience to create. *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool audiencesCreateCustomSync(char * accessToken,
+	std::string adAccountId, std::shared_ptr<AudienceCreateCustomRequest> audienceCreateCustomRequest, 
+	void(* handler)(Audience, Error, void* )
+	, void* userData);
+
+/*! \brief Create custom audience. *Asynchronous*
+ *
+ * Create a custom audience and find the audiences you want your ads to reach.
+ * \param adAccountId Unique identifier of an ad account. *Required*
+ * \param audienceCreateCustomRequest Custom audience to create. *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool audiencesCreateCustomAsync(char * accessToken,
+	std::string adAccountId, std::shared_ptr<AudienceCreateCustomRequest> audienceCreateCustomRequest, 
+	void(* handler)(Audience, Error, void* )
+	, void* userData);
+
+
 /*! \brief Get audience. *Synchronous*
  *
  * Get a specific audience given the audience ID.
@@ -92,15 +121,15 @@ bool audiencesGetAsync(char * accessToken,
  * Get list of audiences for the ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param entityStatuses Entity status
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
  * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param ownershipType <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesListSync(char * accessToken,
-	std::string adAccountId, std::string bookmark, std::list<std::string> entityStatuses, std::string order, int pageSize, 
+	std::string adAccountId, std::string bookmark, std::string order, int pageSize, std::string ownershipType, 
 	void(* handler)(Audiences_list_200_response, Error, void* )
 	, void* userData);
 
@@ -109,15 +138,15 @@ bool audiencesListSync(char * accessToken,
  * Get list of audiences for the ad account.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param entityStatuses Entity status
- * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+ * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
  * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param ownershipType <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool audiencesListAsync(char * accessToken,
-	std::string adAccountId, std::string bookmark, std::list<std::string> entityStatuses, std::string order, int pageSize, 
+	std::string adAccountId, std::string bookmark, std::string order, int pageSize, std::string ownershipType, 
 	void(* handler)(Audiences_list_200_response, Error, void* )
 	, void* userData);
 

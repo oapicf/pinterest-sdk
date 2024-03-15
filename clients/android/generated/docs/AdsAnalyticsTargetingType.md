@@ -1,0 +1,10 @@
+
+
+# AdsAnalyticsTargetingType
+
+## Enum
+
+
+
+
+

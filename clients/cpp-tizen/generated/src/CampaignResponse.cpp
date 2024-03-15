@@ -33,6 +33,7 @@ CampaignResponse::__init()
 	//tracking_urls = new AdCommon_tracking_urls();
 	//start_time = int(0);
 	//end_time = int(0);
+	//summary_status = std::string();
 	//objective_type = new ObjectiveType();
 	//created_time = int(0);
 	//updated_time = int(0);
@@ -93,6 +94,11 @@ CampaignResponse::__cleanup()
 	//
 	//delete end_time;
 	//end_time = NULL;
+	//}
+	//if(summary_status != NULL) {
+	//
+	//delete summary_status;
+	//summary_status = NULL;
 	//}
 	//if(objective_type != NULL) {
 	//
@@ -245,6 +251,20 @@ CampaignResponse::fromJson(char* jsonStr)
 		if (isprimitive("int")) {
 			jsonToValue(&end_time, node, "int", "");
 		} else {
+			
+		}
+	}
+	const gchar *summary_statusKey = "summary_status";
+	node = json_object_get_member(pJsonObject, summary_statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CampaignSummaryStatus")) {
+			jsonToValue(&summary_status, node, "CampaignSummaryStatus", "CampaignSummaryStatus");
+		} else {
+			
+			CampaignSummaryStatus* obj = static_cast<CampaignSummaryStatus*> (&summary_status);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -429,6 +449,20 @@ CampaignResponse::toJson()
 	}
 	const gchar *end_timeKey = "end_time";
 	json_object_set_member(pJsonObject, end_timeKey, node);
+	if (isprimitive("CampaignSummaryStatus")) {
+		CampaignSummaryStatus obj = getSummaryStatus();
+		node = converttoJson(&obj, "CampaignSummaryStatus", "");
+	}
+	else {
+		
+		CampaignSummaryStatus obj = static_cast<CampaignSummaryStatus> (getSummaryStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *summary_statusKey = "summary_status";
+	json_object_set_member(pJsonObject, summary_statusKey, node);
 	if (isprimitive("ObjectiveType")) {
 		ObjectiveType obj = getObjectiveType();
 		node = converttoJson(&obj, "ObjectiveType", "");
@@ -614,6 +648,18 @@ void
 CampaignResponse::setEndTime(int  end_time)
 {
 	this->end_time = end_time;
+}
+
+CampaignSummaryStatus
+CampaignResponse::getSummaryStatus()
+{
+	return summary_status;
+}
+
+void
+CampaignResponse::setSummaryStatus(CampaignSummaryStatus  summary_status)
+{
+	this->summary_status = summary_status;
 }
 
 ObjectiveType

@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The enhanced match status of the tag",
+  "name": "EnhancedMatchStatusType",
+  "symbols": [
+    "UNKNOWN",
+    "NOT_VALIDATED",
+    "VALIDATING_IN_PROGRESS",
+    "VALIDATION_COMPLETE",
+    "null"
+  ]
+}

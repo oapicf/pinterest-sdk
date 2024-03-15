@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Queryable audience representation.",
+  "name": "AudienceDefinition",
+  "fields": [
+    {
+      "name": "date",
+      "type": ["null", "string"],
+      "doc": "Generation date",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": ["null", "String"],
+      "doc": "Generated audience type to request.",
+      "default": null
+    },
+    {
+      "name": "scope",
+      "type": ["null", "String"],
+      "doc": "Generated audience scope to request.",
+      "default": null
+    }
+  ]
+
+}

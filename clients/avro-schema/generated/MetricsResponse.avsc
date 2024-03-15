@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "MetricsResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.object"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

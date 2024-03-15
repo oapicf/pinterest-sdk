@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "User website verification request",
+  "name": "UserWebsiteVerifyRequest",
+  "fields": [
+    {
+      "name": "website",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "verification_method",
+      "type": ["null", {
+        "type": "enum",
+        "name": "UserWebsiteVerifyRequest_verificationUnderscoremethod",
+        "symbols": [
+          "FILENAME",
+          "METATAG",
+          "DNSTXT"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

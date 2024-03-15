@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Possible status for a bulk reporting job",
+  "name": "BulkReportingJobStatus",
+  "symbols": [
+    "DOES_NOT_EXIST",
+    "FINISHED",
+    "IN_PROGRESS",
+    "EXPIRED",
+    "FAILED",
+    "CANCELLED"
+  ]
+}

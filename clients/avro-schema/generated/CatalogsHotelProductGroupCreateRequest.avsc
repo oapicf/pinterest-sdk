@@ -1,0 +1,41 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object for creating a hotel product group.",
+  "name": "CatalogsHotelProductGroupCreateRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelProductGroupCreateRequest_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsHotelProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the hotel product group."
+    }
+  ]
+
+}

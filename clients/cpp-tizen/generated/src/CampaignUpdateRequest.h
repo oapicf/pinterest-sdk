@@ -10,7 +10,9 @@
 
 #include <string>
 #include "AdCommon_tracking_urls.h"
+#include "CampaignSummaryStatus.h"
 #include "EntityStatus.h"
+#include "ObjectiveType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -54,11 +56,11 @@ public:
 	/*! \brief Set Campaign ID.
 	 */
 	void setId(std::string  id);
-	/*! \brief Get Campaign's Advertiser ID.
+	/*! \brief Get Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
 	 */
 	std::string getAdAccountId();
 
-	/*! \brief Set Campaign's Advertiser ID.
+	/*! \brief Set Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
 	 */
 	void setAdAccountId(std::string  ad_account_id);
 	/*! \brief Get Campaign name.
@@ -75,18 +77,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(EntityStatus  status);
-	/*! \brief Get Campaign total spending cap.
+	/*! \brief Get Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
 	 */
 	int getLifetimeSpendCap();
 
-	/*! \brief Set Campaign total spending cap.
+	/*! \brief Set Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
 	 */
 	void setLifetimeSpendCap(int  lifetime_spend_cap);
-	/*! \brief Get Campaign daily spending cap.
+	/*! \brief Get Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
 	 */
 	int getDailySpendCap();
 
-	/*! \brief Set Campaign daily spending cap.
+	/*! \brief Set Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
 	 */
 	void setDailySpendCap(int  daily_spend_cap);
 	/*! \brief Get Order line ID that appears on the invoice.
@@ -117,13 +119,13 @@ public:
 	/*! \brief Set Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	void setEndTime(int  end_time);
-	/*! \brief Get Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+	/*! \brief Get 
 	 */
-	bool getIsCampaignBudgetOptimization();
+	CampaignSummaryStatus getSummaryStatus();
 
-	/*! \brief Set Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+	/*! \brief Set 
 	 */
-	void setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization);
+	void setSummaryStatus(CampaignSummaryStatus  summary_status);
 	/*! \brief Get Determine if a campaign has flexible daily budgets setup.
 	 */
 	bool getIsFlexibleDailyBudgets();
@@ -145,6 +147,20 @@ public:
 	/*! \brief Set Specifies whether the campaign was created in the automated campaign flow
 	 */
 	void setIsAutomatedCampaign(bool  is_automated_campaign);
+	/*! \brief Get Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+	 */
+	bool getIsCampaignBudgetOptimization();
+
+	/*! \brief Set Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+	 */
+	void setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization);
+	/*! \brief Get 
+	 */
+	ObjectiveType getObjectiveType();
+
+	/*! \brief Set 
+	 */
+	void setObjectiveType(ObjectiveType  objective_type);
 
 private:
 	std::string id;
@@ -157,10 +173,12 @@ private:
 	AdCommon_tracking_urls tracking_urls;
 	int start_time;
 	int end_time;
-	bool is_campaign_budget_optimization;
+	CampaignSummaryStatus summary_status;
 	bool is_flexible_daily_budgets;
 	int default_ad_group_budget_in_micro_currency;
 	bool is_automated_campaign;
+	bool is_campaign_budget_optimization;
+	ObjectiveType objective_type;
 	void __init();
 	void __cleanup();
 

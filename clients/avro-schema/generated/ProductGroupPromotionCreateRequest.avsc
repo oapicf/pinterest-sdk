@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ProductGroupPromotionCreateRequest",
+  "fields": [
+    {
+      "name": "ad_group_id",
+      "type": "string",
+      "doc": "ID of the Ad Group the Product Group Promotion belongs to."
+    },
+    {
+      "name": "product_group_promotion",
+      "type": {
+        "type": "array",
+        "items": "model.ProductGroupPromotion"
+      },
+      "doc": ""
+    }
+  ]
+
+}

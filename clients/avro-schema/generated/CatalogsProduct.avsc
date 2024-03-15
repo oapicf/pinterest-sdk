@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProduct",
+  "fields": [
+    {
+      "name": "metadata",
+      "type": "model.CatalogsProductMetadata",
+      "doc": ""
+    },
+    {
+      "name": "pin",
+      "type": "model.Pin",
+      "doc": ""
+    }
+  ]
+
+}

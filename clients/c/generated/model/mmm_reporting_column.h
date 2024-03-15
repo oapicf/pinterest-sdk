@@ -1,0 +1,32 @@
+/*
+ * mmm_reporting_column.h
+ *
+ * Marketing Mix Modeling (MMM) Reporting Columns
+ */
+
+#ifndef _mmm_reporting_column_H_
+#define _mmm_reporting_column_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct mmm_reporting_column_t mmm_reporting_column_t;
+
+
+// Enum  for mmm_reporting_column
+
+typedef enum { pinterest_rest_api_mmm_reporting_column__NULL = 0, pinterest_rest_api_mmm_reporting_column__SPEND_IN_DOLLAR, pinterest_rest_api_mmm_reporting_column__SPEND_IN_MICRO_DOLLAR, pinterest_rest_api_mmm_reporting_column__ECPC_IN_DOLLAR, pinterest_rest_api_mmm_reporting_column__ECTR, pinterest_rest_api_mmm_reporting_column__CAMPAIGN_NAME, pinterest_rest_api_mmm_reporting_column__TOTAL_ENGAGEMENT, pinterest_rest_api_mmm_reporting_column__EENGAGEMENT_RATE, pinterest_rest_api_mmm_reporting_column__ECPM_IN_DOLLAR, pinterest_rest_api_mmm_reporting_column__CAMPAIGN_ID, pinterest_rest_api_mmm_reporting_column__ADVERTISER_ID, pinterest_rest_api_mmm_reporting_column__AD_GROUP_ID, pinterest_rest_api_mmm_reporting_column__AD_GROUP_NAME, pinterest_rest_api_mmm_reporting_column__CLICKTHROUGH_1, pinterest_rest_api_mmm_reporting_column__IMPRESSION_1, pinterest_rest_api_mmm_reporting_column__CLICKTHROUGH_2, pinterest_rest_api_mmm_reporting_column__IMPRESSION_2, pinterest_rest_api_mmm_reporting_column__TOTAL_CLICKTHROUGH, pinterest_rest_api_mmm_reporting_column__TOTAL_IMPRESSION, pinterest_rest_api_mmm_reporting_column__ADVERTISER_NAME, pinterest_rest_api_mmm_reporting_column__SPEND_ORDER_LINE_PAID_TYPE } pinterest_rest_api_mmm_reporting_column__e;
+
+char* mmm_reporting_column_mmm_reporting_column_ToString(pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column);
+
+pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column_mmm_reporting_column_FromString(char* mmm_reporting_column);
+
+//cJSON *mmm_reporting_column_mmm_reporting_column_convertToJSON(pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column);
+
+//pinterest_rest_api_mmm_reporting_column__e mmm_reporting_column_mmm_reporting_column_parseFromJSON(cJSON *mmm_reporting_columnJSON);
+
+#endif /* _mmm_reporting_column_H_ */
+

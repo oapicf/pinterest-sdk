@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PinAnalyticsMetricsResponse",
+  "fields": [
+    {
+      "name": "lifetime_metrics",
+      "type": ["null", {
+        "type": "map",
+        "items": "int"
+      }],
+      "doc": "The lifetime metric name and value.",
+      "default": null
+    },
+    {
+      "name": "daily_metrics",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.PinAnalyticsMetricsResponseDailyMetricsInner"
+      }],
+      "doc": "Array with the requested daily metric records",
+      "default": null
+    },
+    {
+      "name": "summary_metrics",
+      "type": ["null", {
+        "type": "map",
+        "items": "double"
+      }],
+      "doc": "The metric name and value over the requested period for each requested metric",
+      "default": null
+    }
+  ]
+
+}

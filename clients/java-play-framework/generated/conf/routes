@@ -1,0 +1,222 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /api                        controllers.ApiDocController.api
+
+
+#Functions for AdAccounts API
+GET     /v5/ad_accounts/:adAccountId/analytics                     controllers.AdAccountsApiController.adAccountAnalytics(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/targeting_analytics                     controllers.AdAccountsApiController.adAccountTargetingAnalyticsGet(request: Request, adAccountId: String)
+POST     /v5/ad_accounts                     controllers.AdAccountsApiController.adAccountsCreate(request: Request)
+GET     /v5/ad_accounts/:adAccountId                     controllers.AdAccountsApiController.adAccountsGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts                     controllers.AdAccountsApiController.adAccountsList(request: Request)
+POST     /v5/ad_accounts/:adAccountId/mmm_reports                     controllers.AdAccountsApiController.analyticsCreateMmmReport(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/reports                     controllers.AdAccountsApiController.analyticsCreateReport(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/templates/:templateId/reports                     controllers.AdAccountsApiController.analyticsCreateTemplateReport(request: Request, adAccountId: String, templateId: String)
+GET     /v5/ad_accounts/:adAccountId/mmm_reports                     controllers.AdAccountsApiController.analyticsGetMmmReport(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/reports                     controllers.AdAccountsApiController.analyticsGetReport(request: Request, adAccountId: String)
+DELETE     /v5/ad_accounts/:adAccountId/sandbox                     controllers.AdAccountsApiController.sandboxDelete(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/templates                     controllers.AdAccountsApiController.templatesList(request: Request, adAccountId: String)
+
+#Functions for AdGroups API
+GET     /v5/ad_accounts/:adAccountId/ad_groups/analytics                     controllers.AdGroupsApiController.adGroupsAnalytics(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ad_groups/audience_sizing                     controllers.AdGroupsApiController.adGroupsAudienceSizing(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/bid_floor                     controllers.AdGroupsApiController.adGroupsBidFloorGet(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/ad_groups                     controllers.AdGroupsApiController.adGroupsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ad_groups/:adGroupId                     controllers.AdGroupsApiController.adGroupsGet(request: Request, adAccountId: String, adGroupId: String)
+GET     /v5/ad_accounts/:adAccountId/ad_groups                     controllers.AdGroupsApiController.adGroupsList(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ad_groups/targeting_analytics                     controllers.AdGroupsApiController.adGroupsTargetingAnalyticsGet(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/ad_groups                     controllers.AdGroupsApiController.adGroupsUpdate(request: Request, adAccountId: String)
+
+#Functions for Ads API
+POST     /v5/ad_accounts/:adAccountId/ad_previews                     controllers.AdsApiController.adPreviewsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ads/targeting_analytics                     controllers.AdsApiController.adTargetingAnalyticsGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ads/analytics                     controllers.AdsApiController.adsAnalytics(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/ads                     controllers.AdsApiController.adsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ads/:adId                     controllers.AdsApiController.adsGet(request: Request, adAccountId: String, adId: String)
+GET     /v5/ad_accounts/:adAccountId/ads                     controllers.AdsApiController.adsList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/ads                     controllers.AdsApiController.adsUpdate(request: Request, adAccountId: String)
+
+#Functions for AudienceInsights API
+GET     /v5/ad_accounts/:adAccountId/audience_insights                     controllers.AudienceInsightsApiController.audienceInsightsGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/insights/audiences                     controllers.AudienceInsightsApiController.audienceInsightsScopeAndTypeGet(request: Request, adAccountId: String)
+
+#Functions for Audiences API
+POST     /v5/ad_accounts/:adAccountId/audiences                     controllers.AudiencesApiController.audiencesCreate(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/audiences/custom                     controllers.AudiencesApiController.audiencesCreateCustom(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/audiences/:audienceId                     controllers.AudiencesApiController.audiencesGet(request: Request, adAccountId: String, audienceId: String)
+GET     /v5/ad_accounts/:adAccountId/audiences                     controllers.AudiencesApiController.audiencesList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/audiences/:audienceId                     controllers.AudiencesApiController.audiencesUpdate(request: Request, adAccountId: String, audienceId: String)
+
+#Functions for Billing API
+POST     /v5/ad_accounts/:adAccountId/ads_credit/redeem                     controllers.BillingApiController.adsCreditRedeem(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ads_credit/discounts                     controllers.BillingApiController.adsCreditsDiscountsGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/billing_profiles                     controllers.BillingApiController.billingProfilesGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ssio/accounts                     controllers.BillingApiController.ssioAccountsGet(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/ssio/insertion_orders                     controllers.BillingApiController.ssioInsertionOrderCreate(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/ssio/insertion_orders                     controllers.BillingApiController.ssioInsertionOrderEdit(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ssio/insertion_orders/status                     controllers.BillingApiController.ssioInsertionOrdersStatusGetByAdAccount(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/ssio/insertion_orders/:pinOrderId/status                     controllers.BillingApiController.ssioInsertionOrdersStatusGetByPinOrderId(request: Request, adAccountId: String, pinOrderId: String)
+GET     /v5/ad_accounts/:adAccountId/ssio/order_lines                     controllers.BillingApiController.ssioOrderLinesGetByAdAccount(request: Request, adAccountId: String)
+
+#Functions for Boards API
+POST     /v5/boards/:boardId/sections                     controllers.BoardsApiController.boardSectionsCreate(request: Request, boardId: String)
+DELETE     /v5/boards/:boardId/sections/:sectionId                     controllers.BoardsApiController.boardSectionsDelete(request: Request, boardId: String, sectionId: String)
+GET     /v5/boards/:boardId/sections                     controllers.BoardsApiController.boardSectionsList(request: Request, boardId: String)
+GET     /v5/boards/:boardId/sections/:sectionId/pins                     controllers.BoardsApiController.boardSectionsListPins(request: Request, boardId: String, sectionId: String)
+PATCH     /v5/boards/:boardId/sections/:sectionId                     controllers.BoardsApiController.boardSectionsUpdate(request: Request, boardId: String, sectionId: String)
+POST     /v5/boards                     controllers.BoardsApiController.boardsCreate(request: Request)
+DELETE     /v5/boards/:boardId                     controllers.BoardsApiController.boardsDelete(request: Request, boardId: String)
+GET     /v5/boards/:boardId                     controllers.BoardsApiController.boardsGet(request: Request, boardId: String)
+GET     /v5/boards                     controllers.BoardsApiController.boardsList(request: Request)
+GET     /v5/boards/:boardId/pins                     controllers.BoardsApiController.boardsListPins(request: Request, boardId: String)
+PATCH     /v5/boards/:boardId                     controllers.BoardsApiController.boardsUpdate(request: Request, boardId: String)
+
+#Functions for Bulk API
+POST     /v5/ad_accounts/:adAccountId/bulk/download                     controllers.BulkApiController.bulkDownloadCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/bulk/:bulkRequestId                     controllers.BulkApiController.bulkRequestGet(request: Request, adAccountId: String, bulkRequestId: String)
+POST     /v5/ad_accounts/:adAccountId/bulk/upsert                     controllers.BulkApiController.bulkUpsertCreate(request: Request, adAccountId: String)
+
+#Functions for Campaigns API
+GET     /v5/ad_accounts/:adAccountId/campaigns/targeting_analytics                     controllers.CampaignsApiController.campaignTargetingAnalyticsGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/campaigns/analytics                     controllers.CampaignsApiController.campaignsAnalytics(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/campaigns                     controllers.CampaignsApiController.campaignsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/campaigns/:campaignId                     controllers.CampaignsApiController.campaignsGet(request: Request, adAccountId: String, campaignId: String)
+GET     /v5/ad_accounts/:adAccountId/campaigns                     controllers.CampaignsApiController.campaignsList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/campaigns                     controllers.CampaignsApiController.campaignsUpdate(request: Request, adAccountId: String)
+
+#Functions for Catalogs API
+GET     /v5/catalogs                     controllers.CatalogsApiController.catalogsList(request: Request)
+GET     /v5/catalogs/product_groups/:productGroupId/products                     controllers.CatalogsApiController.catalogsProductGroupPinsList(request: Request, productGroupId: String)
+POST     /v5/catalogs/product_groups                     controllers.CatalogsApiController.catalogsProductGroupsCreate(request: Request)
+DELETE     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsDelete(request: Request, productGroupId: String)
+GET     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsGet(request: Request, productGroupId: String)
+GET     /v5/catalogs/product_groups                     controllers.CatalogsApiController.catalogsProductGroupsList(request: Request)
+GET     /v5/catalogs/product_groups/:productGroupId/product_counts                     controllers.CatalogsApiController.catalogsProductGroupsProductCountsGet(request: Request, productGroupId: String)
+PATCH     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsUpdate(request: Request, productGroupId: String)
+GET     /v5/catalogs/feeds/:feedId/processing_results                     controllers.CatalogsApiController.feedProcessingResultsList(request: Request, feedId: String)
+POST     /v5/catalogs/feeds                     controllers.CatalogsApiController.feedsCreate(request: Request)
+DELETE     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsDelete(request: Request, feedId: String)
+GET     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsGet(request: Request, feedId: String)
+GET     /v5/catalogs/feeds                     controllers.CatalogsApiController.feedsList(request: Request)
+PATCH     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsUpdate(request: Request, feedId: String)
+GET     /v5/catalogs/items/batch/:batchId                     controllers.CatalogsApiController.itemsBatchGet(request: Request, batchId: String)
+POST     /v5/catalogs/items/batch                     controllers.CatalogsApiController.itemsBatchPost(request: Request)
+GET     /v5/catalogs/items                     controllers.CatalogsApiController.itemsGet(request: Request)
+GET     /v5/catalogs/processing_results/:processingResultId/item_issues                     controllers.CatalogsApiController.itemsIssuesList(request: Request, processingResultId: String)
+POST     /v5/catalogs/products/get_by_product_group_filters                     controllers.CatalogsApiController.productsByProductGroupFilterList(request: Request)
+
+#Functions for ConversionEvents API
+POST     /v5/ad_accounts/:adAccountId/events                     controllers.ConversionEventsApiController.eventsCreate(request: Request, adAccountId: String)
+
+#Functions for ConversionTags API
+POST     /v5/ad_accounts/:adAccountId/conversion_tags                     controllers.ConversionTagsApiController.conversionTagsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/conversion_tags/:conversionTagId                     controllers.ConversionTagsApiController.conversionTagsGet(request: Request, adAccountId: String, conversionTagId: String)
+GET     /v5/ad_accounts/:adAccountId/conversion_tags                     controllers.ConversionTagsApiController.conversionTagsList(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/conversion_tags/ocpm_eligible                     controllers.ConversionTagsApiController.ocpmEligibleConversionTagsGet(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/conversion_tags/page_visit                     controllers.ConversionTagsApiController.pageVisitConversionTagsGet(request: Request, adAccountId: String)
+
+#Functions for CustomerLists API
+POST     /v5/ad_accounts/:adAccountId/customer_lists                     controllers.CustomerListsApiController.customerListsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/customer_lists/:customerListId                     controllers.CustomerListsApiController.customerListsGet(request: Request, adAccountId: String, customerListId: String)
+GET     /v5/ad_accounts/:adAccountId/customer_lists                     controllers.CustomerListsApiController.customerListsList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/customer_lists/:customerListId                     controllers.CustomerListsApiController.customerListsUpdate(request: Request, adAccountId: String, customerListId: String)
+
+#Functions for Integrations API
+DELETE     /v5/integrations/commerce/:externalBusinessId                     controllers.IntegrationsApiController.integrationsCommerceDel(request: Request, externalBusinessId: String)
+GET     /v5/integrations/commerce/:externalBusinessId                     controllers.IntegrationsApiController.integrationsCommerceGet(request: Request, externalBusinessId: String)
+PATCH     /v5/integrations/commerce/:externalBusinessId                     controllers.IntegrationsApiController.integrationsCommercePatch(request: Request, externalBusinessId: String)
+POST     /v5/integrations/commerce                     controllers.IntegrationsApiController.integrationsCommercePost(request: Request)
+GET     /v5/integrations/:id                     controllers.IntegrationsApiController.integrationsGetById(request: Request, id: String)
+GET     /v5/integrations                     controllers.IntegrationsApiController.integrationsGetList(request: Request)
+POST     /v5/integrations/logs                     controllers.IntegrationsApiController.integrationsLogsPost(request: Request)
+
+#Functions for Keywords API
+GET     /v5/ad_accounts/:adAccountId/keywords/metrics                     controllers.KeywordsApiController.countryKeywordsMetricsGet(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/keywords                     controllers.KeywordsApiController.keywordsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/keywords                     controllers.KeywordsApiController.keywordsGet(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/keywords                     controllers.KeywordsApiController.keywordsUpdate(request: Request, adAccountId: String)
+GET     /v5/trends/keywords/:region/top/:trendType                     controllers.KeywordsApiController.trendingKeywordsList(request: Request, region: TrendsSupportedRegion, trendType: TrendType)
+
+#Functions for LeadAds API
+DELETE     /v5/ad_accounts/:adAccountId/leads/subscriptions/:subscriptionId                     controllers.LeadAdsApiController.adAccountsSubscriptionsDelById(request: Request, adAccountId: String, subscriptionId: String)
+GET     /v5/ad_accounts/:adAccountId/leads/subscriptions/:subscriptionId                     controllers.LeadAdsApiController.adAccountsSubscriptionsGetById(request: Request, adAccountId: String, subscriptionId: String)
+GET     /v5/ad_accounts/:adAccountId/leads/subscriptions                     controllers.LeadAdsApiController.adAccountsSubscriptionsGetList(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/leads/subscriptions                     controllers.LeadAdsApiController.adAccountsSubscriptionsPost(request: Request, adAccountId: String)
+
+#Functions for LeadForms API
+GET     /v5/ad_accounts/:adAccountId/lead_forms/:leadFormId                     controllers.LeadFormsApiController.leadFormGet(request: Request, adAccountId: String, leadFormId: String)
+POST     /v5/ad_accounts/:adAccountId/lead_forms/:leadFormId/test                     controllers.LeadFormsApiController.leadFormTestCreate(request: Request, adAccountId: String, leadFormId: String)
+GET     /v5/ad_accounts/:adAccountId/lead_forms                     controllers.LeadFormsApiController.leadFormsList(request: Request, adAccountId: String)
+
+#Functions for Media API
+POST     /v5/media                     controllers.MediaApiController.mediaCreate(request: Request)
+GET     /v5/media/:mediaId                     controllers.MediaApiController.mediaGet(request: Request, mediaId: String)
+GET     /v5/media                     controllers.MediaApiController.mediaList(request: Request)
+
+#Functions for Oauth API
+POST     /v5/oauth/token                     controllers.OauthApiController.oauthToken(request: Request)
+
+#Functions for OrderLines API
+GET     /v5/ad_accounts/:adAccountId/order_lines/:orderLineId                     controllers.OrderLinesApiController.orderLinesGet(request: Request, adAccountId: String, orderLineId: String)
+GET     /v5/ad_accounts/:adAccountId/order_lines                     controllers.OrderLinesApiController.orderLinesList(request: Request, adAccountId: String)
+
+#Functions for Pins API
+GET     /v5/pins/:pinId/analytics                     controllers.PinsApiController.pinsAnalytics(request: Request, pinId: String)
+POST     /v5/pins                     controllers.PinsApiController.pinsCreate(request: Request)
+DELETE     /v5/pins/:pinId                     controllers.PinsApiController.pinsDelete(request: Request, pinId: String)
+GET     /v5/pins/:pinId                     controllers.PinsApiController.pinsGet(request: Request, pinId: String)
+GET     /v5/pins                     controllers.PinsApiController.pinsList(request: Request)
+POST     /v5/pins/:pinId/save                     controllers.PinsApiController.pinsSave(request: Request, pinId: String)
+PATCH     /v5/pins/:pinId                     controllers.PinsApiController.pinsUpdate(request: Request, pinId: String)
+
+#Functions for ProductGroupPromotions API
+POST     /v5/ad_accounts/:adAccountId/product_group_promotions                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/product_group_promotions/:productGroupPromotionId                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsGet(request: Request, adAccountId: String, productGroupPromotionId: String)
+GET     /v5/ad_accounts/:adAccountId/product_group_promotions                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/product_group_promotions                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsUpdate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/product_groups/analytics                     controllers.ProductGroupPromotionsApiController.productGroupsAnalytics(request: Request, adAccountId: String)
+
+#Functions for ProductGroups API
+GET     /v5/ad_accounts/:adAccountId/product_groups/catalogs                     controllers.ProductGroupsApiController.adAccountsCatalogsProductGroupsList(request: Request, adAccountId: String)
+
+#Functions for Resources API
+GET     /v5/resources/ad_account_countries                     controllers.ResourcesApiController.adAccountCountriesGet(request: Request)
+GET     /v5/resources/delivery_metrics                     controllers.ResourcesApiController.deliveryMetricsGet(request: Request)
+GET     /v5/resources/targeting/interests/:interestId                     controllers.ResourcesApiController.interestTargetingOptionsGet(request: Request, interestId: String)
+GET     /v5/resources/lead_form_questions                     controllers.ResourcesApiController.leadFormQuestionsGet(request: Request)
+GET     /v5/resources/metrics_ready_state                     controllers.ResourcesApiController.metricsReadyStateGet(request: Request)
+GET     /v5/resources/targeting/:targetingType                     controllers.ResourcesApiController.targetingOptionsGet(request: Request, targetingType: String)
+
+#Functions for Search API
+GET     /v5/search/partner/pins                     controllers.SearchApiController.searchPartnerPins(request: Request)
+GET     /v5/search/boards                     controllers.SearchApiController.searchUserBoardsGet(request: Request)
+GET     /v5/search/pins                     controllers.SearchApiController.searchUserPinsList(request: Request)
+
+#Functions for Terms API
+GET     /v5/terms/related                     controllers.TermsApiController.termsRelatedList(request: Request)
+GET     /v5/terms/suggested                     controllers.TermsApiController.termsSuggestedList(request: Request)
+
+#Functions for TermsOfService API
+GET     /v5/ad_accounts/:adAccountId/terms_of_service                     controllers.TermsOfServiceApiController.termsOfServiceGet(request: Request, adAccountId: String)
+
+#Functions for UserAccount API
+GET     /v5/user_account/following/boards                     controllers.UserAccountApiController.boardsUserFollowsList(request: Request)
+POST     /v5/user_account/following/:username                     controllers.UserAccountApiController.followUserUpdate(request: Request, username: String)
+GET     /v5/user_account/followers                     controllers.UserAccountApiController.followersList(request: Request)
+GET     /v5/user_account/businesses                     controllers.UserAccountApiController.linkedBusinessAccountsGet(request: Request)
+DELETE     /v5/user_account/websites                     controllers.UserAccountApiController.unverifyWebsiteDelete(request: Request)
+GET     /v5/user_account/analytics                     controllers.UserAccountApiController.userAccountAnalytics(request: Request)
+GET     /v5/user_account/analytics/top_pins                     controllers.UserAccountApiController.userAccountAnalyticsTopPins(request: Request)
+GET     /v5/user_account/analytics/top_video_pins                     controllers.UserAccountApiController.userAccountAnalyticsTopVideoPins(request: Request)
+GET     /v5/users/:username/interests/follow                     controllers.UserAccountApiController.userAccountFollowedInterests(request: Request, username: String)
+GET     /v5/user_account                     controllers.UserAccountApiController.userAccountGet(request: Request)
+GET     /v5/user_account/following                     controllers.UserAccountApiController.userFollowingGet(request: Request)
+GET     /v5/user_account/websites                     controllers.UserAccountApiController.userWebsitesGet(request: Request)
+POST     /v5/user_account/websites                     controllers.UserAccountApiController.verifyWebsiteUpdate(request: Request)
+GET     /v5/user_account/websites/verification                     controllers.UserAccountApiController.websiteVerificationGet(request: Request)
+
+# Map static resources from the /public folder to the /assets URL path
+GET /assets/*file           controllers.Assets.at(file)
+GET /versionedAssets/*file  controllers.Assets.versioned(file)

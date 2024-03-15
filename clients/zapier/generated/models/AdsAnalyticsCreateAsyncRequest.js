@@ -88,7 +88,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}ad_ids`,
-                label: `List of ad ids - [${labelPrefix}ad_ids]`,
+                label: `List of ad ids [This parameter is no supported for Product Item Level Reports] - [${labelPrefix}ad_ids]`,
                 list: true,
                 type: 'string',
             },

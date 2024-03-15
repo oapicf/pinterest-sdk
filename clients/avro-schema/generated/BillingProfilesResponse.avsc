@@ -1,0 +1,76 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BillingProfilesResponse",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Billing ID.",
+      "default": null
+    },
+    {
+      "name": "card_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "BillingProfilesResponse_cardUnderscoretype",
+        "symbols": [
+          "UNKNOWN",
+          "VISA",
+          "MASTERCARD",
+          "AMERICAN_EXPRESS",
+          "DISCOVER",
+          "ELO"
+        ]
+      }],
+      "doc": "Type of the card.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", {
+        "type": "enum",
+        "name": "BillingProfilesResponse_status",
+        "symbols": [
+          "UNSPECIFIED",
+          "VALID",
+          "INVALID",
+          "PENDING",
+          "DELETED",
+          "SECONDARY",
+          "PENDING_SECONDARY"
+        ]
+      }],
+      "doc": "Status of the billing.",
+      "default": null
+    },
+    {
+      "name": "advertiser_id",
+      "type": ["null", "string"],
+      "doc": "Advertiser ID of the billing.",
+      "default": null
+    },
+    {
+      "name": "payment_method_brand",
+      "type": ["null", {
+        "type": "enum",
+        "name": "BillingProfilesResponse_paymentUnderscoremethodUnderscorebrand",
+        "symbols": [
+          "UNKNOWN",
+          "VISA",
+          "MASTERCARD",
+          "AMERICAN_EXPRESS",
+          "DISCOVER",
+          "SOFORT",
+          "DINERS_CLUB",
+          "ELO",
+          "CARTE_BANCAIRE"
+        ]
+      }],
+      "doc": "Brand of the payment method.",
+      "default": null
+    }
+  ]
+
+}

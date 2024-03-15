@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Where a user is taken after clicking on an ad in grid.",
+  "name": "GridClickType",
+  "symbols": [
+    "CLOSEUP",
+    "DIRECT_TO_DESTINATION"
+  ]
+}

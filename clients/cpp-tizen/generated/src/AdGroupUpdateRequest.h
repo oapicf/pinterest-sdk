@@ -10,13 +10,13 @@
 
 #include <string>
 #include "ActionType.h"
+#include "AdGroupCommon_optimization_goal_metadata.h"
 #include "AdGroupCommon_tracking_urls.h"
 #include "BudgetType.h"
 #include "EntityStatus.h"
 #include "PacingDeliveryType.h"
 #include "PlacementGroupType.h"
-#include <list>
-#include <map>
+#include "TargetingSpec.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -83,11 +83,11 @@ public:
 	void setBidInMicroCurrency(int  bid_in_micro_currency);
 	/*! \brief Get 
 	 */
-	std::string getBidStrategyType();
+	AdGroupCommon_optimization_goal_metadata getOptimizationGoalMetadata();
 
 	/*! \brief Set 
 	 */
-	void setBidStrategyType(std::string  bid_strategy_type);
+	void setOptimizationGoalMetadata(AdGroupCommon_optimization_goal_metadata  optimization_goal_metadata);
 	/*! \brief Get 
 	 */
 	BudgetType getBudgetType();
@@ -109,13 +109,13 @@ public:
 	/*! \brief Set Ad group end time. Unix timestamp in seconds.
 	 */
 	void setEndTime(int  end_time);
-	/*! \brief Get Ad group targeting specification defining the ad group target audience. For example, '{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}'
+	/*! \brief Get 
 	 */
-	std::map<std::string, std::string> getTargetingSpec();
+	TargetingSpec getTargetingSpec();
 
-	/*! \brief Set Ad group targeting specification defining the ad group target audience. For example, '{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}'
+	/*! \brief Set 
 	 */
-	void setTargetingSpec(std::map <std::string, std::string> targeting_spec);
+	void setTargetingSpec(TargetingSpec  targeting_spec);
 	/*! \brief Get Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
 	 */
 	int getLifetimeFrequencyCap();
@@ -144,11 +144,11 @@ public:
 	/*! \brief Set <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
 	 */
 	void setPlacementGroup(PlacementGroupType  placement_group);
-	/*! \brief Get Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.
+	/*! \brief Get 
 	 */
 	PacingDeliveryType getPacingDeliveryType();
 
-	/*! \brief Set Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.
+	/*! \brief Set 
 	 */
 	void setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type);
 	/*! \brief Get Campaign ID of the ad group.
@@ -165,6 +165,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setBillableEvent(ActionType  billable_event);
+	/*! \brief Get Bid strategy type
+	 */
+	std::string getBidStrategyType();
+
+	/*! \brief Set Bid strategy type
+	 */
+	void setBidStrategyType(std::string  bid_strategy_type);
 	/*! \brief Get Ad group ID.
 	 */
 	std::string getId();
@@ -178,11 +185,11 @@ private:
 	EntityStatus status;
 	int budget_in_micro_currency;
 	int bid_in_micro_currency;
-	std::string bid_strategy_type;
+	AdGroupCommon_optimization_goal_metadata optimization_goal_metadata;
 	BudgetType budget_type;
 	int start_time;
 	int end_time;
-	std::map <std::string, std::string>targeting_spec;
+	TargetingSpec targeting_spec;
 	int lifetime_frequency_cap;
 	AdGroupCommon_tracking_urls tracking_urls;
 	bool auto_targeting_enabled;
@@ -190,6 +197,7 @@ private:
 	PacingDeliveryType pacing_delivery_type;
 	std::string campaign_id;
 	ActionType billable_event;
+	std::string bid_strategy_type;
 	std::string id;
 	void __init();
 	void __cleanup();

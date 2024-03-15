@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountsCountryResponseData",
+  "fields": [
+    {
+      "name": "code",
+      "type": ["null", "model.AdCountry"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "currency",
+      "type": ["null", "string"],
+      "doc": "Country currency.",
+      "default": null
+    },
+    {
+      "name": "index",
+      "type": ["null", "double"],
+      "doc": "Country index",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Country name",
+      "default": null
+    }
+  ]
+
+}

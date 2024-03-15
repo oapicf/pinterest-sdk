@@ -1,0 +1,273 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsItemValidationWarnings",
+  "fields": [
+    {
+      "name": "AD_LINK_FORMAT_WARNING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "AD_LINK_SAME_AS_LINK",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ADDITIONAL_IMAGE_LINK_WARNING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ADWORDS_FORMAT_WARNING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ADWORDS_SAME_AS_LINK",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "AGE_GROUP_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SIZE_SYSTEM_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ANDROID_DEEP_LINK_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "AVAILABILITY_DATE_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "COUNTRY_DOES_NOT_MAP_TO_CURRENCY",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "CUSTOM_LABEL_LENGTH_TOO_LONG",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "DESCRIPTION_LENGTH_TOO_LONG",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "EXPIRATION_DATE_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "GENDER_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "GTIN_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "IMAGE_LINK_WARNING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "IOS_DEEP_LINK_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "IS_BUNDLE_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "LINK_FORMAT_WARNING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "MIN_AD_PRICE_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "MPN_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "MULTIPACK_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "OPTIONAL_CONDITION_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "OPTIONAL_CONDITION_MISSING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "OPTIONAL_PRODUCT_CATEGORY_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "OPTIONAL_PRODUCT_CATEGORY_MISSING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "PRODUCT_CATEGORY_DEPTH_WARNING",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "PRODUCT_TYPE_LENGTH_TOO_LONG",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SALES_PRICE_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SALES_PRICE_TOO_LOW",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SALES_PRICE_TOO_HIGH",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SALE_DATE_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SHIPPING_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SHIPPING_HEIGHT_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SHIPPING_WEIGHT_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SHIPPING_WIDTH_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "SIZE_TYPE_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "TAX_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "TITLE_LENGTH_TOO_LONG",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "TOO_MANY_ADDITIONAL_IMAGE_LINKS",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "UTM_SOURCE_AUTO_CORRECTED",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "WEIGHT_UNIT_INVALID",
+      "type": ["null", "model.CatalogsItemValidationDetails"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TemplateResponseDateRange",
+  "fields": [
+    {
+      "name": "dynamic_date_range",
+      "type": ["null", "model.TemplateResponseDateRangeDynamicDateRange"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "relative_date_range",
+      "type": ["null", "model.TemplateResponseDateRangeRelativeDateRange"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "absolute_date_range",
+      "type": ["null", "model.TemplateResponseDateRangeAbsoluteDateRange"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

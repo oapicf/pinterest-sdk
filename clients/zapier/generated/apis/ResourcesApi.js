@@ -49,8 +49,8 @@ module.exports = {
         key: 'deliveryMetrics/get',
         noun: 'resources',
         display: {
-            label: 'Get available delivery metrics&#39; definitions',
-            description: 'Get the definitions for the delivery metrics available for synchronous or asynchronous reports.',
+            label: 'Get available metrics&#39; definitions',
+            description: 'Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.',
             hidden: false,
         },
         operation: {
@@ -135,6 +135,43 @@ module.exports = {
                 })
             },
             sample: samples['SingleInterestTargetingOptionResponseSample']
+        }
+    },
+    leadFormQuestions/get: {
+        key: 'leadFormQuestions/get',
+        noun: 'resources',
+        display: {
+            label: 'Get lead form questions',
+            description: 'Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;',
+            hidden: false,
+        },
+        operation: {
+            inputFields: [
+            ],
+            outputFields: [
+            ],
+            perform: async (z, bundle) => {
+                const options = {
+                    url: utils.replacePathParameters('https://api.pinterest.com/v5/resources/lead_form_questions'),
+                    method: 'GET',
+                    removeMissingValuesFrom: { params: true, body: true },
+                    headers: {
+                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
+                        'Content-Type': '',
+                        'Accept': 'application/json',
+                    },
+                    params: {
+                    },
+                    body: {
+                    },
+                }
+                return z.request(options).then((response) => {
+                    response.throwForStatus();
+                    const results = response.json;
+                    return results;
+                })
+            },
+            sample: { data: {} }
         }
     },
     metricsReadyState/get: {

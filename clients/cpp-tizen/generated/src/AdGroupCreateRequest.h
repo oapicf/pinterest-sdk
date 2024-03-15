@@ -10,6 +10,7 @@
 
 #include <string>
 #include "ActionType.h"
+#include "AdGroupCommon_optimization_goal_metadata.h"
 #include "AdGroupCommon_tracking_urls.h"
 #include "BudgetType.h"
 #include "EntityStatus.h"
@@ -82,11 +83,11 @@ public:
 	void setBidInMicroCurrency(int  bid_in_micro_currency);
 	/*! \brief Get 
 	 */
-	std::string getBidStrategyType();
+	AdGroupCommon_optimization_goal_metadata getOptimizationGoalMetadata();
 
 	/*! \brief Set 
 	 */
-	void setBidStrategyType(std::string  bid_strategy_type);
+	void setOptimizationGoalMetadata(AdGroupCommon_optimization_goal_metadata  optimization_goal_metadata);
 	/*! \brief Get 
 	 */
 	BudgetType getBudgetType();
@@ -129,11 +130,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setTrackingUrls(AdGroupCommon_tracking_urls  tracking_urls);
-	/*! \brief Get Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	/*! \brief Get Enable auto-targeting for ad group.Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	 */
 	bool getAutoTargetingEnabled();
 
-	/*! \brief Set Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	/*! \brief Set Enable auto-targeting for ad group.Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	 */
 	void setAutoTargetingEnabled(bool  auto_targeting_enabled);
 	/*! \brief Get <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
@@ -143,11 +144,11 @@ public:
 	/*! \brief Set <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
 	 */
 	void setPlacementGroup(PlacementGroupType  placement_group);
-	/*! \brief Get Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.
+	/*! \brief Get 
 	 */
 	PacingDeliveryType getPacingDeliveryType();
 
-	/*! \brief Set Pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day.
+	/*! \brief Set 
 	 */
 	void setPacingDeliveryType(PacingDeliveryType  pacing_delivery_type);
 	/*! \brief Get Campaign ID of the ad group.
@@ -164,13 +165,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setBillableEvent(ActionType  billable_event);
+	/*! \brief Get Bid strategy type
+	 */
+	std::string getBidStrategyType();
+
+	/*! \brief Set Bid strategy type
+	 */
+	void setBidStrategyType(std::string  bid_strategy_type);
 
 private:
 	std::string name;
 	EntityStatus status;
 	int budget_in_micro_currency;
 	int bid_in_micro_currency;
-	std::string bid_strategy_type;
+	AdGroupCommon_optimization_goal_metadata optimization_goal_metadata;
 	BudgetType budget_type;
 	int start_time;
 	int end_time;
@@ -182,6 +190,7 @@ private:
 	PacingDeliveryType pacing_delivery_type;
 	std::string campaign_id;
 	ActionType billable_event;
+	std::string bid_strategy_type;
 	void __init();
 	void __cleanup();
 

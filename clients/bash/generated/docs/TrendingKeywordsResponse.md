@@ -1,0 +1,10 @@
+# TrendingKeywordsResponse
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**trends** | [**array[TrendingKeywordsResponseTrendsInner]**](TrendingKeywordsResponseTrendsInner.md) |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

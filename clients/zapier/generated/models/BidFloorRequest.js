@@ -1,6 +1,6 @@
 const utils = require('../utils/utils');
 const BidFloorSpec = require('../models/BidFloorSpec');
-const TargetingSpec_1 = require('../models/TargetingSpec_1');
+const TargetingSpec = require('../models/TargetingSpec');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,14 +11,14 @@ module.exports = {
                 label: `[${labelPrefix}bid_floor_specs]`,
                 children: BidFloorSpec.fields(`${keyPrefix}bid_floor_specs${!isInput ? '[]' : ''}`, isInput, true), 
             },
-            ...TargetingSpec_1.fields(`${keyPrefix}targeting_spec`, isInput),
+            ...TargetingSpec.fields(`${keyPrefix}targeting_spec`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'bid_floor_specs': utils.childMapping(bundle.inputData?.[`${keyPrefix}bid_floor_specs`], `${keyPrefix}bid_floor_specs`, BidFloorSpec),
-            'targeting_spec': utils.removeIfEmpty(TargetingSpec_1.mapping(bundle, `${keyPrefix}targeting_spec`)),
+            'targeting_spec': utils.removeIfEmpty(TargetingSpec.mapping(bundle, `${keyPrefix}targeting_spec`)),
         }
     },
 }

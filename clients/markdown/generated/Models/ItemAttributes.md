@@ -9,7 +9,7 @@
 | **availability** | **String** | The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. | [optional] [default to null] |
 | **average\_review\_rating** | **BigDecimal** | Average reviews for the item. Can be a number from 1-5. | [optional] [default to null] |
 | **brand** | **String** | The brand of the product. | [optional] [default to null] |
-| **checkout\_enabled** | **Boolean** | Set this attribute to FALSE to indicate items that should be excluded from the Pinterest Checkout program. Note, this product is currently being tested and your account must be enrolled. Please contact your Account Manager or contact us for more information. | [optional] [default to null] |
+| **checkout\_enabled** | **Boolean** | This attribute is not supported anymore. | [optional] [default to null] |
 | **color** | **String** | The primary color of the product. | [optional] [default to null] |
 | **condition** | **String** | The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’. | [optional] [default to null] |
 | **custom\_label\_0** | **String** | &lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt; | [optional] [default to null] |

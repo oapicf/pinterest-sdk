@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreateMMMReportResponseData",
+  "fields": [
+    {
+      "name": "report_status",
+      "type": ["null", "model.BulkReportingJobStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "token",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

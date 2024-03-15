@@ -1,0 +1,9 @@
+
+
+# TrendType
+
+## Enum
+
+
+
+

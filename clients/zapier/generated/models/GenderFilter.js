@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CatalogsProductGroupMultipleStringCriteria = require('../models/CatalogsProductGroupMultipleStringCriteria');
+const CatalogsProductGroupMultipleGenderCriteria = require('../models/CatalogsProductGroupMultipleGenderCriteria');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {

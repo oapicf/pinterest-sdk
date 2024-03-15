@@ -1,0 +1,121 @@
+-- By default this file is used by `parseRoutesFile` in Foundation.hs
+-- Syntax for this file here: https://www.yesodweb.com/book/routing-and-handlers
+
+-- /static StaticR Static appStatic
+
+/ad_accounts AdAccountsR GET POST
+/ad_accounts/#Text AdAccountsByTextR GET
+/ad_accounts/#Text/ad_groups AdAccountsByTextAdGroupsR GET POST PATCH
+/ad_accounts/#Text/ad_groups/analytics AdAccountsByTextAdGroupsAnalyticsR GET
+/ad_accounts/#Text/ad_groups/targeting_analytics AdAccountsByTextAdGroupsTargetingAnalyticsR GET
+/ad_accounts/#Text/ad_groups/audience_sizing AdAccountsByTextAdGroupsAudienceSizingR GET
+!/ad_accounts/#Text/ad_groups/#Text AdAccountsByTextAdGroupsByTextR GET
+/ad_accounts/#Text/ad_previews AdAccountsByTextAdPreviewsR POST
+/ad_accounts/#Text/ads AdAccountsByTextAdsR GET POST PATCH
+/ad_accounts/#Text/ads/analytics AdAccountsByTextAdsAnalyticsR GET
+/ad_accounts/#Text/ads_credit/discounts AdAccountsByTextAdsCreditDiscountsR GET
+/ad_accounts/#Text/ads_credit/redeem AdAccountsByTextAdsCreditRedeemR POST
+/ad_accounts/#Text/ads/targeting_analytics AdAccountsByTextAdsTargetingAnalyticsR GET
+!/ad_accounts/#Text/ads/#Text AdAccountsByTextAdsByTextR GET
+/ad_accounts/#Text/analytics AdAccountsByTextAnalyticsR GET
+/ad_accounts/#Text/audience_insights AdAccountsByTextAudienceInsightsR GET
+/ad_accounts/#Text/audiences AdAccountsByTextAudiencesR GET POST
+/ad_accounts/#Text/audiences/custom AdAccountsByTextAudiencesCustomR POST
+!/ad_accounts/#Text/audiences/#Text AdAccountsByTextAudiencesByTextR GET PATCH
+/ad_accounts/#Text/bid_floor AdAccountsByTextBidFloorR POST
+/ad_accounts/#Text/billing_profiles AdAccountsByTextBillingProfilesR GET
+/ad_accounts/#Text/bulk/download AdAccountsByTextBulkDownloadR POST
+/ad_accounts/#Text/bulk/upsert AdAccountsByTextBulkUpsertR POST
+!/ad_accounts/#Text/bulk/#Text AdAccountsByTextBulkByTextR GET
+/ad_accounts/#Text/campaigns AdAccountsByTextCampaignsR GET POST PATCH
+/ad_accounts/#Text/campaigns/analytics AdAccountsByTextCampaignsAnalyticsR GET
+/ad_accounts/#Text/campaigns/targeting_analytics AdAccountsByTextCampaignsTargetingAnalyticsR GET
+!/ad_accounts/#Text/campaigns/#Text AdAccountsByTextCampaignsByTextR GET
+/ad_accounts/#Text/conversion_tags AdAccountsByTextConversionTagsR GET POST
+/ad_accounts/#Text/conversion_tags/ocpm_eligible AdAccountsByTextConversionTagsOcpmEligibleR GET
+/ad_accounts/#Text/conversion_tags/page_visit AdAccountsByTextConversionTagsPageVisitR GET
+!/ad_accounts/#Text/conversion_tags/#Text AdAccountsByTextConversionTagsByTextR GET
+/ad_accounts/#Text/customer_lists AdAccountsByTextCustomerListsR GET POST
+/ad_accounts/#Text/customer_lists/#Text AdAccountsByTextCustomerListsByTextR GET PATCH
+/ad_accounts/#Text/events AdAccountsByTextEventsR POST
+/ad_accounts/#Text/insights/audiences AdAccountsByTextInsightsAudiencesR GET
+/ad_accounts/#Text/keywords AdAccountsByTextKeywordsR GET POST PATCH
+/ad_accounts/#Text/keywords/metrics AdAccountsByTextKeywordsMetricsR GET
+/ad_accounts/#Text/lead_forms AdAccountsByTextLeadFormsR GET
+/ad_accounts/#Text/lead_forms/#Text AdAccountsByTextLeadFormsByTextR GET
+/ad_accounts/#Text/lead_forms/#Text/test AdAccountsByTextLeadFormsByTextTestR POST
+/ad_accounts/#Text/leads/subscriptions AdAccountsByTextLeadsSubscriptionsR GET POST
+/ad_accounts/#Text/leads/subscriptions/#Text AdAccountsByTextLeadsSubscriptionsByTextR GET DELETE
+/ad_accounts/#Text/mmm_reports AdAccountsByTextMmmReportsR GET POST
+/ad_accounts/#Text/order_lines AdAccountsByTextOrderLinesR GET
+/ad_accounts/#Text/order_lines/#Text AdAccountsByTextOrderLinesByTextR GET
+/ad_accounts/#Text/product_group_promotions AdAccountsByTextProductGroupPromotionsR GET POST PATCH
+/ad_accounts/#Text/product_group_promotions/#Text AdAccountsByTextProductGroupPromotionsByTextR GET
+/ad_accounts/#Text/product_groups/analytics AdAccountsByTextProductGroupsAnalyticsR GET
+/ad_accounts/#Text/product_groups/catalogs AdAccountsByTextProductGroupsCatalogsR GET
+/ad_accounts/#Text/reports AdAccountsByTextReportsR GET POST
+/ad_accounts/#Text/sandbox AdAccountsByTextSandboxR DELETE
+/ad_accounts/#Text/ssio/accounts AdAccountsByTextSsioAccountsR GET
+/ad_accounts/#Text/ssio/insertion_orders AdAccountsByTextSsioInsertionOrdersR POST PATCH
+/ad_accounts/#Text/ssio/insertion_orders/status AdAccountsByTextSsioInsertionOrdersStatusR GET
+/ad_accounts/#Text/ssio/insertion_orders/#Text/status AdAccountsByTextSsioInsertionOrdersByTextStatusR GET
+/ad_accounts/#Text/ssio/order_lines AdAccountsByTextSsioOrderLinesR GET
+/ad_accounts/#Text/targeting_analytics AdAccountsByTextTargetingAnalyticsR GET
+/ad_accounts/#Text/templates AdAccountsByTextTemplatesR GET
+/ad_accounts/#Text/templates/#Text/reports AdAccountsByTextTemplatesByTextReportsR POST
+/ad_accounts/#Text/terms_of_service AdAccountsByTextTermsOfServiceR GET
+/boards BoardsR GET POST
+/boards/#Text BoardsByTextR GET DELETE PATCH
+/boards/#Text/pins BoardsByTextPinsR GET
+/boards/#Text/sections BoardsByTextSectionsR GET POST
+/boards/#Text/sections/#Text BoardsByTextSectionsByTextR DELETE PATCH
+/boards/#Text/sections/#Text/pins BoardsByTextSectionsByTextPinsR GET
+/catalogs CatalogsR GET
+/catalogs/feeds CatalogsFeedsR GET POST
+/catalogs/feeds/#Text CatalogsFeedsByTextR GET DELETE PATCH
+/catalogs/feeds/#Text/processing_results CatalogsFeedsByTextProcessingResultsR GET
+/catalogs/processing_results/#Text/item_issues CatalogsProcessingResultsByTextItemIssuesR GET
+/catalogs/items CatalogsItemsR GET
+/catalogs/items/batch CatalogsItemsBatchR POST
+/catalogs/items/batch/#Text CatalogsItemsBatchByTextR GET
+/catalogs/product_groups CatalogsProductGroupsR GET POST
+/catalogs/product_groups/#Text CatalogsProductGroupsByTextR GET DELETE PATCH
+/catalogs/product_groups/#Text/product_counts CatalogsProductGroupsByTextProductCountsR GET
+/catalogs/product_groups/#Text/products CatalogsProductGroupsByTextProductsR GET
+/catalogs/products/get_by_product_group_filters CatalogsProductsGetByProductGroupFiltersR POST
+/integrations/commerce IntegrationsCommerceR POST
+/integrations/commerce/#Text IntegrationsCommerceByTextR GET DELETE PATCH
+/integrations/logs IntegrationsLogsR POST
+/integrations IntegrationsR GET
+!/integrations/#Text IntegrationsByTextR GET
+/media MediaR GET POST
+/media/#Text MediaByTextR GET
+/oauth/token OauthTokenR POST
+/pins PinsR GET POST
+/pins/#Text PinsByTextR GET DELETE PATCH
+/pins/#Text/analytics PinsByTextAnalyticsR GET
+/pins/#Text/save PinsByTextSaveR POST
+/resources/ad_account_countries ResourcesAdAccountCountriesR GET
+/resources/delivery_metrics ResourcesDeliveryMetricsR GET
+/resources/lead_form_questions ResourcesLeadFormQuestionsR GET
+/resources/metrics_ready_state ResourcesMetricsReadyStateR GET
+/resources/targeting/interests/#Text ResourcesTargetingInterestsByTextR GET
+/resources/targeting/#Text ResourcesTargetingByTextR GET
+/search/boards SearchBoardsR GET
+/search/pins SearchPinsR GET
+/search/partner/pins SearchPartnerPinsR GET
+/terms/related TermsRelatedR GET
+/terms/suggested TermsSuggestedR GET
+/trends/keywords/#TrendsSupportedRegion/top/#TrendType TrendsKeywordsByTrendsSupportedRegionTopByTrendTypeR GET
+/user_account UserAccountR GET
+/user_account/analytics UserAccountAnalyticsR GET
+/user_account/analytics/top_pins UserAccountAnalyticsTopPinsR GET
+/user_account/analytics/top_video_pins UserAccountAnalyticsTopVideoPinsR GET
+/user_account/businesses UserAccountBusinessesR GET
+/user_account/followers UserAccountFollowersR GET
+/user_account/following UserAccountFollowingR GET
+/user_account/following/boards UserAccountFollowingBoardsR GET
+!/user_account/following/#Text UserAccountFollowingByTextR POST
+/user_account/websites UserAccountWebsitesR GET POST DELETE
+/user_account/websites/verification UserAccountWebsitesVerificationR GET
+/users/#Text/interests/follow UsersByTextInterestsFollowR GET

@@ -59,10 +59,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setUrl(std::string  url);
+	/*! \brief Get Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+	 */
+	bool getIsStandard();
+
+	/*! \brief Set Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+	 */
+	void setIsStandard(bool  is_standard);
 
 private:
 	std::string source_type;
 	std::string url;
+	bool is_standard;
 	void __init();
 	void __cleanup();
 

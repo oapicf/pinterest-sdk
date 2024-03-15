@@ -1,0 +1,118 @@
+
+<h2>SSIOCreateInsertionOrderRequest</h2>
+<ul class="parameter">
+  <li class="param-required-true">startUnderscoredate : String
+    <br/>Starting date of time period. Format: YYYY-MM-DD
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">endUnderscoredate : String
+    <br/>End date of time period. Format: YYYY-MM-DD
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">poUnderscorenumber : String
+    <br/>The po number
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">budgetUnderscoreamount : BigDecimal
+    <br/>If Budget order line, the budget amount.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">billingUnderscorecontactUnderscorefirstname : String
+    <br/>The billing contact first name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">billingUnderscorecontactUnderscorelastname : String
+    <br/>The billing contact last name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">billingUnderscorecontactUnderscoreemail : String
+    <br/>The billing contact email
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">mediaUnderscorecontactUnderscorefirstname : String
+    <br/>The media contact first name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">mediaUnderscorecontactUnderscorelastname : String
+    <br/>The media contact last name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">mediaUnderscorecontactUnderscoreemail : String
+    <br/>The media contact email
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">agencyUnderscorelink : String
+    <br/>URL link for agency
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">userUnderscoreemail : String
+    <br/>The email of user submitting the insertion order
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">acceptedUnderscoretermsUnderscoretime : Integer
+    <br/>The UTC timestamp (to the nearest sec) of when terms were accepted
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">pmpUnderscoreid : String
+    <br/>The pmp id
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">orderUnderscorename : String
+    <br/>The order name
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">orderUnderscorelineUnderscoretype : String
+    <br/>Type can be Budget or Perpetual
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>BUDGET</dd>
+            <dd>PERPETUALS</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">acceptedUnderscoretermsUnderscoreid : String
+    <br/>The SFDC id for the terms
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">billtoUnderscorecompanyUnderscoreid : String
+    <br/>The bill-to company id
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">billtoUnderscorebusinessUnderscoreaddressUnderscoreid : String
+    <br/>The bill-to business address id
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">billtoUnderscorebillingUnderscoreaddressUnderscoreid : String
+    <br/>The bill-to billing address id
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">estimatedUnderscoremonthlyUnderscorespend : BigDecimal
+    <br/>If Ongoing (perpetual) order line, the estimated monthly spend
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">currencyUnderscoreinfo : Currency
+    <br/>
+  </li>
+</ul>

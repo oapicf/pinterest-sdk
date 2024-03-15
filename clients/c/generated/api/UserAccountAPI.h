@@ -1,0 +1,210 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../include/apiClient.h"
+#include "../include/list.h"
+#include "../external/cJSON.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+#include "../model/account.h"
+#include "../model/analytics_metrics_response.h"
+#include "../model/boards_user_follows_list_200_response.h"
+#include "../model/error.h"
+#include "../model/follow_user_request.h"
+#include "../model/followers_list_200_response.h"
+#include "../model/linked_business.h"
+#include "../model/top_pins_analytics_response.h"
+#include "../model/top_video_pins_analytics_response.h"
+#include "../model/user_account_followed_interests_200_response.h"
+#include "../model/user_following_feed_type.h"
+#include "../model/user_following_get_200_response.h"
+#include "../model/user_summary.h"
+#include "../model/user_website_summary.h"
+#include "../model/user_website_verification_code.h"
+#include "../model/user_website_verify_request.h"
+#include "../model/user_websites_get_200_response.h"
+
+// Enum FROMCLAIMEDCONTENT for UserAccountAPI_userAccountAnalytics
+typedef enum  { pinterest_rest_api_userAccountAnalytics_FROMCLAIMEDCONTENT_NULL = 0, pinterest_rest_api_userAccountAnalytics_FROMCLAIMEDCONTENT_OTHER, pinterest_rest_api_userAccountAnalytics_FROMCLAIMEDCONTENT_CLAIMED, pinterest_rest_api_userAccountAnalytics_FROMCLAIMEDCONTENT_BOTH } pinterest_rest_api_userAccountAnalytics_from_claimed_content_e;
+
+// Enum PINFORMAT for UserAccountAPI_userAccountAnalytics
+typedef enum  { pinterest_rest_api_userAccountAnalytics_PINFORMAT_NULL = 0, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ALL, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ORGANIC_IMAGE, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ORGANIC_PRODUCT, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ORGANIC_VIDEO, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ADS_STANDARD, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ADS_PRODUCT, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ADS_VIDEO, pinterest_rest_api_userAccountAnalytics_PINFORMAT_ADS_IDEA, pinterest_rest_api_userAccountAnalytics_PINFORMAT_PRODUCT, pinterest_rest_api_userAccountAnalytics_PINFORMAT_REGULAR, pinterest_rest_api_userAccountAnalytics_PINFORMAT_VIDEO } pinterest_rest_api_userAccountAnalytics_pin_format_e;
+
+// Enum APPTYPES for UserAccountAPI_userAccountAnalytics
+typedef enum  { pinterest_rest_api_userAccountAnalytics_APPTYPES_NULL = 0, pinterest_rest_api_userAccountAnalytics_APPTYPES_ALL, pinterest_rest_api_userAccountAnalytics_APPTYPES_MOBILE, pinterest_rest_api_userAccountAnalytics_APPTYPES_TABLET, pinterest_rest_api_userAccountAnalytics_APPTYPES_WEB } pinterest_rest_api_userAccountAnalytics_app_types_e;
+
+// Enum CONTENTTYPE for UserAccountAPI_userAccountAnalytics
+typedef enum  { pinterest_rest_api_userAccountAnalytics_CONTENTTYPE_NULL = 0, pinterest_rest_api_userAccountAnalytics_CONTENTTYPE_ALL, pinterest_rest_api_userAccountAnalytics_CONTENTTYPE_PAID, pinterest_rest_api_userAccountAnalytics_CONTENTTYPE_ORGANIC } pinterest_rest_api_userAccountAnalytics_content_type_e;
+
+// Enum SOURCE for UserAccountAPI_userAccountAnalytics
+typedef enum  { pinterest_rest_api_userAccountAnalytics_SOURCE_NULL = 0, pinterest_rest_api_userAccountAnalytics_SOURCE_ALL, pinterest_rest_api_userAccountAnalytics_SOURCE_YOUR_PINS, pinterest_rest_api_userAccountAnalytics_SOURCE_OTHER_PINS } pinterest_rest_api_userAccountAnalytics_source_e;
+
+// Enum METRICTYPES for UserAccountAPI_userAccountAnalytics
+typedef enum  { pinterest_rest_api_userAccountAnalytics_METRICTYPES_NULL = 0, pinterest_rest_api_userAccountAnalytics_METRICTYPES_ENGAGEMENT, pinterest_rest_api_userAccountAnalytics_METRICTYPES_ENGAGEMENT_RATE, pinterest_rest_api_userAccountAnalytics_METRICTYPES_IMPRESSION, pinterest_rest_api_userAccountAnalytics_METRICTYPES_OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalytics_METRICTYPES_OUTBOUND_CLICK_RATE, pinterest_rest_api_userAccountAnalytics_METRICTYPES_PIN_CLICK, pinterest_rest_api_userAccountAnalytics_METRICTYPES_PIN_CLICK_RATE, pinterest_rest_api_userAccountAnalytics_METRICTYPES_SAVE, pinterest_rest_api_userAccountAnalytics_METRICTYPES_SAVE_RATE } pinterest_rest_api_userAccountAnalytics_metric_types_e;
+
+// Enum SPLITFIELD for UserAccountAPI_userAccountAnalytics
+typedef enum  { pinterest_rest_api_userAccountAnalytics_SPLITFIELD_NULL = 0, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_NO_SPLIT, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_APP_TYPE, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_OWNED_CONTENT, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_SOURCE, pinterest_rest_api_userAccountAnalytics_SPLITFIELD_PIN_FORMAT } pinterest_rest_api_userAccountAnalytics_split_field_e;
+
+// Enum SORTBY for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_ENGAGEMENT, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_PIN_CLICK, pinterest_rest_api_userAccountAnalyticsTopPins_SORTBY_SAVE } pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e;
+
+// Enum FROMCLAIMEDCONTENT for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_OTHER, pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_CLAIMED, pinterest_rest_api_userAccountAnalyticsTopPins_FROMCLAIMEDCONTENT_BOTH } pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e;
+
+// Enum PINFORMAT for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ALL, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ORGANIC_IMAGE, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ORGANIC_PRODUCT, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ORGANIC_VIDEO, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ADS_STANDARD, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ADS_PRODUCT, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ADS_VIDEO, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_ADS_IDEA, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_PRODUCT, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_REGULAR, pinterest_rest_api_userAccountAnalyticsTopPins_PINFORMAT_VIDEO } pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e;
+
+// Enum APPTYPES for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_APPTYPES_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_APPTYPES_ALL, pinterest_rest_api_userAccountAnalyticsTopPins_APPTYPES_MOBILE, pinterest_rest_api_userAccountAnalyticsTopPins_APPTYPES_TABLET, pinterest_rest_api_userAccountAnalyticsTopPins_APPTYPES_WEB } pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e;
+
+// Enum CONTENTTYPE for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_CONTENTTYPE_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_CONTENTTYPE_ALL, pinterest_rest_api_userAccountAnalyticsTopPins_CONTENTTYPE_PAID, pinterest_rest_api_userAccountAnalyticsTopPins_CONTENTTYPE_ORGANIC } pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e;
+
+// Enum SOURCE for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_SOURCE_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_SOURCE_ALL, pinterest_rest_api_userAccountAnalyticsTopPins_SOURCE_YOUR_PINS, pinterest_rest_api_userAccountAnalyticsTopPins_SOURCE_OTHER_PINS } pinterest_rest_api_userAccountAnalyticsTopPins_source_e;
+
+// Enum METRICTYPES for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_ENGAGEMENT, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_ENGAGEMENT_RATE, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_OUTBOUND_CLICK_RATE, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_PIN_CLICK, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_PIN_CLICK_RATE, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_SAVE, pinterest_rest_api_userAccountAnalyticsTopPins_METRICTYPES_SAVE_RATE } pinterest_rest_api_userAccountAnalyticsTopPins_metric_types_e;
+
+// Enum CREATEDINLASTNDAYS for UserAccountAPI_userAccountAnalyticsTopPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopPins_CREATEDINLASTNDAYS_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopPins_CREATEDINLASTNDAYS__30 } pinterest_rest_api_userAccountAnalyticsTopPins_created_in_last_n_days_e;
+
+// Enum SORTBY for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_SAVE, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_OUTBOUND_CLICK, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_MRC_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_AVG_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_V50_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_QUARTILE_95_PERCENT_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_10S_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SORTBY_VIDEO_START } pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e;
+
+// Enum FROMCLAIMEDCONTENT for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_OTHER, pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_CLAIMED, pinterest_rest_api_userAccountAnalyticsTopVideoPins_FROMCLAIMEDCONTENT_BOTH } pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e;
+
+// Enum PINFORMAT for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ALL, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ORGANIC_IMAGE, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ORGANIC_PRODUCT, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ORGANIC_VIDEO, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ADS_STANDARD, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ADS_PRODUCT, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ADS_VIDEO, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_ADS_IDEA, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_PRODUCT, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_REGULAR, pinterest_rest_api_userAccountAnalyticsTopVideoPins_PINFORMAT_VIDEO } pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e;
+
+// Enum APPTYPES for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_APPTYPES_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_APPTYPES_ALL, pinterest_rest_api_userAccountAnalyticsTopVideoPins_APPTYPES_MOBILE, pinterest_rest_api_userAccountAnalyticsTopVideoPins_APPTYPES_TABLET, pinterest_rest_api_userAccountAnalyticsTopVideoPins_APPTYPES_WEB } pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e;
+
+// Enum CONTENTTYPE for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_CONTENTTYPE_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_CONTENTTYPE_ALL, pinterest_rest_api_userAccountAnalyticsTopVideoPins_CONTENTTYPE_PAID, pinterest_rest_api_userAccountAnalyticsTopVideoPins_CONTENTTYPE_ORGANIC } pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e;
+
+// Enum SOURCE for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_SOURCE_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SOURCE_ALL, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SOURCE_YOUR_PINS, pinterest_rest_api_userAccountAnalyticsTopVideoPins_SOURCE_OTHER_PINS } pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e;
+
+// Enum METRICTYPES for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_IMPRESSION, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_SAVE, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_VIDEO_MRC_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_VIDEO_AVG_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_VIDEO_V50_WATCH_TIME, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_QUARTILE_95_PERCENT_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_VIDEO_10S_VIEW, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_VIDEO_START, pinterest_rest_api_userAccountAnalyticsTopVideoPins_METRICTYPES_OUTBOUND_CLICK } pinterest_rest_api_userAccountAnalyticsTopVideoPins_metric_types_e;
+
+// Enum CREATEDINLASTNDAYS for UserAccountAPI_userAccountAnalyticsTopVideoPins
+typedef enum  { pinterest_rest_api_userAccountAnalyticsTopVideoPins_CREATEDINLASTNDAYS_NULL = 0, pinterest_rest_api_userAccountAnalyticsTopVideoPins_CREATEDINLASTNDAYS__30 } pinterest_rest_api_userAccountAnalyticsTopVideoPins_created_in_last_n_days_e;
+
+// Enum  for UserAccountAPI_userFollowingGet
+typedef enum  { pinterest_rest_api_userFollowingGet__NULL = 0, pinterest_rest_api_userFollowingGet__ALL, pinterest_rest_api_userFollowingGet__RANKED, pinterest_rest_api_userFollowingGet__CREATOR_ONLY, pinterest_rest_api_userFollowingGet__RANKED_CREATOR_ONLY } pinterest_rest_api_userFollowingGet_feed_type_e;
+
+
+// List following boards
+//
+// Get a list of the boards a user follows. The request returns a board summary object array.
+//
+boards_user_follows_list_200_response_t*
+UserAccountAPI_boardsUserFollowsList(apiClient_t *apiClient, char *bookmark, int *page_size, int *explicit_following, char *ad_account_id);
+
+
+// Follow user
+//
+// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+//
+user_summary_t*
+UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_request_t *follow_user_request);
+
+
+// List followers
+//
+// Get a list of your followers.
+//
+followers_list_200_response_t*
+UserAccountAPI_followersList(apiClient_t *apiClient, char *bookmark, int *page_size);
+
+
+// List linked businesses
+//
+// Get a list of your linked business accounts.
+//
+list_t*
+UserAccountAPI_linkedBusinessAccountsGet(apiClient_t *apiClient);
+
+
+// Unverify website
+//
+// Unverifu a website verified by the signed-in user.
+//
+void
+UserAccountAPI_unverifyWebsiteDelete(apiClient_t *apiClient, char *website);
+
+
+// Get user account analytics
+//
+// Get analytics for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+//
+list_t*_t*
+UserAccountAPI_userAccountAnalytics(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalytics_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalytics_pin_format_e pin_format, pinterest_rest_api_userAccountAnalytics_app_types_e app_types, pinterest_rest_api_userAccountAnalytics_content_type_e content_type, pinterest_rest_api_userAccountAnalytics_source_e source, list_t *metric_types, pinterest_rest_api_userAccountAnalytics_split_field_e split_field, char *ad_account_id);
+
+
+// Get user account top pins analytics
+//
+// Gets analytics data about a user's top pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+//
+top_pins_analytics_response_t*
+UserAccountAPI_userAccountAnalyticsTopPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id);
+
+
+// Get user account top video pins analytics
+//
+// Gets analytics data about a user's top video pins (limited to the top 50). - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+//
+top_video_pins_analytics_response_t*
+UserAccountAPI_userAccountAnalyticsTopVideoPins(apiClient_t *apiClient, char start_date, char end_date, pinterest_rest_api_userAccountAnalyticsTopVideoPins_sort_by_e sort_by, pinterest_rest_api_userAccountAnalyticsTopVideoPins_from_claimed_content_e from_claimed_content, pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e pin_format, pinterest_rest_api_userAccountAnalyticsTopVideoPins_app_types_e app_types, pinterest_rest_api_userAccountAnalyticsTopVideoPins_content_type_e content_type, pinterest_rest_api_userAccountAnalyticsTopVideoPins_source_e source, list_t *metric_types, int *num_of_pins, int *created_in_last_n_days, char *ad_account_id);
+
+
+// List following interests
+//
+// Get a list of a user's following interests in one place.
+//
+user_account_followed_interests_200_response_t*
+UserAccountAPI_userAccountFollowedInterests(apiClient_t *apiClient, char *username, char *bookmark, int *page_size);
+
+
+// Get user account
+//
+// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+//
+account_t*
+UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id);
+
+
+// List following
+//
+// Get a list of who a certain user follows.
+//
+user_following_get_200_response_t*
+UserAccountAPI_userFollowingGet(apiClient_t *apiClient, char *bookmark, int *page_size, pinterest_rest_api_userFollowingGet_feed_type_e feed_type, int *explicit_following, char *ad_account_id);
+
+
+// Get user websites
+//
+// Get user websites, claimed or not
+//
+user_websites_get_200_response_t*
+UserAccountAPI_userWebsitesGet(apiClient_t *apiClient, char *bookmark, int *page_size);
+
+
+// Verify website
+//
+// Verify a website as a signed-in user.
+//
+user_website_summary_t*
+UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_request_t *user_website_verify_request);
+
+
+// Get user verification code for website claiming
+//
+// Get verification code for user to install on the website to claim it.
+//
+user_website_verification_code_t*
+UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient);
+
+

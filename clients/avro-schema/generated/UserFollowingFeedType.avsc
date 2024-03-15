@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Specifies the type of followees to be kept when filtering them.",
+  "name": "UserFollowingFeedType",
+  "symbols": [
+    "ALL",
+    "RANKED",
+    "CREATOR_ONLY",
+    "RANKED_CREATOR_ONLY"
+  ]
+}

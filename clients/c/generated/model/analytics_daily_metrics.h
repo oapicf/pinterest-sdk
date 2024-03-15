@@ -1,0 +1,50 @@
+/*
+ * analytics_daily_metrics.h
+ *
+ * 
+ */
+
+#ifndef _analytics_daily_metrics_H_
+#define _analytics_daily_metrics_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct analytics_daily_metrics_t analytics_daily_metrics_t;
+
+#include "data_status.h"
+
+// Enum  for analytics_daily_metrics
+
+typedef enum  { pinterest_rest_api_analytics_daily_metrics__NULL = 0, pinterest_rest_api_analytics_daily_metrics__PROCESSING, pinterest_rest_api_analytics_daily_metrics__READY, pinterest_rest_api_analytics_daily_metrics__ESTIMATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_BUSINESS_CREATED, pinterest_rest_api_analytics_daily_metrics__BEFORE_DATA_RETENTION_PERIOD, pinterest_rest_api_analytics_daily_metrics__BEFORE_PIN_DATA_RETENTION_PERIOD, pinterest_rest_api_analytics_daily_metrics__BEFORE_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_CORE_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_PIN_FORMAT_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_AUDIENCE_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_VIDEO_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_CONVERSION_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD, pinterest_rest_api_analytics_daily_metrics__IN_BAD_TAG_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_PUBLISHED_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_ASSIST_METRIC_START_DATE, pinterest_rest_api_analytics_daily_metrics__BEFORE_PIN_CREATED, pinterest_rest_api_analytics_daily_metrics__BEFORE_ACCOUNT_CLAIMED, pinterest_rest_api_analytics_daily_metrics__BEFORE_DEMOGRAPHIC_FILTERS_START_DATE, pinterest_rest_api_analytics_daily_metrics__AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD, pinterest_rest_api_analytics_daily_metrics__AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD, pinterest_rest_api_analytics_daily_metrics__BEFORE_PRODUCT_GROUP_FILTER_START_DATE } pinterest_rest_api_analytics_daily_metrics__e;
+
+char* analytics_daily_metrics_data_status_ToString(pinterest_rest_api_analytics_daily_metrics__e data_status);
+
+pinterest_rest_api_analytics_daily_metrics__e analytics_daily_metrics_data_status_FromString(char* data_status);
+
+
+
+typedef struct analytics_daily_metrics_t {
+    data_status_t *data_status; // custom
+    char *date; // string
+    list_t* metrics; //map
+
+} analytics_daily_metrics_t;
+
+analytics_daily_metrics_t *analytics_daily_metrics_create(
+    data_status_t *data_status,
+    char *date,
+    list_t* metrics
+);
+
+void analytics_daily_metrics_free(analytics_daily_metrics_t *analytics_daily_metrics);
+
+analytics_daily_metrics_t *analytics_daily_metrics_parseFromJSON(cJSON *analytics_daily_metricsJSON);
+
+cJSON *analytics_daily_metrics_convertToJSON(analytics_daily_metrics_t *analytics_daily_metrics);
+
+#endif /* _analytics_daily_metrics_H_ */
+

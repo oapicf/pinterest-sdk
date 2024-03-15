@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Media upload request",
+  "name": "MediaUploadRequest",
+  "fields": [
+    {
+      "name": "media_type",
+      "type": "model.MediaUploadType",
+      "doc": ""
+    }
+  ]
+
+}

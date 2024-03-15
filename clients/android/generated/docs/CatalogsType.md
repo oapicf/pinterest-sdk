@@ -1,0 +1,10 @@
+
+
+# CatalogsType
+
+## Enum
+
+
+
+
+
