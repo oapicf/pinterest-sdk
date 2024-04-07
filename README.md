@@ -13,11 +13,11 @@ The client libraries are generated using [OpenAPI Generator](https://openapi-gen
 Published packages
 ------------------
 
-| Language | Package | Status |
-|----------|---------|--------|
-| JavaScript | [pinterest-sdk]((http://www.npmjs.com/package/pinterest-sdk)) | [![Published Version](https://img.shields.io/npm/v/pinterest-sdk.svg)](http://www.npmjs.com/package/pinterest-sdk) |
-| Python | [pinterestsdk]((https://pypi.python.org/pypi/pinterestsdk)) | [![Published Version](https://img.shields.io/pypi/v/pinterestsdk.svg)](https://pypi.python.org/pypi/pinterestsdk) |
-| Ruby | [pinterest_sdk]((https://rubygems.org/gems/pinterest_sdk)) | [![Published Version](https://img.shields.io/gem/v/pinterest_sdk.svg)](https://rubygems.org/gems/pinterest_sdk) |
+| Language | Package | Status | Documentation |
+|----------|---------|--------|---------------|
+| JavaScript | [pinterest-sdk]((http://www.npmjs.com/package/pinterest-sdk)) | [![Published Version](https://img.shields.io/npm/v/pinterest-sdk.svg)](http://www.npmjs.com/package/pinterest-sdk) | [README](https://github.com/oapicf/pokeapi-client/blob/main/clients/javascript/generated/README.md) |
+| Python | [pinterestsdk]((https://pypi.python.org/pypi/pinterestsdk)) | [![Published Version](https://img.shields.io/pypi/v/pinterestsdk.svg)](https://pypi.python.org/pypi/pinterestsdk) | [README](https://github.com/oapicf/pinterest-sdk/blob/main/clients/python/generated/README.md) |
+| Ruby | [pinterest_sdk]((https://rubygems.org/gems/pinterest_sdk)) | [![Published Version](https://img.shields.io/gem/v/pinterest_sdk.svg)](https://rubygems.org/gems/pinterest_sdk) | [README](https://github.com/oapicf/pinterest-sdk/blob/main/clients/ruby/generated/README.md) |
 
 Version matrix
 --------------
