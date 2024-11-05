@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreateAssetGroupResponse",
+  "fields": [
+    {
+      "name": "asset_group",
+      "type": ["null", "model.AssetGroupBinding"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

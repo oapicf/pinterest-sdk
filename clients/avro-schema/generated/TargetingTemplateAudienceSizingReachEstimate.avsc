@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingTemplateAudienceSizingReachEstimate",
+  "fields": [
+    {
+      "name": "estimate",
+      "type": ["null", "long"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "lower_bound",
+      "type": ["null", "long"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "upper_bound",
+      "type": ["null", "long"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

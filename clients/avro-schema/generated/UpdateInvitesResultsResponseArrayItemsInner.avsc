@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdateInvitesResultsResponseArrayItemsInner",
+  "fields": [
+    {
+      "name": "exception",
+      "type": ["null", "model.InviteExceptionResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "invite",
+      "type": ["null", "model.InviteBusinessRoleBinding"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

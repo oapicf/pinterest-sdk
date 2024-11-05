@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Operation type to share a specific audience or revoke access to a previously shared audience",
+  "name": "OperationType",
+  "symbols": [
+    "SHARE",
+    "REVOKE"
+  ]
+}

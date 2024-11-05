@@ -1,0 +1,13 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "The current status of the invite.",
+  "name": "InviteStatus",
+  "symbols": [
+    "PENDING",
+    "ACCEPTED",
+    "DECLINED",
+    "CANCELLED",
+    "EXPIRED"
+  ]
+}

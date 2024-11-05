@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SharedAudience",
+  "fields": [
+    {
+      "name": "audience_id",
+      "type": "string",
+      "doc": "Unique identifier of an audience"
+    },
+    {
+      "name": "operation_type",
+      "type": "model.OperationType",
+      "doc": ""
+    },
+    {
+      "name": "recipient_account_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "List of ad account IDs to share with or revoke from."
+    }
+  ]
+
+}

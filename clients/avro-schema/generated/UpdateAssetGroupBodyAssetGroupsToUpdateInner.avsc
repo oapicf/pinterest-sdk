@@ -1,0 +1,53 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdateAssetGroupBodyAssetGroupsToUpdateInner",
+  "fields": [
+    {
+      "name": "asset_group_id",
+      "type": "string",
+      "doc": "Unique identifier of the asset group to update."
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Asset Group name",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Asset group description",
+      "default": null
+    },
+    {
+      "name": "asset_group_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AssetGroupType"
+      }],
+      "doc": "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.",
+      "default": null
+    },
+    {
+      "name": "assets_to_add",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of asset ids to add to the asset group.",
+      "default": null
+    },
+    {
+      "name": "assets_to_remove",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of asset ids to remove from the asset group.",
+      "default": null
+    }
+  ]
+
+}

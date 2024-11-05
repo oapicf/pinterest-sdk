@@ -1,0 +1,10 @@
+
+
+# GetBusinessAssetTypeResponse
+
+## Enum
+
+
+
+
+

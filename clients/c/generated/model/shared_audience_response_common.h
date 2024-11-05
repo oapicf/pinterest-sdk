@@ -1,0 +1,48 @@
+/*
+ * shared_audience_response_common.h
+ *
+ * 
+ */
+
+#ifndef _shared_audience_response_common_H_
+#define _shared_audience_response_common_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct shared_audience_response_common_t shared_audience_response_common_t;
+
+#include "role.h"
+
+// Enum  for shared_audience_response_common
+
+typedef enum  { pinterest_rest_api_shared_audience_response_common__NULL = 0, pinterest_rest_api_shared_audience_response_common__UNKNOWN, pinterest_rest_api_shared_audience_response_common__OWNER, pinterest_rest_api_shared_audience_response_common__ADMIN, pinterest_rest_api_shared_audience_response_common__ANALYST, pinterest_rest_api_shared_audience_response_common__SOS_READER, pinterest_rest_api_shared_audience_response_common__FINANCE_MANAGER, pinterest_rest_api_shared_audience_response_common__AUDIENCE_MANAGER, pinterest_rest_api_shared_audience_response_common__CAMPAIGN_MANAGER, pinterest_rest_api_shared_audience_response_common__CATALOGS_MANAGER, pinterest_rest_api_shared_audience_response_common__RESTRICTED_OWNER, pinterest_rest_api_shared_audience_response_common__PROFILE_MANAGER, pinterest_rest_api_shared_audience_response_common__PROFILE_PUBLISHER, pinterest_rest_api_shared_audience_response_common__RESOURCE_PINNER_LIST_OWNER, pinterest_rest_api_shared_audience_response_common__RESOURCE_PINNER_LIST_READER, pinterest_rest_api_shared_audience_response_common__BIZ_PINNER_LIST_SHARER, pinterest_rest_api_shared_audience_response_common__RESOURCE_CONVERSION_TAGS_READER } pinterest_rest_api_shared_audience_response_common__e;
+
+char* shared_audience_response_common_permissions_ToString(pinterest_rest_api_shared_audience_response_common__e permissions);
+
+pinterest_rest_api_shared_audience_response_common__e shared_audience_response_common_permissions_FromString(char* permissions);
+
+
+
+typedef struct shared_audience_response_common_t {
+    char *audience_id; // string
+    list_t *permissions; //nonprimitive container
+
+} shared_audience_response_common_t;
+
+shared_audience_response_common_t *shared_audience_response_common_create(
+    char *audience_id,
+    list_t *permissions
+);
+
+void shared_audience_response_common_free(shared_audience_response_common_t *shared_audience_response_common);
+
+shared_audience_response_common_t *shared_audience_response_common_parseFromJSON(cJSON *shared_audience_response_commonJSON);
+
+cJSON *shared_audience_response_common_convertToJSON(shared_audience_response_common_t *shared_audience_response_common);
+
+#endif /* _shared_audience_response_common_H_ */
+

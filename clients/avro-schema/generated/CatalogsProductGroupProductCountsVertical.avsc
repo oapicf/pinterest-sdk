@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Product counts for a CatalogsProductGroup",
+  "name": "CatalogsProductGroupProductCountsVertical",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "in_stock",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "out_of_stock",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "preorder",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "total",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "videos",
+      "type": "double",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,325 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="deleteBusinessMembership"></a>deleteBusinessMembership</h2>
+  <hr>
+  <p></p>
+  <p>Terminate memberships between the specified members and your business.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/businesses/{business_id}/members</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DeletedMembersResponse"><a href="">DeletedMembersResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Business id</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">MembersToDeleteBody</span>
+      <span class="param-type">MembersToDeleteBody(MembersToDeleteBody)</span>
+      
+      <p class="param-description">List of members with role to delete.</p>
+      </li>
+  </ul>
+  <h2><a name="deleteBusinessPartners"></a>deleteBusinessPartners</h2>
+  <hr>
+  <p></p>
+  <p>Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/businesses/{business_id}/partners</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>DELETE</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="DeletePartnersResponse"><a href="">DeletePartnersResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of the requesting business.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">DeletePartnersRequest</span>
+      <span class="param-type">DeletePartnersRequest(DeletePartnersRequest)</span>
+      
+      <p class="param-description">An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. </p>
+      </li>
+  </ul>
+  <h2><a name="get/businessEmployers"></a>get/businessEmployers</h2>
+  <hr>
+  <p></p>
+  <p>Get all of the viewing user&#39;s business employers.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/businesses/employers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="get_business_employers_200_response"><a href="">get_business_employers_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+  </ul>
+  <h2><a name="get/businessMembers"></a>get/businessMembers</h2>
+  <hr>
+  <p></p>
+  <p>Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/businesses/{business_id}/members</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="get_business_members_200_response"><a href="">get_business_members_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of the requesting business.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">assets_summary</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description">Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">business_roles</span>
+      <span class="param-type">List(MemberBusinessRole)</span>
+      
+      <p class="param-description">A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">member_ids</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">A list of business members ids separated by comma.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">start_index</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+  </ul>
+  <h2><a name="get/businessPartners"></a>get/businessPartners</h2>
+  <hr>
+  <p></p>
+  <p>Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner&#39;s business assets the partner has granted you   access to.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/businesses/{business_id}/partners</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="get_business_partners_200_response"><a href="">get_business_partners_200_response</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of the requesting business.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">assets_summary</span>
+      <span class="param-type">Boolean</span>
+      
+      <p class="param-description">Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">partner_type</span>
+      <span class="param-type">PartnerType</span>
+      
+      <p class="param-description">Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">partner_ids</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">start_index</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">page_size</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">bookmark</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Cursor used to fetch the next page of items</p>
+      </li>
+  </ul>
+  <h2><a name="update/businessMemberships"></a>update/businessMemberships</h2>
+  <hr>
+  <p></p>
+  <p>Update a member&#39;s business role within the business.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/businesses/{business_id}/members</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PATCH</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="UpdateMemberResultsResponseArray"><a href="">UpdateMemberResultsResponseArray</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">business_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Business id</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">UpdateMemberBusinessRoleBody</span>
+      <span class="param-type">List(UpdateMemberBusinessRoleBody)</span>
+      
+      <p class="param-description">List of objects with the member id and the business_role.</p>
+      </li>
+  </ul>
+</div>

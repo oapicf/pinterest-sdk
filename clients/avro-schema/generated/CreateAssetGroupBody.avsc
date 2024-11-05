@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreateAssetGroupBody",
+  "fields": [
+    {
+      "name": "asset_group_name",
+      "type": "string",
+      "doc": "Asset Group name"
+    },
+    {
+      "name": "asset_group_description",
+      "type": "string",
+      "doc": "Asset group description"
+    },
+    {
+      "name": "asset_group_types",
+      "type": {
+        "type": "array",
+        "items": "model.AssetGroupType"
+      },
+      "doc": "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group."
+    }
+  ]
+
+}

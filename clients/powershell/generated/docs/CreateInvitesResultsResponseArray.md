@@ -1,0 +1,21 @@
+# CreateInvitesResultsResponseArray
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Items** | [**CreateInvitesResultsResponseArrayItemsInner[]**](CreateInvitesResultsResponseArrayItemsInner.md) | List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned. | [optional] 
+
+## Examples
+
+- Prepare the resource
+```powershell
+$CreateInvitesResultsResponseArray = Initialize-PSOpenAPIToolsCreateInvitesResultsResponseArray  -Items null
+```
+
+- Convert the resource to JSON
+```powershell
+$CreateInvitesResultsResponseArray | ConvertTo-JSON
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

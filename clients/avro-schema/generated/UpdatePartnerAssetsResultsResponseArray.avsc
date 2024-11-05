@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdatePartnerAssetsResultsResponseArray",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.UpdatePartnerAssetsResult"
+      }],
+      "doc": "List of assigned/updated partner asset access.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsCreativeAssetsProduct",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsProduct_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "metadata",
+      "type": "model.CatalogsCreativeAssetsProductMetadata",
+      "doc": ""
+    },
+    {
+      "name": "pin",
+      "type": "model.Pin",
+      "doc": ""
+    }
+  ]
+
+}

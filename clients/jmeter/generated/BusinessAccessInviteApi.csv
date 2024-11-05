@@ -1,0 +1,2 @@
+testCase,httpStatusCode,businessId,createAssetAccessRequestBody,businessId,cancelInvitesBody,businessId,createAssetInvitesRequest,businessId,createMembershipOrPartnershipInvitesBody,businessId,isMember,inviteStatus,inviteType,bookmark,pageSize,authRespondInvitesBody
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

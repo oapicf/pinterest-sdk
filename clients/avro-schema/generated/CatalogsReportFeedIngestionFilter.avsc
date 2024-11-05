@@ -1,0 +1,31 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsReportFeedIngestionFilter",
+  "fields": [
+    {
+      "name": "report_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsReportFeedIngestionFilter_reportUnderscoretype",
+        "symbols": [
+          "FEED_INGESTION_ISSUES"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": "ID of the feed entity."
+    },
+    {
+      "name": "processing_result_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.",
+      "default": null
+    }
+  ]
+
+}

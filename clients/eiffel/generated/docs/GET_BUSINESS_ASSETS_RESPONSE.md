@@ -1,0 +1,12 @@
+# GET_BUSINESS_ASSETS_RESPONSE
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**asset_id** | [**STRING_32**](STRING_32.md) | Unique identifier of a business asset. | [optional] [default to null]
+**asset_type** | [**STRING_32**](STRING_32.md) | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] [default to null]
+**asset_group_info** | [**ASSET_GROUP_BINDING**](AssetGroupBinding.md) |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

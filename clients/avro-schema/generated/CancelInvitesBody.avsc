@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request body used to cancel invites",
+  "name": "CancelInvitesBody",
+  "fields": [
+    {
+      "name": "invite_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "List of invite/request ids to be cancelled"
+    }
+  ]
+
+}

@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "InviteAssetsSummaryAdAccountsInner",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a business ad account.",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Permission levels member or partner has on an asset.",
+      "default": null
+    }
+  ]
+
+}

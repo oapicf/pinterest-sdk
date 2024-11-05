@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BusinessMembersAssetAccessDeleteRequestAccessesInner",
+  "fields": [
+    {
+      "name": "asset_id",
+      "type": "string",
+      "doc": "Id of the asset on which to remove member permissions."
+    },
+    {
+      "name": "member_id",
+      "type": "string",
+      "doc": "Unique identifier of the member on which to perform the asset permission removal"
+    }
+  ]
+
+}

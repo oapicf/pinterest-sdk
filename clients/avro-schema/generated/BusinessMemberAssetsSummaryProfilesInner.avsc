@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BusinessMemberAssetsSummaryProfilesInner",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a business profile.",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Permission levels member or partner has on an asset.",
+      "default": null
+    }
+  ]
+
+}

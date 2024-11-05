@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SharedAudienceAccount",
+  "fields": [
+    {
+      "name": "account_id",
+      "type": "string",
+      "doc": "Account ID (ad account or business ID)."
+    },
+    {
+      "name": "account_name",
+      "type": "string",
+      "doc": "Account name."
+    },
+    {
+      "name": "account_type",
+      "type": {
+        "type": "enum",
+        "name": "SharedAudienceAccount_accountUnderscoretype",
+        "symbols": [
+          "AD_ACCOUNT",
+          "BUSINESS_ACCOUNT"
+        ]
+      },
+      "doc": "account type"
+    },
+    {
+      "name": "shared_on_timestamp",
+      "type": "int",
+      "doc": "Epoch timestamp in seconds for the shared audience event"
+    }
+  ]
+
+}

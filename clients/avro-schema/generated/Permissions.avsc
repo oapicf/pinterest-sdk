@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "Permissions",
+  "symbols": [
+    "ADMIN",
+    "ANALYST",
+    "FINANCE_MANAGER",
+    "AUDIENCE_MANAGER",
+    "CAMPAIGN_MANAGER",
+    "CATALOGS_MANAGER",
+    "PROFILE_PUBLISHER"
+  ]
+}

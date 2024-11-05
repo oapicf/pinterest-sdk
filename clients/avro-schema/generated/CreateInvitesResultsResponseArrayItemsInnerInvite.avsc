@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.",
+  "name": "CreateInvitesResultsResponseArrayItemsInnerInvite",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the invite/request.",
+      "default": null
+    },
+    {
+      "name": "user",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "Metadata for the member/partner that was sent the invite/request.",
+      "default": null
+    }
+  ]
+
+}

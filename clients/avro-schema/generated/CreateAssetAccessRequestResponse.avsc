@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreateAssetAccessRequestResponse",
+  "fields": [
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CreateAssetAccessRequestErrorMessageInner"
+      }],
+      "doc": "A list of errors associated with the asset access requests. Will be returned if there is an error.",
+      "default": null
+    },
+    {
+      "name": "invites",
+      "type": ["null", {
+        "type": "map",
+        "items": "string"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

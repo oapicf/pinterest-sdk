@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdatePartnerAssetAccessBodyAccessesInner",
+  "fields": [
+    {
+      "name": "partner_id",
+      "type": "string",
+      "doc": "Unique identifier of a business partner to update asset access to."
+    },
+    {
+      "name": "asset_id",
+      "type": "string",
+      "doc": "Unique identifier of the business asset."
+    },
+    {
+      "name": "permissions",
+      "type": {
+        "type": "array",
+        "items": "model.Permissions"
+      },
+      "doc": "A non-empty array of permissions to assign to the partner."
+    }
+  ]
+
+}

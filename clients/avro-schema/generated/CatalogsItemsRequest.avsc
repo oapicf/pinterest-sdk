@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object of catalogs items",
+  "name": "CatalogsItemsRequest",
+  "fields": [
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.CatalogsItemsRequestLanguage",
+      "doc": ""
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsItemsPostFilters",
+      "doc": ""
+    }
+  ]
+
+}

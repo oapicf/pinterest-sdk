@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeletePartnersRequest",
+  "fields": [
+    {
+      "name": "partner_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    },
+    {
+      "name": "partner_type",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

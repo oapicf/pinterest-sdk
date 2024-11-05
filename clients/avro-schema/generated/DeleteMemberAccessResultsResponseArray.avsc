@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeleteMemberAccessResultsResponseArray",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.DeleteMemberAccessResult"
+      }],
+      "doc": "List of member asset permissions that were deleted.",
+      "default": null
+    }
+  ]
+
+}

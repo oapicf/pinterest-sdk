@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request body for updating asset roles for existing invites.",
+  "name": "CreateAssetInvitesRequest",
+  "fields": [
+    {
+      "name": "invites",
+      "type": {
+        "type": "array",
+        "items": "model.CreateAssetInvitesRequestItem"
+      },
+      "doc": ""
+    }
+  ]
+
+}

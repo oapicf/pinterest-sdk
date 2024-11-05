@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SharedAudienceCommon",
+  "fields": [
+    {
+      "name": "audience_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of an audience",
+      "default": null
+    },
+    {
+      "name": "operation_type",
+      "type": ["null", "model.OperationType"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

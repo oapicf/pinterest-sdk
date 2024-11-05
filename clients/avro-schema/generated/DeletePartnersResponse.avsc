@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object with a list of partners that were deleted.",
+  "name": "DeletePartnersResponse",
+  "fields": [
+    {
+      "name": "deleted_partners",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of partners whose business partnership have been terminated.",
+      "default": null
+    }
+  ]
+
+}

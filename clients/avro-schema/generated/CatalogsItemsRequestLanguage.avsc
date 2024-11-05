@@ -1,0 +1,9 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "We recommend using the CatalogsLocale values.",
+  "name": "CatalogsItemsRequestLanguage",
+  "fields": [
+  ]
+
+}

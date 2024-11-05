@@ -1,0 +1,44 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object to update catalogs creative assets items",
+  "name": "CatalogsCreativeAssetsBatchRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsBatchRequest_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.CatalogsItemsRequestLanguage",
+      "doc": ""
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsCreativeAssetsBatchItem"
+      },
+      "doc": "Array with creative assets item operations"
+    },
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsHotelProduct",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelProduct_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "metadata",
+      "type": "model.CatalogsHotelProductMetadata",
+      "doc": ""
+    },
+    {
+      "name": "pin",
+      "type": "model.Pin",
+      "doc": ""
+    }
+  ]
+
+}

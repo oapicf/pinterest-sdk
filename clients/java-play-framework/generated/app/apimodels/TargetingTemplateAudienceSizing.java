@@ -1,0 +1,78 @@
+package apimodels;
+
+import apimodels.TargetingTemplateAudienceSizingReachEstimate;
+import com.fasterxml.jackson.annotation.*;
+import java.util.Set;
+import javax.validation.*;
+import java.util.Objects;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+/**
+ * Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+ */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
+public class TargetingTemplateAudienceSizing   {
+  @JsonProperty("reach_estimate")
+  @Valid
+
+  private TargetingTemplateAudienceSizingReachEstimate reachEstimate;
+
+  public TargetingTemplateAudienceSizing reachEstimate(TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
+    this.reachEstimate = reachEstimate;
+    return this;
+  }
+
+   /**
+   * Get reachEstimate
+   * @return reachEstimate
+  **/
+  public TargetingTemplateAudienceSizingReachEstimate getReachEstimate() {
+    return reachEstimate;
+  }
+
+  public void setReachEstimate(TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
+    this.reachEstimate = reachEstimate;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TargetingTemplateAudienceSizing targetingTemplateAudienceSizing = (TargetingTemplateAudienceSizing) o;
+    return Objects.equals(reachEstimate, targetingTemplateAudienceSizing.reachEstimate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(reachEstimate);
+  }
+
+  @SuppressWarnings("StringBufferReplaceableByString")
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class TargetingTemplateAudienceSizing {\n");
+    
+    sb.append("    reachEstimate: ").append(toIndentedString(reachEstimate)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

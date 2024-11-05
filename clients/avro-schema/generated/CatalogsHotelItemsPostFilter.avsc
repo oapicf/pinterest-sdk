@@ -1,0 +1,34 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsHotelItemsPostFilter",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelItemsPostFilter_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "hotel_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog",
+      "default": null
+    }
+  ]
+
+}

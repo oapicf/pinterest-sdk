@@ -1,0 +1,9 @@
+# # CreateAssetGroupResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**asset_group** | [**\OpenAPI\Client\Model\AssetGroupBinding**](AssetGroupBinding.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

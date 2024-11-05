@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsFeedIngestion",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "created_at",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "status",
+      "type": "model.CatalogsFeedProcessingStatus",
+      "doc": ""
+    }
+  ]
+
+}

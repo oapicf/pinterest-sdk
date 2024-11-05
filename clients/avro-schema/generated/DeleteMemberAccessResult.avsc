@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The terminated asset access.",
+  "name": "DeleteMemberAccessResult",
+  "fields": [
+    {
+      "name": "asset_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the business asset.",
+      "default": null
+    },
+    {
+      "name": "member_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the business member.",
+      "default": null
+    }
+  ]
+
+}

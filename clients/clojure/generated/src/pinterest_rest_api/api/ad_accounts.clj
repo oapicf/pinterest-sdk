@@ -1,0 +1,1092 @@
+(ns pinterest-rest-api.api.ad-accounts
+  (:require [pinterest-rest-api.core :refer [call-api check-required-params with-collection-format *api-context*]]
+            [clojure.spec.alpha :as s]
+            [spec-tools.core :as st]
+            [orchestra.core :refer [defn-spec]]
+            [pinterest-rest-api.specs.exception :refer :all]
+            [pinterest-rest-api.specs.keyword-metrics :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-response :refer :all]
+            [pinterest-rest-api.specs.ad-group-create-request :refer :all]
+            [pinterest-rest-api.specs.price-filter :refer :all]
+            [pinterest-rest-api.specs.order-line-error :refer :all]
+            [pinterest-rest-api.specs.creative-assets-visibility-type :refer :all]
+            [pinterest-rest-api.specs.item-delete-discontinued-batch-record :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-guest-ratings :refer :all]
+            [pinterest-rest-api.specs.catalogs-report-parameters :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-items-post-filter :refer :all]
+            [pinterest-rest-api.specs.create-mmm-report-response :refer :all]
+            [pinterest-rest-api.specs.integration-logs-success-response :refer :all]
+            [pinterest-rest-api.specs.create-mmm-report-response-data :refer :all]
+            [pinterest-rest-api.specs.respond-to-invites-response-array-items-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-product-group-product-counts :refer :all]
+            [pinterest-rest-api.specs.batch-operation-status :refer :all]
+            [pinterest-rest-api.specs.creative-assets-processing-record :refer :all]
+            [pinterest-rest-api.specs.catalogs-create-report-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group-product-counts :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-response-client-credentials :refer :all]
+            [pinterest-rest-api.specs.keywords-request :refer :all]
+            [pinterest-rest-api.specs.bulk-upsert-status :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group-filters-any-of :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-batch-request-items-inner :refer :all]
+            [pinterest-rest-api.specs.custom-label2-filter :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-response-everlasting-refresh :refer :all]
+            [pinterest-rest-api.specs.member-business-role :refer :all]
+            [pinterest-rest-api.specs.pacing-delivery-type :refer :all]
+            [pinterest-rest-api.specs.audience :refer :all]
+            [pinterest-rest-api.specs.order-lines :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-status :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-items-filter :refer :all]
+            [pinterest-rest-api.specs.integration-record :refer :all]
+            [pinterest-rest-api.specs.invite-assets-summary :refer :all]
+            [pinterest-rest-api.specs.audience-insight-category-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-items-batch :refer :all]
+            [pinterest-rest-api.specs.catalogs-type :refer :all]
+            [pinterest-rest-api.specs.quiz-pin-option :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-address :refer :all]
+            [pinterest-rest-api.specs.product-group-promotion-response-item :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-item-error-response :refer :all]
+            [pinterest-rest-api.specs.search-user-boards-get-200-response :refer :all]
+            [pinterest-rest-api.specs.respond-to-invites-response-array :refer :all]
+            [pinterest-rest-api.specs.operation-type :refer :all]
+            [pinterest-rest-api.specs.targeting-advertiser-country :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-create-batch-request :refer :all]
+            [pinterest-rest-api.specs.media-upload-type :refer :all]
+            [pinterest-rest-api.specs.audience-rule :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-delete-discontinued-batch-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-vertical-product-group-update-request :refer :all]
+            [pinterest-rest-api.specs.ad-account-create-subscription-response :refer :all]
+            [pinterest-rest-api.specs.campaign-update-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-batch :refer :all]
+            [pinterest-rest-api.specs.role :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-item :refer :all]
+            [pinterest-rest-api.specs.item-group-id-filter :refer :all]
+            [pinterest-rest-api.specs.product-type1-filter :refer :all]
+            [pinterest-rest-api.specs.integration-metadata :refer :all]
+            [pinterest-rest-api.specs.update-member-result :refer :all]
+            [pinterest-rest-api.specs.objective-type :refer :all]
+            [pinterest-rest-api.specs.members-to-delete-body-members-inner :refer :all]
+            [pinterest-rest-api.specs.asset-id-permissions :refer :all]
+            [pinterest-rest-api.specs.asset-group-type :refer :all]
+            [pinterest-rest-api.specs.ssio-create-insertion-order-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-item-validation-issues :refer :all]
+            [pinterest-rest-api.specs.bulk-upsert-request-update :refer :all]
+            [pinterest-rest-api.specs.update-member-assets-results-response-array :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filter-keys :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-update-request :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-image-url :refer :all]
+            [pinterest-rest-api.specs.items-issues-list-200-response :refer :all]
+            [pinterest-rest-api.specs.product-group-promotion-response :refer :all]
+            [pinterest-rest-api.specs.ad-array-response-element :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-product-metadata :refer :all]
+            [pinterest-rest-api.specs.customer-list :refer :all]
+            [pinterest-rest-api.specs.integration-log-client-request :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-processed-items :refer :all]
+            [pinterest-rest-api.specs.entity-status :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items :refer :all]
+            [pinterest-rest-api.specs.campaign-create-response-data :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-item-error-response :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-response-refresh :refer :all]
+            [pinterest-rest-api.specs.campaign-response :refer :all]
+            [pinterest-rest-api.specs.media-upload :refer :all]
+            [pinterest-rest-api.specs.ad-group-array-response :refer :all]
+            [pinterest-rest-api.specs.item-attributes :refer :all]
+            [pinterest-rest-api.specs.detailed-error :refer :all]
+            [pinterest-rest-api.specs.base-invite-data-response :refer :all]
+            [pinterest-rest-api.specs.ad-account-create-subscription-request-partner-metadata :refer :all]
+            [pinterest-rest-api.specs.media-upload-status :refer :all]
+            [pinterest-rest-api.specs.catalogs-updatable-hotel-attributes :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-feed :refer :all]
+            [pinterest-rest-api.specs.top-pins-analytics-response-pins-inner :refer :all]
+            [pinterest-rest-api.specs.ad-account :refer :all]
+            [pinterest-rest-api.specs.targeting-spec-app-type :refer :all]
+            [pinterest-rest-api.specs.lead-forms-list-200-response :refer :all]
+            [pinterest-rest-api.specs.conversion-events-data-inner-custom-data :refer :all]
+            [pinterest-rest-api.specs.board-update :refer :all]
+            [pinterest-rest-api.specs.catalogs-vertical-batch-request :refer :all]
+            [pinterest-rest-api.specs.keyword-update-body :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-response-code :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-batch-item :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-gender-criteria :refer :all]
+            [pinterest-rest-api.specs.create-asset-access-request-response :refer :all]
+            [pinterest-rest-api.specs.audience-type :refer :all]
+            [pinterest-rest-api.specs.pin-media-with-video :refer :all]
+            [pinterest-rest-api.specs.custom-column-id :refer :all]
+            [pinterest-rest-api.specs.pin-promotion-summary-status :refer :all]
+            [pinterest-rest-api.specs.metrics-response :refer :all]
+            [pinterest-rest-api.specs.get-audiences-order-by :refer :all]
+            [pinterest-rest-api.specs.update-member-asset-access-body-accesses-inner :refer :all]
+            [pinterest-rest-api.specs.language :refer :all]
+            [pinterest-rest-api.specs.ad-group-audience-sizing-request :refer :all]
+            [pinterest-rest-api.specs.lead-form-test-request :refer :all]
+            [pinterest-rest-api.specs.gender-filter :refer :all]
+            [pinterest-rest-api.specs.invite-status :refer :all]
+            [pinterest-rest-api.specs.audience-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-items-batch :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-list-products-by-catalog-based-filter-request :refer :all]
+            [pinterest-rest-api.specs.create-asset-access-request-error-message-inner :refer :all]
+            [pinterest-rest-api.specs.update-partner-results-response-array :refer :all]
+            [pinterest-rest-api.specs.ad-preview-url-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-ingestion-warnings :refer :all]
+            [pinterest-rest-api.specs.boards-user-follows-list-200-response :refer :all]
+            [pinterest-rest-api.specs.audience-category :refer :all]
+            [pinterest-rest-api.specs.item-create-batch-record :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-criteria :refer :all]
+            [pinterest-rest-api.specs.placement-multipliers :refer :all]
+            [pinterest-rest-api.specs.integration-log :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-credentials :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-ingestion :refer :all]
+            [pinterest-rest-api.specs.ad-update-request :refer :all]
+            [pinterest-rest-api.specs.template-response-date-range-dynamic-date-range :refer :all]
+            [pinterest-rest-api.specs.permissions-with-owner :refer :all]
+            [pinterest-rest-api.specs.update-partner-results-response-array-items-inner :refer :all]
+            [pinterest-rest-api.specs.billing-profiles-response :refer :all]
+            [pinterest-rest-api.specs.item-attributes-request :refer :all]
+            [pinterest-rest-api.specs.business-role :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-processing-status :refer :all]
+            [pinterest-rest-api.specs.conversion-api-response-events-inner :refer :all]
+            [pinterest-rest-api.specs.audience-account-type :refer :all]
+            [pinterest-rest-api.specs.data-status :refer :all]
+            [pinterest-rest-api.specs.conversion-tag-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-update-batch-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-string-list-criteria :refer :all]
+            [pinterest-rest-api.specs.board-section :refer :all]
+            [pinterest-rest-api.specs.lead-form-update-request :refer :all]
+            [pinterest-rest-api.specs.create-asset-invites-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group-create-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-delete-creative-assets-item :refer :all]
+            [pinterest-rest-api.specs.delete-member-access-results-response-array :refer :all]
+            [pinterest-rest-api.specs.business-access-error :refer :all]
+            [pinterest-rest-api.specs.item-response :refer :all]
+            [pinterest-rest-api.specs.non-nullable-catalogs-currency :refer :all]
+            [pinterest-rest-api.specs.business-member-assets-summary :refer :all]
+            [pinterest-rest-api.specs.nullable-currency :refer :all]
+            [pinterest-rest-api.specs.user-websites-get-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-format :refer :all]
+            [pinterest-rest-api.specs.update-partner-assets-results-response-array :refer :all]
+            [pinterest-rest-api.specs.google-product-category1-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filters :refer :all]
+            [pinterest-rest-api.specs.product-type0-filter :refer :all]
+            [pinterest-rest-api.specs.ad-group-audience-sizing-response :refer :all]
+            [pinterest-rest-api.specs.invite-assets-summary-profiles-inner :refer :all]
+            [pinterest-rest-api.specs.pin-analytics-metrics-response-daily-metrics-inner :refer :all]
+            [pinterest-rest-api.specs.conversion-tag-configs :refer :all]
+            [pinterest-rest-api.specs.user-website-summary :refer :all]
+            [pinterest-rest-api.specs.targeting-template-audience-sizing-reach-estimate :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-post-filters :refer :all]
+            [pinterest-rest-api.specs.google-product-category4-filter :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-response-inner :refer :all]
+            [pinterest-rest-api.specs.business-member-assets-summary-ad-accounts-inner :refer :all]
+            [pinterest-rest-api.specs.update-member-business-role-body :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-attributes-all-of-main-image :refer :all]
+            [pinterest-rest-api.specs.update-invites-results-response-array :refer :all]
+            [pinterest-rest-api.specs.template-response :refer :all]
+            [pinterest-rest-api.specs.user-list-type :refer :all]
+            [pinterest-rest-api.specs.user-business-role-binding :refer :all]
+            [pinterest-rest-api.specs.invite-type :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-validation-warnings :refer :all]
+            [pinterest-rest-api.specs.delete-member-access-result :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-report-parameters-report :refer :all]
+            [pinterest-rest-api.specs.catalogs-vertical-product-group :refer :all]
+            [pinterest-rest-api.specs.user-following-feed-type :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-create-async-response :refer :all]
+            [pinterest-rest-api.specs.video-metadata :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-report-parameters :refer :all]
+            [pinterest-rest-api.specs.business-role-check-mode :refer :all]
+            [pinterest-rest-api.specs.create-membership-or-partnership-invites-body :refer :all]
+            [pinterest-rest-api.specs.integration-request-patch :refer :all]
+            [pinterest-rest-api.specs.bid-floor-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-currency-criteria :refer :all]
+            [pinterest-rest-api.specs.audience-create-request-1-audience-type :refer :all]
+            [pinterest-rest-api.specs.optimization-goal-metadata-conversion-tag-v3-goal-metadata :refer :all]
+            [pinterest-rest-api.specs.conversion-event-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-product-group-create-request :refer :all]
+            [pinterest-rest-api.specs.users-for-individual-asset-response :refer :all]
+            [pinterest-rest-api.specs.items-batch-post-request :refer :all]
+            [pinterest-rest-api.specs.ad-groups-analytics-response-inner :refer :all]
+            [pinterest-rest-api.specs.condition-filter :refer :all]
+            [pinterest-rest-api.specs.update-asset-group-body-asset-groups-to-update-inner :refer :all]
+            [pinterest-rest-api.specs.min-price-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filters-request-any-of :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-filters :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-groups-update-request :refer :all]
+            [pinterest-rest-api.specs.members-to-delete-body :refer :all]
+            [pinterest-rest-api.specs.availability-filter :refer :all]
+            [pinterest-rest-api.specs.integration-logs-invalid-log-response-rejected-logs-inner :refer :all]
+            [pinterest-rest-api.specs.catalog :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-key :refer :all]
+            [pinterest-rest-api.specs.ad-account-create-request :refer :all]
+            [pinterest-rest-api.specs.item-id-filter :refer :all]
+            [pinterest-rest-api.specs.shared-audience-response :refer :all]
+            [pinterest-rest-api.specs.media-upload-request :refer :all]
+            [pinterest-rest-api.specs.user-account-followed-interests-200-response :refer :all]
+            [pinterest-rest-api.specs.grid-click-type :refer :all]
+            [pinterest-rest-api.specs.business-asset-partners-get-200-response :refer :all]
+            [pinterest-rest-api.specs.media-upload-details :refer :all]
+            [pinterest-rest-api.specs.product-group-promotion-create-request-element :refer :all]
+            [pinterest-rest-api.specs.ad-group-common :refer :all]
+            [pinterest-rest-api.specs.get-business-asset-type-response :refer :all]
+            [pinterest-rest-api.specs.update-asset-group-response :refer :all]
+            [pinterest-rest-api.specs.campaign-summary-status :refer :all]
+            [pinterest-rest-api.specs.custom-label3-filter :refer :all]
+            [pinterest-rest-api.specs.data-output-format :refer :all]
+            [pinterest-rest-api.specs.audiences-list-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product :refer :all]
+            [pinterest-rest-api.specs.image-metadata-images :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-targeting-type :refer :all]
+            [pinterest-rest-api.specs.custom-label1-filter :refer :all]
+            [pinterest-rest-api.specs.audience-update-operation-type :refer :all]
+            [pinterest-rest-api.specs.image-metadata :refer :all]
+            [pinterest-rest-api.specs.targeting-template-get-response-data :refer :all]
+            [pinterest-rest-api.specs.lead-form-common-policy-links-inner :refer :all]
+            [pinterest-rest-api.specs.analytics-metrics-response :refer :all]
+            [pinterest-rest-api.specs.update-member-assets-results-response-array-items-inner :refer :all]
+            [pinterest-rest-api.specs.pin-media-metadata :refer :all]
+            [pinterest-rest-api.specs.ads-credits-discounts-get-200-response :refer :all]
+            [pinterest-rest-api.specs.bid-floor :refer :all]
+            [pinterest-rest-api.specs.order-line-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filters-any-of :refer :all]
+            [pinterest-rest-api.specs.nullable-catalogs-item-field-type :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group-create-request :refer :all]
+            [pinterest-rest-api.specs.optimization-goal-metadata-frequency-goal-metadata :refer :all]
+            [pinterest-rest-api.specs.asset-type-response :refer :all]
+            [pinterest-rest-api.specs.audience-insight-category-array-response :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-image-base64 :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group-filter-keys :refer :all]
+            [pinterest-rest-api.specs.integration-log-client-error :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-vertical-feeds-update-request :refer :all]
+            [pinterest-rest-api.specs.conversion-tag-list-response :refer :all]
+            [pinterest-rest-api.specs.ssio-account-pmp-name :refer :all]
+            [pinterest-rest-api.specs.targeting-template-list-200-response :refer :all]
+            [pinterest-rest-api.specs.granularity :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filters-all-of :refer :all]
+            [pinterest-rest-api.specs.conversion-events-data-inner-custom-data-contents-inner :refer :all]
+            [pinterest-rest-api.specs.campaign-is-flexible-daily-budgets :refer :all]
+            [pinterest-rest-api.specs.hotel-id-filter :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-video-id :refer :all]
+            [pinterest-rest-api.specs.order-line :refer :all]
+            [pinterest-rest-api.specs.pin-media-source :refer :all]
+            [pinterest-rest-api.specs.lead-form-question-type :refer :all]
+            [pinterest-rest-api.specs.reports-stats-200-response :refer :all]
+            [pinterest-rest-api.specs.ad-accounts-audiences-shared-accounts-list-200-response :refer :all]
+            [pinterest-rest-api.specs.bulk-upsert-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-report-distribution-issue-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-create-creative-assets-item :refer :all]
+            [pinterest-rest-api.specs.ssio-insertion-order-common :refer :all]
+            [pinterest-rest-api.specs.conversion-events-user-data :refer :all]
+            [pinterest-rest-api.specs.feeds-create-request :refer :all]
+            [pinterest-rest-api.specs.delete-invites-results-response-array :refer :all]
+            [pinterest-rest-api.specs.update-mask-field-type :refer :all]
+            [pinterest-rest-api.specs.bulk-reporting-job-status :refer :all]
+            [pinterest-rest-api.specs.delete-partners-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-feeds-update-request :refer :all]
+            [pinterest-rest-api.specs.keywords-response :refer :all]
+            [pinterest-rest-api.specs.business-role-for-members :refer :all]
+            [pinterest-rest-api.specs.create-asset-group-body :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group-update-request :refer :all]
+            [pinterest-rest-api.specs.feeds-update-request :refer :all]
+            [pinterest-rest-api.specs.templates-list-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-feeds-create-request :refer :all]
+            [pinterest-rest-api.specs.enhanced-match-status-type :refer :all]
+            [pinterest-rest-api.specs.bulk-upsert-request :refer :all]
+            [pinterest-rest-api.specs.pins-save-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-updatable-creative-assets-attributes :refer :all]
+            [pinterest-rest-api.specs.order-line-status :refer :all]
+            [pinterest-rest-api.specs.ad-account-get-subscription-response :refer :all]
+            [pinterest-rest-api.specs.targeting-template-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed :refer :all]
+            [pinterest-rest-api.specs.customer-list-request :refer :all]
+            [pinterest-rest-api.specs.item-processing-record :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-feeds-create-request :refer :all]
+            [pinterest-rest-api.specs.pin-update :refer :all]
+            [pinterest-rest-api.specs.catalogs-vertical-feeds-create-request :refer :all]
+            [pinterest-rest-api.specs.business-assets-get-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-upsert-retail-item :refer :all]
+            [pinterest-rest-api.specs.quiz-pin-data :refer :all]
+            [pinterest-rest-api.specs.business-members-asset-access-delete-request-accesses-inner :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-get-async-response :refer :all]
+            [pinterest-rest-api.specs.audience-definition :refer :all]
+            [pinterest-rest-api.specs.update-partner-asset-access-body :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-list-products-by-catalog-based-filter-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-batch-item :refer :all]
+            [pinterest-rest-api.specs.integration-logs-request :refer :all]
+            [pinterest-rest-api.specs.top-pins-analytics-response :refer :all]
+            [pinterest-rest-api.specs.pins-analytics-metric-types-parameter-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-pricing-currency-criteria :refer :all]
+            [pinterest-rest-api.specs.conversion-tag-type :refer :all]
+            [pinterest-rest-api.specs.template-response-date-range :refer :all]
+            [pinterest-rest-api.specs.campaign-create-response-item :refer :all]
+            [pinterest-rest-api.specs.business-shared-audience :refer :all]
+            [pinterest-rest-api.specs.business-member-assets-get-200-response :refer :all]
+            [pinterest-rest-api.specs.mmm-reporting-column :refer :all]
+            [pinterest-rest-api.specs.leads-export-status :refer :all]
+            [pinterest-rest-api.specs.audience-sharing-type :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group-filter-keys :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items-submit-upsert-record :refer :all]
+            [pinterest-rest-api.specs.pin :refer :all]
+            [pinterest-rest-api.specs.keyword-metrics-response :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-request-refresh :refer :all]
+            [pinterest-rest-api.specs.conversion-report-time-type :refer :all]
+            [pinterest-rest-api.specs.targeting-template-response-data :refer :all]
+            [pinterest-rest-api.specs.update-member-results-response-array :refer :all]
+            [pinterest-rest-api.specs.targeting-template-create :refer :all]
+            [pinterest-rest-api.specs.catalogs-upsert-hotel-item :refer :all]
+            [pinterest-rest-api.specs.user-summary :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-request-language :refer :all]
+            [pinterest-rest-api.specs.product-group-reference-filter :refer :all]
+            [pinterest-rest-api.specs.bid-floor-spec :refer :all]
+            [pinterest-rest-api.specs.keyword-error :refer :all]
+            [pinterest-rest-api.specs.reporting-column-async :refer :all]
+            [pinterest-rest-api.specs.trending-keywords-response-trends-inner-time-series :refer :all]
+            [pinterest-rest-api.specs.catalogs-list-products-by-feed-based-filter :refer :all]
+            [pinterest-rest-api.specs.ssio-create-insertion-order-request :refer :all]
+            [pinterest-rest-api.specs.product-group-analytics-response-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-validation-details :refer :all]
+            [pinterest-rest-api.specs.catalogs-feeds-create-request-default-locale :refer :all]
+            [pinterest-rest-api.specs.board-owner :refer :all]
+            [pinterest-rest-api.specs.delete-asset-group-body :refer :all]
+            [pinterest-rest-api.specs.campaign-is-campaign-budget-optimization :refer :all]
+            [pinterest-rest-api.specs.catalogs-items :refer :all]
+            [pinterest-rest-api.specs.leads-export-response-data :refer :all]
+            [pinterest-rest-api.specs.item-upsert-batch-record :refer :all]
+            [pinterest-rest-api.specs.leads-export-create-response :refer :all]
+            [pinterest-rest-api.specs.delete-asset-group-response :refer :all]
+            [pinterest-rest-api.specs.feed-processing-results-list-200-response :refer :all]
+            [pinterest-rest-api.specs.delete-asset-group-response-exceptions-inner :refer :all]
+            [pinterest-rest-api.specs.get-business-employers-200-response :refer :all]
+            [pinterest-rest-api.specs.lead-form-common :refer :all]
+            [pinterest-rest-api.specs.conversion-events :refer :all]
+            [pinterest-rest-api.specs.ad-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-item-validation-warnings :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-feeds-update-request :refer :all]
+            [pinterest-rest-api.specs.ssio-insertion-orders-status-get-by-ad-account-200-response :refer :all]
+            [pinterest-rest-api.specs.creative-type :refer :all]
+            [pinterest-rest-api.specs.product-type4-filter :refer :all]
+            [pinterest-rest-api.specs.audience-definition-response :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-images-url :refer :all]
+            [pinterest-rest-api.specs.google-product-category0-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-item-validation-errors :refer :all]
+            [pinterest-rest-api.specs.google-product-category5-filter :refer :all]
+            [pinterest-rest-api.specs.delete-invites-results-response-array-items-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-feeds-update-request :refer :all]
+            [pinterest-rest-api.specs.invite-assets-summary-ad-accounts-inner :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-filter-operator :refer :all]
+            [pinterest-rest-api.specs.ad-country :refer :all]
+            [pinterest-rest-api.specs.pin-media-with-videos :refer :all]
+            [pinterest-rest-api.specs.update-invites-results-response-array-items-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-feeds-create-request :refer :all]
+            [pinterest-rest-api.specs.update-partner-assets-result :refer :all]
+            [pinterest-rest-api.specs.catalogs-report-distribution-stats :refer :all]
+            [pinterest-rest-api.specs.ads-credit-redeem-request :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-processed-item :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-batch-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-product-counts :refer :all]
+            [pinterest-rest-api.specs.catalogs-report-stats :refer :all]
+            [pinterest-rest-api.specs.ads-list-200-response :refer :all]
+            [pinterest-rest-api.specs.bulk-download-request :refer :all]
+            [pinterest-rest-api.specs.terms-of-service :refer :all]
+            [pinterest-rest-api.specs.updatable-item-attributes :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group-filters-all-of :refer :all]
+            [pinterest-rest-api.specs.non-nullable-product-availability-type :refer :all]
+            [pinterest-rest-api.specs.business-member-assets-summary-profiles-inner :refer :all]
+            [pinterest-rest-api.specs.conversion-events-user-data-any-of-2 :refer :all]
+            [pinterest-rest-api.specs.conversion-events-user-data-any-of-1 :refer :all]
+            [pinterest-rest-api.specs.item-attributes-request-all-of-image-link :refer :all]
+            [pinterest-rest-api.specs.optimization-goal-metadata :refer :all]
+            [pinterest-rest-api.specs.cancel-invites-body :refer :all]
+            [pinterest-rest-api.specs.book-closed-response :refer :all]
+            [pinterest-rest-api.specs.product-group-summary-status :refer :all]
+            [pinterest-rest-api.specs.brand-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-item-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-delete-retail-item :refer :all]
+            [pinterest-rest-api.specs.catalogs-verticals-list-products-by-catalog-based-filter-request :refer :all]
+            [pinterest-rest-api.specs.pin-media-with-image :refer :all]
+            [pinterest-rest-api.specs.match-type-response :refer :all]
+            [pinterest-rest-api.specs.delete-partner-asset-access-body :refer :all]
+            [pinterest-rest-api.specs.audience-definition-type :refer :all]
+            [pinterest-rest-api.specs.shared-audience-response-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-ingestion-info :refer :all]
+            [pinterest-rest-api.specs.delete-partner-assets-results-response-array :refer :all]
+            [pinterest-rest-api.specs.ad-accounts-country-response-data :refer :all]
+            [pinterest-rest-api.specs.media-type-filter :refer :all]
+            [pinterest-rest-api.specs.pin-analytics-metrics-response :refer :all]
+            [pinterest-rest-api.specs.audience-subcategory :refer :all]
+            [pinterest-rest-api.specs.ad-group-update-request :refer :all]
+            [pinterest-rest-api.specs.user-following-get-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-ingestion-details :refer :all]
+            [pinterest-rest-api.specs.boards-list-pins-200-response :refer :all]
+            [pinterest-rest-api.specs.custom-label4-filter :refer :all]
+            [pinterest-rest-api.specs.custom-label0-filter :refer :all]
+            [pinterest-rest-api.specs.audience-insight-type :refer :all]
+            [pinterest-rest-api.specs.shared-audience-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-item-response :refer :all]
+            [pinterest-rest-api.specs.budget-type :refer :all]
+            [pinterest-rest-api.specs.targeting-spec-shopping-retargeting :refer :all]
+            [pinterest-rest-api.specs.match-type :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-response-integration-refresh :refer :all]
+            [pinterest-rest-api.specs.ads-credit-redeem-response :refer :all]
+            [pinterest-rest-api.specs.country-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-vertical-product-group-create-request :refer :all]
+            [pinterest-rest-api.specs.ssio-account-address :refer :all]
+            [pinterest-rest-api.specs.media-upload-all-of-upload-parameters :refer :all]
+            [pinterest-rest-api.specs.base-invite-data-response-invite-data :refer :all]
+            [pinterest-rest-api.specs.create-asset-access-request-body :refer :all]
+            [pinterest-rest-api.specs.summary-pin :refer :all]
+            [pinterest-rest-api.specs.auth-respond-invites-body-invites-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group :refer :all]
+            [pinterest-rest-api.specs.catalogs-item-validation-details :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product :refer :all]
+            [pinterest-rest-api.specs.keywords-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-processing-result :refer :all]
+            [pinterest-rest-api.specs.get-mmm-report-response :refer :all]
+            [pinterest-rest-api.specs.lead-form-array-response :refer :all]
+            [pinterest-rest-api.specs.keyword-update :refer :all]
+            [pinterest-rest-api.specs.ad-pin-id :refer :all]
+            [pinterest-rest-api.specs.keywords-get-200-response :refer :all]
+            [pinterest-rest-api.specs.product-group-promotion-response-element :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-campaign-targeting-type :refer :all]
+            [pinterest-rest-api.specs.google-product-category2-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-ad-targeting-type :refer :all]
+            [pinterest-rest-api.specs.catalogs-update-creative-assets-item :refer :all]
+            [pinterest-rest-api.specs.ads-credit-discounts-response :refer :all]
+            [pinterest-rest-api.specs.item-update-batch-record :refer :all]
+            [pinterest-rest-api.specs.ad-create-request :refer :all]
+            [pinterest-rest-api.specs.linked-business :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-product-group-update-request :refer :all]
+            [pinterest-rest-api.specs.currency :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-report-parameters :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-countries-criteria :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-request-code :refer :all]
+            [pinterest-rest-api.specs.feeds-list-200-response :refer :all]
+            [pinterest-rest-api.specs.audience-demographics :refer :all]
+            [pinterest-rest-api.specs.lead-form-create-request :refer :all]
+            [pinterest-rest-api.specs.invite-response :refer :all]
+            [pinterest-rest-api.specs.campaign-common :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-items-filter :refer :all]
+            [pinterest-rest-api.specs.bulk-output-format :refer :all]
+            [pinterest-rest-api.specs.search-partner-pins-200-response :refer :all]
+            [pinterest-rest-api.specs.quiz-pin-question :refer :all]
+            [pinterest-rest-api.specs.google-product-category6-filter :refer :all]
+            [pinterest-rest-api.specs.user-single-asset-binding :refer :all]
+            [pinterest-rest-api.specs.audience-definition-scope :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group-update-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-update-hotel-item :refer :all]
+            [pinterest-rest-api.specs.page-visit-conversion-tags-get-200-response :refer :all]
+            [pinterest-rest-api.specs.oauth-access-token-request-client-credentials :refer :all]
+            [pinterest-rest-api.specs.create-invites-results-response-array-items-inner :refer :all]
+            [pinterest-rest-api.specs.lead-form-question :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-feed :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-items-post-filter :refer :all]
+            [pinterest-rest-api.specs.get-business-partners-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-status :refer :all]
+            [pinterest-rest-api.specs.placement-group-type :refer :all]
+            [pinterest-rest-api.specs.paginated :refer :all]
+            [pinterest-rest-api.specs.country :refer :all]
+            [pinterest-rest-api.specs.catalogs-create-retail-item :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-images-url-items-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-type :refer :all]
+            [pinterest-rest-api.specs.related-terms :refer :all]
+            [pinterest-rest-api.specs.get-mmm-report-response-data :refer :all]
+            [pinterest-rest-api.specs.user-website-verify-request :refer :all]
+            [pinterest-rest-api.specs.item-response-any-of-1 :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items-submit-request :refer :all]
+            [pinterest-rest-api.specs.customer-lists-list-200-response :refer :all]
+            [pinterest-rest-api.specs.board-sections-list-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-batch-request :refer :all]
+            [pinterest-rest-api.specs.metrics-reporting-level :refer :all]
+            [pinterest-rest-api.specs.bulk-upsert-request-create :refer :all]
+            [pinterest-rest-api.specs.auth-respond-invites-body :refer :all]
+            [pinterest-rest-api.specs.pins-list-200-response :refer :all]
+            [pinterest-rest-api.specs.ad-array-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-update-retail-item :refer :all]
+            [pinterest-rest-api.specs.optimization-goal-metadata-scrollup-goal-metadata :refer :all]
+            [pinterest-rest-api.specs.keyword :refer :all]
+            [pinterest-rest-api.specs.pin-media :refer :all]
+            [pinterest-rest-api.specs.targeting-template-audience-sizing :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-operation :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-product-group :refer :all]
+            [pinterest-rest-api.specs.get-business-assets-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-delete-batch-request :refer :all]
+            [pinterest-rest-api.specs.targeting-spec :refer :all]
+            [pinterest-rest-api.specs.create-mmm-report-request :refer :all]
+            [pinterest-rest-api.specs.trend-type :refer :all]
+            [pinterest-rest-api.specs.campaign-create-common :refer :all]
+            [pinterest-rest-api.specs.product-group-promotions-list-200-response :refer :all]
+            [pinterest-rest-api.specs.ad-accounts-subscriptions-get-list-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-list-200-response :refer :all]
+            [pinterest-rest-api.specs.ssio-order-lines-get-by-ad-account-200-response :refer :all]
+            [pinterest-rest-api.specs.get-partner-assets-response :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-pin-url :refer :all]
+            [pinterest-rest-api.specs.leads-export-create-request :refer :all]
+            [pinterest-rest-api.specs.boards-list-200-response :refer :all]
+            [pinterest-rest-api.specs.board-media :refer :all]
+            [pinterest-rest-api.specs.product-group-promotion-update-request :refer :all]
+            [pinterest-rest-api.specs.product-type3-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-create-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-processing-schedule :refer :all]
+            [pinterest-rest-api.specs.campaign-is-automated-campaign :refer :all]
+            [pinterest-rest-api.specs.campaign-id :refer :all]
+            [pinterest-rest-api.specs.update-mask-bid-option-field :refer :all]
+            [pinterest-rest-api.specs.lead-form-test-response :refer :all]
+            [pinterest-rest-api.specs.audience-demographic-value :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filters-request :refer :all]
+            [pinterest-rest-api.specs.image-details :refer :all]
+            [pinterest-rest-api.specs.item-batch-record :refer :all]
+            [pinterest-rest-api.specs.conversion-tag-response :refer :all]
+            [pinterest-rest-api.specs.interest :refer :all]
+            [pinterest-rest-api.specs.ad-accounts-list-200-response :refer :all]
+            [pinterest-rest-api.specs.tracking-urls :refer :all]
+            [pinterest-rest-api.specs.top-video-pins-analytics-response :refer :all]
+            [pinterest-rest-api.specs.get-business-members-200-response :refer :all]
+            [pinterest-rest-api.specs.item-response-any-of :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group-filters :refer :all]
+            [pinterest-rest-api.specs.ssio-account-response :refer :all]
+            [pinterest-rest-api.specs.single-interest-targeting-option-response :refer :all]
+            [pinterest-rest-api.specs.asset-group-binding :refer :all]
+            [pinterest-rest-api.specs.order-lines-list-200-response :refer :all]
+            [pinterest-rest-api.specs.conversion-events-data-inner :refer :all]
+            [pinterest-rest-api.specs.pin-create :refer :all]
+            [pinterest-rest-api.specs.ad-group-audience-sizing-request-keywords-inner :refer :all]
+            [pinterest-rest-api.specs.deleted-members-response :refer :all]
+            [pinterest-rest-api.specs.pin-media-with-images :refer :all]
+            [pinterest-rest-api.specs.conversion-events-user-data-any-of :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-attributes :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group-filters-any-of :refer :all]
+            [pinterest-rest-api.specs.campaign-create-response :refer :all]
+            [pinterest-rest-api.specs.ad-preview-request :refer :all]
+            [pinterest-rest-api.specs.follow-user-request :refer :all]
+            [pinterest-rest-api.specs.campaign-update-response :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-images-base64-items-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-attributes :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group-filters-all-of :refer :all]
+            [pinterest-rest-api.specs.optimization-goal-metadata-conversion-tag-v3-goal-metadata-attribution-windows :refer :all]
+            [pinterest-rest-api.specs.max-price-filter :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-filter-column :refer :all]
+            [pinterest-rest-api.specs.business-access-role :refer :all]
+            [pinterest-rest-api.specs.business-shared-audience-response :refer :all]
+            [pinterest-rest-api.specs.order-line-paid-type :refer :all]
+            [pinterest-rest-api.specs.shared-audience-account :refer :all]
+            [pinterest-rest-api.specs.order-lines-array-response :refer :all]
+            [pinterest-rest-api.specs.lead-form-status :refer :all]
+            [pinterest-rest-api.specs.catalogs-report-feed-ingestion-stats :refer :all]
+            [pinterest-rest-api.specs.bulk-download-request-campaign-filter :refer :all]
+            [pinterest-rest-api.specs.ssio-edit-insertion-order-request :refer :all]
+            [pinterest-rest-api.specs.pin-update-carousel-slots-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-product :refer :all]
+            [pinterest-rest-api.specs.permissions :refer :all]
+            [pinterest-rest-api.specs.create-asset-access-request-body-asset-requests-inner :refer :all]
+            [pinterest-rest-api.specs.delete-partner-asset-access-body-accesses-inner :refer :all]
+            [pinterest-rest-api.specs.audience-insights-response :refer :all]
+            [pinterest-rest-api.specs.multiple-product-groups-inner :refer :all]
+            [pinterest-rest-api.specs.delivery-metrics-response :refer :all]
+            [pinterest-rest-api.specs.audience-description :refer :all]
+            [pinterest-rest-api.specs.bulk-upsert-status-response :refer :all]
+            [pinterest-rest-api.specs.ad-groups-list-200-response :refer :all]
+            [pinterest-rest-api.specs.user-website-verification-code :refer :all]
+            [pinterest-rest-api.specs.top-video-pins-analytics-response-pins-inner :refer :all]
+            [pinterest-rest-api.specs.catalogs-list-products-by-filter-request :refer :all]
+            [pinterest-rest-api.specs.targeting-template-update-request :refer :all]
+            [pinterest-rest-api.specs.related-terms-related-terms-list-inner :refer :all]
+            [pinterest-rest-api.specs.audience-data-party :refer :all]
+            [pinterest-rest-api.specs.catalogs-db-item :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items-submit-delete-record :refer :all]
+            [pinterest-rest-api.specs.customer-list-update-request :refer :all]
+            [pinterest-rest-api.specs.order-line-single-response :refer :all]
+            [pinterest-rest-api.specs.resource-id-to-roles :refer :all]
+            [pinterest-rest-api.specs.conversion-attribution-window-days :refer :all]
+            [pinterest-rest-api.specs.item-delete-batch-record :refer :all]
+            [pinterest-rest-api.specs.billing-profiles-get-200-response :refer :all]
+            [pinterest-rest-api.specs.invite-business-role-binding :refer :all]
+            [pinterest-rest-api.specs.catalogs-upsert-creative-assets-item :refer :all]
+            [pinterest-rest-api.specs.integrations-get-list-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-item-error-response :refer :all]
+            [pinterest-rest-api.specs.business-members-asset-access-delete-request :refer :all]
+            [pinterest-rest-api.specs.top-pins-analytics-response-date-availability :refer :all]
+            [pinterest-rest-api.specs.audience-share-type :refer :all]
+            [pinterest-rest-api.specs.user-list-operation-type :refer :all]
+            [pinterest-rest-api.specs.update-asset-group-response-exceptions-inner :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-create-async-request :refer :all]
+            [pinterest-rest-api.specs.bid-in-micro-currency :refer :all]
+            [pinterest-rest-api.specs.app-type-multipliers :refer :all]
+            [pinterest-rest-api.specs.update-partner-asset-access-body-accesses-inner :refer :all]
+            [pinterest-rest-api.specs.product-type2-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-metadata :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-bid-options :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-item-response :refer :all]
+            [pinterest-rest-api.specs.gender :refer :all]
+            [pinterest-rest-api.specs.keywords-metrics-array-response :refer :all]
+            [pinterest-rest-api.specs.auth-respond-invites-body-invites-inner-action :refer :all]
+            [pinterest-rest-api.specs.ad-accounts-country-response :refer :all]
+            [pinterest-rest-api.specs.business-access-user-summary :refer :all]
+            [pinterest-rest-api.specs.quiz-pin-result :refer :all]
+            [pinterest-rest-api.specs.catalogs-create-hotel-item :refer :all]
+            [pinterest-rest-api.specs.ad-preview-create-from-pin :refer :all]
+            [pinterest-rest-api.specs.google-product-category3-filter :refer :all]
+            [pinterest-rest-api.specs.ad-common :refer :all]
+            [pinterest-rest-api.specs.ad-group-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-batch-request :refer :all]
+            [pinterest-rest-api.specs.trending-keywords-response-trends-inner :refer :all]
+            [pinterest-rest-api.specs.product-group-promotion-create-request :refer :all]
+            [pinterest-rest-api.specs.pin-media-with-image-all-of-images :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-batch-request :refer :all]
+            [pinterest-rest-api.specs.media-type :refer :all]
+            [pinterest-rest-api.specs.conversion-report-attribution-type :refer :all]
+            [pinterest-rest-api.specs.catalogs-report-feed-ingestion-filter :refer :all]
+            [pinterest-rest-api.specs.audience-create-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-validation-errors :refer :all]
+            [pinterest-rest-api.specs.line-item :refer :all]
+            [pinterest-rest-api.specs.pinterest-tag-event-data :refer :all]
+            [pinterest-rest-api.specs.delivery-metrics-response-items-inner :refer :all]
+            [pinterest-rest-api.specs.business-role-response :refer :all]
+            [pinterest-rest-api.specs.targeting-type-filter :refer :all]
+            [pinterest-rest-api.specs.catalogs-create-request :refer :all]
+            [pinterest-rest-api.specs.delete-partners-response :refer :all]
+            [pinterest-rest-api.specs.ad-preview-create-from-image :refer :all]
+            [pinterest-rest-api.specs.campaigns-list-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-items-upsert-batch-request :refer :all]
+            [pinterest-rest-api.specs.conversion-api-response :refer :all]
+            [pinterest-rest-api.specs.hotel-processing-record :refer :all]
+            [pinterest-rest-api.specs.invite-exception-response :refer :all]
+            [pinterest-rest-api.specs.lead-form-question-field-type :refer :all]
+            [pinterest-rest-api.specs.bulk-download-response :refer :all]
+            [pinterest-rest-api.specs.currency-filter :refer :all]
+            [pinterest-rest-api.specs.delete-partner-assets-result :refer :all]
+            [pinterest-rest-api.specs.ads-analytics-metrics-filter :refer :all]
+            [pinterest-rest-api.specs.campaigns-analytics-response-inner :refer :all]
+            [pinterest-rest-api.specs.board :refer :all]
+            [pinterest-rest-api.specs.ad-account-create-subscription-request :refer :all]
+            [pinterest-rest-api.specs.delete-invites-results-response-array-items-inner-exception :refer :all]
+            [pinterest-rest-api.specs.create-asset-invites-request-item :refer :all]
+            [pinterest-rest-api.specs.ssio-edit-insertion-order-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-delete-hotel-item :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-group-product-counts :refer :all]
+            [pinterest-rest-api.specs.create-invites-results-response-array-items-inner-invite :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items-submit-record :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-product-group-filters :refer :all]
+            [pinterest-rest-api.specs.create-asset-group-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-feeds-create-request :refer :all]
+            [pinterest-rest-api.specs.trends-supported-region :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-operation-error :refer :all]
+            [pinterest-rest-api.specs.lead-form-array-response-items-inner :refer :all]
+            [pinterest-rest-api.specs.followers-list-200-response :refer :all]
+            [pinterest-rest-api.specs.batch-operation :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-items-filter :refer :all]
+            [pinterest-rest-api.specs.product-availability-type :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-pricing-criteria :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items-get-record :refer :all]
+            [pinterest-rest-api.specs.integration-request :refer :all]
+            [pinterest-rest-api.specs.ssio-insertion-order-status-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-product :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-multiple-media-types-criteria :refer :all]
+            [pinterest-rest-api.specs.trending-keywords-response :refer :all]
+            [pinterest-rest-api.specs.mmm-reporting-targeting-type :refer :all]
+            [pinterest-rest-api.specs.pin-media-with-image-and-video :refer :all]
+            [pinterest-rest-api.specs.catalogs-locale :refer :all]
+            [pinterest-rest-api.specs.template-response-date-range-absolute-date-range :refer :all]
+            [pinterest-rest-api.specs.item-processing-status :refer :all]
+            [pinterest-rest-api.specs.business-asset-members-get-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-pins-list-200-response :refer :all]
+            [pinterest-rest-api.specs.item-validation-event :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-groups-list-200-response :refer :all]
+            [pinterest-rest-api.specs.template-response-date-range-relative-date-range :refer :all]
+            [pinterest-rest-api.specs.ad-account-analytics-response-inner :refer :all]
+            [pinterest-rest-api.specs.update-member-asset-access-body :refer :all]
+            [pinterest-rest-api.specs.catalogs-report :refer :all]
+            [pinterest-rest-api.specs.catalogs-hotel-list-products-by-catalog-based-filter-request :refer :all]
+            [pinterest-rest-api.specs.ssio-order-line :refer :all]
+            [pinterest-rest-api.specs.media-list-200-response :refer :all]
+            [pinterest-rest-api.specs.pin-media-source-images-base64 :refer :all]
+            [pinterest-rest-api.specs.catalogs-feed-ingestion-errors :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-feed :refer :all]
+            [pinterest-rest-api.specs.ssio-insertion-order-status :refer :all]
+            [pinterest-rest-api.specs.ad-group-summary-status :refer :all]
+            [pinterest-rest-api.specs.integration-logs-invalid-log-response :refer :all]
+            [pinterest-rest-api.specs.targeting-template-keyword :refer :all]
+            [pinterest-rest-api.specs.error :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-filters-request-any-of-1 :refer :all]
+            [pinterest-rest-api.specs.campaign-create-request :refer :all]
+            [pinterest-rest-api.specs.update-asset-group-body :refer :all]
+            [pinterest-rest-api.specs.ad-group-array-response-element :refer :all]
+            [pinterest-rest-api.specs.action-type :refer :all]
+            [pinterest-rest-api.specs.ssio-account-item :refer :all]
+            [pinterest-rest-api.specs.business-partner-asset-access-get-200-response :refer :all]
+            [pinterest-rest-api.specs.audience-update-request :refer :all]
+            [pinterest-rest-api.specs.audience-create-custom-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-item-validation-issue :refer :all]
+            [pinterest-rest-api.specs.create-invites-results-response-array :refer :all]
+            [pinterest-rest-api.specs.lead-form-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-retail-items-batch :refer :all]
+            [pinterest-rest-api.specs.analytics-daily-metrics :refer :all]
+            [pinterest-rest-api.specs.product-group-promotion :refer :all]
+            [pinterest-rest-api.specs.shared-audience :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-items-post-filter :refer :all]
+            [pinterest-rest-api.specs.conversion-tag-create :refer :all]
+            [pinterest-rest-api.specs.creative-assets-id-filter :refer :all]
+            [pinterest-rest-api.specs.advanced-auction-items-get-request :refer :all]
+            [pinterest-rest-api.specs.catalogs-product-group-product-counts-vertical :refer :all]
+            [pinterest-rest-api.specs.get-invites-200-response :refer :all]
+            [pinterest-rest-api.specs.catalogs-feeds-update-request :refer :all]
+            [pinterest-rest-api.specs.ad-account-owner :refer :all]
+            [pinterest-rest-api.specs.partner-type :refer :all]
+            [pinterest-rest-api.specs.catalogs-creative-assets-product-metadata :refer :all]
+            [pinterest-rest-api.specs.bulk-entity-type :refer :all]
+            [pinterest-rest-api.specs.account :refer :all]
+            )
+  (:import (java.io File)))
+
+
+(defn-spec ad-account-analytics-with-http-info any?
+  "Get ad account analytics
+  Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options.
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
+- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time."
+  ([ad_account_id string?, start_date inst?, end_date inst?, columns (s/coll-of string?), granularity granularity, ] (ad-account-analytics-with-http-info ad_account_id start_date end_date columns granularity nil))
+  ([ad_account_id string?, start_date inst?, end_date inst?, columns (s/coll-of string?), granularity granularity, {:keys [click_window_days engagement_window_days view_window_days conversion_report_time]} (s/map-of keyword? any?)]
+   (check-required-params ad_account_id start_date end_date columns granularity)
+   (call-api "/ad_accounts/{ad_account_id}/analytics" :get
+             {:path-params   {"ad_account_id" ad_account_id }
+              :header-params {}
+              :query-params  {"start_date" start_date "end_date" end_date "columns" (with-collection-format columns :csv) "granularity" granularity "click_window_days" click_window_days "engagement_window_days" engagement_window_days "view_window_days" view_window_days "conversion_report_time" conversion_report_time }
+              :form-params   {}
+              :content-types []
+              :accepts       ["application/json"]
+              :auth-names    ["pinterest_oauth2"]})))
+
+(defn-spec ad-account-analytics (s/coll-of ad-account-analytics-response-inner-spec)
+  "Get ad account analytics
+  Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options.
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
+- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time."
+  ([ad_account_id string?, start_date inst?, end_date inst?, columns (s/coll-of string?), granularity granularity, ] (ad-account-analytics ad_account_id start_date end_date columns granularity nil))
+  ([ad_account_id string?, start_date inst?, end_date inst?, columns (s/coll-of string?), granularity granularity, optional-params any?]
+   (let [res (:data (ad-account-analytics-with-http-info ad_account_id start_date end_date columns granularity optional-params))]
+     (if (:decode-models *api-context*)
+        (st/decode (s/coll-of ad-account-analytics-response-inner-spec) res st/string-transformer)
+        res))))
+
+
+(defn-spec ad-account-targeting-analytics-get-with-http-info any?
+  "Get targeting analytics for an ad account
+  Get targeting analytics for an ad account.
+For the requested account and metrics, the response will include the requested metric information
+(e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/>
+- The token's user_account must either be the Owner of the specified ad account, or have one
+of the necessary roles granted to them via
+<a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
+- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days."
+  ([ad_account_id string?, start_date inst?, end_date inst?, targeting_types (s/coll-of ads-analytics-targeting-type-spec), columns (s/coll-of string?), granularity granularity, ] (ad-account-targeting-analytics-get-with-http-info ad_account_id start_date end_date targeting_types columns granularity nil))
+  ([ad_account_id string?, start_date inst?, end_date inst?, targeting_types (s/coll-of ads-analytics-targeting-type-spec), columns (s/coll-of string?), granularity granularity, {:keys [click_window_days engagement_window_days view_window_days conversion_report_time attribution_types]} (s/map-of keyword? any?)]
+   (check-required-params ad_account_id start_date end_date targeting_types columns granularity)
+   (call-api "/ad_accounts/{ad_account_id}/targeting_analytics" :get
+             {:path-params   {"ad_account_id" ad_account_id }
+              :header-params {}
+              :query-params  {"start_date" start_date "end_date" end_date "targeting_types" (with-collection-format targeting_types :csv) "columns" (with-collection-format columns :csv) "granularity" granularity "click_window_days" click_window_days "engagement_window_days" engagement_window_days "view_window_days" view_window_days "conversion_report_time" conversion_report_time "attribution_types" attribution_types }
+              :form-params   {}
+              :content-types []
+              :accepts       ["application/json"]
+              :auth-names    ["pinterest_oauth2"]})))
+
+(defn-spec ad-account-targeting-analytics-get metrics-response-spec
+  "Get targeting analytics for an ad account
+  Get targeting analytics for an ad account.
+For the requested account and metrics, the response will include the requested metric information
+(e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/>
+- The token's user_account must either be the Owner of the specified ad account, or have one
+of the necessary roles granted to them via
+<a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
+- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days."
+  ([ad_account_id string?, start_date inst?, end_date inst?, targeting_types (s/coll-of ads-analytics-targeting-type-spec), columns (s/coll-of string?), granularity granularity, ] (ad-account-targeting-analytics-get ad_account_id start_date end_date targeting_types columns granularity nil))
+  ([ad_account_id string?, start_date inst?, end_date inst?, targeting_types (s/coll-of ads-analytics-targeting-type-spec), columns (s/coll-of string?), granularity granularity, optional-params any?]
+   (let [res (:data (ad-account-targeting-analytics-get-with-http-info ad_account_id start_date end_date targeting_types columns granularity optional-params))]
+     (if (:decode-models *api-context*)
+        (st/decode metrics-response-spec res st/string-transformer)
+        res))))
+
+
+(defn-spec ad-accounts-create-with-http-info any?
+  "Create ad account
+  Create a new ad account. Different ad accounts can support different currencies, payment methods, etc.
+An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/>
+You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/>
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>."
+  [ad-account-create-request ad-account-create-request]
+  (check-required-params ad-account-create-request)
+  (call-api "/ad_accounts" :post
+            {:path-params   {}
+             :header-params {}
+             :query-params  {}
+             :form-params   {}
+             :body-param    ad-account-create-request
+             :content-types ["application/json"]
+             :accepts       ["application/json"]
+             :auth-names    ["pinterest_oauth2"]}))
+
+(defn-spec ad-accounts-create ad-account-spec
+  "Create ad account
+  Create a new ad account. Different ad accounts can support different currencies, payment methods, etc.
+An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/>
+You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/>
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>."
+  [ad-account-create-request ad-account-create-request]
+  (let [res (:data (ad-accounts-create-with-http-info ad-account-create-request))]
+    (if (:decode-models *api-context*)
+       (st/decode ad-account-spec res st/string-transformer)
+       res)))
+
+
+(defn-spec ad-accounts-get-with-http-info any?
+  "Get ad account
+  Get an ad account"
+  [ad_account_id string?]
+  (check-required-params ad_account_id)
+  (call-api "/ad_accounts/{ad_account_id}" :get
+            {:path-params   {"ad_account_id" ad_account_id }
+             :header-params {}
+             :query-params  {}
+             :form-params   {}
+             :content-types []
+             :accepts       ["application/json"]
+             :auth-names    ["pinterest_oauth2"]}))
+
+(defn-spec ad-accounts-get ad-account-spec
+  "Get ad account
+  Get an ad account"
+  [ad_account_id string?]
+  (let [res (:data (ad-accounts-get-with-http-info ad_account_id))]
+    (if (:decode-models *api-context*)
+       (st/decode ad-account-spec res st/string-transformer)
+       res)))
+
+
+(defn-spec ad-accounts-list-with-http-info any?
+  "List ad accounts
+  Get a list of the ad_accounts that the \"operation user_account\" has access to.
+- This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>."
+  ([] (ad-accounts-list-with-http-info nil))
+  ([{:keys [bookmark page_size include_shared_accounts]} (s/map-of keyword? any?)]
+   (call-api "/ad_accounts" :get
+             {:path-params   {}
+              :header-params {}
+              :query-params  {"bookmark" bookmark "page_size" page_size "include_shared_accounts" include_shared_accounts }
+              :form-params   {}
+              :content-types []
+              :accepts       ["application/json"]
+              :auth-names    ["pinterest_oauth2"]})))
+
+(defn-spec ad-accounts-list ad-accounts-list-200-response-spec
+  "List ad accounts
+  Get a list of the ad_accounts that the \"operation user_account\" has access to.
+- This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>."
+  ([] (ad-accounts-list nil))
+  ([optional-params any?]
+   (let [res (:data (ad-accounts-list-with-http-info optional-params))]
+     (if (:decode-models *api-context*)
+        (st/decode ad-accounts-list-200-response-spec res st/string-transformer)
+        res))))
+
+
+(defn-spec analytics-create-mmm-report-with-http-info any?
+  "Create a request for a Marketing Mix Modeling (MMM) report
+  This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download
+the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release."
+  [ad_account_id string?, create-mmm-report-request create-mmm-report-request]
+  (check-required-params ad_account_id create-mmm-report-request)
+  (call-api "/ad_accounts/{ad_account_id}/mmm_reports" :post
+            {:path-params   {"ad_account_id" ad_account_id }
+             :header-params {}
+             :query-params  {}
+             :form-params   {}
+             :body-param    create-mmm-report-request
+             :content-types ["application/json"]
+             :accepts       ["application/json"]
+             :auth-names    ["pinterest_oauth2"]}))
+
+(defn-spec analytics-create-mmm-report create-mmm-report-response-spec
+  "Create a request for a Marketing Mix Modeling (MMM) report
+  This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download
+the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release."
+  [ad_account_id string?, create-mmm-report-request create-mmm-report-request]
+  (let [res (:data (analytics-create-mmm-report-with-http-info ad_account_id create-mmm-report-request))]
+    (if (:decode-models *api-context*)
+       (st/decode create-mmm-report-response-spec res st/string-transformer)
+       res)))
+
+
+(defn-spec analytics-create-report-with-http-info any?
+  "Create async request for an account analytics report
+  This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days.
+- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days.
+- If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either."
+  [ad_account_id string?, ads-analytics-create-async-request ads-analytics-create-async-request]
+  (check-required-params ad_account_id ads-analytics-create-async-request)
+  (call-api "/ad_accounts/{ad_account_id}/reports" :post
+            {:path-params   {"ad_account_id" ad_account_id }
+             :header-params {}
+             :query-params  {}
+             :form-params   {}
+             :body-param    ads-analytics-create-async-request
+             :content-types ["application/json"]
+             :accepts       ["application/json"]
+             :auth-names    ["pinterest_oauth2"]}))
+
+(defn-spec analytics-create-report ads-analytics-create-async-response-spec
+  "Create async request for an account analytics report
+  This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days.
+- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days.
+- If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either."
+  [ad_account_id string?, ads-analytics-create-async-request ads-analytics-create-async-request]
+  (let [res (:data (analytics-create-report-with-http-info ad_account_id ads-analytics-create-async-request))]
+    (if (:decode-models *api-context*)
+       (st/decode ads-analytics-create-async-response-spec res st/string-transformer)
+       res)))
+
+
+(defn-spec analytics-create-template-report-with-http-info any?
+  "Create async request for an analytics report using a template
+  This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the
+template. It returns a token that you can use to download the report when it is ready."
+  ([ad_account_id string?, template_id string?, ] (analytics-create-template-report-with-http-info ad_account_id template_id nil))
+  ([ad_account_id string?, template_id string?, {:keys [start_date end_date granularity]} (s/map-of keyword? any?)]
+   (check-required-params ad_account_id template_id)
+   (call-api "/ad_accounts/{ad_account_id}/templates/{template_id}/reports" :post
+             {:path-params   {"ad_account_id" ad_account_id "template_id" template_id }
+              :header-params {}
+              :query-params  {"start_date" start_date "end_date" end_date "granularity" granularity }
+              :form-params   {}
+              :content-types []
+              :accepts       ["application/json"]
+              :auth-names    ["pinterest_oauth2"]})))
+
+(defn-spec analytics-create-template-report ads-analytics-create-async-response-spec
+  "Create async request for an analytics report using a template
+  This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the
+template. It returns a token that you can use to download the report when it is ready."
+  ([ad_account_id string?, template_id string?, ] (analytics-create-template-report ad_account_id template_id nil))
+  ([ad_account_id string?, template_id string?, optional-params any?]
+   (let [res (:data (analytics-create-template-report-with-http-info ad_account_id template_id optional-params))]
+     (if (:decode-models *api-context*)
+        (st/decode ads-analytics-create-async-response-spec res st/string-transformer)
+        res))))
+
+
+(defn-spec analytics-get-mmm-report-with-http-info any?
+  "Get advertiser Marketing Mix Modeling (MMM) report.
+  Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the
+create mmm report endpoint."
+  [ad_account_id string?, token string?]
+  (check-required-params ad_account_id token)
+  (call-api "/ad_accounts/{ad_account_id}/mmm_reports" :get
+            {:path-params   {"ad_account_id" ad_account_id }
+             :header-params {}
+             :query-params  {"token" token }
+             :form-params   {}
+             :content-types []
+             :accepts       ["application/json"]
+             :auth-names    ["pinterest_oauth2"]}))
+
+(defn-spec analytics-get-mmm-report get-mmm-report-response-spec
+  "Get advertiser Marketing Mix Modeling (MMM) report.
+  Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the
+create mmm report endpoint."
+  [ad_account_id string?, token string?]
+  (let [res (:data (analytics-get-mmm-report-with-http-info ad_account_id token))]
+    (if (:decode-models *api-context*)
+       (st/decode get-mmm-report-response-spec res st/string-transformer)
+       res)))
+
+
+(defn-spec analytics-get-report-with-http-info any?
+  "Get the account analytics report created by the async call
+  This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager."
+  [ad_account_id string?, token string?]
+  (check-required-params ad_account_id token)
+  (call-api "/ad_accounts/{ad_account_id}/reports" :get
+            {:path-params   {"ad_account_id" ad_account_id }
+             :header-params {}
+             :query-params  {"token" token }
+             :form-params   {}
+             :content-types []
+             :accepts       ["application/json"]
+             :auth-names    ["pinterest_oauth2"]}))
+
+(defn-spec analytics-get-report ads-analytics-get-async-response-spec
+  "Get the account analytics report created by the async call
+  This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager."
+  [ad_account_id string?, token string?]
+  (let [res (:data (analytics-get-report-with-http-info ad_account_id token))]
+    (if (:decode-models *api-context*)
+       (st/decode ads-analytics-get-async-response-spec res st/string-transformer)
+       res)))
+
+
+(defn-spec sandbox-delete-with-http-info any?
+  "Delete ads data for ad account in API Sandbox
+  Delete an ad account and all the ads data associated with that account.
+A string message is returned indicating the status of the delete operation.
+
+Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).
+Go to /docs/developer-tools/sandbox/ for more information."
+  [ad_account_id string?]
+  (check-required-params ad_account_id)
+  (call-api "/ad_accounts/{ad_account_id}/sandbox" :delete
+            {:path-params   {"ad_account_id" ad_account_id }
+             :header-params {}
+             :query-params  {}
+             :form-params   {}
+             :content-types []
+             :accepts       ["application/json"]
+             :auth-names    ["pinterest_oauth2"]}))
+
+(defn-spec sandbox-delete string?
+  "Delete ads data for ad account in API Sandbox
+  Delete an ad account and all the ads data associated with that account.
+A string message is returned indicating the status of the delete operation.
+
+Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).
+Go to /docs/developer-tools/sandbox/ for more information."
+  [ad_account_id string?]
+  (let [res (:data (sandbox-delete-with-http-info ad_account_id))]
+    (if (:decode-models *api-context*)
+       (st/decode string? res st/string-transformer)
+       res)))
+
+
+(defn-spec templates-list-with-http-info any?
+  "List templates
+  Gets all Templates associated with an ad account ID."
+  ([ad_account_id string?, ] (templates-list-with-http-info ad_account_id nil))
+  ([ad_account_id string?, {:keys [page_size order bookmark]} (s/map-of keyword? any?)]
+   (check-required-params ad_account_id)
+   (call-api "/ad_accounts/{ad_account_id}/templates" :get
+             {:path-params   {"ad_account_id" ad_account_id }
+              :header-params {}
+              :query-params  {"page_size" page_size "order" order "bookmark" bookmark }
+              :form-params   {}
+              :content-types []
+              :accepts       ["application/json"]
+              :auth-names    ["pinterest_oauth2"]})))
+
+(defn-spec templates-list templates-list-200-response-spec
+  "List templates
+  Gets all Templates associated with an ad account ID."
+  ([ad_account_id string?, ] (templates-list ad_account_id nil))
+  ([ad_account_id string?, optional-params any?]
+   (let [res (:data (templates-list-with-http-info ad_account_id optional-params))]
+     (if (:decode-models *api-context*)
+        (st/decode templates-list-200-response-spec res st/string-transformer)
+        res))))
+
+

@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AuthRespondInvitesBodyInvitesInner",
+  "fields": [
+    {
+      "name": "action",
+      "type": "model.AuthRespondInvitesBodyInvitesInnerAction",
+      "doc": ""
+    },
+    {
+      "name": "invite_id",
+      "type": "string",
+      "doc": "Unique identifier of an invite."
+    }
+  ]
+
+}

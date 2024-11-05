@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdateAssetGroupResponse",
+  "fields": [
+    {
+      "name": "updated_asset_groups",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AssetGroupBinding"
+      }],
+      "doc": "A list of successfully edited asset groups.",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.UpdateAssetGroupResponseExceptionsInner"
+      }],
+      "doc": "A list of errors associated with the asset groups. Will be returned if there is an error.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,50 @@
+/*
+ * update_member_asset_access_body_accesses_inner.h
+ *
+ * 
+ */
+
+#ifndef _update_member_asset_access_body_accesses_inner_H_
+#define _update_member_asset_access_body_accesses_inner_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct update_member_asset_access_body_accesses_inner_t update_member_asset_access_body_accesses_inner_t;
+
+#include "permissions.h"
+
+// Enum  for update_member_asset_access_body_accesses_inner
+
+typedef enum  { pinterest_rest_api_update_member_asset_access_body_accesses_inner__NULL = 0, pinterest_rest_api_update_member_asset_access_body_accesses_inner__ADMIN, pinterest_rest_api_update_member_asset_access_body_accesses_inner__ANALYST, pinterest_rest_api_update_member_asset_access_body_accesses_inner__FINANCE_MANAGER, pinterest_rest_api_update_member_asset_access_body_accesses_inner__AUDIENCE_MANAGER, pinterest_rest_api_update_member_asset_access_body_accesses_inner__CAMPAIGN_MANAGER, pinterest_rest_api_update_member_asset_access_body_accesses_inner__CATALOGS_MANAGER, pinterest_rest_api_update_member_asset_access_body_accesses_inner__PROFILE_PUBLISHER } pinterest_rest_api_update_member_asset_access_body_accesses_inner__e;
+
+char* update_member_asset_access_body_accesses_inner_permissions_ToString(pinterest_rest_api_update_member_asset_access_body_accesses_inner__e permissions);
+
+pinterest_rest_api_update_member_asset_access_body_accesses_inner__e update_member_asset_access_body_accesses_inner_permissions_FromString(char* permissions);
+
+
+
+typedef struct update_member_asset_access_body_accesses_inner_t {
+    char *asset_id; // string
+    char *member_id; // string
+    list_t *permissions; //nonprimitive container
+
+} update_member_asset_access_body_accesses_inner_t;
+
+update_member_asset_access_body_accesses_inner_t *update_member_asset_access_body_accesses_inner_create(
+    char *asset_id,
+    char *member_id,
+    list_t *permissions
+);
+
+void update_member_asset_access_body_accesses_inner_free(update_member_asset_access_body_accesses_inner_t *update_member_asset_access_body_accesses_inner);
+
+update_member_asset_access_body_accesses_inner_t *update_member_asset_access_body_accesses_inner_parseFromJSON(cJSON *update_member_asset_access_body_accesses_innerJSON);
+
+cJSON *update_member_asset_access_body_accesses_inner_convertToJSON(update_member_asset_access_body_accesses_inner_t *update_member_asset_access_body_accesses_inner);
+
+#endif /* _update_member_asset_access_body_accesses_inner_H_ */
+

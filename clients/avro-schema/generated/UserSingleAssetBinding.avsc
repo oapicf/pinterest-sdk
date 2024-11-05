@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object containing the permissions a business member/partner has on the asset.",
+  "name": "UserSingleAssetBinding",
+  "fields": [
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Permission levels member or partner has on an asset.",
+      "default": null
+    },
+    {
+      "name": "user",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

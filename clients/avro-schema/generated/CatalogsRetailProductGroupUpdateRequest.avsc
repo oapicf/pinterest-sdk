@@ -1,0 +1,51 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object for updating a retail product group.",
+  "name": "CatalogsRetailProductGroupUpdateRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsRetailProductGroupUpdateRequest_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      }],
+      "doc": "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": ["null", "model.CatalogsProductGroupFiltersRequest"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "locale",
+      "type": ["null", "model.CatalogsLocale"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

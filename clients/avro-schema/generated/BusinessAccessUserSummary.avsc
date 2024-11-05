@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Metadata of the member/partner that has access to the asset.",
+  "name": "BusinessAccessUserSummary",
+  "fields": [
+    {
+      "name": "email",
+      "type": ["null", "string"],
+      "doc": "Email of the business member/partner.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the business member/partner.",
+      "default": null
+    },
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "Username of the business member/partner.",
+      "default": null
+    }
+  ]
+
+}

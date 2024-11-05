@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Ad accounts and profiles the member/partner will be granted access to with this invite/request.",
+  "name": "InviteAssetsSummary",
+  "fields": [
+    {
+      "name": "ad_accounts",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.InviteAssetsSummaryAdAccountsInner"
+      }],
+      "doc": "List of ad account IDs and respective permission levels that will be assigned.",
+      "default": null
+    },
+    {
+      "name": "profiles",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.InviteAssetsSummaryProfilesInner"
+      }],
+      "doc": "List of profile IDs and respective permission levels that will be assigned.",
+      "default": null
+    }
+  ]
+
+}

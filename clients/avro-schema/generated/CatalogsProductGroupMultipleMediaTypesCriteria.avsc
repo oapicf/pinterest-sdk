@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupMultipleMediaTypesCriteria",
+  "fields": [
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "model.MediaType"
+      },
+      "doc": ""
+    },
+    {
+      "name": "negated",
+      "type": ["null", "boolean"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

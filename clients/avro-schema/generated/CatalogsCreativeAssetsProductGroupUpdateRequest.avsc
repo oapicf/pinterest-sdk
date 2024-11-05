@@ -1,0 +1,39 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object for updating a creative assets product group.",
+  "name": "CatalogsCreativeAssetsProductGroupUpdateRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsProductGroupUpdateRequest_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": ["null", "model.CatalogsCreativeAssetsProductGroupFilters"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

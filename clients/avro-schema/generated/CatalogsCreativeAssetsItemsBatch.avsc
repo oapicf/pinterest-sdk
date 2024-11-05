@@ -1,0 +1,47 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing the catalogs creative assets items batch",
+  "name": "CatalogsCreativeAssetsItemsBatch",
+  "fields": [
+    {
+      "name": "batch_id",
+      "type": ["null", "string"],
+      "doc": "Id of the catalogs items batch",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "string"],
+      "doc": "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss",
+      "default": null
+    },
+    {
+      "name": "completed_time",
+      "type": ["null", "string"],
+      "doc": "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.BatchOperationStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.CreativeAssetsProcessingRecord"
+      }],
+      "doc": "Array with the catalogs items processing records part of the catalogs items batch",
+      "default": null
+    }
+  ]
+
+}

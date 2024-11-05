@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Asset group type",
+  "name": "AssetGroupType",
+  "symbols": [
+    "BRAND",
+    "LOCATION_OR_LANGUAGE",
+    "PRODUCT_LINE",
+    "OTHER"
+  ]
+}

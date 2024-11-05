@@ -1,0 +1,16 @@
+package models
+
+// CreativeAssetsProcessingRecord - Object describing an item processing record
+type CreativeAssetsProcessingRecord struct {
+
+	// The catalog creative assets id in the merchant namespace
+	CreativeAssetsId string `json:"creative_assets_id,omitempty"`
+
+	// Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
+	Errors []ItemValidationEvent `json:"errors,omitempty"`
+
+	// Array with the validation warnings for the item processing record
+	Warnings []ItemValidationEvent `json:"warnings,omitempty"`
+
+	Status ItemProcessingStatus `json:"status,omitempty"`
+}

@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "MembersToDeleteBody",
+  "fields": [
+    {
+      "name": "members",
+      "type": {
+        "type": "array",
+        "items": "model.MembersToDeleteBodyMembersInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

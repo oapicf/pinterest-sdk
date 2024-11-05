@@ -1,0 +1,36 @@
+package org.openapitools.client.api
+
+import argonaut._
+import argonaut.EncodeJson._
+import argonaut.DecodeJson._
+
+import org.http4s.{EntityDecoder, EntityEncoder}
+import org.http4s.argonaut._
+import org.joda.time.DateTime
+
+
+import CatalogsCreativeAssetsProductGroupFilterKeys._
+
+case class CatalogsCreativeAssetsProductGroupFilterKeys (
+  CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria,
+CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
+CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
+CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
+CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
+CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
+GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria,
+GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria,
+GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria,
+GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria,
+GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
+GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
+GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
+MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria)
+
+object CatalogsCreativeAssetsProductGroupFilterKeys {
+  import DateTimeCodecs._
+
+  implicit val CatalogsCreativeAssetsProductGroupFilterKeysCodecJson: CodecJson[CatalogsCreativeAssetsProductGroupFilterKeys] = CodecJson.derive[CatalogsCreativeAssetsProductGroupFilterKeys]
+  implicit val CatalogsCreativeAssetsProductGroupFilterKeysDecoder: EntityDecoder[CatalogsCreativeAssetsProductGroupFilterKeys] = jsonOf[CatalogsCreativeAssetsProductGroupFilterKeys]
+  implicit val CatalogsCreativeAssetsProductGroupFilterKeysEncoder: EntityEncoder[CatalogsCreativeAssetsProductGroupFilterKeys] = jsonEncoderOf[CatalogsCreativeAssetsProductGroupFilterKeys]
+}

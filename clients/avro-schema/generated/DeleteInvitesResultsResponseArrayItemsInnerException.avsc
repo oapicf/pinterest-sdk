@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An exception object if there is an error performing the cancellation. It will only be provided if there is an error.",
+  "name": "DeleteInvitesResultsResponseArrayItemsInnerException",
+  "fields": [
+    {
+      "name": "invite_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of an invite.",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Error message associated with the error in performing the action on the invite/request.",
+      "default": null
+    }
+  ]
+
+}

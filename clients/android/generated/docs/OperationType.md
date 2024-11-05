@@ -1,0 +1,10 @@
+
+
+# OperationType
+
+## Enum
+
+
+
+
+

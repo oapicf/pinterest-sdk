@@ -1,0 +1,13 @@
+package models
+
+// CreateAssetInvitesRequestItem - Object declaring an asset role update to an invite.
+type CreateAssetInvitesRequestItem struct {
+
+	// Unique identifier of an invite.
+	InviteId string `json:"invite_id" validate:"regexp=^\\\\d+$"`
+
+	InviteType InviteType `json:"invite_type"`
+
+	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
+}

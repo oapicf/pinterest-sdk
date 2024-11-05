@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Response object containing the results of an operation on an item bid option",
+  "name": "AdvancedAuctionProcessedItems",
+  "fields": [
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to all items",
+      "default": null
+    },
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdvancedAuctionProcessedItem"
+      }],
+      "doc": "Array of advanced auction processed items",
+      "default": null
+    }
+  ]
+
+}

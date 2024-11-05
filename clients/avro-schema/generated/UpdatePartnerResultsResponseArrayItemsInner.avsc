@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdatePartnerResultsResponseArrayItemsInner",
+  "fields": [
+    {
+      "name": "exception",
+      "type": ["null", "model.BusinessAccessError"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "member_or_partner_id",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

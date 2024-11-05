@@ -1,0 +1,78 @@
+package apimodels;
+
+import apimodels.AssetGroupBinding;
+import com.fasterxml.jackson.annotation.*;
+import java.util.Set;
+import javax.validation.*;
+import java.util.Objects;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+/**
+ * CreateAssetGroupResponse
+ */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
+public class CreateAssetGroupResponse   {
+  @JsonProperty("asset_group")
+  @Valid
+
+  private AssetGroupBinding assetGroup;
+
+  public CreateAssetGroupResponse assetGroup(AssetGroupBinding assetGroup) {
+    this.assetGroup = assetGroup;
+    return this;
+  }
+
+   /**
+   * Get assetGroup
+   * @return assetGroup
+  **/
+  public AssetGroupBinding getAssetGroup() {
+    return assetGroup;
+  }
+
+  public void setAssetGroup(AssetGroupBinding assetGroup) {
+    this.assetGroup = assetGroup;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CreateAssetGroupResponse createAssetGroupResponse = (CreateAssetGroupResponse) o;
+    return Objects.equals(assetGroup, createAssetGroupResponse.assetGroup);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(assetGroup);
+  }
+
+  @SuppressWarnings("StringBufferReplaceableByString")
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CreateAssetGroupResponse {\n");
+    
+    sb.append("    assetGroup: ").append(toIndentedString(assetGroup)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

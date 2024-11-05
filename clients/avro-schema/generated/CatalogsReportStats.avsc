@@ -1,0 +1,76 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Diagnostics aggregated numbers",
+  "name": "CatalogsReportStats",
+  "fields": [
+    {
+      "name": "report_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsReportStats_reportUnderscoretype",
+        "symbols": [
+          "FEED_INGESTION_ISSUES",
+          "DISTRIBUTION_ISSUES"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "ID of the catalog entity.",
+      "default": null
+    },
+    {
+      "name": "code",
+      "type": ["null", "int"],
+      "doc": "The event code that a diagnostics aggregated number references",
+      "default": null
+    },
+    {
+      "name": "code_label",
+      "type": ["null", "string"],
+      "doc": "A human-friendly label for the event code (e.g, 'SPAM')",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Title message describing the diagnostic issue",
+      "default": null
+    },
+    {
+      "name": "occurrences",
+      "type": ["null", "int"],
+      "doc": "Number of occurrences of the issue",
+      "default": null
+    },
+    {
+      "name": "severity",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsReportStats_severity",
+        "symbols": [
+          "WARN",
+          "ERROR"
+        ]
+      }],
+      "doc": "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue",
+      "default": null
+    },
+    {
+      "name": "ineligible_for_ads",
+      "type": ["null", "boolean"],
+      "doc": "Indicates if issue makes items ineligible for ads distribution",
+      "default": null
+    },
+    {
+      "name": "ineligible_for_organic",
+      "type": ["null", "boolean"],
+      "doc": "Indicates if issue makes items ineligible for organic distribution",
+      "default": null
+    }
+  ]
+
+}

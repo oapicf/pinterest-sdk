@@ -1,0 +1,15 @@
+
+
+# AdvancedAuctionItemsSubmitRequest
+
+Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**catalogId** | **String** | Catalog id pertaining to all items | 
+**items** | [**Seq&lt;AdvancedAuctionItemsSubmitRecord&gt;**](AdvancedAuctionItemsSubmitRecord.md) | Array of item bid option operations | 
+
+
+

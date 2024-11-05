@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A creative assets item to be created.",
+  "name": "CatalogsCreateCreativeAssetsItem",
+  "fields": [
+    {
+      "name": "creative_assets_id",
+      "type": "string",
+      "doc": "The catalog creative assets id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreateCreativeAssetsItem_operation",
+        "symbols": [
+          "CREATE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": "model.CatalogsCreativeAssetsAttributes",
+      "doc": ""
+    }
+  ]
+
+}

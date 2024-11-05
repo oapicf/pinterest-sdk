@@ -1,0 +1,53 @@
+# CatalogsItemValidationWarnings
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AD_LINK_FORMAT_WARNING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**AD_LINK_SAME_AS_LINK** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**ADDITIONAL_IMAGE_LINK_WARNING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**ADWORDS_FORMAT_WARNING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**ADWORDS_SAME_AS_LINK** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**AGE_GROUP_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SIZE_SYSTEM_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**ANDROID_DEEP_LINK_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**AVAILABILITY_DATE_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**COUNTRY_DOES_NOT_MAP_TO_CURRENCY** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**CUSTOM_LABEL_LENGTH_TOO_LONG** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**DESCRIPTION_LENGTH_TOO_LONG** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**EXPIRATION_DATE_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**GENDER_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**GTIN_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**IMAGE_LINK_WARNING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**IOS_DEEP_LINK_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**IS_BUNDLE_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**LINK_FORMAT_WARNING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**MIN_AD_PRICE_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**MPN_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**MULTIPACK_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**OPTIONAL_CONDITION_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**OPTIONAL_CONDITION_MISSING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**OPTIONAL_PRODUCT_CATEGORY_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**OPTIONAL_PRODUCT_CATEGORY_MISSING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**PRODUCT_CATEGORY_DEPTH_WARNING** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**PRODUCT_TYPE_LENGTH_TOO_LONG** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SALES_PRICE_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SALES_PRICE_TOO_LOW** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SALES_PRICE_TOO_HIGH** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SALE_DATE_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SHIPPING_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SHIPPING_HEIGHT_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SHIPPING_WEIGHT_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SHIPPING_WIDTH_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**SIZE_TYPE_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**TAX_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**TITLE_LENGTH_TOO_LONG** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**TOO_MANY_ADDITIONAL_IMAGE_LINKS** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**UTM_SOURCE_AUTO_CORRECTED** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+**WEIGHT_UNIT_INVALID** | [***CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

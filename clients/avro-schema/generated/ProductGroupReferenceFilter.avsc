@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ProductGroupReferenceFilter",
+  "fields": [
+    {
+      "name": "PRODUCT_GROUP",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "AudienceAccountType",
+  "symbols": [
+    "AD_ACCOUNT",
+    "BUSINESS_ACCOUNT"
+  ]
+}

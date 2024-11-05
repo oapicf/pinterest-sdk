@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object with a list of all the invites the user would like to respond to and the action to take.",
+  "name": "AuthRespondInvitesBody",
+  "fields": [
+    {
+      "name": "invites",
+      "type": {
+        "type": "array",
+        "items": "model.AuthRespondInvitesBodyInvitesInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

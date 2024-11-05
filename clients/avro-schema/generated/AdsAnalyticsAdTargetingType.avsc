@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Reporting targeting type for ads",
+  "name": "AdsAnalyticsAdTargetingType",
+  "symbols": [
+    "KEYWORD",
+    "APPTYPE",
+    "GENDER",
+    "LOCATION",
+    "PLACEMENT",
+    "COUNTRY",
+    "TARGETED_INTEREST",
+    "PINNER_INTEREST",
+    "AUDIENCE_INCLUDE",
+    "GEO",
+    "AGE_BUCKET",
+    "REGION",
+    "QUIZ_RESULT",
+    "AGE_BUCKET_AND_GENDER"
+  ]
+}

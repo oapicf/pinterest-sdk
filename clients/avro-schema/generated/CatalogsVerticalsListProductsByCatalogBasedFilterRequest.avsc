@@ -1,0 +1,40 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object to list products for a given catalog_id and product group filter.",
+  "name": "CatalogsVerticalsListProductsByCatalogBasedFilterRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsVerticalsListProductsByCatalogBasedFilterRequest_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "locale",
+      "type": "model.CatalogsLocale",
+      "doc": ""
+    }
+  ]
+
+}

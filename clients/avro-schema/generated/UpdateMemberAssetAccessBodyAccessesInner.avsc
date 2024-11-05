@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdateMemberAssetAccessBodyAccessesInner",
+  "fields": [
+    {
+      "name": "asset_id",
+      "type": "string",
+      "doc": "Id of the asset to update."
+    },
+    {
+      "name": "member_id",
+      "type": "string",
+      "doc": "Unique identifier of the member on which to perform the update"
+    },
+    {
+      "name": "permissions",
+      "type": {
+        "type": "array",
+        "items": "model.Permissions"
+      },
+      "doc": "A non-empty array of permissions to assign to the member."
+    }
+  ]
+
+}

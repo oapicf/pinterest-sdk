@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PinMediaWithImageAllOfImages",
+  "fields": [
+    {
+      "name": "150x150",
+      "type": ["null", "model.object"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "400x300",
+      "type": ["null", "model.object"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "600x",
+      "type": ["null", "model.object"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "1200x",
+      "type": ["null", "model.object"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

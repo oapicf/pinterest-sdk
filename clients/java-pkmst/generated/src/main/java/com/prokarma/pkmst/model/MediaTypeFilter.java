@@ -1,0 +1,80 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.prokarma.pkmst.model.CatalogsProductGroupMultipleMediaTypesCriteria;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+/**
+ * MediaTypeFilter
+ */
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class MediaTypeFilter   {
+  @JsonProperty("MEDIA_TYPE")
+  private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
+
+  public MediaTypeFilter MEDIA_TYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
+    this.MEDIA_TYPE = MEDIA_TYPE;
+    return this;
+  }
+
+  /**
+   * Get MEDIA_TYPE
+   * @return MEDIA_TYPE
+   */
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsProductGroupMultipleMediaTypesCriteria getMEDIATYPE() {
+    return MEDIA_TYPE;
+  }
+
+  public void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
+    this.MEDIA_TYPE = MEDIA_TYPE;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    MediaTypeFilter mediaTypeFilter = (MediaTypeFilter) o;
+    return Objects.equals(this.MEDIA_TYPE, mediaTypeFilter.MEDIA_TYPE);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(MEDIA_TYPE);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class MediaTypeFilter {\n");
+    
+    sb.append("    MEDIA_TYPE: ").append(toIndentedString(MEDIA_TYPE)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

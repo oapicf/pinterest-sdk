@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.",
+  "name": "AdAccountCreateSubscriptionRequestPartnerMetadata",
+  "fields": [
+    {
+      "name": "subscriber_key",
+      "type": ["null", "string"],
+      "doc": "Text field value that uniquely identifies a subscriber.",
+      "default": null
+    }
+  ]
+
+}

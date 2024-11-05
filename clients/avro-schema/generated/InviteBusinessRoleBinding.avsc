@@ -1,0 +1,45 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.",
+  "name": "InviteBusinessRoleBinding",
+  "fields": [
+    {
+      "name": "created_by_business_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier for the business that created the invite/request.",
+      "default": null
+    },
+    {
+      "name": "created_by_user_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier for the user that created the invite/request.",
+      "default": null
+    },
+    {
+      "name": "user",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "Metadata for the user that updated the invite/request.",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the invite/request.",
+      "default": null
+    },
+    {
+      "name": "invite_data",
+      "type": ["null", "model.BaseInviteDataResponseInviteData"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_received_invite",
+      "type": ["null", "boolean"],
+      "doc": "Indicates whether the invite/request was received.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LeadFormCommonPolicyLinksInner",
+  "fields": [
+    {
+      "name": "label",
+      "type": ["null", "string"],
+      "doc": "Policy label for an additional policy link.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Policy link for an additional policy link.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Type of asset.",
+  "name": "GetBusinessAssetTypeResponse",
+  "symbols": [
+    "AD_ACCOUNT",
+    "PROFILE",
+    "ASSET_GROUP",
+    "CONVERSION_TAG"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Response object containing item bid options",
+  "name": "AdvancedAuctionItems",
+  "fields": [
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Response object of item bid options",
+      "default": null
+    },
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdvancedAuctionItem"
+      }],
+      "doc": "Array with item bid options",
+      "default": null
+    }
+  ]
+
+}

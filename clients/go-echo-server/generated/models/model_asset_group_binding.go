@@ -1,0 +1,34 @@
+package models
+
+type AssetGroupBinding struct {
+
+	// Asset Group ID.
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+
+	// Asset Group name
+	AssetGroupName *string `json:"asset_group_name,omitempty"`
+
+	// Asset group description
+	AssetGroupDescription *string `json:"asset_group_description,omitempty"`
+
+	// Asset group types
+	AssetGroupTypes []string `json:"asset_group_types,omitempty"`
+
+	// A list of ad account IDs under the asset group
+	AdAccountsIds *[]string `json:"ad_accounts_ids,omitempty"`
+
+	// A list of profile IDs under asset group
+	ProfilesIds *[]string `json:"profiles_ids,omitempty"`
+
+	// The creation time of the asset group
+	CreatedTime *int32 `json:"created_time,omitempty"`
+
+	// The last update time of the asset group
+	UpdatedTime *int32 `json:"updated_time,omitempty"`
+
+	// The data of the business that owns the asset group.
+	Owner *BusinessAccessUserSummary `json:"owner,omitempty"`
+
+	// The data of the user that created the asset group.
+	CreatedBy *BusinessAccessUserSummary `json:"created_by,omitempty"`
+}

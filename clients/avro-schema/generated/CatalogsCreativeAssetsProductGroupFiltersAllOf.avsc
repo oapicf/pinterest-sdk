@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsCreativeAssetsProductGroupFiltersAllOf",
+  "fields": [
+    {
+      "name": "all_of",
+      "type": {
+        "type": "array",
+        "items": "model.CatalogsCreativeAssetsProductGroupFilterKeys"
+      },
+      "doc": ""
+    }
+  ]
+
+}

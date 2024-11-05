@@ -1,0 +1,94 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
+import 'package:test/test.dart';
+
+// tests for CatalogsUpdatableCreativeAssetsAttributes
+void main() {
+  // final instance = CatalogsUpdatableCreativeAssetsAttributes();
+
+  group('test CatalogsUpdatableCreativeAssetsAttributes', () {
+    // The name of the creative assets.
+    // String title
+    test('to test the property `title`', () async {
+      // TODO
+    });
+
+    // Brief description of the creative assets.
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // Link to the creative assets page.
+    // String link
+    test('to test the property `link`', () async {
+      // TODO
+    });
+
+    // IOS deep link to the creative assets page.
+    // String iosDeepLink
+    test('to test the property `iosDeepLink`', () async {
+      // TODO
+    });
+
+    // Link to the creative assets page.
+    // String androidDeepLink
+    test('to test the property `androidDeepLink`', () async {
+      // TODO
+    });
+
+    // The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+    // String googleProductCategory
+    test('to test the property `googleProductCategory`', () async {
+      // TODO
+    });
+
+    // Custom grouping of creative assets.
+    // String customLabel0
+    test('to test the property `customLabel0`', () async {
+      // TODO
+    });
+
+    // Custom grouping of creative assets.
+    // String customLabel1
+    test('to test the property `customLabel1`', () async {
+      // TODO
+    });
+
+    // Custom grouping of creative assets.
+    // String customLabel2
+    test('to test the property `customLabel2`', () async {
+      // TODO
+    });
+
+    // Custom grouping of creative assets.
+    // String customLabel3
+    test('to test the property `customLabel3`', () async {
+      // TODO
+    });
+
+    // Custom grouping of creative assets.
+    // String customLabel4
+    test('to test the property `customLabel4`', () async {
+      // TODO
+    });
+
+    // Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+    // String visibility
+    test('to test the property `visibility`', () async {
+      // TODO
+    });
+
+
+  });
+
+}

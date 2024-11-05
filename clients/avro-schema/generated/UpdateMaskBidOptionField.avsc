@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "bid option field to apply operation updates to",
+  "name": "UpdateMaskBidOptionField",
+  "symbols": [
+    "BID",
+    "APP_TYPE_BID_MULTIPLIER_SET",
+    "PLACEMENT_BID_MULTIPLIER_SET"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object for creating a catalog.",
+  "name": "CatalogsCreateRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreateRequest_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
+      "doc": "Type of the catalog entity."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "A human-friendly name associated to a given catalog."
+    }
+  ]
+
+}

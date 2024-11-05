@@ -1,0 +1,51 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing the result of an operation on an item bid option",
+  "name": "AdvancedAuctionProcessedItem",
+  "fields": [
+    {
+      "name": "operation",
+      "type": "model.AdvancedAuctionOperation",
+      "doc": ""
+    },
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "The catalog retail item id in the merchant namespace"
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.Language",
+      "doc": ""
+    },
+    {
+      "name": "bid_options",
+      "type": "model.AdvancedAuctionBidOptions",
+      "doc": ""
+    },
+    {
+      "name": "update_mask",
+      "type": {
+        "type": "array",
+        "items": "model.UpdateMaskBidOptionField"
+      },
+      "doc": "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`."
+    },
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.AdvancedAuctionOperationError"
+      }],
+      "doc": "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.",
+      "default": null
+    }
+  ]
+
+}

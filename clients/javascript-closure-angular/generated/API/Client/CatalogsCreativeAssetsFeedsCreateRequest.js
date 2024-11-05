@@ -1,0 +1,77 @@
+goog.provide('API.Client.CatalogsCreativeAssetsFeedsCreateRequest');
+
+/**
+ * Request object for creating a feed.
+ * @record
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest = function() {}
+
+/**
+ * @type {!API.Client.NullableCurrency}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.defaultCurrency;
+
+/**
+ * A human-friendly name associated to a given feed.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.name;
+
+/**
+ * @type {!API.Client.CatalogsFormat}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.format;
+
+/**
+ * @type {!API.Client.CatalogsFeedsCreateRequest_default_locale}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.defaultLocale;
+
+/**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.defaultCountry;
+
+/**
+ * @type {!API.Client.CatalogsFeedCredentials}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.credentials;
+
+/**
+ * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.location;
+
+/**
+ * @type {!API.Client.CatalogsFeedProcessingSchedule}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.preferredProcessingSchedule;
+
+/**
+ * @type {!API.Client.CatalogsType}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.catalogType;
+
+/**
+ * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.catalogId;
+
+/**
+ * @type {!API.Client.CatalogsStatus}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeedsCreateRequest.prototype.status;
+

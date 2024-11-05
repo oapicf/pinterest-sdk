@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Report parameters",
+  "name": "CatalogsReportParameters",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "report",
+      "type": "model.CatalogsHotelReportParametersReport",
+      "doc": ""
+    }
+  ]
+
+}

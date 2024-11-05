@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object with a list of all the new accesses.",
+  "name": "UpdateMemberAssetAccessBody",
+  "fields": [
+    {
+      "name": "accesses",
+      "type": {
+        "type": "array",
+        "items": "model.UpdateMemberAssetAccessBodyAccessesInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

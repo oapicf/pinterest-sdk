@@ -1,0 +1,35 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing a hotel record",
+  "name": "CatalogsCreativeAssetsItemResponse",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
+      "name": "creative_assets_id",
+      "type": ["null", "string"],
+      "doc": "The catalog creative assets id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "pins",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Pin"
+      }],
+      "doc": "The pins mapped to the item",
+      "default": null
+    },
+    {
+      "name": "attributes",
+      "type": ["null", "model.CatalogsCreativeAssetsAttributes"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

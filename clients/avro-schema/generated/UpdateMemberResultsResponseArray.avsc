@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdateMemberResultsResponseArray",
+  "fields": [
+    {
+      "name": "items",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.UpdateMemberResult"
+      }],
+      "doc": "List of members with updated business access role.",
+      "default": null
+    }
+  ]
+
+}

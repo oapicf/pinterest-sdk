@@ -1,0 +1,2 @@
+testCase,httpStatusCode,businessId,membersToDeleteBody,businessId,deletePartnersRequest,pageSize,bookmark,businessId,assetsSummary,businessRoles,memberIds,startIndex,bookmark,pageSize,businessId,assetsSummary,partnerType,partnerIds,startIndex,pageSize,bookmark,businessId,updateMemberBusinessRoleBody
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

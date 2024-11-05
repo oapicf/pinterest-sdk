@@ -1,0 +1,15 @@
+# OAIAdvancedAuctionItemsSubmitRecord
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**operation** | [**OAIAdvancedAuctionOperation***](OAIAdvancedAuctionOperation.md) |  | 
+**itemId** | **NSString*** | The catalog retail item id in the merchant namespace | 
+**country** | [**OAICountry***](OAICountry.md) |  | 
+**language** | [**OAILanguage***](OAILanguage.md) |  | 
+**bidOptions** | [**OAIAdvancedAuctionBidOptions***](OAIAdvancedAuctionBidOptions.md) |  | 
+**updateMask** | [**NSArray&lt;OAIUpdateMaskBidOptionField&gt;***](OAIUpdateMaskBidOptionField.md) | The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;. | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

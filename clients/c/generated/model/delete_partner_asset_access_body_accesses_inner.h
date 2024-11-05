@@ -1,0 +1,49 @@
+/*
+ * delete_partner_asset_access_body_accesses_inner.h
+ *
+ * 
+ */
+
+#ifndef _delete_partner_asset_access_body_accesses_inner_H_
+#define _delete_partner_asset_access_body_accesses_inner_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct delete_partner_asset_access_body_accesses_inner_t delete_partner_asset_access_body_accesses_inner_t;
+
+
+// Enum PARTNERTYPE for delete_partner_asset_access_body_accesses_inner
+
+typedef enum  { pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_NULL = 0, pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_INTERNAL, pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_EXTERNAL } pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e;
+
+char* delete_partner_asset_access_body_accesses_inner_partner_type_ToString(pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e partner_type);
+
+pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e delete_partner_asset_access_body_accesses_inner_partner_type_FromString(char* partner_type);
+
+
+
+typedef struct delete_partner_asset_access_body_accesses_inner_t {
+    char *partner_id; // string
+    char *asset_id; // string
+    pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e partner_type; //enum
+
+} delete_partner_asset_access_body_accesses_inner_t;
+
+delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner_create(
+    char *partner_id,
+    char *asset_id,
+    pinterest_rest_api_delete_partner_asset_access_body_accesses_inner_PARTNERTYPE_e partner_type
+);
+
+void delete_partner_asset_access_body_accesses_inner_free(delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner);
+
+delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner_parseFromJSON(cJSON *delete_partner_asset_access_body_accesses_innerJSON);
+
+cJSON *delete_partner_asset_access_body_accesses_inner_convertToJSON(delete_partner_asset_access_body_accesses_inner_t *delete_partner_asset_access_body_accesses_inner);
+
+#endif /* _delete_partner_asset_access_body_accesses_inner_H_ */
+

@@ -1,0 +1,11 @@
+# Org.OpenAPITools.Model.BusinessPartnerAssetAccessGet200Response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Items** | [**List&lt;GetPartnerAssetsResponse&gt;**](GetPartnerAssetsResponse.md) | List assets on which you granted access to your partner or assets on which your partner has granted you access. | 
+**Bookmark** | **string** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

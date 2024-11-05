@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BusinessSharedAudience",
+  "fields": [
+    {
+      "name": "audience_id",
+      "type": "string",
+      "doc": "Unique identifier of an audience"
+    },
+    {
+      "name": "operation_type",
+      "type": "model.OperationType",
+      "doc": ""
+    },
+    {
+      "name": "recipient_business_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "List of business IDs to share with or revoke from."
+    }
+  ]
+
+}

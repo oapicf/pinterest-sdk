@@ -1,0 +1,40 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object to list products for a given retail catalog_id and product group filter.",
+  "name": "CatalogsRetailListProductsByCatalogBasedFilterRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailListProductsByCatalogBasedFilterRequest_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
+      "doc": "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one."
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the retail product group."
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "locale",
+      "type": "model.CatalogsLocale",
+      "doc": ""
+    }
+  ]
+
+}

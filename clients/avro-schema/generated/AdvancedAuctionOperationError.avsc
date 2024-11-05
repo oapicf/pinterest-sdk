@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Error which occurred when applying a bid options operation to a specific item.",
+  "name": "AdvancedAuctionOperationError",
+  "fields": [
+    {
+      "name": "code",
+      "type": ["null", "int"],
+      "doc": "The error code for the item bid option operation validation error",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Message describing the item bid option operation validation error",
+      "default": null
+    }
+  ]
+
+}

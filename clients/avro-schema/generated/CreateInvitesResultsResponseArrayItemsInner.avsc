@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreateInvitesResultsResponseArrayItemsInner",
+  "fields": [
+    {
+      "name": "exception",
+      "type": ["null", "model.InviteExceptionResponse"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "invite",
+      "type": ["null", "model.CreateInvitesResultsResponseArrayItemsInnerInvite"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

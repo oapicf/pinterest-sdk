@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsRetailProduct",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailProduct_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "metadata",
+      "type": "model.CatalogsRetailProductMetadata",
+      "doc": ""
+    },
+    {
+      "name": "pin",
+      "type": "model.Pin",
+      "doc": ""
+    }
+  ]
+
+}

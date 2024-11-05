@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Product counts for a Creative Assets CatalogsProductGroup",
+  "name": "CatalogsCreativeAssetsProductGroupProductCounts",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsProductGroupProductCounts_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "total",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "videos",
+      "type": "double",
+      "doc": ""
+    }
+  ]
+
+}

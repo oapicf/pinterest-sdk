@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Parameters for retail report",
+  "name": "CatalogsRetailReportParameters",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailReportParameters_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "report",
+      "type": "model.CatalogsHotelReportParametersReport",
+      "doc": ""
+    }
+  ]
+
+}

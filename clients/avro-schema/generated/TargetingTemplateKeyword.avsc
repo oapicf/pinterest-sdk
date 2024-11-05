@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingTemplateKeyword",
+  "fields": [
+    {
+      "name": "match_type",
+      "type": ["null", "model.MatchType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "value",
+      "type": ["null", "string"],
+      "doc": "The keyword targeting (120 chars max).",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,22 @@
+
+<h2>CatalogsReportFeedIngestionFilter</h2>
+<ul class="parameter">
+  <li class="param-required-true">reportUnderscoretype : String
+    <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>FEED_INGESTION_ISSUES</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">feedUnderscoreid : String
+    <br/>ID of the feed entity.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">processingUnderscoreresultUnderscoreid : String
+    <br/>Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+  </li>
+</ul>

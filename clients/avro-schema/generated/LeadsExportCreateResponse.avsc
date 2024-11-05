@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LeadsExportCreateResponse",
+  "fields": [
+    {
+      "name": "leads_export_id",
+      "type": ["null", "string"],
+      "doc": "ID for the leads export job",
+      "default": null
+    }
+  ]
+
+}

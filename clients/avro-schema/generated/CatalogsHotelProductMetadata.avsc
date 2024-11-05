@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Hotel product metadata entity",
+  "name": "CatalogsHotelProductMetadata",
+  "fields": [
+    {
+      "name": "hotel_id",
+      "type": "string",
+      "doc": "The user-created unique ID that represents the hotel item."
+    }
+  ]
+
+}

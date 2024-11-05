@@ -1,0 +1,15 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsCreateReportResponse",
+  "fields": [
+    {
+      "name": "token",
+      "type": ["null", "string"],
+      "doc": "Token to be used to get the report",
+      "default": null
+    }
+  ]
+
+}

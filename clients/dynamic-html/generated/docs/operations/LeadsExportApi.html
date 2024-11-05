@@ -1,0 +1,75 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="leadsExport/create"></a>leadsExport/create</h2>
+  <hr>
+  <p></p>
+  <p>&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/leads_export</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="LeadsExportCreateResponse"><a href="">LeadsExportCreateResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">LeadsExportCreateRequest</span>
+      <span class="param-type">LeadsExportCreateRequest(LeadsExportCreateRequest)</span>
+      
+      <p class="param-description"></p>
+      </li>
+  </ul>
+  <h2><a name="leadsExport/get"></a>leadsExport/get</h2>
+  <hr>
+  <p></p>
+  <p>&lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="LeadsExportResponseData"><a href="">LeadsExportResponseData</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
+      <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">leads_export_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">lead_export_id token returned from the create a lead export endpoint</p>
+      </li>
+  </ul>
+</div>

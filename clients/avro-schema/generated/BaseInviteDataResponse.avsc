@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BaseInviteDataResponse",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the invite/request.",
+      "default": null
+    },
+    {
+      "name": "invite_data",
+      "type": ["null", "model.BaseInviteDataResponseInviteData"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_received_invite",
+      "type": ["null", "boolean"],
+      "doc": "Indicates whether the invite/request was received.",
+      "default": null
+    },
+    {
+      "name": "user",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "Metadata for the member/partner that was sent the invite/request.",
+      "default": null
+    }
+  ]
+
+}

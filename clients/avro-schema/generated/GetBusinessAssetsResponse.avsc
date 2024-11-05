@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object containing the permissions a business has on the asset.",
+  "name": "GetBusinessAssetsResponse",
+  "fields": [
+    {
+      "name": "asset_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a business asset.",
+      "default": null
+    },
+    {
+      "name": "asset_type",
+      "type": ["null", "string"],
+      "doc": "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.",
+      "default": null
+    },
+    {
+      "name": "asset_group_info",
+      "type": ["null", "model.AssetGroupBinding"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

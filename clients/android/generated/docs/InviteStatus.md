@@ -1,0 +1,10 @@
+
+
+# InviteStatus
+
+## Enum
+
+
+
+
+

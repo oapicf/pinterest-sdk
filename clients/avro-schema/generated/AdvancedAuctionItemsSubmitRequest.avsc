@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items",
+  "name": "AdvancedAuctionItemsSubmitRequest",
+  "fields": [
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to all items"
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.AdvancedAuctionItemsSubmitRecord"
+      },
+      "doc": "Array of item bid option operations"
+    }
+  ]
+
+}

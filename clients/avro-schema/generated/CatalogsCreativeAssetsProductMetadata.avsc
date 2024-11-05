@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Creative assets product metadata entity",
+  "name": "CatalogsCreativeAssetsProductMetadata",
+  "fields": [
+    {
+      "name": "creative_assets_id",
+      "type": "string",
+      "doc": "The user-created unique ID that represents the creative assets item."
+    },
+    {
+      "name": "visibility",
+      "type": "model.CreativeAssetsVisibilityType",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,8 @@
+package models
+
+// DeleteAssetGroupBody - Request body used to delete asset groups
+type DeleteAssetGroupBody struct {
+
+	// List of ids of asset groups to be deleted
+	AssetGroupsToDelete []string `json:"asset_groups_to_delete"`
+}

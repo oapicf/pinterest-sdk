@@ -1,0 +1,93 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsCreativeAssetsAttributes",
+  "fields": [
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "The name of the creative assets.",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Brief description of the creative assets.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Link to the creative assets page.",
+      "default": null
+    },
+    {
+      "name": "ios_deep_link",
+      "type": ["null", "string"],
+      "doc": "IOS deep link to the creative assets page.",
+      "default": null
+    },
+    {
+      "name": "android_deep_link",
+      "type": ["null", "string"],
+      "doc": "Link to the creative assets page.",
+      "default": null
+    },
+    {
+      "name": "google_product_category",
+      "type": ["null", "string"],
+      "doc": "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.",
+      "default": null
+    },
+    {
+      "name": "custom_label_0",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of creative assets.",
+      "default": null
+    },
+    {
+      "name": "custom_label_1",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of creative assets.",
+      "default": null
+    },
+    {
+      "name": "custom_label_2",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of creative assets.",
+      "default": null
+    },
+    {
+      "name": "custom_label_3",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of creative assets.",
+      "default": null
+    },
+    {
+      "name": "custom_label_4",
+      "type": ["null", "string"],
+      "doc": "Custom grouping of creative assets.",
+      "default": null
+    },
+    {
+      "name": "visibility",
+      "type": ["null", "string"],
+      "doc": "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.",
+      "default": null
+    },
+    {
+      "name": "image_link",
+      "type": ["null", "string"],
+      "doc": "The creative assets image.",
+      "default": null
+    },
+    {
+      "name": "video_link",
+      "type": ["null", "string"],
+      "doc": "The creative assets video.",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BusinessSharedAudienceResponse",
+  "fields": [
+    {
+      "name": "audience_id",
+      "type": ["null", "string"],
+      "doc": "Audience ID that was shared",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Role"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "recipient_business_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Business IDs that received the audience",
+      "default": null
+    }
+  ]
+
+}

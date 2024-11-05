@@ -1,0 +1,14 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CreativeAssetsIdFilter",
+  "fields": [
+    {
+      "name": "CREATIVE_ASSETS_ID",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    }
+  ]
+
+}

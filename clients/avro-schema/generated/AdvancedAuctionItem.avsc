@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdvancedAuctionItem",
+  "fields": [
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "The catalog retail item id in the merchant namespace"
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.Language",
+      "doc": ""
+    },
+    {
+      "name": "bid_options",
+      "type": "model.AdvancedAuctionBidOptions",
+      "doc": ""
+    }
+  ]
+
+}

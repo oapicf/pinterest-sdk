@@ -1,0 +1,59 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsCreativeAssetsProductGroup",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsCreativeAssetsProductGroup_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the creative assets product group."
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of creative assets product group",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "created_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of when catalog product group was created.",
+      "default": null
+    },
+    {
+      "name": "updated_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
+      "default": null
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    }
+  ]
+
+}

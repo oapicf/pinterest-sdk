@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Ad accounts and profiles the business member/partner has access to.",
+  "name": "BusinessMemberAssetsSummary",
+  "fields": [
+    {
+      "name": "ad_accounts",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.BusinessMemberAssetsSummaryAdAccountsInner"
+      }],
+      "doc": "List of ad account IDs and respective permission levels.",
+      "default": null
+    },
+    {
+      "name": "profiles",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.BusinessMemberAssetsSummaryProfilesInner"
+      }],
+      "doc": "List of profile IDs and respective permission levels.",
+      "default": null
+    }
+  ]
+
+}

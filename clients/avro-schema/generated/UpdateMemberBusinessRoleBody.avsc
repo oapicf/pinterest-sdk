@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Single instance of a business member to have its role updated",
+  "name": "UpdateMemberBusinessRoleBody",
+  "fields": [
+    {
+      "name": "business_role",
+      "type": "model.BusinessRoleForMembers",
+      "doc": ""
+    },
+    {
+      "name": "member_id",
+      "type": "string",
+      "doc": "Unique identifier of the member"
+    }
+  ]
+
+}

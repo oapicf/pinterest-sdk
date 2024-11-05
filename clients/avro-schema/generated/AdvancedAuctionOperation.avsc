@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "AdvancedAuctionOperation",
+  "symbols": [
+    "UPSERT",
+    "DELETE"
+  ]
+}

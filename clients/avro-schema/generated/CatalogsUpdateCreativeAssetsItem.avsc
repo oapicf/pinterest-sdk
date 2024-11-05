@@ -1,0 +1,30 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A creative assets item to be updated.",
+  "name": "CatalogsUpdateCreativeAssetsItem",
+  "fields": [
+    {
+      "name": "creative_assets_id",
+      "type": "string",
+      "doc": "The catalog creative assets item id in the merchant namespace"
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsUpdateCreativeAssetsItem_operation",
+        "symbols": [
+          "UPDATE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "attributes",
+      "type": "model.CatalogsUpdatableCreativeAssetsAttributes",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "GetBusinessMembers200Response",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.UserBusinessRoleBinding"
+      },
+      "doc": "List of business members."
+    },
+    {
+      "name": "bookmark",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

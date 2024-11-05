@@ -1,0 +1,42 @@
+
+<h2>UserBusinessRoleBinding</h2>
+<ul class="parameter">
+  <li class="param-required-false">assetsUnderscoresummary : BusinessMemberAssetsSummary
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">businessUnderscoreroles : List
+    <br/>The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscorebyUnderscorebusiness : BusinessAccessUserSummary
+    <br/>Metadata for the business that created the business relationship.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscorebyUnderscoreuser : BusinessAccessUserSummary
+    <br/>Metadata for the user that created the business relationship.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">createdUnderscoretime : Integer
+    <br/>The time the business relationship was created. Returned in milliseconds.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">id : String
+    <br/>Unique identifier of the business member/business partner/employer.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscoresharedUnderscorepartner : Boolean
+    <br/>This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. &lt;br&gt;If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. &lt;br&gt;If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">user : BusinessAccessUserSummary
+    <br/>Metadata for the business member/business partner/employer.
+  </li>
+</ul>

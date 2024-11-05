@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object containing a list of all the asset access requests",
+  "name": "CreateAssetAccessRequestBody",
+  "fields": [
+    {
+      "name": "asset_requests",
+      "type": {
+        "type": "array",
+        "items": "model.CreateAssetAccessRequestBodyAssetRequestsInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

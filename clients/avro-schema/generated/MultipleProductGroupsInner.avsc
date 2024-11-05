@@ -1,0 +1,62 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "MultipleProductGroupsInner",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "is_featured",
+      "type": ["null", "boolean"],
+      "doc": "boolean indicator of whether the product group is being featured or not",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "feed_id",
+      "type": "string",
+      "doc": "Catalog Feed id pertaining to the catalog product group."
+    },
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "MultipleProductGroupsInner_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "locale",
+      "type": "model.CatalogsLocale",
+      "doc": ""
+    }
+  ]
+
+}

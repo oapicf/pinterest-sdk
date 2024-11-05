@@ -1,0 +1,20 @@
+package models
+
+// BaseInviteDataResponseInviteData - Metadata for the invite/request.
+type BaseInviteDataResponseInviteData struct {
+
+	// The date and time when the invite/request will expire. Returned in milliseconds.
+	InviteExpiration int32 `json:"invite_expiration,omitempty"`
+
+	// The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.
+	InviteStatus string `json:"invite_status,omitempty"`
+
+	// The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER_INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
+	InviteType string `json:"invite_type,omitempty"`
+
+	// The date and time the invite/request was last updated. Returned in milliseconds.
+	LastUpdatedTime int32 `json:"last_updated_time,omitempty"`
+
+	// The date and time the invite/request was sent/created. Returned in milliseconds.
+	SentAt int32 `json:"sent_at,omitempty"`
+}

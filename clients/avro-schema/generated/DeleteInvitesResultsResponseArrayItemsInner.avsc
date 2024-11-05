@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeleteInvitesResultsResponseArrayItemsInner",
+  "fields": [
+    {
+      "name": "exception",
+      "type": ["null", "model.DeleteInvitesResultsResponseArrayItemsInnerException"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "invite",
+      "type": ["null", "model.BaseInviteDataResponse"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

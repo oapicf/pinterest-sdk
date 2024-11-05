@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An exception object if there is an error performing the action. Will only be provided if there is an error.",
+  "name": "InviteExceptionResponse",
+  "fields": [
+    {
+      "name": "invite_or_request_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of the invite/request.",
+      "default": null
+    },
+    {
+      "name": "code",
+      "type": ["null", "int"],
+      "doc": "Error code associated with the error in performing the action on the invite/request.",
+      "default": null
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "Error message associated with the error in performing the action on the invite/request.",
+      "default": null
+    },
+    {
+      "name": "users_or_partner_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of users' usernames or emails OR a list of partner ids that caused the error.",
+      "default": null
+    }
+  ]
+
+}

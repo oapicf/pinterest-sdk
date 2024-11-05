@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeleteAssetGroupResponse",
+  "fields": [
+    {
+      "name": "deleted_asset_groups",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of ids of successfully deleted asset groups.",
+      "default": null
+    },
+    {
+      "name": "exceptions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.DeleteAssetGroupResponseExceptionsInner"
+      }],
+      "doc": "A list of errors associated with the asset groups. Will be returned if there is an error.",
+      "default": null
+    }
+  ]
+
+}

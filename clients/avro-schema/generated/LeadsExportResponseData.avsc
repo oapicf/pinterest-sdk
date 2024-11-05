@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LeadsExportResponseData",
+  "fields": [
+    {
+      "name": "export_status",
+      "type": ["null", "model.LeadsExportStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "download_url",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

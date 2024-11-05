@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request body used to delete asset groups",
+  "name": "DeleteAssetGroupBody",
+  "fields": [
+    {
+      "name": "asset_groups_to_delete",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "List of ids of asset groups to be deleted"
+    }
+  ]
+
+}

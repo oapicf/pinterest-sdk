@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdAccountsAudiencesSharedAccountsList200Response",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.SharedAudienceAccount"
+      },
+      "doc": ""
+    },
+    {
+      "name": "bookmark",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

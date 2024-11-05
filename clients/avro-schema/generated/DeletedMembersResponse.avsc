@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object with a list of members that were deleted.",
+  "name": "DeletedMembersResponse",
+  "fields": [
+    {
+      "name": "deleted_members",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of members whose business membership have been terminated.",
+      "default": null
+    }
+  ]
+
+}

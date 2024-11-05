@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Specifies if the partner is internal or external.",
+  "name": "BusinessRoleCheckMode",
+  "symbols": [
+    "INTERNAL",
+    "EXTERNAL"
+  ]
+}

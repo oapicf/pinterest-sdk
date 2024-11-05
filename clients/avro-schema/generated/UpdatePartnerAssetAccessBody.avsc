@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "UpdatePartnerAssetAccessBody",
+  "fields": [
+    {
+      "name": "accesses",
+      "type": {
+        "type": "array",
+        "items": "model.UpdatePartnerAssetAccessBodyAccessesInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

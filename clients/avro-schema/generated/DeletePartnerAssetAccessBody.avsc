@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DeletePartnerAssetAccessBody",
+  "fields": [
+    {
+      "name": "accesses",
+      "type": {
+        "type": "array",
+        "items": "model.DeletePartnerAssetAccessBodyAccessesInner"
+      },
+      "doc": ""
+    }
+  ]
+
+}

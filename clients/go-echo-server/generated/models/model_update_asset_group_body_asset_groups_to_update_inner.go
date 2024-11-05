@@ -1,0 +1,22 @@
+package models
+
+type UpdateAssetGroupBodyAssetGroupsToUpdateInner struct {
+
+	// Unique identifier of the asset group to update.
+	AssetGroupId string `json:"asset_group_id"`
+
+	// Asset Group name
+	Name string `json:"name,omitempty"`
+
+	// Asset group description
+	Description string `json:"description,omitempty"`
+
+	// Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+	AssetGroupTypes []AssetGroupType `json:"asset_group_types,omitempty"`
+
+	// A list of asset ids to add to the asset group.
+	AssetsToAdd []string `json:"assets_to_add,omitempty"`
+
+	// A list of asset ids to remove from the asset group.
+	AssetsToRemove []string `json:"assets_to_remove,omitempty"`
+}

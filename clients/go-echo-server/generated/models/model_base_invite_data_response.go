@@ -1,0 +1,15 @@
+package models
+
+type BaseInviteDataResponse struct {
+
+	// Unique identifier of the invite/request.
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+
+	InviteData BaseInviteDataResponseInviteData `json:"invite_data,omitempty"`
+
+	// Indicates whether the invite/request was received.
+	IsReceivedInvite bool `json:"is_received_invite,omitempty"`
+
+	// Metadata for the member/partner that was sent the invite/request.
+	User BusinessAccessUserSummary `json:"user,omitempty"`
+}

@@ -1,0 +1,51 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object for creating a product group.",
+  "name": "CatalogsRetailProductGroupCreateRequest",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailProductGroupCreateRequest_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
+      "doc": "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "type": "model.CatalogsProductGroupFiltersRequest",
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the retail product group."
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "locale",
+      "type": "model.CatalogsLocale",
+      "doc": ""
+    }
+  ]
+
+}

@@ -1,0 +1,33 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SharedAudienceResponse",
+  "fields": [
+    {
+      "name": "audience_id",
+      "type": ["null", "string"],
+      "doc": "Audience ID that was shared",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Role"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "recipient_account_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Account IDs that received the audience",
+      "default": null
+    }
+  ]
+
+}

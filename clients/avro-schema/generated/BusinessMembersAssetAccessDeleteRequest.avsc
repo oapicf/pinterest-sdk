@@ -1,0 +1,17 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BusinessMembersAssetAccessDeleteRequest",
+  "fields": [
+    {
+      "name": "accesses",
+      "type": {
+        "type": "array",
+        "items": "model.BusinessMembersAssetAccessDeleteRequestAccessesInner"
+      },
+      "doc": "List of members asset access to be deleted"
+    }
+  ]
+
+}

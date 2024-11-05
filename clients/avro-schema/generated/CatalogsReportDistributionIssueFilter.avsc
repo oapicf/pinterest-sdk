@@ -1,0 +1,26 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsReportDistributionIssueFilter",
+  "fields": [
+    {
+      "name": "report_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsReportDistributionIssueFilter_reportUnderscoretype",
+        "symbols": [
+          "DISTRIBUTION_ISSUES"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a catalog. If not given, oldest catalog will be used",
+      "default": null
+    }
+  ]
+
+}

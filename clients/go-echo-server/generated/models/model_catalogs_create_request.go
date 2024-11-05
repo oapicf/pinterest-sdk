@@ -1,0 +1,11 @@
+package models
+
+// CatalogsCreateRequest - Request object for creating a catalog.
+type CatalogsCreateRequest struct {
+
+	// Type of the catalog entity.
+	CatalogType string `json:"catalog_type"`
+
+	// A human-friendly name associated to a given catalog.
+	Name string `json:"name"`
+}

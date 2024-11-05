@@ -1,0 +1,34 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsReport",
+  "fields": [
+    {
+      "name": "report_status",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsReport_reportUnderscorestatus",
+        "symbols": [
+          "FINISHED",
+          "IN_PROGRESS"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "url",
+      "type": ["null", "string"],
+      "doc": "URL to download the report",
+      "default": null
+    },
+    {
+      "name": "size",
+      "type": ["null", "double"],
+      "doc": "Size of the report in bytes",
+      "default": null
+    }
+  ]
+
+}

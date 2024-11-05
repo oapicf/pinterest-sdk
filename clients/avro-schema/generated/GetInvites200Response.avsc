@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "GetInvites200Response",
+  "fields": [
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.InviteResponse"
+      },
+      "doc": "List of invite and request data."
+    },
+    {
+      "name": "bookmark",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "SharedAudienceResponseCommon",
+  "fields": [
+    {
+      "name": "audience_id",
+      "type": ["null", "string"],
+      "doc": "Audience ID that was shared",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Role"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

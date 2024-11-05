@@ -1,0 +1,311 @@
+#include <map>
+#include <cstdlib>
+#include <glib-object.h>
+#include <json-glib/json-glib.h>
+#include "Helpers.h"
+
+
+#include "CatalogsRetailProductGroupUpdateRequest.h"
+
+using namespace std;
+using namespace Tizen::ArtikCloud;
+
+CatalogsRetailProductGroupUpdateRequest::CatalogsRetailProductGroupUpdateRequest()
+{
+	//__init();
+}
+
+CatalogsRetailProductGroupUpdateRequest::~CatalogsRetailProductGroupUpdateRequest()
+{
+	//__cleanup();
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::__init()
+{
+	//catalog_type = std::string();
+	//name = std::string();
+	//description = std::string();
+	//filters = new CatalogsProductGroupFiltersRequest();
+	//country = new Country();
+	//locale = new CatalogsLocale();
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::__cleanup()
+{
+	//if(catalog_type != NULL) {
+	//
+	//delete catalog_type;
+	//catalog_type = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
+	//if(description != NULL) {
+	//
+	//delete description;
+	//description = NULL;
+	//}
+	//if(filters != NULL) {
+	//
+	//delete filters;
+	//filters = NULL;
+	//}
+	//if(country != NULL) {
+	//
+	//delete country;
+	//country = NULL;
+	//}
+	//if(locale != NULL) {
+	//
+	//delete locale;
+	//locale = NULL;
+	//}
+	//
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::fromJson(char* jsonStr)
+{
+	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
+	JsonNode *node;
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *filtersKey = "filters";
+	node = json_object_get_member(pJsonObject, filtersKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsProductGroupFiltersRequest")) {
+			jsonToValue(&filters, node, "CatalogsProductGroupFiltersRequest", "CatalogsProductGroupFiltersRequest");
+		} else {
+			
+			CatalogsProductGroupFiltersRequest* obj = static_cast<CatalogsProductGroupFiltersRequest*> (&filters);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *countryKey = "country";
+	node = json_object_get_member(pJsonObject, countryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Country")) {
+			jsonToValue(&country, node, "Country", "Country");
+		} else {
+			
+			Country* obj = static_cast<Country*> (&country);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *localeKey = "locale";
+	node = json_object_get_member(pJsonObject, localeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsLocale")) {
+			jsonToValue(&locale, node, "CatalogsLocale", "CatalogsLocale");
+		} else {
+			
+			CatalogsLocale* obj = static_cast<CatalogsLocale*> (&locale);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+}
+
+CatalogsRetailProductGroupUpdateRequest::CatalogsRetailProductGroupUpdateRequest(char* json)
+{
+	this->fromJson(json);
+}
+
+char*
+CatalogsRetailProductGroupUpdateRequest::toJson()
+{
+	JsonObject *pJsonObject = json_object_new();
+	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDescription();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *descriptionKey = "description";
+	json_object_set_member(pJsonObject, descriptionKey, node);
+	if (isprimitive("CatalogsProductGroupFiltersRequest")) {
+		CatalogsProductGroupFiltersRequest obj = getFilters();
+		node = converttoJson(&obj, "CatalogsProductGroupFiltersRequest", "");
+	}
+	else {
+		
+		CatalogsProductGroupFiltersRequest obj = static_cast<CatalogsProductGroupFiltersRequest> (getFilters());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *filtersKey = "filters";
+	json_object_set_member(pJsonObject, filtersKey, node);
+	if (isprimitive("Country")) {
+		Country obj = getCountry();
+		node = converttoJson(&obj, "Country", "");
+	}
+	else {
+		
+		Country obj = static_cast<Country> (getCountry());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *countryKey = "country";
+	json_object_set_member(pJsonObject, countryKey, node);
+	if (isprimitive("CatalogsLocale")) {
+		CatalogsLocale obj = getLocale();
+		node = converttoJson(&obj, "CatalogsLocale", "");
+	}
+	else {
+		
+		CatalogsLocale obj = static_cast<CatalogsLocale> (getLocale());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *localeKey = "locale";
+	json_object_set_member(pJsonObject, localeKey, node);
+	node = json_node_alloc();
+	json_node_init(node, JSON_NODE_OBJECT);
+	json_node_take_object(node, pJsonObject);
+	char * ret = json_to_string(node, false);
+	json_node_free(node);
+	return ret;
+}
+
+std::string
+CatalogsRetailProductGroupUpdateRequest::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::setCatalogType(std::string  catalog_type)
+{
+	this->catalog_type = catalog_type;
+}
+
+std::string
+CatalogsRetailProductGroupUpdateRequest::getName()
+{
+	return name;
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::setName(std::string  name)
+{
+	this->name = name;
+}
+
+std::string
+CatalogsRetailProductGroupUpdateRequest::getDescription()
+{
+	return description;
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::setDescription(std::string  description)
+{
+	this->description = description;
+}
+
+CatalogsProductGroupFiltersRequest
+CatalogsRetailProductGroupUpdateRequest::getFilters()
+{
+	return filters;
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::setFilters(CatalogsProductGroupFiltersRequest  filters)
+{
+	this->filters = filters;
+}
+
+Country
+CatalogsRetailProductGroupUpdateRequest::getCountry()
+{
+	return country;
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::setCountry(Country  country)
+{
+	this->country = country;
+}
+
+CatalogsLocale
+CatalogsRetailProductGroupUpdateRequest::getLocale()
+{
+	return locale;
+}
+
+void
+CatalogsRetailProductGroupUpdateRequest::setLocale(CatalogsLocale  locale)
+{
+	this->locale = locale;
+}
+
+

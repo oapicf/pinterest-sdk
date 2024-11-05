@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing an item bid option deletion operation",
+  "name": "AdvancedAuctionItemsSubmitDeleteRecord",
+  "fields": [
+    {
+      "name": "item_id",
+      "type": "string",
+      "doc": "The catalog retail item id in the merchant namespace"
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "language",
+      "type": "model.Language",
+      "doc": ""
+    }
+  ]
+
+}

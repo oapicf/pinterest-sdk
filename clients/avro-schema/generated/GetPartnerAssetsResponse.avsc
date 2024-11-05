@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "An object containing the permissions a you/your business partner has on the asset.",
+  "name": "GetPartnerAssetsResponse",
+  "fields": [
+    {
+      "name": "asset_id",
+      "type": ["null", "string"],
+      "doc": "Unique identifier of a business asset.",
+      "default": null
+    },
+    {
+      "name": "asset_type",
+      "type": ["null", "string"],
+      "doc": "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset.",
+      "default": null
+    },
+    {
+      "name": "asset_group_info",
+      "type": ["null", "model.AssetGroupBinding"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Product counts for a Hotel CatalogsProductGroup",
+  "name": "CatalogsHotelProductGroupProductCounts",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelProductGroupProductCounts_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "total",
+      "type": "double",
+      "doc": ""
+    }
+  ]
+
+}

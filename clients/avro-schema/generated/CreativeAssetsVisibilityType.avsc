@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Creative assets visibility.",
+  "name": "CreativeAssetsVisibilityType",
+  "symbols": [
+    "VISIBLE",
+    "HIDDEN"
+  ]
+}

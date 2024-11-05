@@ -1,0 +1,10 @@
+
+
+# InviteType
+
+## Enum
+
+
+
+
+

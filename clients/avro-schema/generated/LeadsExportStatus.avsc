@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Status of a leads export job",
+  "name": "LeadsExportStatus",
+  "symbols": [
+    "IN_PROGRESS",
+    "FINISHED",
+    "FAILED"
+  ]
+}

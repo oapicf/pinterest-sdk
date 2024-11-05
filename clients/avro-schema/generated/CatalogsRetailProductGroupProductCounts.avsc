@@ -1,0 +1,46 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Product counts for a Retail CatalogsProductGroup",
+  "name": "CatalogsRetailProductGroupProductCounts",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailProductGroupProductCounts_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "in_stock",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "out_of_stock",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "preorder",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "total",
+      "type": "double",
+      "doc": ""
+    },
+    {
+      "name": "videos",
+      "type": ["null", "double"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

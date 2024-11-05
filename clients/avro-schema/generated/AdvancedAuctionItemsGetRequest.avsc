@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request object used to get bid options values for a batch of retail catalog items",
+  "name": "AdvancedAuctionItemsGetRequest",
+  "fields": [
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the retail item"
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.AdvancedAuctionItemsGetRecord"
+      },
+      "doc": "A list of retail catalog items to fetch bid options for"
+    }
+  ]
+
+}

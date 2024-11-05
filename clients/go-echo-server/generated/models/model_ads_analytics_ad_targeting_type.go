@@ -1,0 +1,21 @@
+package models
+// AdsAnalyticsAdTargetingType : Reporting targeting type for ads
+type AdsAnalyticsAdTargetingType string
+
+// List of AdsAnalyticsAdTargetingType
+const (
+	KEYWORD AdsAnalyticsAdTargetingType = "KEYWORD"
+	APPTYPE AdsAnalyticsAdTargetingType = "APPTYPE"
+	GENDER AdsAnalyticsAdTargetingType = "GENDER"
+	LOCATION AdsAnalyticsAdTargetingType = "LOCATION"
+	PLACEMENT AdsAnalyticsAdTargetingType = "PLACEMENT"
+	COUNTRY AdsAnalyticsAdTargetingType = "COUNTRY"
+	TARGETED_INTEREST AdsAnalyticsAdTargetingType = "TARGETED_INTEREST"
+	PINNER_INTEREST AdsAnalyticsAdTargetingType = "PINNER_INTEREST"
+	AUDIENCE_INCLUDE AdsAnalyticsAdTargetingType = "AUDIENCE_INCLUDE"
+	GEO AdsAnalyticsAdTargetingType = "GEO"
+	AGE_BUCKET AdsAnalyticsAdTargetingType = "AGE_BUCKET"
+	REGION AdsAnalyticsAdTargetingType = "REGION"
+	QUIZ_RESULT AdsAnalyticsAdTargetingType = "QUIZ_RESULT"
+	AGE_BUCKET_AND_GENDER AdsAnalyticsAdTargetingType = "AGE_BUCKET_AND_GENDER"
+)

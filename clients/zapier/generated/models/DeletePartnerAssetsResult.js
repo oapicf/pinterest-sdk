@@ -1,0 +1,45 @@
+const utils = require('../utils/utils');
+
+module.exports = {
+    fields: (prefix = '', isInput = true, isArrayChild = false) => {
+        const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
+        return [
+            {
+                key: `${keyPrefix}asset_id`,
+                label: `Unique identifier of a business asset. - [${labelPrefix}asset_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}asset_type`,
+                label: `Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. - [${labelPrefix}asset_type]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}permissions`,
+                label: `Permission levels member or partner has on an asset. - [${labelPrefix}permissions]`,
+                list: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}is_shared_partner`,
+                label: `If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset. - [${labelPrefix}is_shared_partner]`,
+                type: 'boolean',
+            },
+            {
+                key: `${keyPrefix}partner_id`,
+                label: `Unique identifier of a business partner. - [${labelPrefix}partner_id]`,
+                type: 'string',
+            },
+        ]
+    },
+    mapping: (bundle, prefix = '') => {
+        const {keyPrefix} = utils.buildKeyAndLabel(prefix)
+        return {
+            'asset_id': bundle.inputData?.[`${keyPrefix}asset_id`],
+            'asset_type': bundle.inputData?.[`${keyPrefix}asset_type`],
+            'permissions': bundle.inputData?.[`${keyPrefix}permissions`],
+            'is_shared_partner': bundle.inputData?.[`${keyPrefix}is_shared_partner`],
+            'partner_id': bundle.inputData?.[`${keyPrefix}partner_id`],
+        }
+    },
+}
